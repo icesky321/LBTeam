@@ -1,0 +1,104 @@
+﻿/* version 2017-3-14 17:50 */
+body,html{font-family:"黑体";font-size:1.4rem;background:#ffffff}
+body{width:100%;height:100%;padding-top:70px}
+html{width:100%;height:100%;font-size:62.5%}
+*{padding:0;margin:0;list-style:none;outline:none;text-decoration:none}
+a{cursor:pointer}
+.pd0{padding:0!important}
+.clearfix:after{content:".";display:block;clear:both;height:0;visibility:hidden}
+.fixedTopBar{display:none!important}
+.fixed{display:block!important}
+.content{width:100%;padding-bottom:6rem;background:#EDF1F5}
+.content p.title{margin:0 auto;padding-top:2.7rem;font-size:2.8rem;color:#2d3238;letter-spacing:0.037rem;text-align:center;padding-bottom:2rem}
+.content .detail{max-width:98rem;background:#fff;margin:0 auto;padding-bottom:20px}
+.content .detail .artic{max-width:87rem;margin:0 auto}
+.content .detail .artic > p{text-align:left;font-size:1.4rem;height:5rem;line-height:5rem;border-bottom:1px solid #edf1f5;color:#626161}
+.content .detail .artic > p span{font-size:20px;color:#d21212;letter-spacing:0.27px;text-align:left}
+.content .detail .artic .Detailed_Information{padding-left:40px}
+.content .detail .artic .Detailed_Information .Info{padding-left:120px}
+.content .detail .artic .Detailed_Information .performance{position:relative;overflow:hidden;border-bottom:1px solid #edf1f5;padding-top:20px;padding-bottom:20px}
+.content .detail .artic .Detailed_Information .performance span{font-size:20px;color:#2d3238}
+.content .detail .artic .Detailed_Information .performance .star{padding-left:20px;font-size:2rem;color:#d21212;letter-spacing:0.027rem}
+.content .detail .artic .Detailed_Information .performance .property{float:left;width:90px;height:72px;line-height:72px;padding-left:20px}
+.content .detail .artic .Detailed_Information .performance .Material{background:#edf1f5;padding-left:10px;border:1px solid #cad3de;border-radius:4px;width:470px;height:46px;line-height:46px;font-size:18px;color:#979fa8;margin-left:50px}
+.content .detail .artic .Detailed_Information .performance .size{position:absolute;top:30px;left:40px}
+.content .detail .artic .Detailed_Information .performance .new-add{padding-left:120px}
+.content .detail .artic .Detailed_Information .performance .size-group{margin-bottom:10px}
+.content .detail .artic .Detailed_Information .performance .size-label{font-size:18px;color:#2d3238;letter-spacing:0.027rem;line-height:52px;font-weight:normal;width:100px;padding-left:33px}
+.content .detail .artic .Detailed_Information .performance .size-input{margin-left:3rem;background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:360px;height:46px;line-height:46px;outline:none;font-size:18px;color:#979fa8;letter-spacing:0.24px;padding-left:10px}
+.content .detail .artic .Detailed_Information .performance .size-unit{background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:100px;height:46px;line-height:46px;font-size:18px;color:#979fa8;letter-spacing:0.024rem;padding-left:20px;margin-left:8px}
+.content .detail .artic .Detailed_Information .performance .Material:focus{outline:none}
+.content .detail .artic .Detailed_Information .performance .direction{margin-left:1rem}
+.content .detail .artic .Detailed_Information .performance .KPI{display:flex;float:left;width:76rem;left:10rem}
+.content .detail .artic .Detailed_Information .performance .KPI .Br{flex:1;display:flex}
+.content .detail .artic .Detailed_Information .performance .KPI .Br .BrLeft{float:left;margin-top:2rem;font-size:2rem;color:#2d3238;letter-spacing:0.027rem}
+.content .detail .artic .Detailed_Information .performance .KPI .Br .Brcontent{float:left;flex-direction:column;font-size:2rem;color:#2d3238;letter-spacing:0.027rem}
+.content .detail .artic .Detailed_Information .performance .KPI .Br .Brcontent .top input{text-align:center;line-height:2.7rem;font-size:14px;background:#edf1f5;border:1px solid #cbd4df;border-radius:0.1rem;width:70px;height:2.7rem;margin-top:0.3rem}
+.content .detail .artic .Detailed_Information .performance .KPI .Br .Brcontent .bottom input{text-align:center;line-height:2.7rem;font-size:14px;background:#edf1f5;border:1px solid #cbd4df;border-radius:0.1rem;width:70px;height:2.7rem;margin-top:0.3rem}
+.content .detail .artic .Detailed_Information .performance .KPI .Br .Brright .mT{background:#edf1f5;border:1px solid #cbd4df;border-radius:0.1rem;width:56px;height:68px;margin-left:.3rem;margin-top:.3rem}
+.content .detail .artic .Detailed_Information .performance .KPI .Br .Brright .mT:focus{outline:none}
+.content .detail .artic .Detailed_Information .performance .shape_type{background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:470px;height:46px;line-height:46px;font-size:18px;color:#979fa8;letter-spacing:0.24px;margin-left:5rem}
+.content .detail .artic .Detailed_Information .performance .shape_type:focus{outline:none}
+.content .detail .artic .Detailed_Information .performance span.Load{float:left;margin-left:14px}
+.content .detail .artic .Detailed_Information .performance a.selectImg{float:left;display:inline-block;font-family:"黑体";font-size:18px;color:#ffffff;letter-spacing:0.024rem;background:#498fe5;border-radius:.8rem;width:11.7rem;height:5.4rem;margin-left:2rem;margin-top:5.05rem;line-height:5.4rem;text-align:center}
+.content .detail .artic .Detailed_Information .performance div.typeofImg{float:left;font-family:"黑体";font-size:12px;color:#999999;width:35rem;margin-left:40px;line-height:24px}
+.content .detail .artic .Detailed_Information .performance .do{width:100%;float:left;margin-bottom:12px}
+.content .detail .artic .Detailed_Information .performance .upload-file{float:left;position:relative;margin-right:10px;margin-bottom:10px;width:100px;height:100px}
+.content .detail .artic .Detailed_Information .performance .select-file{position:absolute;width:100px;height:100px;margin:0;border:1px solid #D9D9D9}
+.content .detail .artic .Detailed_Information .performance .select-file:before,.content .detail .artic .Detailed_Information .performance .select-file:after{content:" ";position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);background-color:#D9D9D9}
+.content .detail .artic .Detailed_Information .performance .select-file:before{width:2px;height:60px}
+.content .detail .artic .Detailed_Information .performance .select-file:after{width:60px;height:2px}
+.content .detail .artic .Detailed_Information .performance .select-file input[type=file]{position:absolute;z-index:1;top:0;left:0;width:100%;height:100%;opacity:0;filter:alpha(opcity=0);-webkit-tap-highlight-color:rgba(0, 0, 0, 0)}
+.content .detail .artic .Detailed_Information .performance .preview{padding-left:140px;overflow:hidden}
+.content .detail .artic .Detailed_Information .performance .preview .preview-img{position:absolute;width:100px;height:100px}
+.content .detail .artic .Detailed_Information .performance .preview .close{display:none;position:absolute;top:0;right:0;z-index:20;width:20px;height:20px;line-height:16px;background:red;text-align:center;font-size:20px;opacity:.6;color:#fff}
+.content .detail .artic .Detailed_Information .performance .preview .close:hover{opacity:1}
+.content .detail .artic .Detailed_Information .performance .opera{display:none;width:100%;overflow:hidden;padding-left:130px;margin-bottom:20px}
+.content .detail .artic .Detailed_Information .performance .opera .add,.content .detail .artic .Detailed_Information .performance .opera .minus{float:left;width:40px;height:40px;margin:0;border:1px solid #D9D9D9;margin-right:20px;position:relative;cursor:pointer}
+.content .detail .artic .Detailed_Information .performance .opera .add:before{content:" ";position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);background-color:#D9D9D9;width:2px;height:24px}
+.content .detail .artic .Detailed_Information .performance .opera .add:after,.content .detail .artic .Detailed_Information .performance .opera .minus:after{content:" ";position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);background-color:#D9D9D9;width:24px;height:2px}
+.content .detail .artic .demand_Infotmation .Demand_quantity{overflow:hidden;padding-top:20px;padding-bottom:20px;border-bottom:1px solid #edf1f5}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information{position:relative;padding-left:160px}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information b{font-weight:normal}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information span{font-size:2rem;color:#2d3238;letter-spacing:0.027rem;text-align:left}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information span label{font-weight:normal}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information span.replenish{margin-left:20px;float:left}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .star{font-size:20px;color:#d21212;letter-spacing:0.27px;text-align:left}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information input{margin-left:36px;background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:360px;height:46px;line-height:46px;outline:none;font-size:18px;color:#979fa8;letter-spacing:0.24px;padding-left:10px}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .point_offer,
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .public{color:#fff;margin-left:3rem;background:#f7fbff;border:1px solid #cad3de;border-radius:4px;width:1.9rem;height:1.9rem;font-size:1.6rem}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .explain{margin-left:40px;padding:10px;font-size:16px;background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:470px}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .unit{background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:100px;height:46px;line-height:46px;font-size:18px;color:#979fa8;letter-spacing:0.024rem;padding-left:20px}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .unit:focus{outline:none}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .type{background:#edf1f5;border:1px solid #cad3de;border-radius:4px;width:470px;height:46px;line-height:46px;font-size:18px;color:#979fa8;letter-spacing:0.024rem;padding-left:20px;margin-left:3rem}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .type:focus{outline:none}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .company{display:none;margin-left:24rem;bottom:1rem;border:.1rem solid #cad3de;box-shadow:0 0.2rem 0.4rem 0 rgba(234, 234, 234, 0.5);border-radius:4px;width:35rem;font-size:1.4rem;color:#979fa8;background:#edf1f5;height:4rem;letter-spacing:0.024rem;padding-left:20px}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .information .company:focus{outline:none}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .World{height:9rem;padding-top:7rem}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .World .labs{margin-left:4rem}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .World input{position:absolute;top:50%;left:-7rem;transform:translate(0, -50%)}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .World label{position:relative;font-weight:normal;font-size:18px;margin-left:3rem;color:#2e3339;letter-spacing:0.024rem}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .World label.typeof{font-size:2rem;color:#2d3238;margin-left:0;letter-spacing:0.027rem}
+.content .detail .artic .demand_Infotmation .Demand_quantity .number .Explain{position:relative}
+.content .detail .artic .demand_Infotmation .submit{background:#8796a8;box-shadow:0px 0.3rem 0.3rem 0px rgba(178, 178, 178, 0.5);border-radius:4px;width:21.2rem;height:5.7rem;line-height:5.7rem;font-size:2rem;color:#ffffff;margin:2rem auto;letter-spacing:0.027rem;text-align:center}
+.content .detail .artic .demand_Infotmation .submit:hover{cursor:pointer}
+.content .detail .artic .demand_Infotmation a.last_step{font-size:14px;color:#8796a8;letter-spacing:0.18px;margin:0 auto;display:block;text-align:center;padding-bottom:2rem}
+.content .detail .artic .step3 .contact_information{position:relative;border-bottom:1px solid #cad3de;padding-bottom:20px;padding-top:20px;overflow:hidden}
+.content .detail .artic .step3 .contact_information .contact{position:absolute;top:26px}
+.content .detail .artic .step3 .contact_information span{margin-left:174px;font-size:20px;color:#2d3238;display:inline-block}
+.content .detail .artic .step3 .contact_information .name{margin-left:297px;overflow:hidden}
+.content .detail .artic .step3 .contact_information .name span{margin-left:0;margin-bottom:6px;font-size:18px;color:#2d3238;letter-spacing:0.024rem}
+.content .detail .artic .step3 .contact_information .name .inp{background:#edf1f5;font-size:16px;border:1px solid #cad3de;border-radius:4px;width:470px;height:46px;line-height:46px;padding-left:10px}
+.content .detail .artic .step3 .contact_information .name .title{font-size:18px;color:#2d3238;float:left;line-height:40px;width:100px}
+.content .detail .artic .step3 .contact_information .name .txt{font-size:18px;color:#979fa8;float:left;line-height:40px}
+.content .detail .artic .step3 .contact_information .name .radio-inline{margin-right:30px}
+.content .detail .artic .step3 .contact_information .name .radios{width:20px;height:20px;margin-top:0}
+.content .detail .artic .step3 .contact_information .name .captcha{width:23rem;float:left;margin-right:14px}
+.content .detail .artic .step3 .contact_information .name .getcaptcha{width:180px;background:#498fe5;color:#fff}
+.content .detail .artic .step3 .accord{margin-top:3rem;text-align:center}
+.content .detail .artic .step3 .accord input{background:#e6e8eb;border:1px solid #d2dae3;border-radius:4px;width:2rem;height:2rem;float:left;margin-top:3px;margin-right:3px}
+.content .detail .artic .step3 .accord p{position:relative;font-size:1.6rem;height:2.4rem;line-height:2.4rem;color:#979fa8;text-align:left;display:inline-block}
+.content .detail .artic .step3 .accord p a{float:left}
+.content .detail .artic .step3 .accord p a:hover{text-decoration:underline;color:#498fe5}
+.content .detail .artic .step3 .submit{display:block;background:#8796a8;font-size:2rem;color:#fff;box-shadow:0px 0.3rem 0.3rem 0px rgba(178, 178, 178, 0.5);border-radius:4px;width:21.2rem;height:5.7rem;line-height:5.7rem;margin:2rem auto;letter-spacing:0.027rem;text-align:center}
+.content .detail .artic .step3 a{font-size:1.4rem;color:#8796a8;letter-spacing:0.18px;margin:0 auto;display:block;padding-bottom:2rem;text-align:center}

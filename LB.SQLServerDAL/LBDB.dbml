@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="LvBao" EntityNamespace="LB.SQLServerDAL" ContextNamespace="LB.SQLServerDAL" Class="LBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.aspnet_Applications" Member="Aspnet_Applications">
+    <Type Name="Aspnet_Applications">
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="FK__aspnet_Me__Appli__1DE57479" Member="Aspnet_Membership" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Membership" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Pa__Appli__4F7CD00D" Member="Aspnet_Paths" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Paths" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Ro__Appli__3C69FB99" Member="Aspnet_Roles" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Roles" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Us__Appli__0DAF0CB0" Member="Aspnet_Users" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Users" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Membership" Member="Aspnet_Membership">
+    <Type Name="Aspnet_Membership">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="FK__aspnet_Me__Appli__1DE57479" Member="Aspnet_Applications" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Applications" IsForeignKey="true" />
+      <Association Name="FK__aspnet_Me__UserI__1ED998B2" Member="Aspnet_Users" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Paths" Member="Aspnet_Paths">
+    <Type Name="Aspnet_Paths">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredPath" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="FK__aspnet_Pa__Appli__4F7CD00D" Member="Aspnet_Applications" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Applications" IsForeignKey="true" />
+      <Association Name="FK__aspnet_Pe__PathI__5535A963" Member="Aspnet_PersonalizationAllUsers" ThisKey="PathId" OtherKey="PathId" Type="Aspnet_PersonalizationAllUsers" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Pe__PathI__59063A47" Member="Aspnet_PersonalizationPerUser" ThisKey="PathId" OtherKey="PathId" Type="Aspnet_PersonalizationPerUser" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_PersonalizationAllUsers" Member="Aspnet_PersonalizationAllUsers">
+    <Type Name="Aspnet_PersonalizationAllUsers">
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PageSettings" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FK__aspnet_Pe__PathI__5535A963" Member="Aspnet_Paths" ThisKey="PathId" OtherKey="PathId" Type="Aspnet_Paths" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_PersonalizationPerUser" Member="Aspnet_PersonalizationPerUser">
+    <Type Name="Aspnet_PersonalizationPerUser">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="PageSettings" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FK__aspnet_Pe__PathI__59063A47" Member="Aspnet_Paths" ThisKey="PathId" OtherKey="PathId" Type="Aspnet_Paths" IsForeignKey="true" />
+      <Association Name="FK__aspnet_Pe__UserI__59FA5E80" Member="Aspnet_Users" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Profile" Member="Aspnet_Profile">
+    <Type Name="Aspnet_Profile">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyNames" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PropertyValuesString" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="PropertyValuesBinary" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FK__aspnet_Pr__UserI__32E0915F" Member="Aspnet_Users" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Roles" Member="Aspnet_Roles">
+    <Type Name="Aspnet_Roles">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredRoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="FK__aspnet_Ro__Appli__3C69FB99" Member="Aspnet_Applications" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Applications" IsForeignKey="true" />
+      <Association Name="FK__aspnet_Us__RoleI__412EB0B6" Member="Aspnet_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="Aspnet_UsersInRoles" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_SchemaVersions" Member="Aspnet_SchemaVersions">
+    <Type Name="Aspnet_SchemaVersions">
+      <Column Name="Feature" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CompatibleSchemaVersion" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsCurrentVersion" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="Aspnet_Users">
+    <Type Name="Aspnet_Users">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="FK__aspnet_Me__UserI__1ED998B2" Member="Aspnet_Membership" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_Membership" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Pe__UserI__59FA5E80" Member="Aspnet_PersonalizationPerUser" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_PersonalizationPerUser" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Pr__UserI__32E0915F" Member="Aspnet_Profile" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_Profile" Cardinality="One" DeleteRule="NO ACTION" />
+      <Association Name="FK__aspnet_Us__Appli__0DAF0CB0" Member="Aspnet_Applications" ThisKey="ApplicationId" OtherKey="ApplicationId" Type="Aspnet_Applications" IsForeignKey="true" />
+      <Association Name="FK__aspnet_Us__UserI__403A8C7D" Member="Aspnet_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_UsersInRoles" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_UsersInRoles" Member="Aspnet_UsersInRoles">
+    <Type Name="Aspnet_UsersInRoles">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="FK__aspnet_Us__RoleI__412EB0B6" Member="Aspnet_Roles" ThisKey="RoleId" OtherKey="RoleId" Type="Aspnet_Roles" IsForeignKey="true" />
+      <Association Name="FK__aspnet_Us__UserI__403A8C7D" Member="Aspnet_Users" ThisKey="UserId" OtherKey="UserId" Type="Aspnet_Users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_WebEvent_Events" Member="Aspnet_WebEvent_Events">
+    <Type Name="Aspnet_WebEvent_Events">
+      <Column Name="EventId" Type="System.String" DbType="Char(32) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EventTimeUtc" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EventTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EventType" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="EventSequence" Type="System.Decimal" DbType="Decimal(19,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EventOccurrence" Type="System.Decimal" DbType="Decimal(19,0) NOT NULL" CanBeNull="false" />
+      <Column Name="EventCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EventDetailCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="ApplicationPath" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="ApplicationVirtualPath" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="MachineName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="RequestUrl" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="ExceptionType" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CopInfo" Member="CopInfo">
+    <Type Name="CopInfo">
+      <Column Name="CopId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CopName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Bizlicense" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="BAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HWPermit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="HWAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CopDetail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsInfo" Member="NewsInfo">
+    <Type Name="NewsInfo">
+      <Column Name="id" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NoteTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsShow" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsCommend" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NewsTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Hits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ShowTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NewsType" Member="NewsType">
+    <Type Name="NewsType">
+      <Column Name="NewsTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NewsType" Member="NewsType1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tradeleads" Member="Tradeleads">
+    <Type Name="Tradeleads">
+      <Column Name="infoId" Member="InfoId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Volume" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Price" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DetailInfo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TSId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UnitID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ReleaseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Hits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PicPath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Recommend" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TSInfo" Member="TSInfo">
+    <Type Name="TSInfo">
+      <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TSName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TSType" Member="TSType">
+    <Type Name="TSType">
+      <Column Name="TId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TSTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UnitInfo" Member="UnitInfo">
+    <Type Name="UnitInfo">
+      <Column Name="UnitId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UnitName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserInfo" Member="UserInfo">
+    <Type Name="UserInfo">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MobilePhoneNum" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IDCard" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BankName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Account" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ChopAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Chop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InCharge" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InChargeDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserNoticeInfo" Member="UserNoticeInfo">
+    <Type Name="UserNoticeInfo">
+      <Column Name="NoticeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserNotice" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Hit" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserTypeInfo" Member="UserTypeInfo">
+    <Type Name="UserTypeInfo">
+      <Column Name="UserTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_Applications" Member="Vw_aspnet_Applications">
+    <Type Name="Vw_aspnet_Applications">
+      <Column Name="ApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredApplicationName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_MembershipUsers" Member="Vw_aspnet_MembershipUsers">
+    <Type Name="Vw_aspnet_MembershipUsers">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_Profiles" Member="Vw_aspnet_Profiles">
+    <Type Name="Vw_aspnet_Profiles">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DataSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_Roles" Member="Vw_aspnet_Roles">
+    <Type Name="Vw_aspnet_Roles">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredRoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_Users" Member="Vw_aspnet_Users">
+    <Type Name="Vw_aspnet_Users">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_UsersInRoles" Member="Vw_aspnet_UsersInRoles">
+    <Type Name="Vw_aspnet_UsersInRoles">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_WebPartState_Paths" Member="Vw_aspnet_WebPartState_Paths">
+    <Type Name="Vw_aspnet_WebPartState_Paths">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Path" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredPath" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_WebPartState_Shared" Member="Vw_aspnet_WebPartState_Shared">
+    <Type Name="Vw_aspnet_WebPartState_Shared">
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DataSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_aspnet_WebPartState_User" Member="Vw_aspnet_WebPartState_User">
+    <Type Name="Vw_aspnet_WebPartState_User">
+      <Column Name="PathId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DataSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
