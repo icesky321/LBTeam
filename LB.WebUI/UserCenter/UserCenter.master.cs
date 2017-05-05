@@ -14,9 +14,19 @@ public partial class UserCenter : System.Web.UI.MasterPage
     {
         if (!IsPostBack)
         {
-            MultiViewBind();
-            LoginName2.Attributes["value"] = getRoleTel(Page.User.Identity.Name);
-            
+            if (Request.IsAuthenticated)
+            {
+                if (HttpContext.Current.User.IsInRole("Admin"))
+                {
+                    Response.Redirect("../Admin/Manage.aspx");
+                }
+                else
+                {
+                    MultiViewBind();
+                    LoginName2.Attributes["value"] = getRoleTel(Page.User.Identity.Name);
+                }
+            }
+
         }
     }
 
