@@ -36,21 +36,21 @@ public partial class _Default : System.Web.UI.Page
 
     void gvNewsDatabind()
     {
-        gvNews.DataSource = bll_newsinfo.GetNewsInfoByType(1);
+        gvNews.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(1);
         gvNews.DataBind();
 
     }
 
     void gvPBNewsDatabind()
     {
-        gvPBNew.DataSource = bll_newsinfo.GetNewsInfoByType(2);
+        gvPBNew.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(2);
         gvPBNew.DataBind();
 
     }
 
     void gvPriceNewsDatabind()
     {
-        gvPrice.DataSource = bll_newsinfo.GetNewsInfoByType(3);
+        gvPrice.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(3);
         gvPrice.DataBind();
 
     }

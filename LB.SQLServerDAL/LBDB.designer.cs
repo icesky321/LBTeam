@@ -233,6 +233,14 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		public System.Data.Linq.Table<TruckInfo> TruckInfo
+		{
+			get
+			{
+				return this.GetTable<TruckInfo>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TSInfo> TSInfo
 		{
 			get
@@ -4403,6 +4411,231 @@ namespace LB.SQLServerDAL
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TruckInfo")]
+	public partial class TruckInfo
+	{
+		
+		private int _TruckId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private string _Num;
+		
+		private string _TruckType;
+		
+		private string _TruckLength;
+		
+		private string _TruckLoad;
+		
+		private string _Brands;
+		
+		private string _DeliveryYear;
+		
+		private string _JSLicense;
+		
+		private System.Nullable<bool> _JSrLicenseAU;
+		
+		private string _XSLicense;
+		
+		private string _XSLicenseAU;
+		
+		public TruckInfo()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int TruckId
+		{
+			get
+			{
+				return this._TruckId;
+			}
+			set
+			{
+				if ((this._TruckId != value))
+				{
+					this._TruckId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num", DbType="NVarChar(50)")]
+		public string Num
+		{
+			get
+			{
+				return this._Num;
+			}
+			set
+			{
+				if ((this._Num != value))
+				{
+					this._Num = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckType", DbType="NVarChar(50)")]
+		public string TruckType
+		{
+			get
+			{
+				return this._TruckType;
+			}
+			set
+			{
+				if ((this._TruckType != value))
+				{
+					this._TruckType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckLength", DbType="NVarChar(50)")]
+		public string TruckLength
+		{
+			get
+			{
+				return this._TruckLength;
+			}
+			set
+			{
+				if ((this._TruckLength != value))
+				{
+					this._TruckLength = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckLoad", DbType="NVarChar(50)")]
+		public string TruckLoad
+		{
+			get
+			{
+				return this._TruckLoad;
+			}
+			set
+			{
+				if ((this._TruckLoad != value))
+				{
+					this._TruckLoad = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Brands", DbType="NVarChar(50)")]
+		public string Brands
+		{
+			get
+			{
+				return this._Brands;
+			}
+			set
+			{
+				if ((this._Brands != value))
+				{
+					this._Brands = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryYear", DbType="NVarChar(50)")]
+		public string DeliveryYear
+		{
+			get
+			{
+				return this._DeliveryYear;
+			}
+			set
+			{
+				if ((this._DeliveryYear != value))
+				{
+					this._DeliveryYear = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JSLicense", DbType="NVarChar(50)")]
+		public string JSLicense
+		{
+			get
+			{
+				return this._JSLicense;
+			}
+			set
+			{
+				if ((this._JSLicense != value))
+				{
+					this._JSLicense = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JSrLicenseAU", DbType="Bit")]
+		public System.Nullable<bool> JSrLicenseAU
+		{
+			get
+			{
+				return this._JSrLicenseAU;
+			}
+			set
+			{
+				if ((this._JSrLicenseAU != value))
+				{
+					this._JSrLicenseAU = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XSLicense", DbType="NVarChar(50)")]
+		public string XSLicense
+		{
+			get
+			{
+				return this._XSLicense;
+			}
+			set
+			{
+				if ((this._XSLicense != value))
+				{
+					this._XSLicense = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XSLicenseAU", DbType="NVarChar(50)")]
+		public string XSLicenseAU
+		{
+			get
+			{
+				return this._XSLicenseAU;
+			}
+			set
+			{
+				if ((this._XSLicenseAU != value))
+				{
+					this._XSLicenseAU = value;
+				}
 			}
 		}
 	}

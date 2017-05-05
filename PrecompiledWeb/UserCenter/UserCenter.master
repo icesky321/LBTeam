@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="UserCenter.master.cs" Inherits="UserCenter" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="UserCenter, App_Web_352m4r2x" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,13 +13,13 @@
     <meta name="description" content="宁波绿宝信息科技有限公司，电瓶回收平台，电瓶回收，旧电瓶，废电瓶，旧电瓶回收，废电瓶回收" />
     <meta name="keywords" content="电瓶回收平台，电瓶回收，旧电瓶，废电瓶，旧电瓶回收，废电瓶回收，宁波绿宝信息科技有限公司" />
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/amazeui.css" />
-    <link rel="stylesheet" href="css/common.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/amazeui.css" />
+    <link rel="stylesheet" href="../css/common.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 
-    <script type="text/javascript" src="js/amazeui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="js/common.js" charset="utf-8"></script>
-    <script type="text/javascript" src="js/jquery-2.1.0.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/amazeui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/common.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../js/jquery-2.1.0.js" charset="utf-8"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -36,7 +36,7 @@
                                 <div class="am-u-lg-2 am-u-sm-12">
                                     <div class="logo">
                                         <a href="">
-                                            <img src="img/logo1.png" alt="" height="50px" width="100px" /></a>
+                                            <img src="../img/logo1.png" alt="" height="50px" width="100px" /></a>
                                     </div>
                                 </div>
                                 <div class="am-u-md-10">
@@ -72,7 +72,7 @@
                                                             <ul>
                                                                 <li>
                                                                     <asp:LoginName ID="LoginName2" runat="server" />
-                                                                    <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                                                                    <asp:LoginStatus ID="LoginStatus2" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Default.aspx"  />
                                                                 </li>
                                                             </ul>
                                                         </asp:View>
@@ -81,7 +81,7 @@
                                                     <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
                                                         <asp:View ID="View2" runat="server">
                                                             <ul>
-                                                                <li><a href="ChooseRoles.aspx">注册</a></li>
+                                                                <li><a href="../ChooseRoles.aspx">注册</a></li>
                                                             </ul>
                                                         </asp:View>
                                                         <asp:View ID="View3" runat="server">
@@ -106,29 +106,45 @@
                             <ul class="am-nav am-nav-pills am-nav-justify">
                                 <li class=""><a href="Default.aspx">首页</a></li>
                                 <li>
-                                    <a href="#">供求中心</a>
+                                    <a href="#">帮帮忙</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="AllBuyInfo.aspx">求购信息</a></li>
-                                        <li class="menu-item"><a href="AllSellInfo.aspx">供应信息</a></li>
+                                        <li class="menu-item"><a href="../AllBuyInfo.aspx">求购信息</a></li>
+                                        <li class="menu-item"><a href="../AllSellInfo.aspx">供应信息</a></li>
+                                        <li class="menu-item"><a href="#">物流信息</a></li>
+                                        <li class="menu-item"><a href="#">其它信息</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="Company.aspx">商家信息</a></li>
+                                <li><a href="#">商家信息</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="#">冶炼厂</a></li>
+                                        <li class="menu-item"><a href="../Company.aspx">电瓶回收公司</a></li>
+                                        <li class="menu-item"><a href="#">物流信息</a></li>
+                                        <li class="menu-item"><a href="#">其它信息</a></li>
+                                    </ul>
+
+                                </li>
                                 <li>
-                                    <a href="./news.html">资讯中心</a>
+                                    <a href="#">资讯中心</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="News.aspx?Id=1">行业资讯</a></li>
-                                        <li class="menu-item"><a href="News.aspx?Id=2">铅电瓶资讯</a></li>
-                                        <li class="menu-item"><a href="News.aspx?Id=3">区域价格资讯</a></li>
-                                        <li class="menu-item"><a href="News.aspx?Id=4">政策法规</a></li>
+                                        <li class="menu-item"><a href="../News.aspx?Id=1">行业资讯</a></li>
+                                        <li class="menu-item"><a href="../News.aspx?Id=2">铅电瓶资讯</a></li>
+                                        <li class="menu-item"><a href="../News.aspx?Id=3">区域价格资讯</a></li>
+                                        <li class="menu-item"><a href="../News.aspx?Id=4">政策法规</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="./about.html">关于我们</a></li>
-                                <li><a href="./join.html">加入我们</a></li>
-                                <li><a href="./contact.html">联系我们</a></li>
+                                <li><a href="#">加入我们</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入供应商</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入地域业务员</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入回收公司</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入冶炼厂</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">联系我们</a></li>
                             </ul>
                         </div>
                     </div>
@@ -144,13 +160,15 @@
                 <div class="am-u-md-2">
                     <div class="am-sticky-placeholder" style="margin: 0px; border-right: 1px solid #eee">
                         <div id="am-offcanvas" class="am-offcanvas " style="margin: 0px;">
-                            <ul class="am-nav">
-                                <li class="am-nav-header">| 供求管理</li>
-                                <li><a href="BuyInfo.aspx">求购信息</a></li>
-                                <li><a href="SellInfo.aspx">供应信息</a></li>
-                                <li class="am-nav-header">| 会员中心</li>
-                                <li><a href="UserCenter.aspx">会员信息</a></li>
-                            </ul>
+                            <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+                            <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ImageSet="Arrows">
+                                <ParentNodeStyle CssClass="active" Font-Bold="False" />
+                                <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                                <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px"
+                                    VerticalPadding="0px" />
+                                <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" HorizontalPadding="5px"
+                                    NodeSpacing="0px" VerticalPadding="0px" />
+                            </asp:TreeView>
                         </div>
                     </div>
                 </div>
@@ -170,56 +188,21 @@
                     <div class="container">
                         <div class="footer_main">
                             <div class="am-g">
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">关于我们</strong>
+                                <div class="am-u-md-12 ">
+                                    <div class="footer_main--column" style="text-align: center;">
+                                        <p class="footer_about--text">地址：宁波市镇海区庄市街道中官西路279号文创园 电话：0574-86694505 浙ICP备16029665号-1</p>
                                         <div class="footer_about">
                                             <p class="footer_about--text">
-                                                云适配(AllMobilize Inc.) 是全球领先的HTML5企业移动化解决方案供应商，由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立.
+                                                Copyright 2016-2017 宁波绿宝信息科技有限公司 版权所有 All Rights Reserved
                                             </p>
                                             <p class="footer_about--text">
-                                                云适配跨屏云也成功应用于超过30万家企业网站，包括微软、联想等世界500强企业
+                                                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
+                                                    <asp:Image ID="Image8" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label1" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
+                                                </a>
                                             </p>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">产品中心</strong>
-                                        <ul class="footer_navigation">
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Enterplorer 企业浏览器</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Xcloud 网站跨屏云</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Amaze UI 前端开发框架</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Amaze UI 前端开发框架</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Amaze UI 前端开发框架</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">技术支持</strong>
-                                        <ul class="footer_navigation">
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">联系详情</strong>
-                                        <ul class="footer_contact_info">
-                                            <li class="footer_contact_info--item"><i class="am-icon-phone"></i><span>服务专线：400 069 0309</span></li>
-                                            <li class="footer_contact_info--item"><i class="am-icon-envelope-o"></i><span>yunshipei.com</span></li>
-                                            <li class="footer_contact_info--item"><i class="am-icon-map-marker"></i><span>北京市海淀区海淀大街27号天使大厦（原亿景大厦）三层</span></li>
-
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +210,6 @@
                 </div>
             </div>
         </div>
-
     </form>
 </body>
 </html>

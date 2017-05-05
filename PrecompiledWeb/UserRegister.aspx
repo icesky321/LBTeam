@@ -1,19 +1,16 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="UserRegister, App_Web_2u5vkwgg" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="UserRegister, App_Web_ashchwvt" theme="Default" %>
 
 <%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="content">
-        <p class="title">
-            用户注册
-        </p>
-        <div class="detail">
-            <div class="titlen">
-                <div class="bt">
-                    用户注册
-                </div>
+    <div class="section">
+        <div class="container">
+            <div class="section--header" style="text-align: center">
+                <p class="section--description">
+                    <h1>用户注册</h1>
+                </p>
             </div>
             <asp:DropDownList ID="ddlUser" runat="server" Visible="false"></asp:DropDownList>
             <asp:HiddenField ID="hfUserTypeId" runat="server" />
@@ -22,7 +19,7 @@
             <br />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    联系人称呼：<asp:TextBox ID="tbContacts" runat="server"></asp:TextBox><br />
+                    联系人：<asp:TextBox ID="tbContacts" runat="server"></asp:TextBox>注：如果是电瓶供应商户用户请填写商户名称<br />
                     注册手机号：<asp:TextBox ID="tbMobileNum" runat="server"></asp:TextBox>
                     <asp:Button ID="Button1" runat="server" Text="免费获取验证码" OnClick="Button1_Click" /><asp:Label ID="lbMsg" runat="server" Text=""></asp:Label><br />
                     请输入短信验证码：<asp:TextBox ID="tbCode" runat="server"></asp:TextBox><br />

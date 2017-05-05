@@ -57,5 +57,14 @@ namespace LB.SQLServerDAL
         {
             dbContext.SubmitChanges();
         }
+
+        public IQueryable<LB.SQLServerDAL.NewsInfo> GetNewsInfoByTypeTop13(int TypeId)
+        {
+            var query = from c in dbContext.NewsInfo
+                        where c.NewsTypeId == TypeId
+                        orderby c.Id descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.NewsInfo>().Take(13);
+        }
     }
 }

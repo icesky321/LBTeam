@@ -32,10 +32,24 @@ public partial class ChooseRoles : System.Web.UI.Page
     {
         if (ddlUserType.SelectedItem.Value == "1")
         {
+            if (RadioButton1.Checked)
+            {
+                string url = "UserRegister.aspx?UserTypeId=" + ddlUserType.SelectedItem.Value.ToString();
+                Response.Redirect(url);
+            }
+            else if (RadioButton2.Checked)
+            {
+                string url = "CopRegister.aspx?UserTypeId=" + ddlUserType.SelectedItem.Value.ToString();
+                Response.Redirect(url);
+            }
+
+        }
+        else if (ddlUserType.SelectedItem.Value == "5")
+        {
             string url = "UserRegister.aspx?UserTypeId=" + ddlUserType.SelectedItem.Value.ToString();
             Response.Redirect(url);
         }
-        if (ddlUserType.SelectedItem.Value == "2")
+        else
         {
             string url = "CopRegister.aspx?UserTypeId=" + ddlUserType.SelectedItem.Value.ToString();
             Response.Redirect(url);
@@ -51,6 +65,18 @@ public partial class ChooseRoles : System.Web.UI.Page
         else
         {
             btSearch.Enabled = false;
+        }
+    }
+
+    protected void ddlUserType_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlUserType.SelectedValue == "1")
+        {
+            Panel1.Visible = true;
+        }
+        else
+        {
+            Panel1.Visible = false;
         }
     }
 }

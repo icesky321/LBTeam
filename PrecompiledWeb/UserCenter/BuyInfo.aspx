@@ -1,28 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserCenter.master" AutoEventWireup="true" CodeFile="BuyInfo.aspx.cs" Inherits="BuyInfo" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="BuyInfo, App_Web_egpi5ijj" theme="Default" %>
 
-<%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
+<%@ Register Src="~/UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="content">
-        <p class="title">
-            求购信息
-        </p>
-        <div class="detail" style="text-align: center;">
-            <div class="titlen">
-                <div class="bt">
-                    发布求购信息
-                </div>
-
+    <div class="section">
+        <div class="container">
+            <div class="section--header" style="text-align: center">
+                <p class="section--description">
+                    <h1>发布求购信息</h1>
+                </p>
             </div>
-        </div>
-    </div>
-    <asp:HiddenField ID="hfUserTelNum" runat="server" />
-    <asp:HiddenField ID="hfUserId" runat="server" />
+            <hr />
+            <asp:HiddenField ID="hfUserTelNum" runat="server" />
+            <asp:HiddenField ID="hfUserId" runat="server" />
 
-    选择地区：<uc1:DDLAddress ID="DDLAddress1" runat="server" />
-<%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            选择地区：<uc1:DDLAddress ID="DDLAddress1" runat="server" />
+            <%--    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>--%>
 
             <br />
@@ -42,14 +37,16 @@
             <br />
             交易价格：<asp:TextBox ID="tbPrice" runat="server" Width="525px"></asp:TextBox>
             <br />
-            图片信息：<asp:FileUpload ID="FileUpload1" runat="server" /><asp:Button ID="btPreview" runat="server" Text="预览" OnClick="btPreview_Click" Visible="false"/>
+            图片信息：<asp:FileUpload ID="FileUpload1" runat="server" /><asp:Button ID="btPreview" runat="server" Text="预览" OnClick="btPreview_Click" Visible="false" />
             <br />
             <asp:Image ID="Image1" runat="server" Width="100px" Height="100px" Visible="false" />
             <asp:HiddenField ID="hfFilePath" runat="server" />
             <br />
 
             <asp:Button ID="btBuy" runat="server" OnClick="btBuy_Click" Text="发布" />
-<%--        </ContentTemplate>
+            <%--        </ContentTemplate>
     </asp:UpdatePanel>--%>
+        </div>
+    </div>
 </asp:Content>
 

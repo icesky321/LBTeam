@@ -2,13 +2,13 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-<%--    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/main.css" />
+    <%--    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.sequence-min.js"></script>
     <script type="text/javascript" src="js/template.js"></script>--%>
     <%--<link rel="stylesheet" href="css/index.min.css" />--%>
-
+    <link rel="stylesheet" href="css/main.css" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
