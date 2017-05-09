@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_NewsManage, App_Web_tyrrszys" validaterequest="false" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_NewsManage, App_Web_ecuhgixq" validaterequest="false" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="FreeTextBox" Namespace="FreeTextBoxControls" TagPrefix="FTB" %>
@@ -13,29 +13,29 @@
         <ContentTemplate>--%>
     <br />
     <br />
-    <asp:TabContainer ID="TabContainer1" runat="server">
-        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别" Height="30px">
+    请选择发布资讯的类别：<asp:DropDownList ID="ddlNewsType" runat="server" ValidationGroup="1"
+        AutoPostBack="True" OnSelectedIndexChanged="ddlNewsType_SelectedIndexChanged">
+    </asp:DropDownList>
+    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="ddlNewsType"
+        ErrorMessage="*”。" ToolTip="资讯类别不能为空”。" ValidationGroup="1">不能为空！</asp:RequiredFieldValidator>
+    <br />
+    <br />
+      <asp:TabContainer ID="TabContainer1" runat="server" Visible="false">
+        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别">
             <ContentTemplate>
-                请选择发布资讯的类别：<asp:DropDownList ID="ddlNewsType" runat="server" ValidationGroup="1"
-                    AutoPostBack="True" OnSelectedIndexChanged="ddlNewsType_SelectedIndexChanged">
-                </asp:DropDownList>
-                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="ddlNewsType"
-                    ErrorMessage="*”。" ToolTip="资讯类别不能为空”。" ValidationGroup="1">不能为空！</asp:RequiredFieldValidator>
-                <br />
-                <br />
+
                 <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                     <asp:View ID="View1" runat="server">
                         文章标题：
                         <asp:TextBox ID="tbTitle" runat="server" Width="500px"></asp:TextBox>
                         <br />
-                        <br />
+                            <br />
                         发布日期：
                         <asp:TextBox ID="tbNoteDate" runat="server"></asp:TextBox>
                         <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbNoteDate"
-                            Enabled="True">
-                        </asp:CalendarExtender>
+                            Enabled="True"></asp:CalendarExtender>
                         <br />
-                        <br />
+                            <br />
                         正文：
                         <FTB:FreeTextBox ID="FreeTextBox1" runat="server" Height="600px" Width="1000px" AllowHtmlMode="False"
                             AssemblyResourceHandlerPath="" AutoConfigure="" AutoGenerateToolbarsFromString="True"
@@ -72,20 +72,11 @@
 
                         </script>
                         报价：<asp:TextBox ID="tbPrice" runat="server"></asp:TextBox>
-                        <asp:Button ID="btSure" runat="server" Text="确定" onclick="btSure_Click" />
+                        <asp:Button ID="btSure" runat="server" Text="确定" OnClick="btSure_Click" />
                     </asp:View>
                 </asp:MultiView>
             </ContentTemplate>
         </asp:TabPanel>
     </asp:TabContainer>
-    <%--            <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="1" AssociatedUpdatePanelID="UpdatePanel1">
-                <ProgressTemplate>
-                    <div id="modalDiv">
-                        <img src="images/ajax-loader.gif" alt="请稍候..." style="position: absolute; left: 50%;
-                            top: 50%;" />
-                    </div>
-                </ProgressTemplate>
-            </asp:UpdateProgress>
-        </ContentTemplate>
-    </asp:UpdatePanel>--%>
+
 </asp:Content>

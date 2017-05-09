@@ -73,6 +73,12 @@
       <DependentUpon>LBDB.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LB.Model\LB.Model.csproj">
+      <Project>{c576e507-1e6e-4aab-9863-a46398d09fad}</Project>
+      <Name>LB.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

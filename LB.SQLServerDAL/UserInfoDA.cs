@@ -43,6 +43,30 @@ namespace LB.SQLServerDAL
             return query.FirstOrDefault<LB.SQLServerDAL.UserInfo>();
         }
 
+        public LB.SQLServerDAL.UserInfo GetUserInfoByAddress(int UserTypeId, string province, string city, string country, string street)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == UserTypeId
+                        select c;
+            if (province != "---")
+            {
+                query = query.Where(p => p.Province.IndexOf(province) >= 0);
+            }
+            if (city != "--")
+            {
+                query = query.Where(p => p.City.IndexOf(city) >= 0);
+            }
+            if (country != "--")
+            {
+                query = query.Where(p => p.Town.IndexOf(country) >= 0);
+            }
+            if (street != "--")
+            {
+                query = query.Where(p => p.Street.IndexOf(street) >= 0);
+            }
+            return query.FirstOrDefault<LB.SQLServerDAL.UserInfo>();
+        }
+
 
         public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfoByUserTypeId(int UserTypeId)
         {

@@ -14,7 +14,7 @@
 
 <asp:DropDownList runat="server" CssClass="dropdownlist"></asp:DropDownList>
 
-<asp:GridView   runat="server" AllowPaging="false"  PageSize="15" cellspacing= "0" CellPadding= "0"  Width="100%" >
+<asp:GridView   runat="server" AllowPaging="true"  PageSize="20" cellspacing= "0" CellPadding= "0"  Width="100%" >
 
  <%--   CssClass均源于主题下CSS/Main.css--%>
 

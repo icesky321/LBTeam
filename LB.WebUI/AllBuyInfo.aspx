@@ -22,7 +22,7 @@
                     <div style="text-align: left; margin: 20px 0 0 30px;">
                         <asp:GridView ID="gvBuyInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"
                             Width="100%" SkinID="GridView4"
-                            OnPageIndexChanging="gvBuyInfo_PageIndexChanging" OnRowCommand="gvBuyInfo_RowCommand">
+                            OnPageIndexChanging="gvBuyInfo_PageIndexChanging" OnRowCommand="gvBuyInfo_RowCommand" OnDataBound="gvBuyInfo_DataBound">
                             <Columns>
                                 <asp:TemplateField HeaderText="标题 " SortExpression="Title">
                                     <ItemTemplate>
@@ -53,18 +53,17 @@
                             <PagerTemplate>
                                 <table width="100%" style="font-size: 12px;">
                                     <tr>
-                                        <td style="text-align: right">第<asp:Label ID="lblPageIndex" runat="server" Text='<%# ((GridView)Container.Parent.Parent).PageIndex + 1 %>'></asp:Label>页
-                                    /共<asp:Label ID="lblPageCount" runat="server" Text='<%# ((GridView)Container.Parent.Parent).PageCount %>'></asp:Label>页
-                                    <asp:LinkButton ID="LinkButtonFirstPage" runat="server" CommandArgument="First" CommandName="Page"
-                                        Visible="<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>">首页</asp:LinkButton>
-                                            <asp:LinkButton ID="LinkButtonPreviousPage" runat="server" CommandArgument="Prev"
-                                                CommandName="Page" Visible="<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>"></asp:LinkButton>
-                                            <asp:LinkButton ID="LinkButtonLastPage" runat="server" CommandArgument="Last" CommandName="Page"
-                                                Visible="<%# ((GridView)Container.NamingContainer).PageIndex != ((GridView)Container.NamingContainer).PageCount - 1 %>">尾页</asp:LinkButton>
-                                            <asp:TextBox ID="txtNewPageIndex" runat="server" Text='<%# ((GridView)Container.Parent.Parent).PageIndex + 1 %>'
-                                                Width="20px" AutoPostBack="true"></asp:TextBox>
-                                            <asp:LinkButton ID="btnGo" runat="server" CommandArgument="GO" CommandName="Page"
-                                                Text="GO" OnClick="btnGo_Click"></asp:LinkButton>
+                                        <td style="text-align: right">
+                                            <asp:Label ID="lblPage" runat="server" Text='<%# "第" + (((GridView)Container.NamingContainer).PageIndex + 1)  + "页/共" + (((GridView)Container.NamingContainer).PageCount) + "页" %> '></asp:Label>
+                                            <asp:LinkButton ID="lbnFirst" runat="Server" Text="首页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>' CommandName="Page" CommandArgument="First"></asp:LinkButton>
+                                            <asp:LinkButton ID="lbnPrev" runat="server" Text="上一页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>' CommandName="Page" CommandArgument="Prev"></asp:LinkButton>
+                                            <asp:LinkButton ID="lbnNext" runat="Server" Text="下一页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != (((GridView)Container.NamingContainer).PageCount - 1) %>' CommandName="Page" CommandArgument="Next"></asp:LinkButton>
+                                            <asp:LinkButton ID="lbnLast" runat="Server" Text="尾页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != (((GridView)Container.NamingContainer).PageCount - 1) %>' CommandName="Page" CommandArgument="Last"></asp:LinkButton>
+                                            到第<asp:DropDownList ID="PageDropDownList"
+                                                AutoPostBack="true"
+                                                OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged"
+                                                runat="server" />
+                                            页  
                                         </td>
                                     </tr>
                                 </table>

@@ -1,0 +1,6 @@
+Admin      管理员
+CEMetalFactory      冶炼厂
+CERecyclingCop     回收公司
+CESupplier     供应商
+CEUser   地域回收业务员
+general    （普通 备用）

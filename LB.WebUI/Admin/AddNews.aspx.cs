@@ -49,10 +49,12 @@ public partial class Admin_NewsManage : System.Web.UI.Page
     {
         if (ddlNewsType.SelectedItem.Text == "区域价格资讯")
         {
+            TabContainer1.Visible = true;
             MultiView1.ActiveViewIndex = 1;
         }
         else
         {
+            TabContainer1.Visible = true;
             MultiView1.ActiveViewIndex = 0;
         }
     }

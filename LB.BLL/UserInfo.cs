@@ -83,5 +83,11 @@ namespace LB.BLL
         {
             return da.GetPWD(UserName);
         }
+
+        public LB.SQLServerDAL.UserInfo GetUserInfoByAddress(int UserTypeId, string province, string city, string country, string street)
+        {
+            return da.GetUserInfoByAddress(UserTypeId, province, city, country, street);
+        }
+        
     }
 }

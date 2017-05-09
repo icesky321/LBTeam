@@ -14,20 +14,20 @@ public partial class CopAuthentication : System.Web.UI.Page
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack)
-        //{
-        //    if (Request.QueryString["CopId"] != null)
-        //    {
-        //        string CopId = Request.QueryString["CopId"];
-        //        HFCopId.Value = CopId;
-        //    }
-        //    else
-        //    {
-        //        //HFCopId.Value = "1";
-        //        Response.Redirect("CopRegister.aspx");
-        //    }
+        if (!IsPostBack)
+        {
+            if (Request.QueryString["CopId"] != null)
+            {
+                string CopId = Request.QueryString["CopId"];
+                HFCopId.Value = CopId;
+            }
+            else
+            {
+                //HFCopId.Value = "1";
+                Response.Redirect("CopRegister.aspx");
+            }
 
-        //}
+        }
     }
 
     protected void btUpLoad_Click(object sender, EventArgs e)

@@ -49,19 +49,19 @@ public partial class UserAuthentication : System.Web.UI.Page
                 try
                 {
                     string filenameI = FUIDCard.PostedFile.FileName;
-                    string filenameC = FUChop.PostedFile.FileName;
+                    //string filenameC = FUChop.PostedFile.FileName;
                     string fileextI = System.IO.Path.GetExtension(filenameI);
-                    string fileextC = System.IO.Path.GetExtension(filenameC);
+                    //string fileextC = System.IO.Path.GetExtension(filenameC);
                     string newfilenameI = MUserInfo.MobilePhoneNum + fileextI;
-                    string newfilenameC = MUserInfo.MobilePhoneNum + fileextC;
+                    //string newfilenameC = MUserInfo.MobilePhoneNum + fileextC;
                     string pathI = HttpContext.Current.Server.MapPath("~/IDCard/");
-                    string pathC = HttpContext.Current.Server.MapPath("~/Chop/");
+                    //string pathC = HttpContext.Current.Server.MapPath("~/Chop/");
                     string savefilenameI = pathI + newfilenameI;
-                    string savefilenameC = pathC + newfilenameC;
+                    //string savefilenameC = pathC + newfilenameC;
                     this.FUIDCard.SaveAs(savefilenameI);
-                    this.FUChop.SaveAs(savefilenameC);
+                    //this.FUChop.SaveAs(savefilenameC);
                     this.Image1.ImageUrl = "~/IDCard/" + newfilenameI;
-                    this.Image2.ImageUrl = "~/Chop/" + newfilenameC;
+                    //this.Image2.ImageUrl = "~/Chop/" + newfilenameC;
                     this.Label1.Text = "文件上传成功,等待后台审核";
                     //this.Label1.Text += "<br/>";
                     //this.Label1.Text += "<li>" + "原文件路径：" + this.FileUpload1.PostedFile.FileName;
@@ -72,7 +72,7 @@ public partial class UserAuthentication : System.Web.UI.Page
                     MUserInfo.BankName = tbBankName.Text;
                     MUserInfo.Account = tbAccount.Text;
                     MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
-                    MUserInfo.Chop = "~/Chop/" + newfilenameC;
+                    //MUserInfo.Chop = "~/Chop/" + newfilenameC;
                     bll_userinfo.UpdateUserInfo(MUserInfo);
                 }
                 catch

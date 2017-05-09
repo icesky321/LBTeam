@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true"
     CodeFile="CreateNewUser.aspx.cs" Inherits="Admin_UserAdmin_CreateNewUser" Title="创建新用户" %>
 
+<%@ Register Src="~/UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
@@ -23,6 +24,12 @@
                         <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ErrorMessage="请输入用户名！"
                             ControlToValidate="tbUserName" ValidationGroup="CreateUser"></asp:RequiredFieldValidator>
                     </td>
+                </tr>
+                <tr>
+                    <td>用户类型：</td>
+                    <td>
+                        <asp:DropDownList ID="ddlUserType" runat="server"></asp:DropDownList></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>密码：
@@ -59,23 +66,7 @@
                 <tr>
                     <td>请选择区域</td>
                     <td>
-                        <select id="sheng" class="Material" name="province">
-                        </select>
-                        省
-            <select id="shi" class="Material" name="city">
-            </select>
-                        市
-            <select id="xian" class="Material" name="country">
-            </select>
-                        县
-            <select id="xiang" class="Material" name="street">
-            </select>
-                        镇或街道
-                        <script type="text/javascript">
-
-                            $(function () { initLocation({ sheng_val: "", shi_val: "", xian_val: "<?php echo $v['country']?>", xiang_val: "<?php echo $v['street']?>" }); })
-
-                        </script>
+                        <uc1:DDLAddress ID="DDLAddress1" runat="server" />
                     </td>
                 </tr>
             </table>

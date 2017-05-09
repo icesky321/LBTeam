@@ -147,8 +147,8 @@ public partial class _Default : System.Web.UI.Page
 
     void DLCopInfoDataBind()
     {
-        DLCopInfo.DataSource = bll_copinfo.GetCopInfo();
-        DLCopInfo.DataBind();
+        //DLCopInfo.DataSource = bll_copinfo.GetCopInfo();
+        //DLCopInfo.DataBind();
     }
 
     protected void DLCopInfo_ItemCommand(object source, DataListCommandEventArgs e)
