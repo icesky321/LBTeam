@@ -85,7 +85,7 @@
                                                         </asp:View>
                                                         <asp:View ID="View3" runat="server">
                                                             <ul>
-                                                                <li><a href="UserCenter.aspx">个人中心</a></li>
+                                                                <li><a href="UserCenter/UserCenter.aspx">个人中心</a></li>
                                                             </ul>
                                                         </asp:View>
                                                     </asp:MultiView></td>
@@ -105,17 +105,27 @@
                             <ul class="am-nav am-nav-pills am-nav-justify">
                                 <li class=""><a href="Default.aspx">首页</a></li>
                                 <li>
-                                    <a href="#">供求中心</a>
+                                    <a href="#">帮帮忙</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="AllBuyInfo.aspx">求购信息</a></li>
                                         <li class="menu-item"><a href="AllSellInfo.aspx">供应信息</a></li>
+                                        <li class="menu-item"><a href="#">物流信息</a></li>
+                                        <li class="menu-item"><a href="#">其它信息</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="Company.aspx">商家信息</a></li>
+                                <li> <a href="#">商家信息</a>
+                                     <ul class="sub-menu">
+                                        <li class="menu-item"><a href="#">冶炼厂</a></li>
+                                        <li class="menu-item"><a href="Company.aspx">电瓶回收公司</a></li>
+                                        <li class="menu-item"><a href="#">物流信息</a></li>
+                                        <li class="menu-item"><a href="#">其它信息</a></li>
+                                    </ul>
+
+                                </li>
                                 <li>
-                                    <a href="./news.html">资讯中心</a>
+                                    <a href="#">资讯中心</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="News.aspx?Id=1">行业资讯</a></li>
@@ -125,9 +135,15 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="./about.html">关于我们</a></li>
-                                <li><a href="./join.html">加入我们</a></li>
-                                <li><a href="./contact.html">联系我们</a></li>
+                                <li><a href="#">加入我们</a>
+                                      <ul class="sub-menu">
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入供应商</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入地域业务员</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入回收公司</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入冶炼厂</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">联系我们</a></li>
                             </ul>
                         </div>
                     </div>

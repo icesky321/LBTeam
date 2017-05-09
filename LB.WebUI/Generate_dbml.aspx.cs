@@ -38,7 +38,7 @@ public partial class Generate_dbml : System.Web.UI.Page
 
                    p.StandardInput.WriteLine(@"cd C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools\");
                     //p.StandardInput.WriteLine(@"sqlmetal.exe /conn:""data source=10.137.70.1;Initial Catalog=CRM;User ID=sa;password=x4v8m2e@p2dk)s7b "" /language:C# /namespace:CRM.SQLServerDAL /context:CRMDataContext /views /dbml:""E:\Develop\CRM\CRM.SQLServerDAL\CRMDB.dbml""");
-                    p.StandardInput.WriteLine(@"sqlmetal.exe /conn:""data source=127.0.0.1;Initial Catalog=LvBao;User ID=sa;password=LHGMnt1982!@ "" /language:C# /namespace:LB.SQLServerDAL /context:LBDataContext /views /dbml:""E:\Develop\LvBao\LB.SQLServerDAL\LBDB.dbml""");
+                    p.StandardInput.WriteLine(@"sqlmetal.exe /conn:""data source=127.0.0.1;Initial Catalog=LvBao;User ID=sa;password=LHGMnt1982!@ "" /language:C# /namespace:LB.SQLServerDAL /context:LBDataContext /views /dbml:""E:\Develop\LvBao\LBTeam\LB.SQLServerDAL\LBDB.dbml""");
                     p.StandardInput.WriteLine("exit");
                     //p.WaitForExit();     //这里无限等待进程结束
                 }

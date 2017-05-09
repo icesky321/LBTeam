@@ -1,8 +1,9 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="AllSellInfo, App_Web_2u5vkwgg" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="AllSellInfo, App_Web_iaubwtqu" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+        <link rel="stylesheet" href="css/main.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="section">
@@ -14,9 +15,9 @@
             </div>
             <hr />
             <uc1:DDLAddress ID="DDLAddress1" runat="server" />
-                    <asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                    <asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
                     <br />
                     <div style="text-align: left; margin: 20px 0 0 30px;">
                         <asp:GridView ID="gvBuyInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"

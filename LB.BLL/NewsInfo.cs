@@ -65,5 +65,10 @@ namespace LB.BLL
         {
             da.UpdateNewsInfo(newinfo);
         }
+
+        public IQueryable<LB.SQLServerDAL.NewsInfo> GetNewsInfoByTypeTop13(int TypeId)
+        {
+            return da.GetNewsInfoByTypeTop13(TypeId);
+        }
     }
 }

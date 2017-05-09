@@ -4,39 +4,69 @@
     <script src="js/amazeui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/contact.min.css" />
+    <style type="text/css">
+        .auto-style1 {
+            border: 1px solid #999999;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="layout">
 
         <!--===========layout-container================-->
-        <div class="layout-container">
-            <div class="section">
-                <div class="container">
-                    <div class="am-u-md-12">
-                        <div class="section--header">
-                            <h2 class="section--title">商家认证</h2>
-                            <p class="section--description">
-                                <%--                            云适配致力于为企业提供全球最先进的移动化技术帮助企业最高效安全实现生产力提升<br />
-                            One Web，Any Device--%>
-                            </p>
-                        </div>
-                        <asp:HiddenField ID="HFCopId" runat="server" />
-                        银行账号开户行：<asp:TextBox ID="tbBankName" runat="server"></asp:TextBox><br />
-                        银行账号：<asp:TextBox ID="tbAccount" runat="server"></asp:TextBox><br />
-                        营业执照上传：
-    <asp:FileUpload ID="FUBizlicense" runat="server" />
-                        <asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /><br />
-                        危化许可证上传：<asp:FileUpload ID="FUHWPermit" runat="server" />
-                        <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" /><br />
-                        负责人身份证上传：<asp:FileUpload ID="FUIDCard" runat="server" />
-                        <asp:Image ID="Image3" runat="server" Width="200px" Height="100px" /><br />
-                        协议上传：<asp:FileUpload ID="FUChop" runat="server" />
-                        <asp:Image ID="Image4" runat="server" Width="200px" Height="100px" />
-
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                        <asp:Button ID="btUpLoad" runat="server" Text="上传" OnClick="btUpLoad_Click" />
-                    </div>
+        <div class="section" style="text-align:center;">
+            <div class="container">
+                <div class="section--header" style="text-align: center">
+                    <p class="section--description">
+                        <h1>企业商家认证</h1>
+                    </p>
                 </div>
+                <hr />
+                <asp:HiddenField ID="HFCopId" runat="server" />
+
+                <table class="auto-style1">
+                    <tr>
+                        <td class="auto-style1">银行账号开户行：</td>
+                        <td class="auto-style1" colspan="2">
+                            <asp:TextBox ID="tbBankName" runat="server"></asp:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">银行账号：</td>
+                        <td class="auto-style1" colspan="2">
+                            <asp:TextBox ID="tbAccount" runat="server"></asp:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1" rowspan="2">营业执照上传：</td>
+                        <td class="auto-style1">
+                            <asp:FileUpload ID="FUBizlicense" runat="server" /></td>
+                        <td class="auto-style1" rowspan="2">
+                            <asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">gdsfsdfsdfsdfsfsdfsdfsfsdfsfsfsdfsfsfsdfsdfsfsdfsadfasfsdfads</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1" rowspan="2">危化许可证上传：</td>
+                        <td class="auto-style1">
+                            <asp:FileUpload ID="FUHWPermit" runat="server" />
+                        </td>
+                        <td class="auto-style1" rowspan="2">
+                            <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" /></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">dsfasdfsdfasdfdsvxfdsfsdafs</td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style1">&nbsp;</td>
+                        <td class="auto-style1">
+                            <asp:Button ID="btUpLoad" runat="server" Text="上传" OnClick="btUpLoad_Click" />
+
+                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        </td>
+                        <td class="auto-style1">&nbsp;</td>
+                    </tr>
+                </table>
+
             </div>
         </div>
     </div>

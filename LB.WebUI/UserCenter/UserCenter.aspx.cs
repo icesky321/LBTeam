@@ -16,7 +16,16 @@ public partial class UserCenter1 : System.Web.UI.Page
         if (!IsPostBack)
         {
             if (Request.IsAuthenticated)
-            { MultiViewBind(); }
+            {
+                if (HttpContext.Current.User.IsInRole("Admin"))
+                {
+                    Response.Redirect("../Admin/Manage.aspx");
+                }
+                else
+                {
+                    { MultiViewBind(); }
+                }
+            }
             else
             {
                 Response.Redirect("Default.aspx");
@@ -34,7 +43,7 @@ public partial class UserCenter1 : System.Web.UI.Page
             if (MUserInfo.UserTypeId == 1)
             {
                 MultiView1.ActiveViewIndex = 0;
-                if (MUserInfo.IDCard == ""|| MUserInfo.Chop=="")
+                if (MUserInfo.IDCard == "" || MUserInfo.Chop == "")
                 {
                     btComplete.Visible = true;
                 }

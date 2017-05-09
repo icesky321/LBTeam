@@ -10,7 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.WebUI", "LB.WebUI\", "{101620D0-CA5A-41A5-9C91-3DE552E5F729}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;{5a66d98f-2f4b-45a5-a2a3-77c57408cbe5}|LB.SQLServerDAL.dll;"
+		ProjectReferences = "{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_1131"
 		Debug.AspNetCompiler.PhysicalPath = "LB.WebUI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1131\"

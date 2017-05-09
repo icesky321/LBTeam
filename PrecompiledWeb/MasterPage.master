@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_1noozzas" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_mmumw0ja" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -85,7 +85,7 @@
                                                         </asp:View>
                                                         <asp:View ID="View3" runat="server">
                                                             <ul>
-                                                                <li><a href="UserCenter.aspx">个人中心</a></li>
+                                                                <li><a href="UserCenter/UserCenter.aspx">个人中心</a></li>
                                                             </ul>
                                                         </asp:View>
                                                     </asp:MultiView></td>
@@ -105,17 +105,27 @@
                             <ul class="am-nav am-nav-pills am-nav-justify">
                                 <li class=""><a href="Default.aspx">首页</a></li>
                                 <li>
-                                    <a href="#">供求中心</a>
+                                    <a href="#">帮帮忙</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="AllBuyInfo.aspx">求购信息</a></li>
                                         <li class="menu-item"><a href="AllSellInfo.aspx">供应信息</a></li>
+                                        <li class="menu-item"><a href="#">物流信息</a></li>
+                                        <li class="menu-item"><a href="#">其它信息</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="Company.aspx">商家信息</a></li>
+                                <li> <a href="#">商家信息</a>
+                                     <ul class="sub-menu">
+                                        <li class="menu-item"><a href="#">冶炼厂</a></li>
+                                        <li class="menu-item"><a href="Company.aspx">电瓶回收公司</a></li>
+                                        <li class="menu-item"><a href="#">物流信息</a></li>
+                                        <li class="menu-item"><a href="#">其它信息</a></li>
+                                    </ul>
+
+                                </li>
                                 <li>
-                                    <a href="./news.html">资讯中心</a>
+                                    <a href="#">资讯中心</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="News.aspx?Id=1">行业资讯</a></li>
@@ -125,9 +135,15 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="./about.html">关于我们</a></li>
-                                <li><a href="./join.html">加入我们</a></li>
-                                <li><a href="./contact.html">联系我们</a></li>
+                                <li><a href="#">加入我们</a>
+                                      <ul class="sub-menu">
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入供应商</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入地域业务员</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入回收公司</a></li>
+                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入冶炼厂</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">联系我们</a></li>
                             </ul>
                         </div>
                     </div>
@@ -153,56 +169,21 @@
                     <div class="container">
                         <div class="footer_main">
                             <div class="am-g">
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">关于我们</strong>
+                                <div class="am-u-md-12 ">
+                                    <div class="footer_main--column" style="text-align:center;">
+                                        <p class="footer_about--text">地址：宁波市镇海区庄市街道中官西路279号文创园 电话：0574-86694505 浙ICP备16029665号-1</p>
                                         <div class="footer_about">
                                             <p class="footer_about--text">
-                                                云适配(AllMobilize Inc.) 是全球领先的HTML5企业移动化解决方案供应商，由前微软美国总部IE浏览器核心研发团队成员及移动互联网行业专家在美国西雅图创立.
+                                                Copyright 2016-2017 宁波绿宝信息科技有限公司 版权所有 All Rights Reserved
                                             </p>
                                             <p class="footer_about--text">
-                                                云适配跨屏云也成功应用于超过30万家企业网站，包括微软、联想等世界500强企业
+                                                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
+                                                    <asp:Image ID="Image8" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label1" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
+                                                </a>
                                             </p>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">产品中心</strong>
-                                        <ul class="footer_navigation">
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Enterplorer 企业浏览器</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Xcloud 网站跨屏云</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Amaze UI 前端开发框架</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Amaze UI 前端开发框架</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">Amaze UI 前端开发框架</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">技术支持</strong>
-                                        <ul class="footer_navigation">
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                            <li class="footer_navigation--item"><a href="#" class="footer_navigation--link">企业移动信息化白皮书</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="am-u-md-3 ">
-                                    <div class="footer_main--column">
-                                        <strong class="footer_main--column_title">联系详情</strong>
-                                        <ul class="footer_contact_info">
-                                            <li class="footer_contact_info--item"><i class="am-icon-phone"></i><span>服务专线：400 069 0309</span></li>
-                                            <li class="footer_contact_info--item"><i class="am-icon-envelope-o"></i><span>yunshipei.com</span></li>
-                                            <li class="footer_contact_info--item"><i class="am-icon-map-marker"></i><span>北京市海淀区海淀大街27号天使大厦（原亿景大厦）三层</span></li>
-
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>

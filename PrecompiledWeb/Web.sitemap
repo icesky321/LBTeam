@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true" >
-    <siteMapNode url="" title=""  description="" roles="*">
-        <siteMapNode url="" title="新闻资讯"  description="新闻资讯" securitytrimmingenabled="true" roles="">
-            <siteMapNode url="~/Admin/AddNews.aspx"  title="新增新闻资讯" description="新增新闻资讯" />
-            <siteMapNode url="~/Admin/NewsManage.aspx"  title="新闻资讯管理" description="新闻资讯管理" />
-            <siteMapNode url="~/Admin/NewsType.aspx"  title="资讯类别管理" description="资讯类别管理" />
-        </siteMapNode>
-          <siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="">
-            <siteMapNode url="~/Admin/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
-            <siteMapNode url="~/Admin/UserManage.aspx" title="其他用户信息管理" description="其他用户信息管理" />
-        </siteMapNode>
-       <!-- <siteMapNode url="" title="TT资金收支管理" description="TT资金收支管理" securitytrimmingenabled="true" roles="admin">
-            <siteMapNode url="~/TTFundManage/TTExpenditureInfoAdd.aspx" title="新增资金收支信息" description="新增资金收支信息" />
-        </siteMapNode>
-        <siteMapNode url="" title="基础信息配置" description="基础信息配置" securitytrimmingenabled="true" roles="admin" >
-            <siteMapNode url="~/Config/CurrencyInfoConfig.aspx" title="货币信息配置" description="货币信息配置" />
-            <siteMapNode url="~/Config/ChangePwd.aspx" title="更改密码" description="更改密码"/>
-        </siteMapNode>-->
-        <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="admin" >
-            <siteMapNode url="~/Admin/UserTypeInfo.aspx" title="用户类别管理" description="用户类别管理" />
-            <!--<siteMapNode url="~/Admin/SystemAdmin/ListUsers.aspx" title="人员信息管理" description="人员信息管理" />-->
-            <siteMapNode url="~/Admin/SystemAdmin/CreateRole.aspx" title="创建角色" description="创建角色"/>
-            <siteMapNode url="~/Admin/SystemAdmin/CreateNewUser.aspx" title="创建帐户" description="创建帐户"/>
-            <siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />
-            <siteMapNode url="~/Admin/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
-            <!--<siteMapNode url="~/Admin/DptEmpMapping.aspx" title="设置人员部门关联" description="设置人员部门关联" />-->
-        </siteMapNode>
-
-        <siteMapNode url="" title="帮助" description="帮助" securitytrimmingenabled="true" roles="admin,employee,guest" />
+  <siteMapNode url="" title=""  description="" roles="*">
+    <siteMapNode url="" title="新闻资讯"  description="新闻资讯" securitytrimmingenabled="true" roles="Admin">
+      <siteMapNode url="~/Admin/AddNews.aspx"  title="新增新闻资讯" description="新增新闻资讯" />
+      <siteMapNode url="~/Admin/NewsManage.aspx"  title="新闻资讯管理" description="新闻资讯管理" />
+      <siteMapNode url="~/Admin/NewsType.aspx"  title="资讯类别管理" description="资讯类别管理" />
     </siteMapNode>
+    <siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="Admin">
+      <siteMapNode url="~/Admin/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
+      <siteMapNode url="~/Admin/UserManage.aspx" title="其他用户信息管理" description="其他用户信息管理" />
+    </siteMapNode>
+
+
+    <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >
+      <siteMapNode url="~/Admin/UserTypeInfo.aspx" title="用户类别管理" description="用户类别管理" />
+      <siteMapNode url="~/Admin/SystemAdmin/CreateRole.aspx" title="创建角色" description="创建角色"/>
+      <siteMapNode url="~/Admin/SystemAdmin/CreateNewUser.aspx" title="创建帐户" description="创建帐户"/>
+      <siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />
+      <siteMapNode url="~/Admin/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
+    </siteMapNode>
+    <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="*">
+      <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人信息中心" description="个人信息中心" />
+    </siteMapNode>
+    <siteMapNode url="" title="供应商后台中心" description="供应商后台中心" securitytrimmingenabled="true" roles="CESupplier" >
+      <siteMapNode url="~/UserCenter/SellInfo.aspx" title="一键卖货" description="一键卖货" />
+      <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="一键收货" description="一键收货"/>
+      <siteMapNode url="~/UserCenter/Supplier/MyInfo.aspx" title="我发布的信息" description="我发布的信息"/>
+      <siteMapNode url="~/UserCenter/Supplier/LocalRecycling.aspx" title="当地业务员" description="当地业务员"/>
+      <siteMapNode url="~/UserCenter/Supplier/LocalRecyclingCop.aspx" title="当地回收公司" description="当地回收公司"/>
+    </siteMapNode>
+
+    <!--<siteMapNode url="" title="帮助" description="帮助" securitytrimmingenabled="true" roles="admin,employee,guest" />-->
+  </siteMapNode>
 </siteMap>

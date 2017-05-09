@@ -29,8 +29,7 @@ public partial class Login : System.Web.UI.Page
     }
     protected void LoginButton_Click(object sender, EventArgs e)
     {
-        //string url = "~/OceanFreight/ListOceanFreight.aspx";
-        //Response.Redirect(url);
+
     }
     protected void Login1_LoggingIn(object sender, LoginCancelEventArgs e)
     {
@@ -55,8 +54,9 @@ public partial class Login : System.Web.UI.Page
                     //Label1.Text = HttpContext.Current.User.Identity.Name + "1";
                     Response.Redirect("Default.aspx");
                 }
-
             }
+
+
             else
             {
                 ((RequiredFieldValidator)Login1.FindControl("VerifyRequired")).Text = "验证码输入错误！";

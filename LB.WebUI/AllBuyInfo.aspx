@@ -8,11 +8,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="section">
         <div class="container">
-            <%--            <div class="titlen">
-                <div class="bt">
-                    企业资源
-                </div>
-            </div>--%>
             <div class="section--header" style="text-align: center">
                 <p class="section--description">
                     <h1>求购信息</h1>
