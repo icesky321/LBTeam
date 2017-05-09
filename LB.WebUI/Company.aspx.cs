@@ -20,7 +20,7 @@ public partial class Company : System.Web.UI.Page
     void DLCopInfoDataBind()
     {
 
-        DLCopInfo.DataSource = bll_copinfo.GetCopInfodByAddress(DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street);
+        DLCopInfo.DataSource = bll_copinfo.GetCopInfodByAddress(DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, 2);
         DLCopInfo.DataBind();
         foreach (DataListItem item in this.DLCopInfo.Items)
         {

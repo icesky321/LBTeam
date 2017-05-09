@@ -31,43 +31,28 @@
                         CommandName="IDCard" ToolTip="负责人身份证"></asp:LinkButton>
                     <asp:MultiView ID="MultiView3" runat="server" ActiveViewIndex="0">
                         <asp:View ID="IView1" runat="server">
-                            <asp:ImageButton ID="lbtnIP" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="审核通过" />
+                            <asp:ImageButton ID="lbtnIP" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
                             <%--<asp:LinkButton ID="lbtnIP" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IPass">审核通过</asp:LinkButton>--%>
                         </asp:View>
                         <asp:View ID="IView2" runat="server">
-                            <asp:ImageButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IUPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="取消通过" />
+                            <asp:ImageButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="协议 " SortExpression="Chop">
-                <ItemTemplate>
-                    <asp:LinkButton ID="lbtnChop" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("UserId") %>'
-                        CommandName="Chop" ToolTip="协议"></asp:LinkButton>
-                    <asp:MultiView ID="MultiView4" runat="server" ActiveViewIndex="0">
-                        <asp:View ID="CView1" runat="server">
-                            <asp:ImageButton ID="lbtnCP" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="CPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="审核通过" />
-                            <%--<asp:LinkButton ID="lbtnCP" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="CPass">审核通过</asp:LinkButton>--%>
-                        </asp:View>
-                        <asp:View ID="CView2" runat="server">
-                            <asp:ImageButton ID="lbtnCU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="CUPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="取消通过" />
-                            <%--<asp:LinkButton ID="lbtnCU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="CUPass">取消通过</asp:LinkButton>--%>
-                        </asp:View>
-                    </asp:MultiView>
-                </ItemTemplate>
-            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="审核" SortExpression="Audit">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>
                     <asp:MultiView ID="MultiView5" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
-                            <asp:ImageButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="Pass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="审核通过" />
+                            <asp:ImageButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="Pass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
                             <%--<asp:LinkButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="Pass">审核通过</asp:LinkButton>--%>
                         </asp:View>
                         <asp:View ID="View2" runat="server">
-                            <asp:ImageButton ID="lbtnUPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="UPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="取消通过" />
+                            <asp:ImageButton ID="lbtnUPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="UPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnUPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="UPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
                     </asp:MultiView>
@@ -77,10 +62,10 @@
                 <ItemTemplate>
                     <asp:MultiView ID="MultiView6" runat="server" ActiveViewIndex="0">
                         <asp:View ID="ICView1" runat="server">
-                            <asp:ImageButton ID="imPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="ICPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="审核通过" />
+                            <asp:ImageButton ID="imPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="ICPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
                         </asp:View>
                         <asp:View ID="ICView2" runat="server">
-                            <asp:ImageButton ID="imUPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="ICUPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="取消通过" />
+                            <asp:ImageButton ID="imUPass" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="ICUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>

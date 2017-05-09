@@ -19,6 +19,34 @@
     <script src="js/jquery-2.1.0.js" charset="utf-8"></script>
     <script src="js/amazeui.js" charset="utf-8"></script>
     <script src="js/common.js" charset="utf-8"></script>
+    <style type="text/css">
+        .companywarp {
+            display: none;
+        }
+
+        @media only screen and (max-width:640px) {
+            .companywarp {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width:640px) {
+            .am-sticky {
+                position: relative !important;
+                z-index: 1010;
+                -webkit-transform-origin: 0 0;
+                -ms-transform-origin: 0 0;
+                transform-origin: 0 0;
+            }
+        }
+
+        @media only screen and (min-width:640px) {
+            .accountwarp {
+                position: fixed;
+                right: 20px;
+            }
+        }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -26,7 +54,7 @@
     <form id="form1" runat="server">
         <div class="layout">
             <!--===========layout-header================-->
-            <div class="layout-header am-hide-sm-only">
+            <div class="layout-header">
                 <div class="header-box" data-am-sticky>
                     <!--header start-->
                     <div class="container">
@@ -34,13 +62,13 @@
                             <div class="am-g">
                                 <div class="am-u-lg-2 am-u-sm-12">
                                     <div class="logo">
-                                        <a href="">
+                                        <a href="Default.aspx">
                                             <img src="img/logo1.png" alt="" height="50px" width="100px" /></a>
                                     </div>
                                 </div>
                                 <div class="am-u-md-10">
                                     <div class="header-right am-fr">
-                                        <div class="header-contact">
+                                        <div class="header-contact companywarp">
                                             <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-phone"></i>
@@ -63,34 +91,36 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
-                                                        <asp:View ID="View1" runat="server">
-                                                            <ul>
-                                                                <li>
-                                                                    <asp:LoginName ID="LoginName2" runat="server" />
-                                                                    <asp:LoginStatus ID="LoginStatus2" runat="server" />
-                                                                </li>
-                                                            </ul>
-                                                        </asp:View>
-                                                    </asp:MultiView></td>
-                                                <td>
-                                                    <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
-                                                        <asp:View ID="View2" runat="server">
-                                                            <ul>
-                                                                <li><a href="ChooseRoles.aspx">注册</a></li>
-                                                            </ul>
-                                                        </asp:View>
-                                                        <asp:View ID="View3" runat="server">
-                                                            <ul>
-                                                                <li><a href="UserCenter/UserCenter.aspx">个人中心</a></li>
-                                                            </ul>
-                                                        </asp:View>
-                                                    </asp:MultiView></td>
-                                            </tr>
-                                        </table>
+                                        <div class="accountwarp">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+                                                            <asp:View ID="View1" runat="server">
+                                                                <ul>
+                                                                    <li>
+                                                                        <asp:LoginName ID="LoginName2" runat="server" />
+                                                                        <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                                                                    </li>
+                                                                </ul>
+                                                            </asp:View>
+                                                        </asp:MultiView></td>
+                                                    <td>
+                                                        <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
+                                                            <asp:View ID="View2" runat="server">
+                                                                <ul>
+                                                                    <li><a href="ChooseRoles.aspx">注册</a></li>
+                                                                </ul>
+                                                            </asp:View>
+                                                            <asp:View ID="View3" runat="server">
+                                                                <ul>
+                                                                    <li><a href="UserCenter/UserCenter.aspx">个人中心</a></li>
+                                                                </ul>
+                                                            </asp:View>
+                                                        </asp:MultiView></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -115,8 +145,8 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li> <a href="#">商家信息</a>
-                                     <ul class="sub-menu">
+                                <li><a href="#">商家</a>
+                                    <ul class="sub-menu">
                                         <li class="menu-item"><a href="#">冶炼厂</a></li>
                                         <li class="menu-item"><a href="Company.aspx">电瓶回收公司</a></li>
                                         <li class="menu-item"><a href="#">物流信息</a></li>
@@ -125,7 +155,7 @@
 
                                 </li>
                                 <li>
-                                    <a href="#">资讯中心</a>
+                                    <a href="#">资讯</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="News.aspx?Id=1">行业资讯</a></li>
@@ -136,14 +166,13 @@
                                     <!-- sub-menu end-->
                                 </li>
                                 <li><a href="#">加入我们</a>
-                                      <ul class="sub-menu">
+                                    <ul class="sub-menu">
                                         <li class="menu-item"><a href="../ChooseRoles.aspx">加入供应商</a></li>
                                         <li class="menu-item"><a href="../ChooseRoles.aspx">加入地域业务员</a></li>
                                         <li class="menu-item"><a href="../ChooseRoles.aspx">加入回收公司</a></li>
                                         <li class="menu-item"><a href="../ChooseRoles.aspx">加入冶炼厂</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">联系我们</a></li>
                             </ul>
                         </div>
                     </div>
@@ -170,7 +199,7 @@
                         <div class="footer_main">
                             <div class="am-g">
                                 <div class="am-u-md-12 ">
-                                    <div class="footer_main--column" style="text-align:center;">
+                                    <div class="footer_main--column" style="text-align: center;">
                                         <p class="footer_about--text">地址：宁波市镇海区庄市街道中官西路279号文创园 电话：0574-86694505 浙ICP备16029665号-1</p>
                                         <div class="footer_about">
                                             <p class="footer_about--text">

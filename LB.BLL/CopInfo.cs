@@ -34,9 +34,9 @@ namespace LB.BLL
             return da.GetCopInfo();
         }
 
-        public IQueryable GetCopInfodByAddress(string province, string city, string country, string street)
+        public IQueryable GetCopInfodByAddress(string province, string city, string country, string street, int UserTypeId)
         {
-            return da.GetCopInfodByAddress(province, city, country, street);
+            return da.GetCopInfodByAddress(province, city, country, street, UserTypeId);
         }
     }
 }

@@ -47,27 +47,27 @@ public partial class Admin_UserManage : System.Web.UI.Page
             }
             if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).ChopAuthentication == false)
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView4"))).ActiveViewIndex = 0;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView4"))).ActiveViewIndex = 0;
             }
             else
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView4"))).ActiveViewIndex = 1;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView4"))).ActiveViewIndex = 1;
             }
             if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).Audit == false)
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView5"))).ActiveViewIndex = 0;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView5"))).ActiveViewIndex = 0;
             }
             else
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView5"))).ActiveViewIndex = 1;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView5"))).ActiveViewIndex = 1;
             }
             if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).InCharge == false)
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView6"))).ActiveViewIndex = 0;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView6"))).ActiveViewIndex = 0;
             }
             else
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView6"))).ActiveViewIndex = 1;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView6"))).ActiveViewIndex = 1;
             }
         }
     }
@@ -93,19 +93,6 @@ public partial class Admin_UserManage : System.Web.UI.Page
         if (e.CommandName == "IUPass")
         {
             MUserInfo.IDAuthentication = false;
-        }
-        if (e.CommandName == "Chop")
-        {
-            string url = MUserInfo.Chop;
-            Response.Redirect(url);
-        }
-        if (e.CommandName == "CPass")
-        {
-            MUserInfo.ChopAuthentication = true;
-        }
-        if (e.CommandName == "CUPass")
-        {
-            MUserInfo.ChopAuthentication = false;
         }
         if (e.CommandName == "Pass")
         {

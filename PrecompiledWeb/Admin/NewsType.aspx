@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" enableeventvalidation="false" inherits="Admin_NewsType, App_Web_ysz3plxd" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" enableeventvalidation="false" inherits="Admin_NewsType, App_Web_rwengheo" theme="Default" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -7,7 +7,7 @@
         <ContentTemplate>--%>
     <br />
     <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
-        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别" Height="30px">
+        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别">
             <ContentTemplate>
                新增资讯类别名称： <asp:TextBox ID="tbNewType" runat="server"></asp:TextBox>
                 <asp:Button ID="btSure" runat="server" Text="确定" OnClick="btSure_Click" />

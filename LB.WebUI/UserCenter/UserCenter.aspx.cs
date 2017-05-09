@@ -113,7 +113,7 @@ public partial class UserCenter1 : System.Web.UI.Page
     protected void btComplete_Click(object sender, EventArgs e)
     {
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
-        string url = "UserAuthentication.aspx?UserId=" + MUserInfo.UserId.ToString();
+        string url = "../UserAuthentication.aspx?UserId=" + MUserInfo.UserId.ToString();
         Response.Redirect(url);
     }
 
@@ -121,7 +121,7 @@ public partial class UserCenter1 : System.Web.UI.Page
     {
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
         MCopInfo = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId);
-        string url = "CopAuthentication.aspx?CopId=" + MCopInfo.CopId.ToString();
+        string url = "../CopAuthentication.aspx?CopId=" + MCopInfo.CopId.ToString();
         Response.Redirect(url);
     }
 }

@@ -31,7 +31,7 @@ public partial class SellInfo : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("../Default.aspx");
             }
 
         }

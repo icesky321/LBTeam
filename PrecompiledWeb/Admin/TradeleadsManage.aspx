@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_TradeleadsManage, App_Web_ysz3plxd" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_TradeleadsManage, App_Web_rwengheo" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -21,10 +21,10 @@
                 <ItemTemplate>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
-                            <asp:ImageButton ID="lbtnShowP" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="Show" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="允许发布" />
+                            <asp:ImageButton ID="lbtnShowP" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="Show" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="允许发布" />
                         </asp:View>
                         <asp:View ID="View2" runat="server">
-                            <asp:ImageButton ID="lbtnShowU" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="UnShow" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="不允许发布" />
+                            <asp:ImageButton ID="lbtnShowU" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="UnShow" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="不允许发布" />
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>

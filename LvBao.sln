@@ -10,7 +10,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.WebUI", "LB.WebUI\", "{101620D0-CA5A-41A5-9C91-3DE552E5F729}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;"
+		ProjectReferences = "{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;{C576E507-1E6E-4AAB-9863-A46398D09FAD}|LB.Model.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_1131"
 		Debug.AspNetCompiler.PhysicalPath = "LB.WebUI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1131\"
@@ -30,6 +30,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.WebUI", "LB.WebUI\", "{1
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{AA163DD3-16E3-4272-81E4-7C32DF97BD38}"
+	ProjectSection(SolutionItems) = preProject
+		Roles.txt = Roles.txt
+		待解决.txt = 待解决.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB.Model", "LB.Model\LB.Model.csproj", "{C576E507-1E6E-4AAB-9863-A46398D09FAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +56,10 @@ Global
 		{101620D0-CA5A-41A5-9C91-3DE552E5F729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{101620D0-CA5A-41A5-9C91-3DE552E5F729}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{101620D0-CA5A-41A5-9C91-3DE552E5F729}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{C576E507-1E6E-4AAB-9863-A46398D09FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C576E507-1E6E-4AAB-9863-A46398D09FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C576E507-1E6E-4AAB-9863-A46398D09FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C576E507-1E6E-4AAB-9863-A46398D09FAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿<%@ control language="C#" autoeventwireup="true" inherits="Admin_UserControls_DDLAddress, App_Web_oipwphq0" %>
+﻿<%@ control language="C#" autoeventwireup="true" inherits="Admin_UserControls_DDLAddress, App_Web_uccydppa" %>
 <script type="text/javascript" src="../js/jquery.js" charset="gbk"></script>
 <script type="text/javascript" src="../js/GlobalProvinces_main.js" charset="gbk"></script>
 <script type="text/javascript" src="../js/GlobalProvinces_extend.js" charset="gbk"></script>

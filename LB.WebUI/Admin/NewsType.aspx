@@ -8,7 +8,7 @@
         <ContentTemplate>--%>
     <br />
     <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
-        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别" Height="30px">
+        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别">
             <ContentTemplate>
                新增资讯类别名称： <asp:TextBox ID="tbNewType" runat="server"></asp:TextBox>
                 <asp:Button ID="btSure" runat="server" Text="确定" OnClick="btSure_Click" />

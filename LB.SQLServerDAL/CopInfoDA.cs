@@ -75,10 +75,11 @@ namespace LB.SQLServerDAL
             return query;
         }
 
-        public IQueryable GetCopInfodByAddress(string province, string city, string country, string street)
+        public IQueryable GetCopInfodByAddress(string province, string city, string country, string street,int UserTypeId)
         {
             var query = from c in dbContext.CopInfo
-                        join u in dbContext.UserInfo on c.UserId equals  u.UserId
+                        join u in dbContext.UserInfo on c.UserId equals u.UserId
+                        where u.UserTypeId == UserTypeId
                         select new
                         {
                             u.Account,

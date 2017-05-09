@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <br />
+    <br /><br />
     <asp:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
-        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="用户类别" Height="30px">
+        <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="用户类别">
             <ContentTemplate>
                新增用户类别名称： <asp:TextBox ID="tbUserType" runat="server"></asp:TextBox>
                 <asp:Button ID="btSure" runat="server" Text="确定" OnClick="btSure_Click" />

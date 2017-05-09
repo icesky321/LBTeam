@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="UserAuthentication, App_Web_iaubwtqu" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="UserAuthentication, App_Web_t15ji3ao" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
@@ -43,7 +43,7 @@
                 <tr>
                     <td class="auto-style1">请手持本人身份证拍照，参考左侧示例，身份证号码必须清晰可辨</td>
                 </tr>
-                <tr>
+<%--                <tr>
                     <td rowspan="2" class="auto-style1">协议上传：</td>
                     <td class="auto-style1" rowspan="2">&nbsp;</td>
                     <td class="auto-style1">
@@ -55,7 +55,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style1">请先下载协议，充分了解后确认签字，企业单位需盖公章，拍照后上传</td>
-                </tr>
+                </tr>--%>
                 <tr>
                     <td class="auto-style1">&nbsp;</td>
                     <td class="auto-style1">&nbsp;</td>
