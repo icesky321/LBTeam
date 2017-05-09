@@ -16,7 +16,7 @@
     <br />
     <asp:TabContainer ID="TabContainer1" runat="server">
         <asp:TabPanel ID="TabPanel1" runat="server" HeaderText="资讯类别" Height="30px">
-            <ContentTemplate>
+            <contenttemplate>
                 请选择发布资讯的类别：<asp:DropDownList ID="ddlNewsType" runat="server" ValidationGroup="1"
                     AutoPostBack="True" OnSelectedIndexChanged="ddlNewsType_SelectedIndexChanged">
                 </asp:DropDownList>
@@ -76,7 +76,7 @@
                         <asp:Button ID="btSure" runat="server" Text="确定" onclick="btSure_Click" />
                     </asp:View>
                 </asp:MultiView>
-            </ContentTemplate>
+            </contenttemplate>
         </asp:TabPanel>
     </asp:TabContainer>
     <%--            <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="1" AssociatedUpdatePanelID="UpdatePanel1">
