@@ -22,12 +22,19 @@ public partial class BuyInfo : System.Web.UI.Page
             FillUnitType();
             if (Request.IsAuthenticated)
             {
-                string telNum = HttpContext.Current.User.Identity.Name;
-                hfUserTelNum.Value = telNum;
-                MUserInfo = bll_userinfo.GetUserInfoByTelNum(telNum);
-                lbTelNum.Text = telNum;
-                lbContact.Text = MUserInfo.UserName;
-                hfUserId.Value = MUserInfo.UserId.ToString();
+                if (MUserInfo.UserTypeId == 0)
+                {
+                    Response.Redirect("UpdateRole.aspx?UserId=" + MUserInfo.UserId.ToString());
+                }
+                else
+                {
+                    string telNum = HttpContext.Current.User.Identity.Name;
+                    hfUserTelNum.Value = telNum;
+                    MUserInfo = bll_userinfo.GetUserInfoByTelNum(telNum);
+                    lbTelNum.Text = telNum;
+                    lbContact.Text = MUserInfo.UserName;
+                    hfUserId.Value = MUserInfo.UserId.ToString();
+                }
             }
             else
             {

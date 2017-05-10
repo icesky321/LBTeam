@@ -38,5 +38,10 @@ namespace LB.BLL
         {
             return da.GetCopInfodByAddress(province, city, country, street, UserTypeId);
         }
+
+        public IQueryable GetCopInfoByUserType(int UserTypeId)
+        {
+            return da.GetCopInfoByUserType(UserTypeId);
+        }
     }
 }

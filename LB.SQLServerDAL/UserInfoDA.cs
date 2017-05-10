@@ -124,5 +124,54 @@ namespace LB.SQLServerDAL
                         select m;
             return query.AsEnumerable().Last().Password;
         }
+
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfosByAddress(string province, string city, string country, string street, int UserTypeId)
+        {
+            var query = from u in dbContext.UserInfo
+                        join c in dbContext.CopInfo on u.UserId equals c.UserId into leftGroup1
+                        from c in leftGroup1.DefaultIfEmpty()
+                        where u.UserTypeId == UserTypeId
+                        select new LB.Model.UserInfoModel()
+                        {
+                            Account = u.Account,
+                            BankName = u.BankName,
+                            BAuthentication = c.BAuthentication == null ? false : c.BAuthentication.Value,
+                            Bizlicense = c.Bizlicense,
+                            Chop = u.Chop,
+                            ChopAuthentication = Convert.ToBoolean(u.ChopAuthentication),
+                            City = u.City,
+                            UserName = u.UserName,
+                            CopDetail = c.CopDetail,
+                            CopName = c.CopName,
+                            CreateTime = Convert.ToDateTime(u.CreateTime),
+                            HWAuthentication = c.HWAuthentication == null ? false : c.HWAuthentication.Value,
+                            HWPermit = c.HWPermit,
+                            IDAuthentication = u.IDAuthentication == null ? false : u.IDAuthentication.Value,
+                            IDCard = u.IDCard,
+                            Province = u.Province,
+                            Street = u.Street,
+                            MobilePhoneNum = u.MobilePhoneNum,
+                            Town = u.Town,
+                            Audit = u.Audit == null ? false : u.Audit.Value,
+                            AuditDate = Convert.ToDateTime(u.AuditDate)
+                        };
+            if (province != "---")
+            {
+                query = query.Where(p => p.Province.IndexOf(province) >= 0);
+            }
+            if (city != "--")
+            {
+                query = query.Where(p => p.City.IndexOf(city) >= 0);
+            }
+            if (country != "--")
+            {
+                query = query.Where(p => p.Town.IndexOf(country) >= 0);
+            }
+            if (street != "--")
+            {
+                query = query.Where(p => p.Street.IndexOf(street) >= 0);
+            }
+            return query.AsQueryable<LB.Model.UserInfoModel>();
+        }
     }
 }

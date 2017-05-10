@@ -17,9 +17,9 @@
                     </tr>
                     <tr>
                         <td align="center">
-                            <asp:GridView SkinID="GridView2" ID="gvUsers" runat="server" AutoGenerateColumns="False"
+                            <asp:GridView  ID="gvUsers" runat="server" AutoGenerateColumns="False"
                                 Font-Size="Small" GridLines="None" Width="100%" CellPadding="4" ForeColor="#333333"
-                                PageSize="100">
+                                PageSize="100" OnDataBound="gvUsers_DataBound">
                                 <Columns>
                                     <asp:TemplateField HeaderText="用户名">
                                         <ItemTemplate>
@@ -29,19 +29,37 @@
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <img alt="add" src="../images/icon_edit.gif"/><asp:LinkButton
+                                            <img alt="add" src="../images/icon_edit.gif" /><asp:LinkButton
                                                 ID="lbAddRole" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "UserName")%>'
                                                 CommandName="AddRole" ForeColor="blue" OnCommand="LinkButtonClick" Text="添加角色"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
-                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerTemplate>
+                                    <table width="100%" style="font-size: 12px;">
+                                        <tr>
+                                            <td style="text-align: right">
+                                                <asp:Label ID="lblPage" runat="server" Text='<%# "第" + (((GridView)Container.NamingContainer).PageIndex + 1)  + "页/共" + (((GridView)Container.NamingContainer).PageCount) + "页" %> '></asp:Label>
+                                                <asp:LinkButton ID="lbnFirst" runat="Server" Text="首页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>' CommandName="Page" CommandArgument="First"></asp:LinkButton>
+                                                <asp:LinkButton ID="lbnPrev" runat="server" Text="上一页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>' CommandName="Page" CommandArgument="Prev"></asp:LinkButton>
+                                                <asp:LinkButton ID="lbnNext" runat="Server" Text="下一页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != (((GridView)Container.NamingContainer).PageCount - 1) %>' CommandName="Page" CommandArgument="Next"></asp:LinkButton>
+                                                <asp:LinkButton ID="lbnLast" runat="Server" Text="尾页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != (((GridView)Container.NamingContainer).PageCount - 1) %>' CommandName="Page" CommandArgument="Last"></asp:LinkButton>
+                                                到第<asp:DropDownList ID="PageDropDownList"
+                                                    AutoPostBack="true"
+                                                    OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged"
+                                                    runat="server" />
+                                                页  
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </PagerTemplate>
+<%--                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                 <EditRowStyle BackColor="#999999" />
                                 <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
                                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />--%>
                             </asp:GridView>
                         </td>
                     </tr>
@@ -50,8 +68,7 @@
                             <asp:Panel ID="plListRole" runat="server" Visible="false">
                                 <tr>
                                 </tr>
-                                <td align="center">
-                                </td>
+                                <td align="center"></td>
                                 <hr />
                                 <asp:GridView SkinID="GridView2" ID="gvRoles" runat="server" AutoGenerateColumns="False"
                                     Font-Size="Small" GridLines="None" Width="100%">

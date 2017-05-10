@@ -88,6 +88,12 @@ namespace LB.BLL
         {
             return da.GetUserInfoByAddress(UserTypeId, province, city, country, street);
         }
-        
+
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfosByAddress(string province, string city, string country, string street, int UserTypeId)
+        {
+            return da.GetUserInfosByAddress(province, city, country, street, UserTypeId);
+        }
+
+
     }
 }

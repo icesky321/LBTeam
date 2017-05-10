@@ -73,6 +73,10 @@ public partial class UserCenter1 : System.Web.UI.Page
             {
                 MultiView1.ActiveViewIndex = 3;
             }
+            else if (MUserInfo.UserTypeId == 0)
+            {
+                Response.Redirect("UpdateRole.aspx?UserId=" + MUserInfo.UserId.ToString());
+            }
         }
     }
 

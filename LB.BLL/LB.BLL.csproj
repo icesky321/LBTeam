@@ -52,6 +52,10 @@
     <Compile Include="UserTypeInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LB.Model\LB.Model.csproj">
+      <Project>{c576e507-1e6e-4aab-9863-a46398d09fad}</Project>
+      <Name>LB.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LB.SQLServerDAL\LB.SQLServerDAL.csproj">
       <Project>{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}</Project>
       <Name>LB.SQLServerDAL</Name>

@@ -9,12 +9,19 @@ public partial class Company : System.Web.UI.Page
 {
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
+    LB.BLL.UserTypeInfo bll_usertype = new LB.BLL.UserTypeInfo();
+    LB.SQLServerDAL.UserTypeInfo MUserTypeInfo = new LB.SQLServerDAL.UserTypeInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            DLCopInfo.DataSource = bll_copinfo.GetCopInfo();
-            DLCopInfo.DataBind();
+            if (Request.QueryString["Id"] != null)
+            {
+                int Id = Convert.ToInt32(Request.QueryString["Id"]);
+                //MUserTypeInfo = bll_usertype.GetUserTypeById(Id);
+                DLCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType(Id);
+                DLCopInfo.DataBind();
+            }
         }
     }
     void DLCopInfoDataBind()

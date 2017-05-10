@@ -50,6 +50,7 @@ public partial class Admin_UserAdmin_CreateNewUser : System.Web.UI.Page
     protected void btnCreateUser_Click(object sender, EventArgs e)
     {
         Membership.CreateUser(tbMobileNum.Text.Trim(), tbPassword.Text);
+        MUserInfo.UserTypeId = 0;
         MUserInfo.UserName = tbUserName.Text;
         MUserInfo.MobilePhoneNum = tbMobileNum.Text;
         MUserInfo.Province = DDLAddress1.province.ToString();
@@ -61,6 +62,7 @@ public partial class Admin_UserAdmin_CreateNewUser : System.Web.UI.Page
         MUserInfo.ChopAuthentication = false;
         MUserInfo.InCharge = false;
         bll_userinfo.NewUserInfo(MUserInfo);
-        Response.Redirect("UpdateEmployee.aspx?Account=" + tbMobileNum.Text.Trim());
+        //Response.Redirect("UpdateEmployee.aspx?Account=" + tbMobileNum.Text.Trim());
+        Response.Redirect("AddUserToRole.aspx");
     }
 }

@@ -85,7 +85,7 @@ namespace LB.Model
             get;
             set;
         }
-        public bool AuditDate
+        public DateTime AuditDate
         {
             get;
             set;

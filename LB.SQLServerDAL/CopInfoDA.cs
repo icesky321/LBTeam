@@ -123,5 +123,38 @@ namespace LB.SQLServerDAL
             }
             return query;
         }
+
+        public IQueryable GetCopInfoByUserType(int UserTypeId)
+        {
+            var query = from c in dbContext.CopInfo
+                        join u in dbContext.UserInfo on c.UserId equals u.UserId
+                        where u.UserTypeId == UserTypeId
+                        select new
+                        {
+                            u.Account,
+                            u.BankName,
+                            c.BAuthentication,
+                            c.Bizlicense,
+                            u.Chop,
+                            u.ChopAuthentication,
+                            u.City,
+                            u.UserName,
+                            c.CopDetail,
+                            c.CopId,
+                            c.CopName,
+                            u.CreateTime,
+                            c.HWAuthentication,
+                            c.HWPermit,
+                            u.IDAuthentication,
+                            u.IDCard,
+                            u.Province,
+                            u.Street,
+                            u.MobilePhoneNum,
+                            u.Town,
+                            u.Audit,
+                            u.AuditDate
+                        };
+            return query;
+        }
     }
 }
