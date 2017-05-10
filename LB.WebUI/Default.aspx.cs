@@ -22,12 +22,13 @@ public partial class _Default : System.Web.UI.Page
             //}
             //else
             //{
-                gvNewsDatabind();
-                gvPBNewsDatabind();
-                gvPriceNewsDatabind();
-                gvBuyInfoDatabind();
-                gvSellInfoDatabind();
-                DLCopInfoDataBind();
+            gvNewsDatabind();
+            gvPBNewsDatabind();
+            gvPriceNewsDatabind();
+            gvLawNewsDatabind();
+            gvBuyInfoDatabind();
+            gvSellInfoDatabind();
+            DLCopInfoDataBind();
             //}
 
 

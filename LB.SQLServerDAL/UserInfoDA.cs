@@ -103,12 +103,50 @@ namespace LB.SQLServerDAL
             return exists;
         }
 
-        public IQueryable<LB.SQLServerDAL.Aspnet_Users> GetUserInfoByTelNumFuzzy(string TelNum)
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfoByTelNumFuzzy(string TelNum)
         {
-            var query = from c in dbContext.Aspnet_Users
-                        where c.UserName.Contains(TelNum)
-                        select c;
-            return query.AsQueryable<LB.SQLServerDAL.Aspnet_Users>();
+            //var query = from c in dbContext.Aspnet_Users
+            //            where c.UserName.Contains(TelNum)
+            //            select c;
+            //return query.AsQueryable<LB.SQLServerDAL.Aspnet_Users>();
+
+            var query = from u in dbContext.UserInfo
+                        join c in dbContext.CopInfo on u.UserId equals c.UserId into leftGroup1
+                        from c in leftGroup1.DefaultIfEmpty()
+                        join a in dbContext.Aspnet_Users on u.MobilePhoneNum equals a.UserName into leftGroup2
+                        from a in leftGroup2.DefaultIfEmpty()
+                        join m in dbContext.Aspnet_Membership on a.UserId equals m.UserId into leftGroup3
+                        from m in leftGroup3.DefaultIfEmpty()
+                        select new LB.Model.UserInfoModel()
+                        {
+                            Account = u.Account,
+                            BankName = u.BankName,
+                            BAuthentication = c.BAuthentication == null ? false : c.BAuthentication.Value,
+                            Bizlicense = c.Bizlicense,
+                            Chop = u.Chop,
+                            ChopAuthentication = Convert.ToBoolean(u.ChopAuthentication),
+                            City = u.City,
+                            UserName = u.UserName,
+                            CopDetail = c.CopDetail,
+                            CopName = c.CopName,
+                            CreateTime = Convert.ToDateTime(u.CreateTime),
+                            HWAuthentication = c.HWAuthentication == null ? false : c.HWAuthentication.Value,
+                            HWPermit = c.HWPermit,
+                            IDAuthentication = u.IDAuthentication == null ? false : u.IDAuthentication.Value,
+                            IDCard = u.IDCard,
+                            Province = u.Province,
+                            Street = u.Street,
+                            MobilePhoneNum = u.MobilePhoneNum,
+                            Town = u.Town,
+                            Audit = u.Audit == null ? false : u.Audit.Value,
+                            //AuditDate == null ? false : Convert.ToDateTime(u.AuditDate),
+                            IsApproved = Convert.ToBoolean(m.IsApproved)
+                        };
+            if (TelNum != "")
+            {
+                query = query.Where(p => p.MobilePhoneNum.Contains(TelNum));
+            }
+            return query.AsQueryable<LB.Model.UserInfoModel>();
         }
 
         public bool ExistTelNum(string telnum)

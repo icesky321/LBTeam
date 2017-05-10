@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinMP_WxService, App_Web_qnkfpkpn" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinMP_WxService, App_Web_0lpv4lhn" theme="Default" %>
 
 <!DOCTYPE html>
 

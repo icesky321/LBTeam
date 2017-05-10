@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_oowd1m0l" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_3x0vyrah" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -231,37 +231,21 @@
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px;">
-                                                            <asp:Label ID="Label4" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton3"
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px;">
+                                                            <asp:Label ID="lbLawTitle" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton1"
                                                                 Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
                                                                 CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
                                                         </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText=" " SortExpression="UserName">
-                                                    <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">
-                                                            <asp:LinkButton ID="lbtnArea" Style="text-decoration: none" runat="server" Text='<%# Bind("UserName") %>'
-                                                                CommandArgument='<%#Eval("id") %>' CommandName="Detail" ToolTip='<%# Bind("UserName") %>'></asp:LinkButton>
-                                                        </div>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField HeaderText=" " SortExpression="Content">
-                                                    <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">
-                                                            <asp:LinkButton ID="lbtnPrice" Style="text-decoration: none" runat="server" Text='<%# Bind("Content") %>'
-                                                                CommandArgument='<%#Eval("id") %>' CommandName="Detail" ToolTip='<%# Bind("Content") %>'></asp:LinkButton>
-                                                        </div>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
                                                 <asp:TemplateField HeaderText=" " SortExpression="ShowTime">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("ShowTime","{0:yyyy-M-d}") %>'></asp:Label>
-                                                    </ItemTemplate>
                                                     <FooterTemplate>
-                                                        <asp:LinkButton ID="LinkButton5" runat="server" Style="text-decoration: none" CommandArgument='<%#Eval("id") %>'
+                                                        <asp:LinkButton ID="lbtnLaw" runat="server" Style="text-decoration: none" CommandArgument='<%#Eval("id") %>'
                                                             CommandName="AllNews">更多...</asp:LinkButton>
                                                     </FooterTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lbLawShowTime" runat="server" Text='<%# Bind("ShowTime","{0:yyyy-M-d}") %>'></asp:Label>
+                                                    </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
                                         </asp:GridView>
