@@ -15,6 +15,7 @@ public partial class AllBuyInfo : System.Web.UI.Page
         {
             gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(1);
             gvBuyInfo.DataBind();
+            
         }
     }
 
