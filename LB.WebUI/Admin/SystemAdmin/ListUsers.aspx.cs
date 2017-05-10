@@ -11,6 +11,7 @@ using System.Web.UI.HtmlControls;
 
 public partial class Admin_ListUsers : System.Web.UI.Page
 {
+    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -132,6 +133,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
     protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvUsers.PageIndex = e.NewPageIndex;
+        gvUsers.DataSource = Membership.GetAllUsers();
         gvUsers.DataBind();
     }
 
@@ -237,7 +239,12 @@ public partial class Admin_ListUsers : System.Web.UI.Page
 
     protected void btSearch_Click(object sender, EventArgs e)
     {
-        gvUsers.DataSource = Membership.GetUser(tbTelNum.Text);
+        gvUsers.DataSource =  bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
         gvUsers.DataBind();
+    }
+
+    protected void gvUsers_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+
     }
 }

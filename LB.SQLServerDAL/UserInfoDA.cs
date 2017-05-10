@@ -103,6 +103,14 @@ namespace LB.SQLServerDAL
             return exists;
         }
 
+        public IQueryable<LB.SQLServerDAL.Aspnet_Users> GetUserInfoByTelNumFuzzy(string TelNum)
+        {
+            var query = from c in dbContext.Aspnet_Users
+                        where c.UserName.Contains(TelNum)
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.Aspnet_Users>();
+        }
+
         public bool ExistTelNum(string telnum)
         {
             bool exists = false;

@@ -6,9 +6,9 @@
         <ContentTemplate>
             <br />
             <br />
-            账户名称：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text="*可模糊查询"></asp:Label><asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
-            <br />
 
+                        账户名称：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text="*可模糊查询"></asp:Label><asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
+            <br />
             &nbsp; &nbsp;
             <fieldset style="width: 720px">
                 <legend class="mainTitle">实现成员和角色管理功能</legend>
@@ -22,7 +22,7 @@
                     <tr>
                         <td align="center" style="width: 500px">
                             <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" Font-Size="Small"
-                                OnPageIndexChanging="gvUsers_PageIndexChanging" AllowPaging="True" PageSize="15" OnDataBound="gvUsers_DataBound">
+                                OnPageIndexChanging="gvUsers_PageIndexChanging" OnDataBound="gvUsers_DataBound" OnRowCommand="gvUsers_RowCommand">
                                 <Columns>
                                     <asp:TemplateField HeaderText="用户名">
                                         <ItemTemplate>

@@ -37,6 +37,7 @@ public partial class WeixinMP_WxService : System.Web.UI.Page
             // get method -仅在微信后台填写URL验证时触发
             if (CheckSignature.Check(signature, timestamp, nonce, token))
             {
+                Response.Clear();
                 Response.Write(echostr);
             }
             else

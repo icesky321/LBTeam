@@ -171,4 +171,11 @@ public partial class Admin_AddUserToRole : System.Web.UI.Page
 
         }
     }
+
+    protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvUsers.PageIndex = e.NewPageIndex;
+        gvUsers.DataSource = Membership.GetAllUsers();
+        gvUsers.DataBind();
+    }
 }

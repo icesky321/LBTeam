@@ -69,6 +69,13 @@ public partial class _Default : System.Web.UI.Page
 
     }
 
+    void gvLawNewsDatabind()
+    {
+        gvLaw.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(4);
+        gvLaw.DataBind();
+
+    }
+
     protected void gvNews_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName == "Detail")
@@ -110,6 +117,22 @@ public partial class _Default : System.Web.UI.Page
         if (e.CommandName == "AllNews")
         {
             string Id = "3";
+            string url = "~/News.aspx?Id=" + Id.ToString();
+            Response.Redirect(url);
+        }
+    }
+
+    protected void gvLaw_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Detail")
+        {
+            string Id = e.CommandArgument.ToString();
+            string url = "~/NewsDetail.aspx?Id=" + Id.ToString();
+            Response.Redirect(url);
+        }
+        if (e.CommandName == "AllNews")
+        {
+            string Id = "4";
             string url = "~/News.aspx?Id=" + Id.ToString();
             Response.Redirect(url);
         }

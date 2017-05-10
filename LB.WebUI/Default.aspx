@@ -93,7 +93,8 @@
                     <asp:TabContainer ID="TabContainer4" runat="server">
                         <asp:TabPanel ID="TabPanel7" runat="server" HeaderText="平台公告" Height="276px">
                             <ContentTemplate>
-                                sdfasdfsdfsdfsdf
+                                <marquee direction=up> sdfasdfsdfsdfsdf</marquee>
+                               
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -102,7 +103,7 @@
                     <asp:TabContainer ID="TabContainer5" runat="server">
                         <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="平台动态" Height="276px">
                             <ContentTemplate>
-                                sdfasdfsdfsdfsdf
+                               <marquee direction=up>sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br /></marquee>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -126,7 +127,7 @@
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <asp:TabContainer ID="TabContainer2" runat="server">
-                                <asp:TabPanel ID="TabPanel3" runat="server" HeaderText=" 财经资讯">
+                                <asp:TabPanel ID="TabPanel3" runat="server" HeaderText=" 财经资讯"  Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvNews" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
                                             SkinID="GridView3" Width="500" OnRowCommand="gvNews_RowCommand">
@@ -153,7 +154,7 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
-                                <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="铅电瓶资讯">
+                                <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="铅电瓶资讯" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvPBNew" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
                                             SkinID="GridView3" Width="500" OnRowCommand="gvPBNew_RowCommand">
@@ -180,7 +181,7 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
-                                <asp:TabPanel ID="TabPanel5" runat="server" HeaderText="区域价格" Height="30px">
+                                <asp:TabPanel ID="TabPanel5" runat="server" HeaderText="区域价格" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvPrice" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
                                             SkinID="GridView3" Width="500" OnRowCommand="gvPrice_RowCommand">
@@ -223,6 +224,49 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
+                                 <asp:TabPanel ID="TabPanel9" runat="server" HeaderText="政策法规" Height="276px">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="gvLaw" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
+                                            SkinID="GridView3" Width="500" OnRowCommand="gvLaw_RowCommand">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText=" " SortExpression="Title">
+                                                    <ItemTemplate>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px;">
+                                                            <asp:Label ID="Label4" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton3"
+                                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
+                                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" " SortExpression="UserName">
+                                                    <ItemTemplate>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">
+                                                            <asp:LinkButton ID="lbtnArea" Style="text-decoration: none" runat="server" Text='<%# Bind("UserName") %>'
+                                                                CommandArgument='<%#Eval("id") %>' CommandName="Detail" ToolTip='<%# Bind("UserName") %>'></asp:LinkButton>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" " SortExpression="Content">
+                                                    <ItemTemplate>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">
+                                                            <asp:LinkButton ID="lbtnPrice" Style="text-decoration: none" runat="server" Text='<%# Bind("Content") %>'
+                                                                CommandArgument='<%#Eval("id") %>' CommandName="Detail" ToolTip='<%# Bind("Content") %>'></asp:LinkButton>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" " SortExpression="ShowTime">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("ShowTime","{0:yyyy-M-d}") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:LinkButton ID="LinkButton5" runat="server" Style="text-decoration: none" CommandArgument='<%#Eval("id") %>'
+                                                            CommandName="AllNews">更多...</asp:LinkButton>
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:TabPanel>
                             </asp:TabContainer>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -231,7 +275,7 @@
                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                         <ContentTemplate>
                             <asp:TabContainer ID="TabContainer3" runat="server">
-                                <asp:TabPanel ID="TabPanel6" runat="server" HeaderText="供应信息" Height="30px">
+                                <asp:TabPanel ID="TabPanel6" runat="server" HeaderText="供应信息" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvSellInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"
                                             Width="100%" SkinID="GridView4" OnRowCommand="gvSellInfo_RowCommand">
@@ -269,7 +313,7 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
-                                <asp:TabPanel ID="TabPanel10" runat="server" HeaderText="求购信息" Height="30px">
+                                <asp:TabPanel ID="TabPanel10" runat="server" HeaderText="求购信息" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvBuyInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"
                                             Width="100%" SkinID="GridView4" OnRowCommand="gvBuyInfo_RowCommand">

@@ -19,7 +19,7 @@
                         <td align="center">
                             <asp:GridView  ID="gvUsers" runat="server" AutoGenerateColumns="False"
                                 Font-Size="Small" GridLines="None" Width="100%" CellPadding="4" ForeColor="#333333"
-                                PageSize="100" OnDataBound="gvUsers_DataBound">
+                                PageSize="100" OnDataBound="gvUsers_DataBound" OnPageIndexChanging="gvUsers_PageIndexChanging">
                                 <Columns>
                                     <asp:TemplateField HeaderText="用户名">
                                         <ItemTemplate>
