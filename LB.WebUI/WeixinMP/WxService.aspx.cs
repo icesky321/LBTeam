@@ -29,21 +29,25 @@ public partial class WeixinMP_WxService : System.Web.UI.Page
         signature = Request.QueryString["signature"];
         timestamp = Request.QueryString["timestamp"];
         nonce = Request.QueryString["nonce"];
-        echostr = Request.QueryString["echostr"];
+        echostr = Request.QueryString["echoStr"];
 
 
         if (Request.HttpMethod == "GET")
         {
+
             // get method -仅在微信后台填写URL验证时触发
             if (CheckSignature.Check(signature, timestamp, nonce, token))
             {
                 Response.Clear();
                 Response.Write(echostr);
+                Response.End();
             }
             else
             {
+                Response.Clear();
                 Response.Write("failed:" + signature + "," + CheckSignature.GetSignature(timestamp, nonce, token) + "." +
                     "如果你看到此句，说明此地址有效，但回调验证未通过，请注意Token的一致性。");
+                Response.End();
             }
         }
 
