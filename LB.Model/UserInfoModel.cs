@@ -152,5 +152,11 @@ namespace LB.Model
             get;
             set;
         }
+
+        public bool IsApproved
+        {
+            get;
+            set;
+        }
     }
 }

@@ -22,12 +22,13 @@ public partial class _Default : System.Web.UI.Page
             //}
             //else
             //{
-                gvNewsDatabind();
-                gvPBNewsDatabind();
-                gvPriceNewsDatabind();
-                gvBuyInfoDatabind();
-                gvSellInfoDatabind();
-                DLCopInfoDataBind();
+            gvNewsDatabind();
+            gvPBNewsDatabind();
+            gvPriceNewsDatabind();
+            gvLawNewsDatabind();
+            gvBuyInfoDatabind();
+            gvSellInfoDatabind();
+            DLCopInfoDataBind();
             //}
 
 
@@ -66,6 +67,13 @@ public partial class _Default : System.Web.UI.Page
     {
         gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2);
         gvSellInfo.DataBind();
+
+    }
+
+    void gvLawNewsDatabind()
+    {
+        gvLaw.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(4);
+        gvLaw.DataBind();
 
     }
 
@@ -110,6 +118,22 @@ public partial class _Default : System.Web.UI.Page
         if (e.CommandName == "AllNews")
         {
             string Id = "3";
+            string url = "~/News.aspx?Id=" + Id.ToString();
+            Response.Redirect(url);
+        }
+    }
+
+    protected void gvLaw_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Detail")
+        {
+            string Id = e.CommandArgument.ToString();
+            string url = "~/NewsDetail.aspx?Id=" + Id.ToString();
+            Response.Redirect(url);
+        }
+        if (e.CommandName == "AllNews")
+        {
+            string Id = "4";
             string url = "~/News.aspx?Id=" + Id.ToString();
             Response.Redirect(url);
         }

@@ -5,26 +5,38 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <br />
-            <br />
-            账户名称：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text="*可模糊查询"></asp:Label><asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
-            <br />
 
             &nbsp; &nbsp;
-            <fieldset style="width: 720px">
+            <fieldset style="width: 100%">
                 <legend class="mainTitle">实现成员和角色管理功能</legend>
                 <br />
-                <table border="0" cellpadding="2" cellspacing="2" class="Main" width="500px">
+                <table border="0" cellpadding="2" cellspacing="2" class="Main" width="100%">
                     <tr>
-                        <td align="center" class="Head" style="height: 19px; width: 137px;">
+                        <td colspan="2" align="center" class="Head" style="height: 19px; width: 137px;">
                             <b>用户管理</b>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <br />
+
+                            用户手机号：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text="*可模糊查询"></asp:Label><asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
+                            <br /><br />
                         </td>
                     </tr>
                     <tr>
-                        <td align="center" style="width: 500px">
+                        <td align="center" style="width: 60%">
                             <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" Font-Size="Small"
-                                OnPageIndexChanging="gvUsers_PageIndexChanging" AllowPaging="True" PageSize="15" OnDataBound="gvUsers_DataBound">
+                                OnPageIndexChanging="gvUsers_PageIndexChanging" OnDataBound="gvUsers_DataBound">
                                 <Columns>
                                     <asp:TemplateField HeaderText="用户名">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lbMobilePhoneNum" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "MobilePhoneNum")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <HeaderStyle Height="25px" />
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="手机号">
                                         <ItemTemplate>
                                             <asp:Label ID="lbUserName" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "UserName")%>'></asp:Label>
                                         </ItemTemplate>
@@ -33,13 +45,13 @@
                                     <asp:TemplateField HeaderText="启用">
                                         <ItemTemplate>
                                             <asp:CheckBox ID="cbActive" runat="server" AutoPostBack="true" Checked='<%# DataBinder.Eval(Container.DataItem, "IsApproved")%>'
-                                                ForeColor="blue" OnCheckedChanged="CheckBox_Click" ToolTip='<%#DataBinder.Eval(Container.DataItem, "UserName")%>' />
+                                                ForeColor="blue" OnCheckedChanged="CheckBox_Click" ToolTip='<%#DataBinder.Eval(Container.DataItem, "MobilePhoneNum")%>' />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <img alt="add" src="../images/icon_edit.gif" /><asp:LinkButton
-                                                ID="lbAddRole" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "UserName")%>'
+                                                ID="lbAddRole" runat="server" CommandArgument='<%#DataBinder.Eval(Container.DataItem, "MobilePhoneNum")%>'
                                                 CommandName="AddRole" ForeColor="blue" OnCommand="LinkButtonClick" Text="添加角色"></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
@@ -64,14 +76,7 @@
                                 </PagerTemplate>
                             </asp:GridView>
                         </td>
-                    </tr>
-                    <tr>
-                        <td align="center" style="width: 137px">
-                            <asp:Label ID="lbMessage" runat="server" ForeColor="red"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="right" class="Head" style="height: 23px; width: 137px;">
+                        <td align="right" style="width: 40%">
                             <!-- <a href="CreateRole.aspx">为角色设置用户</a>-->
                             <asp:Panel ID="plListRole" runat="server" Visible="false">
                                 <hr />
@@ -92,6 +97,17 @@
                                     </Columns>
                                 </asp:GridView>
                             </asp:Panel>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center" style="width: 137px">
+                            <asp:Label ID="lbMessage" runat="server" ForeColor="red"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="right" class="Head" style="height: 23px; width: 137px;">
+
                             <asp:LinkButton ID="lbtExit" runat="server" OnClick="lbtExit_Click" Visible="False">退出系统</asp:LinkButton>
                         </td>
                     </tr>

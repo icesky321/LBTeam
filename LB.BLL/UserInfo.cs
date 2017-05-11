@@ -94,6 +94,9 @@ namespace LB.BLL
             return da.GetUserInfosByAddress(province, city, country, street, UserTypeId);
         }
 
-
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfoByTelNumFuzzy(string TelNum)
+        {
+            return da.GetUserInfoByTelNumFuzzy(TelNum);
+        }
     }
 }

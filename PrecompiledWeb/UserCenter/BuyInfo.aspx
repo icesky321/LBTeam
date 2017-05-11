@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="BuyInfo, App_Web_pcb3s3zr" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="BuyInfo, App_Web_jji1h45o" theme="Default" %>
 
 <%@ Register Src="~/UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 

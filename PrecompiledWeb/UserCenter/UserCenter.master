@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="UserCenter, App_Web_be0hvyzg" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="UserCenter, App_Web_xcrvwn0w" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -101,7 +101,7 @@
                                                                 <ul>
                                                                     <li>
                                                                         <asp:LoginName ID="LoginName2" runat="server" />
-                                                                        <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                                                                        <asp:LoginStatus ID="LoginStatus2" runat="server" LogoutPageUrl="~/Default.aspx" LogoutAction="Redirect" />
                                                                     </li>
                                                                 </ul>
                                                             </asp:View>
@@ -146,8 +146,8 @@
                                 </li>
                                 <li><a href="#">商家</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="#">冶炼厂</a></li>
-                                        <li class="menu-item"><a href="../Company.aspx">电瓶回收公司</a></li>
+                                        <li class="menu-item"><a href="../Company.aspx?Id=3">冶炼厂</a></li>
+                                        <li class="menu-item"><a href="../Company.aspx?Id=2">电瓶回收公司</a></li>
                                     </ul>
 
                                 </li>

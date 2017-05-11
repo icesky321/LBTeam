@@ -11,12 +11,13 @@ using System.Web.UI.HtmlControls;
 
 public partial class Admin_ListUsers : System.Web.UI.Page
 {
+    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             //绑定用户和角色信息
-            gvUsers.DataSource = Membership.GetAllUsers();
+            gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
             gvUsers.DataBind();
             gvRoles.DataSource = Roles.GetAllRoles();
             gvRoles.DataBind();
@@ -87,7 +88,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
             MembershipUser mu = Membership.GetUser(username);
             mu.IsApproved = cbIsApproved.Checked;
             Membership.UpdateUser(mu);
-            gvUsers.DataSource = Membership.GetAllUsers();
+            gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
             gvUsers.DataBind();
             lbMessage.Text = "更新成功.";
         }
@@ -132,6 +133,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
     protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvUsers.PageIndex = e.NewPageIndex;
+        gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
         gvUsers.DataBind();
     }
 
@@ -151,7 +153,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
 
         gvUsers.PageIndex = pageList.SelectedIndex;
 
-        gvUsers.DataSource = Membership.GetAllUsers();
+        gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
         gvUsers.DataBind(); //数据绑定 
 
     }
@@ -237,7 +239,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
 
     protected void btSearch_Click(object sender, EventArgs e)
     {
-        gvUsers.DataSource = Membership.GetUser(tbTelNum.Text);
+        gvUsers.DataSource =  bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
         gvUsers.DataBind();
     }
 }
