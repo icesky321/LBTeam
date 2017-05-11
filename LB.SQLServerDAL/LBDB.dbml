@@ -172,6 +172,16 @@
       <Column Name="NewsType" Member="NewsType1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.OAuthAccessToken" Member="OAuthAccessToken">
+    <Type Name="OAuthAccessToken">
+      <Column Name="openid" Member="Openid" Type="System.String" DbType="NVarChar(64) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="access_token" Member="Access_token" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="expires_in" Member="Expires_in" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="refresh_token" Member="Refresh_token" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="scope" Member="Scope" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="OAuthAccessTokenStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Tradeleads" Member="Tradeleads">
     <Type Name="Tradeleads">
       <Column Name="infoId" Member="InfoId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -193,22 +203,6 @@
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Recommend" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TruckInfo" Member="TruckInfo">
-    <Type Name="TruckInfo">
-      <Column Name="TruckId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Num" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TruckType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TruckLength" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TruckLoad" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Brands" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DeliveryYear" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="JSLicense" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="JSrLicenseAU" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="XSLicense" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="XSLicenseAU" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TSInfo" Member="TSInfo">
@@ -359,6 +353,18 @@
       <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="DataSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WeixinMessage" Member="WeixinMessage">
+    <Type Name="WeixinMessage">
+      <Column Name="WMId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="JobNumber" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="TemplateMessageData" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TemplateMessageDataType" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="RedirectUrl" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="InQueueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SendDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SendFailureCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

@@ -72,6 +72,9 @@ namespace LB.SQLServerDAL
     partial void InsertNewsType(NewsType instance);
     partial void UpdateNewsType(NewsType instance);
     partial void DeleteNewsType(NewsType instance);
+    partial void InsertOAuthAccessToken(OAuthAccessToken instance);
+    partial void UpdateOAuthAccessToken(OAuthAccessToken instance);
+    partial void DeleteOAuthAccessToken(OAuthAccessToken instance);
     partial void InsertTradeleads(Tradeleads instance);
     partial void UpdateTradeleads(Tradeleads instance);
     partial void DeleteTradeleads(Tradeleads instance);
@@ -87,6 +90,9 @@ namespace LB.SQLServerDAL
     partial void InsertUserTypeInfo(UserTypeInfo instance);
     partial void UpdateUserTypeInfo(UserTypeInfo instance);
     partial void DeleteUserTypeInfo(UserTypeInfo instance);
+    partial void InsertWeixinMessage(WeixinMessage instance);
+    partial void UpdateWeixinMessage(WeixinMessage instance);
+    partial void DeleteWeixinMessage(WeixinMessage instance);
     #endregion
 		
 		public LBDataContext(string connection) : 
@@ -225,19 +231,19 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		public System.Data.Linq.Table<OAuthAccessToken> OAuthAccessToken
+		{
+			get
+			{
+				return this.GetTable<OAuthAccessToken>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Tradeleads> Tradeleads
 		{
 			get
 			{
 				return this.GetTable<Tradeleads>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TruckInfo> TruckInfo
-		{
-			get
-			{
-				return this.GetTable<TruckInfo>();
 			}
 		}
 		
@@ -358,6 +364,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<Vw_aspnet_WebPartState_User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<WeixinMessage> WeixinMessage
+		{
+			get
+			{
+				return this.GetTable<WeixinMessage>();
 			}
 		}
 	}
@@ -3921,6 +3935,188 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.OAuthAccessToken")]
+	public partial class OAuthAccessToken : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Openid;
+		
+		private string _Access_token;
+		
+		private System.Nullable<int> _Expires_in;
+		
+		private string _Refresh_token;
+		
+		private string _Scope;
+		
+		private System.Nullable<System.DateTime> _OAuthAccessTokenStartTime;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnOpenidChanging(string value);
+    partial void OnOpenidChanged();
+    partial void OnAccess_tokenChanging(string value);
+    partial void OnAccess_tokenChanged();
+    partial void OnExpires_inChanging(System.Nullable<int> value);
+    partial void OnExpires_inChanged();
+    partial void OnRefresh_tokenChanging(string value);
+    partial void OnRefresh_tokenChanged();
+    partial void OnScopeChanging(string value);
+    partial void OnScopeChanged();
+    partial void OnOAuthAccessTokenStartTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnOAuthAccessTokenStartTimeChanged();
+    #endregion
+		
+		public OAuthAccessToken()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="openid", Storage="_Openid", DbType="NVarChar(64) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Openid
+		{
+			get
+			{
+				return this._Openid;
+			}
+			set
+			{
+				if ((this._Openid != value))
+				{
+					this.OnOpenidChanging(value);
+					this.SendPropertyChanging();
+					this._Openid = value;
+					this.SendPropertyChanged("Openid");
+					this.OnOpenidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="access_token", Storage="_Access_token", DbType="NVarChar(1024)")]
+		public string Access_token
+		{
+			get
+			{
+				return this._Access_token;
+			}
+			set
+			{
+				if ((this._Access_token != value))
+				{
+					this.OnAccess_tokenChanging(value);
+					this.SendPropertyChanging();
+					this._Access_token = value;
+					this.SendPropertyChanged("Access_token");
+					this.OnAccess_tokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="expires_in", Storage="_Expires_in", DbType="Int")]
+		public System.Nullable<int> Expires_in
+		{
+			get
+			{
+				return this._Expires_in;
+			}
+			set
+			{
+				if ((this._Expires_in != value))
+				{
+					this.OnExpires_inChanging(value);
+					this.SendPropertyChanging();
+					this._Expires_in = value;
+					this.SendPropertyChanged("Expires_in");
+					this.OnExpires_inChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="refresh_token", Storage="_Refresh_token", DbType="NVarChar(1024)")]
+		public string Refresh_token
+		{
+			get
+			{
+				return this._Refresh_token;
+			}
+			set
+			{
+				if ((this._Refresh_token != value))
+				{
+					this.OnRefresh_tokenChanging(value);
+					this.SendPropertyChanging();
+					this._Refresh_token = value;
+					this.SendPropertyChanged("Refresh_token");
+					this.OnRefresh_tokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="scope", Storage="_Scope", DbType="NVarChar(32)")]
+		public string Scope
+		{
+			get
+			{
+				return this._Scope;
+			}
+			set
+			{
+				if ((this._Scope != value))
+				{
+					this.OnScopeChanging(value);
+					this.SendPropertyChanging();
+					this._Scope = value;
+					this.SendPropertyChanged("Scope");
+					this.OnScopeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OAuthAccessTokenStartTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OAuthAccessTokenStartTime
+		{
+			get
+			{
+				return this._OAuthAccessTokenStartTime;
+			}
+			set
+			{
+				if ((this._OAuthAccessTokenStartTime != value))
+				{
+					this.OnOAuthAccessTokenStartTimeChanging(value);
+					this.SendPropertyChanging();
+					this._OAuthAccessTokenStartTime = value;
+					this.SendPropertyChanged("OAuthAccessTokenStartTime");
+					this.OnOAuthAccessTokenStartTimeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tradeleads")]
 	public partial class Tradeleads : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4411,231 +4607,6 @@ namespace LB.SQLServerDAL
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TruckInfo")]
-	public partial class TruckInfo
-	{
-		
-		private int _TruckId;
-		
-		private System.Nullable<int> _UserId;
-		
-		private string _Num;
-		
-		private string _TruckType;
-		
-		private string _TruckLength;
-		
-		private string _TruckLoad;
-		
-		private string _Brands;
-		
-		private string _DeliveryYear;
-		
-		private string _JSLicense;
-		
-		private System.Nullable<bool> _JSrLicenseAU;
-		
-		private string _XSLicense;
-		
-		private string _XSLicenseAU;
-		
-		public TruckInfo()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int TruckId
-		{
-			get
-			{
-				return this._TruckId;
-			}
-			set
-			{
-				if ((this._TruckId != value))
-				{
-					this._TruckId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
-		public System.Nullable<int> UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Num", DbType="NVarChar(50)")]
-		public string Num
-		{
-			get
-			{
-				return this._Num;
-			}
-			set
-			{
-				if ((this._Num != value))
-				{
-					this._Num = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckType", DbType="NVarChar(50)")]
-		public string TruckType
-		{
-			get
-			{
-				return this._TruckType;
-			}
-			set
-			{
-				if ((this._TruckType != value))
-				{
-					this._TruckType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckLength", DbType="NVarChar(50)")]
-		public string TruckLength
-		{
-			get
-			{
-				return this._TruckLength;
-			}
-			set
-			{
-				if ((this._TruckLength != value))
-				{
-					this._TruckLength = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TruckLoad", DbType="NVarChar(50)")]
-		public string TruckLoad
-		{
-			get
-			{
-				return this._TruckLoad;
-			}
-			set
-			{
-				if ((this._TruckLoad != value))
-				{
-					this._TruckLoad = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Brands", DbType="NVarChar(50)")]
-		public string Brands
-		{
-			get
-			{
-				return this._Brands;
-			}
-			set
-			{
-				if ((this._Brands != value))
-				{
-					this._Brands = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryYear", DbType="NVarChar(50)")]
-		public string DeliveryYear
-		{
-			get
-			{
-				return this._DeliveryYear;
-			}
-			set
-			{
-				if ((this._DeliveryYear != value))
-				{
-					this._DeliveryYear = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JSLicense", DbType="NVarChar(50)")]
-		public string JSLicense
-		{
-			get
-			{
-				return this._JSLicense;
-			}
-			set
-			{
-				if ((this._JSLicense != value))
-				{
-					this._JSLicense = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JSrLicenseAU", DbType="Bit")]
-		public System.Nullable<bool> JSrLicenseAU
-		{
-			get
-			{
-				return this._JSrLicenseAU;
-			}
-			set
-			{
-				if ((this._JSrLicenseAU != value))
-				{
-					this._JSrLicenseAU = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XSLicense", DbType="NVarChar(50)")]
-		public string XSLicense
-		{
-			get
-			{
-				return this._XSLicense;
-			}
-			set
-			{
-				if ((this._XSLicense != value))
-				{
-					this._XSLicense = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_XSLicenseAU", DbType="NVarChar(50)")]
-		public string XSLicenseAU
-		{
-			get
-			{
-				return this._XSLicenseAU;
-			}
-			set
-			{
-				if ((this._XSLicenseAU != value))
-				{
-					this._XSLicenseAU = value;
-				}
 			}
 		}
 	}
@@ -6663,6 +6634,236 @@ namespace LB.SQLServerDAL
 				{
 					this._LastUpdatedDate = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WeixinMessage")]
+	public partial class WeixinMessage : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _WMId;
+		
+		private string _JobNumber;
+		
+		private string _TemplateMessageData;
+		
+		private string _TemplateMessageDataType;
+		
+		private string _RedirectUrl;
+		
+		private System.Nullable<System.DateTime> _InQueueDate;
+		
+		private System.Nullable<System.DateTime> _SendDate;
+		
+		private int _SendFailureCount;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnWMIdChanging(System.Guid value);
+    partial void OnWMIdChanged();
+    partial void OnJobNumberChanging(string value);
+    partial void OnJobNumberChanged();
+    partial void OnTemplateMessageDataChanging(string value);
+    partial void OnTemplateMessageDataChanged();
+    partial void OnTemplateMessageDataTypeChanging(string value);
+    partial void OnTemplateMessageDataTypeChanged();
+    partial void OnRedirectUrlChanging(string value);
+    partial void OnRedirectUrlChanged();
+    partial void OnInQueueDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnInQueueDateChanged();
+    partial void OnSendDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnSendDateChanged();
+    partial void OnSendFailureCountChanging(int value);
+    partial void OnSendFailureCountChanged();
+    #endregion
+		
+		public WeixinMessage()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WMId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid WMId
+		{
+			get
+			{
+				return this._WMId;
+			}
+			set
+			{
+				if ((this._WMId != value))
+				{
+					this.OnWMIdChanging(value);
+					this.SendPropertyChanging();
+					this._WMId = value;
+					this.SendPropertyChanged("WMId");
+					this.OnWMIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(32)")]
+		public string JobNumber
+		{
+			get
+			{
+				return this._JobNumber;
+			}
+			set
+			{
+				if ((this._JobNumber != value))
+				{
+					this.OnJobNumberChanging(value);
+					this.SendPropertyChanging();
+					this._JobNumber = value;
+					this.SendPropertyChanged("JobNumber");
+					this.OnJobNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TemplateMessageData", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string TemplateMessageData
+		{
+			get
+			{
+				return this._TemplateMessageData;
+			}
+			set
+			{
+				if ((this._TemplateMessageData != value))
+				{
+					this.OnTemplateMessageDataChanging(value);
+					this.SendPropertyChanging();
+					this._TemplateMessageData = value;
+					this.SendPropertyChanged("TemplateMessageData");
+					this.OnTemplateMessageDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TemplateMessageDataType", DbType="NVarChar(128)")]
+		public string TemplateMessageDataType
+		{
+			get
+			{
+				return this._TemplateMessageDataType;
+			}
+			set
+			{
+				if ((this._TemplateMessageDataType != value))
+				{
+					this.OnTemplateMessageDataTypeChanging(value);
+					this.SendPropertyChanging();
+					this._TemplateMessageDataType = value;
+					this.SendPropertyChanged("TemplateMessageDataType");
+					this.OnTemplateMessageDataTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RedirectUrl", DbType="NVarChar(1024)")]
+		public string RedirectUrl
+		{
+			get
+			{
+				return this._RedirectUrl;
+			}
+			set
+			{
+				if ((this._RedirectUrl != value))
+				{
+					this.OnRedirectUrlChanging(value);
+					this.SendPropertyChanging();
+					this._RedirectUrl = value;
+					this.SendPropertyChanged("RedirectUrl");
+					this.OnRedirectUrlChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InQueueDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InQueueDate
+		{
+			get
+			{
+				return this._InQueueDate;
+			}
+			set
+			{
+				if ((this._InQueueDate != value))
+				{
+					this.OnInQueueDateChanging(value);
+					this.SendPropertyChanging();
+					this._InQueueDate = value;
+					this.SendPropertyChanged("InQueueDate");
+					this.OnInQueueDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SendDate
+		{
+			get
+			{
+				return this._SendDate;
+			}
+			set
+			{
+				if ((this._SendDate != value))
+				{
+					this.OnSendDateChanging(value);
+					this.SendPropertyChanging();
+					this._SendDate = value;
+					this.SendPropertyChanged("SendDate");
+					this.OnSendDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SendFailureCount", DbType="Int NOT NULL")]
+		public int SendFailureCount
+		{
+			get
+			{
+				return this._SendFailureCount;
+			}
+			set
+			{
+				if ((this._SendFailureCount != value))
+				{
+					this.OnSendFailureCountChanging(value);
+					this.SendPropertyChanging();
+					this._SendFailureCount = value;
+					this.SendPropertyChanged("SendFailureCount");
+					this.OnSendFailureCountChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

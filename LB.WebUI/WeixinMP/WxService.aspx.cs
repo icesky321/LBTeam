@@ -38,13 +38,13 @@ public partial class WeixinMP_WxService : System.Web.UI.Page
             // get method -仅在微信后台填写URL验证时触发
             if (CheckSignature.Check(signature, timestamp, nonce, token))
             {
-                Response.Clear();
+                Response.Clear();       // 在修改服务器配置时，可能会发生 Token验证失败 的错误，要加上此句
                 Response.Write(echostr);
                 Response.End();
             }
             else
             {
-                Response.Clear();
+                Response.Clear();       // 在修改服务器配置时，可能会发生 Token验证失败 的错误，要加上此句
                 Response.Write("failed:" + signature + "," + CheckSignature.GetSignature(timestamp, nonce, token) + "." +
                     "如果你看到此句，说明此地址有效，但回调验证未通过，请注意Token的一致性。");
                 Response.End();

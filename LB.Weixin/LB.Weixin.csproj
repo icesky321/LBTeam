@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}</ProjectGuid>
+    <ProjectGuid>{2FF3A869-0866-4902-A739-1115AB19C961}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LB.SQLServerDAL</RootNamespace>
-    <AssemblyName>LB.SQLServerDAL</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>LB.Weixin</RootNamespace>
+    <AssemblyName>LB.Weixin</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,56 +30,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Senparc.Weixin">
+      <HintPath>..\LB.WebUI\ImportDLL\Senparc.Weixin.dll</HintPath>
+    </Reference>
+    <Reference Include="Senparc.Weixin.MP">
+      <HintPath>..\LB.WebUI\ImportDLL\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CopInfoDA.cs" />
-    <Compile Include="LBDB.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LBDB.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="LBDB_Extend.cs" />
-    <Compile Include="NewsInfoDA.cs" />
-    <Compile Include="NewsTypeDA.cs" />
-    <Compile Include="DS\ConnectionString.cs" />
-    <Compile Include="OAuthAccessTokenDA.cs" />
+    <Compile Include="AccessTokenManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TradeleadsDA.cs" />
-    <Compile Include="TSInfoDA.cs" />
-    <Compile Include="UnitInfoDA.cs" />
-    <Compile Include="UserInfoDA.cs" />
-    <Compile Include="UserTypeInfoDA.cs" />
-    <Compile Include="WeixinMessageDA.cs" />
+    <Compile Include="TemplateInfoData.cs" />
+    <Compile Include="TemplateMessageSender.cs" />
+    <Compile Include="WeixinMessageQueue.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LB.Model\LB.Model.csproj">
-      <Project>{c576e507-1e6e-4aab-9863-a46398d09fad}</Project>
-      <Name>LB.Model</Name>
+    <ProjectReference Include="..\LB.SQLServerDAL\LB.SQLServerDAL.csproj">
+      <Project>{5a66d98f-2f4b-45a5-a2a3-77c57408cbe5}</Project>
+      <Name>LB.SQLServerDAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LBDB.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>LBDB.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LBDB.dbml.layout">
-      <DependentUpon>LBDB.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
