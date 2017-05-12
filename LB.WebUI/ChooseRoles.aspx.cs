@@ -56,18 +56,6 @@ public partial class ChooseRoles : System.Web.UI.Page
         }
     }
 
-    protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-    {
-        if (CheckBox1.Checked)
-        {
-            btSearch.Enabled = true;
-        }
-        else
-        {
-            btSearch.Enabled = false;
-        }
-    }
-
     protected void ddlUserType_SelectedIndexChanged(object sender, EventArgs e)
     {
         if (ddlUserType.SelectedValue == "1")

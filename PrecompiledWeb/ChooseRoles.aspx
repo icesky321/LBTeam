@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="ChooseRoles, App_Web_4t2vnfcp" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="ChooseRoles, App_Web_uns12dtv" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="https://static.yjsvip.com/static/js/fastclick.js"></script>
@@ -27,8 +27,8 @@
                 <asp:RadioButton ID="RadioButton2" runat="server" GroupName="AA" />商家
                     </asp:Panel>
                     <br />
-                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" />我已认真阅读并同意<asp:LinkButton ID="lbtnProtocol" runat="server" PostBackUrl="~/Protocol.aspx">绿宝平台注册协议</asp:LinkButton><br />
-                    <asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" Enabled="false" ValidationGroup="1" />
+                    <asp:CheckBox ID="CheckBox1" runat="server" Checked="true"/>我已认真阅读并同意<asp:LinkButton ID="lbtnProtocol" runat="server" PostBackUrl="~/Protocol.aspx">绿宝平台注册协议</asp:LinkButton><br />
+                    <asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" ValidationGroup="1" />
 
                 </div>
                 <div class="am-u-md-4" style="text-align: left; margin-top: -50px;">

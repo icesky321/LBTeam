@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_UserManage, App_Web_e5fphljj" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_UserManage, App_Web_khoranan" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -6,7 +6,7 @@
     <br />
     <br />
     <br />
-    用户类型：<asp:DropDownList ID="ddlUserType" runat="server"></asp:DropDownList><asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" />
+    <asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" />
     <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />

@@ -7,6 +7,10 @@
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.sequence-min.js"></script>
     <script type="text/javascript" src="js/template.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min..css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/Num.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <style type="text/css">
         @media only screen and (max-width:640px) {
             .companywarpslider {
@@ -91,9 +95,13 @@
                 <div class="am-u-md-3">
                     <asp:TabContainer ID="TabContainer4" runat="server">
                         <asp:TabPanel ID="TabPanel7" runat="server" HeaderText="平台公告" Height="276px">
+                            <HeaderTemplate>
+                                平台公告
+                            </HeaderTemplate>
                             <ContentTemplate>
-                                <marquee direction="up"> sdfasdfsdfsdfsdf</marquee>
-
+                                <marquee scrollamount="2" width="100%" height="276px" direction="up">
+                                    <asp:Label ID="lbNotice" runat="server" Text=""></asp:Label>
+                                </marquee>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -102,7 +110,7 @@
                     <asp:TabContainer ID="TabContainer5" runat="server">
                         <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="平台动态" Height="276px">
                             <ContentTemplate>
-                                <marquee direction="up">sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br /></marquee>
+                                
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -112,7 +120,7 @@
 
         </div>
     </div>
-    
+
     <div class="section">
         <div class="container">
             <%--            <div class="section--header" style="text-align: center">
@@ -376,7 +384,7 @@
                                     </div>
                                     <div class="product3-content">
                                         <h3>冶炼厂</h3>
-                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
+                                        <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>
@@ -386,7 +394,7 @@
                                     </div>
                                     <div class="product3-content">
                                         <h3>回收公司</h3>
-                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
+                                        <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>
@@ -396,7 +404,7 @@
                                     </div>
                                     <div class="product3-content">
                                         <h3>回收业务员</h3>
-                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
+                                        <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>
@@ -406,7 +414,7 @@
                                     </div>
                                     <div class="product3-content">
                                         <h3>供货商</h3>
-                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
+                                        <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>

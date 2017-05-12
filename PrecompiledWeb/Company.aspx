@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" debug="true" inherits="Company, App_Web_2udty4a0" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" debug="true" inherits="Company, App_Web_zfregp1i" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
@@ -65,11 +65,6 @@
                                         <td>信用认证:</td>
                                         <td>
                                             <asp:Label ID="AuditLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("Audit"))? Aunth1.msg : UnAunth1.msg %> ' /></td>
-                                    </tr>
-                                    <tr>
-                                        <td>协议签署</td>
-                                        <td>
-                                            <asp:Label ID="ChopAuthenticationLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("ChopAuthentication"))? Aunth1.msg : UnAunth1.msg  %>' /></td>
                                     </tr>
                                 </table>
                                 <asp:Label ID="CopIdLabel" runat="server" Text='<%# Eval("CopId") %>' Visible="false" />
