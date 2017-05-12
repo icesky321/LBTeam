@@ -8,9 +8,13 @@
     </siteMapNode>
     <siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="Admin">
       <siteMapNode url="~/Admin/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
-      <siteMapNode url="~/Admin/UserManage.aspx" title="其他用户信息管理" description="其他用户信息管理" />
+      <siteMapNode url="~/Admin/UserManage.aspx" title="业务员信息管理" description="业务员信息管理" />
+      <siteMapNode url="~/Admin/MetalFactoryManage.aspx" title="冶炼厂信息管理" description="冶炼厂信息管理" />
+      <siteMapNode url="~/Admin/SupplierManage.aspx" title="供货商信息管理" description="供货商信息管理" />
     </siteMapNode>
-
+    <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理" securitytrimmingenabled="true" roles="Admin">
+      <siteMapNode url="~/Admin/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
+    </siteMapNode>
 
     <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >
       <siteMapNode url="~/Admin/UserTypeInfo.aspx" title="用户类别管理" description="用户类别管理" />

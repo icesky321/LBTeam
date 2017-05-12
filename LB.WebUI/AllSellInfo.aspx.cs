@@ -13,14 +13,14 @@ public partial class AllSellInfo : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2);
+            gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "2");
             gvBuyInfo.DataBind();
         }
     }
 
     void gvBuyInfoDataBind()
     {
-        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByAddressAndType(DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, 2);
+        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, "2");
 
 
         gvBuyInfo.DataBind();

@@ -33,7 +33,7 @@
                     </div>
                     <%--<div style="width: 900px; height: auto; float: left; display: inline; margin-bottom: 20px;"></div>--%>
                     <div class="am-form-group">
-                        <asp:TextBox ID="tbVerify" runat="server" ToolTip="验证码全是数字" placeholder="请输入验证码(全是数字哦)"
+                        <asp:TextBox ID="tbVerify" runat="server" ToolTip="验证码全是数字" placeholder="请输入验证码(全是数字哦)" AutoCompleteType="Disabled"
                             Width="300px"></asp:TextBox>
                         <img id="imgVerify" src="VerifyCode/VerifyCode.aspx" alt="看不清？点击更换" onclick="this.src=this.src+'?'"
                             style="width: 100px; height: 40px" />

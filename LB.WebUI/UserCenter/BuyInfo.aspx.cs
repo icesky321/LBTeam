@@ -94,24 +94,9 @@ public partial class BuyInfo : System.Web.UI.Page
                     this.FileUpload1.SaveAs(savefilenameI);
                     hfFilePath.Value = "~/PicResource/" + newfilenameI;
                     this.Image1.ImageUrl = "~/PicResource/" + newfilenameI;
-                    MTradeleads.Title = tbTitle.Text;
-                    MTradeleads.Province = DDLAddress1.province;
-                    MTradeleads.City = DDLAddress1.city;
-                    MTradeleads.Town = DDLAddress1.country;
-                    MTradeleads.Street = DDLAddress1.street;
-                    MTradeleads.Volume = tbTotalNum.Text;
-                    MTradeleads.DetailInfo = tbDetail.Text;
-                    MTradeleads.Price = tbPrice.Text;
-                    MTradeleads.UserId = Convert.ToInt32(hfUserId.Value);
-                    MTradeleads.TSId = Convert.ToInt32(ddlTS.SelectedItem.Value);
-                    MTradeleads.UnitID = Convert.ToInt32(ddlUnit.SelectedItem.Value);
-                    MTradeleads.TId = 1;
-                    MTradeleads.Hits = 0;
-                    MTradeleads.ReleaseDate = System.DateTime.Now;
+
                     MTradeleads.PicPath = hfFilePath.Value;
-                    MTradeleads.Audit = false;
-                    bll_tradeleads.NewTradeleads(MTradeleads);
-                    Response.Redirect("UserCenter.aspx");
+
                 }
                 catch
                 {
@@ -123,7 +108,24 @@ public partial class BuyInfo : System.Web.UI.Page
                 //this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
             }
         }
-
+        MTradeleads.Title = tbTitle.Text;
+        MTradeleads.Province = DDLAddress1.province;
+        MTradeleads.City = DDLAddress1.city;
+        MTradeleads.Town = DDLAddress1.country;
+        MTradeleads.Street = DDLAddress1.street;
+        MTradeleads.Volume = tbTotalNum.Text;
+        MTradeleads.DetailInfo = tbDetail.Text;
+        MTradeleads.Price = tbPrice.Text;
+        MTradeleads.UserId = Convert.ToInt32(hfUserId.Value);
+        MTradeleads.TSId = Convert.ToInt32(ddlTS.SelectedItem.Value);
+        MTradeleads.UnitID = Convert.ToInt32(ddlUnit.SelectedItem.Value);
+        MTradeleads.TId = 1;
+        MTradeleads.Hits = 0;
+        MTradeleads.ReleaseDate = System.DateTime.Now;
+        MTradeleads.Audit = false;
+        MTradeleads.AuditDatetime = Convert.ToDateTime("1900-1-1");
+        bll_tradeleads.NewTradeleads(MTradeleads);
+        Response.Redirect("UserCenter.aspx");
     }
 
     protected void btPreview_Click(object sender, EventArgs e)

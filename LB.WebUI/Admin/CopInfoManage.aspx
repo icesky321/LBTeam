@@ -72,22 +72,6 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="协议 " SortExpression="Chop">
-                <ItemTemplate>
-                    <asp:LinkButton ID="lbtnChop" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
-                        CommandName="Chop" ToolTip="协议"></asp:LinkButton>
-                    <asp:MultiView ID="MultiView4" runat="server" ActiveViewIndex="0">
-                        <asp:View ID="CView1" runat="server">
-                            <asp:ImageButton ID="lbtnCP" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="CPass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
-                            <%--<asp:LinkButton ID="lbtnCP" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="CPass">审核通过</asp:LinkButton>--%>
-                        </asp:View>
-                        <asp:View ID="CView2" runat="server">
-                            <asp:ImageButton ID="lbtnCU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="CUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
-                            <%--<asp:LinkButton ID="lbtnCU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="CUPass">取消通过</asp:LinkButton>--%>
-                        </asp:View>
-                    </asp:MultiView>
-                </ItemTemplate>
-            </asp:TemplateField>
             <asp:TemplateField HeaderText="审核" SortExpression="Audit">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'

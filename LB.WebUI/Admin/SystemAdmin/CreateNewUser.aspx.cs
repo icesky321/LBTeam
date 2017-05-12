@@ -61,6 +61,8 @@ public partial class Admin_UserAdmin_CreateNewUser : System.Web.UI.Page
         MUserInfo.IDAuthentication = false;
         MUserInfo.ChopAuthentication = false;
         MUserInfo.InCharge = false;
+        MUserInfo.Audit = false;
+        MUserInfo.AuditDate = Convert.ToDateTime("1900-1-1");
         bll_userinfo.NewUserInfo(MUserInfo);
         //Response.Redirect("UpdateEmployee.aspx?Account=" + tbMobileNum.Text.Trim());
         Response.Redirect("AddUserToRole.aspx");

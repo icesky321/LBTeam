@@ -67,11 +67,6 @@
                                         <td>
                                             <asp:Label ID="AuditLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("Audit"))? Aunth1.msg : UnAunth1.msg %> ' /></td>
                                     </tr>
-                                    <tr>
-                                        <td>协议签署</td>
-                                        <td>
-                                            <asp:Label ID="ChopAuthenticationLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("ChopAuthentication"))? Aunth1.msg : UnAunth1.msg  %>' /></td>
-                                    </tr>
                                 </table>
                                 <asp:Label ID="CopIdLabel" runat="server" Text='<%# Eval("CopId") %>' Visible="false" />
                             </ItemTemplate>

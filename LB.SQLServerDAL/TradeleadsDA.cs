@@ -169,5 +169,156 @@ namespace LB.SQLServerDAL
             }
             return query;
         }
+
+        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId)
+        {
+
+            var query = from t in dbContext.Tradeleads
+                        join u in dbContext.UserInfo on t.UserId equals u.UserId into leftGroup1
+                        from u in leftGroup1.DefaultIfEmpty()
+                        join a in dbContext.TSType on t.TId equals a.TId into leftGroup2
+                        from a in leftGroup2.DefaultIfEmpty()
+                        join b in dbContext.TSInfo on t.TSId equals b.TSId into leftGroup3
+                        from b in leftGroup3.DefaultIfEmpty()
+                        join c in dbContext.UnitInfo on t.UnitID equals c.UnitId into leftGroup4
+                        from c in leftGroup4.DefaultIfEmpty()
+                        orderby t.ReleaseDate descending
+                        select new LB.Model.TradeleadsModel()
+                        {
+                            infoId = t.InfoId,
+                            Title = t.Title,
+                            Province = t.Province,
+                            City = t.City,
+                            Town = t.Town,
+                            Street = t.Street,
+                            Volume = t.Volume,
+                            Price = t.Price,
+                            DetailInfo = t.DetailInfo,
+                            UserName = u.UserName,
+                            UserId = u.UserId,
+                            UnitName=c.UnitName,
+                            TSId=b.TSId,
+                            TSName=b.TSName,
+                            ReleaseDate = Convert.ToDateTime(t.ReleaseDate),
+                            Hits=Convert.ToInt32(t.Hits),
+                            TId=Convert.ToInt32(t.TId),
+                            TSTypeName=b.TSName,
+                            PicPath=t.PicPath,
+                            Audit=t.Audit==null?false : t.Audit.Value,
+                            AuditDatetime=Convert.ToDateTime(t.AuditDatetime),
+                            MobilePhoneNum=u.MobilePhoneNum,
+                            UserTypeId=Convert.ToInt32(u.UserTypeId)
+                        };
+            if (!string.IsNullOrEmpty(Audit))
+            {
+                query = query.Where(p => p.Audit == Convert.ToBoolean(Audit));
+            }
+            if (province != "---")
+            {
+                query = query.Where(p => p.Province.IndexOf(province) >= 0);
+            }
+            if (city != "--")
+            {
+                query = query.Where(p => p.City.IndexOf(city) >= 0);
+            }
+            if (country != "--")
+            {
+                query = query.Where(p => p.Town.IndexOf(country) >= 0);
+            }
+            if (street != "--")
+            {
+                query = query.Where(p => p.Street.IndexOf(street) >= 0);
+            }
+            if (!string.IsNullOrEmpty(TId))
+            {
+                query = query.Where(p => p.TId == Convert.ToInt32(TId));
+            }
+            return query.AsQueryable<LB.Model.TradeleadsModel>();
+        }
+
+        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAll()
+        {
+
+            var query = from t in dbContext.Tradeleads
+                        join u in dbContext.UserInfo on t.UserId equals u.UserId into leftGroup1
+                        from u in leftGroup1.DefaultIfEmpty()
+                        join a in dbContext.TSType on t.TId equals a.TId into leftGroup2
+                        from a in leftGroup2.DefaultIfEmpty()
+                        join b in dbContext.TSInfo on t.TSId equals b.TSId into leftGroup3
+                        from b in leftGroup3.DefaultIfEmpty()
+                        join c in dbContext.UnitInfo on t.UnitID equals c.UnitId into leftGroup4
+                        from c in leftGroup4.DefaultIfEmpty()
+                        orderby t.ReleaseDate descending
+                        select new LB.Model.TradeleadsModel()
+                        {
+                            infoId = t.InfoId,
+                            Title = t.Title,
+                            Province = t.Province,
+                            City = t.City,
+                            Town = t.Town,
+                            Street = t.Street,
+                            Volume = t.Volume,
+                            Price = t.Price,
+                            DetailInfo = t.DetailInfo,
+                            UserName = u.UserName,
+                            UserId = u.UserId,
+                            UnitName = c.UnitName,
+                            TSId = b.TSId,
+                            TSName = b.TSName,
+                            ReleaseDate = Convert.ToDateTime(t.ReleaseDate),
+                            Hits = Convert.ToInt32(t.Hits),
+                            TId = Convert.ToInt32(t.TId),
+                            TSTypeName = b.TSName,
+                            PicPath = t.PicPath,
+                            Audit = t.Audit == null ? false : t.Audit.Value,
+                            AuditDatetime = Convert.ToDateTime(t.AuditDatetime),
+                            MobilePhoneNum = u.MobilePhoneNum,
+                            UserTypeId = Convert.ToInt32(u.UserTypeId)
+                        };
+            return query.AsQueryable<LB.Model.TradeleadsModel>();
+        }
+
+        public LB.Model.TradeleadsModel GetTradeleadsInfoModelByinfoId(int InfoId)
+        {
+            var query = from t in dbContext.Tradeleads
+                        join u in dbContext.UserInfo on t.UserId equals u.UserId into leftGroup1
+                        from u in leftGroup1.DefaultIfEmpty()
+                        join a in dbContext.TSType on t.TId equals a.TId into leftGroup2
+                        from a in leftGroup2.DefaultIfEmpty()
+                        join b in dbContext.TSInfo on t.TSId equals b.TSId into leftGroup3
+                        from b in leftGroup3.DefaultIfEmpty()
+                        join c in dbContext.UnitInfo on t.UnitID equals c.UnitId into leftGroup4
+                        from c in leftGroup4.DefaultIfEmpty()
+                        where t.InfoId == InfoId
+                        select new LB.Model.TradeleadsModel()
+                        {
+                            infoId = t.InfoId,
+                            Title = t.Title,
+                            Province = t.Province,
+                            City = t.City,
+                            Town = t.Town,
+                            Street = t.Street,
+                            Volume = t.Volume,
+                            Price = t.Price,
+                            DetailInfo = t.DetailInfo,
+                            UserName = u.UserName,
+                            UserId = u.UserId,
+                            UnitName = c.UnitName,
+                            TSId = b.TSId,
+                            TSName = b.TSName,
+                            ReleaseDate = Convert.ToDateTime(t.ReleaseDate),
+                            Hits = Convert.ToInt32(t.Hits),
+                            TId = Convert.ToInt32(t.TId),
+                            TSTypeName = b.TSName,
+                            PicPath = t.PicPath,
+                            Audit = t.Audit == null ? false : t.Audit.Value,
+                            AuditDatetime = Convert.ToDateTime(t.AuditDatetime),
+                            MobilePhoneNum = u.MobilePhoneNum,
+                            UserTypeId = Convert.ToInt32(u.UserTypeId),
+                            IDAuthentication = u.IDAuthentication == null ? false : u.IDAuthentication.Value,
+                            UserAudit = u.Audit == null ? false : u.Audit.Value
+                        };
+            return query.FirstOrDefault<LB.Model.TradeleadsModel>();
+        }
     }
 }

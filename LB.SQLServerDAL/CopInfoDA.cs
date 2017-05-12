@@ -156,5 +156,18 @@ namespace LB.SQLServerDAL
                         };
             return query;
         }
+
+        public bool ExistUseId(int UseId)
+        {
+            bool exists = false;
+            var query = from u in dbContext.CopInfo
+                        where u.UserId == UseId
+                        select u;
+            if (query.Count() > 0)
+            {
+                exists = true;
+            }
+            return exists;
+        }
     }
 }

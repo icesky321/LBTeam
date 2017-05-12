@@ -89,14 +89,9 @@ namespace LB.BLL
             return da.GetUserInfoByAddress(UserTypeId, province, city, country, street);
         }
 
-        public IQueryable<LB.Model.UserInfoModel> GetUserInfosByAddress(string province, string city, string country, string street, int UserTypeId)
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
         {
-            return da.GetUserInfosByAddress(province, city, country, street, UserTypeId);
-        }
-
-        public IQueryable<LB.Model.UserInfoModel> GetUserInfoByTelNumFuzzy(string TelNum)
-        {
-            return da.GetUserInfoByTelNumFuzzy(TelNum);
+            return da.GetUserInfosBySEO(province, city, country, street, UserTypeId, TelNum);
         }
     }
 }

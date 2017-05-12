@@ -26,27 +26,35 @@
                             <Columns>
                                 <asp:TemplateField HeaderText="标题 " SortExpression="Title">
                                     <ItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
-                                            Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("infoId") %>'
-                                            CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                                            <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
+                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("infoId") %>'
+                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="区域 " SortExpression="infoId">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
-                                        <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
-                                        <asp:Label ID="lbTown" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
-                                        <asp:Label ID="lbStreet" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                                            <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
+                                            <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
+                                            <asp:Label ID="lbTown" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
+                                            <asp:Label ID="lbStreet" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="发布人 " SortExpression="发布人">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                                            <asp:Label ID="lbUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText=" " SortExpression="ReleaseDate">
+                                <asp:TemplateField HeaderText="发布时间" SortExpression="ReleaseDate">
                                     <ItemTemplate>
-                                        <asp:Label ID="lbReleaseDate" runat="server" Text='<%# Bind("ReleaseDate","{0:yyyy-M-d}") %>'></asp:Label>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                                            <asp:Label ID="lbReleaseDate" runat="server" Text='<%# Bind("ReleaseDate","{0:yyyy-M-d}") %>'></asp:Label>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>

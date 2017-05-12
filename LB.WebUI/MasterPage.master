@@ -140,8 +140,6 @@
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="AllBuyInfo.aspx">求购信息</a></li>
                                         <li class="menu-item"><a href="AllSellInfo.aspx">供应信息</a></li>
-                                        <li class="menu-item"><a href="#">物流信息</a></li>
-                                        <li class="menu-item"><a href="#">其它信息</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>

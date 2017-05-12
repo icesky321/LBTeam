@@ -17,11 +17,16 @@ public partial class Admin_ListUsers : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             //绑定用户和角色信息
-            gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
-            gvUsers.DataBind();
+            gvUserDataBind();
             gvRoles.DataSource = Roles.GetAllRoles();
             gvRoles.DataBind();
         }
+    }
+
+    void gvUserDataBind()
+    {
+        gvUsers.DataSource = bll_userinfo.GetUserInfosBySEO("", "", "", "", "", tbTelNum.Text);
+        gvUsers.DataBind();
     }
 
     protected void LinkButtonClick(object sender, CommandEventArgs e)
@@ -88,8 +93,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
             MembershipUser mu = Membership.GetUser(username);
             mu.IsApproved = cbIsApproved.Checked;
             Membership.UpdateUser(mu);
-            gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
-            gvUsers.DataBind();
+            gvUserDataBind();
             lbMessage.Text = "更新成功.";
         }
         catch (System.Configuration.Provider.ProviderException ex)
@@ -133,8 +137,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
     protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvUsers.PageIndex = e.NewPageIndex;
-        gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
-        gvUsers.DataBind();
+        gvUserDataBind();
     }
 
     protected void PageDropDownList_SelectedIndexChanged(Object sender, EventArgs e)
@@ -153,8 +156,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
 
         gvUsers.PageIndex = pageList.SelectedIndex;
 
-        gvUsers.DataSource = bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
-        gvUsers.DataBind(); //数据绑定 
+        gvUserDataBind(); //数据绑定 
 
     }
 
@@ -239,7 +241,6 @@ public partial class Admin_ListUsers : System.Web.UI.Page
 
     protected void btSearch_Click(object sender, EventArgs e)
     {
-        gvUsers.DataSource =  bll_userinfo.GetUserInfoByTelNumFuzzy(tbTelNum.Text);
-        gvUsers.DataBind();
+        gvUserDataBind();
     }
 }

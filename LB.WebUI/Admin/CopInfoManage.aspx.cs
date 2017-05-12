@@ -21,7 +21,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
 
     void gvCopInfoDataBind()
     {
-        gvCopInfo.DataSource = bll_copinfo.GetCopInfo();
+        gvCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType(2);
         gvCopInfo.DataBind();
 
         foreach (GridViewRow gvRow in gvCopInfo.Rows)
@@ -52,21 +52,21 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
             {
                 ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 1;
             }
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).ChopAuthentication == false)
-            {
-                ((MultiView)(gvRow.Cells[10].FindControl("MultiView4"))).ActiveViewIndex = 0;
-            }
-            else
-            {
-                ((MultiView)(gvRow.Cells[10].FindControl("MultiView4"))).ActiveViewIndex = 1;
-            }
+            //if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).ChopAuthentication == false)
+            //{
+            //    ((MultiView)(gvRow.Cells[10].FindControl("MultiView4"))).ActiveViewIndex = 0;
+            //}
+            //else
+            //{
+            //    ((MultiView)(gvRow.Cells[10].FindControl("MultiView4"))).ActiveViewIndex = 1;
+            //}
             if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).Audit == false)
             {
-                ((MultiView)(gvRow.Cells[10].FindControl("MultiView5"))).ActiveViewIndex = 0;
+                ((MultiView)(gvRow.Cells[9].FindControl("MultiView5"))).ActiveViewIndex = 0;
             }
             else
             {
-                ((MultiView)(gvRow.Cells[10].FindControl("MultiView5"))).ActiveViewIndex = 1;
+                ((MultiView)(gvRow.Cells[9].FindControl("MultiView5"))).ActiveViewIndex = 1;
             }
         }
     }
@@ -115,19 +115,19 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         {
             MUserInfo.IDAuthentication = false;
         }
-        if (e.CommandName == "Chop")
-        {
-            string url = MUserInfo.Chop;
-            Response.Redirect(url);
-        }
-        if (e.CommandName == "CPass")
-        {
-            MUserInfo.ChopAuthentication = true;
-        }
-        if (e.CommandName == "CUPass")
-        {
-            MUserInfo.ChopAuthentication = false;
-        }
+        //if (e.CommandName == "Chop")
+        //{
+        //    string url = MUserInfo.Chop;
+        //    Response.Redirect(url);
+        //}
+        //if (e.CommandName == "CPass")
+        //{
+        //    MUserInfo.ChopAuthentication = true;
+        //}
+        //if (e.CommandName == "CUPass")
+        //{
+        //    MUserInfo.ChopAuthentication = false;
+        //}
         if (e.CommandName == "Pass")
         {
             MUserInfo.Audit = true;

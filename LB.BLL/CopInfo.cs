@@ -43,5 +43,10 @@ namespace LB.BLL
         {
             return da.GetCopInfoByUserType(UserTypeId);
         }
+
+        public bool ExistUseId(int UseId)
+        {
+            return da.ExistUseId(UseId);
+        }
     }
 }
