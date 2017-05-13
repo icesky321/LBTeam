@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Senparc.Weixin;
 using Senparc.Weixin.MP;
+using Senparc.Weixin.MP.Entities;
 using System.Configuration;
 
 public partial class WeixinMP_WxService : System.Web.UI.Page
@@ -49,6 +50,26 @@ public partial class WeixinMP_WxService : System.Web.UI.Page
                     "如果你看到此句，说明此地址有效，但回调验证未通过，请注意Token的一致性。");
                 Response.End();
             }
+        }
+
+        if (Request.HttpMethod == "POST")
+        {
+            //post method - 当有用户向公众账号发送消息时触发
+            if (!CheckSignature.Check(signature, timestamp, nonce, Token))
+            {
+                Response.Clear();
+                Response.Write("身份检验未通过，参数错误！");
+                return;
+            }
+
+            //自定义MessageHandler，对微信请求的详细判断操作都在这里面。
+            Senparc.Weixin.MP.Entities.Request.PostModel postModel = new Senparc.Weixin.MP.Entities.Request.PostModel();
+            postModel.SetSecretInfo(token, string.Empty, "wx5987b3efa3881815");
+            var messageHandler = new LB.Weixin.CommonService.CustomMessageHandler.CustomMessageHandler(Request.InputStream, postModel);
+            //执行微信处理过程
+            messageHandler.Execute();
+            //输出结果
+            //WriteContent(messageHandler.ResponseDocument.ToString());
         }
 
     }
