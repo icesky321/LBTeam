@@ -36,9 +36,13 @@
     <Reference Include="Senparc.Weixin.MP">
       <HintPath>..\LB.WebUI\ImportDLL\Senparc.Weixin.MP.dll</HintPath>
     </Reference>
+    <Reference Include="Senparc.Weixin.QY">
+      <HintPath>..\..\..\RepoBank\LivRepo\Licai\Licai\ImportDLL\Senparc.Weixin.QY.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,9 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenManage.cs" />
+    <Compile Include="CustomMessageHandler\CustomMessageContext.cs" />
+    <Compile Include="CustomMessageHandler\CustomMessageHandler.cs" />
+    <Compile Include="CustomMessageHandler\CustomMessageHandler_Events.cs" />
+    <Compile Include="Download\CodeRecord.cs" />
+    <Compile Include="Download\Config.cs" />
+    <Compile Include="Download\ConfigHelper.cs" />
+    <Compile Include="LocationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateInfoData.cs" />
     <Compile Include="TemplateMessageSender.cs" />
+    <Compile Include="Utilities\Server.cs" />
     <Compile Include="WeixinMessageQueue.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +70,10 @@
       <Project>{5a66d98f-2f4b-45a5-a2a3-77c57408cbe5}</Project>
       <Name>LB.SQLServerDAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Download\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
