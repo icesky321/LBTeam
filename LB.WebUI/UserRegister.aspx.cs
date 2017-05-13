@@ -62,6 +62,7 @@ public partial class UserRegister : System.Web.UI.Page
             Membership.CreateUser(tbMobileNum.Text, tbPassword.Text);
             MUserInfo.UserTypeId = Convert.ToInt32(hfUserTypeId.Value);
             MUserInfo.Audit = false;
+            MUserInfo.AuditDate = Convert.ToDateTime("1900-1-1");
             MUserInfo.Province = DDLAddress1.province.ToString();
             MUserInfo.City = DDLAddress1.city.ToString();
             MUserInfo.Town = DDLAddress1.country.ToString();

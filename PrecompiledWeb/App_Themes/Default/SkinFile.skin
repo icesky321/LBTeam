@@ -11,6 +11,7 @@
 
 <asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
 --%>
+<asp:TextBox runat="server" CssClass="textboxCss"></asp:TextBox>
 
 <asp:DropDownList runat="server" CssClass="dropdownlist"></asp:DropDownList>
 
@@ -24,7 +25,7 @@
         <AlternatingRowStyle CssClass="gvAltRow"/>
         <PagerStyle CssClass="gvPager" /> 
 </asp:GridView>
-<asp:TextBox  runat="server" BorderColor="#66FFFF" BorderStyle="Groove" height="20px" BorderWidth="1px"></asp:TextBox>
+ <%--  <asp:TextBox  runat="server" BorderColor="#66FFFF" BorderStyle="Groove" height="20px" BorderWidth="1px"></asp:TextBox>--%>
     <asp:Button runat="server" class="btn" />
 <asp:GridView SkinID="GridView2"  runat="server" AllowPaging="false"  PageSize="15" cellspacing= "0" CellPadding= "0" CssClass="mGrid">
         <PagerStyle CssClass="pgr" /> 
@@ -32,9 +33,26 @@
 </asp:GridView>
 
 <asp:GridView SkinID="GridView3"  runat="server" AllowPaging="false"  PageSize="10" cellspacing= "0" CellPadding= "0" ShowHeader="false" BorderStyle="None" BorderWidth="0px" GridLines ="None" ShowFooter="true">
-
+        <RowStyle  CssClass="gvRow"/>
+        <EditRowStyle CssClass="gvEditRow"/>
+        <HeaderStyle CssClass="gvHeader" />
+        <AlternatingRowStyle CssClass="gvAltRow"/>
+        <PagerStyle CssClass="gvPager" /> 
 </asp:GridView>
 
 <asp:GridView runat="server" SkinId="GridView4" CssClass="GridFrame" AllowPaging="true"  PageSize="15"  CellPadding="0" CellSpacing="0" AutoGenerateColumns="False" BorderStyle="None" BorderWidth="0px" GridLines ="None" ShowFooter="true">
+        <RowStyle  CssClass="gvRow"/>
+        <EditRowStyle CssClass="gvEditRow"/>
+        <AlternatingRowStyle CssClass="gvAltRow"/>
+        <PagerStyle CssClass="gvPager" /> 
+</asp:GridView>
 
+<asp:GridView   runat="server"  SkinId="GridView5"  AllowPaging="true"  PageSize="20" cellspacing= "0" CellPadding= "0"  Width="100%" AutoGenerateColumns="False" BorderStyle="None" BorderWidth="0px" GridLines ="None" ShowFooter="true">
+
+ <%--   CssClass均源于主题下CSS/Main.css--%>
+
+        <RowStyle  CssClass="gvRow" />
+        <EditRowStyle CssClass="gvEditRow"/>
+        <AlternatingRowStyle CssClass="gvAltRow"/>
+        <PagerStyle CssClass="gvPager" /> 
 </asp:GridView>

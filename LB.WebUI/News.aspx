@@ -2,7 +2,7 @@
     CodeFile="News.aspx.cs" Inherits="News" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-        <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <!--===========layout-container================-->
@@ -24,9 +24,11 @@
                             <Columns>
                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                     <ItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
-                                            Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
-                                            CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 60%; text-align: left;">
+                                            <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
+                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
+                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText=" " SortExpression="NoteTime">
@@ -71,24 +73,30 @@
                             <Columns>
                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                     <ItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text="•"></asp:Label>
-                                        <asp:LinkButton ID="lbtnTitle1"
-                                            Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
-                                            CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 30%; text-align: left;">
+                                            <asp:Label ID="Label1" runat="server" Text="•"></asp:Label>
+                                            <asp:LinkButton ID="lbtnTitle1"
+                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
+                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText=" " SortExpression="Content">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbtnTitle2"
-                                            Style="text-decoration: none" runat="server" Text='<%# Bind("Content") %>' CommandArgument='<%#Eval("id") %>'
-                                            CommandName="Detail" ToolTip='<%# Bind("Content") %>'></asp:LinkButton>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 30%; text-align: left;">
+                                            <asp:LinkButton ID="lbtnTitle2"
+                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Content") %>' CommandArgument='<%#Eval("id") %>'
+                                                CommandName="Detail" ToolTip='<%# Bind("Content") %>'></asp:LinkButton>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText=" " SortExpression="UserName">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="lbtnTitle3"
-                                            Style="text-decoration: none" runat="server" Text='<%# Bind("UserName") %>' CommandArgument='<%#Eval("id") %>'
-                                            CommandName="Detail" ToolTip='<%# Bind("UserName") %>'></asp:LinkButton>
+                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 30%; text-align: left;">
+                                            <asp:LinkButton ID="lbtnTitle3"
+                                                Style="text-decoration: none" runat="server" Text='<%# Bind("UserName") %>' CommandArgument='<%#Eval("id") %>'
+                                                CommandName="Detail" ToolTip='<%# Bind("UserName") %>'></asp:LinkButton>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText=" " SortExpression="NoteTime">
@@ -124,8 +132,8 @@
 
 
             </div>
-            </div>
         </div>
+    </div>
     </div>
 
 

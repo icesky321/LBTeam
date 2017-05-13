@@ -13,7 +13,7 @@ public partial class AllBuyInfo : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(1);
+            gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1");
             gvBuyInfo.DataBind();
             
         }
@@ -21,19 +21,9 @@ public partial class AllBuyInfo : System.Web.UI.Page
 
     void gvBuyInfoDataBind()
     {
-        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByAddressAndType(DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, 1);
-
+        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, "1");
 
         gvBuyInfo.DataBind();
-    }
-
-    protected void btnGo_Click(object sender, EventArgs e)
-    {
-        GridViewRow gridViewRow = gvBuyInfo.BottomPagerRow;
-        TextBox numBox = (TextBox)gvBuyInfo.BottomPagerRow.FindControl("txtNewPageIndex");
-        int inputNum = Convert.ToInt32(numBox.Text);
-        gvBuyInfo.PageIndex = inputNum - 1;
-        gvBuyInfoDataBind();
     }
     protected void gvBuyInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

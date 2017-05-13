@@ -47,6 +47,7 @@
     <Compile Include="SMS.cs" />
     <Compile Include="Tradeleads.cs" />
     <Compile Include="TSInfo.cs" />
+    <Compile Include="TSType.cs" />
     <Compile Include="UnitInfo.cs" />
     <Compile Include="UserInfo.cs" />
     <Compile Include="UserTypeInfo.cs" />

@@ -1,20 +1,19 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_3x0vyrah" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_uns12dtv" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/product.min.css" />
-        <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.sequence-min.js"></script>
     <script type="text/javascript" src="js/template.js"></script>
-     <style type="text/css">
-         
+    <style type="text/css">
         @media only screen and (max-width:640px) {
             .companywarpslider {
                 display: none;
             }
         }
-     </style>
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="homepage-slider companywarpslider">
@@ -93,8 +92,8 @@
                     <asp:TabContainer ID="TabContainer4" runat="server">
                         <asp:TabPanel ID="TabPanel7" runat="server" HeaderText="平台公告" Height="276px">
                             <ContentTemplate>
-                                <marquee direction=up> sdfasdfsdfsdfsdf</marquee>
-                               
+                                <marquee direction="up"> sdfasdfsdfsdfsdf</marquee>
+
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -103,7 +102,7 @@
                     <asp:TabContainer ID="TabContainer5" runat="server">
                         <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="平台动态" Height="276px">
                             <ContentTemplate>
-                               <marquee direction=up>sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br /></marquee>
+                                <marquee direction="up">sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br />sdfasdfsdfsdfsdf<br /></marquee>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -113,7 +112,7 @@
 
         </div>
     </div>
-
+    
     <div class="section">
         <div class="container">
             <%--            <div class="section--header" style="text-align: center">
@@ -127,14 +126,14 @@
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
                             <asp:TabContainer ID="TabContainer2" runat="server">
-                                <asp:TabPanel ID="TabPanel3" runat="server" HeaderText=" 财经资讯"  Height="276px">
+                                <asp:TabPanel ID="TabPanel3" runat="server" HeaderText=" 财经资讯" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvNews" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
                                             SkinID="GridView3" Width="500" OnRowCommand="gvNews_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px;">
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px; text-align: left;">
                                                             <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
                                                                 Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
                                                                 CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
@@ -161,7 +160,7 @@
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px;">
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px; text-align: left;">
                                                             <asp:Label ID="Label2" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton1"
                                                                 Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
                                                                 CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
@@ -188,7 +187,7 @@
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px;">
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; text-align: left;">
                                                             <asp:Label ID="Label4" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton3"
                                                                 Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
                                                                 CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
@@ -197,7 +196,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText=" " SortExpression="UserName">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px; text-align: left;">
                                                             <asp:LinkButton ID="lbtnArea" Style="text-decoration: none" runat="server" Text='<%# Bind("UserName") %>'
                                                                 CommandArgument='<%#Eval("id") %>' CommandName="Detail" ToolTip='<%# Bind("UserName") %>'></asp:LinkButton>
                                                         </div>
@@ -205,7 +204,7 @@
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Content">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px;">
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px; text-align: left;">
                                                             <asp:LinkButton ID="lbtnPrice" Style="text-decoration: none" runat="server" Text='<%# Bind("Content") %>'
                                                                 CommandArgument='<%#Eval("id") %>' CommandName="Detail" ToolTip='<%# Bind("Content") %>'></asp:LinkButton>
                                                         </div>
@@ -224,14 +223,14 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
-                                 <asp:TabPanel ID="TabPanel9" runat="server" HeaderText="政策法规" Height="276px">
+                                <asp:TabPanel ID="TabPanel9" runat="server" HeaderText="政策法规" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvLaw" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
                                             SkinID="GridView3" Width="500" OnRowCommand="gvLaw_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px;">
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px; text-align: left;">
                                                             <asp:Label ID="lbLawTitle" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton1"
                                                                 Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
                                                                 CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
@@ -266,22 +265,28 @@
                                             <Columns>
                                                 <asp:TemplateField HeaderText="标题 " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label6" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton5"
-                                                            Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("infoId") %>'
-                                                            CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; text-align: left;">
+                                                            <asp:Label ID="Label6" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton5"
+                                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("infoId") %>'
+                                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="区域 " SortExpression="infoId">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
-                                                        <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
-                                                        <asp:Label ID="lbTown" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
-                                                        <asp:Label ID="lbStreet" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px; text-align: left;">
+                                                            <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
+                                                            <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
+                                                            <asp:Label ID="lbTown" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
+                                                            <asp:Label ID="lbStreet" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                                                        </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="发布人 " SortExpression="发布人">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="lbUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px; text-align: left;">
+                                                            <asp:Label ID="lbUserName" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                                        </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText=" " SortExpression="ReleaseDate">
@@ -304,22 +309,28 @@
                                             <Columns>
                                                 <asp:TemplateField HeaderText="标题 " SortExpression="Title">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label7" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton7"
-                                                            Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("infoId") %>'
-                                                            CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 200px; text-align: left;">
+                                                            <asp:Label ID="Label7" runat="server" Text="•"></asp:Label><asp:LinkButton ID="LinkButton7"
+                                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("infoId") %>'
+                                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="区域 " SortExpression="infoId">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
-                                                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("City") %>'></asp:Label>
-                                                        <asp:Label ID="Label10" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
-                                                        <asp:Label ID="Label11" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px; text-align: left;">
+                                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
+                                                            <asp:Label ID="Label9" runat="server" Text='<%# Bind("City") %>'></asp:Label>
+                                                            <asp:Label ID="Label10" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
+                                                            <asp:Label ID="Label11" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                                                        </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="发布人 " SortExpression="发布人">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label12" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100px; text-align: left;">
+                                                            <asp:Label ID="Label12" runat="server" Text='<%# Bind("UserName") %>'></asp:Label>
+                                                        </div>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText=" " SortExpression="ReleaseDate">
@@ -345,7 +356,7 @@
         </div>
     </div>
 
-    <div class="section" style="margin-top: 0px; background-image: url('../assets/images/pattern-light.png');">
+    <div class="section" style="margin-top: 0px; background-image: url('images/pattern-light.png');">
         <div class="container">
             <%--            <div class="section--header" style="text-align: center">
                 <p class="section--description">
@@ -359,23 +370,23 @@
                     <div class="am-u-md-12">
                         <div class="product3-main">
                             <div class="am-g">
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx';">
+                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx?Id=3';">
                                     <div class="product3-icon">
                                         <i class="am-icon-star-o"></i>
                                     </div>
                                     <div class="product3-content">
                                         <h3>冶炼厂</h3>
-                                        <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>
+                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx?Id=2';">
                                     <div class="product3-icon">
                                         <i class="am-icon-heart-o"></i>
                                     </div>
                                     <div class="product3-content">
                                         <h3>回收公司</h3>
-                                        <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>
+                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>
@@ -385,7 +396,7 @@
                                     </div>
                                     <div class="product3-content">
                                         <h3>回收业务员</h3>
-                                        <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>
+                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>
@@ -395,7 +406,7 @@
                                     </div>
                                     <div class="product3-content">
                                         <h3>供货商</h3>
-                                        <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>
+                                       <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
                                 </div>

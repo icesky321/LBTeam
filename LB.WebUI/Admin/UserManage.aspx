@@ -6,7 +6,7 @@
     <br />
     <br />
     <br />
-    用户类型：<asp:DropDownList ID="ddlUserType" runat="server"></asp:DropDownList><asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" />
+    <asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" />
     <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />

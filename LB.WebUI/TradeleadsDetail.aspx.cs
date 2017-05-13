@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class TradeleadsDetail : System.Web.UI.Page
 {
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
-    LB.SQLServerDAL.Tradeleads MTradeleads = new LB.SQLServerDAL.Tradeleads();
+    LB.Model.TradeleadsModel MTradeleadsModel = new LB.Model.TradeleadsModel();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -16,9 +16,40 @@ public partial class TradeleadsDetail : System.Web.UI.Page
             if (Request.QueryString["infoId"] != null)
             {
                 int infoId = Convert.ToInt32(Request.QueryString["infoId"]);
-                MTradeleads = bll_tradeleads.GetTradeleadsByinfoId(infoId);
-                lbTitle.Text = MTradeleads.Title;
-                lbDetail.Text = MTradeleads.DetailInfo;
+                MTradeleadsModel = bll_tradeleads.GetTradeleadsInfoModelByinfoId(infoId);
+                lbTitle.Text = MTradeleadsModel.Title;
+                lbDetail.Text = MTradeleadsModel.DetailInfo;
+                lbAddress.Text = MTradeleadsModel.Province + MTradeleadsModel.City + MTradeleadsModel.Town + MTradeleadsModel.Street;
+                lbMobileNum.Text = MTradeleadsModel.MobilePhoneNum;
+                lbPrice.Text = MTradeleadsModel.Price;
+                lbType.Text = MTradeleadsModel.TSName + "/" + MTradeleadsModel.UnitName;
+                lbUserName.Text = MTradeleadsModel.UserName;
+                lbVolume.Text = MTradeleadsModel.Volume;
+                if (MTradeleadsModel.IDAuthentication == true)
+                {
+                    IDAuthenticationLabel.Text = Aunth1.msg;
+                }
+                else
+                {
+                    IDAuthenticationLabel.Text =  UnAunth1.msg;
+                }
+                //IDAuthenticationLabel.Text = MTradeleadsModel.IDAuthentication.ToString();
+                if (MTradeleadsModel.UserAudit == true)
+                {
+                    AuditLabel.Text = Aunth1.msg;
+                }
+                else
+                {
+                    AuditLabel.Text = UnAunth1.msg;
+                }
+                //AuditLabel.Text = MTradeleadsModel.UserAudit.ToStrin/*/*/*g();*/*/*/
+                if (MTradeleadsModel.PicPath != "")
+                { Image1.ImageUrl = MTradeleadsModel.PicPath; }
+                else
+                {
+                    Image1.ImageUrl = "~/img/noimg.jpg";
+                }
+                
             }
         }
     }

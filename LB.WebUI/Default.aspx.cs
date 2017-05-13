@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 
 public partial class _Default : System.Web.UI.Page
@@ -12,16 +13,12 @@ public partial class _Default : System.Web.UI.Page
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
+    LB.SQLServerDAL.NewsInfo Mn = new LB.SQLServerDAL.NewsInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            //if (User.IsInRole("Admin") == true)
-            //{
-            //    Response.Redirect("~/Admin/Manage.aspx");
-            //}
-            //else
-            //{
+
             gvNewsDatabind();
             gvPBNewsDatabind();
             gvPriceNewsDatabind();
@@ -29,8 +26,8 @@ public partial class _Default : System.Web.UI.Page
             gvBuyInfoDatabind();
             gvSellInfoDatabind();
             DLCopInfoDataBind();
-            //}
-
+            lbNotice.Text = ConfigurationManager.AppSettings["Notice"];
+            //lbNotice.Text = bll_newsinfo.GetNewsInfoById(1).Content;
 
         }
     }

@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_NewsManage, App_Web_h5bsnhrw" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_NewsManage, App_Web_khoranan" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -14,7 +14,7 @@
     <br />
     <br />
     <asp:GridView ID="gvNewsInfo" runat="server" DataKeyNames="id"
-        AutoGenerateColumns="False" OnRowDataBound="gvNewsInfo_RowDataBound" OnRowCommand="gvNewsInfo_RowCommand"
+        AutoGenerateColumns="False" OnRowCommand="gvNewsInfo_RowCommand"
         OnRowDeleting="gvNewsInfo_RowDeleting" OnPageIndexChanging="gvNewsInfo_PageIndexChanging" OnDataBound="gvNewsInfo_DataBound">
         <Columns>
             <%--<asp:BoundField DataField="id" HeaderText="编号" ReadOnly="True" />--%>

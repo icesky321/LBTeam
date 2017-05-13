@@ -15,24 +15,13 @@ public partial class Admin_UserManage : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            FillUserTypeInfo();
+            gvUserInfoDataBind();
         }
-    }
-
-    void FillUserTypeInfo()
-    {
-        IQueryable<LB.SQLServerDAL.UserTypeInfo> usertypes = bll_usertypeinfo.GetUserTypeInfo();
-        foreach (LB.SQLServerDAL.UserTypeInfo UserTypeInfo in usertypes)
-        {
-            ddlUserType.Items.Add(new ListItem(UserTypeInfo.UserTypeName, UserTypeInfo.UserTypeId.ToString()));
-        }
-        ddlUserType.Items.Insert(0, "");
     }
 
     void gvUserInfoDataBind()
     {
-        gvUserInfo.DataSource = bll_userinfo.GetUserInfoByUserTypeId(Convert.ToInt32(ddlUserType.SelectedItem.Value));
-        //gvUserInfo.DataSource = bll_userinfo.GetUserInfo();
+        gvUserInfo.DataSource = bll_userinfo.GetUserInfoByUserTypeId(5);
         gvUserInfo.DataBind();
         foreach (GridViewRow gvRow in gvUserInfo.Rows)
         {
@@ -44,14 +33,6 @@ public partial class Admin_UserManage : System.Web.UI.Page
             else
             {
                 ((MultiView)(gvRow.Cells[6].FindControl("MultiView3"))).ActiveViewIndex = 1;
-            }
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).ChopAuthentication == false)
-            {
-                ((MultiView)(gvRow.Cells[6].FindControl("MultiView4"))).ActiveViewIndex = 0;
-            }
-            else
-            {
-                ((MultiView)(gvRow.Cells[6].FindControl("MultiView4"))).ActiveViewIndex = 1;
             }
             if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).Audit == false)
             {

@@ -8,9 +8,13 @@
     </siteMapNode>
     <siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="Admin">
       <siteMapNode url="~/Admin/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
-      <siteMapNode url="~/Admin/UserManage.aspx" title="其他用户信息管理" description="其他用户信息管理" />
+      <siteMapNode url="~/Admin/UserManage.aspx" title="业务员信息管理" description="业务员信息管理" />
+      <siteMapNode url="~/Admin/MetalFactoryManage.aspx" title="冶炼厂信息管理" description="冶炼厂信息管理" />
+      <siteMapNode url="~/Admin/SupplierManage.aspx" title="供货商信息管理" description="供货商信息管理" />
     </siteMapNode>
-
+    <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理" securitytrimmingenabled="true" roles="Admin">
+      <siteMapNode url="~/Admin/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
+    </siteMapNode>
 
     <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >
       <siteMapNode url="~/Admin/UserTypeInfo.aspx" title="用户类别管理" description="用户类别管理" />
@@ -23,8 +27,8 @@
       <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人信息中心" description="个人信息中心" />
     </siteMapNode>
     <siteMapNode url="" title="帮帮忙好伐" description="帮帮忙好伐" securitytrimmingenabled="true" roles="*">
-      <siteMapNode url="~/UserCenter/SellInfo.aspx" title="我要卖货" description="我要卖货" roles="CESupplier,CERecyclingCop,CEUser" />
-      <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="我要收货" description="我要收货" roles="CERecyclingCop,CEMetalFactory,CEUser" />
+      <siteMapNode url="~/UserCenter/SellInfo.aspx" title="我要卖货" description="我要卖货"/>
+      <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="我要收货" description="我要收货"/>
     </siteMapNode>
     <siteMapNode url="" title="当地业务员" description="当地业务员" securitytrimmingenabled="true" roles="CESupplier,CERecyclingCop" >
       <siteMapNode url="~/UserCenter/LocalRecycling.aspx" title="当地业务员" description="当地业务员"/>
@@ -39,6 +43,7 @@
       <siteMapNode url="~/UserCenter/Supplier/MyInfo.aspx" title="我发布的信息" description="我发布的信息"/>
     </siteMapNode>
 
-    <!--<siteMapNode url="" title="帮助" description="帮助" securitytrimmingenabled="true" roles="admin,employee,guest" />-->
+    <siteMapNode url="~/Admin/Notice.aspx" title="公告设置" description="公告设置" securitytrimmingenabled="true" roles="Admin" />
+    <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页" securitytrimmingenabled="true" roles="Admin" />
   </siteMapNode>
 </siteMap>

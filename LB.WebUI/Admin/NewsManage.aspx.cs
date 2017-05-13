@@ -50,19 +50,6 @@ public partial class Admin_NewsManage : System.Web.UI.Page
         }
 
     }
-    protected void gvNewsInfo_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        ////如果是绑定数据行 //清清月儿http://blog.csdn.net/21aspnet 
-        //if (e.Row.RowType == DataControlRowType.DataRow)
-        //{
-
-        //}
-        //if (e.Row.RowIndex != -1)
-        //{
-        //    int id = e.Row.RowIndex + 1;
-        //    e.Row.Cells[0].Text = id.ToString();
-        //}
-    }
     protected void gvNewsInfo_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName == "Detail")
