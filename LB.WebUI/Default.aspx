@@ -7,10 +7,6 @@
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.sequence-min.js"></script>
     <script type="text/javascript" src="js/template.js"></script>
-    <link rel="stylesheet" href="css/font-awesome.min..css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/Num.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <style type="text/css">
         @media only screen and (max-width:640px) {
             .companywarpslider {
