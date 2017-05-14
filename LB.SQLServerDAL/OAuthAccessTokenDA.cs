@@ -55,7 +55,7 @@ namespace LB.SQLServerDAL
                 {
                     dbContext.SubmitChanges();
                 }
-                catch (Exception e)
+                catch (Exception ee)
                 {
 
                 }
