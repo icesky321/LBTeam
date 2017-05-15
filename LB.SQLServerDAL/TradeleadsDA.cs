@@ -213,19 +213,19 @@ namespace LB.SQLServerDAL
             {
                 query = query.Where(p => p.Audit == Convert.ToBoolean(Audit));
             }
-            if (province != "---")
+            if (province != "---" && province != "")
             {
                 query = query.Where(p => p.Province.IndexOf(province) >= 0);
             }
-            if (city != "--")
+            if (city != "--" && city != "")
             {
                 query = query.Where(p => p.City.IndexOf(city) >= 0);
             }
-            if (country != "--")
+            if (country != "--" && country != "")
             {
                 query = query.Where(p => p.Town.IndexOf(country) >= 0);
             }
-            if (street != "--")
+            if (street != "--" && street != "")
             {
                 query = query.Where(p => p.Street.IndexOf(street) >= 0);
             }
@@ -302,7 +302,7 @@ namespace LB.SQLServerDAL
                             Price = t.Price,
                             DetailInfo = t.DetailInfo,
                             UserName = u.UserName,
-                            UserId = u.UserId,
+                            UserId = Convert.ToInt32(t.UserId),
                             UnitName = c.UnitName,
                             TSId = b.TSId,
                             TSName = b.TSName,

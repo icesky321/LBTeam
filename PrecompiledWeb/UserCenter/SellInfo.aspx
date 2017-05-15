@@ -1,7 +1,8 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="SellInfo, App_Web_nxjwqwfp" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="SellInfo, App_Web_kvqm0lo2" theme="Default" %>
 
 <%@ Register Src="~/UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+        <link rel="stylesheet" href="../css/main.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
@@ -25,16 +26,17 @@
             <br />
             货品单位：<asp:DropDownList ID="ddlUnit" runat="server"></asp:DropDownList>
             <br />
+            求购总量：<asp:TextBox ID="tbTotalNum" runat="server" Width="525px"></asp:TextBox>
+            <br />
+            交易价格：<asp:TextBox ID="tbPrice" runat="server" Width="525px"></asp:TextBox>
+            <br />
             详细说明：<asp:TextBox ID="tbDetail" runat="server" TextMode="MultiLine"></asp:TextBox>
             <br />
             联系人：<asp:Label ID="lbContact" runat="server" Text=""></asp:Label>
             <br />
             联系方式：<asp:Label ID="lbTelNum" runat="server" Text=""></asp:Label>
             <br />
-            求购总量：<asp:TextBox ID="tbTotalNum" runat="server" Width="525px"></asp:TextBox>
-            <br />
-            交易价格：<asp:TextBox ID="tbPrice" runat="server" Width="525px"></asp:TextBox>
-            <br />
+
             图片信息：<asp:FileUpload ID="FileUpload1" runat="server" />
             <asp:HiddenField ID="hfFilePath" runat="server" />
             <br />

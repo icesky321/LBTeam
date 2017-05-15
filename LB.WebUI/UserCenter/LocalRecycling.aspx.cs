@@ -31,41 +31,49 @@ public partial class UserCenter_Supplier_LocalRecycling : System.Web.UI.Page
                 MultiView1.ActiveViewIndex = 1;
             }
         }
-        else {
+        else
+        {
             Response.Redirect("../Default.aspx");
         }
     }
 
     void UserBind(string TelNum)
     {
-        
+
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(TelNum);
         LB.SQLServerDAL.UserInfo MUserInfoNew = bll_userinfo.GetUserInfoByAddress(5, MUserInfo.Province, MUserInfo.City, MUserInfo.Town, MUserInfo.Street);
-        UserNameLabel.Text = MUserInfoNew.UserName;
-        MobilePhoneNumLabel.Text = MUserInfoNew.MobilePhoneNum;
-        ProvinceLabel.Text = MUserInfoNew.Province;
-        CityLabel.Text = MUserInfoNew.City;
-        TownLabel.Text = MUserInfoNew.Town;
-        StreetLabel.Text = MUserInfoNew.Street;
-        IDAuthenticationLabel.Text = MUserInfoNew.IDAuthentication.ToString();
-        if (MUserInfoNew.IDAuthentication == true)
+        if (MUserInfoNew != null)
         {
-            IDAuthenticationLabel.Text = Aunth1.msg;
+            UserNameLabel.Text = MUserInfoNew.UserName;
+            MobilePhoneNumLabel.Text = MUserInfoNew.MobilePhoneNum;
+            ProvinceLabel.Text = MUserInfoNew.Province;
+            CityLabel.Text = MUserInfoNew.City;
+            TownLabel.Text = MUserInfoNew.Town;
+            StreetLabel.Text = MUserInfoNew.Street;
+            IDAuthenticationLabel.Text = MUserInfoNew.IDAuthentication.ToString();
+            if (MUserInfoNew.IDAuthentication == true)
+            {
+                IDAuthenticationLabel.Text = Aunth1.msg;
+            }
+            else
+            {
+                IDAuthenticationLabel.Text = UnAunth1.msg;
+            }
+            //AuditLabel.Text = MUserInfo.Audit.ToString();
+            if (MUserInfoNew.Audit == true)
+            {
+                AuditLabel.Text = Aunth1.msg;
+            }
+            else
+            {
+                AuditLabel.Text = UnAunth1.msg;
+            }
+            BankNameLabel.Text = MUserInfoNew.BankName;
+            AccountLabel.Text = MUserInfoNew.Account;
         }
         else
         {
-            IDAuthenticationLabel.Text = UnAunth1.msg;
+            MultiView1.ActiveViewIndex = 1;
         }
-        //AuditLabel.Text = MUserInfo.Audit.ToString();
-        if (MUserInfoNew.Audit == true)
-        {
-            AuditLabel.Text = Aunth1.msg;
-        }
-        else
-        {
-            AuditLabel.Text = UnAunth1.msg;
-        }
-        BankNameLabel.Text = MUserInfoNew.BankName;
-        AccountLabel.Text = MUserInfoNew.Account;
     }
 }
