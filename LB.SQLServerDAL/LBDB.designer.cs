@@ -4872,6 +4872,8 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<System.DateTime> _InChargeDate;
 		
+		private string _QYUserId;
+		
 		private string _OpenId;
 		
     #region 可扩展性方法定义
@@ -4916,6 +4918,8 @@ namespace LB.SQLServerDAL
     partial void OnInChargeChanged();
     partial void OnInChargeDateChanging(System.Nullable<System.DateTime> value);
     partial void OnInChargeDateChanged();
+    partial void OnQYUserIdChanging(string value);
+    partial void OnQYUserIdChanged();
     partial void OnOpenIdChanging(string value);
     partial void OnOpenIdChanged();
     #endregion
@@ -5301,6 +5305,26 @@ namespace LB.SQLServerDAL
 					this._InChargeDate = value;
 					this.SendPropertyChanged("InChargeDate");
 					this.OnInChargeDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QYUserId", DbType="NVarChar(32)")]
+		public string QYUserId
+		{
+			get
+			{
+				return this._QYUserId;
+			}
+			set
+			{
+				if ((this._QYUserId != value))
+				{
+					this.OnQYUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._QYUserId = value;
+					this.SendPropertyChanged("QYUserId");
+					this.OnQYUserIdChanged();
 				}
 			}
 		}

@@ -27,8 +27,17 @@ namespace LB.Weixin
 
         #region 属性
 
-        protected string AppId { get; set; }
-        protected string AppSecret { get; set; }
+        /// <summary>
+        /// CorpID
+        /// </summary>
+        protected string CorpID { get; set; }
+        /// <summary>
+        /// CorpSecret
+        /// </summary>
+        protected string CorpSecret { get; set; }
+        /// <summary>
+        /// AccessToken
+        /// </summary>
         public string AccessToken { get; set; }
         #endregion
 
@@ -37,8 +46,8 @@ namespace LB.Weixin
         /// </summary>
         private void Initial()
         {
-            AppId = ConfigurationManager.AppSettings["AppID"] ?? "wx5987b3efa3881815";
-            AppSecret = ConfigurationManager.AppSettings["AppSecret"] ?? "1c70e036847a6bd653bcd24fe3d0c8cb";
+            CorpID = ConfigurationManager.AppSettings["CorpID"] ?? "wxabb13491cd384449";
+            CorpSecret = ConfigurationManager.AppSettings["CorpSecret"] ?? "reX64E3nivXBU7J393U5u_QaTOe6L89He_DIhpuxVzVxsh3LpNEadlmJGDMlhJ0P";
         }
         private void LoadAccessToken()
         {
@@ -68,7 +77,7 @@ namespace LB.Weixin
         /// <returns></returns>
         private LB.SQLServerDAL.OAuthAccessToken GetAccessToken_FromRemote()
         {
-            Senparc.Weixin.QY.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.QY.CommonAPIs.CommonApi.GetToken(AppId, AppSecret);
+            Senparc.Weixin.QY.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.QY.CommonAPIs.CommonApi.GetToken(CorpID, CorpSecret);
 
             LB.SQLServerDAL.OAuthAccessToken localAccessToken = new OAuthAccessToken();
             localAccessToken.Access_token = commonAccessToken.access_token;
@@ -81,9 +90,9 @@ namespace LB.Weixin
         /// 从微信服务器更新 Access_Token，并立即存储到本地数据库
         /// </summary>
         /// <returns></returns>
-        private static LB.SQLServerDAL.OAuthAccessToken GetAccessToken_FromRemote(string appId, string appSecret)
+        private static LB.SQLServerDAL.OAuthAccessToken GetAccessToken_FromRemote(string corpId, string corpSecret)
         {
-            Senparc.Weixin.QY.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.QY.CommonAPIs.CommonApi.GetToken(appId, appSecret);
+            Senparc.Weixin.QY.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.QY.CommonAPIs.CommonApi.GetToken(corpId, corpSecret);
 
             LB.SQLServerDAL.OAuthAccessToken localAccessToken = new OAuthAccessToken();
             localAccessToken.Access_token = commonAccessToken.access_token;
@@ -92,7 +101,13 @@ namespace LB.Weixin
             return localAccessToken;
         }
 
-        public static string GetAccessToken(string appId, string appSecret)
+        /// <summary>
+        /// 获取 AccessToken
+        /// </summary>
+        /// <param name="corpId"></param>
+        /// <param name="corpSecret"></param>
+        /// <returns></returns>
+        public static string GetAccessToken(string corpId, string corpSecret)
         {
             if (daTokenStatic.ExistAccessToken())
             {
@@ -104,7 +119,7 @@ namespace LB.Weixin
 
             }
 
-            LB.SQLServerDAL.OAuthAccessToken accessToken = GetAccessToken_FromRemote(appId, appSecret);
+            LB.SQLServerDAL.OAuthAccessToken accessToken = GetAccessToken_FromRemote(corpId, corpSecret);
             return accessToken.Access_token;
         }
 
@@ -141,7 +156,6 @@ namespace LB.Weixin
         /// <summary>
         /// 删除指定 wxId 的AccessToken
         /// </summary>
-        /// <param name="wxId">AccessTokenId.</param>
         public void DeleteOldAccessToken()
         {
             daToken.DeleteOldAccessToken();

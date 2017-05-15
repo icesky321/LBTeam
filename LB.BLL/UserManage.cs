@@ -6,9 +6,10 @@ using System.Text;
 namespace LB.BLL
 {
 
-    public class UserInfo
+    public class UserManage
     {
         LB.SQLServerDAL.UserInfoDA da = new SQLServerDAL.UserInfoDA();
+
         /// <summary>
         /// 新增用户信息
         /// </summary>
@@ -92,6 +93,18 @@ namespace LB.BLL
         public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
         {
             return da.GetUserInfosBySEO(province, city, country, street, UserTypeId, TelNum);
+        }
+
+        /// <summary>
+        /// 获取新的QYUserId。
+        /// </summary>
+        /// <returns></returns>
+        public string GenerateNewQYUserId()
+        {
+            int lastQYUserId = 0;
+            lastQYUserId = SQLServerDAL.CodeDA.GetLastQYUserId();
+
+            return (lastQYUserId + 1).ToString();
         }
     }
 }

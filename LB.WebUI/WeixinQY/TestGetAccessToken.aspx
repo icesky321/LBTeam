@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TestGetAccessToken.aspx.cs" Inherits="WeixinMP_TestGetAccessToken" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TestGetAccessToken.aspx.cs" Inherits="WeixinQY_TestGetAccessToken" %>
 
 <!DOCTYPE html>
 

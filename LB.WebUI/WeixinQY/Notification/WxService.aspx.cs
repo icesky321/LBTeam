@@ -33,10 +33,10 @@ public partial class WeixinQY_Notification_WxService : System.Web.UI.Page
             encodingAESKey = ConfigurationManager.AppSettings["EncodingAESKey"] ?? "cP9Dvx7aiWyX84sjVEq2Cy45Hmafxrq6IWPjua0yBYM";
             corpId = ConfigurationManager.AppSettings["CorpID"] ?? "wxabb13491cd384449";
 
-            signature = Request.QueryString["signature"];
+            signature = Request.QueryString["msg_signature"];
             timestamp = Request.QueryString["timestamp"];
             nonce = Request.QueryString["nonce"];
-            echostr = Request.QueryString["echostr"];
+            echostr = Request.QueryString["echoStr"];
             string decryptEchoString = string.Empty;
 
 
