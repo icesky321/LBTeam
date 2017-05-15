@@ -1,2 +1,2 @@
-﻿<%@ control language="C#" autoeventwireup="true" inherits="UserControls_Aunth, App_Web_wg1i4gho" %>
+﻿<%@ control language="C#" autoeventwireup="true" inherits="UserControls_Aunth, App_Web_osjgdk4g" %>
 <asp:Label ID="Label1" runat="server" Text="<span class='verified'>已审核</span>"></asp:Label>

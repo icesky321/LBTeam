@@ -61,11 +61,18 @@
                 </asp:View>
                 <asp:View ID="View2" runat="server">
 
-                    <asp:Button ID="btComplete1" runat="server" OnClick="btComplete1_Click" Text="继续补全个人资料" />
+                    <asp:Button ID="btComplete1" runat="server" OnClick="btComplete1_Click" Text="继续补全商家资料" />
                 </asp:View>
                 <asp:View ID="View3" runat="server">
                 </asp:View>
                 <asp:View ID="View4" runat="server">
+                </asp:View>
+                <asp:View ID="View5" runat="server">
+                     <asp:Button ID="btLocal" runat="server" Text="我要成为地域业务专员" OnClick="btLocal_Click" />
+                    <asp:Panel ID="Panel1" runat="server" Visible="false">
+
+                        请向此公司汇款，进过48小时核验，会反馈您信息
+                    </asp:Panel>
                 </asp:View>
             </asp:MultiView>
         </div>

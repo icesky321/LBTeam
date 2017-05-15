@@ -25,12 +25,20 @@ public partial class UserCenter_Supplier_LocalRecyclingCop : System.Web.UI.Page
         {
             if (HttpContext.Current.User.IsInRole("CESupplier") || HttpContext.Current.User.IsInRole("CERecyclingCop") || HttpContext.Current.User.IsInRole("CEUser"))
             {
-                MultiView1.ActiveViewIndex = 0;
-                DLCopInfoDataBind(HttpContext.Current.User.Identity.Name);
+                if (DLCopInfo.Items.Count != 0)
+                {
+                    MultiView1.ActiveViewIndex = 0;
+                    DLCopInfoDataBind(HttpContext.Current.User.Identity.Name);
+                }
+                else
+                {
+                    MultiView1.ActiveViewIndex = 1;
+                }
             }
             else
             {
-                MultiView1.ActiveViewIndex = 1;
+                
+                Response.Redirect("../Default.aspx");
             }
         }
         else
@@ -42,6 +50,7 @@ public partial class UserCenter_Supplier_LocalRecyclingCop : System.Web.UI.Page
     void DLCopInfoDataBind(string TelNum)
     {
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(TelNum);
+        
         DLCopInfo.DataSource = bll_copinfo.GetCopInfodByAddress(MUserInfo.Province, MUserInfo.City, "--", "--", 2);
         DLCopInfo.DataBind();
         foreach (DataListItem item in this.DLCopInfo.Items)
@@ -50,7 +59,6 @@ public partial class UserCenter_Supplier_LocalRecyclingCop : System.Web.UI.Page
             { ((Label)item.FindControl("TelNumLabel")).Visible = false; }
 
         }
-
 
     }
 }

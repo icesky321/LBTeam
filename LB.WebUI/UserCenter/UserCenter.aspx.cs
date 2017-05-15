@@ -28,7 +28,7 @@ public partial class UserCenter1 : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("Default.aspx");
+                Response.Redirect("../Default.aspx");
             }
 
         }
@@ -43,7 +43,7 @@ public partial class UserCenter1 : System.Web.UI.Page
             if (MUserInfo.UserTypeId == 1)
             {
                 MultiView1.ActiveViewIndex = 0;
-                if (MUserInfo.IDCard == "" || MUserInfo.Chop == "")
+                if (string.IsNullOrEmpty(MUserInfo.IDCard) || string.IsNullOrEmpty(MUserInfo.Chop))
                 {
                     btComplete.Visible = true;
                 }
@@ -56,7 +56,7 @@ public partial class UserCenter1 : System.Web.UI.Page
             else if (MUserInfo.UserTypeId == 2)
             {
                 MultiView1.ActiveViewIndex = 1;
-                if (MUserInfo.IDCard == "" || MUserInfo.Chop == "")
+                if (string.IsNullOrEmpty(MUserInfo.IDCard) || string.IsNullOrEmpty(MUserInfo.Chop))
                 {
                     btComplete1.Visible = true;
                 }
@@ -76,6 +76,22 @@ public partial class UserCenter1 : System.Web.UI.Page
             else if (MUserInfo.UserTypeId == 0)
             {
                 Response.Redirect("UpdateRole.aspx?UserId=" + MUserInfo.UserId.ToString());
+            }
+            else if (MUserInfo.UserTypeId == 5)
+            {
+
+                if (string.IsNullOrEmpty(MUserInfo.IDCard) || string.IsNullOrEmpty(MUserInfo.Chop))
+                {
+                    MultiView1.ActiveViewIndex = 1;
+                }
+                else if (MUserInfo.Audit == false)
+                {
+                    MultiView1.ActiveViewIndex = 4;
+                }
+                else if (MUserInfo.Audit == true)
+                {
+
+                }
             }
         }
     }
@@ -127,5 +143,10 @@ public partial class UserCenter1 : System.Web.UI.Page
         MCopInfo = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId);
         string url = "../CopAuthentication.aspx?CopId=" + MCopInfo.CopId.ToString();
         Response.Redirect(url);
+    }
+
+    protected void btLocal_Click(object sender, EventArgs e)
+    {
+        Panel1.Visible = true;
     }
 }
