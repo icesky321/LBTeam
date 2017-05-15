@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using LB.SQLServerDAL;
 using System.Configuration;
-using Senparc.Weixin.MP.CommonAPIs;
+using Senparc.Weixin.QY.CommonAPIs;
 
 namespace LB.Weixin
 {
@@ -68,7 +68,7 @@ namespace LB.Weixin
         /// <returns></returns>
         private LB.SQLServerDAL.OAuthAccessToken GetAccessToken_FromRemote()
         {
-            Senparc.Weixin.MP.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(AppId, AppSecret);
+            Senparc.Weixin.QY.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.QY.CommonAPIs.CommonApi.GetToken(AppId, AppSecret);
 
             LB.SQLServerDAL.OAuthAccessToken localAccessToken = new OAuthAccessToken();
             localAccessToken.Access_token = commonAccessToken.access_token;
@@ -83,7 +83,7 @@ namespace LB.Weixin
         /// <returns></returns>
         private static LB.SQLServerDAL.OAuthAccessToken GetAccessToken_FromRemote(string appId, string appSecret)
         {
-            Senparc.Weixin.MP.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.MP.CommonAPIs.CommonApi.GetToken(appId, appSecret);
+            Senparc.Weixin.QY.Entities.AccessTokenResult commonAccessToken = Senparc.Weixin.QY.CommonAPIs.CommonApi.GetToken(appId, appSecret);
 
             LB.SQLServerDAL.OAuthAccessToken localAccessToken = new OAuthAccessToken();
             localAccessToken.Access_token = commonAccessToken.access_token;
