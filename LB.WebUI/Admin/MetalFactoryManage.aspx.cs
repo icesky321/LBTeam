@@ -9,7 +9,7 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
 {
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {

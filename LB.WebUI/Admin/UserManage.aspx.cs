@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class Admin_UserManage : System.Web.UI.Page
 {
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.BLL.UserTypeInfo bll_usertypeinfo = new LB.BLL.UserTypeInfo();
     LB.SQLServerDAL.UserTypeInfo MUserTypeInfo = new LB.SQLServerDAL.UserTypeInfo();
     protected void Page_Load(object sender, EventArgs e)

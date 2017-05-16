@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenManage.cs" />
+    <Compile Include="Contact\DepartmentManage.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="Contact\UserManage.cs" />
+    <Compile Include="Message\MsgSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

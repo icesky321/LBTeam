@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class UserCenter_Supplier_LocalRecycling : System.Web.UI.Page
 {
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)

@@ -10,7 +10,7 @@ public partial class UserCenter_Supplier_LocalRecyclingCop : System.Web.UI.Page
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)

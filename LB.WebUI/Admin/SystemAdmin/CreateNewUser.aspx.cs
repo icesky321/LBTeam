@@ -15,7 +15,7 @@ public partial class Admin_UserAdmin_CreateNewUser : System.Web.UI.Page
     LB.BLL.UserTypeInfo bll_usertypeinfo = new LB.BLL.UserTypeInfo();
     LB.SQLServerDAL.UserTypeInfo MUserTypeInfo = new LB.SQLServerDAL.UserTypeInfo();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)

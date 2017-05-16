@@ -9,7 +9,7 @@ using System.IO;
 public partial class SellInfo : System.Web.UI.Page
 {
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.Tradeleads MTradeleads = new LB.SQLServerDAL.Tradeleads();
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
     LB.BLL.TSInfo bll_tsinfo = new LB.BLL.TSInfo();

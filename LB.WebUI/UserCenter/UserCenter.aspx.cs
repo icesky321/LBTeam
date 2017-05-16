@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class UserCenter1 : System.Web.UI.Page
 {
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class UserAuthentication : System.Web.UI.Page
 {
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
