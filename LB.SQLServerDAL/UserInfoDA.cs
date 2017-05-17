@@ -48,7 +48,7 @@ namespace LB.SQLServerDAL
             var query = from c in dbContext.UserInfo
                         where c.UserTypeId == UserTypeId
                         select c;
-            if (province != "---")
+            if (province != "---" && province != "-1")
             {
                 query = query.Where(p => p.Province.IndexOf(province) >= 0);
             }
@@ -159,7 +159,7 @@ namespace LB.SQLServerDAL
                             AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value,
                             IsApproved = Convert.ToBoolean(b.IsApproved)
                         };
-            if (province != "---")
+            if (province != "---" && province != "-1")
             {
                 query = query.Where(p => p.Province.IndexOf(province) >= 0);
             }

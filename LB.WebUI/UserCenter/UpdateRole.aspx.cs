@@ -9,7 +9,7 @@ public partial class UserCenter_UpdateRole : System.Web.UI.Page
 {
     LB.BLL.UserTypeInfo bll_usertypeinfo = new LB.BLL.UserTypeInfo();
     LB.SQLServerDAL.UserTypeInfo MUserTypeInfo = new LB.SQLServerDAL.UserTypeInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {

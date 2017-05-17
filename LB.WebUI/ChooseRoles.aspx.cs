@@ -13,7 +13,13 @@ public partial class ChooseRoles : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            FillUserTypeInfo();
+            if (Request.IsAuthenticated)
+            {
+                Response.Redirect("~/UserCenter/UserCenter.aspx");
+            }
+            else
+            { FillUserTypeInfo(); }
+
         }
     }
 

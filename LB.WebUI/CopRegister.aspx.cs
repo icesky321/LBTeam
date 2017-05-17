@@ -15,7 +15,7 @@ public partial class CopRegister : System.Web.UI.Page
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -72,7 +72,7 @@ public partial class CopRegister : System.Web.UI.Page
                 bll_userinfo.NewUserInfo(MUserInfo);
                 MCopInfo.UserId = MUserInfo.UserId;
                 bll_copinfo.NewCopInfo(MCopInfo);
-                string url = "CopAuthentication.aspx?CopId=" + MCopInfo.CopId.ToString();
+                string url = "CopAuthentication.aspx?UserId=" + MCopInfo.UserId.ToString();
                 Response.Redirect(url);
             //}
             //else

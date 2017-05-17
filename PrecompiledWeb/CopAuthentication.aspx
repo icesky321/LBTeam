@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="CopAuthentication, App_Web_mx1oxp1l" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="CopAuthentication, App_Web_tl50e0el" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="js/amazeui.js" type="text/javascript" charset="utf-8"></script>
@@ -22,7 +22,7 @@
                     </p>
                 </div>
                 <hr />
-                <asp:HiddenField ID="HFCopId" runat="server" />
+                <asp:HiddenField ID="HFUserId" runat="server" />
 
                 <table class="auto-style1">
                     <tr>

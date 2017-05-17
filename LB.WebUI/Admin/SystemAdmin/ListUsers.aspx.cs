@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 
 public partial class Admin_ListUsers : System.Web.UI.Page
 {
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)

@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinMP_WxService, App_Web_wqd43b1k" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_TestShowUserInfo, App_Web_efkkgtzr" theme="Default" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <asp:ListBox ID="ListBox1" runat="server" Height="285px" Width="258px"></asp:ListBox>
     </div>
     </form>
 </body>

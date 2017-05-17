@@ -60,7 +60,7 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.Tradeleads>();
         }
 
-        public IQueryable GetTradeleadsByTradeType(int TId)
+        public IQueryable GetTradeleadsByTradeType(int TId,bool Audit)
         {
             var query = from c in dbContext.Tradeleads
                         where c.TId == TId
@@ -72,6 +72,7 @@ namespace LB.SQLServerDAL
                         from n in leftGroup3.DefaultIfEmpty()
                         join s in dbContext.TSType on c.TId equals s.TId into leftGroup4
                         from s in leftGroup4.DefaultIfEmpty()
+                        where c.Audit == Audit
                         orderby c.ReleaseDate descending
                         select new
                         {
@@ -100,7 +101,7 @@ namespace LB.SQLServerDAL
                             u.UserName,
                             u.MobilePhoneNum
                         };
-            return query;
+            return query.Take(13);
         }
 
         public LB.SQLServerDAL.Tradeleads GetTradeleadsByinfoId(int InfoId)
@@ -151,7 +152,7 @@ namespace LB.SQLServerDAL
                             s.TSTypeName,
                             u.MobilePhoneNum
                         };
-            if (province != "---")
+            if (province != "---" && province != "-1" && province != "-1")
             {
                 query = query.Where(p => p.Province.IndexOf(province) >= 0);
             }
@@ -213,7 +214,7 @@ namespace LB.SQLServerDAL
             {
                 query = query.Where(p => p.Audit == Convert.ToBoolean(Audit));
             }
-            if (province != "---" && province != "")
+            if (province != "---" && province != "" && province != "-1")
             {
                 query = query.Where(p => p.Province.IndexOf(province) >= 0);
             }

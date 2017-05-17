@@ -68,11 +68,7 @@
                 <asp:View ID="View4" runat="server">
                 </asp:View>
                 <asp:View ID="View5" runat="server">
-                     <asp:Button ID="btLocal" runat="server" Text="我要成为地域业务专员" OnClick="btLocal_Click" />
-                    <asp:Panel ID="Panel1" runat="server" Visible="false">
-
-                        请向此公司汇款，进过48小时核验，会反馈您信息
-                    </asp:Panel>
+                     <asp:Button ID="btLocal" runat="server" Text="缴纳诚信保证金" OnClick="btLocal_Click" />
                 </asp:View>
             </asp:MultiView>
         </div>

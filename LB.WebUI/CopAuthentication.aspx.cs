@@ -10,16 +10,16 @@ public partial class CopAuthentication : System.Web.UI.Page
 {
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            if (Request.QueryString["CopId"] != null)
+            if (Request.QueryString["UserId"] != null)
             {
-                string CopId = Request.QueryString["CopId"];
-                HFCopId.Value = CopId;
+                string UserId = Request.QueryString["UserId"];
+                HFUserId.Value = UserId;
             }
             else
             {
@@ -32,8 +32,8 @@ public partial class CopAuthentication : System.Web.UI.Page
 
     protected void btUpLoad_Click(object sender, EventArgs e)
     {
-        MCopInfo = bll_copinfo.GetCopInfoeById(Convert.ToInt32(HFCopId.Value));
-        MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
+        MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(HFUserId.Value));
+        MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(HFUserId.Value));
         bool files = false;
         if (this.FUBizlicense.HasFile && this.FUHWPermit.HasFile)
         {
@@ -93,5 +93,6 @@ public partial class CopAuthentication : System.Web.UI.Page
                 this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
             }
         }
+        Response.Redirect("WaitingForAudit.aspx");
     }
 }

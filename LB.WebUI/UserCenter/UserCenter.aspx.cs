@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class UserCenter1 : System.Web.UI.Page
 {
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
@@ -90,7 +90,7 @@ public partial class UserCenter1 : System.Web.UI.Page
                 }
                 else if (MUserInfo.Audit == true)
                 {
-
+                   
                 }
             }
         }
@@ -140,13 +140,14 @@ public partial class UserCenter1 : System.Web.UI.Page
     protected void btComplete1_Click(object sender, EventArgs e)
     {
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
-        MCopInfo = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId);
-        string url = "../CopAuthentication.aspx?CopId=" + MCopInfo.CopId.ToString();
+        string url = "../CopAuthentication.aspx?UserId=" + MUserInfo.UserId.ToString();
         Response.Redirect(url);
     }
 
     protected void btLocal_Click(object sender, EventArgs e)
     {
-        Panel1.Visible = true;
+        MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
+        string url = "../JoinUS.aspx?UserId=" + MUserInfo.UserId.ToString();
+        Response.Redirect(url);
     }
 }

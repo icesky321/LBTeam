@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="CopAuthentication.aspx.cs" Inherits="CopAuthentication" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <link rel="stylesheet" href="css/main.css" />
     <script src="js/amazeui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/contact.min.css" />
@@ -14,7 +15,7 @@
     <div class="layout">
 
         <!--===========layout-container================-->
-        <div class="section" style="text-align:center;">
+        <div class="section" style="text-align: center;">
             <div class="container">
                 <div class="section--header" style="text-align: center">
                     <p class="section--description">
@@ -22,7 +23,7 @@
                     </p>
                 </div>
                 <hr />
-                <asp:HiddenField ID="HFCopId" runat="server" />
+                <asp:HiddenField ID="HFUserId" runat="server" />
 
                 <table class="auto-style1">
                     <tr>
@@ -43,7 +44,7 @@
                             <asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
                     </tr>
                     <tr>
-                        <td class="auto-style1">gdsfsdfsdfsdfsfsdfsdfsfsdfsfsfsdfsfsfsdfsdfsfsdfsadfasfsdfads</td>
+                        <td class="auto-style1">请上传商家的营业执照照片</td>
                     </tr>
                     <tr>
                         <td class="auto-style1" rowspan="2">危化许可证上传：</td>
@@ -54,7 +55,7 @@
                             <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" /></td>
                     </tr>
                     <tr>
-                        <td class="auto-style1">dsfasdfsdfasdfdsvxfdsfsdafs</td>
+                        <td class="auto-style1">请上传商家的危化许可证照片</td>
                     </tr>
                     <tr>
                         <td class="auto-style1">&nbsp;</td>

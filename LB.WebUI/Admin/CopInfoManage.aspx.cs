@@ -9,7 +9,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
 {
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -79,7 +79,12 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         if (e.CommandName == "Bizlicense")
         {
             string url = MCopInfo.Bizlicense;
-            Response.Redirect(url);
+            if (!string.IsNullOrEmpty(MCopInfo.Bizlicense))
+            { Response.Redirect(url); }
+            else {
+
+            }
+            
         }
         if (e.CommandName == "BPass")
         {
@@ -92,7 +97,9 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         if (e.CommandName == "HWPermit")
         {
             string url = MCopInfo.HWPermit;
-            Response.Redirect(url);
+            if (!string.IsNullOrEmpty(MCopInfo.HWPermit))
+            { Response.Redirect(url); }
+                
         }
         if (e.CommandName == "HPass")
         {
@@ -105,7 +112,9 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         if (e.CommandName == "IDCard")
         {
             string url = MUserInfo.IDCard;
-            Response.Redirect(url);
+            if (!string.IsNullOrEmpty(MUserInfo.IDCard))
+            { Response.Redirect(url); }
+                
         }
         if (e.CommandName == "IPass")
         {

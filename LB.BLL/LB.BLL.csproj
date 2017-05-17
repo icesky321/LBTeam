@@ -50,6 +50,7 @@
     <Compile Include="TSInfo.cs" />
     <Compile Include="TSType.cs" />
     <Compile Include="UnitInfo.cs" />
+    <Compile Include="UserAuditMsg.cs" />
     <Compile Include="UserManage.cs" />
     <Compile Include="UserTypeInfo.cs" />
   </ItemGroup>

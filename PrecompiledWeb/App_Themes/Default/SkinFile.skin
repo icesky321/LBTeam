@@ -40,7 +40,7 @@
         <PagerStyle CssClass="gvPager" /> 
 </asp:GridView>
 
-<asp:GridView runat="server" SkinId="GridView4" CssClass="GridFrame" AllowPaging="true"  PageSize="15"  CellPadding="0" CellSpacing="0" AutoGenerateColumns="False" BorderStyle="None" BorderWidth="0px" GridLines ="None" ShowFooter="true">
+<asp:GridView runat="server" SkinId="GridView4" CssClass="GridFrame" AllowPaging="true"  PageSize="13"  CellPadding="0" CellSpacing="0" AutoGenerateColumns="False" BorderStyle="None" BorderWidth="0px" GridLines ="None" ShowFooter="true">
         <RowStyle  CssClass="gvRow"/>
         <EditRowStyle CssClass="gvEditRow"/>
         <AlternatingRowStyle CssClass="gvAltRow"/>

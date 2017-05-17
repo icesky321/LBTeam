@@ -9,7 +9,7 @@ using System.IO;
 public partial class BuyInfo : System.Web.UI.Page
 {
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-    LB.BLL.UserInfo bll_userinfo = new LB.BLL.UserInfo();
+    LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.Tradeleads MTradeleads = new LB.SQLServerDAL.Tradeleads();
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
     LB.BLL.TSInfo bll_tsinfo = new LB.BLL.TSInfo();
@@ -125,7 +125,7 @@ public partial class BuyInfo : System.Web.UI.Page
         MTradeleads.Audit = false;
         MTradeleads.AuditDatetime = Convert.ToDateTime("1900-1-1");
         bll_tradeleads.NewTradeleads(MTradeleads);
-        Response.Redirect("UserCenter.aspx");
+        Response.Redirect("../WaitingForAudit.aspx");
     }
 
     protected void btPreview_Click(object sender, EventArgs e)
