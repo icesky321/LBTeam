@@ -118,7 +118,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         }
         if (e.CommandName == "IPass")
         {
-            MUserInfo.IDAuthentication= true;
+            MUserInfo.IDAuthentication = true;
         }
         if (e.CommandName == "IUPass")
         {
