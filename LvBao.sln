@@ -34,6 +34,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 	ProjectSection(SolutionItems) = preProject
 		Roles.txt = Roles.txt
 		待解决.txt = 待解决.txt
+		数据字典.txt = 数据字典.txt
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LB.Model", "LB.Model\LB.Model.csproj", "{C576E507-1E6E-4AAB-9863-A46398D09FAD}"

@@ -60,6 +60,7 @@
     <Compile Include="TSTypeDA.cs" />
     <Compile Include="UnitInfoDA.cs" />
     <Compile Include="UserAuditMsgDA.cs" />
+    <Compile Include="UserDepositInfoDA.cs" />
     <Compile Include="UserInfoDA.cs" />
     <Compile Include="UserTypeInfoDA.cs" />
     <Compile Include="WeixinMessageDA.cs" />

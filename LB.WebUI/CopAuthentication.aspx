@@ -5,11 +5,6 @@
     <script src="js/amazeui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="css/common.min.css" />
     <link rel="stylesheet" href="css/contact.min.css" />
-    <style type="text/css">
-        .auto-style1 {
-            border: 1px solid #999999;
-        }
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="layout">
@@ -24,8 +19,79 @@
                 </div>
                 <hr />
                 <asp:HiddenField ID="HFUserId" runat="server" />
+                <hr />
+                <table>
+                    <tr>
+                        <td>银行账号开户行：</td>
+                        <td>
+                            <asp:TextBox ID="tbBankName" runat="server"></asp:TextBox></td>
+                    </tr>
+                </table>
 
-                <table class="auto-style1">
+                <br />
+                <hr />
+                <br />
+                <table>
+                    <tr>
+                        <td>银行账号：</td>
+                        <td>
+                            <asp:TextBox ID="tbAccount" runat="server"></asp:TextBox></td>
+                    </tr>
+                </table>
+
+                <br />
+                <hr />
+                <br />
+                <table>
+                    <tr>
+                        <td rowspan="2">负责人身份证上传：</td>
+                        <td rowspan="2">
+                            <asp:Image ID="Image9" runat="server" Height="168px" ImageUrl="~/images/IDSample.jpg" Width="155px" />
+                        </td>
+                        <td>
+
+                            <asp:FileUpload ID="FUIDCard" runat="server" /><asp:Image ID="Image3" runat="server" Width="200px" Height="100px" /></td>
+                    </tr>
+                </table>
+                <br />
+                <hr />
+                <br />
+                <table>
+                    <tr>
+                        <td>营业执照上传：</td>
+                        <td>
+                            <asp:FileUpload ID="FUBizlicense" runat="server" />
+                            <asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
+                    </tr>
+                </table>
+
+                <br />
+                <hr />
+                <br />
+                <table>
+                    <tr>
+                        <td>危化许可证上传：</td>
+                        <td>
+                            <asp:FileUpload ID="FUHWPermit" runat="server" />
+                            <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" /></td>
+                    </tr>
+                </table>
+
+                <br />
+                <hr />
+                <br />
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Button ID="btUpLoad" runat="server" Text="上传" OnClick="btUpLoad_Click" />
+                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></td>
+                    </tr>
+                </table>
+
+
+
+
+                <%--<table class="auto-style1">
                     <tr>
                         <td class="auto-style1">银行账号开户行：</td>
                         <td class="auto-style1" colspan="2">
@@ -35,6 +101,17 @@
                         <td class="auto-style1">银行账号：</td>
                         <td class="auto-style1" colspan="2">
                             <asp:TextBox ID="tbAccount" runat="server"></asp:TextBox></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="auto-style1">负责人身份证上传：</td>
+                        <td class="auto-style1" rowspan="2">
+                            <asp:Image ID="Image9" runat="server" Height="168px" ImageUrl="~/images/IDSample.jpg" Width="155px" />
+                        </td>
+                        <td class="auto-style1">
+                            <asp:FileUpload ID="FUIDCard" runat="server" />
+                        </td>
+                        <td rowspan="2" class="auto-style1">
+                            <asp:Image ID="Image3" runat="server" Width="200px" Height="100px" /></td>
                     </tr>
                     <tr>
                         <td class="auto-style1" rowspan="2">营业执照上传：</td>
@@ -66,8 +143,7 @@
                         </td>
                         <td class="auto-style1">&nbsp;</td>
                     </tr>
-                </table>
-
+                </table>--%>
             </div>
         </div>
     </div>

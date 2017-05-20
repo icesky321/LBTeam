@@ -15,7 +15,9 @@
     <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理" securitytrimmingenabled="true" roles="Admin">
       <siteMapNode url="~/Admin/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
     </siteMapNode>
-
+    <siteMapNode url="" title="信用保证金管理" description="信用保证金管理" securitytrimmingenabled="true" roles="Admin">
+      <siteMapNode url="~/Admin/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />
+    </siteMapNode>
     <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >
       <siteMapNode url="~/Admin/UserTypeInfo.aspx" title="用户类别管理" description="用户类别管理" />
       <siteMapNode url="~/Admin/SystemAdmin/CreateRole.aspx" title="创建角色" description="创建角色"/>
@@ -24,7 +26,10 @@
       <siteMapNode url="~/Admin/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
     </siteMapNode>
     <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="*">
-      <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人信息中心" description="个人信息中心" />
+      <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人资料" description="个人资料" />
+      <siteMapNode url="~/UserCenter/BankInfo.aspx" title="银行卡信息" description="银行卡信息" />
+      <siteMapNode url="~/UserCenter/Authentication.aspx" title="认证信息" description="认证信息" />
+      <siteMapNode url="~/UserCenter/Deposit.aspx" title="诚信保证金" description="诚信保证金" />
     </siteMapNode>
     <siteMapNode url="" title="帮帮忙好伐" description="帮帮忙好伐" securitytrimmingenabled="true" roles="*">
       <siteMapNode url="~/UserCenter/SellInfo.aspx" title="我要卖货" description="我要卖货"/>

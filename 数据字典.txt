@@ -1,0 +1,102 @@
+一、CopInfo（供应商、回收公司、冶炼厂表）
+
+CopId  int    id
+CopName  nvarchar(100)   公司名称
+UserId   int    用户id
+Bizlicense   nvarchar(max)   营业执照
+BAuthentication   bool   审核
+HWPermit  nvarchar(max)   危化许可证
+HWAuthentication   bool   审核
+CopDetail   nvarchar(max)   公司详情
+
+二、NewsInfo（新闻资讯表）
+id   int   id
+Title  nvarchar(100)   标题
+NoteTime   datetime  提交时间
+Content   datetime    新闻内容
+UserName   nvarchar(50)   发布人/地域价格里的地域字段
+IsShow   bool     是否发布
+IsCommend   bool   是否推荐
+NewsTypeId   int   资讯类型
+Hits    int   点击数
+ShowTime   datetime  发布时间
+
+三、NewsType（资讯类型）
+NewsTypeId    int   id
+NewsType      nvarchar(50)   类型名称
+
+四、Tradeleads（供需信息表）
+infoId   int   id
+Title   nvarchar(50)   标题
+Province   nvarchar(50)  省
+City   nvarchar(50)  市
+Town   nvarchar(50)  区
+Street   nvarchar(50)  街道
+Volume   string   数量
+Price  string   价格
+DetailInfo  string   详细信息
+UserId   int    用户id
+TSId   int   电瓶类别id
+UnitID  int   单位名称id
+ReleaseDate   datetime   提交时间
+Hits   int    点击数
+TId    int     供需类别id
+PicPath   string   图片资料路径
+Audit    bool  审核
+AuditDatetime  datetime   审核时间
+Recommend   是否推荐
+
+四、TSInfo（电瓶类别表）
+TSId   int   id
+TSName   string   电瓶类别名称
+
+五、TSType（供需类别表）
+TId   int   id
+TSTypeName    string   供需类别名称
+
+六、UnitInfo（单位名称信息表）
+UnitId    int   id
+UnitName    string   单位名称
+
+七、UserAuditMsg（用户提交保证金审核信息表）
+MsgId   int   id
+UserId   int    用户id
+AccountName   string     账户名
+Account  string  账号
+Ammount   string   金额
+Message  string   留言
+CreateDate  datetime  提交时间
+Status   bool  反馈状态
+
+八、UserInfo（用户信息）
+UserId   int   id
+UserTypeId   int  用户类别id
+UserName  string   用户名
+MobilePhoneNum    string   手机号
+Province   nvarchar(50)  省
+City   nvarchar(50)  市
+Town   nvarchar(50)  区
+Street   nvarchar(50)  街道
+CreateTime   datetime   创建时间
+IDCard   string   身份证信息
+IDAuthentication   bool 身份证审核
+BankName   string    银行名称
+Account   string    账户号
+InCharge   bool  地域负责审核
+InChargeDate  datetime   负责起始时间
+QYUserId   string  企业号ID
+OpenId   string     服务号ID
+IsQYUser   bool    是否企业号成员
+
+九、UserTypeInfo（用户类型表）
+UserTypeId  int  id
+UserTypeName   string   用户类型名称
+
+十、UserDepositInfo(用户押金信息表)
+dpId  int   押金ID
+UserId   int   用户ID
+Amount   Decimal    押金金额
+InDate    datetime   押金汇入时间
+OutDate    datetime   押金汇出时间
+Operator   string   操作员
+OperateDate   datetime   操作时间

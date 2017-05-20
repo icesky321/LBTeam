@@ -84,6 +84,9 @@ namespace LB.SQLServerDAL
     partial void InsertUnitInfo(UnitInfo instance);
     partial void UpdateUnitInfo(UnitInfo instance);
     partial void DeleteUnitInfo(UnitInfo instance);
+    partial void InsertUserDepositInfo(UserDepositInfo instance);
+    partial void UpdateUserDepositInfo(UserDepositInfo instance);
+    partial void DeleteUserDepositInfo(UserDepositInfo instance);
     partial void InsertUserInfo(UserInfo instance);
     partial void UpdateUserInfo(UserInfo instance);
     partial void DeleteUserInfo(UserInfo instance);
@@ -276,6 +279,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<UserAuditMsg>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserDepositInfo> UserDepositInfo
+		{
+			get
+			{
+				return this.GetTable<UserDepositInfo>();
 			}
 		}
 		
@@ -4989,6 +5000,212 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserDepositInfo")]
+	public partial class UserDepositInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DpId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _InDate;
+		
+		private System.Nullable<System.DateTime> _OutDate;
+		
+		private string _Operator;
+		
+		private System.Nullable<System.DateTime> _OperateDate;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDpIdChanging(int value);
+    partial void OnDpIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnInDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnInDateChanged();
+    partial void OnOutDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOutDateChanged();
+    partial void OnOperatorChanging(string value);
+    partial void OnOperatorChanged();
+    partial void OnOperateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOperateDateChanged();
+    #endregion
+		
+		public UserDepositInfo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="dpId", Storage="_DpId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DpId
+		{
+			get
+			{
+				return this._DpId;
+			}
+			set
+			{
+				if ((this._DpId != value))
+				{
+					this.OnDpIdChanging(value);
+					this.SendPropertyChanging();
+					this._DpId = value;
+					this.SendPropertyChanged("DpId");
+					this.OnDpIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InDate
+		{
+			get
+			{
+				return this._InDate;
+			}
+			set
+			{
+				if ((this._InDate != value))
+				{
+					this.OnInDateChanging(value);
+					this.SendPropertyChanging();
+					this._InDate = value;
+					this.SendPropertyChanged("InDate");
+					this.OnInDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OutDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OutDate
+		{
+			get
+			{
+				return this._OutDate;
+			}
+			set
+			{
+				if ((this._OutDate != value))
+				{
+					this.OnOutDateChanging(value);
+					this.SendPropertyChanging();
+					this._OutDate = value;
+					this.SendPropertyChanged("OutDate");
+					this.OnOutDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Operator", DbType="NVarChar(50)")]
+		public string Operator
+		{
+			get
+			{
+				return this._Operator;
+			}
+			set
+			{
+				if ((this._Operator != value))
+				{
+					this.OnOperatorChanging(value);
+					this.SendPropertyChanging();
+					this._Operator = value;
+					this.SendPropertyChanged("Operator");
+					this.OnOperatorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OperateDate
+		{
+			get
+			{
+				return this._OperateDate;
+			}
+			set
+			{
+				if ((this._OperateDate != value))
+				{
+					this.OnOperateDateChanging(value);
+					this.SendPropertyChanging();
+					this._OperateDate = value;
+					this.SendPropertyChanged("OperateDate");
+					this.OnOperateDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserInfo")]
 	public partial class UserInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5037,6 +5254,8 @@ namespace LB.SQLServerDAL
 		
 		private string _OpenId;
 		
+		private bool _IsQYUser;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5083,6 +5302,8 @@ namespace LB.SQLServerDAL
     partial void OnQYUserIdChanged();
     partial void OnOpenIdChanging(string value);
     partial void OnOpenIdChanged();
+    partial void OnIsQYUserChanging(bool value);
+    partial void OnIsQYUserChanged();
     #endregion
 		
 		public UserInfo()
@@ -5506,6 +5727,26 @@ namespace LB.SQLServerDAL
 					this._OpenId = value;
 					this.SendPropertyChanged("OpenId");
 					this.OnOpenIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsQYUser", DbType="Bit NOT NULL")]
+		public bool IsQYUser
+		{
+			get
+			{
+				return this._IsQYUser;
+			}
+			set
+			{
+				if ((this._IsQYUser != value))
+				{
+					this.OnIsQYUserChanging(value);
+					this.SendPropertyChanging();
+					this._IsQYUser = value;
+					this.SendPropertyChanged("IsQYUser");
+					this.OnIsQYUserChanged();
 				}
 			}
 		}

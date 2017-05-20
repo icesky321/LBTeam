@@ -40,10 +40,18 @@ public partial class UserCenter1 : System.Web.UI.Page
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
         if (Request.IsAuthenticated)
         {
-            if (MUserInfo.UserTypeId == 1)
+            if (MUserInfo.Audit == true)
+            {
+                btUpdate.Visible = false;
+            }
+            else
+            {
+                btUpdate.Visible = true;
+            }
+            if (MUserInfo.UserTypeId == 1)//如果类型为供应商
             {
                 MultiView1.ActiveViewIndex = 0;
-                if (string.IsNullOrEmpty(MUserInfo.IDCard) || string.IsNullOrEmpty(MUserInfo.Chop))
+                if (string.IsNullOrEmpty(MUserInfo.IDCard))//当身份证和协议为空时
                 {
                     btComplete.Visible = true;
                 }
@@ -53,10 +61,10 @@ public partial class UserCenter1 : System.Web.UI.Page
                 }
 
             }
-            else if (MUserInfo.UserTypeId == 2)
+            else if (MUserInfo.UserTypeId == 2)//如果类型为回收公司
             {
                 MultiView1.ActiveViewIndex = 1;
-                if (string.IsNullOrEmpty(MUserInfo.IDCard) || string.IsNullOrEmpty(MUserInfo.Chop))
+                if (string.IsNullOrEmpty(MUserInfo.IDCard))
                 {
                     btComplete1.Visible = true;
                 }
@@ -65,22 +73,22 @@ public partial class UserCenter1 : System.Web.UI.Page
                     btComplete1.Visible = false;
                 }
             }
-            else if (MUserInfo.UserTypeId == 3)
+            else if (MUserInfo.UserTypeId == 3)//如果类型为冶炼厂
             {
                 MultiView1.ActiveViewIndex = 2;
             }
-            else if (MUserInfo.UserTypeId == 4)
+            else if (MUserInfo.UserTypeId == 4)//如果类型为物流公司
             {
                 MultiView1.ActiveViewIndex = 3;
             }
-            else if (MUserInfo.UserTypeId == 0)
+            else if (MUserInfo.UserTypeId == 0)//如果类型为老平台账户
             {
                 Response.Redirect("UpdateRole.aspx?UserId=" + MUserInfo.UserId.ToString());
             }
-            else if (MUserInfo.UserTypeId == 5)
+            else if (MUserInfo.UserTypeId == 5)//如果类型为地域性业务员
             {
 
-                if (string.IsNullOrEmpty(MUserInfo.IDCard) || string.IsNullOrEmpty(MUserInfo.Chop))
+                if (string.IsNullOrEmpty(MUserInfo.IDCard))
                 {
                     MultiView1.ActiveViewIndex = 1;
                 }
@@ -108,6 +116,8 @@ public partial class UserCenter1 : System.Web.UI.Page
             TownLabel.Text = MUserInfo.Town;
             StreetLabel.Text = MUserInfo.Street;
             IDAuthenticationLabel.Text = MUserInfo.IDAuthentication.ToString();
+            lbUpdateMobilePhoneNum.Text = MUserInfo.MobilePhoneNum;
+            lbUpdateUserName.Text = MUserInfo.UserName;
             if (MUserInfo.IDAuthentication == true)
             {
                 IDAuthenticationLabel.Text = Aunth1.msg;
@@ -149,5 +159,24 @@ public partial class UserCenter1 : System.Web.UI.Page
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
         string url = "../JoinUS.aspx?UserId=" + MUserInfo.UserId.ToString();
         Response.Redirect(url);
+    }
+
+    protected void btUpdate_Click(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 5;
+        Panel1.Visible = false;
+    }
+
+    protected void btSure_Click(object sender, EventArgs e)
+    {
+        UserBind();
+        MUserInfo.Province = DDLAddress.province;
+        MUserInfo.City = DDLAddress.city;
+        MUserInfo.Town = DDLAddress.country;
+        MUserInfo.Street = DDLAddress.street;
+        bll_userinfo.UpdateUserInfo(MUserInfo);
+        Panel1.Visible = true;
+        MultiViewBind();
+
     }
 }

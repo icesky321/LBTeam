@@ -196,7 +196,7 @@ namespace LB.SQLServerDAL
                             Price = t.Price,
                             DetailInfo = t.DetailInfo,
                             UserName = u.UserName,
-                            UserId = u.UserId,
+                            UserId = Convert.ToInt32(t.UserId),
                             UnitName=c.UnitName,
                             TSId=b.TSId,
                             TSName=b.TSName,

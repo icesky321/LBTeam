@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_Test_TestCreateUser, App_Web_0ku02arz" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_Test_TestCreateUser, App_Web_sgdfgv4q" theme="Default" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            AccessToken:<asp:TextBox ID="tbAccessToken" runat="server"></asp:TextBox>
+            AccessToken:<asp:TextBox ID="tbAccessToken" runat="server" Text="kRZgNakNomddBrQLYWQgxLROWH3s9z3i8nBLGfPJk376Jy9PKwIyJtNqFj02BNBc"></asp:TextBox>
             <table style="">
                 <tr>
                     <td>姓名：</td>
@@ -33,8 +33,12 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="btnCreate" runat="server" Text="创建用户" OnClick="btnCreate_Click" /></td>
-                    <td></td>
+                        <asp:Button ID="btnCreate" runat="server" Text="使用Senparc接口创建用户" OnClick="btnCreate_Click" />&nbsp;&nbsp;
+                        <asp:Button ID="btnCreate2" runat="server" Text="使用LB接口创建用户" OnClick="btnCreate2_Click" />
+
+                    </td>
+                    <td>
+                        <asp:Literal ID="Literal1" runat="server"></asp:Literal></td>
                 </tr>
             </table>
         </div>
