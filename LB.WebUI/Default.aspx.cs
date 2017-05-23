@@ -14,6 +14,7 @@ public partial class _Default : System.Web.UI.Page
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     LB.SQLServerDAL.NewsInfo Mn = new LB.SQLServerDAL.NewsInfo();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)

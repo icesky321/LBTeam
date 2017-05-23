@@ -65,6 +65,7 @@ public partial class Admin_UserAdmin_CreateNewUser : System.Web.UI.Page
         MUserInfo.AuditDate = Convert.ToDateTime("1900-1-1");
         bll_userinfo.NewUserInfo(MUserInfo);
         //Response.Redirect("UpdateEmployee.aspx?Account=" + tbMobileNum.Text.Trim());
+        Roles.AddUserToRole(MUserInfo.MobilePhoneNum, "general");
         Response.Redirect("AddUserToRole.aspx");
     }
 }

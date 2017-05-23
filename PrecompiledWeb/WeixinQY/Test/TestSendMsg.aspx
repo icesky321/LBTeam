@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_Test_TestSendMsg, App_Web_sgdfgv4q" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_Test_TestSendMsg, App_Web_jcyoxrfy" theme="Default" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_p3pd4y3a" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_kbxfc0ac" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -67,7 +67,7 @@
                 </p>
             </div>
             <hr />--%>
-            <div class="am-g" style="border: 0px solid #eee; margin: 10px">
+            <div class="am-g" style="border: 0px solid #eee;">
                 <div class="am-u-md-6">
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
@@ -106,7 +106,10 @@
                     <asp:TabContainer ID="TabContainer5" runat="server">
                         <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="平台动态" Height="276px">
                             <ContentTemplate>
-                                
+                                平台注册会员共计：<asp:Label ID="lbHYNum" runat="server" Font-Size="Medium" ForeColor="Gray"></asp:Label>
+                                <br />
+                                <hr />
+                                平台发布供需信息共计：<asp:Label ID="lbGXNum" runat="server" Font-Size="Medium" ForeColor="Gray"></asp:Label>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>

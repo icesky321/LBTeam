@@ -40,5 +40,27 @@ namespace LB.SQLServerDAL
         {
             dbContext.SubmitChanges();
         }
+
+        public void DeleteUserDepositInfo(int UserId)
+        {
+            var query = (from c in dbContext.UserDepositInfo
+                         where c.UserId == UserId
+                         select c).FirstOrDefault();
+            dbContext.UserDepositInfo.DeleteOnSubmit(query);
+            dbContext.SubmitChanges();
+        }
+
+        public bool ExistUserId(int UserId)
+        {
+            bool exists = false;
+            var query = from u in dbContext.UserDepositInfo
+                        where u.UserId == UserId
+                        select u;
+            if (query.Count() > 0)
+            {
+                exists = true;
+            }
+            return exists;
+        }
     }
 }

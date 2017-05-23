@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Deposit, App_Web_njqvu5xw" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Deposit, App_Web_fmgbfib2" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -19,14 +19,18 @@
                 <asp:View ID="View1" runat="server">
                     <asp:Image ID="Image1" runat="server" ImageUrl="~/images/sorry.jpg" Width="100px" Height="80px" />
                     <asp:Label ID="Label1" runat="server" Text="暂无保证金信息" Font-Bold="True" Font-Size="Larger" ForeColor="Gray"></asp:Label>
+                     <asp:Button ID="btLocal" runat="server" Text="缴纳诚信保证金" OnClick="btLocal_Click" />
                 </asp:View>
                 <asp:View ID="View2" runat="server">
                     保证金：<asp:Label ID="lbDeposit" runat="server" Text="Label"></asp:Label>元
+                    <br />
+                    <hr />
+                    <br />
                     缴纳时间：<asp:Label ID="lbInDate" runat="server" Text="Label"></asp:Label>
                     <br />
                     <hr />
                     <br />
-                    <asp:Button ID="btOutDeposit" runat="server" Text="我要退诚信保证金" />
+                    <asp:Button ID="btOutDeposit" runat="server" Text="我要退诚信保证金" OnClick="btOutDeposit_Click" />
                     <asp:ConfirmButtonExtender ID="btOutDeposit_ConfirmButtonExtender" runat="server" ConfirmText="亲，真的打算退保证金吗？"
                         Enabled="True" TargetControlID="btOutDeposit"></asp:ConfirmButtonExtender>
                 </asp:View>

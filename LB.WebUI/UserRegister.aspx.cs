@@ -74,6 +74,7 @@ public partial class UserRegister : System.Web.UI.Page
             MUserInfo.ChopAuthentication = false;
             MUserInfo.InCharge = false;
             bll_userinfo.NewUserInfo(MUserInfo);
+            Roles.AddUserToRole(MUserInfo.MobilePhoneNum, "general");
             string url = "UserAuthentication.aspx?UserId=" + MUserInfo.UserId.ToString();
             Response.Redirect(url);
         }

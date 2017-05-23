@@ -37,5 +37,10 @@ namespace LB.BLL
         {
             da.DeleteUserAuditMsg(MsgId);
         }
+
+        public IQueryable GetUserAuditMsgByStatus(bool Status)
+        {
+            return da.GetUserAuditMsgByStatus(Status);
+        }
     }
 }

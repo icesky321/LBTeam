@@ -72,7 +72,8 @@ public partial class CopRegister : System.Web.UI.Page
                 bll_userinfo.NewUserInfo(MUserInfo);
                 MCopInfo.UserId = MUserInfo.UserId;
                 bll_copinfo.NewCopInfo(MCopInfo);
-                string url = "CopAuthentication.aspx?UserId=" + MCopInfo.UserId.ToString();
+            Roles.AddUserToRole(MUserInfo.MobilePhoneNum, "general");
+            string url = "CopAuthentication.aspx?UserId=" + MCopInfo.UserId.ToString();
                 Response.Redirect(url);
             //}
             //else
