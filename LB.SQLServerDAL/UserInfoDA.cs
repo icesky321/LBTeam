@@ -5,9 +5,49 @@ using System.Text;
 
 namespace LB.SQLServerDAL
 {
-    public class UserInfoDA
+    public class UserInfoDA : IDisposable
     {
         LB.SQLServerDAL.LBDataContext dbContext = new LBDataContext(DS.ConnectionString.ConnectionStringLB());
+
+        /// <summary>
+        /// 释放由本类占用的所有资源
+        /// </summary>
+        public void Dispose()
+        {
+            if (dbContext != null)
+            {
+                dbContext.Dispose();
+                dbContext = null;
+            }
+
+            GC.SuppressFinalize(this);
+        }
+
+        ~UserInfoDA()
+        {
+            this.Dispose();
+        }
+
+        #region 用户数统计
+        /// <summary>
+        /// 获取用户总数
+        /// </summary>
+        /// <returns></returns>
+        public int GetUserSum()
+        {
+            return dbContext.UserInfo.Count();
+        }
+
+        /// <summary>
+        /// 获取已认证并登记进微信企业号中的人员数。
+        /// </summary>
+        /// <returns></returns>
+        public int GetIsQYUser_Sum()
+        {
+            return dbContext.UserInfo.Where(o => o.IsQYUser == true).Count();
+        }
+
+        #endregion
 
         public LB.SQLServerDAL.UserInfo NewUserInfo(LB.SQLServerDAL.UserInfo userinfo)
         {
@@ -136,7 +176,7 @@ namespace LB.SQLServerDAL
                         from b in leftGroup3.DefaultIfEmpty()
                         select new LB.Model.UserInfoModel()
                         {
-                            UserId=u.UserId,
+                            UserId = u.UserId,
                             Account = u.Account,
                             BankName = u.BankName,
                             BAuthentication = c.BAuthentication == null ? false : c.BAuthentication.Value,
@@ -155,7 +195,7 @@ namespace LB.SQLServerDAL
                             MobilePhoneNum = u.MobilePhoneNum,
                             Town = u.Town,
                             Audit = u.Audit == null ? false : u.Audit.Value,
-                            UserTypeId=Convert.ToInt32(u.UserTypeId),
+                            UserTypeId = Convert.ToInt32(u.UserTypeId),
                             AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value,
                             IsApproved = Convert.ToBoolean(b.IsApproved)
                         };

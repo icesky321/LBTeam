@@ -11,7 +11,7 @@ namespace LB.Weixin
     /// <summary>
     /// AccessToken 管理类
     /// </summary>
-    public class AccessTokenManage
+    public class AccessTokenManage : IDisposable
     {
         static LB.SQLServerDAL.AccessTokenDA daTokenStatic = new AccessTokenDA();
         LB.SQLServerDAL.AccessTokenDA daToken = new SQLServerDAL.AccessTokenDA();
@@ -127,11 +127,25 @@ namespace LB.Weixin
 
 
         /// <summary>
-        /// 释放由本类占用的所有资源。
+        /// 释放由本类占用的所有资源
         /// </summary>
         public void Dispose()
         {
-            daToken.Dispose();
+            if (daToken != null)
+            {
+                daToken.Dispose();
+                daToken = null;
+            }
+
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// 析构函数
+        /// </summary>
+        ~AccessTokenManage()
+        {
+            this.Dispose();
         }
 
         /// <summary>

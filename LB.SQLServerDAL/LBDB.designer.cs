@@ -271,6 +271,14 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		public System.Data.Linq.Table<UserAuditMsg> UserAuditMsg
+		{
+			get
+			{
+				return this.GetTable<UserAuditMsg>();
+			}
+		}
+		
 		public System.Data.Linq.Table<UserInfo> UserInfo
 		{
 			get
@@ -4828,6 +4836,159 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAuditMsg")]
+	public partial class UserAuditMsg
+	{
+		
+		private int _MsgId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private string _AccountName;
+		
+		private string _Account;
+		
+		private string _Ammount;
+		
+		private string _Message;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<bool> _Status;
+		
+		public UserAuditMsg()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int MsgId
+		{
+			get
+			{
+				return this._MsgId;
+			}
+			set
+			{
+				if ((this._MsgId != value))
+				{
+					this._MsgId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(50)")]
+		public string AccountName
+		{
+			get
+			{
+				return this._AccountName;
+			}
+			set
+			{
+				if ((this._AccountName != value))
+				{
+					this._AccountName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Account", DbType="NVarChar(50)")]
+		public string Account
+		{
+			get
+			{
+				return this._Account;
+			}
+			set
+			{
+				if ((this._Account != value))
+				{
+					this._Account = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ammount", DbType="NVarChar(50)")]
+		public string Ammount
+		{
+			get
+			{
+				return this._Ammount;
+			}
+			set
+			{
+				if ((this._Ammount != value))
+				{
+					this._Ammount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserInfo")]
 	public partial class UserInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4876,6 +5037,8 @@ namespace LB.SQLServerDAL
 		
 		private string _OpenId;
 		
+		private bool _IsQYUser;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4922,6 +5085,8 @@ namespace LB.SQLServerDAL
     partial void OnQYUserIdChanged();
     partial void OnOpenIdChanging(string value);
     partial void OnOpenIdChanged();
+    partial void OnIsQYUserChanging(bool value);
+    partial void OnIsQYUserChanged();
     #endregion
 		
 		public UserInfo()
@@ -5345,6 +5510,26 @@ namespace LB.SQLServerDAL
 					this._OpenId = value;
 					this.SendPropertyChanged("OpenId");
 					this.OnOpenIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsQYUser", DbType="Bit NOT NULL")]
+		public bool IsQYUser
+		{
+			get
+			{
+				return this._IsQYUser;
+			}
+			set
+			{
+				if ((this._IsQYUser != value))
+				{
+					this.OnIsQYUserChanging(value);
+					this.SendPropertyChanging();
+					this._IsQYUser = value;
+					this.SendPropertyChanged("IsQYUser");
+					this.OnIsQYUserChanged();
 				}
 			}
 		}
