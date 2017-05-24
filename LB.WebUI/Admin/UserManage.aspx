@@ -7,7 +7,7 @@
     <br />
     <br />
     <asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" />
-    <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand">
+    <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand" OnDataBound="gvUserInfo_DataBound" OnPageIndexChanging="gvUserInfo_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />
             <asp:BoundField DataField="UserName" HeaderText="用户" SortExpression="UserName" />
@@ -42,7 +42,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="审核" SortExpression="Audit">
+            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>
@@ -71,6 +71,24 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
+        <PagerTemplate>
+            <table width="100%" style="font-size: 12px;">
+                <tr>
+                    <td style="text-align: right">
+                        <asp:Label ID="lblPage" runat="server" Text='<%# "第" + (((GridView)Container.NamingContainer).PageIndex + 1)  + "页/共" + (((GridView)Container.NamingContainer).PageCount) + "页" %> '></asp:Label>
+                        <asp:LinkButton ID="lbnFirst" runat="Server" Text="首页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>' CommandName="Page" CommandArgument="First"></asp:LinkButton>
+                        <asp:LinkButton ID="lbnPrev" runat="server" Text="上一页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>' CommandName="Page" CommandArgument="Prev"></asp:LinkButton>
+                        <asp:LinkButton ID="lbnNext" runat="Server" Text="下一页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != (((GridView)Container.NamingContainer).PageCount - 1) %>' CommandName="Page" CommandArgument="Next"></asp:LinkButton>
+                        <asp:LinkButton ID="lbnLast" runat="Server" Text="尾页" Enabled='<%# ((GridView)Container.NamingContainer).PageIndex != (((GridView)Container.NamingContainer).PageCount - 1) %>' CommandName="Page" CommandArgument="Last"></asp:LinkButton>
+                        到第<asp:DropDownList ID="PageDropDownList"
+                            AutoPostBack="true"
+                            OnSelectedIndexChanged="PageDropDownList_SelectedIndexChanged"
+                            runat="server" />
+                        页  
+                    </td>
+                </tr>
+            </table>
+        </PagerTemplate>
     </asp:GridView>
 </asp:Content>
 

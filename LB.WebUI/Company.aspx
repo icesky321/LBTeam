@@ -34,7 +34,9 @@
                                     <tr>
                                         <td>公司名称:</td>
                                         <td>
-                                            <asp:LinkButton ID="CopNameLabel" runat="server" Text='<%# Eval("CopName") %>' CommandName="Detail" CommandArgument='<%# Eval("CopId") %>'></asp:LinkButton></td>
+                                            <%--<asp:LinkButton ID="CopNameLabel" runat="server" Text='<%# Eval("CopName") %>' CommandName="Detail" CommandArgument='<%# Eval("CopId") %>'></asp:LinkButton>--%>
+                                            <asp:Label ID="CopNameLabel" runat="server" Text='<%# Eval("CopName") %>' />
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>公司地址：</td>

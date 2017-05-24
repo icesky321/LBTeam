@@ -16,10 +16,10 @@ public partial class CopAuthentication : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Request.QueryString["CopId"] != null)
+            if (Request.QueryString["UserId"] != null)
             {
-                string CopId = Request.QueryString["CopId"];
-                HFCopId.Value = CopId;
+                string UserId = Request.QueryString["UserId"];
+                HFUserId.Value = UserId;
             }
             else
             {
@@ -32,19 +32,20 @@ public partial class CopAuthentication : System.Web.UI.Page
 
     protected void btUpLoad_Click(object sender, EventArgs e)
     {
-        MCopInfo = bll_copinfo.GetCopInfoeById(Convert.ToInt32(HFCopId.Value));
-        MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
+        MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(HFUserId.Value));
+        MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(HFUserId.Value));
         bool files = false;
-        if (this.FUBizlicense.HasFile && this.FUHWPermit.HasFile)
+        if (this.FUIDCard.HasFile && this.FUBizlicense.HasFile && this.FUHWPermit.HasFile)
         {
             //获取上传文件的后缀
+            String fileExtensionFUI = System.IO.Path.GetExtension(this.FUIDCard.FileName).ToLower();
             String fileExtensionFUB = System.IO.Path.GetExtension(this.FUBizlicense.FileName).ToLower();
             String fileExtensionFUH = System.IO.Path.GetExtension(this.FUHWPermit.FileName).ToLower();
             String[] restrictExtension = { ".gif", ".jpg", ".bmp", ".png" };
             //判断文件类型是否符合
             for (int i = 0; i < restrictExtension.Length; i++)
             {
-                if (fileExtensionFUB == restrictExtension[1] && fileExtensionFUH== restrictExtension[1])
+                if (fileExtensionFUI == restrictExtension[1] && fileExtensionFUB == restrictExtension[1] && fileExtensionFUH== restrictExtension[1])
                 {
                     files = true;
                 }
@@ -54,19 +55,25 @@ public partial class CopAuthentication : System.Web.UI.Page
             {
                 try
                 {
-
+                    string filenameI = FUIDCard.PostedFile.FileName;
                     string filenameB = FUBizlicense.PostedFile.FileName;
                     string filenameH = FUHWPermit.PostedFile.FileName;
+                    string fileextI = System.IO.Path.GetExtension(filenameI);
                     string fileextB = System.IO.Path.GetExtension(filenameB);
                     string fileextH = System.IO.Path.GetExtension(filenameH);
+                    string newfilenameI = MUserInfo.MobilePhoneNum + fileextI;
                     string newfilenameB = MCopInfo.CopName + fileextB;
                     string newfilenameH = MCopInfo.CopName + fileextH;
+                    string pathI = HttpContext.Current.Server.MapPath("~/IDCard/");
                     string pathB = HttpContext.Current.Server.MapPath("~/Bizlicense/");
                     string pathH = HttpContext.Current.Server.MapPath("~/HWPermit/");
+                    string savefilenameI = pathI + newfilenameI;
                     string savefilenameB = pathB + newfilenameB;
                     string savefilenameH = pathH + newfilenameH;
+                    this.FUIDCard.SaveAs(savefilenameI);
                     this.FUBizlicense.SaveAs(savefilenameB);
                     this.FUHWPermit.SaveAs(savefilenameH);
+                    this.Image3.ImageUrl = "~/IDCard/" + newfilenameI;
                     this.Image1.ImageUrl = "~/Bizlicense/" + newfilenameB;
                     this.Image2.ImageUrl = "~/HWPermit/" + newfilenameH;
                     this.Label1.Text = "文件上传成功,等待后台审核";
@@ -80,6 +87,7 @@ public partial class CopAuthentication : System.Web.UI.Page
                     MUserInfo.Account = tbAccount.Text;
                     MCopInfo.Bizlicense= "~/Bizlicense/" + newfilenameB;
                     MCopInfo.HWPermit = "~/HWPermit/" + newfilenameH;
+                    MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
                     bll_userinfo.UpdateUserInfo(MUserInfo);
                     bll_copinfo.UpdateCopInfo(MCopInfo);
                 }
@@ -93,5 +101,6 @@ public partial class CopAuthentication : System.Web.UI.Page
                 this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
             }
         }
+        Response.Redirect("WaitingForAudit.aspx");
     }
 }

@@ -85,5 +85,6 @@ public partial class UserAuthentication : System.Web.UI.Page
                 this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
             }
         }
+        Response.Redirect("WaitingForAudit.aspx");
     }
 }

@@ -55,14 +55,14 @@ public partial class _Default : System.Web.UI.Page
 
     void gvBuyInfoDatabind()
     {
-        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(1);
+        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(1, true);
         gvBuyInfo.DataBind();
 
     }
 
     void gvSellInfoDatabind()
     {
-        gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2);
+        gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2,true);
         gvSellInfo.DataBind();
 
     }

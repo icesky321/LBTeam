@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_ls2ubo5p" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_whq422nh" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -100,7 +100,7 @@
                                                                 <ul>
                                                                     <li>
                                                                         <asp:LoginName ID="LoginName2" runat="server" />
-                                                                        <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                                                                        <asp:LoginStatus ID="LoginStatus2" runat="server" LogoutText="退出" />
                                                                     </li>
                                                                 </ul>
                                                             </asp:View>
@@ -161,13 +161,7 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="#">加入我们</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入供应商</a></li>
-                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入地域业务员</a></li>
-                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入回收公司</a></li>
-                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入冶炼厂</a></li>
-                                    </ul>
+                                <li><a href="ChooseRoles.aspx">加入我们</a>
                                 </li>
                             </ul>
                         </div>
@@ -186,28 +180,36 @@
 
 
         <!--===========layout-footer================-->
-        <div class="layout-footer">
+        <div class="layout-footer" style="height: 50px">
             <div class="footer">
                 <div style="background-color: #383d61" class="footer--bg"></div>
                 <div class="footer--inner">
                     <div class="container">
                         <div class="footer_main">
                             <div class="am-g">
-                                <div class="am-u-md-12 ">
+                                <div class="am-u-md-3 ">&nbsp;&nbsp; </div>
+                                <div class="am-u-md-6 ">
                                     <div class="footer_main--column" style="text-align: center;">
-                                        <p class="footer_about--text">地址：宁波市镇海区庄市街道中官西路279号文创园 电话：0574-86694505 浙ICP备16029665号-1</p>
+
                                         <div class="footer_about">
                                             <p class="footer_about--text">
-                                                Copyright 2016-2017 宁波绿宝信息科技有限公司 版权所有 All Rights Reserved
+                                                Copyright 2016-2017 宁波绿宝信息科技有限公司 版权所有 All Rights Reserved   浙ICP备16029665号-1     <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
+                                                    <asp:Image ID="Image2" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label2" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
+                                                </a>
                                             </p>
-                                            <p class="footer_about--text">
+<%--                                            <p class="footer_about--text">
                                                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
                                                     <asp:Image ID="Image8" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label1" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
                                                 </a>
-                                            </p>
+                                            </p>--%>
                                         </div>
                                     </div>
 
+                                </div>
+                                <div class="am-u-md-3 ">
+                                    <div class="footer_main--column" style="text-align: center;">
+                                        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/lb2w.jpg" />
+                                    </div>
                                 </div>
                             </div>
                         </div>

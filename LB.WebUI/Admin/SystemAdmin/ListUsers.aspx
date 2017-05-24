@@ -32,13 +32,13 @@
                                 <Columns>
                                     <asp:TemplateField HeaderText="用户名">
                                         <ItemTemplate>
-                                            <asp:Label ID="lbMobilePhoneNum" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "MobilePhoneNum")%>'></asp:Label>
+                                            <asp:Label ID="lbUserName" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "UserName")%>'></asp:Label>
                                         </ItemTemplate>
                                         <HeaderStyle Height="25px" />
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="手机号">
                                         <ItemTemplate>
-                                            <asp:Label ID="lbUserName" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "UserName")%>'></asp:Label>
+                                            <asp:Label ID="lbMobilePhoneNum" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "MobilePhoneNum")%>'></asp:Label>
                                         </ItemTemplate>
                                         <HeaderStyle Height="25px" />
                                     </asp:TemplateField>

@@ -105,7 +105,7 @@ namespace LB.SQLServerDAL
                             u.Audit,
                             u.AuditDate
                         };
-            if (province != "---")
+            if (province != "---" && province != "-1")
             {
                 query = query.Where(p => p.Province.IndexOf(province) >= 0);
             }

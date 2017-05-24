@@ -79,7 +79,12 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         if (e.CommandName == "Bizlicense")
         {
             string url = MCopInfo.Bizlicense;
-            Response.Redirect(url);
+            if (!string.IsNullOrEmpty(MCopInfo.Bizlicense))
+            { Response.Redirect(url); }
+            else {
+
+            }
+            
         }
         if (e.CommandName == "BPass")
         {
@@ -92,7 +97,9 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         if (e.CommandName == "HWPermit")
         {
             string url = MCopInfo.HWPermit;
-            Response.Redirect(url);
+            if (!string.IsNullOrEmpty(MCopInfo.HWPermit))
+            { Response.Redirect(url); }
+                
         }
         if (e.CommandName == "HPass")
         {
@@ -105,7 +112,9 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         if (e.CommandName == "IDCard")
         {
             string url = MUserInfo.IDCard;
-            Response.Redirect(url);
+            if (!string.IsNullOrEmpty(MUserInfo.IDCard))
+            { Response.Redirect(url); }
+                
         }
         if (e.CommandName == "IPass")
         {

@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_mx1oxp1l" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_p3pd4y3a" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -133,7 +133,7 @@
                                 <asp:TabPanel ID="TabPanel3" runat="server" HeaderText=" 财经资讯" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvNews" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
-                                            SkinID="GridView3" Width="500" OnRowCommand="gvNews_RowCommand">
+                                            SkinID="GridView3" Width="100%" OnRowCommand="gvNews_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
@@ -160,7 +160,7 @@
                                 <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="铅电瓶资讯" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvPBNew" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
-                                            SkinID="GridView3" Width="500" OnRowCommand="gvPBNew_RowCommand">
+                                            SkinID="GridView3" Width="100%" OnRowCommand="gvPBNew_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
@@ -187,7 +187,7 @@
                                 <asp:TabPanel ID="TabPanel5" runat="server" HeaderText="区域价格" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvPrice" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
-                                            SkinID="GridView3" Width="500" OnRowCommand="gvPrice_RowCommand">
+                                            SkinID="GridView3" Width="100%" OnRowCommand="gvPrice_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
@@ -230,7 +230,7 @@
                                 <asp:TabPanel ID="TabPanel9" runat="server" HeaderText="政策法规" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvLaw" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
-                                            SkinID="GridView3" Width="500" OnRowCommand="gvLaw_RowCommand">
+                                            SkinID="GridView3" Width="100%" OnRowCommand="gvLaw_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText=" " SortExpression="Title">
                                                     <ItemTemplate>
@@ -265,7 +265,7 @@
                                 <asp:TabPanel ID="TabPanel6" runat="server" HeaderText="供应信息" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvSellInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"
-                                            Width="100%" SkinID="GridView4" OnRowCommand="gvSellInfo_RowCommand">
+                                            Width="100%" SkinID="GridView3" OnRowCommand="gvSellInfo_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="标题 " SortExpression="Title">
                                                     <ItemTemplate>
@@ -309,7 +309,7 @@
                                 <asp:TabPanel ID="TabPanel10" runat="server" HeaderText="求购信息" Height="276px">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvBuyInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"
-                                            Width="100%" SkinID="GridView4" OnRowCommand="gvBuyInfo_RowCommand">
+                                            Width="100%" SkinID="GridView3" OnRowCommand="gvBuyInfo_RowCommand">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="标题 " SortExpression="Title">
                                                     <ItemTemplate>

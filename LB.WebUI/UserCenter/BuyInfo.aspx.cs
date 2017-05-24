@@ -125,7 +125,7 @@ public partial class BuyInfo : System.Web.UI.Page
         MTradeleads.Audit = false;
         MTradeleads.AuditDatetime = Convert.ToDateTime("1900-1-1");
         bll_tradeleads.NewTradeleads(MTradeleads);
-        Response.Redirect("UserCenter.aspx");
+        Response.Redirect("../WaitingForAudit.aspx");
     }
 
     protected void btPreview_Click(object sender, EventArgs e)

@@ -84,6 +84,9 @@ namespace LB.SQLServerDAL
     partial void InsertUnitInfo(UnitInfo instance);
     partial void UpdateUnitInfo(UnitInfo instance);
     partial void DeleteUnitInfo(UnitInfo instance);
+    partial void InsertUserDepositInfo(UserDepositInfo instance);
+    partial void UpdateUserDepositInfo(UserDepositInfo instance);
+    partial void DeleteUserDepositInfo(UserDepositInfo instance);
     partial void InsertUserInfo(UserInfo instance);
     partial void UpdateUserInfo(UserInfo instance);
     partial void DeleteUserInfo(UserInfo instance);
@@ -276,6 +279,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<UserAuditMsg>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserDepositInfo> UserDepositInfo
+		{
+			get
+			{
+				return this.GetTable<UserDepositInfo>();
 			}
 		}
 		
@@ -4811,6 +4822,365 @@ namespace LB.SQLServerDAL
 					this._UnitName = value;
 					this.SendPropertyChanged("UnitName");
 					this.OnUnitNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAuditMsg")]
+	public partial class UserAuditMsg
+	{
+		
+		private int _MsgId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private string _AccountName;
+		
+		private string _Account;
+		
+		private string _Ammount;
+		
+		private string _Message;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<bool> _Status;
+		
+		public UserAuditMsg()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int MsgId
+		{
+			get
+			{
+				return this._MsgId;
+			}
+			set
+			{
+				if ((this._MsgId != value))
+				{
+					this._MsgId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(50)")]
+		public string AccountName
+		{
+			get
+			{
+				return this._AccountName;
+			}
+			set
+			{
+				if ((this._AccountName != value))
+				{
+					this._AccountName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Account", DbType="NVarChar(50)")]
+		public string Account
+		{
+			get
+			{
+				return this._Account;
+			}
+			set
+			{
+				if ((this._Account != value))
+				{
+					this._Account = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ammount", DbType="NVarChar(50)")]
+		public string Ammount
+		{
+			get
+			{
+				return this._Ammount;
+			}
+			set
+			{
+				if ((this._Ammount != value))
+				{
+					this._Ammount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserDepositInfo")]
+	public partial class UserDepositInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _DpId;
+		
+		private System.Nullable<int> _UserId;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<System.DateTime> _InDate;
+		
+		private System.Nullable<System.DateTime> _OutDate;
+		
+		private string _Operator;
+		
+		private System.Nullable<System.DateTime> _OperateDate;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnDpIdChanging(int value);
+    partial void OnDpIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnInDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnInDateChanged();
+    partial void OnOutDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOutDateChanged();
+    partial void OnOperatorChanging(string value);
+    partial void OnOperatorChanged();
+    partial void OnOperateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnOperateDateChanged();
+    #endregion
+		
+		public UserDepositInfo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="dpId", Storage="_DpId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int DpId
+		{
+			get
+			{
+				return this._DpId;
+			}
+			set
+			{
+				if ((this._DpId != value))
+				{
+					this.OnDpIdChanging(value);
+					this.SendPropertyChanging();
+					this._DpId = value;
+					this.SendPropertyChanged("DpId");
+					this.OnDpIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> InDate
+		{
+			get
+			{
+				return this._InDate;
+			}
+			set
+			{
+				if ((this._InDate != value))
+				{
+					this.OnInDateChanging(value);
+					this.SendPropertyChanging();
+					this._InDate = value;
+					this.SendPropertyChanged("InDate");
+					this.OnInDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OutDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OutDate
+		{
+			get
+			{
+				return this._OutDate;
+			}
+			set
+			{
+				if ((this._OutDate != value))
+				{
+					this.OnOutDateChanging(value);
+					this.SendPropertyChanging();
+					this._OutDate = value;
+					this.SendPropertyChanged("OutDate");
+					this.OnOutDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Operator", DbType="NVarChar(50)")]
+		public string Operator
+		{
+			get
+			{
+				return this._Operator;
+			}
+			set
+			{
+				if ((this._Operator != value))
+				{
+					this.OnOperatorChanging(value);
+					this.SendPropertyChanging();
+					this._Operator = value;
+					this.SendPropertyChanged("Operator");
+					this.OnOperatorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> OperateDate
+		{
+			get
+			{
+				return this._OperateDate;
+			}
+			set
+			{
+				if ((this._OperateDate != value))
+				{
+					this.OnOperateDateChanging(value);
+					this.SendPropertyChanging();
+					this._OperateDate = value;
+					this.SendPropertyChanged("OperateDate");
+					this.OnOperateDateChanged();
 				}
 			}
 		}

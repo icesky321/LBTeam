@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinMP_TestGetAccessToken, App_Web_wqd43b1k" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_TestGetAccessToken, App_Web_fohjuozh" theme="Default" %>
 
 <!DOCTYPE html>
 

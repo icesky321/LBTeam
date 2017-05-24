@@ -44,9 +44,9 @@ namespace LB.BLL
             return da.GetTradeleadsByinfoId(InfoId);
         }
 
-        public IQueryable GetTradeleadsByTradeType(int TId)
+        public IQueryable GetTradeleadsByTradeType(int TId, bool Audit)
         {
-            return da.GetTradeleadsByTradeType(TId);
+            return da.GetTradeleadsByTradeType(TId, Audit);
         }
 
         public IQueryable GetTradeleadsByAddressAndType(string province, string city, string country, string street, int TId)

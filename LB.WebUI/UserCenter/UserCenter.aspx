@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/UserControls/Aunth.ascx" TagName="Aunth" TagPrefix="uc2" %>
 <%@ Register Src="~/UserControls/UnAunth.ascx" TagName="UnAunth" TagPrefix="uc3" %>
+<%@ Register Src="~/UserControls/DDLAddress.ascx" TagPrefix="uc2" TagName="DDLAddress" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <script src="js/amazeui.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="../css/main.css" />
@@ -18,43 +20,41 @@
                 </p>
             </div>
             <hr />
-            <table>
-                <tr>
-                    <td>用户名:</td>
-                    <td>
-                        <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' /></td>
-                </tr>
-                <tr>
-                    <td>联系电话:</td>
-                    <td>
-                        <asp:Label ID="MobilePhoneNumLabel" runat="server" Text='<%# Eval("MobilePhoneNum") %>' /></td>
-                </tr>
-                <tr>
-                    <td>地址:</td>
-                    <td>
-                        <asp:Label ID="ProvinceLabel" runat="server" Text='<%# Eval("Province") %>' /><asp:Label ID="CityLabel" runat="server" Text='<%# Eval("City") %>' /><asp:Label ID="TownLabel" runat="server" Text='<%# Eval("Town") %>' /><asp:Label ID="StreetLabel" runat="server" Text='<%# Eval("Street") %>' /></td>
-                </tr>
-                <tr>
-                    <td>身份证审核:</td>
-                    <td>
-                        <asp:Label ID="IDAuthenticationLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("IDAuthentication"))?  Aunth1.msg : UnAunth1.msg %> ' /></td>
-                </tr>
-                <tr>
-                    <td>信用审核:</td>
-                    <td>
-                        <asp:Label ID="AuditLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("Audit"))? Aunth1.msg : UnAunth1.msg %> ' /></td>
-                </tr>
-                <tr>
-                    <td>开户行:</td>
-                    <td>
-                        <asp:Label ID="BankNameLabel" runat="server" Text='<%# Eval("BankName") %>' /></td>
-                </tr>
-                <tr>
-                    <td>银行账号</td>
-                    <td>
-                        <asp:Label ID="AccountLabel" runat="server" Text='<%# Eval("Account") %>' /></td>
-                </tr>
-            </table>
+            <asp:Panel ID="Panel1" runat="server">
+                用户名:<asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
+                <hr />
+                联系电话:<asp:Label ID="MobilePhoneNumLabel" runat="server" Text='<%# Eval("MobilePhoneNum") %>' />
+                <hr />
+                地址:<asp:Label ID="ProvinceLabel" runat="server" Text='<%# Eval("Province") %>' /><asp:Label ID="CityLabel" runat="server" Text='<%# Eval("City") %>' /><asp:Label ID="TownLabel" runat="server" Text='<%# Eval("Town") %>' /><asp:Label ID="StreetLabel" runat="server" Text='<%# Eval("Street") %>' />
+                <hr />
+                <table>
+                    <tr>
+                        <td>身份证审核:</td>
+                        <td>
+                            <asp:Label ID="IDAuthenticationLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("IDAuthentication"))?  Aunth1.msg : UnAunth1.msg %> ' /></td>
+                    </tr>
+                </table>
+
+
+                <hr />
+                <table>
+                    <tr>
+                        <td>信用审核:
+                        </td>
+                        <td>
+                            <asp:Label ID="AuditLabel" runat="server" Text='<%# Convert.ToBoolean(Eval("Audit"))? Aunth1.msg : UnAunth1.msg %> ' />
+                        </td>
+                    </tr>
+                </table>
+
+
+                <hr />
+                开户行:<asp:Label ID="BankNameLabel" runat="server" Text='<%# Eval("BankName") %>' />
+                <hr />
+                银行账号:
+                            <asp:Label ID="AccountLabel" runat="server" Text='<%# Eval("Account") %>' />
+                <hr />
+            </asp:Panel>
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                 <asp:View ID="View1" runat="server">
                     <asp:Button ID="btComplete" runat="server" Text="继续补全个人资料" OnClick="btComplete_Click" />
@@ -62,17 +62,23 @@
                 <asp:View ID="View2" runat="server">
 
                     <asp:Button ID="btComplete1" runat="server" OnClick="btComplete1_Click" Text="继续补全商家资料" />
+                    <asp:Button ID="btUpdate" runat="server" Text="修改商家资料" OnClick="btUpdate_Click" />
                 </asp:View>
                 <asp:View ID="View3" runat="server">
                 </asp:View>
                 <asp:View ID="View4" runat="server">
                 </asp:View>
                 <asp:View ID="View5" runat="server">
-                     <asp:Button ID="btLocal" runat="server" Text="我要成为地域业务专员" OnClick="btLocal_Click" />
-                    <asp:Panel ID="Panel1" runat="server" Visible="false">
-
-                        请向此公司汇款，进过48小时核验，会反馈您信息
-                    </asp:Panel>
+                    <asp:Button ID="btLocal" runat="server" Text="缴纳诚信保证金" OnClick="btLocal_Click" />
+                </asp:View>
+                <asp:View ID="View6" runat="server">
+                    用户名：<asp:Label ID="lbUpdateUserName" runat="server" Text='<%# Eval("UserName") %>' />
+                    <hr />
+                    联系电话：<asp:Label ID="lbUpdateMobilePhoneNum" runat="server" Text='<%# Eval("MobilePhoneNum") %>' />
+                    <hr />
+                    地址:<uc2:DDLAddress runat="server" ID="DDLAddress" />
+                    <hr />
+                    <asp:Button ID="btSure" runat="server" Text="确认修改" OnClick="btSure_Click" />
                 </asp:View>
             </asp:MultiView>
         </div>

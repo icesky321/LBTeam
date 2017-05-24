@@ -140,7 +140,15 @@ public partial class Admin_HelpManage : System.Web.UI.Page
 
         gvHelpInfo.PageIndex = pageList.SelectedIndex;
 
-        gvHelpDataBindByAudit(false);  //数据绑定 
+        if (ddlAudit.SelectedItem.Text == "")
+        {
+            gvHelpDataBind();
+        }
+        else
+        {
+            gvHelpDataBindByAudit(Convert.ToBoolean(ddlAudit.SelectedItem.Value));  //数据绑定 }
+
+        }
     }
 
     protected void gvHelpInfo_DataBound(object sender, EventArgs e)
