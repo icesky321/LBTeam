@@ -14,11 +14,11 @@
     <title>绿宝电瓶回收平台</title>
     <link rel="stylesheet" href="css/amazeui.css" />
     <link rel="stylesheet" href="css/common.min.css" />
-
-
-    <script src="js/jquery-2.1.0.js" charset="utf-8"></script>
+    <script src="js/jquery-1.9.1.min.js" charset="utf-8"></script>
     <script src="js/amazeui.js" charset="utf-8"></script>
     <script src="js/common.js" charset="utf-8"></script>
+    <script src="js/jquery.sequence-min.js"></script>
+
     <style type="text/css">
         .companywarp {
             display: none;
@@ -161,8 +161,17 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
+                                                                <li><a href="#">咻</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="Company.aspx?Id=3">一键卖货</a></li>
+                                        <li class="menu-item"><a href="Company.aspx?Id=2">一键收货</a></li>
+                                        <li class="menu-item"><a href="Company.aspx?Id=2">一键押货</a></li>
+                                    </ul>
+
+                                </li>
                                 <li><a href="ChooseRoles.aspx">加入我们</a>
                                 </li>
+
                             </ul>
                         </div>
                     </div>
@@ -197,7 +206,7 @@
                                                     <asp:Image ID="Image2" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label2" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
                                                 </a>
                                             </p>
-<%--                                            <p class="footer_about--text">
+                                            <%--                                            <p class="footer_about--text">
                                                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
                                                     <asp:Image ID="Image8" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label1" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
                                                 </a>

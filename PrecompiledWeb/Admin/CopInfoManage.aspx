@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_CopInfoManage, App_Web_pefw5kum" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_CopInfoManage, App_Web_ex01triv" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -72,7 +72,7 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit">
+            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit" Visible="false">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>

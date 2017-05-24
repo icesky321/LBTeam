@@ -58,5 +58,28 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
+        public IQueryable GetUserAuditMsgByStatus(bool Status)
+        {
+            var query = from c in dbContext.UserAuditMsg
+                        join u in dbContext.UserInfo on c.UserId equals u.UserId
+                        where c.Status == Status
+                        select new
+                        {
+                            u.UserId,
+                            u.UserName,
+                            u.MobilePhoneNum,
+                            u.Town,
+                            u.Audit,
+                            u.AuditDate,
+                            c.Ammount,
+                            c.AccountName,
+                            c.Account,
+                            c.Message,
+                            c.CreateDate,
+                            c.Status
+                        };
+            return query;
+        }
+
     }
 }

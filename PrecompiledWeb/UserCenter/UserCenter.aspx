@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter1, App_Web_njqvu5xw" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter1, App_Web_fmgbfib2" theme="Default" %>
 
 <%@ Register Src="~/UserControls/Aunth.ascx" TagName="Aunth" TagPrefix="uc2" %>
 <%@ Register Src="~/UserControls/UnAunth.ascx" TagName="UnAunth" TagPrefix="uc3" %>
@@ -62,23 +62,9 @@
                 <asp:View ID="View2" runat="server">
 
                     <asp:Button ID="btComplete1" runat="server" OnClick="btComplete1_Click" Text="继续补全商家资料" />
-                    <asp:Button ID="btUpdate" runat="server" Text="修改商家资料" OnClick="btUpdate_Click" />
                 </asp:View>
                 <asp:View ID="View3" runat="server">
-                </asp:View>
-                <asp:View ID="View4" runat="server">
-                </asp:View>
-                <asp:View ID="View5" runat="server">
                     <asp:Button ID="btLocal" runat="server" Text="缴纳诚信保证金" OnClick="btLocal_Click" />
-                </asp:View>
-                <asp:View ID="View6" runat="server">
-                    用户名：<asp:Label ID="lbUpdateUserName" runat="server" Text='<%# Eval("UserName") %>' />
-                    <hr />
-                    联系电话：<asp:Label ID="lbUpdateMobilePhoneNum" runat="server" Text='<%# Eval("MobilePhoneNum") %>' />
-                    <hr />
-                    地址:<uc2:DDLAddress runat="server" ID="DDLAddress" />
-                    <hr />
-                    <asp:Button ID="btSure" runat="server" Text="确认修改" OnClick="btSure_Click" />
                 </asp:View>
             </asp:MultiView>
         </div>

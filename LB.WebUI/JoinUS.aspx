@@ -74,7 +74,8 @@
                             我们，致力于建立一个正规、合法、有序的电瓶回收平台！
                         </p>
                     </div>
-                    <br /><br />
+                    <br />
+                    <br />
                     <hr />
                     <div class="section-container">
                         <div class="am-g">
@@ -97,8 +98,8 @@
                                             <i class="contact_item--icon am-icon-credit-card-alt"></i>
                                             <h3 class="contact_item--title">公司账号</h3>
                                             <p class="contact_item--text">
-                                                <asp:Label ID="Label5" runat="server" Text="公司名称：宁波镇海绿宝科技有限公司" Font-Bold="True" Font-Size="Medium" ForeColor="#FF3300"></asp:Label> 
-                                                 <br />
+                                                <asp:Label ID="Label5" runat="server" Text="公司名称：宁波镇海绿宝科技有限公司" Font-Bold="True" Font-Size="Medium" ForeColor="#FF3300"></asp:Label>
+                                                <br />
                                                 开户行：宁波银行庄市支行
                                                 <br />
                                                 账号：4495 9849 9844 8378
@@ -123,46 +124,46 @@
                             <div class="am-u-md-7">
                                 <div class="contact-form">
                                     <h3 class="contact-form_title" style="font-size: 18px">如果您汇款成功，请提交一下信息，客服将在工作日时间48小时内与您核实</h3>
-                                    <form class="am-form">
-                                        <div class="am-g">
-                                            <div class="am-u-md-12">
-                                                汇款姓名：
+
+                                    <div class="am-g">
+                                        <div class="am-u-md-12">
+                                            汇款姓名：
                                                 <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
-                                            </div>
                                         </div>
+                                    </div>
 
-                                        <div class="am-g">
-                                            <div class="am-u-md-12">
-                                                汇款账户：
+                                    <div class="am-g">
+                                        <div class="am-u-md-12">
+                                            汇款账户：
                                                 <asp:TextBox ID="tbAccount" runat="server"></asp:TextBox>
-                                            </div>
                                         </div>
+                                    </div>
 
-                                        <div class="am-g">
-                                            <div class="am-u-md-12">
-                                                <div class="am-form-group">
-                                                    汇款金额：
+                                    <div class="am-g">
+                                        <div class="am-u-md-12">
+                                            <div class="am-form-group">
+                                                汇款金额：
                                                      <asp:TextBox ID="tbAmount" runat="server"></asp:TextBox>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="am-g">
-                                            <div class="am-u-md-12">
-                                                <div class="am-form-group">
-                                                    您的留言：
+                                    </div>
+                                    <div class="am-g">
+                                        <div class="am-u-md-12">
+                                            <div class="am-form-group">
+                                                您的留言：
                                                      <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>
-                                                </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="am-g">
-                                            <div class="am-u-md-12">
-                                                <div class="am-form-group">
-                                                    <asp:Button ID="btSure" runat="server" Text="提交信息" OnClick="btSure_Click" />
-                                                </div>
+                                    <div class="am-g">
+                                        <div class="am-u-md-12">
+                                            <div class="am-form-group">
+                                                <asp:Button ID="btSure" runat="server" Text="提交信息" OnClick="btSure_Click" />
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
+
                                 </div>
                             </div>
                             <!--contact-right end-->

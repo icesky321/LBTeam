@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true" CodeFile="MetalFactoryManage.aspx.cs" Inherits="Admin_MetalFactoryManage" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -72,18 +73,18 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit">
+            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit" Visible="false">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>
                     <asp:MultiView ID="MultiView5" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
                             <asp:ImageButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="Pass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
+                            
                             <%--<asp:LinkButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="Pass">审核通过</asp:LinkButton>--%>
                         </asp:View>
                         <asp:View ID="View2" runat="server">
                             <asp:ImageButton ID="lbtnUPass" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="UPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
-                            <%--<asp:LinkButton ID="lbtnUPass" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="UPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>

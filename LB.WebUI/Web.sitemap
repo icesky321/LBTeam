@@ -28,8 +28,9 @@
       <!--<siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />-->
       <siteMapNode url="~/Admin/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
     </siteMapNode>
-    <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="*">
+    <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
       <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人资料" description="个人资料" />
+      <siteMapNode url="~/UserCenter/Address.aspx" title="个人地址信息" description="个人地址信息" />
       <siteMapNode url="~/UserCenter/BankInfo.aspx" title="银行卡信息" description="银行卡信息" />
       <siteMapNode url="~/UserCenter/Authentication.aspx" title="认证信息" description="认证信息" />
       <siteMapNode url="~/UserCenter/Deposit.aspx" title="诚信保证金" description="诚信保证金" />

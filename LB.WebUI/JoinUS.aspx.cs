@@ -33,8 +33,9 @@ public partial class JoinUS : System.Web.UI.Page
         MUserAuditMsg.Ammount = tbAmount.Text;
         MUserAuditMsg.Message = tbMessage.Text;
         MUserAuditMsg.Status = false;
+        MUserAuditMsg.CreateDate = System.DateTime.Now;
         MUserAuditMsg.UserId = Convert.ToInt32(hfUserId.Value);
         bll_userauditmsg.NewUserAuditMsg(MUserAuditMsg);
-        Response.Redirect("../WaitingForAudit.aspx");
+        Response.Redirect("~/WaitingForAudit.aspx");
     }
 }

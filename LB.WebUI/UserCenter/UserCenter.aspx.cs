@@ -38,31 +38,17 @@ public partial class UserCenter1 : System.Web.UI.Page
     {
         UserBind();
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
-        if (Request.IsAuthenticated)
+        if (MUserInfo.Audit == true)
         {
-            if (MUserInfo.Audit == true)
-            {
-                btUpdate.Visible = false;
-            }
-            else
-            {
-                btUpdate.Visible = true;
-            }
-            if (MUserInfo.UserTypeId == 1)//如果类型为供应商
-            {
-                MultiView1.ActiveViewIndex = 0;
-                if (string.IsNullOrEmpty(MUserInfo.IDCard))//当身份证和协议为空时
-                {
-                    btComplete.Visible = true;
-                }
-                else
-                {
-                    btComplete.Visible = false;
-                }
+            btComplete1.Visible = false;
+            btComplete.Visible = false;
 
-            }
-            else if (MUserInfo.UserTypeId == 2)//如果类型为回收公司
+        }
+        else
+        {
+            if (bll_copinfo.ExistUseId(MUserInfo.UserId))//说明是公司性质
             {
+                MCopInfo = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId);
                 MultiView1.ActiveViewIndex = 1;
                 if (string.IsNullOrEmpty(MUserInfo.IDCard))
                 {
@@ -72,36 +58,29 @@ public partial class UserCenter1 : System.Web.UI.Page
                 {
                     btComplete1.Visible = false;
                 }
-            }
-            else if (MUserInfo.UserTypeId == 3)//如果类型为冶炼厂
-            {
-                MultiView1.ActiveViewIndex = 2;
-            }
-            else if (MUserInfo.UserTypeId == 4)//如果类型为物流公司
-            {
-                MultiView1.ActiveViewIndex = 3;
-            }
-            else if (MUserInfo.UserTypeId == 0)//如果类型为老平台账户
-            {
-                Response.Redirect("UpdateRole.aspx?UserId=" + MUserInfo.UserId.ToString());
-            }
-            else if (MUserInfo.UserTypeId == 5)//如果类型为地域性业务员
-            {
 
-                if (string.IsNullOrEmpty(MUserInfo.IDCard))
+            }
+            else//说明是非公司性质
+            {
+                if (MUserInfo.UserTypeId == 0)//如果类型为老平台账户
                 {
-                    MultiView1.ActiveViewIndex = 1;
+                    Response.Redirect("UpdateRole.aspx?UserId=" + MUserInfo.UserId.ToString());
                 }
-                else if (MUserInfo.Audit == false)
+                else
                 {
-                    MultiView1.ActiveViewIndex = 4;
-                }
-                else if (MUserInfo.Audit == true)
-                {
-                   
+                    MultiView1.ActiveViewIndex = 0;
+                    if (string.IsNullOrEmpty(MUserInfo.IDCard))
+                    {
+                        btComplete.Visible = true;
+                    }
+                    else
+                    {
+                        btComplete.Visible = false;
+                    }
                 }
             }
         }
+
     }
 
     void UserBind()
@@ -116,8 +95,6 @@ public partial class UserCenter1 : System.Web.UI.Page
             TownLabel.Text = MUserInfo.Town;
             StreetLabel.Text = MUserInfo.Street;
             IDAuthenticationLabel.Text = MUserInfo.IDAuthentication.ToString();
-            lbUpdateMobilePhoneNum.Text = MUserInfo.MobilePhoneNum;
-            lbUpdateUserName.Text = MUserInfo.UserName;
             if (MUserInfo.IDAuthentication == true)
             {
                 IDAuthenticationLabel.Text = Aunth1.msg;
@@ -161,22 +138,4 @@ public partial class UserCenter1 : System.Web.UI.Page
         Response.Redirect(url);
     }
 
-    protected void btUpdate_Click(object sender, EventArgs e)
-    {
-        MultiView1.ActiveViewIndex = 5;
-        Panel1.Visible = false;
-    }
-
-    protected void btSure_Click(object sender, EventArgs e)
-    {
-        UserBind();
-        MUserInfo.Province = DDLAddress.province;
-        MUserInfo.City = DDLAddress.city;
-        MUserInfo.Town = DDLAddress.country;
-        MUserInfo.Street = DDLAddress.street;
-        bll_userinfo.UpdateUserInfo(MUserInfo);
-        Panel1.Visible = true;
-        MultiViewBind();
-
-    }
 }

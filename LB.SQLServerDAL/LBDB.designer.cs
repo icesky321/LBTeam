@@ -84,6 +84,9 @@ namespace LB.SQLServerDAL
     partial void InsertUnitInfo(UnitInfo instance);
     partial void UpdateUnitInfo(UnitInfo instance);
     partial void DeleteUnitInfo(UnitInfo instance);
+    partial void InsertUserAuditMsg(UserAuditMsg instance);
+    partial void UpdateUserAuditMsg(UserAuditMsg instance);
+    partial void DeleteUserAuditMsg(UserAuditMsg instance);
     partial void InsertUserDepositInfo(UserDepositInfo instance);
     partial void UpdateUserDepositInfo(UserDepositInfo instance);
     partial void DeleteUserDepositInfo(UserDepositInfo instance);
@@ -4848,8 +4851,10 @@ namespace LB.SQLServerDAL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAuditMsg")]
-	public partial class UserAuditMsg
+	public partial class UserAuditMsg : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _MsgId;
 		
@@ -4867,11 +4872,34 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<bool> _Status;
 		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMsgIdChanging(int value);
+    partial void OnMsgIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnAccountNameChanging(string value);
+    partial void OnAccountNameChanged();
+    partial void OnAccountChanging(string value);
+    partial void OnAccountChanged();
+    partial void OnAmmountChanging(string value);
+    partial void OnAmmountChanged();
+    partial void OnMessageChanging(string value);
+    partial void OnMessageChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnStatusChanging(System.Nullable<bool> value);
+    partial void OnStatusChanged();
+    #endregion
+		
 		public UserAuditMsg()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MsgId
 		{
 			get
@@ -4882,7 +4910,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._MsgId != value))
 				{
+					this.OnMsgIdChanging(value);
+					this.SendPropertyChanging();
 					this._MsgId = value;
+					this.SendPropertyChanged("MsgId");
+					this.OnMsgIdChanged();
 				}
 			}
 		}
@@ -4898,7 +4930,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._UserId != value))
 				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
 					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
 				}
 			}
 		}
@@ -4914,7 +4950,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._AccountName != value))
 				{
+					this.OnAccountNameChanging(value);
+					this.SendPropertyChanging();
 					this._AccountName = value;
+					this.SendPropertyChanged("AccountName");
+					this.OnAccountNameChanged();
 				}
 			}
 		}
@@ -4930,7 +4970,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._Account != value))
 				{
+					this.OnAccountChanging(value);
+					this.SendPropertyChanging();
 					this._Account = value;
+					this.SendPropertyChanged("Account");
+					this.OnAccountChanged();
 				}
 			}
 		}
@@ -4946,7 +4990,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._Ammount != value))
 				{
+					this.OnAmmountChanging(value);
+					this.SendPropertyChanging();
 					this._Ammount = value;
+					this.SendPropertyChanged("Ammount");
+					this.OnAmmountChanged();
 				}
 			}
 		}
@@ -4962,7 +5010,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._Message != value))
 				{
+					this.OnMessageChanging(value);
+					this.SendPropertyChanging();
 					this._Message = value;
+					this.SendPropertyChanged("Message");
+					this.OnMessageChanged();
 				}
 			}
 		}
@@ -4978,7 +5030,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._CreateDate != value))
 				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
 					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
 				}
 			}
 		}
@@ -4994,8 +5050,32 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._Status != value))
 				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
 					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

@@ -27,5 +27,15 @@ namespace LB.BLL
         {
             da.UpdateUserDepositInfo(userdepositinfo);
         }
+
+        public void DeleteUserDepositInfo(int UserId)
+        {
+            da.DeleteUserDepositInfo(UserId);
+        }
+
+        public bool ExistUserId(int UserId)
+        {
+            return da.ExistUserId(UserId);
+        }
     }
 }
