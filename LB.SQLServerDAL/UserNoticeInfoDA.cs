@@ -34,12 +34,22 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
-        public IQueryable<LB.SQLServerDAL.UserNoticeInfo> GetUserNoticeInfo()
+        public IQueryable<LB.SQLServerDAL.UserNoticeInfo> GetUserNoticeInfoByAudit(bool Audit)
         {
             var query = from c in dbContext.UserNoticeInfo
                         orderby c.CreateDate descending
+                        where c.Audit == Audit
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserNoticeInfo>();
         }
+
+        public LB.SQLServerDAL.UserNoticeInfo GetUserNoticeInfoByNoticeId(int NoticeId)
+        {
+            var query = from c in dbContext.UserNoticeInfo
+                        where c.NoticeId == NoticeId
+                        select c;
+            return query.FirstOrDefault<LB.SQLServerDAL.UserNoticeInfo>();
+        }
+
     }
 }

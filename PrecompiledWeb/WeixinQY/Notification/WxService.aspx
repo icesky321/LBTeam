@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_Notification_WxService, App_Web_b0emgolm" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="WeixinQY_Notification_WxService, App_Web_gs0n5w0x" theme="Default" %>
 
 <!DOCTYPE html>
 

@@ -106,7 +106,7 @@
                                 平台公告
                             </HeaderTemplate>
                             <ContentTemplate>
-                                <marquee scrollamount="2" width="100%" height="276px" direction="up">
+                                <marquee scrollamount="2" width="100%" height="276px" direction="up" onmouseover=this.stop() onmouseout=this.start()>
                                     <asp:Label ID="lbNotice" runat="server" Text=""></asp:Label>
                                 </marquee>
                             </ContentTemplate>
@@ -117,10 +117,17 @@
                     <asp:TabContainer ID="TabContainer5" runat="server">
                         <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="平台动态" Height="276px">
                             <ContentTemplate>
-                                平台注册会员共计：<asp:Label ID="lbHYNum" runat="server" Font-Size="Medium" ForeColor="Gray"></asp:Label>
+                                <br />
+                                平台注册会员累计：<asp:Label ID="lbHYNum" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
                                 <br />
                                 <hr />
-                                平台发布供需信息共计：<asp:Label ID="lbGXNum" runat="server" Font-Size="Medium" ForeColor="Gray"></asp:Label>
+                                平台发布供需信息累计：<asp:Label ID="lbGXNum" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
+                                <br />
+                                <hr />
+                                今日铅价：<asp:Label ID="lbPBPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
+                                <br />
+                                <hr />
+                                今日废旧电瓶价格:<asp:Label ID="lbDPPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>

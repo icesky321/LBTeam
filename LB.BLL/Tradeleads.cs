@@ -9,6 +9,11 @@ namespace LB.BLL
     {
         LB.SQLServerDAL.TradeleadsDA da = new SQLServerDAL.TradeleadsDA();
 
+        public int GetTradeleadsSum()
+        {
+            return da.GetTradeleadsSum();
+        }
+
         public LB.SQLServerDAL.Tradeleads NewTradeleads(LB.SQLServerDAL.Tradeleads tradeleads)
         {
             return da.NewTradeleads(tradeleads);

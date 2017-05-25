@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_amar5v52" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_4sicjbi1" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -72,11 +72,11 @@
                                             <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-phone"></i>
-                                                    <strong style="font-size:22px">0574-86694505</strong>
-                                                    <span style="font-size:18px">周一~周五, 8:00 - 20:00</span>
+                                                    <strong style="font-size: 22px">0574-86694505</strong>
+                                                    <span style="font-size: 18px">周一~周五, 8:00 - 20:00</span>
                                                 </div>
                                             </div>
-<%--                                            <div class="header_contacts--item">
+                                            <%--                                            <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-envelope-o"></i>
                                                     <strong></strong>
@@ -91,7 +91,7 @@
                                                 </div>
                                             </div>--%>
                                         </div>
-                                        <div class="accountwarp"">
+                                        <div class="accountwarp">
                                             <table>
                                                 <tr>
                                                     <td>
@@ -161,15 +161,20 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                                                <li><a href="#">咻</a>
+                                <li><a href="#">咻</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="Company.aspx?Id=3">一键卖货</a></li>
-                                        <li class="menu-item"><a href="Company.aspx?Id=2">一键收货</a></li>
-                                        <li class="menu-item"><a href="Company.aspx?Id=2">一键押货</a></li>
+                                        <li class="menu-item"><a href="UserCenter/OneKeySell.aspx">一键卖货</a></li>
+                                        <li class="menu-item"><a href="UserCenter/OneKeyBuy.aspx">一键收货</a></li>
+                                        <li class="menu-item"><a href="UserCenter/OneKeyMortgage.aspx">一键押货</a></li>
                                     </ul>
 
                                 </li>
-                                <li><a href="ChooseRoles.aspx">加入我们</a>
+                                <li><a href="#">关于我们</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="ChooseRoles.aspx">加入我们</a></li>
+                                        <li class="menu-item"><a href="GoodIdea.aspx">集思广益</a></li>
+                                    </ul>
+
                                 </li>
 
                             </ul>
@@ -205,6 +210,8 @@
                                                 Copyright 2016-2017 宁波绿宝信息科技有限公司 版权所有 All Rights Reserved   浙ICP备16029665号-1     <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
                                                     <asp:Image ID="Image2" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label2" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
                                                 </a>
+                                                <br />
+                                                技术支持：绿宝三益科技
                                             </p>
                                             <%--                                            <p class="footer_about--text">
                                                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">

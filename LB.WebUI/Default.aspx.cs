@@ -13,13 +13,12 @@ public partial class _Default : System.Web.UI.Page
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
-    LB.SQLServerDAL.NewsInfo Mn = new LB.SQLServerDAL.NewsInfo();
+    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-
             gvNewsDatabind();
             gvPBNewsDatabind();
             gvPriceNewsDatabind();
@@ -29,7 +28,10 @@ public partial class _Default : System.Web.UI.Page
             DLCopInfoDataBind();
             lbNotice.Text = ConfigurationManager.AppSettings["Notice"];
             //lbNotice.Text = bll_newsinfo.GetNewsInfoById(1).Content;
-
+            lbHYNum.Text = (Convert.ToInt32("13546") + bll_usermanage.GetUserSum()).ToString() + "人";
+            lbGXNum.Text = (Convert.ToInt32("5643")+ bll_tradeleads.GetTradeleadsSum()).ToString() + "例";
+            lbPBPrice.Text = ConfigurationManager.AppSettings["PBPrice"];
+            lbDPPrice.Text = ConfigurationManager.AppSettings["DPPrice"];
         }
     }
 
@@ -63,7 +65,7 @@ public partial class _Default : System.Web.UI.Page
 
     void gvSellInfoDatabind()
     {
-        gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2,true);
+        gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2, true);
         gvSellInfo.DataBind();
 
     }

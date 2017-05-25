@@ -31,7 +31,7 @@ public partial class GoodIdea : System.Web.UI.Page
     {
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
         MUserNoticeInfo.UserId = MUserInfo.UserId;
-        MUserNoticeInfo.UserNotice = tbUserNotice.Text;
+        MUserNoticeInfo.UserNotice = tbUserNotice.Text + "联系人：" + MUserInfo.UserName + "联系方式：" + MUserInfo.MobilePhoneNum + "地址：" + MUserInfo.Province + MUserInfo.City + MUserInfo.Town + MUserInfo.Street;
         MUserNoticeInfo.CreateDate = System.DateTime.Now;
         MUserNoticeInfo.Hit = 0;
         MUserNoticeInfo.Audit = false;

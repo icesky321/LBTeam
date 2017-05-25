@@ -41,19 +41,19 @@ public partial class News : System.Web.UI.Page
         gvPrice.DataSource = bll_newsinfo.GetNewsInfoByType(TypeId);
         gvPrice.DataBind();
     }
-    protected void btnGo_Click(object sender, EventArgs e)
-    {
-        GridViewRow gridViewRow = gvNew.BottomPagerRow;
-        TextBox numBox = (TextBox)gvNew.BottomPagerRow.FindControl("txtNewPageIndex");
-        int inputNum = Convert.ToInt32(numBox.Text);
-        gvNew.PageIndex = inputNum - 1;
-        gvNewsDataBind(Convert.ToInt32(Request.QueryString["Id"]));
-    }
+
     protected void gvNew_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvNew.PageIndex = e.NewPageIndex;
         gvNewsDataBind(Convert.ToInt32(Request.QueryString["Id"]));
     }
+
+    protected void gvPrice_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvPrice.PageIndex = e.NewPageIndex;
+        gvNewsDataBind(Convert.ToInt32(Request.QueryString["Id"]));
+    }
+
     protected void gvNew_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName == "Detail")
@@ -90,15 +90,15 @@ public partial class News : System.Web.UI.Page
 
         // Retrieve the pager row.        
 
-        GridViewRow pagerRow = gvNew.BottomPagerRow;
+        GridViewRow pagerRow = gvPrice.BottomPagerRow;
 
         // Retrieve the PageDropDownList DropDownList from the bottom pager row.        
 
-        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList1");
 
         // Set the PageIndex property to display that page selected by the user.       
 
-        gvNew.PageIndex = pageList.SelectedIndex;
+        gvPrice.PageIndex = pageList.SelectedIndex;
 
         gvNewsDataBind(Convert.ToInt32(Request.QueryString["Id"]));  //数据绑定 
 
@@ -193,7 +193,7 @@ public partial class News : System.Web.UI.Page
 
         // Retrieve the DropDownList and Label controls from the row.        
 
-        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList1");
 
         Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
 

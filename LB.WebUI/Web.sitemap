@@ -48,9 +48,9 @@
     <siteMapNode url="" title="当地供应商" description="当地供应商"  roles="CERecyclingCop,CEUser" >
       <siteMapNode url="~/UserCenter/LocalSupplier.aspx" title="当地供应商" description="当地供应商"/>
     </siteMapNode>
-    <!--<siteMapNode url="" title="供应商后台中心" description="供应商后台中心" securitytrimmingenabled="true" roles="CESupplier" >
-      <siteMapNode url="~/UserCenter/Supplier/MyInfo.aspx" title="我发布的信息" description="我发布的信息"/>
-    </siteMapNode>-->
+    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin" >
+      <siteMapNode url="~/Admin/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
+    </siteMapNode>
 
     <siteMapNode url="~/Admin/Notice.aspx" title="公告设置" description="公告设置"  roles="Admin" />
     <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页"  roles="Admin" />

@@ -24,9 +24,14 @@ namespace LB.BLL
             da.UpdateUserNoticeInfo(UserNoticeInfo);
         }
 
-        public IQueryable<LB.SQLServerDAL.UserNoticeInfo> GetUserNoticeInfo()
+        public IQueryable<LB.SQLServerDAL.UserNoticeInfo> GetUserNoticeInfoByAudit(bool Audit)
         {
-            return da.GetUserNoticeInfo();
+            return da.GetUserNoticeInfoByAudit(Audit);
+        }
+
+        public LB.SQLServerDAL.UserNoticeInfo GetUserNoticeInfoByNoticeId(int NoticeId)
+        {
+            return da.GetUserNoticeInfoByNoticeId(NoticeId);
         }
     }
 }
