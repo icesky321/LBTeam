@@ -23,6 +23,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
         if (Request.IsAuthenticated)
         {
             MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
+            MCopInfo = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId);
             if (bll_copinfo.ExistUseId(MUserInfo.UserId))
             {
                 MultiView1.ActiveViewIndex = 1;
@@ -30,7 +31,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
                 Image2.ImageUrl = MUserInfo.IDCard;
                 Image3.ImageUrl = MCopInfo.Bizlicense;
                 Image4.ImageUrl = MCopInfo.HWPermit;
-                if (MUserInfo.Audit == false)
+                if (MCopInfo.BAuthentication == false || MCopInfo.HWAuthentication == false)
                 {
                     btCopAlter.Visible = true;
                     FUIDCard.Visible = true;
@@ -49,7 +50,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
             {
                 MultiView1.ActiveViewIndex = 0;
                 Image1.ImageUrl = MUserInfo.IDCard;
-                if (MUserInfo.Audit == false)
+                if (MUserInfo.IDAuthentication == false)
                 {
                     btUserAlter.Visible = true;
                     FileUpload1.Visible = true;
@@ -116,7 +117,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
         {
             this.Label1.Text = "上传文件不能为空";
         }
-
+        UserBind();
     }
 
     protected void btCopAlter_Click(object sender, EventArgs e)
@@ -186,6 +187,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
         {
             this.Label1.Text = "文件上传不能为空";
         }
+        UserBind();
     }
 
 

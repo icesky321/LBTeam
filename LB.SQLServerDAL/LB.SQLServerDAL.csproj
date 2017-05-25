@@ -62,6 +62,7 @@
     <Compile Include="UserAuditMsgDA.cs" />
     <Compile Include="UserDepositInfoDA.cs" />
     <Compile Include="UserInfoDA.cs" />
+    <Compile Include="UserNoticeInfoDA.cs" />
     <Compile Include="UserTypeInfoDA.cs" />
     <Compile Include="WeixinMessageDA.cs" />
   </ItemGroup>

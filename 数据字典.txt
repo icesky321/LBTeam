@@ -100,3 +100,13 @@ InDate    datetime   押金汇入时间
 OutDate    datetime   押金汇出时间
 Operator   string   操作员
 OperateDate   datetime   操作时间
+
+十一、UserNoticeInfo (用户贴士信息)
+NoticeId   int  id
+UserId   int  用户ID
+UserNotice   string   用户贴士信息
+CreateDate  datetime  创建时间
+Hit  int  点击数
+Audit   bool   处理状态
+AuditDate   datetime   处理时间
+Operator  string   操作员  

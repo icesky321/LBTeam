@@ -68,15 +68,15 @@
                                 </div>
                                 <div class="am-u-md-10">
                                     <div class="header-right am-fr">
-                                        <div class="header-contact companywarp">
+                                        <div class="header-contact">
                                             <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-phone"></i>
-                                                    <strong>0574-86694505</strong>
-                                                    <span>周一~周五, 8:00 - 20:00</span>
+                                                    <strong style="font-size: 22px">0574-86694505</strong>
+                                                    <span style="font-size: 18px">周一~周五, 8:00 - 20:00</span>
                                                 </div>
                                             </div>
-                                            <div class="header_contacts--item">
+                                            <%--                                            <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-envelope-o"></i>
                                                     <strong></strong>
@@ -89,7 +89,7 @@
                                                     <strong>文创园</strong>
                                                     <span>镇海区庄市街道中官西路279号</span>
                                                 </div>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="accountwarp">
                                             <table>
@@ -161,7 +161,20 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="../ChooseRoles.aspx">加入我们</a>
+                                <li><a href="#">咻</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="OneKeySell.aspx">一键卖货</a></li>
+                                        <li class="menu-item"><a href="OneKeyBuy.aspx">一键收货</a></li>
+                                        <li class="menu-item"><a href="OneKeyMortgage.aspx">一键押货</a></li>
+                                    </ul>
+
+                                </li>
+                                <li><a href="#">关于我们</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="ChooseRoles.aspx">加入我们</a></li>
+                                        <li class="menu-item"><a href="GoodIdea.aspx">集思广益</a></li>
+                                    </ul>
+
                                 </li>
                             </ul>
                         </div>

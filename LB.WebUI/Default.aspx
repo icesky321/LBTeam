@@ -19,6 +19,16 @@
     <div class="homepage-slider companywarpslider">
         <div id="sequence">
             <ul class="sequence-canvas">
+                <!-- Slide 4 -->
+                <li class="bg2">
+                    <!-- Slide Title -->
+                    <h2 class="title" style="font-family: 微软雅黑; font-weight: bold">地域回收员火热招募中!</h2>
+                    <!-- Slide Text -->
+                    <h3 class="subtitle" style="font-family: 微软雅黑; font-weight: bold; font-size: 20px;">加入！这块区域你包啦~还在等什么呢~</h3>
+                    <!-- Slide Image -->
+                    <img class="slide-img" src="img/homepage-slider/slide4.png" alt="Slide 3" />
+                </li>
+                <!-- End Slide 4 -->
                 <!-- Slide 1 -->
                 <li class="bg4">
                     <!-- Slide Title -->
@@ -55,6 +65,7 @@
                     <li>1</li>
                     <li>2</li>
                     <li>3</li>
+                    <li>4</li>
                 </ul>
             </div>
         </div>
@@ -128,7 +139,7 @@
                 </p>
             </div>
             <hr />--%>
-            <div class="am-g" style="border: 0px solid #eee; margin: 10px">
+            <div class="am-g" style="border: 0px solid #eee;">
                 <div class="am-u-md-6">
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
