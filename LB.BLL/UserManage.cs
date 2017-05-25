@@ -10,6 +10,36 @@ namespace LB.BLL
     {
         LB.SQLServerDAL.UserInfoDA da = new SQLServerDAL.UserInfoDA();
 
+
+        /// <summary>
+        /// 释放由本类占用的所有资源
+        /// </summary>
+        public void Dispose()
+        {
+            da.Dispose();
+        }
+
+        #region 用户数统计
+        /// <summary>
+        /// 获取用户总数
+        /// </summary>
+        /// <returns></returns>
+        public int GetUserSum()
+        {
+            return da.GetUserSum();
+        }
+
+        /// <summary>
+        /// 获取已认证并登记进微信企业号中的人员数。
+        /// </summary>
+        /// <returns></returns>
+        public int GetIsQYUser_Sum()
+        {
+            return da.GetIsQYUser_Sum();
+        }
+
+        #endregion
+
         /// <summary>
         /// 新增用户信息
         /// </summary>

@@ -14,7 +14,7 @@ public partial class WeixinQY_TestShowUserInfo : System.Web.UI.Page
 
 
         string code = Request.QueryString["code"];
-        string accessToken = atManage.AccessToken;
+        string accessToken = Senparc.Weixin.HttpUtility.RequestUtility.HttpGet("http://www.0574zy.com/WeixinQY/AccessTokenService.aspx", null);
         //string accessToken = "bsiBf1bJD9NK7Jo3UgBnLs8Zu1zvmfKXoPFXFPVIB_huZVaMgXaU1hIFTCf3IOC5";
         // 根据上面获取到的 Code， 以及系统AccessToken参数，获取用户信息。
         Senparc.Weixin.QY.AdvancedAPIs.OAuth2.GetUserInfoResult result = OAuth2Api.GetUserId(accessToken, code);
