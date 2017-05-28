@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_ny0diclq" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_r1xdel2n" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -106,7 +106,7 @@
                                 平台公告
                             </HeaderTemplate>
                             <ContentTemplate>
-                                <marquee scrollamount="2" width="100%" height="276px" direction="up" onmouseover=this.stop() onmouseout=this.start()>
+                                <marquee scrollamount="2" width="100%" height="276px" direction="up" onmouseover="this.stop()" onmouseout="this.start()">
                                     <asp:Label ID="lbNotice" runat="server" Text=""></asp:Label>
                                 </marquee>
                             </ContentTemplate>
@@ -275,6 +275,33 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
+                                <asp:TabPanel ID="TabPanel11" runat="server" HeaderText="平台资讯" Height="276px">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="gvPlateInfo" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
+                                            SkinID="GridView3" Width="100%" OnRowCommand="gvPlateInfo_RowCommand">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText=" " SortExpression="Title">
+                                                    <ItemTemplate>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px; text-align: left;">
+                                                            <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
+                                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
+                                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" " SortExpression="NoteTime">
+                                                    <FooterTemplate>
+                                                        <asp:LinkButton ID="lkbnMore" runat="server" Style="text-decoration: none" CommandArgument='<%#Eval("id") %>'
+                                                            CommandName="AllNews">更多...</asp:LinkButton>
+                                                    </FooterTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lbShowTime" runat="server" Text='<%# Bind("NoteTime","{0:yyyy-M-d}") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:TabPanel>
                             </asp:TabContainer>
                         </ContentTemplate>
                     </asp:UpdatePanel>
@@ -415,7 +442,7 @@
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                <div class="am-u-md-3 am-u-sm-6 product3-main-box"  onclick="location.href='MemberInfo.aspx?Id=5';">
                                     <div class="product3-icon">
                                         <i class="am-icon-send-o"></i>
                                     </div>
@@ -425,7 +452,7 @@
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='MemberInfo.aspx?Id=1';">
                                     <div class="product3-icon">
                                         <i class="am-icon-diamond"></i>
                                     </div>

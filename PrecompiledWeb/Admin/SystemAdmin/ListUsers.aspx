@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_ListUsers, App_Web_xfw50miv" title="成员和角色管理" theme="Default" %>
+﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_ListUsers, App_Web_n24adzjw" title="成员和角色管理" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -21,7 +21,27 @@
                             <br />
 
                             用户手机号：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox><asp:Label ID="Label2" runat="server" Text="*可模糊查询"></asp:Label><asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
-                            <br /><br />
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Admin:系统核心管理员，掌管全系统所有权限；<br />
+                            <hr />
+                            CEMetalFactory:信用审核通过后的冶炼厂；<br />
+                            <hr />
+                            CERecyclingCop:信用审核通过后的回收公司；<br />
+                            <hr />
+                            CESupplier:信用审核通过后的供应商；<br />
+                            <hr />
+                            CEUser:信用审核通过后的地域业务员；<br />
+                            <hr />
+                            general:注册后未审核的普通用户；<br />
+                            <hr />
+                            InfoManage:资讯管理审核员；<br />
+                            <hr />
+                            UserManage:用户管理审核员；<br />
+                            <hr />
                         </td>
                     </tr>
                     <tr>

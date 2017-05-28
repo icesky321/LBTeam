@@ -17,11 +17,15 @@
                 ValidationGroup="Notice" />
             <br />
             <hr />
-            今日铅价<asp:TextBox ID="tbPBPrice" runat="server"></asp:TextBox>
+            今日铅价<%--<asp:TextBox ID="tbPBPrice" runat="server"></asp:TextBox>--%>
+            <FTB:FreeTextBox ID="tbPBPrice" runat="server" Height="276px" Width="250px">
+            </FTB:FreeTextBox>
             <asp:Button ID="btPBPrice" runat="server" Text="保存" OnClick="btPBPrice_Click" />
             <br />
             <hr />
-            今日废旧电瓶回收价格：<asp:TextBox ID="tbDPPrice" runat="server"></asp:TextBox>
+            今日废旧电瓶回收价格：<%--<asp:TextBox ID="tbDPPrice" runat="server"></asp:TextBox>--%>
+            <FTB:FreeTextBox ID="tbDPPrice" runat="server" Height="276px" Width="250px">
+            </FTB:FreeTextBox>
             <asp:Button ID="btDPPrice" runat="server" Text="保存" OnClick="btDPPrice_Click" />
         </div>
     </fieldset>

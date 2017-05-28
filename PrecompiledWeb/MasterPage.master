@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_4sicjbi1" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_y54q0iz5" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -143,10 +143,12 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="#">商家</a>
+                                <li><a href="#">会员信息</a>
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="Company.aspx?Id=3">冶炼厂</a></li>
                                         <li class="menu-item"><a href="Company.aspx?Id=2">电瓶回收公司</a></li>
+                                        <li class="menu-item"><a href="MemberInfo.aspx?Id=5">地域回收员</a></li>
+                                        <li class="menu-item"><a href="MemberInfo.aspx?Id=1">供应商</a></li>
                                     </ul>
 
                                 </li>

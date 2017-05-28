@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Address, App_Web_pm0znvsd" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Address, App_Web_kn55mmks" theme="Default" %>
 
 <%@ Register Src="~/UserControls/DDLAddress.ascx" TagPrefix="uc2" TagName="DDLAddress" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -15,10 +15,11 @@
 
             <hr />
 
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+<%--            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>--%>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
+                            
                             用户名:<asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
                             <hr />
                             联系电话:<asp:Label ID="MobilePhoneNumLabel" runat="server" Text='<%# Eval("MobilePhoneNum") %>' />
@@ -37,8 +38,8 @@
                             <asp:Button ID="btSure" runat="server" Text="确认修改" OnClick="btSure_Click" />
                         </asp:View>
                     </asp:MultiView>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+<%--                </ContentTemplate>
+            </asp:UpdatePanel>--%>
         </div>
     </div>
 </asp:Content>

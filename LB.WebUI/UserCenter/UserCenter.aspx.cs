@@ -17,7 +17,7 @@ public partial class UserCenter1 : System.Web.UI.Page
         {
             if (Request.IsAuthenticated)
             {
-                if (HttpContext.Current.User.IsInRole("Admin"))
+                if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
                 {
                     Response.Redirect("../Admin/Manage.aspx");
                 }

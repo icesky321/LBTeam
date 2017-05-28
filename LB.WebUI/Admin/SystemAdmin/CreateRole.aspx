@@ -5,24 +5,24 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <br />
-            <fieldset style="width: 500px;">
+            <fieldset style="width: 800px;">
                 <legend class="mainTitle">实现角色管理功能</legend>
                 <br />
                 <table border="0" cellpadding="2" cellspacing="2" class="Main" width="100%">
                     <tr>
-                        <td align="center" class="Head">
+                        <td align="center" class="Head" colspan="2">
                             <b>角色管理</b>
                         </td>
                     </tr>
                     <tr>
-                        <td align="center">
+                        <td align="center" colspan="2">
                             添加角色：<asp:TextBox ID="txtRole" runat="server" Width="120px"></asp:TextBox>
                             &nbsp;<asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text=" 确定 " />
                             <hr />
                         </td>
                     </tr>
                     <tr>
-                        <td align="center" style="vertical-align: top">
+                        <td align="center" style="vertical-align: top; width:500px">
                             <asp:GridView SkinID="GridView2" ID="gvRoles" runat="server" AutoGenerateColumns="False"
                                 Font-Size="Small" GridLines="None" Width="100%">
                                 <Columns>
@@ -49,6 +49,16 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                        </td>
+                        <td style="width:400px;">
+                            Admin:系统核心管理员，掌管全系统所有权限；<br />
+                            CEMetalFactory:信用审核通过后的冶炼厂；<br />
+                            CERecyclingCop:信用审核通过后的回收公司；<br />
+                            CESupplier:信用审核通过后的供应商；<br />
+                            CEUser:信用审核通过后的地域业务员；<br />
+                            general:注册后未审核的普通用户；<br />
+                            InfoManage:资讯管理审核员；<br />
+                            UserManage:用户管理审核员；<br />
                         </td>
                     </tr>
                     <asp:Panel ID="plUsers" runat="server" Visible="false">
