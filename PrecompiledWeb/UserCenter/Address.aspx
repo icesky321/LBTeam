@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Address, App_Web_kn55mmks" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Address, App_Web_okhgu5at" theme="Default" %>
 
 <%@ Register Src="~/UserControls/DDLAddress.ascx" TagPrefix="uc2" TagName="DDLAddress" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">

@@ -151,7 +151,7 @@
                                         <div class="am-u-md-12">
                                             <div class="am-form-group">
                                                 您的留言：
-                                                     <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>
+                                                     <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>注：如微信或支付宝支付，请备注好微信名或支付宝账号
                                             </div>
                                         </div>
                                     </div>

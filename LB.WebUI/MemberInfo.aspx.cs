@@ -19,7 +19,22 @@ public partial class MemberInfo : System.Web.UI.Page
             {
                 int Id = Convert.ToInt32(Request.QueryString["Id"]);
                 hfId.Value = Id.ToString();
-                DLCopInfoDataBind("", "", "", "", Id);
+                if (Request.IsAuthenticated)
+                {
+                    if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
+                    {
+                        DLCopInfoDataBind("", "", "", "", Id);
+                    }
+                    else
+                    {
+                        Response.Redirect("~/UserCenter/Deposit.aspx");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/LoginM.aspx");
+                }
+                
             }
         }
     }
@@ -30,25 +45,25 @@ public partial class MemberInfo : System.Web.UI.Page
         {
             DLCopInfo.DataSource = bll_usermanage.GetUserInfosBySEO(province, city, country, street, UserTypeId.ToString(), "");
             DLCopInfo.DataBind();
-            foreach (DataListItem item in this.DLCopInfo.Items)
-            {
-                if (Request.IsAuthenticated)
-                {
-                    if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
-                    {
-                        ((MultiView)item.FindControl("MultiView1")).ActiveViewIndex = 2;
-                    }
-                    else
-                    {
-                        ((MultiView)item.FindControl("MultiView1")).ActiveViewIndex = 1;
-                    }
-                }
-                else
-                {
-                    ((MultiView)item.FindControl("MultiView1")).ActiveViewIndex = 0;
-                }
+            //foreach (DataListItem item in this.DLCopInfo.Items)
+            //{
+            //    if (Request.IsAuthenticated)
+            //    {
+            //        if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
+            //        {
+            //            ((MultiView)item.FindControl("MultiView1")).ActiveViewIndex = 2;
+            //        }
+            //        else
+            //        {
+            //            ((MultiView)item.FindControl("MultiView1")).ActiveViewIndex = 1;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ((MultiView)item.FindControl("MultiView1")).ActiveViewIndex = 0;
+            //    }
 
-            }
+            //}
         }
 
 

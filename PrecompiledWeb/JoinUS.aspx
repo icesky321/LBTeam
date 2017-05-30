@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_r1xdel2n" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_d33f2n3m" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
@@ -151,7 +151,7 @@
                                         <div class="am-u-md-12">
                                             <div class="am-form-group">
                                                 您的留言：
-                                                     <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>
+                                                     <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>注：如微信或支付宝支付，请备注好微信名或支付宝账号
                                             </div>
                                         </div>
                                     </div>

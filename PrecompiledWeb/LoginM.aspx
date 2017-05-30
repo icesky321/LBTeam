@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="Login, App_Web_y54q0iz5" theme="Default" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Login, App_Web_gjntmqit" theme="Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,7 +18,7 @@
             <img src="img/logo1.png" alt="" />
             <br /> <br /> <br />
             <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate" OnLoggingIn="Login1_LoggingIn"
-                FailureText="登录失败！请重新登录" Width="310px">
+                FailureText="登录失败！密码或用户名错误！" Width="310px">
                 <LayoutTemplate>
                     <div class="am-form-group">
                         <asp:TextBox ID="UserName" runat="server" CssClass="" placeholder="请输入注册手机号" value="用户名"
@@ -44,6 +44,8 @@
                     <div class="am-form-group" style=" text-align:center;">
                         <asp:Button ID="Button1" runat="server" CssClass="am-btn am-btn-secondary" CommandName="Login" Text="登录" ValidationGroup="Login1"
                             OnClick="LoginButton_Click" EnableTheming="True" /><asp:LinkButton ID="lbtnForget" runat="server" OnClick="lbtnForget_Click">忘记密码?</asp:LinkButton>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:LinkButton ID="lbtnNewUser" runat="server" OnClick="lbtnNewUser_Click">注册新用户?</asp:LinkButton>
                     </div>
                 </LayoutTemplate>
             </asp:Login>

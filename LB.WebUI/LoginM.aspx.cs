@@ -59,7 +59,8 @@ public partial class Login : System.Web.UI.Page
 
             else
             {
-                ((RequiredFieldValidator)Login1.FindControl("VerifyRequired")).Text = "验证码输入错误！";
+                //((RequiredFieldValidator)Login1.FindControl("VerifyRequired")).Text = "验证码输入错误！";
+                Login1.FailureText= "验证码输入错误！";
             }
         }
 
@@ -68,5 +69,10 @@ public partial class Login : System.Web.UI.Page
     protected void lbtnForget_Click(object sender, EventArgs e)
     {
         Response.Redirect("RecoverPWD.aspx");
+    }
+
+    protected void lbtnNewUser_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ChooseRoles.aspx");
     }
 }

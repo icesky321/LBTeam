@@ -62,17 +62,17 @@
                                     <tr>
                                         <td>联系方式：</td>
                                         <td>
-                                            <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+                                            <%--<asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                                                 <asp:View ID="View1" runat="server">
                                                     请先<asp:LinkButton ID="lbtnReg" runat="server" PostBackUrl="~/ChooseRoles.aspx">注册</asp:LinkButton>或<asp:LinkButton ID="lbtnLogin" runat="server" PostBackUrl="~/LoginM.aspx">登录</asp:LinkButton>
                                                 </asp:View>
                                                 <asp:View ID="View2" runat="server">
                                                     请先成为<asp:LinkButton ID="lbtnDesposit" runat="server" PostBackUrl="~/UserCenter/Deposit.aspx">平台信用会员</asp:LinkButton>
                                                 </asp:View>
-                                                <asp:View ID="View3" runat="server">
+                                                <asp:View ID="View3" runat="server">--%>
                                                     <asp:Label ID="MobilePhoneNumLabel" runat="server" Text='<%# Eval("MobilePhoneNum") %>' />
-                                                </asp:View>
-                                            </asp:MultiView>
+                                             <%--   </asp:View>
+                                            </asp:MultiView>--%>
                                         </td>
                                     </tr>
                                     <tr>
