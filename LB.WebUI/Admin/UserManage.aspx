@@ -38,6 +38,8 @@
                             <asp:ImageButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
+                        <asp:View ID="IView3" runat="server">
+                        </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>

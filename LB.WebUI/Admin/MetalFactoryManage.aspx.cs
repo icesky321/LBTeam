@@ -27,30 +27,55 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
         {
             string CopId = gvRow.Cells[0].Text;
             MCopInfo = bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId));
-            if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).BAuthentication == false)
+            if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).Bizlicense) == false)
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).BAuthentication == false)
+                {
+                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[7].FindControl("lbtnBizlicense"))).Visible = false;
+                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 2;
             }
-            if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).HWAuthentication == false)
+            if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).HWPermit) == false)
             {
-                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 0;
+                if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).HWAuthentication == false)
+                {
+                    ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 1;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[8].FindControl("lbtnHWPermit"))).Visible = false;
+                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 2;
             }
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).IDAuthentication == false)
+            if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).IDCard) == false)
             {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 0;
+                if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).IDAuthentication == false)
+                {
+                    ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 1;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[9].FindControl("lbtnIDCard"))).Visible = false;
+                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 2;
             }
+               
             //if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).ChopAuthentication == false)
             //{
             //    ((MultiView)(gvRow.Cells[10].FindControl("MultiView4"))).ActiveViewIndex = 0;

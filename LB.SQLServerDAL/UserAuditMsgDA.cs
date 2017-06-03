@@ -62,6 +62,7 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.UserAuditMsg
                         join u in dbContext.UserInfo on c.UserId equals u.UserId
+                        join t in dbContext.UserTypeInfo on u.UserTypeId equals t.UserTypeId
                         where c.Status == Status
                         select new
                         {
@@ -76,7 +77,8 @@ namespace LB.SQLServerDAL
                             c.Account,
                             c.Message,
                             c.CreateDate,
-                            c.Status
+                            c.Status,
+                            t.UserTypeName
                         };
             return query;
         }

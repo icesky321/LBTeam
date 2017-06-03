@@ -34,18 +34,18 @@ public partial class CopAuthentication : System.Web.UI.Page
     {
         MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(HFUserId.Value));
         MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(HFUserId.Value));
+        MUserInfo.BankName = tbBankName.Text;
+        MUserInfo.Account = tbAccount.Text;
         bool files = false;
-        if (this.FUIDCard.HasFile && this.FUBizlicense.HasFile && this.FUHWPermit.HasFile)
+        if (this.FUIDCard.HasFile)
         {
             //获取上传文件的后缀
             String fileExtensionFUI = System.IO.Path.GetExtension(this.FUIDCard.FileName).ToLower();
-            String fileExtensionFUB = System.IO.Path.GetExtension(this.FUBizlicense.FileName).ToLower();
-            String fileExtensionFUH = System.IO.Path.GetExtension(this.FUHWPermit.FileName).ToLower();
             String[] restrictExtension = { ".gif", ".jpg", ".bmp", ".png" };
             //判断文件类型是否符合
             for (int i = 0; i < restrictExtension.Length; i++)
             {
-                if (fileExtensionFUI == restrictExtension[1] && fileExtensionFUB == restrictExtension[1] && fileExtensionFUH== restrictExtension[1])
+                if (fileExtensionFUI == restrictExtension[1])
                 {
                     files = true;
                 }
@@ -56,40 +56,16 @@ public partial class CopAuthentication : System.Web.UI.Page
                 try
                 {
                     string filenameI = FUIDCard.PostedFile.FileName;
-                    string filenameB = FUBizlicense.PostedFile.FileName;
-                    string filenameH = FUHWPermit.PostedFile.FileName;
                     string fileextI = System.IO.Path.GetExtension(filenameI);
-                    string fileextB = System.IO.Path.GetExtension(filenameB);
-                    string fileextH = System.IO.Path.GetExtension(filenameH);
                     string newfilenameI = MUserInfo.MobilePhoneNum + fileextI;
-                    string newfilenameB = MCopInfo.CopName + fileextB;
-                    string newfilenameH = MCopInfo.CopName + fileextH;
                     string pathI = HttpContext.Current.Server.MapPath("~/IDCard/");
-                    string pathB = HttpContext.Current.Server.MapPath("~/Bizlicense/");
-                    string pathH = HttpContext.Current.Server.MapPath("~/HWPermit/");
                     string savefilenameI = pathI + newfilenameI;
-                    string savefilenameB = pathB + newfilenameB;
-                    string savefilenameH = pathH + newfilenameH;
                     this.FUIDCard.SaveAs(savefilenameI);
-                    this.FUBizlicense.SaveAs(savefilenameB);
-                    this.FUHWPermit.SaveAs(savefilenameH);
                     this.Image3.ImageUrl = "~/IDCard/" + newfilenameI;
-                    this.Image1.ImageUrl = "~/Bizlicense/" + newfilenameB;
-                    this.Image2.ImageUrl = "~/HWPermit/" + newfilenameH;
                     this.Label1.Text = "文件上传成功,等待后台审核";
-                    //this.Label1.Text += "<br/>";
-                    //this.Label1.Text += "<li>" + "原文件路径：" + this.FileUpload1.PostedFile.FileName;
-                    //this.Label1.Text += "<br/>";
-                    //this.Label1.Text += "<li>" + "文件大小：" + this.FileUpload1.PostedFile.ContentLength + "字节";
-                    //this.Label1.Text += "<br/>";
-                    //this.Label1.Text += "<li>" + "文件类型：" + this.FileUpload1.PostedFile.ContentType;
-                    MUserInfo.BankName = tbBankName.Text;
-                    MUserInfo.Account = tbAccount.Text;
-                    MCopInfo.Bizlicense= "~/Bizlicense/" + newfilenameB;
-                    MCopInfo.HWPermit = "~/HWPermit/" + newfilenameH;
                     MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
-                    bll_userinfo.UpdateUserInfo(MUserInfo);
-                    bll_copinfo.UpdateCopInfo(MCopInfo);
+                    //bll_userinfo.UpdateUserInfo(MUserInfo);
+                    //bll_copinfo.UpdateCopInfo(MCopInfo);
                 }
                 catch
                 {
@@ -101,6 +77,87 @@ public partial class CopAuthentication : System.Web.UI.Page
                 this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
             }
         }
+        else if (this.FUBizlicense.HasFile)
+        {
+            //获取上传文件的后缀
+            String fileExtensionFUB = System.IO.Path.GetExtension(this.FUBizlicense.FileName).ToLower();
+            String[] restrictExtension = { ".gif", ".jpg", ".bmp", ".png" };
+            //判断文件类型是否符合
+            for (int i = 0; i < restrictExtension.Length; i++)
+            {
+                if (fileExtensionFUB == restrictExtension[1])
+                {
+                    files = true;
+                }
+            }
+            //调用SaveAs方法实现上传
+            if (files == true)
+            {
+                try
+                {
+                    string filenameB = FUBizlicense.PostedFile.FileName;
+                    string fileextB = System.IO.Path.GetExtension(filenameB);
+                    string newfilenameB = MCopInfo.CopName + fileextB;
+                    string pathB = HttpContext.Current.Server.MapPath("~/Bizlicense/");
+                    string savefilenameB = pathB + newfilenameB;
+                    this.FUBizlicense.SaveAs(savefilenameB);
+                    this.Image1.ImageUrl = "~/Bizlicense/" + newfilenameB;
+                    MCopInfo.Bizlicense = "~/Bizlicense/" + newfilenameB;
+                    //bll_userinfo.UpdateUserInfo(MUserInfo);
+                    //bll_copinfo.UpdateCopInfo(MCopInfo);
+                }
+                catch
+                {
+                    this.Label1.Text = "文件上传不成功";
+                }
+            }
+            else
+            {
+                this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
+            }
+        }
+        else if (this.FUHWPermit.HasFile)
+        {
+            //获取上传文件的后缀
+            String fileExtensionFUH = System.IO.Path.GetExtension(this.FUHWPermit.FileName).ToLower();
+            String[] restrictExtension = { ".gif", ".jpg", ".bmp", ".png" };
+            //判断文件类型是否符合
+            for (int i = 0; i < restrictExtension.Length; i++)
+            {
+                if (fileExtensionFUH == restrictExtension[1])
+                {
+                    files = true;
+                }
+            }
+            //调用SaveAs方法实现上传
+            if (files == true)
+            {
+                try
+                {
+                    string filenameH = FUHWPermit.PostedFile.FileName;
+                    string fileextH = System.IO.Path.GetExtension(filenameH);
+                    string newfilenameH = MCopInfo.CopName + fileextH;
+                    string pathH = HttpContext.Current.Server.MapPath("~/HWPermit/");
+                    string savefilenameH = pathH + newfilenameH;
+                    this.FUHWPermit.SaveAs(savefilenameH);
+                    this.Image2.ImageUrl = "~/HWPermit/" + newfilenameH;
+                    this.Label1.Text = "文件上传成功,等待后台审核";
+                    MCopInfo.HWPermit = "~/HWPermit/" + newfilenameH;
+
+
+                }
+                catch
+                {
+                    this.Label1.Text = "文件上传不成功";
+                }
+            }
+            else
+            {
+                this.Label1.Text = "只能够上传后缀为.gif、 .jpg、 .bmp、.png的文件夹";
+            }
+        }
+        bll_copinfo.UpdateCopInfo(MCopInfo);
+        bll_userinfo.UpdateUserInfo(MUserInfo);
         Response.Redirect("WaitingForAudit.aspx");
     }
 }

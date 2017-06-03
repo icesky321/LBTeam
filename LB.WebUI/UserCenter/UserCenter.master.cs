@@ -16,7 +16,7 @@ public partial class UserCenter : System.Web.UI.MasterPage
         {
             if (Request.IsAuthenticated)
             {
-                if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
+                if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
                 {
                     Response.Redirect("../Admin/Manage.aspx");
                 }
@@ -86,5 +86,27 @@ public partial class UserCenter : System.Web.UI.MasterPage
                 break;
         }
         return tel;
+    }
+
+    protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)
+    {
+        for (int i = 0; i < this.TreeView1.Nodes.Count; i++)
+        {//跌迭根节点
+            if (this.TreeView1.SelectedValue == this.TreeView1.Nodes[i].Value)
+            {//如果选中的是根节点,就展开
+                this.TreeView1.SelectedNode.Expanded = true;
+            }
+            else
+            {
+                // 如果选中的不是根节点
+                for (int j = 0; j < this.TreeView1.SelectedNode.Parent.ChildNodes.Count; j++)
+                {//就让选中节点的所有同级节点收缩
+                    this.TreeView1.SelectedNode.Parent.ChildNodes[j].CollapseAll();
+                }
+                //然后再展开选中的节点及其所有父节点
+                this.TreeView1.SelectedNode.Parent.Expanded = true;
+                this.TreeView1.SelectedNode.Expanded = true;
+            }
+        }
     }
 }

@@ -23,7 +23,11 @@ public partial class Company : System.Web.UI.Page
                 hfId.Value = Id.ToString();
                 if (Request.IsAuthenticated)
                 {
-                    if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
+                    if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
+                    {
+                        DLCopInfoDataBind("", "", "", "", Id);
+                    }
+                     else   if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
                     {
                         DLCopInfoDataBind("", "", "", "", Id);
                     }

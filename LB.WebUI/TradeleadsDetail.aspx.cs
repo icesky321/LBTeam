@@ -19,24 +19,30 @@ public partial class TradeleadsDetail : System.Web.UI.Page
             {
                 int infoId = Convert.ToInt32(Request.QueryString["infoId"]);
                 MTradeleadsModel = bll_tradeleads.GetTradeleadsInfoModelByinfoId(infoId);
-                lbTitle.Text = MTradeleadsModel.Title;
-                lbDetail.Text = MTradeleadsModel.DetailInfo;
-                lbAddress.Text = MTradeleadsModel.Province + MTradeleadsModel.City + MTradeleadsModel.Town + MTradeleadsModel.Street;
-                lbMobileNum.Text = MTradeleadsModel.MobilePhoneNum;
                 if (Request.IsAuthenticated)
                 {
-                    if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
+                    if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
                     {
-                        MultiView1.ActiveViewIndex = 2;
+                        lbTitle.Text = MTradeleadsModel.Title;
+                        lbDetail.Text = MTradeleadsModel.DetailInfo;
+                        lbAddress.Text = MTradeleadsModel.Province + MTradeleadsModel.City + MTradeleadsModel.Town + MTradeleadsModel.Street;
+                        lbMobileNum.Text = MTradeleadsModel.MobilePhoneNum;
+                    }
+                    else if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
+                    {
+                        lbTitle.Text = MTradeleadsModel.Title;
+                        lbDetail.Text = MTradeleadsModel.DetailInfo;
+                        lbAddress.Text = MTradeleadsModel.Province + MTradeleadsModel.City + MTradeleadsModel.Town + MTradeleadsModel.Street;
+                        lbMobileNum.Text = MTradeleadsModel.MobilePhoneNum;
                     }
                     else
                     {
-                        MultiView1.ActiveViewIndex = 1;
+                        Response.Redirect("~/UserCenter/Deposit.aspx");
                     }
                 }
                 else
                 {
-                    MultiView1.ActiveViewIndex = 0;
+                    Response.Redirect("~/LoginM.aspx");
                 }
 
                 lbPrice.Text = MTradeleadsModel.Price;

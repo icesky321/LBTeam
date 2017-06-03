@@ -11,6 +11,8 @@ public partial class UserCenter1 : System.Web.UI.Page
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
+    LB.BLL.UserTypeInfo bll_usertypeinfo = new LB.BLL.UserTypeInfo();
+    LB.SQLServerDAL.UserTypeInfo MUsertype = new LB.SQLServerDAL.UserTypeInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -38,6 +40,8 @@ public partial class UserCenter1 : System.Web.UI.Page
     {
         UserBind();
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
+        MUsertype = bll_usertypeinfo.GetUserTypeById(Convert.ToInt32(MUserInfo.UserTypeId));
+        lbRole.Text = MUsertype.UserTypeName;
         if (MUserInfo.Audit == true)
         {
             btComplete1.Visible = false;

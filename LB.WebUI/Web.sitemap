@@ -28,40 +28,44 @@
       <siteMapNode url="~/Admin/SystemAdmin/CreateNewUser.aspx" title="创建帐户" description="创建帐户"/>
       <!--<siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />-->
     </siteMapNode>
-    <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
-      <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人资料" description="个人资料" />
-      <siteMapNode url="~/UserCenter/Address.aspx" title="个人地址信息" description="个人地址信息" />
-      <siteMapNode url="~/UserCenter/BankInfo.aspx" title="银行卡信息" description="银行卡信息" />
-      <siteMapNode url="~/UserCenter/Authentication.aspx" title="认证信息" description="认证信息" />
-      <siteMapNode url="~/UserCenter/Deposit.aspx" title="诚信保证金" description="诚信保证金" />
-    </siteMapNode>
-    <siteMapNode url="" title="帮帮忙好伐" description="帮帮忙好伐"  roles="general">
+
+    <siteMapNode url="" title="帮帮忙" description="帮帮忙"  roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
       <siteMapNode url="~/UserCenter/SellInfo.aspx" title="我要卖货" description="我要卖货"/>
       <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="我要收货" description="我要收货"/>
+      <!--<siteMapNode url="~/UserCenter/MyHelpInfo.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理"/>-->
     </siteMapNode>
-    <siteMapNode url="" title="一键收货" description="一键收货"  roles="CEMetalFactory,CEUser,CERecyclingCop" >
+    <siteMapNode url="" title="我的收货" description="我的收货"  roles="CEMetalFactory,CEUser,CERecyclingCop" >
       <siteMapNode url="~/UserCenter/OneKeyBuy.aspx" title="一键收货" description="一键收货"/>
     </siteMapNode>
-    <siteMapNode url="" title="一键卖货" description="一键卖货"  roles="CESupplier,CEUser,CERecyclingCop" >
+    <siteMapNode url="" title="我的卖货" description="我的卖货"  roles="CESupplier,CEUser,CERecyclingCop" >
       <siteMapNode url="~/UserCenter/OneKeySell.aspx" title="一键卖货" description="一键卖货"/>
     </siteMapNode>
-    <siteMapNode url="" title="一键押货" description="一键押货"  roles="CESupplier,CEMetalFactory,CEUser,CERecyclingCop" >
+    <siteMapNode url="" title="我的押货" description="我的押货"  roles="CESupplier,CEMetalFactory,CEUser,CERecyclingCop" >
       <siteMapNode url="~/UserCenter/OneKeyMortgage.aspx" title="一键押货" description="一键押货"/>
     </siteMapNode>
-    <siteMapNode url="" title="当地业务员" description="当地业务员"  roles="CESupplier,CERecyclingCop" >
-      <siteMapNode url="~/UserCenter/LocalRecycling.aspx" title="当地业务员" description="当地业务员"/>
+    <siteMapNode url="" title="回收员信息" description="回收员信息"  roles="CESupplier,CERecyclingCop" >
+      <siteMapNode url="~/UserCenter/LocalRecycling.aspx" title="当地回收员" description="当地回收员"/>
     </siteMapNode>
-    <siteMapNode url="" title="当地回收公司" description="当地回收公司"  roles="CESupplier,CEMetalFactory,CEUser" >
+    <siteMapNode url="" title="回收公司信息" description="回收公司信息"  roles="CESupplier,CEMetalFactory,CEUser" >
       <siteMapNode url="~/UserCenter/LocalRecyclingCop.aspx" title="当地回收公司" description="当地回收公司"/>
     </siteMapNode>
-    <siteMapNode url="" title="当地供应商" description="当地供应商"  roles="CERecyclingCop,CEUser" >
+    <siteMapNode url="" title="供应商信息" description="供应商信息"  roles="CERecyclingCop,CEUser" >
       <siteMapNode url="~/UserCenter/LocalSupplier.aspx" title="当地供应商" description="当地供应商"/>
     </siteMapNode>
-    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin" >
+    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage" >
       <siteMapNode url="~/Admin/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
-    </siteMapNode>
 
-    <siteMapNode url="~/Admin/Notice.aspx" title="公告设置" description="公告设置"  roles="Admin,InfoManage,UserManage" />
+    </siteMapNode>
+    <siteMapNode url="" title="其他设置" description="其他设置" securitytrimmingenabled="true" roles="Admin,InfoManage" >
+      <siteMapNode url="~/Admin/Notice.aspx" title="公告设置" description="公告设置"/>
+    </siteMapNode>
+    <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
+      <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人资料" description="个人资料" />
+      <siteMapNode url="~/UserCenter/Address.aspx" title="地址" description="地址" />
+      <siteMapNode url="~/UserCenter/BankInfo.aspx" title="银行卡" description="银行卡" />
+      <siteMapNode url="~/UserCenter/Authentication.aspx" title="认证" description="认证" />
+      <siteMapNode url="~/UserCenter/Deposit.aspx" title="诚信保证金" description="诚信保证金" />
+    </siteMapNode>
     <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页" />
   </siteMapNode>
 </siteMap>

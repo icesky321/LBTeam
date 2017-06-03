@@ -28,29 +28,53 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         {
             string CopId = gvRow.Cells[0].Text;
             MCopInfo = bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId));
-            if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).BAuthentication == false)
+            if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).Bizlicense) == false)
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).BAuthentication == false)
+                {
+                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[7].FindControl("lbtnBizlicense"))).Visible = false;
+                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 2;
             }
-            if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).HWAuthentication == false)
+            if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).HWPermit) == false)
             {
-                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 0;
+                if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).HWAuthentication == false)
+                {
+                    ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 1;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[8].FindControl("lbtnHWPermit"))).Visible = false;
+                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 2;
             }
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).IDAuthentication == false)
+            if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).IDCard) == false)
             {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 0;
+                if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).IDAuthentication == false)
+                {
+                    ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 1;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[9].FindControl("lbtnIDCard"))).Visible = false;
+                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 2;
             }
             //if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).ChopAuthentication == false)
             //{
@@ -81,10 +105,11 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
             string url = MCopInfo.Bizlicense;
             if (!string.IsNullOrEmpty(MCopInfo.Bizlicense))
             { Response.Redirect(url); }
-            else {
+            else
+            {
 
             }
-            
+
         }
         if (e.CommandName == "BPass")
         {
@@ -99,7 +124,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
             string url = MCopInfo.HWPermit;
             if (!string.IsNullOrEmpty(MCopInfo.HWPermit))
             { Response.Redirect(url); }
-                
+
         }
         if (e.CommandName == "HPass")
         {
@@ -114,7 +139,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
             string url = MUserInfo.IDCard;
             if (!string.IsNullOrEmpty(MUserInfo.IDCard))
             { Response.Redirect(url); }
-                
+
         }
         if (e.CommandName == "IPass")
         {

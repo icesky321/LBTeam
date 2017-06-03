@@ -9,6 +9,8 @@ public partial class JoinUS : System.Web.UI.Page
 {
     LB.SQLServerDAL.UserAuditMsg MUserAuditMsg = new LB.SQLServerDAL.UserAuditMsg();
     LB.BLL.UserAuditMsg bll_userauditmsg = new LB.BLL.UserAuditMsg();
+    LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
+    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -17,6 +19,24 @@ public partial class JoinUS : System.Web.UI.Page
             {
                 string UserId = Request.QueryString["UserId"];
                 hfUserId.Value = UserId;
+                MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(UserId));
+                if (MUserInfo.UserTypeId == 5)
+                {
+                    if (MUserInfo.Audit == true)
+                    {
+                        MultiView1.ActiveViewIndex = 1;
+                        lbBody.Text = "对不起，您所在的" + MUserInfo.Province + MUserInfo.City + MUserInfo.Town + MUserInfo.Street + " 名额已占，请更改您的地址试试？";
+                    }
+                    else
+                    {
+                        MultiView1.ActiveViewIndex = 0;
+                        lbNoBody.Text = "恭喜您，您所在的" + MUserInfo.Province + MUserInfo.City + MUserInfo.Town + MUserInfo.Street + " 名额暂缺，请尽快占领此地区，施展您的潜力吧！";
+                    }
+                }
+                else
+                {
+                    MultiView1.ActiveViewIndex = 2;
+                }
             }
             else
             {
@@ -24,6 +44,7 @@ public partial class JoinUS : System.Web.UI.Page
             }
 
         }
+
     }
 
     protected void btSure_Click(object sender, EventArgs e)

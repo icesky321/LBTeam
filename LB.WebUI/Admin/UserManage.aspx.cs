@@ -26,13 +26,21 @@ public partial class Admin_UserManage : System.Web.UI.Page
         foreach (GridViewRow gvRow in gvUserInfo.Rows)
         {
             string UserId = gvRow.Cells[0].Text;
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).IDAuthentication == true)
+            if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).IDCard) == false)
             {
-                ((MultiView)(gvRow.Cells[6].FindControl("MultiView3"))).ActiveViewIndex = 1;
+                if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).IDAuthentication == true)
+                {
+                    ((MultiView)(gvRow.Cells[6].FindControl("MultiView3"))).ActiveViewIndex = 1;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[6].FindControl("MultiView3"))).ActiveViewIndex = 0;
+                }
             }
             else
             {
-                ((MultiView)(gvRow.Cells[6].FindControl("MultiView3"))).ActiveViewIndex = 0;
+                ((LinkButton)(gvRow.Cells[6].FindControl("lbtnIDCard"))).Visible = false;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView3"))).ActiveViewIndex = 2;
             }
             if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).Audit == true)
             {
@@ -134,19 +142,8 @@ public partial class Admin_UserManage : System.Web.UI.Page
 
     protected void gvUserInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        // Retrieve the pager row.        
-
-        GridViewRow pagerRow = gvUserInfo.BottomPagerRow;
-
-        // Retrieve the PageDropDownList DropDownList from the bottom pager row.        
-
-        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
-
-        // Set the PageIndex property to display that page selected by the user.       
-
-        gvUserInfo.PageIndex = pageList.SelectedIndex;
-
-        gvUserInfoDataBind();  //数据绑定 
+        gvUserInfo.PageIndex = e.NewPageIndex;
+        gvUserInfoDataBind();
     }
 
     protected void gvUserInfo_DataBound(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_MetalFactoryManage, App_Web_t0s4sypf" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_MetalFactoryManage, App_Web_34e1ktbl" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -38,6 +38,8 @@
                             <asp:ImageButton ID="lbtnBU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="BUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnBU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="BUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
+                        <asp:View ID="BView3" runat="server">
+                        </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -53,6 +55,8 @@
                         <asp:View ID="HView2" runat="server">
                             <asp:ImageButton ID="lbtnHU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="HUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnHU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="HUPass">取消通过</asp:LinkButton>--%>
+                        </asp:View>
+                        <asp:View ID="HView3" runat="server">
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
@@ -70,6 +74,8 @@
                             <asp:ImageButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="IUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="IUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
+                        <asp:View ID="IView3" runat="server">
+                        </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -80,7 +86,7 @@
                     <asp:MultiView ID="MultiView5" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
                             <asp:ImageButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="Pass" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
-                            
+
                             <%--<asp:LinkButton ID="lbtnPass" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="Pass">审核通过</asp:LinkButton>--%>
                         </asp:View>
                         <asp:View ID="View2" runat="server">
