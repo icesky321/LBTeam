@@ -9,13 +9,13 @@
       <siteMapNode url="~/Admin/NewsManage.aspx"  title="新闻资讯管理" description="新闻资讯管理" />
       <siteMapNode url="~/Admin/NewsType.aspx"  title="资讯类别管理" description="资讯类别管理" />
     </siteMapNode>
-    <siteMapNode url="" title="用户信息管理" description="用户信息管理"  roles="Admin,UserManage">
+    <siteMapNode url="" title="用户信息管理" description="用户信息管理"  roles="Admin,UserManage,CustomService">
       <siteMapNode url="~/Admin/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
       <siteMapNode url="~/Admin/UserManage.aspx" title="业务员信息管理" description="业务员信息管理" />
       <siteMapNode url="~/Admin/MetalFactoryManage.aspx" title="冶炼厂信息管理" description="冶炼厂信息管理" />
       <siteMapNode url="~/Admin/SupplierManage.aspx" title="供货商信息管理" description="供货商信息管理" />
     </siteMapNode>
-    <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理"  roles="Admin,InfoManage">
+    <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理"  roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/Admin/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
     </siteMapNode>
     <siteMapNode url="" title="信用保证金管理" description="信用保证金管理" securitytrimmingenabled="true" roles="Admin,UserManage">
@@ -52,7 +52,7 @@
     <siteMapNode url="" title="供应商信息" description="供应商信息"  roles="CERecyclingCop,CEUser" >
       <siteMapNode url="~/UserCenter/LocalSupplier.aspx" title="当地供应商" description="当地供应商"/>
     </siteMapNode>
-    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage" >
+    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
       <siteMapNode url="~/Admin/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
 
     </siteMapNode>
@@ -65,6 +65,10 @@
       <siteMapNode url="~/UserCenter/BankInfo.aspx" title="银行卡" description="银行卡" />
       <siteMapNode url="~/UserCenter/Authentication.aspx" title="认证" description="认证" />
       <siteMapNode url="~/UserCenter/Deposit.aspx" title="诚信保证金" description="诚信保证金" />
+      <siteMapNode url="~/UserCenter/ChangePWD.aspx" title="重置密码" description="重置密码"/>
+    </siteMapNode>
+    <siteMapNode url="" title="管理员设置" description="管理员设置" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
+      <siteMapNode url="~/Admin/SystemAdmin/RecoverPwd.aspx" title="重置密码" description="重置密码"/>
     </siteMapNode>
     <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页" />
   </siteMapNode>

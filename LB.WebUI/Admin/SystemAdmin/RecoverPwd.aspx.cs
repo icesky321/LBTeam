@@ -11,15 +11,22 @@ using System.Web.UI.HtmlControls;
 
 public partial class Admin_RecoverPwd : System.Web.UI.Page
 {
+    LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
+    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (!IsPostBack)
+        {
+            lbUserName.Text = HttpContext.Current.User.Identity.Name;
+        }
     }
 
-    protected void PasswordRecovery1_SendingMail(object sender, MailMessageEventArgs e)
+    protected void btSure_Click(object sender, EventArgs e)
     {
-        e.Cancel = true;
-        lbsubject.Text = Convert.ToString((e.Message.Subject));
-        lbbody.Text = Convert.ToString((e.Message.Body));
+        if (Membership.ValidateUser(lbUserName.Text, tbPwd.Text) == true)
+        {
+            Membership.GetUser(lbUserName.Text).ChangePassword(tbPwd.Text, tbConfirmPassword.Text);
+            lbMsg.Visible = true;
+        }
     }
 }
