@@ -93,6 +93,9 @@ namespace LB.SQLServerDAL
     partial void InsertUserInfo(UserInfo instance);
     partial void UpdateUserInfo(UserInfo instance);
     partial void DeleteUserInfo(UserInfo instance);
+    partial void InsertUserNoticeInfo(UserNoticeInfo instance);
+    partial void UpdateUserNoticeInfo(UserNoticeInfo instance);
+    partial void DeleteUserNoticeInfo(UserNoticeInfo instance);
     partial void InsertUserTypeInfo(UserTypeInfo instance);
     partial void UpdateUserTypeInfo(UserTypeInfo instance);
     partial void DeleteUserTypeInfo(UserTypeInfo instance);
@@ -5286,159 +5289,6 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAuditMsg")]
-	public partial class UserAuditMsg
-	{
-		
-		private int _MsgId;
-		
-		private System.Nullable<int> _UserId;
-		
-		private string _AccountName;
-		
-		private string _Account;
-		
-		private string _Ammount;
-		
-		private string _Message;
-		
-		private System.Nullable<System.DateTime> _CreateDate;
-		
-		private System.Nullable<bool> _Status;
-		
-		public UserAuditMsg()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MsgId", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int MsgId
-		{
-			get
-			{
-				return this._MsgId;
-			}
-			set
-			{
-				if ((this._MsgId != value))
-				{
-					this._MsgId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
-		public System.Nullable<int> UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(50)")]
-		public string AccountName
-		{
-			get
-			{
-				return this._AccountName;
-			}
-			set
-			{
-				if ((this._AccountName != value))
-				{
-					this._AccountName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Account", DbType="NVarChar(50)")]
-		public string Account
-		{
-			get
-			{
-				return this._Account;
-			}
-			set
-			{
-				if ((this._Account != value))
-				{
-					this._Account = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ammount", DbType="NVarChar(50)")]
-		public string Ammount
-		{
-			get
-			{
-				return this._Ammount;
-			}
-			set
-			{
-				if ((this._Ammount != value))
-				{
-					this._Ammount = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(100)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this._Message = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreateDate
-		{
-			get
-			{
-				return this._CreateDate;
-			}
-			set
-			{
-				if ((this._CreateDate != value))
-				{
-					this._CreateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Bit")]
-		public System.Nullable<bool> Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserInfo")]
 	public partial class UserInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -6006,10 +5856,12 @@ namespace LB.SQLServerDAL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserNoticeInfo")]
-	public partial class UserNoticeInfo
+	public partial class UserNoticeInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
-		private System.Nullable<int> _NoticeId;
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _NoticeId;
 		
 		private System.Nullable<int> _UserId;
 		
@@ -6023,12 +5875,37 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<System.DateTime> _AuditDate;
 		
+		private string _Operator;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnNoticeIdChanging(int value);
+    partial void OnNoticeIdChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnUserNoticeChanging(string value);
+    partial void OnUserNoticeChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnHitChanging(System.Nullable<int> value);
+    partial void OnHitChanged();
+    partial void OnAuditChanging(System.Nullable<bool> value);
+    partial void OnAuditChanged();
+    partial void OnAuditDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAuditDateChanged();
+    partial void OnOperatorChanging(string value);
+    partial void OnOperatorChanged();
+    #endregion
+		
 		public UserNoticeInfo()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoticeId", DbType="Int")]
-		public System.Nullable<int> NoticeId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NoticeId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int NoticeId
 		{
 			get
 			{
@@ -6038,7 +5915,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._NoticeId != value))
 				{
+					this.OnNoticeIdChanging(value);
+					this.SendPropertyChanging();
 					this._NoticeId = value;
+					this.SendPropertyChanged("NoticeId");
+					this.OnNoticeIdChanged();
 				}
 			}
 		}
@@ -6054,7 +5935,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._UserId != value))
 				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
 					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
 				}
 			}
 		}
@@ -6070,7 +5955,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._UserNotice != value))
 				{
+					this.OnUserNoticeChanging(value);
+					this.SendPropertyChanging();
 					this._UserNotice = value;
+					this.SendPropertyChanged("UserNotice");
+					this.OnUserNoticeChanged();
 				}
 			}
 		}
@@ -6086,7 +5975,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._CreateDate != value))
 				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
 					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
 				}
 			}
 		}
@@ -6102,7 +5995,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._Hit != value))
 				{
+					this.OnHitChanging(value);
+					this.SendPropertyChanging();
 					this._Hit = value;
+					this.SendPropertyChanged("Hit");
+					this.OnHitChanged();
 				}
 			}
 		}
@@ -6118,7 +6015,11 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._Audit != value))
 				{
+					this.OnAuditChanging(value);
+					this.SendPropertyChanging();
 					this._Audit = value;
+					this.SendPropertyChanged("Audit");
+					this.OnAuditChanged();
 				}
 			}
 		}
@@ -6134,8 +6035,52 @@ namespace LB.SQLServerDAL
 			{
 				if ((this._AuditDate != value))
 				{
+					this.OnAuditDateChanging(value);
+					this.SendPropertyChanging();
 					this._AuditDate = value;
+					this.SendPropertyChanged("AuditDate");
+					this.OnAuditDateChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Operator", DbType="NVarChar(50)")]
+		public string Operator
+		{
+			get
+			{
+				return this._Operator;
+			}
+			set
+			{
+				if ((this._Operator != value))
+				{
+					this.OnOperatorChanging(value);
+					this.SendPropertyChanging();
+					this._Operator = value;
+					this.SendPropertyChanged("Operator");
+					this.OnOperatorChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

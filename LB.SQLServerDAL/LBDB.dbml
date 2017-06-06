@@ -274,13 +274,14 @@
   </Table>
   <Table Name="dbo.UserNoticeInfo" Member="UserNoticeInfo">
     <Type Name="UserNoticeInfo">
-      <Column Name="NoticeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NoticeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserNotice" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Hit" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Operator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserTypeInfo" Member="UserTypeInfo">
