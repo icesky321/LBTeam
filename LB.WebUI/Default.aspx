@@ -19,6 +19,16 @@
     <div class="homepage-slider companywarpslider">
         <div id="sequence">
             <ul class="sequence-canvas">
+                <!-- Slide 4 -->
+                <li class="bg2">
+                    <!-- Slide Title -->
+                    <h2 class="title" style="font-family: 微软雅黑; font-weight: bold">地域回收员火热招募中!</h2>
+                    <!-- Slide Text -->
+                    <h3 class="subtitle" style="font-family: 微软雅黑; font-weight: bold; font-size: 20px;">加入！这块区域你包啦~还在等什么呢~</h3>
+                    <!-- Slide Image -->
+                    <img class="slide-img" src="img/homepage-slider/slide4.png" alt="Slide 3" />
+                </li>
+                <!-- End Slide 4 -->
                 <!-- Slide 1 -->
                 <li class="bg4">
                     <!-- Slide Title -->
@@ -55,6 +65,7 @@
                     <li>1</li>
                     <li>2</li>
                     <li>3</li>
+                    <li>4</li>
                 </ul>
             </div>
         </div>
@@ -95,7 +106,7 @@
                                 平台公告
                             </HeaderTemplate>
                             <ContentTemplate>
-                                <marquee scrollamount="2" width="100%" height="276px" direction="up">
+                                <marquee scrollamount="2" width="100%" height="276px" direction="up" onmouseover="this.stop()" onmouseout="this.start()">
                                     <asp:Label ID="lbNotice" runat="server" Text=""></asp:Label>
                                 </marquee>
                             </ContentTemplate>
@@ -106,10 +117,17 @@
                     <asp:TabContainer ID="TabContainer5" runat="server">
                         <asp:TabPanel ID="TabPanel8" runat="server" HeaderText="平台动态" Height="276px">
                             <ContentTemplate>
-                                平台注册会员共计：<asp:Label ID="lbHYNum" runat="server" Font-Size="Medium" ForeColor="Gray"></asp:Label>
+                                <br />
+                                平台注册会员累计：<asp:Label ID="lbHYNum" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
                                 <br />
                                 <hr />
-                                平台发布供需信息共计：<asp:Label ID="lbGXNum" runat="server" Font-Size="Medium" ForeColor="Gray"></asp:Label>
+                                平台发布供需信息累计：<asp:Label ID="lbGXNum" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
+                                <br />
+                                <hr />
+                                今日铅价：<asp:Label ID="lbPBPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
+                                <br />
+                                <hr />
+                                今日废旧电瓶价格:<asp:Label ID="lbDPPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -128,7 +146,7 @@
                 </p>
             </div>
             <hr />--%>
-            <div class="am-g" style="border: 0px solid #eee; margin: 10px">
+            <div class="am-g" style="border: 0px solid #eee;">
                 <div class="am-u-md-6">
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
@@ -251,6 +269,33 @@
                                                     </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:Label ID="lbLawShowTime" runat="server" Text='<%# Bind("ShowTime","{0:yyyy-M-d}") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </ContentTemplate>
+                                </asp:TabPanel>
+                                <asp:TabPanel ID="TabPanel11" runat="server" HeaderText="平台资讯" Height="276px">
+                                    <ContentTemplate>
+                                        <asp:GridView ID="gvPlateInfo" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
+                                            SkinID="GridView3" Width="100%" OnRowCommand="gvPlateInfo_RowCommand">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText=" " SortExpression="Title">
+                                                    <ItemTemplate>
+                                                        <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 400px; text-align: left;">
+                                                            <asp:Label ID="Label1" runat="server" Text="•"></asp:Label><asp:LinkButton ID="lbtnTitle"
+                                                                Style="text-decoration: none" runat="server" Text='<%# Bind("Title") %>' CommandArgument='<%#Eval("id") %>'
+                                                                CommandName="Detail" ToolTip='<%# Bind("Title") %>'></asp:LinkButton>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText=" " SortExpression="NoteTime">
+                                                    <FooterTemplate>
+                                                        <asp:LinkButton ID="lkbnMore" runat="server" Style="text-decoration: none" CommandArgument='<%#Eval("id") %>'
+                                                            CommandName="AllNews">更多...</asp:LinkButton>
+                                                    </FooterTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lbShowTime" runat="server" Text='<%# Bind("NoteTime","{0:yyyy-M-d}") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -397,7 +442,7 @@
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                <div class="am-u-md-3 am-u-sm-6 product3-main-box"  onclick="location.href='MemberInfo.aspx?Id=5';">
                                     <div class="product3-icon">
                                         <i class="am-icon-send-o"></i>
                                     </div>
@@ -407,7 +452,7 @@
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='MemberInfo.aspx?Id=1';">
                                     <div class="product3-icon">
                                         <i class="am-icon-diamond"></i>
                                     </div>

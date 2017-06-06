@@ -13,23 +13,26 @@ public partial class _Default : System.Web.UI.Page
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
     LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
-    LB.SQLServerDAL.NewsInfo Mn = new LB.SQLServerDAL.NewsInfo();
+    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-
             gvNewsDatabind();
             gvPBNewsDatabind();
             gvPriceNewsDatabind();
             gvLawNewsDatabind();
+            gvPlateInfoDatabind();
             gvBuyInfoDatabind();
             gvSellInfoDatabind();
             DLCopInfoDataBind();
             lbNotice.Text = ConfigurationManager.AppSettings["Notice"];
             //lbNotice.Text = bll_newsinfo.GetNewsInfoById(1).Content;
-
+            lbHYNum.Text = (Convert.ToInt32("13546") + bll_usermanage.GetUserSum()).ToString() + "人";
+            lbGXNum.Text = (Convert.ToInt32("5643")+ bll_tradeleads.GetTradeleadsSum()).ToString() + "例";
+            lbPBPrice.Text = ConfigurationManager.AppSettings["PBPrice"];
+            lbDPPrice.Text = ConfigurationManager.AppSettings["DPPrice"];
         }
     }
 
@@ -44,6 +47,13 @@ public partial class _Default : System.Web.UI.Page
     {
         gvPBNew.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(2);
         gvPBNew.DataBind();
+
+    }
+
+    void gvPlateInfoDatabind()
+    {
+        gvPlateInfo.DataSource = bll_newsinfo.GetNewsInfoByTypeTop13(5);
+        gvPlateInfo.DataBind();
 
     }
 
@@ -63,7 +73,7 @@ public partial class _Default : System.Web.UI.Page
 
     void gvSellInfoDatabind()
     {
-        gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2,true);
+        gvSellInfo.DataSource = bll_tradeleads.GetTradeleadsByTradeType(2, true);
         gvSellInfo.DataBind();
 
     }
@@ -132,6 +142,22 @@ public partial class _Default : System.Web.UI.Page
         if (e.CommandName == "AllNews")
         {
             string Id = "4";
+            string url = "~/News.aspx?Id=" + Id.ToString();
+            Response.Redirect(url);
+        }
+    }
+
+    protected void gvPlateInfo_RowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        if (e.CommandName == "Detail")
+        {
+            string Id = e.CommandArgument.ToString();
+            string url = "~/NewsDetail.aspx?Id=" + Id.ToString();
+            Response.Redirect(url);
+        }
+        if (e.CommandName == "AllNews")
+        {
+            string Id = "5";
             string url = "~/News.aspx?Id=" + Id.ToString();
             Response.Redirect(url);
         }

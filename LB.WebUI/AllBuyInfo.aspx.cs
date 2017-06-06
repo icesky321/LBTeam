@@ -13,8 +13,12 @@ public partial class AllBuyInfo : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1");
-            gvBuyInfo.DataBind();
+            if (bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1") != null)
+            {
+                gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1");
+                gvBuyInfo.DataBind();
+            }
+
             
         }
     }

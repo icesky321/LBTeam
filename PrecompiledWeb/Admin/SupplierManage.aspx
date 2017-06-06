@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_SupplierManage, App_Web_lpxg04rp" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_SupplierManage, App_Web_wpzlokeo" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -26,7 +26,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="营业执照 " SortExpression="Bizlicense">
                 <ItemTemplate>
-                    <asp:LinkButton ID="lbtnBizlicense" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
+                    <asp:LinkButton ID="lbtnBizlicense" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("UserId") %>'
                         CommandName="Bizlicense" ToolTip="营业执照"></asp:LinkButton>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                         <asp:View ID="BView1" runat="server">
@@ -37,12 +37,12 @@
                             <asp:ImageButton ID="lbtnBU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="BUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnBU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="BUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
-                        <asp:View ID="View3" runat="server">
+                        <asp:View ID="BView3" runat="server">
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="危化许可证 " SortExpression="HWPermit">
+            <asp:TemplateField HeaderText="危化许可证 " SortExpression="HWPermit" Visible="false">
                 <ItemTemplate>
                     <asp:LinkButton ID="lbtnHWPermit" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("UserId") %>'
                         CommandName="HWPermit" ToolTip="危化许可证"></asp:LinkButton>
@@ -73,6 +73,8 @@
                             <asp:ImageButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="IUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="IUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
+                        <asp:View ID="View4" runat="server">
+                        </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -93,7 +95,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-                <PagerTemplate>
+        <PagerTemplate>
             <table width="100%" style="font-size: 12px;">
                 <tr>
                     <td style="text-align: right">

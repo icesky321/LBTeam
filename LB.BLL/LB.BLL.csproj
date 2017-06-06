@@ -53,6 +53,7 @@
     <Compile Include="UserAuditMsg.cs" />
     <Compile Include="UserDepositInfo.cs" />
     <Compile Include="UserManage.cs" />
+    <Compile Include="UserNoticeInfo.cs" />
     <Compile Include="UserTypeInfo.cs" />
   </ItemGroup>
   <ItemGroup>

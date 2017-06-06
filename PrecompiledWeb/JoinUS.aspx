@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_kbxfc0ac" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_q14cjle0" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
@@ -109,6 +109,24 @@
                                     </li>
                                     <li class="contact-item">
                                         <div class="contact_item">
+                                            <i class="contact_item--icon am-icon-weixin"></i>
+                                            <h3 class="contact_item--title">微信用户扫一扫付款</h3>
+                                            <p class="contact_item--text">
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/wxPay.jpg" Width="200px" Height="230px" />
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <%--                                     <li class="contact-item">
+                                        <div class="contact_item">
+                                            <i class="contact_item--icon fa fa-hacker-news"></i>
+                                            <h3 class="contact_item--title">支付宝用户扫一扫付款</h3>
+                                            <p class="contact_item--text">
+                                                <asp:Image ID="Image2" runat="server" ImageUrl="~/images/lb2w.jpg" />
+                                            </p>
+                                        </div>
+                                    </li>--%>
+                                    <li class="contact-item">
+                                        <div class="contact_item">
                                             <i class="contact_item--icon am-icon-map-marker"></i>
                                             <h3 class="contact_item--title">公司地址</h3>
                                             <p class="contact_item--text">
@@ -123,6 +141,19 @@
                             <!--contact-right start-->
                             <div class="am-u-md-7">
                                 <div class="contact-form">
+                                    <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
+                                        <asp:View ID="View1" runat="server">
+                                            <asp:Label ID="lbNoBody" runat="server" Text="Label" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
+                                        </asp:View>
+                                        <asp:View ID="View2" runat="server">
+                                            <asp:Label ID="lbBody" runat="server" Text="Label" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
+                                        </asp:View>
+                                        <asp:View ID="View3" runat="server">
+                                        </asp:View>
+                                    </asp:MultiView>
+                                    <br />
+                                    <hr />
+                                    <br />
                                     <h3 class="contact-form_title" style="font-size: 18px">如果您汇款成功，请提交一下信息，客服将在工作日时间48小时内与您核实</h3>
 
                                     <div class="am-g">
@@ -151,7 +182,7 @@
                                         <div class="am-u-md-12">
                                             <div class="am-form-group">
                                                 您的留言：
-                                                     <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>
+                                                     <asp:TextBox ID="tbMessage" runat="server"></asp:TextBox>注：如微信支付，请备注好微信账号
                                             </div>
                                         </div>
                                     </div>

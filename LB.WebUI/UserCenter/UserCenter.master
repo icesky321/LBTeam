@@ -10,8 +10,8 @@
     <meta name="renderer" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <meta name="description" content="宁波绿宝信息科技有限公司，电瓶回收平台，电瓶回收，旧电瓶，废电瓶，旧电瓶回收，废电瓶回收" />
-    <meta name="keywords" content="电瓶回收平台，电瓶回收，旧电瓶，废电瓶，旧电瓶回收，废电瓶回收，宁波绿宝信息科技有限公司" />
+    <meta name="description" content="绿宝三益，宁波绿宝信息科技有限公司，电瓶回收平台，电瓶回收，旧电瓶，废电瓶，旧电瓶回收，废电瓶回收" />
+    <meta name="keywords" content="绿宝三益，电瓶回收平台，电瓶回收，旧电瓶，废电瓶，旧电瓶回收，废电瓶回收，宁波绿宝信息科技有限公司" />
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../css/amazeui.css" />
     <link rel="stylesheet" href="../css/common.min.css" />
@@ -25,7 +25,7 @@
         }
 
         @media only screen and (max-width:640px) {
-            .companywarp {
+            .companywarpMobile {
                 display: none;
             }
         }
@@ -60,7 +60,7 @@
                     <div class="container">
                         <div class="header">
                             <div class="am-g">
-                                <div class="am-u-lg-2 am-u-sm-12">
+                                <div class="am-u-lg-2 am-u-sm-12 companywarpMobile">
                                     <div class="logo">
                                         <a href="../Default.aspx">
                                             <img src="../img/logo1.png" alt="" height="50px" width="100px" /></a>
@@ -68,15 +68,15 @@
                                 </div>
                                 <div class="am-u-md-10">
                                     <div class="header-right am-fr">
-                                        <div class="header-contact companywarp">
+                                        <div class="header-contact companywarpMobile">
                                             <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-phone"></i>
-                                                    <strong>0574-86694505</strong>
-                                                    <span>周一~周五, 8:00 - 20:00</span>
+                                                    <strong style="font-size: 22px">0574-86694505</strong>
+                                                    <span style="font-size: 18px">周一~周五, 8:00 - 17:00</span>
                                                 </div>
                                             </div>
-                                            <div class="header_contacts--item">
+                                            <%--                                            <div class="header_contacts--item">
                                                 <div class="contact_mini">
                                                     <i style="color: #7c6aa6" class="contact-icon am-icon-envelope-o"></i>
                                                     <strong></strong>
@@ -89,7 +89,7 @@
                                                     <strong>文创园</strong>
                                                     <span>镇海区庄市街道中官西路279号</span>
                                                 </div>
-                                            </div>
+                                            </div>--%>
                                         </div>
                                         <div class="accountwarp">
                                             <table>
@@ -147,6 +147,8 @@
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="../Company.aspx?Id=3">冶炼厂</a></li>
                                         <li class="menu-item"><a href="../Company.aspx?Id=2">电瓶回收公司</a></li>
+                                        <li class="menu-item"><a href="../MemberInfo.aspx?Id=5">地域回收员</a></li>
+                                        <li class="menu-item"><a href="../MemberInfo.aspx?Id=1">供应商</a></li>
                                     </ul>
 
                                 </li>
@@ -161,7 +163,20 @@
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="../ChooseRoles.aspx">加入我们</a>
+                                <li><a href="#">咻</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="OneKeySell.aspx">一键卖货</a></li>
+                                        <li class="menu-item"><a href="OneKeyBuy.aspx">一键收货</a></li>
+                                        <li class="menu-item"><a href="OneKeyMortgage.aspx">一键押货</a></li>
+                                    </ul>
+
+                                </li>
+                                <li><a href="#">关于我们</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="ChooseRoles.aspx">加入我们</a></li>
+                                        <li class="menu-item"><a href="~/GoodIdea.aspx">集思广益</a></li>
+                                    </ul>
+
                                 </li>
                             </ul>
                         </div>
@@ -179,13 +194,13 @@
                     <div class="am-sticky-placeholder" style="margin: 0px; border-right: 1px solid #eee">
                         <div id="am-offcanvas" class="am-offcanvas " style="margin: 0px;">
                             <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
-                            <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ImageSet="Arrows" Font-Bold="False" Font-Size="Large">
+                            <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ImageSet="Simple" Font-Bold="False" Font-Size="Large" ExpandDepth="0" OnSelectedNodeChanged="TreeView1_SelectedNodeChanged">
                                 <ParentNodeStyle CssClass="active" Font-Bold="False" />
                                 <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" Font-Size="Medium" />
                                 <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px"
                                     VerticalPadding="0px" />
                                 <LeafNodeStyle Font-Size="Medium" />
-                                <NodeStyle Font-Names="Verdana" Font-Size="Medium" ForeColor="Black" HorizontalPadding="5px"
+                                <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="0px"
                                     NodeSpacing="0px" VerticalPadding="0px" />
                             </asp:TreeView>
                         </div>
@@ -216,6 +231,8 @@
                                                 Copyright 2016-2017 宁波绿宝信息科技有限公司 版权所有 All Rights Reserved   浙ICP备16029665号-1  <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">
                                                     <asp:Image ID="Image2" runat="server" ImageUrl="~/img/ghs.png" /><asp:Label ID="Label2" runat="server" Text="浙公网安备 33021102000430"></asp:Label>
                                                 </a>
+                                                <br />
+                                                技术支持：绿宝三益科技   客服电话：0574-86694505    周一~周五, 8:00 - 17:00
                                             </p>
                                             <%--                                            <p class="footer_about--text">
                                                 <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33021102000430">

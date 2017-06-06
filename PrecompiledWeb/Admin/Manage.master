@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="Admin_Manage, App_Web_jzhcqzhy" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="Admin_Manage, App_Web_q10gcvye" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

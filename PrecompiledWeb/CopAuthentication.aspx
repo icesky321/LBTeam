@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="CopAuthentication, App_Web_kbxfc0ac" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="CopAuthentication, App_Web_q14cjle0" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
@@ -73,7 +73,7 @@
                         <td>危化许可证上传：</td>
                         <td>
                             <asp:FileUpload ID="FUHWPermit" runat="server" />
-                            <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" /></td>
+                            <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" />注：如供货商用户，此项可不填</td>
                     </tr>
                 </table>
 

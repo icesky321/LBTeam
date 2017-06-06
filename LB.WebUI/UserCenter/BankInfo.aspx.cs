@@ -43,6 +43,15 @@ public partial class UserCenter_BankInfo : System.Web.UI.Page
             lbAccount.Text = MUserInfo.Account;
             tbUpdateBankName.Text= MUserInfo.BankName;
             tbUpdateAccount.Text = MUserInfo.Account;
+            if (MUserInfo.Audit == true)
+            {
+                btUpdate.Visible = false;
+            }
+            else
+            {
+                btUpdate.Visible = true;
+            }
+
         }
         else
         {

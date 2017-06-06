@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="Test, App_Web_kbxfc0ac" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="Test, App_Web_q14cjle0" theme="Default" %>
 
 
 <%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
@@ -83,6 +83,6 @@
       </ul>
     </div>
   </div>
-
+    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox><asp:Button ID="Button4" runat="server" Text="Button" OnClick="Button4_Click" />
 </asp:Content>
 

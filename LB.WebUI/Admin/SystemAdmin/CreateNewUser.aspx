@@ -28,7 +28,7 @@
                 <tr>
                     <td>用户类型：</td>
                     <td>
-                        <asp:DropDownList ID="ddlUserType" runat="server"></asp:DropDownList></td>
+                        <asp:DropDownList ID="ddlUserType" runat="server" Visible="false"></asp:DropDownList></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -57,7 +57,7 @@
                             ControlToValidate="tbConfirmPassword" ValidationGroup="CreateUser"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
-                <tr>
+<%--                <tr>
                     <td>手机号码</td>
 
                     <td>
@@ -68,7 +68,7 @@
                     <td>
                         <uc1:DDLAddress ID="DDLAddress1" runat="server" />
                     </td>
-                </tr>
+                </tr>--%>
             </table>
             <br />
             <asp:Button ID="btnCreateUser" runat="server" Text="创建用户" ValidationGroup="CreateUser"

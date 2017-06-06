@@ -30,47 +30,45 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
             string UserId = gvRow.Cells[0].Text;
             MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId));
             MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId));
-            if (bll_copinfo.ExistUseId(Convert.ToInt32(UserId)))
+            if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId))).IDCard) == false)//如果用户身份证已上传
             {
-                if (bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId)).BAuthentication == false)
+                if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId))).IDAuthentication == false)
                 {
-                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView3"))).ActiveViewIndex = 0;
                 }
                 else
                 {
-                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                    ((MultiView)(gvRow.Cells[7].FindControl("MultiView3"))).ActiveViewIndex = 1;
                 }
-                if (bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId)).HWAuthentication == false)
+            }
+            else
+            {
+                ((LinkButton)(gvRow.Cells[7].FindControl("lbtnIDCard"))).Visible = false;
+                ((MultiView)(gvRow.Cells[7].FindControl("MultiView3"))).ActiveViewIndex = 2;
+            }
+            if (bll_copinfo.ExistUseId(Convert.ToInt32(UserId)))//如果企业含有该用户的话
+            {
+                if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId)).Bizlicense) == false)
                 {
-                    ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 0;
+                    if (bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId)).BAuthentication == false)
+                    {
+                        ((MultiView)(gvRow.Cells[6].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                    }
+                    else
+                    {
+                        ((MultiView)(gvRow.Cells[6].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                    }
                 }
                 else
                 {
-                    ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 1;
+                    ((LinkButton)(gvRow.Cells[6].FindControl("lbtnBizlicense"))).Visible = false;
+                    ((MultiView)(gvRow.Cells[6].FindControl("MultiView1"))).ActiveViewIndex = 2;
                 }
             }
             else
             {
-                ((LinkButton)(gvRow.Cells[7].FindControl("lbtnBizlicense"))).Visible = false;
-                ((MultiView)(gvRow.Cells[7].FindControl("MultiView1"))).ActiveViewIndex = 2;
-                ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 2;
-                ((LinkButton)(gvRow.Cells[8].FindControl("lbtnHWPermit"))).Visible = false;
-            }
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId))).IDAuthentication == false)
-            {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 0;
-            }
-            else
-            {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView3"))).ActiveViewIndex = 1;
-            }
-            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId))).Audit == false)
-            {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView5"))).ActiveViewIndex = 0;
-            }
-            else
-            {
-                ((MultiView)(gvRow.Cells[9].FindControl("MultiView5"))).ActiveViewIndex = 1;
+                ((LinkButton)(gvRow.Cells[6].FindControl("lbtnBizlicense"))).Visible = false;
+                ((MultiView)(gvRow.Cells[6].FindControl("MultiView1"))).ActiveViewIndex = 2;
             }
         }
     }
@@ -255,18 +253,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
 
     protected void gvCopInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        // Retrieve the pager row.        
-
-        GridViewRow pagerRow = gvCopInfo.BottomPagerRow;
-
-        // Retrieve the PageDropDownList DropDownList from the bottom pager row.        
-
-        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
-
-        // Set the PageIndex property to display that page selected by the user.       
-
-        gvCopInfo.PageIndex = pageList.SelectedIndex;
-
-        gvCopInfoDataBind();  //数据绑定 
+        gvCopInfo.PageIndex = e.NewPageIndex;
+        gvCopInfoDataBind();
     }
 }

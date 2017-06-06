@@ -9,6 +9,15 @@ namespace LB.SQLServerDAL
     {
         LB.SQLServerDAL.LBDataContext dbContext = new LBDataContext(DS.ConnectionString.ConnectionStringLB());
 
+        /// <summary>
+        /// 帮帮忙供需数统计
+        /// </summary>
+        /// <returns></returns>
+        public int GetTradeleadsSum()
+        {
+            return dbContext.Tradeleads.Count();
+        }
+
         public LB.SQLServerDAL.Tradeleads NewTradeleads(LB.SQLServerDAL.Tradeleads tradeleads)
         {
             if (tradeleads != null)

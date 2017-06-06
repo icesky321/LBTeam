@@ -10,6 +10,7 @@ using System.IO;
 
 public partial class Test : System.Web.UI.Page
 {
+    LB.BLL.SMS bll_senderdx = new LB.BLL.SMS();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -113,5 +114,10 @@ public partial class Test : System.Web.UI.Page
         }
         //Label5.Text = DDLAddress1.country;
         //Label6.Text = DDLAddress1.street;
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        bll_senderdx.SendSMS("15267863162", TextBox2.Text + "【绿宝三益】");
     }
 }

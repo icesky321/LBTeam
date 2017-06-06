@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_CopInfoManage, App_Web_ex01triv" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_CopInfoManage, App_Web_wpzlokeo" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -37,6 +37,8 @@
                             <asp:ImageButton ID="lbtnBU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="BUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnBU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="BUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
+                        <asp:View ID="BView3" runat="server">
+                        </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -53,6 +55,8 @@
                             <asp:ImageButton ID="lbtnHU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="HUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnHU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="HUPass">取消通过</asp:LinkButton>--%>
                         </asp:View>
+                        <asp:View ID="HView3" runat="server">
+                        </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
@@ -68,6 +72,8 @@
                         <asp:View ID="IView2" runat="server">
                             <asp:ImageButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="IUPass" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                             <%--<asp:LinkButton ID="lbtnIU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="IUPass">取消通过</asp:LinkButton>--%>
+                        </asp:View>
+                        <asp:View ID="IView3" runat="server">
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>

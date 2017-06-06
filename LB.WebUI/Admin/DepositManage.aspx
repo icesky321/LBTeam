@@ -23,6 +23,7 @@
                         <asp:GridView ID="gvUnDeal" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUnDeal_RowCommand">
                             <Columns>
                                 <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />
+                                <asp:BoundField DataField="UserTypeName" HeaderText="用户类型" SortExpression="UserTypeName" />
                                 <asp:BoundField DataField="UserName" HeaderText="用户" SortExpression="UserName" />
                                 <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
                                 <asp:BoundField DataField="Ammount" HeaderText="押金金额(元)" SortExpression="Ammount" />
@@ -74,9 +75,10 @@
                 </asp:TabPanel>
                 <asp:TabPanel ID="TabPanel4" runat="server" HeaderText="押金信息已处理">
                     <ContentTemplate>
-                          <asp:GridView ID="gvDeal" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvDeal_RowCommand">
+                        <asp:GridView ID="gvDeal" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvDeal_RowCommand">
                             <Columns>
                                 <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />
+                                <asp:BoundField DataField="UserTypeName" HeaderText="用户类型" SortExpression="UserTypeName" />
                                 <asp:BoundField DataField="UserName" HeaderText="用户" SortExpression="UserName" />
                                 <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
                                 <asp:BoundField DataField="Ammount" HeaderText="押金金额(元)" SortExpression="Ammount" />

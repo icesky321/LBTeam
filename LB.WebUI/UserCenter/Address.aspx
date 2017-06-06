@@ -15,10 +15,11 @@
 
             <hr />
 
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+<%--            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>--%>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
+                            
                             用户名:<asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
                             <hr />
                             联系电话:<asp:Label ID="MobilePhoneNumLabel" runat="server" Text='<%# Eval("MobilePhoneNum") %>' />
@@ -37,8 +38,8 @@
                             <asp:Button ID="btSure" runat="server" Text="确认修改" OnClick="btSure_Click" />
                         </asp:View>
                     </asp:MultiView>
-                </ContentTemplate>
-            </asp:UpdatePanel>
+<%--                </ContentTemplate>
+            </asp:UpdatePanel>--%>
         </div>
     </div>
 </asp:Content>

@@ -21,20 +21,24 @@ public partial class Admin_HelpManage : System.Web.UI.Page
 
     void gvHelpDataBindByAudit(bool Audit)
     {
-        gvHelpInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "");
-        gvHelpInfo.DataBind();
-        foreach (GridViewRow gvRow in gvHelpInfo.Rows)
+        if (bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "") != null)
         {
-            string Id = gvRow.Cells[0].Text;
-            if (bll_tradeleads.GetTradeleadsByinfoId(Convert.ToInt32(Id)).Audit == false)
+            gvHelpInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "");
+            gvHelpInfo.DataBind();
+            foreach (GridViewRow gvRow in gvHelpInfo.Rows)
             {
-                ((MultiView)(gvRow.Cells[5].FindControl("MultiView1"))).ActiveViewIndex = 0;
-            }
-            else
-            {
-                ((MultiView)(gvRow.Cells[5].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                string Id = gvRow.Cells[0].Text;
+                if (bll_tradeleads.GetTradeleadsByinfoId(Convert.ToInt32(Id)).Audit == false)
+                {
+                    ((MultiView)(gvRow.Cells[5].FindControl("MultiView1"))).ActiveViewIndex = 0;
+                }
+                else
+                {
+                    ((MultiView)(gvRow.Cells[5].FindControl("MultiView1"))).ActiveViewIndex = 1;
+                }
             }
         }
+
     }
 
     void gvHelpDataBind()

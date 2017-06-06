@@ -42,9 +42,14 @@ public partial class UserCenter_LocalSupplier : System.Web.UI.Page
     void DLCopInfoDataBind(string TelNum)
     {
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(TelNum);
-        LB.SQLServerDAL.UserInfo MUserInfoNew = bll_userinfo.GetUserInfoByAddress(1, MUserInfo.Province, MUserInfo.City, MUserInfo.Town, MUserInfo.Street);
-        DLCopInfo.DataSource = bll_userinfo.GetUserInfosBySEO(MUserInfoNew.Province, MUserInfoNew.City, MUserInfoNew.Town, MUserInfoNew.Street, "1", "");
-        DLCopInfo.DataBind();
+        
+        if (bll_userinfo.GetUserInfoByAddress(1, MUserInfo.Province, MUserInfo.City, MUserInfo.Town, MUserInfo.Street) != null)
+        {
+            LB.SQLServerDAL.UserInfo MUserInfoNew = bll_userinfo.GetUserInfoByAddress(1, MUserInfo.Province, MUserInfo.City, MUserInfo.Town, MUserInfo.Street);
+            DLCopInfo.DataSource = bll_userinfo.GetUserInfosBySEO(MUserInfoNew.Province, MUserInfoNew.City, MUserInfoNew.Town, MUserInfoNew.Street, "1", "");
+            DLCopInfo.DataBind();
+        }
+
 
 
     }

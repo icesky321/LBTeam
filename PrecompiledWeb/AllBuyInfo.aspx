@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="AllBuyInfo, App_Web_kbxfc0ac" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="AllBuyInfo, App_Web_q14cjle0" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
@@ -14,10 +14,11 @@
                 </p>
             </div>
             <hr />
-            <uc1:DDLAddress ID="DDLAddress1" runat="server" />
+            <uc1:DDLAddress ID="DDLAddress1" runat="server" /><asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
+            <hr />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
+                    
                     <br />
                     <div style="text-align: left; margin: 20px 0 0 30px;">
                         <asp:GridView ID="gvBuyInfo" runat="server" DataKeyNames="infoId" AutoGenerateColumns="False"
