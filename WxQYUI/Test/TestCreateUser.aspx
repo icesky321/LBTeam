@@ -13,6 +13,12 @@
             AccessToken:<asp:TextBox ID="tbAccessToken" runat="server" Text="kRZgNakNomddBrQLYWQgxLROWH3s9z3i8nBLGfPJk376Jy9PKwIyJtNqFj02BNBc"></asp:TextBox>
             <table style="">
                 <tr>
+                    <td>所在部门ID：</td>
+                    <td>
+                        <asp:TextBox ID="tbDeps" runat="server" Text="2"></asp:TextBox>只能输入一个部门</td>
+                    <td></td>
+                </tr>
+                <tr>
                     <td>姓名：</td>
                     <td>
                         <asp:TextBox ID="tbUserName" runat="server"></asp:TextBox></td>

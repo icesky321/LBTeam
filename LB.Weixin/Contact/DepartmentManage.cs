@@ -10,7 +10,7 @@ namespace LB.Weixin.Contact
     /// </summary>
     public class DepartmentManage
     {
-        AccessTokenManage atManage = new AccessTokenManage();
+        BaseAccessTokenManage atManage = new BaseAccessTokenManage();
 
         /// <summary>
         /// 自构函数

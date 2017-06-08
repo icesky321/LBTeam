@@ -8,7 +8,7 @@ namespace LB.Weixin
     /// <summary>
     /// 绿宝平台中的部门，枚举值为部门ID。
     /// </summary>
-    public enum 绿宝部门
+    public enum 部门
     {
         平台员工 = 2,
         地域认证回收员 = 3,
@@ -21,6 +21,7 @@ namespace LB.Weixin
     /// </summary>
     public enum 企业号应用
     {
+        默认 = 5,
         提醒宝 = 5,
         行业资讯 = 6,
         开发测试 = 7

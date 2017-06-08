@@ -17,10 +17,10 @@ public partial class WeixinQY_TestGetAccessToken : System.Web.UI.Page
 
     protected void btnGetAT_ByLB_Click(object sender, EventArgs e)
     {
-        AccessTokenManage accessTokenManage = new AccessTokenManage();
+        BaseAccessTokenManage accessTokenManage = new BaseAccessTokenManage();
         string corpId = ConfigurationManager.AppSettings["CorpID"] ?? "wxabb13491cd384449";
         string corpSecret = ConfigurationManager.AppSettings["CorpSecret"] ?? "reX64E3nivXBU7J393U5u_QaTOe6L89He_DIhpuxVzVxsh3LpNEadlmJGDMlhJ0P";
-        Label1.Text = LB.Weixin.AccessTokenManage.GetAccessToken(corpId, corpSecret);
+        Label1.Text = BaseAccessTokenManage.GetAccessToken(corpId, corpSecret);
     }
 
     protected void btnGetAT_ATC_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ public partial class WeixinQY_TestGetAccessToken : System.Web.UI.Page
         string serviceUri = ConfigurationManager.AppSettings["AccessTokenServiceUri"] ?? "";
         if (string.IsNullOrEmpty(serviceUri))
         {
-            using (AccessTokenManage at = new AccessTokenManage())
+            using (BaseAccessTokenManage at = new BaseAccessTokenManage())
             {
                 accessToken = at.AccessToken;
             }

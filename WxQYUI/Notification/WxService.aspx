@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WxService.aspx.cs" Inherits="WeixinQY_Notification_WxService" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="WxService.aspx.cs" Inherits="Notification_WxService" %>
 
 <!DOCTYPE html>
 

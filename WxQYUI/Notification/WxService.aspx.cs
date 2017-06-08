@@ -9,12 +9,16 @@ using Senparc.Weixin.QY;
 using Senparc.Weixin.QY.Entities;
 using System.Configuration;
 
-public partial class WeixinQY_Notification_WxService : System.Web.UI.Page
+/// <summary>
+/// 微信企业号 消息通知 应用 回调URL
+/// <para>2017.05.26</para>
+/// </summary>
+public partial class Notification_WxService : System.Web.UI.Page
 {
     string token = string.Empty;
     string encodingAESKey = string.Empty;
     string corpId = string.Empty;
-    string echostr = string.Empty;
+    string echoStr = string.Empty;
     string signature = string.Empty;
     string timestamp = string.Empty;
     string nonce = string.Empty;
@@ -33,16 +37,15 @@ public partial class WeixinQY_Notification_WxService : System.Web.UI.Page
             encodingAESKey = ConfigurationManager.AppSettings["EncodingAESKey"] ?? "cP9Dvx7aiWyX84sjVEq2Cy45Hmafxrq6IWPjua0yBYM";
             corpId = ConfigurationManager.AppSettings["CorpID"] ?? "wxabb13491cd384449";
 
+            echoStr = Request.QueryString["echoStr"];
             signature = Request.QueryString["msg_signature"];
             timestamp = Request.QueryString["timestamp"];
             nonce = Request.QueryString["nonce"];
-            echostr = Request.QueryString["echoStr"];
             string decryptEchoString = string.Empty;
 
 
-
             // get method -仅在微信后台填写URL验证时触发
-            decryptEchoString = Signature.VerifyURL(token, encodingAESKey, corpId, signature, timestamp, nonce, echostr);
+            decryptEchoString = Signature.VerifyURL(token, encodingAESKey, corpId, signature, timestamp, nonce, echoStr);
             if (decryptEchoString != null)
             {
                 Response.Clear();

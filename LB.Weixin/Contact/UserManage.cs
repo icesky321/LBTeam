@@ -54,7 +54,7 @@ namespace LB.Weixin.Contact
         /// <param name="dep"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public QyJsonResult CreateMember(string qyUserId, string name, string mobile, 绿宝部门 dep, string accessToken = null)
+        public QyJsonResult CreateMember(string qyUserId, string name, string mobile, 部门 dep, string accessToken = null)
         {
             accessToken = accessToken ?? AccessToken;
             int[] deps = new int[1] { (int)dep };

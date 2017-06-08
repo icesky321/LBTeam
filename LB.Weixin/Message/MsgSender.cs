@@ -36,7 +36,7 @@ namespace LB.Weixin.Message
             string serviceUri = ConfigurationManager.AppSettings["AccessTokenServiceUri"] ?? "";
             if (string.IsNullOrEmpty(serviceUri))
             {
-                using (AccessTokenManage at = new AccessTokenManage())
+                using (BaseAccessTokenManage at = new BaseAccessTokenManage())
                 {
                     AccessToken = at.AccessToken;
                 }
@@ -86,7 +86,26 @@ namespace LB.Weixin.Message
 
             return Senparc.Weixin.QY.AdvancedAPIs.MassApi.SendText(this.AccessToken, toUsers, null, null, agentId, text);
         }
-        
+
+        /// <summary>
+        /// 发送文本类型消息
+        /// </summary>
+        /// <param name="toTags">接收标签组ID，若有多个以|改开。</param>
+        /// <param name="text">文本消息，换行加\n</param>
+        /// <param name="agentId">微信企业号中接收消息的应用ID，默认发送到“消息通知”应用。</param>
+        /// <returns></returns>
+        public MassResult SendTextToTags(string toTags, string text, string agentId = null)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                MassResult result = new MassResult();
+                result.errmsg = "无发送内容";
+                return result;
+            }
+            string appId = agentId ?? "5";
+            return Senparc.Weixin.QY.AdvancedAPIs.MassApi.SendText(this.AccessToken, null, null, toTags, appId, text);
+        }
+
 
         /// <summary>
         /// 发送文本类型消息
