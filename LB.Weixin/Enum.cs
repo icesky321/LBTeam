@@ -22,7 +22,7 @@ namespace LB.Weixin
     public enum 企业号应用
     {
         默认 = 5,
-        提醒宝 = 5,
+        绿宝提醒 = 5,
         行业资讯 = 6,
         开发测试 = 7
     }

@@ -21,12 +21,12 @@ public partial class WeixinQY_Test_TestSendMsg : System.Web.UI.Page
     /// <param name="e"></param>
     protected void btnSendMsg_Click(object sender, EventArgs e)
     {
-        string atscUrl = ConfigurationManager.AppSettings["AccessTokenServiceUri"] ?? "http://116.62.124.21/WeixinQY/AccessTokenService.aspx";
+        string atscUrl = ConfigurationManager.AppSettings["AccessTokenServiceUri"] ?? "http://weixin.Lvbao111.com/WeixinQY/AccessTokenService.aspx";
         string accessToken = Senparc.Weixin.HttpUtility.RequestUtility.HttpGet(atscUrl, null);
         string toUser = tbUsers.Text;
         string toParty = "";
         string toTag = "";
-        string agentId = "9";
+        string agentId = "5";
         //string content = "此段信息是由后台代码发送的消息，若见此消息代表代码有效01";
         List<Senparc.Weixin.QY.Entities.Article> articles = new List<Senparc.Weixin.QY.Entities.Article>();
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();

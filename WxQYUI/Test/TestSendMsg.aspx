@@ -14,7 +14,7 @@
                 <tr>
                     <td>用户：</td>
                     <td>
-                        <asp:TextBox ID="tbUsers" runat="server" Text="1002"></asp:TextBox></td>
+                        <asp:TextBox ID="tbUsers" runat="server" Text="01"></asp:TextBox></td>
                 </tr>
 
             </table>

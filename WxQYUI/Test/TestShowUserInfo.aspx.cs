@@ -16,6 +16,7 @@ public partial class WeixinQY_TestShowUserInfo : System.Web.UI.Page
 
 
         string code = Request.QueryString["code"];
+        ltlCode.Text = code;
         string accessTokenServiceUri = ConfigurationManager.AppSettings["AccessTokenServiceUri"] ?? "";
         string accessToken = Senparc.Weixin.HttpUtility.RequestUtility.HttpGet(accessTokenServiceUri, null);
         //string accessToken = "bsiBf1bJD9NK7Jo3UgBnLs8Zu1zvmfKXoPFXFPVIB_huZVaMgXaU1hIFTCf3IOC5";

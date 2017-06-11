@@ -8,6 +8,7 @@ using Senparc.Weixin.QY.AdvancedAPIs;
 using Senparc.Weixin.Entities;
 using LB.Weixin;
 using LB.Weixin.Contact;
+using System.Configuration;
 
 /// <summary>
 /// 微信企业号中创建用户测试
@@ -48,5 +49,17 @@ public partial class WeixinQY_Test_TestCreateUser : System.Web.UI.Page
         QyJsonResult result = mm.CreateMember(userId, name, mobile, 部门.地域认证回收员, accessToken);
 
         Literal1.Text = result.errmsg;
+    }
+
+    protected void btnGetAT_Click(object sender, EventArgs e)
+    {
+        string accessToken = string.Empty;
+        string serviceUri = ConfigurationManager.AppSettings["AccessTokenServiceUri"] ?? "";
+        if (!string.IsNullOrEmpty(serviceUri))
+        {
+            accessToken = Senparc.Weixin.HttpUtility.RequestUtility.HttpGet(serviceUri, null);
+        }
+        tbAccessToken.Text = accessToken;
+
     }
 }
