@@ -17,23 +17,24 @@ namespace LB.SQLServerDAL
         /// <returns></returns>
         public static int GetLastQYUserId()
         {
-            int userId = 0;
+            int qyUserId = 0;
             var query = from m in dbContext.UserInfo
-                        orderby m.UserId descending
+                        where m.IsQYUser == true
+                        orderby m.QYUserId descending
                         select m;
             var user = query.FirstOrDefault();
             if (user != null)
             {
                 string lastCode = user.QYUserId;
-                int.TryParse(lastCode, out userId);
-                userId = userId < 10000 ? 10000 : userId;
+                int.TryParse(lastCode, out qyUserId);
+                qyUserId = qyUserId < 10000 ? 10000 : qyUserId;
             }
             else
             {
-                userId = 10000;
+                qyUserId = 10000;
             }
 
-            return userId;
+            return qyUserId;
         }
 
 

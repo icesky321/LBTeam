@@ -11,7 +11,7 @@ namespace LB.Weixin
     /// <summary>
     /// AccessToken 管理类
     /// </summary>
-    public class AccessTokenManage : IDisposable
+    public class BaseAccessTokenManage : IDisposable
     {
         static LB.SQLServerDAL.AccessTokenDA daTokenStatic = new AccessTokenDA();
         LB.SQLServerDAL.AccessTokenDA daToken = new SQLServerDAL.AccessTokenDA();
@@ -19,7 +19,7 @@ namespace LB.Weixin
         /// <summary>
         /// 对象自动创建完毕，即自动初始化AppId以及AppSecret，同时加载有效的AccessToken
         /// </summary>
-        public AccessTokenManage()
+        public BaseAccessTokenManage()
         {
             Initial();
             LoadAccessToken();
@@ -143,7 +143,7 @@ namespace LB.Weixin
         /// <summary>
         /// 析构函数
         /// </summary>
-        ~AccessTokenManage()
+        ~BaseAccessTokenManage()
         {
             this.Dispose();
         }

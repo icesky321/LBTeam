@@ -54,10 +54,12 @@ namespace LB.Weixin.Contact
         /// <param name="dep"></param>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        public QyJsonResult CreateMember(string qyUserId, string name, string mobile, 绿宝部门 dep, string accessToken = null)
+        public QyJsonResult CreateMember(string qyUserId, string name, string mobile, 部门 dep, string accessToken = null)
         {
             accessToken = accessToken ?? AccessToken;
-            int[] deps = new int[1] { (int)dep };
+            List<int> listDeps = new List<int>();
+            listDeps.Add((int)dep);
+            int[] deps = listDeps.ToArray();
             return MailListApi.CreateMember(accessToken, qyUserId, name, deps, mobile: mobile);
         }
     }

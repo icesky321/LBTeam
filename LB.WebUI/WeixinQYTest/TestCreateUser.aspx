@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TestCreateUser.aspx.cs" Inherits="WeixinQY_Test_TestCreateUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TestCreateUser.aspx.cs" Inherits="WeixinQYTest_TestCreateUser" %>
 
 <!DOCTYPE html>
 
@@ -10,8 +10,14 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            AccessToken:<asp:TextBox ID="tbAccessToken" runat="server" Text="kRZgNakNomddBrQLYWQgxLROWH3s9z3i8nBLGfPJk376Jy9PKwIyJtNqFj02BNBc"></asp:TextBox>
+
             <table style="">
+                <tr>
+                    <td>所在部门ID：</td>
+                    <td>
+                        <asp:TextBox ID="tbDeps" runat="server" Text="2"></asp:TextBox>只能输入一个部门</td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>姓名：</td>
                     <td>
@@ -33,8 +39,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="btnCreate" runat="server" Text="使用Senparc接口创建用户" OnClick="btnCreate_Click" />&nbsp;&nbsp;
-                        <asp:Button ID="btnCreate2" runat="server" Text="使用LB接口创建用户" OnClick="btnCreate2_Click" />
+                        <asp:Button ID="btnCreate" runat="server" Text="使用LBWS接口创建用户" OnClick="btnCreate_Click" />
 
                     </td>
                     <td>

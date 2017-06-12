@@ -22,10 +22,10 @@ public partial class WeixinQY_TestGetCode_OAuth2 : System.Web.UI.Page
     private void init_Load()
     {
         corpId = ConfigurationManager.AppSettings["CorpID"] ?? "wxabb13491cd384449";
-        redirect_uri = Server.UrlEncode("www.0574zy.com/WeixinQY/TestShowUserInfo.aspx");
+        redirect_uri = Server.UrlEncode("weixin.lvbao111.com/WeixinQY/Test/TestShowUserInfo.aspx");
         string responseType = "code";
         string scope = "snsapi_privateinfo";
-        string agentid = "7";
+        string agentid = ((int)LB.Weixin.企业号应用.默认).ToString();
         string state = "state";
         var url = string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type={2}&scope={3}&agentid={4}&state={5}#wechat_redirect", corpId, redirect_uri, responseType, scope, agentid, state);
 
@@ -48,5 +48,14 @@ public partial class WeixinQY_TestGetCode_OAuth2 : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Response.Redirect(code);
+    }
+
+    protected void btnGetCode_Click(object sender, EventArgs e)
+    {
+        corpId = ConfigurationManager.AppSettings["CorpID"] ?? "wxabb13491cd384449";
+        redirect_uri = Server.UrlEncode("TestGetCode_OAuth2.aspx");
+        string code = Senparc.Weixin.QY.AdvancedAPIs.OAuth2Api.GetCode(corpId, redirect_uri, "state");
+        ltlCode.Text = code;
+        ltlCode.Text = Request.QueryString["code"];
     }
 }
