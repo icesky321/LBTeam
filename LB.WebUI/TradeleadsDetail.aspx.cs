@@ -21,7 +21,7 @@ public partial class TradeleadsDetail : System.Web.UI.Page
                 MTradeleadsModel = bll_tradeleads.GetTradeleadsInfoModelByinfoId(infoId);
                 if (Request.IsAuthenticated)
                 {
-                    if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
+                    if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage") || HttpContext.Current.User.IsInRole("CustomService"))
                     {
                         lbTitle.Text = MTradeleadsModel.Title;
                         lbDetail.Text = MTradeleadsModel.DetailInfo;

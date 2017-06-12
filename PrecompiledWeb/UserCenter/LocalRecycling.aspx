@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Supplier_LocalRecycling, App_Web_kagry0hp" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/UserCenter/UserCenter.master" autoeventwireup="true" inherits="UserCenter_Supplier_LocalRecycling, App_Web_g0dll0sk" theme="Default" %>
 
 <%@ Register Src="~/UserControls/Aunth.ascx" TagName="Aunth" TagPrefix="uc2" %>
 <%@ Register Src="~/UserControls/UnAunth.ascx" TagName="UnAunth" TagPrefix="uc3" %>
@@ -11,7 +11,7 @@
         <div class="container">
             <div class="section--header" style="text-align: center">
                 <p class="section--description">
-                    <h1>当地回收业务员</h1>
+                    <h1>街道回收员</h1>
                 </p>
             </div>
             <hr />

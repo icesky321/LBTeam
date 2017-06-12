@@ -73,7 +73,7 @@
                         <td>危化许可证上传：</td>
                         <td>
                             <asp:FileUpload ID="FUHWPermit" runat="server" />
-                            <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" />注：如供货商用户，此项可不填</td>
+                            <asp:Image ID="Image2" runat="server" Width="200px" Height="100px" />注：如产废单位或个人用户，此项可不填</td>
                     </tr>
                 </table>
 

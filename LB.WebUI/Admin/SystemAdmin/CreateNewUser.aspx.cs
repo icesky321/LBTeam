@@ -49,23 +49,22 @@ public partial class Admin_UserAdmin_CreateNewUser : System.Web.UI.Page
 
     protected void btnCreateUser_Click(object sender, EventArgs e)
     {
-        Membership.CreateUser(tbUserName.Text.Trim(), tbPassword.Text);
-        //MUserInfo.UserTypeId = 0;
-        //MUserInfo.UserName = tbUserName.Text;
-        //MUserInfo.MobilePhoneNum = tbMobileNum.Text;
-        //MUserInfo.Province = DDLAddress1.province.ToString();
-        //MUserInfo.City = DDLAddress1.city.ToString();
-        //MUserInfo.Town = DDLAddress1.country.ToString();
-        //MUserInfo.Street = DDLAddress1.street.ToString();
-        //MUserInfo.CreateTime = System.DateTime.Now;
-        //MUserInfo.IDAuthentication = false;
-        //MUserInfo.ChopAuthentication = false;
-        //MUserInfo.InCharge = false;
-        //MUserInfo.Audit = false;
-        //MUserInfo.AuditDate = Convert.ToDateTime("1900-1-1");
-        //bll_userinfo.NewUserInfo(MUserInfo);
-        //Response.Redirect("UpdateEmployee.aspx?Account=" + tbMobileNum.Text.Trim());
-        Roles.AddUserToRole(tbUserName.Text.Trim(), "general");
+        Membership.CreateUser(tbMobileNum.Text.Trim(), tbPassword.Text);
+        MUserInfo.UserTypeId = 2;
+        MUserInfo.UserName = tbUserName.Text;
+        MUserInfo.MobilePhoneNum = tbMobileNum.Text;
+        MUserInfo.Province = DDLAddress1.province.ToString();
+        MUserInfo.City = DDLAddress1.city.ToString();
+        MUserInfo.Town = DDLAddress1.country.ToString();
+        MUserInfo.Street = DDLAddress1.street.ToString();
+        MUserInfo.CreateTime = System.DateTime.Now;
+        MUserInfo.IDAuthentication = false;
+        MUserInfo.ChopAuthentication = false;
+        MUserInfo.InCharge = false;
+        MUserInfo.Audit = false;
+        MUserInfo.AuditDate = Convert.ToDateTime("1900-1-1");
+        bll_userinfo.NewUserInfo(MUserInfo);
+        Roles.AddUserToRole(tbMobileNum.Text.Trim(), "general");
         Response.Redirect("AddUserToRole.aspx");
     }
 }

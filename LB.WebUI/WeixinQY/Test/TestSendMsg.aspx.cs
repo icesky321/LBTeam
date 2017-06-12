@@ -23,7 +23,7 @@ public partial class WeixinQY_Test_TestSendMsg : System.Web.UI.Page
         List<Senparc.Weixin.QY.Entities.Article> articles = new List<Senparc.Weixin.QY.Entities.Article>();
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = "废电瓶出售意向";
-        article.Description = "供应商：正气汽车维修店\n数量：10组\n联系人：李峰\n地址：正大路88号\n联系电话：13877777777\n\n提醒消息测试！！！77";
+        article.Description = "产废单位或个人：正气汽车维修店\n数量：10组\n联系人：李峰\n地址：正大路88号\n联系电话：13877777777\n\n提醒消息测试！！！77";
         article.Url = "www.0574zy.com";
         articles.Add(article);
         Senparc.Weixin.QY.AdvancedAPIs.MassApi.SendNews(accessToken, toUser, toParty, toTag, agentId, articles);
@@ -46,7 +46,7 @@ public partial class WeixinQY_Test_TestSendMsg : System.Web.UI.Page
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
 
         article.Title = "废电瓶出售意向";
-        article.Description = "供应商：正气汽车维修店\n数量：10组\n联系人：李峰\n地址：正大路88号\n联系电话：13877777777\n\n提醒消息测试！！！888";
+        article.Description = "产废单位或个人：正气汽车维修店\n数量：10组\n联系人：李峰\n地址：正大路88号\n联系电话：13877777777\n\n提醒消息测试！！！888";
         article.Url = "www.0574zy.com";
 
         msgSender.SendArticleToUsers("01", article);

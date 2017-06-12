@@ -1,4 +1,4 @@
-一、CopInfo（供应商、回收公司、冶炼厂表）
+一、CopInfo（产废单位或个人、回收公司、冶炼厂表）
 
 CopId  int    id
 CopName  nvarchar(100)   公司名称

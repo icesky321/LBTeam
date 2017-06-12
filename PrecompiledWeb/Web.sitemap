@@ -11,9 +11,9 @@
     </siteMapNode>
     <siteMapNode url="" title="用户信息管理" description="用户信息管理"  roles="Admin,UserManage,CustomService">
       <siteMapNode url="~/Admin/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
-      <siteMapNode url="~/Admin/UserManage.aspx" title="业务员信息管理" description="业务员信息管理" />
+      <siteMapNode url="~/Admin/UserManage.aspx" title="街道回收员信息管理" description="街道回收员信息管理" />
       <siteMapNode url="~/Admin/MetalFactoryManage.aspx" title="冶炼厂信息管理" description="冶炼厂信息管理" />
-      <siteMapNode url="~/Admin/SupplierManage.aspx" title="供货商信息管理" description="供货商信息管理" />
+      <siteMapNode url="~/Admin/SupplierManage.aspx" title="产废单位或个人信息管理" description="产废单位或个人信息管理" />
     </siteMapNode>
     <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理"  roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/Admin/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
@@ -30,8 +30,8 @@
     </siteMapNode>
 
     <siteMapNode url="" title="帮帮忙" description="帮帮忙"  roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
-      <siteMapNode url="~/UserCenter/SellInfo.aspx" title="我要卖货" description="我要卖货"/>
-      <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="我要收货" description="我要收货"/>
+      <siteMapNode url="~/UserCenter/SellInfo.aspx" title="供应信息" description="供应信息"/>
+      <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="求购信息" description="求购信息"/>
       <!--<siteMapNode url="~/UserCenter/MyHelpInfo.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理"/>-->
     </siteMapNode>
     <siteMapNode url="" title="我的收货" description="我的收货"  roles="CEMetalFactory,CEUser,CERecyclingCop" >
@@ -43,14 +43,14 @@
     <siteMapNode url="" title="我的押货" description="我的押货"  roles="CESupplier,CEMetalFactory,CEUser,CERecyclingCop" >
       <siteMapNode url="~/UserCenter/OneKeyMortgage.aspx" title="一键押货" description="一键押货"/>
     </siteMapNode>
-    <siteMapNode url="" title="回收员信息" description="回收员信息"  roles="CESupplier,CERecyclingCop" >
-      <siteMapNode url="~/UserCenter/LocalRecycling.aspx" title="当地回收员" description="当地回收员"/>
+    <siteMapNode url="" title="街道回收员信息" description="街道回收员信息"  roles="CESupplier,CERecyclingCop" >
+      <siteMapNode url="~/UserCenter/LocalRecycling.aspx" title="当地街道回收员" description="当地街道回收员"/>
     </siteMapNode>
     <siteMapNode url="" title="回收公司信息" description="回收公司信息"  roles="CESupplier,CEMetalFactory,CEUser" >
       <siteMapNode url="~/UserCenter/LocalRecyclingCop.aspx" title="当地回收公司" description="当地回收公司"/>
     </siteMapNode>
-    <siteMapNode url="" title="供应商信息" description="供应商信息"  roles="CERecyclingCop,CEUser" >
-      <siteMapNode url="~/UserCenter/LocalSupplier.aspx" title="当地供应商" description="当地供应商"/>
+    <siteMapNode url="" title="产废单位或个人信息" description="产废单位或个人信息"  roles="CERecyclingCop,CEUser" >
+      <siteMapNode url="~/UserCenter/LocalSupplier.aspx" title="当地产废单位或个人" description="当地产废单位或个人"/>
     </siteMapNode>
     <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
       <siteMapNode url="~/Admin/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>

@@ -14,50 +14,58 @@
                     <div class="am-u-md-12">
                         <div class="product3-main">
                             <div class="am-g">
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
-                                    <div class="product3-icon">
-                                        <i class="am-icon-star-o"></i>
+                                <a href="#ct1">
+                                    <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                        <div class="product3-icon">
+                                            <i class="am-icon-star-o"></i>
+                                        </div>
+                                        <div class="product3-content">
+                                            <h3>冶炼厂</h3>
+                                            <p>诚信保证金<asp:Label ID="Label1" runat="server" Text="2000元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
+                                            <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
+                                            <hr class="split-line">
+                                        </div>
                                     </div>
-                                    <div class="product3-content">
-                                        <h3>冶炼厂</h3>
-                                        <p>诚信保证金<asp:Label ID="Label1" runat="server" Text="2000元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
-                                        <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
-                                        <hr class="split-line">
+                                </a>
+                                <a href="#ct1">
+                                    <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                        <div class="product3-icon">
+                                            <i class="am-icon-heart-o"></i>
+                                        </div>
+                                        <div class="product3-content">
+                                            <h3>回收公司</h3>
+                                            <p>诚信保证金<asp:Label ID="Label2" runat="server" Text="2000元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
+                                            <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
+                                            <hr class="split-line">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
-                                    <div class="product3-icon">
-                                        <i class="am-icon-heart-o"></i>
+                                </a>
+                                <a href="#ct1">
+                                    <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                        <div class="product3-icon">
+                                            <i class="am-icon-send-o"></i>
+                                        </div>
+                                        <div class="product3-content">
+                                            <h3>街道回收员</h3>
+                                            <p>诚信保证金<asp:Label ID="Label3" runat="server" Text="2000元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
+                                            <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
+                                            <hr class="split-line">
+                                        </div>
                                     </div>
-                                    <div class="product3-content">
-                                        <h3>回收公司</h3>
-                                        <p>诚信保证金<asp:Label ID="Label2" runat="server" Text="2000元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
-                                        <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
-                                        <hr class="split-line">
+                                </a>
+                                <a href="#ct1">
+                                    <div class="am-u-md-3 am-u-sm-6 product3-main-box">
+                                        <div class="product3-icon">
+                                            <i class="am-icon-diamond"></i>
+                                        </div>
+                                        <div class="product3-content">
+                                            <h3>产废单位或个人</h3>
+                                            <p>诚信保证金<asp:Label ID="Label4" runat="server" Text="200元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
+                                            <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
+                                            <hr class="split-line">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
-                                    <div class="product3-icon">
-                                        <i class="am-icon-send-o"></i>
-                                    </div>
-                                    <div class="product3-content">
-                                        <h3>地域回收业务员</h3>
-                                        <p>诚信保证金<asp:Label ID="Label3" runat="server" Text="2000元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
-                                        <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
-                                        <hr class="split-line">
-                                    </div>
-                                </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box">
-                                    <div class="product3-icon">
-                                        <i class="am-icon-diamond"></i>
-                                    </div>
-                                    <div class="product3-content">
-                                        <h3>供货商</h3>
-                                        <p>诚信保证金<asp:Label ID="Label4" runat="server" Text="200元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
-                                        <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
-                                        <hr class="split-line">
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -66,7 +74,7 @@
             </div>
 
             <!--index-container end-->
-            <div class="section">
+            <div class="section" id="ct1">
                 <div class="container">
                     <div class="section--header">
                         <h2 class="section--title">我们欢迎您！相信您也需要这个平台！</h2>

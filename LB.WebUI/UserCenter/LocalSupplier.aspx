@@ -11,7 +11,7 @@
         <div class="container">
             <div class="section--header" style="text-align: center">
                 <p class="section--description">
-                    <h1>当地供应商</h1>
+                    <h1>当地产废单位或个人</h1>
                 </p>
             </div>
             <hr />

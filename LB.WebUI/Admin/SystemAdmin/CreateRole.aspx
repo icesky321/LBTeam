@@ -54,8 +54,8 @@
                             Admin:系统核心管理员，掌管全系统所有权限；<br />
                             CEMetalFactory:信用审核通过后的冶炼厂；<br />
                             CERecyclingCop:信用审核通过后的回收公司；<br />
-                            CESupplier:信用审核通过后的供应商；<br />
-                            CEUser:信用审核通过后的地域业务员；<br />
+                            CESupplier:信用审核通过后的产废单位或个人；<br />
+                            CEUser:信用审核通过后的街道回收员；<br />
                             general:注册后未审核的普通用户；<br />
                             InfoManage:资讯管理审核员；<br />
                             UserManage:用户管理审核员；<br />

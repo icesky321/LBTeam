@@ -33,9 +33,9 @@
                             <hr />
                             CERecyclingCop:信用审核通过后的回收公司；<br />
                             <hr />
-                            CESupplier:信用审核通过后的供应商；<br />
+                            CESupplier:信用审核通过后的产废单位或个人；<br />
                             <hr />
-                            CEUser:信用审核通过后的地域业务员；<br />
+                            CEUser:信用审核通过后的街道回收员；<br />
                             <hr />
                             general:注册后未审核的普通用户；<br />
                             <hr />

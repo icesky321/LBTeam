@@ -19,7 +19,7 @@
             <br /><hr />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    联系人：<asp:TextBox ID="tbContacts" runat="server"></asp:TextBox>注：如果是电瓶供应商户用户请填写商户名称<br /><hr />
+                    联系人：<asp:TextBox ID="tbContacts" runat="server"></asp:TextBox>注：如果是电瓶产废单位或个人户用户请填写商户名称<br /><hr />
                     注册手机号：<asp:TextBox ID="tbMobileNum" runat="server"></asp:TextBox>
                     <asp:Button ID="Button1" runat="server" Text="免费获取验证码" OnClick="Button1_Click" /><asp:Label ID="lbMsg" runat="server" Text=""></asp:Label><br /><hr />
                     请输入短信验证码：<asp:TextBox ID="tbCode" runat="server"></asp:TextBox><br /><hr />

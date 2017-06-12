@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_ListUsers, App_Web_41e5i5ng" title="成员和角色管理" theme="Default" %>
+﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_ListUsers, App_Web_zx0scf1i" title="成员和角色管理" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -32,9 +32,9 @@
                             <hr />
                             CERecyclingCop:信用审核通过后的回收公司；<br />
                             <hr />
-                            CESupplier:信用审核通过后的供应商；<br />
+                            CESupplier:信用审核通过后的产废单位或个人；<br />
                             <hr />
-                            CEUser:信用审核通过后的地域业务员；<br />
+                            CEUser:信用审核通过后的街道回收员；<br />
                             <hr />
                             general:注册后未审核的普通用户；<br />
                             <hr />

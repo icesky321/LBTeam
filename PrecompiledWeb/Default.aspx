@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_q14cjle0" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_scxnt4bh" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -22,7 +22,7 @@
                 <!-- Slide 4 -->
                 <li class="bg2">
                     <!-- Slide Title -->
-                    <h2 class="title" style="font-family: 微软雅黑; font-weight: bold">地域回收员火热招募中!</h2>
+                    <h2 class="title" style="font-family: 微软雅黑; font-weight: bold">街道回收员火热招募中!</h2>
                     <!-- Slide Text -->
                     <h3 class="subtitle" style="font-family: 微软雅黑; font-weight: bold; font-size: 20px;">加入！这块区域你包啦~还在等什么呢~</h3>
                     <!-- Slide Image -->
@@ -447,7 +447,7 @@
                                         <i class="am-icon-send-o"></i>
                                     </div>
                                     <div class="product3-content">
-                                        <h3>回收业务员</h3>
+                                        <h3>街道回收员</h3>
                                         <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>
@@ -457,7 +457,7 @@
                                         <i class="am-icon-diamond"></i>
                                     </div>
                                     <div class="product3-content">
-                                        <h3>供货商</h3>
+                                        <h3>产废单位或个人</h3>
                                         <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
                                         <hr class="split-line">
                                     </div>

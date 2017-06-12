@@ -21,7 +21,7 @@ public partial class Admin_HelpManage : System.Web.UI.Page
 
     void gvHelpDataBindByAudit(bool Audit)
     {
-        if (bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "") != null)
+        if (bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "").Count() != 0)
         {
             gvHelpInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "");
             gvHelpInfo.DataBind();
@@ -132,105 +132,90 @@ public partial class Admin_HelpManage : System.Web.UI.Page
     }
     protected void gvHelpInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        // Retrieve the pager row.        
-
-        GridViewRow pagerRow = gvHelpInfo.BottomPagerRow;
-
-        // Retrieve the PageDropDownList DropDownList from the bottom pager row.        
-
-        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
-
-        // Set the PageIndex property to display that page selected by the user.       
-
-        gvHelpInfo.PageIndex = pageList.SelectedIndex;
-
-        if (ddlAudit.SelectedItem.Text == "")
-        {
-            gvHelpDataBind();
-        }
-        else
-        {
-            gvHelpDataBindByAudit(Convert.ToBoolean(ddlAudit.SelectedItem.Value));  //数据绑定 }
-
-        }
+        gvHelpInfo.PageIndex = e.NewPageIndex;
+        gvHelpDataBind();
     }
 
     protected void gvHelpInfo_DataBound(object sender, EventArgs e)
     {
-        gvHelpInfo.BottomPagerRow.Visible = true;//只有一页数据的时候也再下面显示pagerrow，需要top的再加Top
-
-        // Retrieve the pager row.        
-
-        GridViewRow pagerRow = gvHelpInfo.BottomPagerRow;
-
-        // Retrieve the DropDownList and Label controls from the row.        
-
-        DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
-
-        Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
-
-        if (pageList != null)
-
+        if (gvHelpInfo.DataSource != null)
         {
 
-            // Create the values for the DropDownList control based on           
+            gvHelpInfo.BottomPagerRow.Visible = true;//只有一页数据的时候也再下面显示pagerrow，需要top的再加Top
 
-            // the  total number of pages required to display the data            
+            // Retrieve the pager row.        
 
-            // source.            
+            GridViewRow pagerRow = gvHelpInfo.BottomPagerRow;
 
-            for (int i = 0; i < gvHelpInfo.PageCount; i++)
+            // Retrieve the DropDownList and Label controls from the row.        
+
+            DropDownList pageList = (DropDownList)pagerRow.Cells[0].FindControl("PageDropDownList");
+
+            Label pageLabel = (Label)pagerRow.Cells[0].FindControl("CurrentPageLabel");
+
+            if (pageList != null)
 
             {
 
-                // Create a ListItem object to represent a page.                
+                // Create the values for the DropDownList control based on           
 
-                int pageNumber = i + 1;
+                // the  total number of pages required to display the data            
 
-                ListItem item = new ListItem(pageNumber.ToString());
+                // source.            
 
-                // If the ListItem object matches the currently selected                
-
-                // page, flag the ListItem object as being selected. Because               
-
-                // the DropDownList control is recreated each time the pager               
-
-                // row gets created, this will persist the selected item in                
-
-                // the DropDownList control.                  
-
-                if (i == gvHelpInfo.PageIndex)
+                for (int i = 0; i < gvHelpInfo.PageCount; i++)
 
                 {
 
-                    item.Selected = true;
+                    // Create a ListItem object to represent a page.                
+
+                    int pageNumber = i + 1;
+
+                    ListItem item = new ListItem(pageNumber.ToString());
+
+                    // If the ListItem object matches the currently selected                
+
+                    // page, flag the ListItem object as being selected. Because               
+
+                    // the DropDownList control is recreated each time the pager               
+
+                    // row gets created, this will persist the selected item in                
+
+                    // the DropDownList control.                  
+
+                    if (i == gvHelpInfo.PageIndex)
+
+                    {
+
+                        item.Selected = true;
+
+                    }
+
+                    // Add the ListItem object to the Items collection of the               
+
+                    // DropDownList.                
+
+                    pageList.Items.Add(item);
 
                 }
 
-                // Add the ListItem object to the Items collection of the               
-
-                // DropDownList.                
-
-                pageList.Items.Add(item);
-
             }
 
-        }
+            if (pageLabel != null)
 
-        if (pageLabel != null)
+            {
 
-        {
+                // Calculate the current page number.            
 
-            // Calculate the current page number.            
+                int currentPage = gvHelpInfo.PageIndex + 1;
 
-            int currentPage = gvHelpInfo.PageIndex + 1;
+                // Update the Label control with the current page information.           
 
-            // Update the Label control with the current page information.           
+                pageLabel.Text = "Page " + currentPage.ToString() +
 
-            pageLabel.Text = "Page " + currentPage.ToString() +
+                 " of " + gvHelpInfo.PageCount.ToString();
 
-             " of " + gvHelpInfo.PageCount.ToString();
-
+            }
         }
     }
 

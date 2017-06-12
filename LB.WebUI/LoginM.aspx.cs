@@ -43,8 +43,8 @@ public partial class Login : System.Web.UI.Page
 
             if (Request.Cookies["CheckCode"].Value.Equals(((TextBox)Login1.FindControl("tbVerify")).Text.ToString()))
             {
-
-                if ((User.IsInRole("Admin") == true)|| (User.IsInRole("InfoManage") == true)|| (User.IsInRole("UserManage") == true))
+                
+                if ((User.IsInRole("Admin") == true)|| (User.IsInRole("InfoManage") == true)|| (User.IsInRole("UserManage") == true) || (User.IsInRole("CustomService") == true))
                 {
                     //Label1.Text = HttpContext.Current.User.Identity.Name;
                     Response.Redirect("~/Admin/Manage.aspx");
@@ -52,7 +52,7 @@ public partial class Login : System.Web.UI.Page
                 else
                 {
                     //Label1.Text = HttpContext.Current.User.Identity.Name + "1";
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("~/UserCenter/UserCenter.aspx");
                 }
             }
 

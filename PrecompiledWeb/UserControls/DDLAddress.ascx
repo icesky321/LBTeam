@@ -1,8 +1,8 @@
-﻿<%@ control language="C#" autoeventwireup="true" inherits="Admin_UserControls_DDLAddress, App_Web_q1ppuuli" %>
-<script type="text/javascript" src="../js/jquery.js" charset="gbk"></script>
-<script type="text/javascript" src="../js/GlobalProvinces_main.js" charset="gbk"></script>
-<script type="text/javascript" src="../js/GlobalProvinces_extend.js" charset="gbk"></script>
-<script type="text/javascript" src="../js/initLocation.js" charset="gbk"></script>
+﻿<%@ control language="C#" autoeventwireup="true" inherits="Admin_UserControls_DDLAddress, App_Web_n000goti" %>
+<script type="text/javascript" src="/js/jquery.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/GlobalProvinces_main.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/GlobalProvinces_extend.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/initLocation.js" charset="gbk"></script>
 <select id="sheng" class="Material" name="province">
 </select>
 

@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_UserAdmin_CreateNewUser, App_Web_41e5i5ng" title="创建新用户" theme="Default" %>
+﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_UserAdmin_CreateNewUser, App_Web_zx0scf1i" title="创建新用户" theme="Default" %>
 
 <%@ Register Src="~/UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -56,7 +56,7 @@
                             ControlToValidate="tbConfirmPassword" ValidationGroup="CreateUser"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
-<%--                <tr>
+                <tr>
                     <td>手机号码</td>
 
                     <td>
@@ -67,7 +67,7 @@
                     <td>
                         <uc1:DDLAddress ID="DDLAddress1" runat="server" />
                     </td>
-                </tr>--%>
+                </tr>
             </table>
             <br />
             <asp:Button ID="btnCreateUser" runat="server" Text="创建用户" ValidationGroup="CreateUser"

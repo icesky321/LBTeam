@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" autoeventwireup="true" inherits="ChooseRoles, App_Web_lz1s24eo" theme="Default" %>
+﻿<%@ page title="" language="C#" autoeventwireup="true" inherits="ChooseRoles, App_Web_jemep2ue" theme="Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -57,7 +57,7 @@
                         </div>
                         <%--  <div class="am-u-md-4" style="text-align: left; margin-top: -50px;">
                             &nbsp;&nbsp;
-                   电瓶供应商：有电瓶货源的个人或商家请选择此项；
+                   电瓶产废单位或个人：有电瓶货源的个人或商家请选择此项；
                     
                    <br />
                     合法回收公司：有合法回收资质的电瓶回收企业；
@@ -69,7 +69,7 @@
                     物流公司：拥有物流许可证的承包者；
                  
                    <br />
-                    地域性回收员：地方回收业务员；
+                    地域性回收员：地方回收街道回收员；
                  
                    <br />
                     其他公司：除以上范围外的企业；
