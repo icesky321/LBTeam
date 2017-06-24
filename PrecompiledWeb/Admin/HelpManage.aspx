@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_HelpManage, App_Web_s100jc0a" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_HelpManage, App_Web_y4yzchvr" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -11,6 +11,7 @@
         <asp:ListItem Value="true">已审核</asp:ListItem>
         <asp:ListItem Value="false">未审核</asp:ListItem>
     </asp:DropDownList>
+    手机号：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox>(*可模糊查询)
     <asp:Button ID="btSearch" runat="server" Text="搜索" OnClick="btSearch_Click" />
     <br />
     <br />
@@ -61,11 +62,19 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
+                    <asp:Button ID="btTop" runat="server" Text="置顶" CommandName="Top" CommandArgument='<%#Eval("infoId") %>' />
+                    <asp:ConfirmButtonExtender ID="ConfirmButtonExtender2" runat="server" TargetControlID="btTop"
+                        ConfirmText="确定将发布日期更新为今天？ "></asp:ConfirmButtonExtender>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField>
+                <ItemTemplate>
                     <asp:Button ID="btDelete" runat="server" Text="删除" CommandName="Delete" />
                     <asp:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" TargetControlID="btDelete"
                         ConfirmText="亲~一失手成千古恨啊！ "></asp:ConfirmButtonExtender>
                 </ItemTemplate>
             </asp:TemplateField>
+
         </Columns>
         <PagerTemplate>
             <table width="100%" style="font-size: 12px;">

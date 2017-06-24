@@ -180,7 +180,7 @@ namespace LB.SQLServerDAL
             return query;
         }
 
-        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId)
+        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId,string MobilePhoneNum)
         {
 
             var query = from t in dbContext.Tradeleads
@@ -242,6 +242,10 @@ namespace LB.SQLServerDAL
             if (!string.IsNullOrEmpty(TId))
             {
                 query = query.Where(p => p.TId == Convert.ToInt32(TId));
+            }
+            if (!string.IsNullOrEmpty(MobilePhoneNum))
+            {
+                query = query.Where(p => p.MobilePhoneNum.Contains(MobilePhoneNum));
             }
             return query.AsQueryable<LB.Model.TradeleadsModel>();
         }

@@ -110,3 +110,19 @@ Hit  int  点击数
 Audit   bool   处理状态
 AuditDate   datetime   处理时间
 Operator  string   操作员  
+
+十二、UserRecommend(用户推荐信息)
+rcId  int   id
+UserId   int  用户ID
+rcName   string   推荐姓名
+rcTelNum  string   推荐手机号
+rcUserTypeId   int  用户类别id
+rcProvince   nvarchar(50)  省
+rcCity   nvarchar(50)  市
+rcTown   nvarchar(50)  区
+rcStreet   nvarchar(50)  街道
+rcRemark  string   推荐备注
+rcDatetime   datetime   推荐时间
+Audit   bool   审核
+AuditDatetime  datetime   审核时间
+AuditOperator   string   审核人

@@ -9,23 +9,45 @@ public partial class AllBuyInfo : System.Web.UI.Page
 {
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
     LB.SQLServerDAL.Tradeleads MTradeleads = new LB.SQLServerDAL.Tradeleads();
+    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
+    LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            if (bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1") != null)
+            if (Request.IsAuthenticated)
             {
-                gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1");
-                gvBuyInfo.DataBind();
+                if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage") || HttpContext.Current.User.IsInRole("CustomService"))
+                {
+                    if (bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1", "").Count() > 0)
+                    {
+                        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1","");
+                        gvBuyInfo.DataBind();
+                    }
+                }
+                else if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
+                {
+                    if (bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1", "").Count() > 0)
+                    {
+                        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", "", "", "", "", "1","");
+                        gvBuyInfo.DataBind();
+                    }
+                }
+                else
+                {
+                    Response.Redirect("~/UserCenter/Deposit.aspx");
+                }
             }
-
-            
+            else
+            {
+                Response.Redirect("~/LoginM.aspx");
+            }
         }
     }
 
     void gvBuyInfoDataBind()
     {
-        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, "1");
+        gvBuyInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit("true", DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, "1", "");
 
         gvBuyInfo.DataBind();
     }

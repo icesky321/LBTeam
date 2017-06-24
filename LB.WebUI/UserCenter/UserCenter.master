@@ -173,7 +173,7 @@
                                 </li>
                                 <li><a href="#">关于我们</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="../ChooseRoles.aspx">加入我们</a></li>
+                                        <li class="menu-item"><a href="../LoginM.aspx">加入我们</a></li>
                                         <li class="menu-item"><a href="../GoodIdea.aspx">集思广益</a></li>
                                     </ul>
 
@@ -244,9 +244,22 @@
 
                                 </div>
                                 <div class="am-u-md-3 ">
-                                    <div class="footer_main--column" style="text-align: center;">
-                                        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/lb2w.jpg" />
-                                    </div>
+                                    <table>
+                                        <tr>
+                                            <td style="padding: 30px">
+                                                <div class="footer_main--column" style="text-align: center;">
+                                                    <asp:Image ID="Image1" runat="server" ImageUrl="~/images/lb2w.jpg" />
+                                                </div>
+                                            </td>
+                                            <td style="padding: 30px">
+                                                <div class="footer_main--column" style="text-align: center;">
+                                                    <p class="footer_about--text">平台企业号</p>
+                                                    <asp:Image ID="Image3" runat="server" ImageUrl="~/images/qyhewm.jpg" Width="120px" Height="120px" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                             </div>
                         </div>

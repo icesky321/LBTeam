@@ -3,4 +3,5 @@ CEMetalFactory      冶炼厂
 CERecyclingCop     回收公司
 CESupplier     产废单位或个人
 CEUser   地域回收街道回收员
+CustomService  客服
 general    （普通 备用）
