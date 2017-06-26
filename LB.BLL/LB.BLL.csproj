@@ -45,6 +45,7 @@
     <Compile Include="NewsInfo.cs" />
     <Compile Include="NewsType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuotationManage.cs" />
     <Compile Include="SMS.cs" />
     <Compile Include="Tradeleads.cs" />
     <Compile Include="TSInfo.cs" />
