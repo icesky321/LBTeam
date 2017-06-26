@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_RecoverPwd, App_Web_zx0scf1i" title="Untitled Page" theme="Default" %>
+﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_RecoverPwd, App_Web_ekkibq53" title="Untitled Page" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">

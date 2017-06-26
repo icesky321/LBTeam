@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_scxnt4bh" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_pla5ct52" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
@@ -120,7 +120,8 @@
                                             <i class="contact_item--icon am-icon-weixin"></i>
                                             <h3 class="contact_item--title">微信用户扫一扫付款</h3>
                                             <p class="contact_item--text">
-                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/wxPay.jpg" Width="200px" Height="230px" />
+                                                <asp:Image ID="Image1" runat="server" ImageUrl="~/images/wxPay.jpg" Width="200px" Height="230px" /><br />
+                                                 <asp:Label ID="Label6" runat="server" Text="注：手机用户转账或微信支付完毕后请填写下页面底部的回执单，您的付款信息将会更快得到平台客服的核实!" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
                                             </p>
                                         </div>
                                     </li>
@@ -174,7 +175,7 @@
                                     <div class="am-g">
                                         <div class="am-u-md-12">
                                             汇款账户：
-                                                <asp:TextBox ID="tbAccount" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="tbAccount" runat="server"></asp:TextBox>注：如微信支付，此处可不填
                                         </div>
                                     </div>
 

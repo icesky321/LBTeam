@@ -59,9 +59,9 @@ namespace LB.BLL
             return da.GetTradeleadsByAddressAndType(province, city, country, street, TId);
         }
 
-        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId)
+        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId, string MobilePhoneNum)
         {
-            return da.GetTradeleadsInfoByAudit(Audit, province, city, country, street, TId);
+            return da.GetTradeleadsInfoByAudit(Audit, province, city, country, street, TId, MobilePhoneNum);
         }
 
         public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAll()

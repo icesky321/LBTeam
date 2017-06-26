@@ -67,6 +67,14 @@
                     <asp:Button ID="btLocal" runat="server" Text="缴纳诚信保证金" OnClick="btLocal_Click" />
                 </asp:View>
             </asp:MultiView>
+            <asp:Panel ID="Panel2" runat="server" Visible="false">
+                <asp:LinkButton ID="lbtnonekeybuy" runat="server" PostBackUrl="~/UserCenter/OneKeyBuy.aspx" CssClass="am-btn am-btn-secondary">一键收货</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="lbtnonekeysell" runat="server" PostBackUrl="~/UserCenter/OneKeySell.aspx" CssClass="am-btn am-btn-secondary">一键卖货</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;
+                <asp:LinkButton ID="lbtnonekymortgage" runat="server" PostBackUrl="~/UserCenter/OneKeyMortgage.aspx" CssClass="am-btn am-btn-secondary">一键押货</asp:LinkButton>
+                &nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;
+            </asp:Panel>
         </div>
     </div>
 </asp:Content>

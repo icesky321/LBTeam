@@ -19,7 +19,7 @@ public partial class UserCenter1 : System.Web.UI.Page
         {
             if (Request.IsAuthenticated)
             {
-                if (HttpContext.Current.User.IsInRole("Admin")|| HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage") || HttpContext.Current.User.IsInRole("CustomService"))
+                if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage") || HttpContext.Current.User.IsInRole("CustomService"))
                 {
                     Response.Redirect("../Admin/Manage.aspx");
                 }
@@ -46,7 +46,30 @@ public partial class UserCenter1 : System.Web.UI.Page
         {
             btComplete1.Visible = false;
             btComplete.Visible = false;
+            Panel1.Visible = false;
+            Panel2.Visible = true;
+            MultiView1.Visible = false;
+            if (HttpContext.Current.User.IsInRole("CEMetalFactory"))
+            {
+                lbtnonekeysell.Enabled = false;
 
+            }
+            else if (HttpContext.Current.User.IsInRole("CERecyclingCop"))
+            {
+
+            }
+            else if (HttpContext.Current.User.IsInRole("CESupplier"))
+            {
+                lbtnonekeybuy.Enabled = false;
+            }
+            else if (HttpContext.Current.User.IsInRole("CEUser"))
+            {
+
+            }
+            else
+            {
+                Panel2.Visible = false;
+            }
         }
         else
         {

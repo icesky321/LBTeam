@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="UserRegister, App_Web_scxnt4bh" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="UserRegister, App_Web_pla5ct52" theme="Default" %>
 
 <%@ Register Src="UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>
 
@@ -15,7 +15,7 @@
             <asp:DropDownList ID="ddlUser" runat="server" Visible="false"></asp:DropDownList>
             <asp:HiddenField ID="hfUserTypeId" runat="server" />
             <br /><hr />
-            所在地：<uc1:DDLAddress ID="DDLAddress1" runat="server" />
+            所在地：<uc1:DDLAddress ID="DDLAddress1" runat="server"/>
             <br /><hr />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>

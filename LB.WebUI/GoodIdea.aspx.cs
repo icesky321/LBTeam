@@ -22,7 +22,7 @@ public partial class GoodIdea : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("~/ChooseRoles.aspx");
+                Response.Redirect("~/LoginM.aspx");
             }
         }
     }

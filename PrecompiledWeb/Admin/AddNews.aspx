@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_NewsManage, App_Web_abr4yeqo" validaterequest="false" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_NewsManage, App_Web_y4yzchvr" validaterequest="false" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="FreeTextBox" Namespace="FreeTextBoxControls" TagPrefix="FTB" %>
@@ -26,14 +26,15 @@
 
                 <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                     <asp:View ID="View1" runat="server">
+                        <asp:Button ID="btAddnews" runat="server" Text="新增资讯"  OnClick="btPreview_Click" />(*预防苹果手机端资讯内容过长，备用按钮)
+                        <br />
                         文章标题：
                         <asp:TextBox ID="tbTitle" runat="server" Width="500px"></asp:TextBox>
                         <br />
                             <br />
                         发布日期：
                         <asp:TextBox ID="tbNoteDate" runat="server"></asp:TextBox>
-                        <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbNoteDate"
-                            Enabled="True"></asp:CalendarExtender>
+                        <asp:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="tbNoteDate" BehaviorID="_content_CalendarExtender1"></asp:CalendarExtender>
                         <br />
                             <br />
                         正文：
