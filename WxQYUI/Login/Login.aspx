@@ -32,7 +32,7 @@
             <asp:Button ID="btnLogin" runat="server" Text="登录" CssClass="btn btn-lg btn-primary btn-block" OnClick="btnLogin_Click" />
             <div style="padding: 30px 0px 0 0px;">
                 <div style="float: left;">忘记密码</div>
-                <div style="float: right; text-align: right;">我没有账户，注册账户</div>
+                <div style="float: right; text-align: right;">我没有账户，<a href="Register.aspx">注册账户</a></div>
             </div>
         </form>
     </div>
