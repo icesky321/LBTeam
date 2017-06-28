@@ -78,6 +78,9 @@ namespace LB.SQLServerDAL
     partial void InsertOAuthAccessToken(OAuthAccessToken instance);
     partial void UpdateOAuthAccessToken(OAuthAccessToken instance);
     partial void DeleteOAuthAccessToken(OAuthAccessToken instance);
+    partial void InsertQuotation(Quotation instance);
+    partial void UpdateQuotation(Quotation instance);
+    partial void DeleteQuotation(Quotation instance);
     partial void InsertTradeleads(Tradeleads instance);
     partial void UpdateTradeleads(Tradeleads instance);
     partial void DeleteTradeleads(Tradeleads instance);
@@ -259,6 +262,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<OAuthAccessToken>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Quotation> Quotation
+		{
+			get
+			{
+				return this.GetTable<Quotation>();
 			}
 		}
 		
@@ -4490,6 +4501,260 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Quotation")]
+	public partial class Quotation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _QuotId;
+		
+		private int _UserId;
+		
+		private string _UserName;
+		
+		private int _TSId;
+		
+		private string _TSName;
+		
+		private System.DateTime _OfferDate;
+		
+		private decimal _QuotedPrice;
+		
+		private string _StandardUnit;
+		
+		private string _City;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnQuotIdChanging(System.Guid value);
+    partial void OnQuotIdChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnTSIdChanging(int value);
+    partial void OnTSIdChanged();
+    partial void OnTSNameChanging(string value);
+    partial void OnTSNameChanged();
+    partial void OnOfferDateChanging(System.DateTime value);
+    partial void OnOfferDateChanged();
+    partial void OnQuotedPriceChanging(decimal value);
+    partial void OnQuotedPriceChanged();
+    partial void OnStandardUnitChanging(string value);
+    partial void OnStandardUnitChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    #endregion
+		
+		public Quotation()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuotId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid QuotId
+		{
+			get
+			{
+				return this._QuotId;
+			}
+			set
+			{
+				if ((this._QuotId != value))
+				{
+					this.OnQuotIdChanging(value);
+					this.SendPropertyChanging();
+					this._QuotId = value;
+					this.SendPropertyChanged("QuotId");
+					this.OnQuotIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(64) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSId", DbType="Int NOT NULL")]
+		public int TSId
+		{
+			get
+			{
+				return this._TSId;
+			}
+			set
+			{
+				if ((this._TSId != value))
+				{
+					this.OnTSIdChanging(value);
+					this.SendPropertyChanging();
+					this._TSId = value;
+					this.SendPropertyChanged("TSId");
+					this.OnTSIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TSName
+		{
+			get
+			{
+				return this._TSName;
+			}
+			set
+			{
+				if ((this._TSName != value))
+				{
+					this.OnTSNameChanging(value);
+					this.SendPropertyChanging();
+					this._TSName = value;
+					this.SendPropertyChanged("TSName");
+					this.OnTSNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfferDate", DbType="DateTime NOT NULL")]
+		public System.DateTime OfferDate
+		{
+			get
+			{
+				return this._OfferDate;
+			}
+			set
+			{
+				if ((this._OfferDate != value))
+				{
+					this.OnOfferDateChanging(value);
+					this.SendPropertyChanging();
+					this._OfferDate = value;
+					this.SendPropertyChanged("OfferDate");
+					this.OnOfferDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QuotedPrice", DbType="Decimal(18,2) NOT NULL")]
+		public decimal QuotedPrice
+		{
+			get
+			{
+				return this._QuotedPrice;
+			}
+			set
+			{
+				if ((this._QuotedPrice != value))
+				{
+					this.OnQuotedPriceChanging(value);
+					this.SendPropertyChanging();
+					this._QuotedPrice = value;
+					this.SendPropertyChanged("QuotedPrice");
+					this.OnQuotedPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StandardUnit", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string StandardUnit
+		{
+			get
+			{
+				return this._StandardUnit;
+			}
+			set
+			{
+				if ((this._StandardUnit != value))
+				{
+					this.OnStandardUnitChanging(value);
+					this.SendPropertyChanging();
+					this._StandardUnit = value;
+					this.SendPropertyChanged("StandardUnit");
+					this.OnStandardUnitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tradeleads")]
 	public partial class Tradeleads : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4507,6 +4772,8 @@ namespace LB.SQLServerDAL
 		private string _Town;
 		
 		private string _Street;
+		
+		private string _Address;
 		
 		private string _Volume;
 		
@@ -4550,6 +4817,8 @@ namespace LB.SQLServerDAL
     partial void OnTownChanged();
     partial void OnStreetChanging(string value);
     partial void OnStreetChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
     partial void OnVolumeChanging(string value);
     partial void OnVolumeChanged();
     partial void OnPriceChanging(string value);
@@ -4699,6 +4968,26 @@ namespace LB.SQLServerDAL
 					this._Street = value;
 					this.SendPropertyChanged("Street");
 					this.OnStreetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(64)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
 				}
 			}
 		}
@@ -5649,6 +5938,8 @@ namespace LB.SQLServerDAL
 		
 		private string _UserName;
 		
+		private string _RealName;
+		
 		private string _MobilePhoneNum;
 		
 		private string _Province;
@@ -5659,7 +5950,11 @@ namespace LB.SQLServerDAL
 		
 		private string _Street;
 		
+		private string _Address;
+		
 		private System.Nullable<System.DateTime> _CreateTime;
+		
+		private string _IDCardNo;
 		
 		private string _IDCard;
 		
@@ -5703,6 +5998,8 @@ namespace LB.SQLServerDAL
     partial void OnUserTypeIdChanged();
     partial void OnUserNameChanging(string value);
     partial void OnUserNameChanged();
+    partial void OnRealNameChanging(string value);
+    partial void OnRealNameChanged();
     partial void OnMobilePhoneNumChanging(string value);
     partial void OnMobilePhoneNumChanged();
     partial void OnProvinceChanging(string value);
@@ -5713,8 +6010,12 @@ namespace LB.SQLServerDAL
     partial void OnTownChanged();
     partial void OnStreetChanging(string value);
     partial void OnStreetChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
     partial void OnCreateTimeChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateTimeChanged();
+    partial void OnIDCardNoChanging(string value);
+    partial void OnIDCardNoChanged();
     partial void OnIDCardChanging(string value);
     partial void OnIDCardChanged();
     partial void OnIDAuthenticationChanging(System.Nullable<bool> value);
@@ -5810,6 +6111,26 @@ namespace LB.SQLServerDAL
 					this._UserName = value;
 					this.SendPropertyChanged("UserName");
 					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealName", DbType="NVarChar(32)")]
+		public string RealName
+		{
+			get
+			{
+				return this._RealName;
+			}
+			set
+			{
+				if ((this._RealName != value))
+				{
+					this.OnRealNameChanging(value);
+					this.SendPropertyChanging();
+					this._RealName = value;
+					this.SendPropertyChanged("RealName");
+					this.OnRealNameChanged();
 				}
 			}
 		}
@@ -5914,6 +6235,26 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(64)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateTime", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateTime
 		{
@@ -5930,6 +6271,26 @@ namespace LB.SQLServerDAL
 					this._CreateTime = value;
 					this.SendPropertyChanged("CreateTime");
 					this.OnCreateTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCardNo", DbType="NVarChar(32)")]
+		public string IDCardNo
+		{
+			get
+			{
+				return this._IDCardNo;
+			}
+			set
+			{
+				if ((this._IDCardNo != value))
+				{
+					this.OnIDCardNoChanging(value);
+					this.SendPropertyChanging();
+					this._IDCardNo = value;
+					this.SendPropertyChanged("IDCardNo");
+					this.OnIDCardNoChanged();
 				}
 			}
 		}

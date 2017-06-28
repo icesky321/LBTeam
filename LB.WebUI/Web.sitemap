@@ -3,6 +3,7 @@
   <siteMapNode url="" title=""  description="" roles="*">
     <siteMapNode url="" title="平台监控" description="平台监控"  roles="Admin">
       <siteMapNode url="~/Admin/Monitor/GlobalMonitor.aspx" title="全局监控" description="平台全局监控"></siteMapNode>
+      <siteMapNode url="~/Admin/Monitor/SearchPuteAccounts.aspx" title="单纯性账户查询" description="单纯性账户查询"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="新闻资讯"  description="新闻资讯"  roles="Admin,InfoManage">
       <siteMapNode url="~/Admin/AddNews.aspx"  title="新增新闻资讯" description="新增新闻资讯" />

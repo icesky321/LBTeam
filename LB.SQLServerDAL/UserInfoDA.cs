@@ -53,6 +53,7 @@ namespace LB.SQLServerDAL
         {
             if (userinfo != null)
             {
+                userinfo.CreateTime = System.DateTime.Now;
                 dbContext.UserInfo.InsertOnSubmit(userinfo);
                 dbContext.SubmitChanges();
 

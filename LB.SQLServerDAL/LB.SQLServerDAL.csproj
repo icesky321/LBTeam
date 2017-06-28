@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CapitalFlowInfoDA.cs" />
     <Compile Include="CodeDA.cs" />
     <Compile Include="CopInfoDA.cs" />
     <Compile Include="LBDB.designer.cs">
@@ -50,6 +49,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LBDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="QuotationDA.cs" />
+    <Compile Include="CodeDA.cs" />
+    <Compile Include="CopInfoDA.cs" />
     <Compile Include="LBDB_Extend.cs" />
     <Compile Include="NewsInfoDA.cs" />
     <Compile Include="NewsTypeDA.cs" />
