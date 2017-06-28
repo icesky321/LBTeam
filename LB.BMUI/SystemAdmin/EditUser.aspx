@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true"
     CodeFile="EditUser.aspx.cs" Inherits="Admin_EditUser" Title="成员管理" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">

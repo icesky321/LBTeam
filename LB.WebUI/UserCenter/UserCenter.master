@@ -173,7 +173,7 @@
                                 </li>
                                 <li><a href="#">关于我们</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="../LoginM.aspx">加入我们</a></li>
+                                        <li class="menu-item"><a href="../AboutUS.aspx">关于绿宝</a></li>
                                         <li class="menu-item"><a href="../GoodIdea.aspx">集思广益</a></li>
                                     </ul>
 

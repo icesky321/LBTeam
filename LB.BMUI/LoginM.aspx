@@ -15,7 +15,7 @@
     <form runat="server" action="" class="am-form" data-am-validator>
         <div class="login-box">
 
-            <img src="img/logo1.png" alt="" />
+            <img src="images/logo1.png" alt="" />
             <br />
             <br />
             <br />
@@ -53,9 +53,9 @@
                     <div class="am-form-group" style="text-align: center;">
                         <asp:Button ID="Button1" runat="server" CssClass="am-btn am-btn-secondary" CommandName="Login" Text="登录" ValidationGroup="Login1"
                             OnClick="LoginButton_Click" EnableTheming="True" /><br />
-                        <asp:LinkButton ID="lbtnForget" runat="server" OnClick="lbtnForget_Click">忘记密码?</asp:LinkButton>
+                        <asp:LinkButton ID="lbtnForget" runat="server" OnClick="lbtnForget_Click" Visible="false">忘记密码?</asp:LinkButton>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:LinkButton ID="lbtnNewUser" runat="server" OnClick="lbtnNewUser_Click">注册新用户?</asp:LinkButton>
+                        <asp:LinkButton ID="lbtnNewUser" runat="server" OnClick="lbtnNewUser_Click" Visible="false">注册新用户?</asp:LinkButton>
                     </div>
                 </LayoutTemplate>
             </asp:Login>

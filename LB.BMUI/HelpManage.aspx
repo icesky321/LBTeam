@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true" CodeFile="HelpManage.aspx.cs" Inherits="Admin_HelpManage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="HelpManage.aspx.cs" Inherits="Admin_HelpManage" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -52,10 +52,10 @@
                 <ItemTemplate>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
-                            <asp:ImageButton ID="lbtnShowP" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="Show" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="允许发布" />
+                            <asp:ImageButton ID="lbtnShowP" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="Show" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="允许发布" />
                         </asp:View>
                         <asp:View ID="View2" runat="server">
-                            <asp:ImageButton ID="lbtnShowU" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="UnShow" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="不允许发布" />
+                            <asp:ImageButton ID="lbtnShowU" runat="server" CommandArgument='<%#Eval("infoId") %>' CommandName="UnShow" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="不允许发布" />
                         </asp:View>
                     </asp:MultiView>
                 </ItemTemplate>
@@ -95,5 +95,6 @@
             </table>
         </PagerTemplate>
     </asp:GridView>
+    <asp:Label ID="lbMsg" runat="server" Text="暂无需发布的内容" Font-Bold="True" Font-Size="Medium" ForeColor="Red" Visible="false"></asp:Label>
 </asp:Content>
 

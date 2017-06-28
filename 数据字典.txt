@@ -87,6 +87,9 @@ InChargeDate  datetime   负责起始时间
 QYUserId   string  企业号ID
 OpenId   string     服务号ID
 IsQYUser   bool    是否企业号成员
+Address  string   详细地址
+RealName   string  真实姓名
+IDCardNo   身份证号
 
 九、UserTypeInfo（用户类型表）
 UserTypeId  int  id
@@ -123,6 +126,20 @@ rcTown   nvarchar(50)  区
 rcStreet   nvarchar(50)  街道
 rcRemark  string   推荐备注
 rcDatetime   datetime   推荐时间
+Audit   bool   审核
+AuditDatetime  datetime   审核时间
+AuditOperator   string   审核人
+
+十三、CapitalFlowInfo(资金流水信息)
+CFId  int   id
+InUserId    int    资金流入用户ID
+OutUserId    int   资金流出用户ID
+Amount    money    金额
+TransferMethod    string   转账方式
+Remark    string   备注
+TransferDate   datetime    转账时间
+Operator   string   操作人
+OperateDate   datetime   操作时间
 Audit   bool   审核
 AuditDatetime  datetime   审核时间
 AuditOperator   string   审核人

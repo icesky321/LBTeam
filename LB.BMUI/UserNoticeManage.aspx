@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true" CodeFile="UserNoticeManage.aspx.cs" Inherits="Admin_UserNoticeManage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="UserNoticeManage.aspx.cs" Inherits="Admin_UserNoticeManage" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -22,10 +22,10 @@
                             <ItemTemplate>
                                 <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                                     <asp:View ID="View1" runat="server">
-                                        <asp:ImageButton ID="lbtnShowP" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="Show" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="已处理" />
+                                        <asp:ImageButton ID="lbtnShowP" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="Show" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="已处理" />
                                     </asp:View>
                                     <asp:View ID="View2" runat="server">
-                                        <asp:ImageButton ID="lbtnShowU" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="UnShow" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="未处理" />
+                                        <asp:ImageButton ID="lbtnShowU" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="UnShow" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="未处理" />
                                     </asp:View>
                                 </asp:MultiView>
                             </ItemTemplate>
@@ -54,10 +54,10 @@
                             <ItemTemplate>
                                 <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
                                     <asp:View ID="View3" runat="server">
-                                        <asp:ImageButton ID="lbtnShowP1" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="Show" ImageUrl="~/img/cha.png" Width="30px" Height="30px" ToolTip="已处理" />
+                                        <asp:ImageButton ID="lbtnShowP1" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="Show" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="已处理" />
                                     </asp:View>
                                     <asp:View ID="View4" runat="server">
-                                        <asp:ImageButton ID="lbtnShowU1" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="UnShow" ImageUrl="~/img/gou.png" Width="30px" Height="30px" ToolTip="未处理" />
+                                        <asp:ImageButton ID="lbtnShowU1" runat="server" CommandArgument='<%#Eval("NoticeId") %>' CommandName="UnShow" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="未处理" />
                                     </asp:View>
                                 </asp:MultiView>
                             </ItemTemplate>

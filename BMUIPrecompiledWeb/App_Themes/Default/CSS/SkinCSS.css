@@ -1,0 +1,108 @@
+﻿.gvRow
+{
+    text-align: center;
+    height: 20px;
+}
+
+.gvRow:hover
+{
+    text-align: center;
+    height: 20px;
+    background-color: #c8dafa;
+}
+
+.gvAltRow
+{
+    background-color: #F5FBFF;
+    text-align: center;
+    height: 20px;
+}
+
+.gvAltRow:hover
+{
+    background-color: #c8dafa;
+    text-align: center;
+    height: 20px;
+}
+
+.gvEditRow
+{
+    height: 12px;
+    background-color: #FAF9DD;
+}
+
+.gvHeader
+{
+    background-color: #99ccff;
+    border-color: #3F6293;
+    height: 20px;
+    text-align: center;
+}
+
+.gvPager
+{
+    font-size: 11pt;
+}
+
+.textbox
+{
+    font-family: "Verdana";
+    font-size: 9pt;
+    color: #000000;
+    border-color: #000000 #000000 #000000 #000000;
+    border-style: solid;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    width: 400px;
+}
+.textbox1
+{
+    font-family: "Verdana";
+    font-size: 9pt;
+    color: #000000;
+    border-color: #000000 #000000 #000000 #000000;
+    border-style: solid;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    width: 80px;
+}
+.textbox2
+{
+    font-family: "Verdana";
+    font-size: 9pt;
+    color: #000000;
+    border-color: #FFFFFF #FFFFFF #FFFFFF #FFFFFF;
+    border: 1px solid #333;
+    width: 50px;
+}
+.textboxCss
+{
+    font-family: "Verdana";
+    font-size: 9pt;
+    color: #000000;
+    border-color: gray gray gray gray;
+    border-style: solid;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+.textboxNum
+{
+    font-family: "Verdana";
+    font-size: 9pt;
+    color: #000000;
+    border-color: #000000 #000000 #000000 #000000;
+    border-style: solid;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    width: 120px;
+}
+
+

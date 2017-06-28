@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/product.min.css" />
+    <link rel="stylesheet" href="css/news.min.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:HiddenField ID="hfUserId" runat="server" />
@@ -121,7 +122,7 @@
                                             <h3 class="contact_item--title">微信用户扫一扫付款</h3>
                                             <p class="contact_item--text">
                                                 <asp:Image ID="Image1" runat="server" ImageUrl="~/images/wxPay.jpg" Width="200px" Height="230px" /><br />
-                                                 <asp:Label ID="Label6" runat="server" Text="注：手机用户转账或微信支付完毕后请填写下页面底部的回执单，您的付款信息将会更快得到平台客服的核实!" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
+                                                <asp:Label ID="Label6" runat="server" Text="注：手机用户转账或微信支付完毕后请填写下页面底部的回执单，您的付款信息将会更快得到平台客服的核实!" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
                                             </p>
                                         </div>
                                     </li>
