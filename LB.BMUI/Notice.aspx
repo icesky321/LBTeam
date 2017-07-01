@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true" CodeFile="Notice.aspx.cs" Inherits="Admin_Notice" ValidateRequest="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="Notice.aspx.cs" Inherits="Admin_Notice" ValidateRequest="false" %>
 
 <%@ Register Assembly="FreeTextBox" Namespace="FreeTextBoxControls" TagPrefix="FTB" %>
 

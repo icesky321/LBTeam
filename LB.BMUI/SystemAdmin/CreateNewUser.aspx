@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true"
     CodeFile="CreateNewUser.aspx.cs" Inherits="Admin_UserAdmin_CreateNewUser" Title="创建新用户" %>
 
 <%@ Register Src="~/UserControls/DDLAddress.ascx" TagName="DDLAddress" TagPrefix="uc1" %>

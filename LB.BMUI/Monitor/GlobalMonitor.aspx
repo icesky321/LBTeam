@@ -1,4 +1,4 @@
-﻿<%@ Page Title="平台全局监控" Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true" CodeFile="GlobalMonitor.aspx.cs" Inherits="Admin_Monitor_GlobalMonitor" %>
+﻿<%@ Page Title="平台全局监控" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="GlobalMonitor.aspx.cs" Inherits="Admin_Monitor_GlobalMonitor" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">

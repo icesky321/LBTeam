@@ -19,12 +19,12 @@
                 <ContentTemplate>
                     <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                         <asp:View ID="View1" runat="server">
-                            <asp:Label ID="Label2" runat="server" Text="当你点击这个按钮时，很神奇的事情即将发生，试试呗~" Font-Size="Medium"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="当你点击这个按钮时，您的收货需求信息就会发送给客服，试试呗！~" Font-Size="Medium"></asp:Label>
                             <asp:Button ID="btBuy" runat="server" Text="一键卖货" OnClick="btBuy_Click" />
                             <br />
                         </asp:View>
                         <asp:View ID="View2" runat="server">
-                            <asp:Label ID="Label1" runat="server" Text="坐等神奇的事情发生吧~哈哈~" Font-Size="Medium"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="您的收货需求信息后台客服已知晓，将会尽快联系您，请耐心等待！" Font-Size="Medium"></asp:Label>
                         </asp:View>
                     </asp:MultiView>
                 </ContentTemplate>

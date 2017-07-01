@@ -1,0 +1,129 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="Admin_Manage, App_Web_rka1zset" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>绿宝管理平台</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/datepicker3.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/gridviewstyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+<%--    [if lte IE 8]> 
+<noscript>
+     <style>.html5-wrappers{display:none!important;}</style>
+     <div class="ie-noscript-warning">您的浏览器禁用了脚本，请<a href="">查看这里</a>来启用脚本!或者<a href="/?noscript=1">继续访问</a>.
+     </div>
+</noscript>
+<![endif]--%>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>绿宝</span>管理平台</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> 您好!&nbsp;<asp:LoginName ID="LoginName1" runat="server" />
+                                            <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/LoginM.aspx" /> <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" />
+                <br />
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+                <div style="margin: 20px;" class="nav menu">
+                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ImageSet="Arrows">
+                        <ParentNodeStyle CssClass="active" Font-Bold="False" />
+                        <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px"
+                            VerticalPadding="0px" />
+                        <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" HorizontalPadding="5px"
+                            NodeSpacing="0px" VerticalPadding="0px" />
+                    </asp:TreeView>
+                </div>
+            </div>
+        </div>
+        <!--/.sidebar-->
+        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                    <li class="active">
+                        <asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                        </asp:SiteMapPath>
+                    </li>
+                </ol>
+            </div>
+            <!--/.row-->
+            <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true"
+                EnablePartialRendering="true" EnableScriptLocalization="true">
+            </asp:ScriptManager>
+<%--            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>--%>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+<%--                    <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="1" AssociatedUpdatePanelID="UpdatePanel1">
+                        <ProgressTemplate>
+                            <div id="modalDiv">
+                                <img src="images/ajax-loader.gif" alt="请稍候..." style="position: absolute; left: 50%;
+                                    top: 50%;" />
+                            </div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                </ContentTemplate>
+            </asp:UpdatePanel>--%>
+        </div>
+    </div>
+    </form>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/chart.min.js"></script>
+    <script type="text/javascript" src="js/chart-data.js"></script>
+    <script type="text/javascript" src="js/easypiechart.js"></script>
+    <script type="text/javascript" src="js/easypiechart-data.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+        $('#calendar').datepicker({
+    });
+
+    !function ($) {
+        $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+            $(this).find('em:first').toggleClass("glyphicon-minus");
+        });
+        $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+    } (window.jQuery);
+
+    $(window).on('resize', function () {
+        if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+    })
+    $(window).on('resize', function () {
+        if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+    })
+    </script>
+</body>
+</html>

@@ -55,7 +55,7 @@ public partial class Admin_NewsManage : System.Web.UI.Page
         if (e.CommandName == "Detail")
         {
             string Id = e.CommandArgument.ToString();
-            string url = "~/NewsDetail.aspx?Id=" + Id.ToString();
+            string url = "http://www.lvbao111.com/NewsDetail.aspx?Id" + Id.ToString();
             Response.Redirect(url);
         }
         if (e.CommandName == "Show")

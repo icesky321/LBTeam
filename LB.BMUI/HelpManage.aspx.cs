@@ -21,8 +21,10 @@ public partial class Admin_HelpManage : System.Web.UI.Page
 
     void gvHelpDataBindByAudit(bool Audit)
     {
-        if (bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "",tbTelNum.Text).Count() != 0)
+        if (bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "", tbTelNum.Text).Count() != 0)
         {
+            gvHelpInfo.Visible = true;
+            lbMsg.Visible = false;
             gvHelpInfo.DataSource = bll_tradeleads.GetTradeleadsInfoByAudit(Audit.ToString(), "", "", "", "", "", tbTelNum.Text);
             gvHelpInfo.DataBind();
             foreach (GridViewRow gvRow in gvHelpInfo.Rows)
@@ -38,7 +40,11 @@ public partial class Admin_HelpManage : System.Web.UI.Page
                 }
             }
         }
-
+        else
+        {
+            gvHelpInfo.Visible = false;
+            lbMsg.Visible = true;
+        }
     }
 
     void gvHelpDataBind()

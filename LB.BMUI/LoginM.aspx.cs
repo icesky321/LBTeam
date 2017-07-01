@@ -14,13 +14,6 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        //((TextBox)Login1.FindControl("UserName")).Attributes.Add("onfocus", "this.className='focustext';");
-        //((TextBox)Login1.FindControl("UserName")).Attributes.Add("onblur", "this.className=''blurtext'';");
-        //((TextBox)Login1.FindControl("Password")).Attributes.Add("onfocus", "this.className='focustext';");
-        //((TextBox)Login1.FindControl("Password")).Attributes.Add("onblur", "this.className=''blurtext'';");
-        //((TextBox)Login1.FindControl("tbVerify")).Attributes.Add("onfocus", "this.className='focustext';");
-        //((TextBox)Login1.FindControl("tbVerify")).Attributes.Add("onblur", "this.className=''blurtext'';");
         if (!Page.IsPostBack)
         {
             Response.Cookies.Add(new HttpCookie("CheckCode", ""));
@@ -43,24 +36,16 @@ public partial class Login : System.Web.UI.Page
 
             if (Request.Cookies["CheckCode"].Value.Equals(((TextBox)Login1.FindControl("tbVerify")).Text.ToString()))
             {
-                
-                if ((User.IsInRole("Admin") == true)|| (User.IsInRole("InfoManage") == true)|| (User.IsInRole("UserManage") == true) || (User.IsInRole("CustomService") == true))
-                {
-                    //Label1.Text = HttpContext.Current.User.Identity.Name;
-                    Response.Redirect("~/Admin/Manage.aspx");
-                }
-                else
-                {
-                    //Label1.Text = HttpContext.Current.User.Identity.Name + "1";
-                    Response.Redirect("~/UserCenter/UserCenter.aspx");
-                }
+
+                Response.Redirect("Manage.aspx");
+
             }
 
 
             else
             {
                 //((RequiredFieldValidator)Login1.FindControl("VerifyRequired")).Text = "验证码输入错误！";
-                Login1.FailureText= "验证码输入错误！";
+                Login1.FailureText = "验证码输入错误！";
             }
         }
 

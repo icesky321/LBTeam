@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true" >
+  <siteMapNode url="" title=""  description="" roles="*">
+    <siteMapNode url="" title="平台监控" description="平台监控"  roles="Admin">
+      <siteMapNode url="~/Monitor/GlobalMonitor.aspx" title="全局监控" description="平台全局监控"></siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="" title="新闻资讯"  description="新闻资讯"  roles="Admin,InfoManage">
+      <siteMapNode url="~/AddNews.aspx"  title="新增新闻资讯" description="新增新闻资讯" />
+      <siteMapNode url="~/NewsManage.aspx"  title="新闻资讯管理" description="新闻资讯管理" />
+      <siteMapNode url="~/NewsType.aspx"  title="资讯类别管理" description="资讯类别管理" />
+    </siteMapNode>
+    <siteMapNode url="" title="用户信息管理" description="用户信息管理"  roles="Admin,UserManage,CustomService">
+      <siteMapNode url="~/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />
+      <siteMapNode url="~/UserManage.aspx" title="街道回收员信息管理" description="街道回收员信息管理" />
+      <siteMapNode url="~/MetalFactoryManage.aspx" title="冶炼厂信息管理" description="冶炼厂信息管理" />
+      <siteMapNode url="~/SupplierManage.aspx" title="产废单位或个人信息管理" description="产废单位或个人信息管理" />
+    </siteMapNode>
+    <siteMapNode url="" title="企业号准入" description="企业号准入管理" roles="Admin,InfoManage,CustomService">
+      <siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>
+    </siteMapNode>
+    <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理"  roles="Admin,InfoManage,CustomService">
+      <siteMapNode url="~/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
+    </siteMapNode>
+    <siteMapNode url="" title="信用保证金管理" description="信用保证金管理" securitytrimmingenabled="true" roles="Admin,UserManage">
+      <siteMapNode url="~/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />
+      <siteMapNode url="~/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
+    </siteMapNode>
+    <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >
+      <siteMapNode url="~/UserTypeInfo.aspx" title="用户类别管理" description="用户类别管理" />
+      <siteMapNode url="~/SystemAdmin/CreateRole.aspx" title="创建角色" description="创建角色"/>
+      <siteMapNode url="~/SystemAdmin/CreateNewUser.aspx" title="创建帐户" description="创建帐户"/>
+      <!--<siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />-->
+    </siteMapNode>
+    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
+      <siteMapNode url="~/Admin/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
+
+    </siteMapNode>
+    <siteMapNode url="" title="其他设置" description="其他设置" securitytrimmingenabled="true" roles="Admin,InfoManage" >
+      <siteMapNode url="~/Notice.aspx" title="公告设置" description="公告设置"/>
+    </siteMapNode>
+    <siteMapNode url="" title="管理员设置" description="管理员设置" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
+      <siteMapNode url="~/SystemAdmin/RecoverPwd.aspx" title="重置密码" description="重置密码"/>
+    </siteMapNode>
+    <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页" />
+  </siteMapNode>
+</siteMap>
