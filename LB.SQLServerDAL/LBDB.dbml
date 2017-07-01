@@ -195,6 +195,27 @@
       <Column Name="City" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.SellInfo" Member="SellInfo">
+    <Type Name="SellInfo">
+      <Column Name="InfoId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CF_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CF_UserMobile" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="TradePlace" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Kefu_TohandleTag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Kefu_HandleResult" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="Kefu_LeaveMsg" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="kefu_HandleDate" Member="Kefu_HandleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="JD_TohandleTag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="JD_HandleResult" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="JD_Remark" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="JD_HandleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsClosed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.Tradeleads" Member="Tradeleads">
     <Type Name="Tradeleads">
       <Column Name="infoId" Member="InfoId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

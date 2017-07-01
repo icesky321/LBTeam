@@ -49,12 +49,12 @@
                         <asp:Literal ID="ltlMobile" runat="server"></asp:Literal>
                     </p>
                     </a></li>
-                    <li><a href="" data-transition="slide" rel="external">实名认证<p class="ui-li-aside">
+                    <li><a href="EditRealName.aspx" data-transition="slide" rel="external">实名认证<p class="ui-li-aside">
                         <asp:Literal ID="ltlRealNameVerify" runat="server"></asp:Literal>
                     </p>
                     </a></li>
-                    <li><a href="#pageMima" data-transition="slide">密码管理</a></li>
-                    <li><a href="cjwt.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
+                    <li><a href="#pageMima" data-transition="slide" rel="external">密码管理</a></li>
+                    <li><a href="EditAddress.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
                         <asp:Literal ID="ltlAddress" runat="server"></asp:Literal>
                     </p>
                     </a></li>
@@ -69,7 +69,16 @@
                 </ul>
             </div>
             <div data-role="footer">
-                <h2>footer</h2>
+                <div class="page__bd page__bd_spacing">
+                    <br />
+                    <br />
+                    <div class="weui-footer">
+                        <p class="weui-footer__links">
+                            <a href="javascript:void(0);" class="weui-footer__link"></a>
+                        </p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2017 宁波绿宝三益 lvbao111.com</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -86,7 +95,6 @@
                 </ul>
             </div>
             <div data-role="footer">
-                
             </div>
         </div>
     </form>

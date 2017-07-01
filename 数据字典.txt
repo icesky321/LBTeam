@@ -126,3 +126,10 @@ rcDatetime   datetime   推荐时间
 Audit   bool   审核
 AuditDatetime  datetime   审核时间
 AuditOperator   string   审核人
+
+
+简写代号
+CF	产废单位
+JD	街道业务员
+HS	回收公司
+YL	冶炼厂
