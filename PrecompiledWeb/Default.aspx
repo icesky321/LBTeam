@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_pla5ct52" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="_Default, App_Web_piax3uf5" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -127,7 +127,7 @@
                                 今日铅价：<asp:Label ID="lbPBPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
                                 <br />
                                 <hr />
-                                今日废旧电瓶价格:<asp:Label ID="lbDPPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
+                                今日废旧电瓶价格(不含污水处理成本):<asp:Label ID="lbDPPrice" runat="server" Font-Size="Large" ForeColor="Gray" Font-Bold="True" Font-Italic="True"></asp:Label>
                             </ContentTemplate>
                         </asp:TabPanel>
                     </asp:TabContainer>
@@ -205,7 +205,7 @@
                                         </asp:GridView>
                                     </ContentTemplate>
                                 </asp:TabPanel>
-                                <asp:TabPanel ID="TabPanel5" runat="server" HeaderText="区域价格" Height="276px">
+                                <asp:TabPanel ID="TabPanel5" runat="server" HeaderText="区域价格" Height="276px" Visible="false">
                                     <ContentTemplate>
                                         <asp:GridView ID="gvPrice" runat="server" DataKeyNames="id" AutoGenerateColumns="False"
                                             SkinID="GridView3" Width="100%" OnRowCommand="gvPrice_RowCommand">

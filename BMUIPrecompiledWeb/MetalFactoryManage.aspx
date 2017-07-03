@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Manage.master" autoeventwireup="true" inherits="Admin_MetalFactoryManage, App_Web_pzkznn5t" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Manage.master" autoeventwireup="true" inherits="Admin_MetalFactoryManage, App_Web_2443l3mj" theme="Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">

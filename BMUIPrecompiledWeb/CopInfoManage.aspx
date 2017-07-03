@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Manage.master" autoeventwireup="true" inherits="Admin_CopInfoManage, App_Web_eh0gajpp" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Manage.master" autoeventwireup="true" inherits="Admin_CopInfoManage, App_Web_powaypk0" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>

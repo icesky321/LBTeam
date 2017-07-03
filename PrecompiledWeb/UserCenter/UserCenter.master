@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="UserCenter, App_Web_0tmwl0ib" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="UserCenter, App_Web_hzirei00" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -158,7 +158,7 @@
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="../News.aspx?Id=1">行业资讯</a></li>
                                         <li class="menu-item"><a href="../News.aspx?Id=2">铅电瓶资讯</a></li>
-                                        <li class="menu-item"><a href="../News.aspx?Id=3">区域价格资讯</a></li>
+                                        <%--<li class="menu-item"><a href="../News.aspx?Id=3">区域价格资讯</a></li>--%>
                                         <li class="menu-item"><a href="../News.aspx?Id=4">政策法规</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
@@ -173,7 +173,7 @@
                                 </li>
                                 <li><a href="#">关于我们</a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a href="../LoginM.aspx">加入我们</a></li>
+                                        <li class="menu-item"><a href="../AboutUS.aspx">关于绿宝</a></li>
                                         <li class="menu-item"><a href="../GoodIdea.aspx">集思广益</a></li>
                                     </ul>
 

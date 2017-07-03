@@ -33,7 +33,8 @@ public partial class UserCenter_Deposit : System.Web.UI.Page
         if (Request.IsAuthenticated)
         {
             MUserInfo = bll_userinfo.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name);
-            if (bll_userepositinfo.ExistUserId(MUserInfo.UserId))
+            //if (bll_userepositinfo.ExistUserId(MUserInfo.UserId))
+            if(MUserInfo.Audit==true)
             {
                 MultiView1.ActiveViewIndex = 1;
 

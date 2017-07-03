@@ -69,7 +69,7 @@ public partial class Admin_DepositManage : System.Web.UI.Page
             {
                 ((MultiView)(gvRow.Cells[5].FindControl("MultiView1"))).ActiveViewIndex = 0;
             }
-            if (bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId)).Status == true)
+            if (bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId), false).Status == true)
             {
                 ((MultiView)(gvRow.Cells[8].FindControl("MultiView2"))).ActiveViewIndex = 1;
             }
@@ -95,7 +95,7 @@ public partial class Admin_DepositManage : System.Web.UI.Page
             {
                 ((MultiView)(gvRow.Cells[5].FindControl("MultiView3"))).ActiveViewIndex = 0;
             }
-            if (bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId)).Status == true)
+            if (bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId), true).Status == true)
             {
                 ((MultiView)(gvRow.Cells[8].FindControl("MultiView4"))).ActiveViewIndex = 1;
             }
@@ -166,14 +166,14 @@ public partial class Admin_DepositManage : System.Web.UI.Page
         if (e.CommandName == "SPass")
         {
             string UserId = e.CommandArgument.ToString();
-            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId));
+            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId), false);
             MUserAuditMsg.Status = true;
             bll_UserAuditMsg.UpdateUserAuditMsg(MUserAuditMsg);
         }
         if (e.CommandName == "USPass")
         {
             string UserId = e.CommandArgument.ToString();
-            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId));
+            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId), false);
             MUserAuditMsg.Status = false;
             bll_UserAuditMsg.UpdateUserAuditMsg(MUserAuditMsg);
         }
@@ -209,14 +209,14 @@ public partial class Admin_DepositManage : System.Web.UI.Page
         if (e.CommandName == "DealSPass")
         {
             string UserId = e.CommandArgument.ToString();
-            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId));
+            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId), true);
             MUserAuditMsg.Status = true;
             bll_UserAuditMsg.UpdateUserAuditMsg(MUserAuditMsg);
         }
         if (e.CommandName == "DealUSPass")
         {
             string UserId = e.CommandArgument.ToString();
-            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId));
+            MUserAuditMsg = bll_UserAuditMsg.GetUserAuditMsgByUserId(Convert.ToInt32(UserId), true);
             MUserAuditMsg.Status = false;
             bll_UserAuditMsg.UpdateUserAuditMsg(MUserAuditMsg);
         }

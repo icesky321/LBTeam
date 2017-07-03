@@ -1,8 +1,9 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_pla5ct52" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/MasterPage.master" autoeventwireup="true" inherits="JoinUS, App_Web_piax3uf5" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/product.min.css" />
+    <link rel="stylesheet" href="css/news.min.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:HiddenField ID="hfUserId" runat="server" />
@@ -106,11 +107,11 @@
                                             <i class="contact_item--icon am-icon-credit-card-alt"></i>
                                             <h3 class="contact_item--title">公司账号</h3>
                                             <p class="contact_item--text">
-                                                <asp:Label ID="Label5" runat="server" Text="公司名称：宁波镇海绿宝科技有限公司" Font-Bold="True" Font-Size="Medium" ForeColor="#FF3300"></asp:Label>
+                                                <asp:Label ID="Label5" runat="server" Text="公司名称：宁波绿宝信息科技有限公司" Font-Bold="True" Font-Size="Medium" ForeColor="#FF3300"></asp:Label>
                                                 <br />
                                                 开户行：宁波银行庄市支行
                                                 <br />
-                                                账号：4495 9849 9844 8378
+                                                账号：5204 0122 0002 10157
                                                
                                             </p>
                                         </div>
@@ -121,7 +122,7 @@
                                             <h3 class="contact_item--title">微信用户扫一扫付款</h3>
                                             <p class="contact_item--text">
                                                 <asp:Image ID="Image1" runat="server" ImageUrl="~/images/wxPay.jpg" Width="200px" Height="230px" /><br />
-                                                 <asp:Label ID="Label6" runat="server" Text="注：手机用户转账或微信支付完毕后请填写下页面底部的回执单，您的付款信息将会更快得到平台客服的核实!" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
+                                                <asp:Label ID="Label6" runat="server" Text="注：手机用户转账或微信支付完毕后请填写下页面底部的回执单，您的付款信息将会更快得到平台客服的核实!" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label>
                                             </p>
                                         </div>
                                     </li>

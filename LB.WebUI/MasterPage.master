@@ -158,7 +158,7 @@
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="News.aspx?Id=1">行业资讯</a></li>
                                         <li class="menu-item"><a href="News.aspx?Id=2">铅电瓶资讯</a></li>
-                                        <li class="menu-item"><a href="News.aspx?Id=3">区域价格资讯</a></li>
+                                        <%--<li class="menu-item"><a href="News.aspx?Id=3">区域价格资讯</a></li>--%>
                                         <li class="menu-item"><a href="News.aspx?Id=4">政策法规</a></li>
                                     </ul>
                                     <!-- sub-menu end-->
