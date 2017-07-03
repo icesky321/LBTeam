@@ -81,6 +81,9 @@ namespace LB.SQLServerDAL
     partial void InsertQuotation(Quotation instance);
     partial void UpdateQuotation(Quotation instance);
     partial void DeleteQuotation(Quotation instance);
+    partial void InsertSellInfo(SellInfo instance);
+    partial void UpdateSellInfo(SellInfo instance);
+    partial void DeleteSellInfo(SellInfo instance);
     partial void InsertTradeleads(Tradeleads instance);
     partial void UpdateTradeleads(Tradeleads instance);
     partial void DeleteTradeleads(Tradeleads instance);
@@ -270,6 +273,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<Quotation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SellInfo> SellInfo
+		{
+			get
+			{
+				return this.GetTable<SellInfo>();
 			}
 		}
 		
@@ -4730,6 +4741,452 @@ namespace LB.SQLServerDAL
 					this._City = value;
 					this.SendPropertyChanged("City");
 					this.OnCityChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SellInfo")]
+	public partial class SellInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _InfoId;
+		
+		private int _CF_UserId;
+		
+		private string _CF_UserMobile;
+		
+		private string _Title;
+		
+		private string _TradePlace;
+		
+		private string _Quantity;
+		
+		private string _Description;
+		
+		private System.DateTime _CreateDate;
+		
+		private bool _Kefu_TohandleTag;
+		
+		private string _Kefu_HandleResult;
+		
+		private string _Kefu_LeaveMsg;
+		
+		private System.Nullable<System.DateTime> _Kefu_HandleDate;
+		
+		private bool _JD_TohandleTag;
+		
+		private string _JD_HandleResult;
+		
+		private string _JD_Remark;
+		
+		private System.Nullable<System.DateTime> _JD_HandleDate;
+		
+		private bool _IsClosed;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnInfoIdChanging(System.Guid value);
+    partial void OnInfoIdChanged();
+    partial void OnCF_UserIdChanging(int value);
+    partial void OnCF_UserIdChanged();
+    partial void OnCF_UserMobileChanging(string value);
+    partial void OnCF_UserMobileChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnTradePlaceChanging(string value);
+    partial void OnTradePlaceChanged();
+    partial void OnQuantityChanging(string value);
+    partial void OnQuantityChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnKefu_TohandleTagChanging(bool value);
+    partial void OnKefu_TohandleTagChanged();
+    partial void OnKefu_HandleResultChanging(string value);
+    partial void OnKefu_HandleResultChanged();
+    partial void OnKefu_LeaveMsgChanging(string value);
+    partial void OnKefu_LeaveMsgChanged();
+    partial void OnKefu_HandleDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnKefu_HandleDateChanged();
+    partial void OnJD_TohandleTagChanging(bool value);
+    partial void OnJD_TohandleTagChanged();
+    partial void OnJD_HandleResultChanging(string value);
+    partial void OnJD_HandleResultChanged();
+    partial void OnJD_RemarkChanging(string value);
+    partial void OnJD_RemarkChanged();
+    partial void OnJD_HandleDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnJD_HandleDateChanged();
+    partial void OnIsClosedChanging(bool value);
+    partial void OnIsClosedChanged();
+    #endregion
+		
+		public SellInfo()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InfoId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid InfoId
+		{
+			get
+			{
+				return this._InfoId;
+			}
+			set
+			{
+				if ((this._InfoId != value))
+				{
+					this.OnInfoIdChanging(value);
+					this.SendPropertyChanging();
+					this._InfoId = value;
+					this.SendPropertyChanged("InfoId");
+					this.OnInfoIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CF_UserId", DbType="Int NOT NULL")]
+		public int CF_UserId
+		{
+			get
+			{
+				return this._CF_UserId;
+			}
+			set
+			{
+				if ((this._CF_UserId != value))
+				{
+					this.OnCF_UserIdChanging(value);
+					this.SendPropertyChanging();
+					this._CF_UserId = value;
+					this.SendPropertyChanged("CF_UserId");
+					this.OnCF_UserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CF_UserMobile", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string CF_UserMobile
+		{
+			get
+			{
+				return this._CF_UserMobile;
+			}
+			set
+			{
+				if ((this._CF_UserMobile != value))
+				{
+					this.OnCF_UserMobileChanging(value);
+					this.SendPropertyChanging();
+					this._CF_UserMobile = value;
+					this.SendPropertyChanged("CF_UserMobile");
+					this.OnCF_UserMobileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="NVarChar(64) NOT NULL", CanBeNull=false)]
+		public string Title
+		{
+			get
+			{
+				return this._Title;
+			}
+			set
+			{
+				if ((this._Title != value))
+				{
+					this.OnTitleChanging(value);
+					this.SendPropertyChanging();
+					this._Title = value;
+					this.SendPropertyChanged("Title");
+					this.OnTitleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TradePlace", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string TradePlace
+		{
+			get
+			{
+				return this._TradePlace;
+			}
+			set
+			{
+				if ((this._TradePlace != value))
+				{
+					this.OnTradePlaceChanging(value);
+					this.SendPropertyChanging();
+					this._TradePlace = value;
+					this.SendPropertyChanged("TradePlace");
+					this.OnTradePlaceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="NVarChar(256)")]
+		public string Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kefu_TohandleTag", DbType="Bit NOT NULL")]
+		public bool Kefu_TohandleTag
+		{
+			get
+			{
+				return this._Kefu_TohandleTag;
+			}
+			set
+			{
+				if ((this._Kefu_TohandleTag != value))
+				{
+					this.OnKefu_TohandleTagChanging(value);
+					this.SendPropertyChanging();
+					this._Kefu_TohandleTag = value;
+					this.SendPropertyChanged("Kefu_TohandleTag");
+					this.OnKefu_TohandleTagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kefu_HandleResult", DbType="NVarChar(256)")]
+		public string Kefu_HandleResult
+		{
+			get
+			{
+				return this._Kefu_HandleResult;
+			}
+			set
+			{
+				if ((this._Kefu_HandleResult != value))
+				{
+					this.OnKefu_HandleResultChanging(value);
+					this.SendPropertyChanging();
+					this._Kefu_HandleResult = value;
+					this.SendPropertyChanged("Kefu_HandleResult");
+					this.OnKefu_HandleResultChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kefu_LeaveMsg", DbType="NVarChar(256)")]
+		public string Kefu_LeaveMsg
+		{
+			get
+			{
+				return this._Kefu_LeaveMsg;
+			}
+			set
+			{
+				if ((this._Kefu_LeaveMsg != value))
+				{
+					this.OnKefu_LeaveMsgChanging(value);
+					this.SendPropertyChanging();
+					this._Kefu_LeaveMsg = value;
+					this.SendPropertyChanged("Kefu_LeaveMsg");
+					this.OnKefu_LeaveMsgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="kefu_HandleDate", Storage="_Kefu_HandleDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Kefu_HandleDate
+		{
+			get
+			{
+				return this._Kefu_HandleDate;
+			}
+			set
+			{
+				if ((this._Kefu_HandleDate != value))
+				{
+					this.OnKefu_HandleDateChanging(value);
+					this.SendPropertyChanging();
+					this._Kefu_HandleDate = value;
+					this.SendPropertyChanged("Kefu_HandleDate");
+					this.OnKefu_HandleDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_TohandleTag", DbType="Bit NOT NULL")]
+		public bool JD_TohandleTag
+		{
+			get
+			{
+				return this._JD_TohandleTag;
+			}
+			set
+			{
+				if ((this._JD_TohandleTag != value))
+				{
+					this.OnJD_TohandleTagChanging(value);
+					this.SendPropertyChanging();
+					this._JD_TohandleTag = value;
+					this.SendPropertyChanged("JD_TohandleTag");
+					this.OnJD_TohandleTagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_HandleResult", DbType="NVarChar(256)")]
+		public string JD_HandleResult
+		{
+			get
+			{
+				return this._JD_HandleResult;
+			}
+			set
+			{
+				if ((this._JD_HandleResult != value))
+				{
+					this.OnJD_HandleResultChanging(value);
+					this.SendPropertyChanging();
+					this._JD_HandleResult = value;
+					this.SendPropertyChanged("JD_HandleResult");
+					this.OnJD_HandleResultChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_Remark", DbType="NVarChar(256)")]
+		public string JD_Remark
+		{
+			get
+			{
+				return this._JD_Remark;
+			}
+			set
+			{
+				if ((this._JD_Remark != value))
+				{
+					this.OnJD_RemarkChanging(value);
+					this.SendPropertyChanging();
+					this._JD_Remark = value;
+					this.SendPropertyChanged("JD_Remark");
+					this.OnJD_RemarkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_HandleDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> JD_HandleDate
+		{
+			get
+			{
+				return this._JD_HandleDate;
+			}
+			set
+			{
+				if ((this._JD_HandleDate != value))
+				{
+					this.OnJD_HandleDateChanging(value);
+					this.SendPropertyChanging();
+					this._JD_HandleDate = value;
+					this.SendPropertyChanged("JD_HandleDate");
+					this.OnJD_HandleDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsClosed", DbType="Bit NOT NULL")]
+		public bool IsClosed
+		{
+			get
+			{
+				return this._IsClosed;
+			}
+			set
+			{
+				if ((this._IsClosed != value))
+				{
+					this.OnIsClosedChanging(value);
+					this.SendPropertyChanging();
+					this._IsClosed = value;
+					this.SendPropertyChanged("IsClosed");
+					this.OnIsClosedChanged();
 				}
 			}
 		}

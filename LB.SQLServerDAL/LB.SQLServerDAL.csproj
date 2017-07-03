@@ -56,6 +56,7 @@
     <Compile Include="DS\ConnectionString.cs" />
     <Compile Include="OAuthAccessTokenDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SellInfoDA.cs" />
     <Compile Include="TradeleadsDA.cs" />
     <Compile Include="TSInfoDA.cs" />
     <Compile Include="TSTypeDA.cs" />

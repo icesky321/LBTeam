@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LB.SQLServerDAL
 {
-   public class TradeleadsDA
+    public class TradeleadsDA
     {
         LB.SQLServerDAL.LBDataContext dbContext = new LBDataContext(DS.ConnectionString.ConnectionStringLB());
 
@@ -22,6 +22,9 @@ namespace LB.SQLServerDAL
         {
             if (tradeleads != null)
             {
+                tradeleads.Hits = 0;
+                tradeleads.Audit = false;
+                tradeleads.ReleaseDate = System.DateTime.Now;
                 dbContext.Tradeleads.InsertOnSubmit(tradeleads);
                 dbContext.SubmitChanges();
 
@@ -69,7 +72,7 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.Tradeleads>();
         }
 
-        public IQueryable GetTradeleadsByTradeType(int TId,bool Audit)
+        public IQueryable GetTradeleadsByTradeType(int TId, bool Audit)
         {
             var query = from c in dbContext.Tradeleads
                         where c.TId == TId
@@ -121,7 +124,7 @@ namespace LB.SQLServerDAL
             return query.FirstOrDefault<LB.SQLServerDAL.Tradeleads>();
         }
 
-        public IQueryable GetTradeleadsByAddressAndType(string province, string city, string country, string street,int TId)
+        public IQueryable GetTradeleadsByAddressAndType(string province, string city, string country, string street, int TId)
         {
             var query = from c in dbContext.Tradeleads
                         where c.TId == TId
@@ -180,7 +183,7 @@ namespace LB.SQLServerDAL
             return query;
         }
 
-        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId,string MobilePhoneNum)
+        public IQueryable<LB.Model.TradeleadsModel> GetTradeleadsInfoByAudit(string Audit, string province, string city, string country, string street, string TId, string MobilePhoneNum)
         {
 
             var query = from t in dbContext.Tradeleads
@@ -206,18 +209,18 @@ namespace LB.SQLServerDAL
                             DetailInfo = t.DetailInfo,
                             UserName = u.UserName,
                             UserId = Convert.ToInt32(t.UserId),
-                            UnitName=c.UnitName,
-                            TSId=b.TSId,
-                            TSName=b.TSName,
+                            UnitName = c.UnitName,
+                            TSId = b.TSId,
+                            TSName = b.TSName,
                             ReleaseDate = Convert.ToDateTime(t.ReleaseDate),
-                            Hits=Convert.ToInt32(t.Hits),
-                            TId=Convert.ToInt32(t.TId),
-                            TSTypeName=b.TSName,
-                            PicPath=t.PicPath,
-                            Audit=t.Audit==null?false : t.Audit.Value,
-                            AuditDatetime=Convert.ToDateTime(t.AuditDatetime),
-                            MobilePhoneNum=u.MobilePhoneNum,
-                            UserTypeId=Convert.ToInt32(u.UserTypeId)
+                            Hits = Convert.ToInt32(t.Hits),
+                            TId = Convert.ToInt32(t.TId),
+                            TSTypeName = b.TSName,
+                            PicPath = t.PicPath,
+                            Audit = t.Audit == null ? false : t.Audit.Value,
+                            AuditDatetime = Convert.ToDateTime(t.AuditDatetime),
+                            MobilePhoneNum = u.MobilePhoneNum,
+                            UserTypeId = Convert.ToInt32(u.UserTypeId)
                         };
             if (!string.IsNullOrEmpty(Audit))
             {
