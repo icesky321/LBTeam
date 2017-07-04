@@ -52,7 +52,7 @@ public partial class Login : System.Web.UI.Page
                 else
                 {
                     //Label1.Text = HttpContext.Current.User.Identity.Name + "1";
-                    Response.Redirect("~/UserCenter/UserCenter.aspx");
+                    Response.Redirect("~/Default.aspx");
                 }
             }
 

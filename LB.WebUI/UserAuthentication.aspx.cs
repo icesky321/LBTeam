@@ -71,7 +71,7 @@ public partial class UserAuthentication : System.Web.UI.Page
                     //this.Label1.Text += "<li>" + "文件类型：" + this.FileUpload1.PostedFile.ContentType;
                     MUserInfo.BankName = tbBankName.Text;
                     MUserInfo.Account = tbAccount.Text;
-                    MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
+                    MUserInfo.IDCard = newfilenameI;
                     //MUserInfo.Chop = "~/Chop/" + newfilenameC;
                     bll_userinfo.UpdateUserInfo(MUserInfo);
                 }

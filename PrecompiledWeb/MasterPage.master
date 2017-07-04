@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_onwoxwi1" %>
+﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_g2gvyyit" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -115,6 +115,7 @@
                                                             <asp:View ID="View3" runat="server">
                                                                 <ul>
                                                                     <li><a href="UserCenter/UserCenter.aspx">个人中心</a></li>
+                                                                   
                                                                 </ul>
                                                             </asp:View>
                                                         </asp:MultiView></td>

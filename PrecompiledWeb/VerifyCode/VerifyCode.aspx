@@ -1,4 +1,4 @@
-<%@ page language="C#" autoeventwireup="true" inherits="VerifyCode, App_Web_rcchyehh" theme="Default" %>
+<%@ page language="C#" autoeventwireup="true" inherits="VerifyCode, App_Web_3pbduqlt" theme="Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

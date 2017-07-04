@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true" >
+  <siteMapNode url="" title=""  description="" roles="*">
+    <siteMapNode url="" title="帮帮忙" description="帮帮忙"  roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
+      <siteMapNode url="~/UserCenter/SellInfo.aspx" title="供应信息" description="供应信息"/>
+      <siteMapNode url="~/UserCenter/BuyInfo.aspx" title="求购信息" description="求购信息"/>
+      <!--<siteMapNode url="~/UserCenter/MyHelpInfo.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理"/>-->
+    </siteMapNode>
+    <siteMapNode url="" title="我的收货" description="我的收货"  roles="CEMetalFactory,CEUser,CERecyclingCop" >
+      <siteMapNode url="~/UserCenter/OneKeyBuy.aspx" title="一键收货" description="一键收货"/>
+    </siteMapNode>
+    <siteMapNode url="" title="我的卖货" description="我的卖货"  roles="CESupplier,CEUser,CERecyclingCop" >
+      <siteMapNode url="~/UserCenter/OneKeySell.aspx" title="一键卖货" description="一键卖货"/>
+    </siteMapNode>
+    <siteMapNode url="" title="我的押货" description="我的押货"  roles="CESupplier,CEMetalFactory,CEUser,CERecyclingCop" >
+      <siteMapNode url="~/UserCenter/OneKeyMortgage.aspx" title="一键押货" description="一键押货"/>
+    </siteMapNode>
+    <siteMapNode url="" title="街道回收员信息" description="街道回收员信息"  roles="CESupplier,CERecyclingCop" >
+      <siteMapNode url="~/UserCenter/LocalRecycling.aspx" title="当地街道回收员" description="当地街道回收员"/>
+    </siteMapNode>
+    <siteMapNode url="" title="回收公司信息" description="回收公司信息"  roles="CESupplier,CEMetalFactory,CEUser" >
+      <siteMapNode url="~/UserCenter/LocalRecyclingCop.aspx" title="当地回收公司" description="当地回收公司"/>
+    </siteMapNode>
+    <siteMapNode url="" title="产废单位或个人信息" description="产废单位或个人信息"  roles="CERecyclingCop,CEUser" >
+      <siteMapNode url="~/UserCenter/LocalSupplier.aspx" title="当地产废单位或个人" description="当地产废单位或个人"/>
+    </siteMapNode>
+    <siteMapNode url="" title="用户中心" description="用户中心" securitytrimmingenabled="true" roles="CEMetalFactory,CERecyclingCop,CESupplier,CEUser,general">
+      <siteMapNode url="~/UserCenter/UserCenter.aspx" title="个人资料" description="个人资料" />
+      <siteMapNode url="~/UserCenter/Address.aspx" title="地址" description="地址" />
+      <siteMapNode url="~/UserCenter/BankInfo.aspx" title="银行卡" description="银行卡" />
+      <siteMapNode url="~/UserCenter/Authentication.aspx" title="认证" description="认证" />
+      <siteMapNode url="~/UserCenter/Deposit.aspx" title="诚信保证金" description="诚信保证金" />
+      <siteMapNode url="~/UserCenter/ChangePWD.aspx" title="重置密码" description="重置密码"/>
+    </siteMapNode>
+    <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页" />
+  </siteMapNode>
+</siteMap>

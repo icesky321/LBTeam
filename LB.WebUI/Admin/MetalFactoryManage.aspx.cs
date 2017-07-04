@@ -102,7 +102,7 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
         MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
         if (e.CommandName == "Bizlicense")
         {
-            string url = MCopInfo.Bizlicense;
+            string url = "../WebUI/Bizlicense/" + MCopInfo.Bizlicense;
             Response.Redirect(url);
         }
         if (e.CommandName == "BPass")
@@ -115,7 +115,7 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
         }
         if (e.CommandName == "HWPermit")
         {
-            string url = MCopInfo.HWPermit;
+            string url = "../WebUI/HWPermit/" + MCopInfo.HWPermit;
             Response.Redirect(url);
         }
         if (e.CommandName == "HPass")
@@ -128,7 +128,7 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
         }
         if (e.CommandName == "IDCard")
         {
-            string url = MUserInfo.IDCard;
+            string url = "../WebUI/IDCard/" + MUserInfo.IDCard;
             Response.Redirect(url);
         }
         if (e.CommandName == "IPass")
