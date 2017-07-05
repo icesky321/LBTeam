@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_Notice, App_Web_ikovxklf" validaterequest="false" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_Notice, App_Web_aambd2vw" validaterequest="false" theme="Default" %>
 
 <%@ Register Assembly="FreeTextBox" Namespace="FreeTextBoxControls" TagPrefix="FTB" %>
 

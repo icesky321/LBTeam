@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" enableeventvalidation="false" inherits="Admin_NewsType, App_Web_ikovxklf" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" enableeventvalidation="false" inherits="Admin_NewsType, App_Web_aambd2vw" theme="Default" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>

@@ -130,19 +130,28 @@ Audit   bool   审核
 AuditDatetime  datetime   审核时间
 AuditOperator   string   审核人
 
-十三、CapitalFlowInfo(资金流水信息)
-CFId  int   id
+十三、CF_JD_Order(资金流水信息)
+CFId  guid   id
 InUserId    int    资金流入用户ID
 OutUserId    int   资金流出用户ID
 Amount    money    金额
 TransferMethod    string   转账方式
 Remark    string   备注
 TransferDate   datetime    转账时间
-Operator   string   操作人
-OperateDate   datetime   操作时间
+OperatorConfirm  bool  确认状态   （产废单位确认）
+Operator   string   确认人
+OperateDate   datetime   确认时间
 Audit   bool   审核
 AuditDatetime  datetime   审核时间
 AuditOperator   string   审核人
+
+
+十四、CF_JD_OrderDetail(订单明细)
+ODId  guid   id
+CFId  guid   id
+GoodsDetail   string    货品名称
+Quantity    decimal     货品数量
+GoodsUnit		string   货品单位
 
 简写代号
 CF	产废单位

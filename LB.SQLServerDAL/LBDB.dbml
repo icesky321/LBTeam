@@ -140,20 +140,30 @@
       <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
-  <Table Name="dbo.CapitalFlowInfo" Member="CapitalFlowInfo">
-    <Type Name="CapitalFlowInfo">
-      <Column Name="CFId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.CF_JD_Order" Member="CF_JD_Order">
+    <Type Name="CF_JD_Order">
+      <Column Name="CFId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="InUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="OutUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="TransferMethod" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OperatorConfirm" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Operator" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
       <Column Name="OperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="AuditOperator" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CF_JD_OrderDetail" Member="CF_JD_OrderDetail">
+    <Type Name="CF_JD_OrderDetail">
+      <Column Name="ODId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CFId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="GoodsDetail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="GoodsUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.CopInfo" Member="CopInfo">

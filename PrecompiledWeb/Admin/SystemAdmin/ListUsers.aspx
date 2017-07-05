@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_ListUsers, App_Web_3e424shh" title="成员和角色管理" theme="Default" %>
+﻿<%@ page language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_ListUsers, App_Web_dgyuxkgp" title="成员和角色管理" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">

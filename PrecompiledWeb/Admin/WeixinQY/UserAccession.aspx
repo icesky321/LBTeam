@@ -1,4 +1,4 @@
-﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_WeixinQY_UserAccession, App_Web_hobmuvjj" theme="Default" %>
+﻿<%@ page title="" language="C#" masterpagefile="~/Admin/Manage.master" autoeventwireup="true" inherits="Admin_WeixinQY_UserAccession, App_Web_da4dijfg" theme="Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>

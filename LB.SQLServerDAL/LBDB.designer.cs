@@ -63,9 +63,12 @@ namespace LB.SQLServerDAL
     partial void InsertAspnet_WebEvent_Events(Aspnet_WebEvent_Events instance);
     partial void UpdateAspnet_WebEvent_Events(Aspnet_WebEvent_Events instance);
     partial void DeleteAspnet_WebEvent_Events(Aspnet_WebEvent_Events instance);
-    partial void InsertCapitalFlowInfo(CapitalFlowInfo instance);
-    partial void UpdateCapitalFlowInfo(CapitalFlowInfo instance);
-    partial void DeleteCapitalFlowInfo(CapitalFlowInfo instance);
+    partial void InsertCF_JD_Order(CF_JD_Order instance);
+    partial void UpdateCF_JD_Order(CF_JD_Order instance);
+    partial void DeleteCF_JD_Order(CF_JD_Order instance);
+    partial void InsertCF_JD_OrderDetail(CF_JD_OrderDetail instance);
+    partial void UpdateCF_JD_OrderDetail(CF_JD_OrderDetail instance);
+    partial void DeleteCF_JD_OrderDetail(CF_JD_OrderDetail instance);
     partial void InsertCopInfo(CopInfo instance);
     partial void UpdateCopInfo(CopInfo instance);
     partial void DeleteCopInfo(CopInfo instance);
@@ -228,11 +231,19 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		public System.Data.Linq.Table<CapitalFlowInfo> CapitalFlowInfo
+		public System.Data.Linq.Table<CF_JD_Order> CF_JD_Order
 		{
 			get
 			{
-				return this.GetTable<CapitalFlowInfo>();
+				return this.GetTable<CF_JD_Order>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CF_JD_OrderDetail> CF_JD_OrderDetail
+		{
+			get
+			{
+				return this.GetTable<CF_JD_OrderDetail>();
 			}
 		}
 		
@@ -3410,13 +3421,13 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CapitalFlowInfo")]
-	public partial class CapitalFlowInfo : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CF_JD_Order")]
+	public partial class CF_JD_Order : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _CFId;
+		private System.Guid _CFId;
 		
 		private System.Nullable<int> _InUserId;
 		
@@ -3429,6 +3440,8 @@ namespace LB.SQLServerDAL
 		private string _Remark;
 		
 		private System.Nullable<System.DateTime> _TransferDate;
+		
+		private System.Nullable<bool> _OperatorConfirm;
 		
 		private string _Operator;
 		
@@ -3444,7 +3457,7 @@ namespace LB.SQLServerDAL
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnCFIdChanging(int value);
+    partial void OnCFIdChanging(System.Guid value);
     partial void OnCFIdChanged();
     partial void OnInUserIdChanging(System.Nullable<int> value);
     partial void OnInUserIdChanged();
@@ -3458,6 +3471,8 @@ namespace LB.SQLServerDAL
     partial void OnRemarkChanged();
     partial void OnTransferDateChanging(System.Nullable<System.DateTime> value);
     partial void OnTransferDateChanged();
+    partial void OnOperatorConfirmChanging(System.Nullable<bool> value);
+    partial void OnOperatorConfirmChanged();
     partial void OnOperatorChanging(string value);
     partial void OnOperatorChanged();
     partial void OnOperateDateChanging(System.Nullable<System.DateTime> value);
@@ -3470,13 +3485,13 @@ namespace LB.SQLServerDAL
     partial void OnAuditOperatorChanged();
     #endregion
 		
-		public CapitalFlowInfo()
+		public CF_JD_Order()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CFId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int CFId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CFId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid CFId
 		{
 			get
 			{
@@ -3615,6 +3630,26 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperatorConfirm", DbType="Bit")]
+		public System.Nullable<bool> OperatorConfirm
+		{
+			get
+			{
+				return this._OperatorConfirm;
+			}
+			set
+			{
+				if ((this._OperatorConfirm != value))
+				{
+					this.OnOperatorConfirmChanging(value);
+					this.SendPropertyChanging();
+					this._OperatorConfirm = value;
+					this.SendPropertyChanged("OperatorConfirm");
+					this.OnOperatorConfirmChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Operator", DbType="NVarChar(16)")]
 		public string Operator
 		{
@@ -3711,6 +3746,164 @@ namespace LB.SQLServerDAL
 					this._AuditOperator = value;
 					this.SendPropertyChanged("AuditOperator");
 					this.OnAuditOperatorChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CF_JD_OrderDetail")]
+	public partial class CF_JD_OrderDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _ODId;
+		
+		private System.Nullable<System.Guid> _CFId;
+		
+		private string _GoodsDetail;
+		
+		private System.Nullable<decimal> _Quantity;
+		
+		private string _GoodsUnit;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnODIdChanging(System.Guid value);
+    partial void OnODIdChanged();
+    partial void OnCFIdChanging(System.Nullable<System.Guid> value);
+    partial void OnCFIdChanged();
+    partial void OnGoodsDetailChanging(string value);
+    partial void OnGoodsDetailChanged();
+    partial void OnQuantityChanging(System.Nullable<decimal> value);
+    partial void OnQuantityChanged();
+    partial void OnGoodsUnitChanging(string value);
+    partial void OnGoodsUnitChanged();
+    #endregion
+		
+		public CF_JD_OrderDetail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ODId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid ODId
+		{
+			get
+			{
+				return this._ODId;
+			}
+			set
+			{
+				if ((this._ODId != value))
+				{
+					this.OnODIdChanging(value);
+					this.SendPropertyChanging();
+					this._ODId = value;
+					this.SendPropertyChanged("ODId");
+					this.OnODIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CFId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> CFId
+		{
+			get
+			{
+				return this._CFId;
+			}
+			set
+			{
+				if ((this._CFId != value))
+				{
+					this.OnCFIdChanging(value);
+					this.SendPropertyChanging();
+					this._CFId = value;
+					this.SendPropertyChanged("CFId");
+					this.OnCFIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoodsDetail", DbType="NVarChar(50)")]
+		public string GoodsDetail
+		{
+			get
+			{
+				return this._GoodsDetail;
+			}
+			set
+			{
+				if ((this._GoodsDetail != value))
+				{
+					this.OnGoodsDetailChanging(value);
+					this.SendPropertyChanging();
+					this._GoodsDetail = value;
+					this.SendPropertyChanged("GoodsDetail");
+					this.OnGoodsDetailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Quantity
+		{
+			get
+			{
+				return this._Quantity;
+			}
+			set
+			{
+				if ((this._Quantity != value))
+				{
+					this.OnQuantityChanging(value);
+					this.SendPropertyChanging();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GoodsUnit", DbType="NVarChar(50)")]
+		public string GoodsUnit
+		{
+			get
+			{
+				return this._GoodsUnit;
+			}
+			set
+			{
+				if ((this._GoodsUnit != value))
+				{
+					this.OnGoodsUnitChanging(value);
+					this.SendPropertyChanging();
+					this._GoodsUnit = value;
+					this.SendPropertyChanged("GoodsUnit");
+					this.OnGoodsUnitChanged();
 				}
 			}
 		}
