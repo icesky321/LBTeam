@@ -18,7 +18,8 @@
     <siteMapNode url="" title="企业号准入" description="企业号准入管理" roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="" title="帮帮忙信息管理" description="帮帮忙信息管理"  roles="Admin,InfoManage,CustomService">
+    <siteMapNode url="" title="业务信息审核" description="业务信息审核"  roles="Admin,InfoManage,CustomService">
+      <siteMapNode url="~/BusiReview/CF_SellInfoAPV.aspx" title="产废单位发布信息" description="产废单位发布信息审核" />
       <siteMapNode url="~/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
     </siteMapNode>
     <siteMapNode url="" title="平台资金管理" description="平台资金管理" securitytrimmingenabled="true" roles="Admin,UserManage">

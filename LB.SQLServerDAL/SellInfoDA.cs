@@ -38,6 +38,15 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取客服待审核记录数
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount_KefuTohandle()
+        {
+            return dbContext.SellInfo.Where(o => o.Kefu_TohandleTag == true).Count();
+        }
+
+        /// <summary>
         /// 创建出售信息。
         /// </summary>
         /// <param name="sellInfo"></param>
@@ -58,13 +67,18 @@ namespace LB.SQLServerDAL
             return sellInfo;
         }
 
-        //public IQueryable<LB.SQLServerDAL.SellInfo> GetSellInfo()
-        //{
-        //    var query = from c in dbContext.SellInfo
-        //                orderby c.ReleaseDate descending
-        //                select c;
-        //    return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
-        //}
+        /// <summary>
+        /// 获取指定 infoId 的出售信息。
+        /// </summary>
+        /// <param name="infoId"></param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.SellInfo GetSellInfo_ById(Guid infoId)
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.InfoId == infoId
+                        select c;
+            return query.FirstOrDefault();
+        }
 
         /// <summary>
         /// 根据用户登录账户搜索用户自己发布的出售信息。
@@ -84,14 +98,15 @@ namespace LB.SQLServerDAL
         /// 根据客服处理标记搜索出售信息。
         /// </summary>
         /// <param name="kefuToHandleTag">客服处理标记。</param>
+        /// <param name="count">获取记录数</param>
         /// <returns></returns>
-        public IQueryable GetSellInfo_ByKefuTohandleTag(bool kefuToHandleTag)
+        public IQueryable GetSellInfo_ByKefuTohandleTag(bool kefuToHandleTag, int count)
         {
             var query = from c in dbContext.SellInfo
                         where c.Kefu_TohandleTag == kefuToHandleTag
                         orderby c.CreateDate descending
                         select c;
-            return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
+            return query.Take(count).AsQueryable<LB.SQLServerDAL.SellInfo>();
         }
 
         /// <summary>
@@ -108,8 +123,8 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
         }
 
-        
-        
+
+
 
         public void UpdateSellInfo(LB.SQLServerDAL.SellInfo sellInfoinfo)
         {

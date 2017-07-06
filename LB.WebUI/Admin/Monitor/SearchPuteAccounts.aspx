@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Manage.master" AutoEventWireup="true" CodeFile="SearchPuteAccounts.aspx.cs" Inherits="Admin_Monitor_SearchPuteAccounts" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../Manage.master" AutoEventWireup="true" CodeFile="SearchPuteAccounts.aspx.cs" Inherits="Admin_Monitor_SearchPuteAccounts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
