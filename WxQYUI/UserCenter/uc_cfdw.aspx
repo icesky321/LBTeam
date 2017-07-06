@@ -53,6 +53,14 @@
                         <asp:Literal ID="ltlRealNameVerify" runat="server"></asp:Literal>
                     </p>
                     </a></li>
+                    <li><a href="../MP/Deposit.aspx" data-transition="slide" rel="external">诚信保证金<p class="ui-li-aside">
+                        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                    </p>
+                    </a></li>
+                    <li><a href="CopAuth.aspx" data-transition="slide" rel="external">公司资质审核<p class="ui-li-aside">
+                        <asp:Literal ID="Literal2" runat="server"></asp:Literal>
+                    </p>
+                    </a></li>
                     <li><a href="#pageMima" data-transition="slide" rel="external">密码管理</a></li>
                     <li><a href="EditAddress.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
                         <asp:Literal ID="ltlAddress" runat="server"></asp:Literal>

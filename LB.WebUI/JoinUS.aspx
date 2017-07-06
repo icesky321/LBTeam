@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="product3-content">
                                             <h3>产废单位或个人</h3>
-                                            <p>诚信保证金<asp:Label ID="Label4" runat="server" Text="200元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
+                                            <p>诚信保证金<asp:Label ID="Label4" runat="server" Text="暂免保证金" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
                                             <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
                                             <hr class="split-line">
                                         </div>
