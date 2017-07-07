@@ -32,9 +32,9 @@
       <siteMapNode url="~/SystemAdmin/CreateNewUser.aspx" title="创建帐户" description="创建帐户"/>
       <!--<siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />-->
     </siteMapNode>
-    <siteMapNode url="" title="用户互动信息管理" description="用户互动信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
-      <siteMapNode url="~/Admin/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
-
+    <siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
+      <siteMapNode url="~/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
+      <siteMapNode url="~/Deposit.aspx" title="押金进出请求信息" description="押金进出请求信息"/>
     </siteMapNode>
     <siteMapNode url="" title="其他设置" description="其他设置" securitytrimmingenabled="true" roles="Admin,InfoManage" >
       <siteMapNode url="~/Notice.aspx" title="公告设置" description="公告设置"/>
@@ -42,6 +42,6 @@
     <siteMapNode url="" title="管理员设置" description="管理员设置" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
       <siteMapNode url="~/SystemAdmin/RecoverPwd.aspx" title="重置密码" description="重置密码"/>
     </siteMapNode>
-    <siteMapNode url="~/Default.aspx" title="返回首页" description="返回首页" />
+    <siteMapNode url="http://www.lvbao111.com/WebUI/Default.aspx" title="返回首页" description="返回首页" />
   </siteMapNode>
 </siteMap>

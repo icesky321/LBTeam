@@ -24,9 +24,9 @@ namespace LB.BLL
             da.UpdateUserAuditMsg(userauditmsg);
         }
 
-        public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByUserId(int UserId)
+        public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByUserId(int UserId, bool Status)
         {
-            return da.GetUserAuditMsgByUserId(UserId);
+            return da.GetUserAuditMsgByUserId(UserId,Status);
         }
 
         public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByMsgId(int MsgId)

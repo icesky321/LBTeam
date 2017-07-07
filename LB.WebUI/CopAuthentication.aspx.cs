@@ -63,7 +63,7 @@ public partial class CopAuthentication : System.Web.UI.Page
                     this.FUIDCard.SaveAs(savefilenameI);
                     this.Image3.ImageUrl = "~/IDCard/" + newfilenameI;
                     this.Label1.Text = "文件上传成功,等待后台审核";
-                    MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
+                    MUserInfo.IDCard = newfilenameI;
                     //bll_userinfo.UpdateUserInfo(MUserInfo);
                     //bll_copinfo.UpdateCopInfo(MCopInfo);
                 }
@@ -102,7 +102,7 @@ public partial class CopAuthentication : System.Web.UI.Page
                     string savefilenameB = pathB + newfilenameB;
                     this.FUBizlicense.SaveAs(savefilenameB);
                     this.Image1.ImageUrl = "~/Bizlicense/" + newfilenameB;
-                    MCopInfo.Bizlicense = "~/Bizlicense/" + newfilenameB;
+                    MCopInfo.Bizlicense = newfilenameB;
                     //bll_userinfo.UpdateUserInfo(MUserInfo);
                     //bll_copinfo.UpdateCopInfo(MCopInfo);
                 }
@@ -142,7 +142,7 @@ public partial class CopAuthentication : System.Web.UI.Page
                     this.FUHWPermit.SaveAs(savefilenameH);
                     this.Image2.ImageUrl = "~/HWPermit/" + newfilenameH;
                     this.Label1.Text = "文件上传成功,等待后台审核";
-                    MCopInfo.HWPermit = "~/HWPermit/" + newfilenameH;
+                    MCopInfo.HWPermit = newfilenameH;
 
 
                 }

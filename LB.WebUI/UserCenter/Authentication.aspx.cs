@@ -28,9 +28,9 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
             {
                 MultiView1.ActiveViewIndex = 1;
                 MCopInfo = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId);
-                Image2.ImageUrl = MUserInfo.IDCard;
-                Image3.ImageUrl = MCopInfo.Bizlicense;
-                Image4.ImageUrl = MCopInfo.HWPermit;
+                Image2.ImageUrl = "../IDCard/"+ MUserInfo.IDCard;
+                Image3.ImageUrl = "../Bizlicense/" + MCopInfo.Bizlicense;
+                Image4.ImageUrl = "../HWPermit/" + MCopInfo.HWPermit;
                 if (MCopInfo.BAuthentication == false || MCopInfo.HWAuthentication == false)
                 {
                     btCopAlter.Visible = true;
@@ -49,7 +49,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
             else
             {
                 MultiView1.ActiveViewIndex = 0;
-                Image1.ImageUrl = MUserInfo.IDCard;
+                Image1.ImageUrl = "../IDCard/" + MUserInfo.IDCard;
                 if (MUserInfo.IDAuthentication == false)
                 {
                     btUserAlter.Visible = true;
@@ -100,7 +100,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
                     this.FileUpload1.SaveAs(savefilenameI);
                     this.Image1.ImageUrl = "~/IDCard/" + newfilenameI;
                     this.Label1.Text = "文件上传成功,等待后台审核";
-                    MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
+                    MUserInfo.IDCard = newfilenameI;
                     bll_userinfo.UpdateUserInfo(MUserInfo);
                 }
                 catch
@@ -151,7 +151,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
                     this.FUIDCard.SaveAs(savefilenameI);
                     this.Image3.ImageUrl = "~/IDCard/" + newfilenameI;
                     this.Label1.Text = "文件上传成功,等待后台审核";
-                    MUserInfo.IDCard = "~/IDCard/" + newfilenameI;
+                    MUserInfo.IDCard = newfilenameI;
                 }
                 catch
                 {
@@ -188,7 +188,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
                     string savefilenameB = pathB + newfilenameB;
                     this.FUBizlicense.SaveAs(savefilenameB);
                     this.Image1.ImageUrl = "~/Bizlicense/" + newfilenameB;
-                    MCopInfo.Bizlicense = "~/Bizlicense/" + newfilenameB;
+                    MCopInfo.Bizlicense = newfilenameB;
                 }
                 catch
                 {
@@ -225,7 +225,7 @@ public partial class UserCenter_Authentication : System.Web.UI.Page
                     string savefilenameH = pathH + newfilenameH;
                     this.FUHWPermit.SaveAs(savefilenameH);
                     this.Image2.ImageUrl = "~/HWPermit/" + newfilenameH;
-                    MCopInfo.HWPermit = "~/HWPermit/" + newfilenameH;
+                    MCopInfo.HWPermit = newfilenameH;
 
                 }
                 catch

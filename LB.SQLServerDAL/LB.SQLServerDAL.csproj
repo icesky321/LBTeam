@@ -42,14 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CF_JD_OrderDA.cs" />
+    <Compile Include="CF_JD_OrderDetailDA.cs" />
+    <Compile Include="CodeDA.cs" />
+    <Compile Include="CopInfoDA.cs" />
     <Compile Include="LBDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LBDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="QuotationDA.cs" />
-    <Compile Include="CodeDA.cs" />
-    <Compile Include="CopInfoDA.cs" />
     <Compile Include="LBDB_Extend.cs" />
     <Compile Include="NewsInfoDA.cs" />
     <Compile Include="NewsTypeDA.cs" />

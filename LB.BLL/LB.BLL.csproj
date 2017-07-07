@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CF_JD_Order.cs" />
+    <Compile Include="CF_JD_OrderDetail.cs" />
     <Compile Include="CodeRule.cs" />
     <Compile Include="CopInfo.cs" />
     <Compile Include="NewsInfo.cs" />

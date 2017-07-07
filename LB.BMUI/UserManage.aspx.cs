@@ -73,7 +73,7 @@ public partial class Admin_UserManage : System.Web.UI.Page
         {
             string UserId = e.CommandArgument.ToString();
             MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId));
-            string url = MUserInfo.IDCard;
+            string url = "../WebUI/IDCard/" + MUserInfo.IDCard;
             Response.Redirect(url);
         }
         if (e.CommandName == "IPass")

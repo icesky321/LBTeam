@@ -33,10 +33,10 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
-        public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByUserId(int UserId)
+        public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByUserId(int UserId,bool Status)
         {
             var query = from c in dbContext.UserAuditMsg
-                        where c.UserId == UserId
+                        where c.UserId == UserId && c.Status==Status
                         select c;
             return query.FirstOrDefault<LB.SQLServerDAL.UserAuditMsg>();
         }

@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="product3-content">
                                             <h3>产废单位或个人</h3>
-                                            <p>诚信保证金<asp:Label ID="Label4" runat="server" Text="200元" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
+                                            <p>诚信保证金<asp:Label ID="Label4" runat="server" Text="暂免保证金" Font-Bold="True" Font-Size="Medium" ForeColor="Red"></asp:Label></p>
                                             <p>权限：可查看平台所有注册商家及个人的信息、平台咨询、自定义个性化服务</p>
                                             <hr class="split-line">
                                         </div>
@@ -107,11 +107,11 @@
                                             <i class="contact_item--icon am-icon-credit-card-alt"></i>
                                             <h3 class="contact_item--title">公司账号</h3>
                                             <p class="contact_item--text">
-                                                <asp:Label ID="Label5" runat="server" Text="公司名称：宁波镇海绿宝科技有限公司" Font-Bold="True" Font-Size="Medium" ForeColor="#FF3300"></asp:Label>
+                                                <asp:Label ID="Label5" runat="server" Text="公司名称：宁波绿宝信息科技有限公司" Font-Bold="True" Font-Size="Medium" ForeColor="#FF3300"></asp:Label>
                                                 <br />
                                                 开户行：宁波银行庄市支行
                                                 <br />
-                                                账号：4495 9849 9844 8378
+                                                账号：5204 0122 0002 10157
                                                
                                             </p>
                                         </div>

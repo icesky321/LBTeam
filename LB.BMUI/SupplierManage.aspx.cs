@@ -82,7 +82,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
         {
             string UserId = e.CommandArgument.ToString();
             MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId));
-            string url = MCopInfo.Bizlicense;
+            string url = "../WebUI/Bizlicense/" + MCopInfo.Bizlicense;
             Response.Redirect(url);
         }
         if (e.CommandName == "BPass")
@@ -101,7 +101,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
         {
             string UserId = e.CommandArgument.ToString();
             MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId));
-            string url = MCopInfo.HWPermit;
+            string url = "../WebUI/HWPermit/" + MCopInfo.HWPermit;
             Response.Redirect(url);
         }
         if (e.CommandName == "HPass")
@@ -120,7 +120,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
         {
             string UserId = e.CommandArgument.ToString();
             MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId)));
-            string url = MUserInfo.IDCard;
+            string url = "../WebUI/IDCard/"+ MUserInfo.IDCard;
             Response.Redirect(url);
         }
         if (e.CommandName == "IPass")

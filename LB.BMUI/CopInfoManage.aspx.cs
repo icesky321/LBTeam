@@ -102,7 +102,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
         if (e.CommandName == "Bizlicense")
         {
-            string url = MCopInfo.Bizlicense;
+            string url = "../WebUI/Bizlicense/" + MCopInfo.Bizlicense;
             if (!string.IsNullOrEmpty(MCopInfo.Bizlicense))
             { Response.Redirect(url); }
             else
@@ -121,7 +121,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         }
         if (e.CommandName == "HWPermit")
         {
-            string url = MCopInfo.HWPermit;
+            string url = "../WebUI/HWPermit/" + MCopInfo.HWPermit;
             if (!string.IsNullOrEmpty(MCopInfo.HWPermit))
             { Response.Redirect(url); }
 
@@ -136,7 +136,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
         }
         if (e.CommandName == "IDCard")
         {
-            string url = MUserInfo.IDCard;
+            string url = "../WebUI/IDCard/" + MUserInfo.IDCard;
             if (!string.IsNullOrEmpty(MUserInfo.IDCard))
             { Response.Redirect(url); }
 

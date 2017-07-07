@@ -140,6 +140,32 @@
       <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
+  <Table Name="dbo.CF_JD_Order" Member="CF_JD_Order">
+    <Type Name="CF_JD_Order">
+      <Column Name="CFId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="InUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OutUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="TransferMethod" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TransferDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OperatorConfirm" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Operator" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="OperateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AuditOperator" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CF_JD_OrderDetail" Member="CF_JD_OrderDetail">
+    <Type Name="CF_JD_OrderDetail">
+      <Column Name="ODId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CFId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="GoodsDetail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="GoodsUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.CopInfo" Member="CopInfo">
     <Type Name="CopInfo">
       <Column Name="CopId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -224,7 +250,6 @@
       <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="Volume" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Price" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DetailInfo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -238,6 +263,7 @@
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Recommend" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TSInfo" Member="TSInfo">
@@ -286,15 +312,12 @@
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="RealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="MobilePhoneNum" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
       <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IDCardNo" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="IDCard" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -308,6 +331,9 @@
       <Column Name="QYUserId" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="OpenId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IsQYUser" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="IDCardNo" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserNoticeInfo" Member="UserNoticeInfo">
@@ -320,6 +346,24 @@
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Operator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRecommend" Member="UserRecommend">
+    <Type Name="UserRecommend">
+      <Column Name="rcId" Member="RcId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rcUserTypeId" Member="RcUserTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rcName" Member="RcName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rcTelNum" Member="RcTelNum" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rcProvince" Member="RcProvince" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rcCity" Member="RcCity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rcTown" Member="RcTown" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rcStreet" Member="RcStreet" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rcRemark" Member="RcRemark" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="rcDatetime" Member="RcDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AuditOperator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.UserTypeInfo" Member="UserTypeInfo">
