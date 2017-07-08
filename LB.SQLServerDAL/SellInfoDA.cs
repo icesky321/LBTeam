@@ -47,6 +47,16 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取街道回收员待办回收信息
+        /// </summary>
+        /// <param name="jd_UserId">街道回收员UserId</param>
+        /// <returns></returns>
+        public int GetCount_JDTohandle(int jd_UserId)
+        {
+            return dbContext.SellInfo.Where(o => o.JD_UserId == jd_UserId && o.JD_TohandleTag == true).Count();
+        }
+
+        /// <summary>
         /// 创建出售信息。
         /// </summary>
         /// <param name="sellInfo"></param>
@@ -94,6 +104,7 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
         }
 
+
         /// <summary>
         /// 根据客服处理标记搜索出售信息。
         /// </summary>
@@ -110,14 +121,15 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
-        /// 根据客服处理标记搜索出售信息。
+        /// 根据街道回收员处理标记搜索出售信息。
         /// </summary>
-        /// <param name="kefuToHandleTag">客服处理标记。</param>
+        /// <param name="jd_UserId">街道回收员用户Id</param>
+        /// <param name="jdTohandleTag">街道回收员处理标记。</param>
         /// <returns></returns>
-        public IQueryable GetSellInfo_ByJDTohandleTag(bool jdTohandleTag)
+        public IQueryable GetSellInfo_ByJDTohandleTag(int jd_UserId, bool jdTohandleTag)
         {
             var query = from c in dbContext.SellInfo
-                        where c.JD_TohandleTag == jdTohandleTag
+                        where c.JD_UserId == jd_UserId && c.JD_TohandleTag == jdTohandleTag
                         orderby c.CreateDate descending
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.SellInfo>();

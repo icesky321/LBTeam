@@ -68,7 +68,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.BMUI", "LB.BMUI\", "{FC79127A-C912-4B63-B398-0BDA25CBD977}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;{C576E507-1E6E-4AAB-9863-A46398D09FAD}|LB.Model.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;"
+		ProjectReferences = "{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;{C576E507-1E6E-4AAB-9863-A46398D09FAD}|LB.Model.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;{2ff3a869-0866-4902-a739-1115ab19c961}|LB.Weixin.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_1174"
 		Debug.AspNetCompiler.PhysicalPath = "LB.BMUI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1174\"
@@ -106,6 +106,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.HSUI", "LB.HSUI\", "{256
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "4276"
+		SlnRelativePath = "LB.HSUI\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LB.Weixin.Message;
+using Senparc.Weixin.QY.AdvancedAPIs.Mass;
 
-public partial class Admin_BusiReview_CF_SellInfoAPV : System.Web.UI.Page
+public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
 {
     LB.BLL.SellInfoManage bll_sellInfo = new LB.BLL.SellInfoManage();
     LB.BLL.UserManage bll_userManage = new LB.BLL.UserManage();
@@ -66,7 +68,7 @@ public partial class Admin_BusiReview_CF_SellInfoAPV : System.Web.UI.Page
         if (infoId == Guid.Empty)
             return;
 
-        LB.SQLServerDAL.SellInfo sellInfo = e.Item.DataItem as LB.SQLServerDAL.SellInfo;
+        LB.SQLServerDAL.SellInfo sellInfo = bll_sellInfo.GetSellInfo_ById(infoId);
 
         if (sellInfo == null)
             return;
@@ -78,11 +80,12 @@ public partial class Admin_BusiReview_CF_SellInfoAPV : System.Web.UI.Page
             sellInfo.Kefu_HandleResult = "审核通过";
             sellInfo.Kefu_TohandleTag = false;
             sellInfo.JD_TohandleTag = true;
+            sellInfo.JD_UserId = 1164;      // TODO: 分配街道业务员的逻辑仍需修改。
 
-            //SendWx_ToCF(sellInfo.CF_UserId);
+            string result = SendWx_ToCF(sellInfo.JD_UserId);
 
-
-            bll_sellInfo.UpdateSellInfo(sellInfo);
+            if (result == "ok")
+                bll_sellInfo.UpdateSellInfo(sellInfo);
         }
 
         if (e.CommandName == "Reject")
@@ -97,14 +100,15 @@ public partial class Admin_BusiReview_CF_SellInfoAPV : System.Web.UI.Page
         Repeater1.DataBind();
     }
 
-    private string SendWx_ToCF(int cF_UserId)
+    private string SendWx_ToCF(int jd_UserId)
     {
-        LB.SQLServerDAL.UserInfo user = bll_userManage.GetUserInfoByUserId(cF_UserId);
+        //TODO: 发布前修改微信发布逻辑
+
+        LB.SQLServerDAL.UserInfo user = bll_userManage.GetUserInfoByUserId(jd_UserId);
         if (user == null)
             return "";
-
-        LB.WeixinQYWS.SendMsgService ws_sendMsg = new LB.WeixinQYWS.SendMsgService();
-        string result = ws_sendMsg.SendTextToUsers(user.QYUserId, "您有一条由产废单位发来的售货信息，请注意查收。", "5");
-        return result;
+        MsgSender msgSender = new MsgSender();
+        MassResult result = msgSender.SendTextToUsers(user.QYUserId, "产废单位有一条信息已被审核通过。jd_UserId：" + jd_UserId.ToString(), "5");
+        return result.errmsg;
     }
 }

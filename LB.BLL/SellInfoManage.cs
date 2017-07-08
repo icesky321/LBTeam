@@ -38,6 +38,16 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 获取街道回收员待办回收信息
+        /// </summary>
+        /// <param name="jd_UserId">街道回收员UserId</param>
+        /// <returns></returns>
+        public int GetCount_JDTohandle(int jd_UserId)
+        {
+            return da.GetCount_JDTohandle(jd_UserId);
+        }
+
+        /// <summary>
         /// 创建出售信息。
         /// </summary>
         /// <param name="sellInfo"></param>
@@ -79,13 +89,14 @@ namespace LB.BLL
         }
 
         /// <summary>
-        /// 根据客服处理标记搜索出售信息。
+        /// 根据街道回收员处理标记搜索出售信息。
         /// </summary>
-        /// <param name="kefuToHandleTag">客服处理标记。</param>
+        /// <param name="jd_UserId">街道回收员用户Id</param>
+        /// <param name="jdTohandleTag">街道回收员处理标记。</param>
         /// <returns></returns>
-        public IQueryable GetSellInfo_ByJDTohandleTag(bool jdTohandleTag)
+        public IQueryable GetSellInfo_ByJDTohandleTag(int jd_UserId, bool jdTohandleTag)
         {
-            return da.GetSellInfo_ByJDTohandleTag(jdTohandleTag);
+            return da.GetSellInfo_ByJDTohandleTag(jd_UserId, jdTohandleTag);
         }
 
 

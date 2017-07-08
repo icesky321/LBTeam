@@ -1,4 +1,4 @@
-﻿<%@ Page Title="产废单位出售信息审核" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="CF_SellInfoAPV.aspx.cs" Inherits="Admin_BusiReview_CF_SellInfoAPV" %>
+﻿<%@ Page Title="产废单位出售信息审核" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="CF_SellInfoAPV.aspx.cs" Inherits="BusiReview_CF_SellInfoAPV" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">

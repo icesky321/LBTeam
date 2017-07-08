@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.lvbao111.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.lvbao111.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://weixin.lvbao111.com/WeixinQY/WS" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://weixin.lvbao111.com/WeixinQY/WS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://www.lvbao111.com/">
+    <s:schema elementFormDefault="qualified" targetNamespace="http://weixin.lvbao111.com/WeixinQY/WS">
       <s:element name="SendTextToUsers">
         <s:complexType>
           <s:sequence>
@@ -61,7 +61,7 @@
   <wsdl:binding name="SendMsgServiceSoap" type="tns:SendMsgServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SendTextToUsers">
-      <soap:operation soapAction="http://www.lvbao111.com/SendTextToUsers" style="document" />
+      <soap:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToUsers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -70,7 +70,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendTextToTags">
-      <soap:operation soapAction="http://www.lvbao111.com/SendTextToTags" style="document" />
+      <soap:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToTags" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -82,7 +82,7 @@
   <wsdl:binding name="SendMsgServiceSoap12" type="tns:SendMsgServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SendTextToUsers">
-      <soap12:operation soapAction="http://www.lvbao111.com/SendTextToUsers" style="document" />
+      <soap12:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToUsers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -91,7 +91,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SendTextToTags">
-      <soap12:operation soapAction="http://www.lvbao111.com/SendTextToTags" style="document" />
+      <soap12:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToTags" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
