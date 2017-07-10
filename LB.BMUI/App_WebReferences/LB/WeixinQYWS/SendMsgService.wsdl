@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://weixin.lvbao111.com/WeixinQY/WS" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://weixin.lvbao111.com/WeixinQY/WS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://weixin.lvbao111.com/WeixinQY/WS">
+      <s:element name="SendTextToUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="users" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="agentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextToUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendTextToUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextToTags">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tags" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="agentId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendTextToTagsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendTextToTagsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendTextToUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTextToUsers" />
+  </wsdl:message>
+  <wsdl:message name="SendTextToUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTextToUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendTextToTagsSoapIn">
+    <wsdl:part name="parameters" element="tns:SendTextToTags" />
+  </wsdl:message>
+  <wsdl:message name="SendTextToTagsSoapOut">
+    <wsdl:part name="parameters" element="tns:SendTextToTagsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SendMsgServiceSoap">
+    <wsdl:operation name="SendTextToUsers">
+      <wsdl:input message="tns:SendTextToUsersSoapIn" />
+      <wsdl:output message="tns:SendTextToUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendTextToTags">
+      <wsdl:input message="tns:SendTextToTagsSoapIn" />
+      <wsdl:output message="tns:SendTextToTagsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SendMsgServiceSoap" type="tns:SendMsgServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendTextToUsers">
+      <soap:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextToTags">
+      <soap:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SendMsgServiceSoap12" type="tns:SendMsgServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendTextToUsers">
+      <soap12:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendTextToTags">
+      <soap12:operation soapAction="http://weixin.lvbao111.com/WeixinQY/WS/SendTextToTags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SendMsgService">
+    <wsdl:port name="SendMsgServiceSoap" binding="tns:SendMsgServiceSoap">
+      <soap:address location="http://weixin.lvbao111.com/WeixinQY/WS/SendMsgService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SendMsgServiceSoap12" binding="tns:SendMsgServiceSoap12">
+      <soap12:address location="http://weixin.lvbao111.com/WeixinQY/WS/SendMsgService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

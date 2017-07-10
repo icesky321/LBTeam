@@ -45,7 +45,7 @@ public partial class WeixinQY_Test_TestSendMsg : System.Web.UI.Page
     protected void btnSendMsgByLB_Click(object sender, EventArgs e)
     {
         MsgSender msgSender = new MsgSender();
-        msgSender.SendTextToUsers(tbUsers.Text, "恭喜发财");
+        msgSender.SendTextToUsers(tbUsers.Text, "恭喜发财", "5");
     }
 
     protected void btnSendArticleByLB_Click(object sender, EventArgs e)

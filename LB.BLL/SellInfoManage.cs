@@ -29,6 +29,25 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 获取客服待审核记录数
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount_KefuTohandle()
+        {
+            return da.GetCount_KefuTohandle();
+        }
+
+        /// <summary>
+        /// 获取街道回收员待办回收信息
+        /// </summary>
+        /// <param name="jd_UserId">街道回收员UserId</param>
+        /// <returns></returns>
+        public int GetCount_JDTohandle(int jd_UserId)
+        {
+            return da.GetCount_JDTohandle(jd_UserId);
+        }
+
+        /// <summary>
         /// 创建出售信息。
         /// </summary>
         /// <param name="sellInfo"></param>
@@ -36,6 +55,16 @@ namespace LB.BLL
         public LB.SQLServerDAL.SellInfo CreateSellInfo(LB.SQLServerDAL.SellInfo sellInfo)
         {
             return da.CreateSellInfo(sellInfo);
+        }
+
+        /// <summary>
+        /// 获取指定 infoId 的出售信息。
+        /// </summary>
+        /// <param name="infoId"></param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.SellInfo GetSellInfo_ById(Guid infoId)
+        {
+            return da.GetSellInfo_ById(infoId);
         }
 
         /// <summary>
@@ -52,20 +81,22 @@ namespace LB.BLL
         /// 根据客服处理标记搜索出售信息。
         /// </summary>
         /// <param name="kefuToHandleTag">客服处理标记。</param>
+        /// <param name="count">获取记录数</param>
         /// <returns></returns>
-        public IQueryable GetSellInfo_ByKefuTohandleTag(bool kefuToHandleTag)
+        public IQueryable GetSellInfo_ByKefuTohandleTag(bool kefuToHandleTag, int count)
         {
-            return da.GetSellInfo_ByKefuTohandleTag(kefuToHandleTag);
+            return da.GetSellInfo_ByKefuTohandleTag(kefuToHandleTag, count);
         }
 
         /// <summary>
-        /// 根据客服处理标记搜索出售信息。
+        /// 根据街道回收员处理标记搜索出售信息。
         /// </summary>
-        /// <param name="kefuToHandleTag">客服处理标记。</param>
+        /// <param name="jd_UserId">街道回收员用户Id</param>
+        /// <param name="jdTohandleTag">街道回收员处理标记。</param>
         /// <returns></returns>
-        public IQueryable GetSellInfo_ByJDTohandleTag(bool jdTohandleTag)
+        public IQueryable GetSellInfo_ByJDTohandleTag(int jd_UserId, bool jdTohandleTag)
         {
-            return da.GetSellInfo_ByJDTohandleTag(jdTohandleTag);
+            return da.GetSellInfo_ByJDTohandleTag(jd_UserId, jdTohandleTag);
         }
 
 

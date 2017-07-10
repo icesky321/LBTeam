@@ -9,7 +9,7 @@ using LB.Weixin.Message;
 /// <summary>
 /// SendMsgService 的摘要说明
 /// </summary>
-[WebService(Namespace = "http://www.lvbao111.com/")]
+[WebService(Namespace = "http://weixin.lvbao111.com/WeixinQY/WS")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // 若要允许使用 ASP.NET AJAX 从脚本中调用此 Web 服务，请取消注释以下行。 
 // [System.Web.Script.Services.ScriptService]
