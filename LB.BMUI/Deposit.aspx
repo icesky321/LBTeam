@@ -5,7 +5,7 @@
 <%@ Register Src="~/UserControls/UnAunth.ascx" TagName="UnAunth" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPl.aceHolderID="ContentPlaceHolder1" runat="Server">
     <uc2:Aunth ID="Aunth1" runat="server" Visible="false" />
     <uc3:UnAunth ID="UnAunth1" runat="server" Visible="false" />
     <div class="section">

@@ -26,10 +26,26 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
+        public LB.SQLServerDAL.CF_JD_Order GetCF_JD_OrderById(Guid id)
+        {
+            var query = from c in dbContext.CF_JD_Order
+                        where c.CFId == id
+                        select c;
+            return query.FirstOrDefault<LB.SQLServerDAL.CF_JD_Order>();
+        }
+
         public IQueryable<LB.SQLServerDAL.CF_JD_Order> GetCF_JD_Order_ByInUserId(int InUserId)
         {
             var query = from c in dbContext.CF_JD_Order
                         where c.InUserId == InUserId
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.CF_JD_Order>();
+        }
+
+        public IQueryable<LB.SQLServerDAL.CF_JD_Order> GetCF_JD_Order_ByAudit(bool Audit)
+        {
+            var query = from c in dbContext.CF_JD_Order
+                        where c.Audit == Audit
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.CF_JD_Order>();
         }

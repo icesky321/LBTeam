@@ -51,7 +51,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             }
 
         }
-        sendmsg.SendTextToUsers("2", "哈哈哈");
+        //sendmsg.SendTextToUsers("2", "哈哈哈");
         Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
         //Response.Redirect("Success.aspx?CFId=0c31f580-8be2-4d40-b506-f10f53c0073b");
     }
