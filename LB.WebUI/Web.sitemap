@@ -39,6 +39,8 @@
       <!--<siteMapNode url="~/UserCenter/MyHelpInfo.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理"/>-->
     </siteMapNode>
     <siteMapNode url="" title="我的收货" description="我的收货"  roles="CEMetalFactory,CEUser,CERecyclingCop" >
+      <siteMapNode url="../HSUI/Quote.aspx" title="回收报价" description="回收报价"></siteMapNode>
+      <siteMapNode url="../HSUI/ShowQuotation.aspx" title="报价查询" description="报价查询"></siteMapNode>
       <siteMapNode url="~/UserCenter/OneKeyBuy.aspx" title="一键收货" description="一键收货"/>
     </siteMapNode>
     <siteMapNode url="" title="我的卖货" description="我的卖货"  roles="CESupplier,CEUser,CERecyclingCop" >

@@ -91,6 +91,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.HSUI", "LB.HSUI\", "{25695107-D03F-43A7-9D78-524B7E9803D4}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{5a66d98f-2f4b-45a5-a2a3-77c57408cbe5}|LB.SQLServerDAL.dll;{C576E507-1E6E-4AAB-9863-A46398D09FAD}|LB.Model.dll;{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_4276"
 		Debug.AspNetCompiler.PhysicalPath = "LB.HSUI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4276\"

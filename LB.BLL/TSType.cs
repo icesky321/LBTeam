@@ -12,5 +12,7 @@ namespace LB.BLL
         {
             return da.GetTSType();
         }
+
+       
     }
 }

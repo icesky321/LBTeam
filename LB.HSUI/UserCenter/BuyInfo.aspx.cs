@@ -12,7 +12,7 @@ public partial class BuyInfo : System.Web.UI.Page
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.Tradeleads MTradeleads = new LB.SQLServerDAL.Tradeleads();
     LB.BLL.Tradeleads bll_tradeleads = new LB.BLL.Tradeleads();
-    LB.BLL.TSInfo bll_tsinfo = new LB.BLL.TSInfo();
+    LB.BLL.TSManage bll_tsinfo = new LB.BLL.TSManage();
     LB.BLL.UnitInfo bll_unitinfo = new LB.BLL.UnitInfo();
     protected void Page_Load(object sender, EventArgs e)
     {

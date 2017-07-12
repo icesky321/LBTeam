@@ -51,7 +51,7 @@
     <Compile Include="SellInfoManage.cs" />
     <Compile Include="SMS.cs" />
     <Compile Include="Tradeleads.cs" />
-    <Compile Include="TSInfo.cs" />
+    <Compile Include="TSManage.cs" />
     <Compile Include="TSType.cs" />
     <Compile Include="UnitInfo.cs" />
     <Compile Include="UserAuditMsg.cs" />

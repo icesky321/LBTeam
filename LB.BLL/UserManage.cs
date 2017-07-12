@@ -38,6 +38,28 @@ namespace LB.BLL
             return da.GetIsQYUser_Sum();
         }
 
+        /// <summary>
+        /// 获取指定地级市的回收公司个数
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <returns></returns>
+        public int GetCount_HS_InCity(string city)
+        {
+            return da.GetCount_HS_InCity(city);
+        }
+
+        /// <summary>
+        /// 获取指定街道的产废单位个数
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <param name="town">县级市（区）</param>
+        /// <param name="street">街道</param>
+        /// <returns></returns>
+        public int GetCount_CF_InStreet(string city, string town, string street)
+        {
+            return da.GetCount_CF_InStreet(city, town, street);
+        }
+
         #endregion
 
         /// <summary>
@@ -118,6 +140,28 @@ namespace LB.BLL
         public LB.SQLServerDAL.UserInfo GetUserInfoByAddress(int UserTypeId, string province, string city, string country, string street)
         {
             return da.GetUserInfoByAddress(UserTypeId, province, city, country, street);
+        }
+
+        /// <summary>
+        /// 查询指定地级市下的回收公司
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string city)
+        {
+            return da.GetUserInfo_HS_InCity(city);
+        }
+
+        /// <summary>
+        /// 查询指定街道下的产废单位
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <param name="town">县级市（区）</param>
+        /// <param name="street">街道</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string city, string town, string street)
+        {
+            return da.GetUserInfo_InStreet(city, town, street);
         }
 
         public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)

@@ -29,7 +29,7 @@ public partial class Syb_JD_SellReqMsg : System.Web.UI.Page
                 hfJD_UserId.Value = user.UserId.ToString();
         }
 
-        LoadSellReqToHandle();       // 加载我的持股
+        LoadSellReqToHandle();
     }
 
     public void LoadSellReqToHandle()
