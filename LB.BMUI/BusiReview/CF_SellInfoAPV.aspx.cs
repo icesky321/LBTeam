@@ -80,7 +80,7 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
             sellInfo.Kefu_HandleResult = "审核通过";
             sellInfo.Kefu_TohandleTag = false;
             sellInfo.JD_TohandleTag = true;
-            sellInfo.JD_UserId = 1164;      // TODO: 分配街道业务员的逻辑仍需修改。
+            sellInfo.JD_UserId = 1186;      // TODO: 分配街道业务员的逻辑仍需修改。  // 本地1164 服务器上 1186
 
             string result = SendWx_ToCF(sellInfo.JD_UserId);
 

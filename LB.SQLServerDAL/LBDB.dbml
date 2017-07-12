@@ -215,10 +215,33 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TSName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TSCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="OfferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="QuotedPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="StandardUnit" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Region" Member="Region">
+    <Type Name="Region">
+      <Column Name="RegionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="ProvinceId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="CityId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="CountyId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="ParentId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AreaName" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="SimpleName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="WholeName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="AreaCode" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="Lon" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Lat" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="PrePinYin" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
+      <Column Name="PinYin" Type="System.String" DbType="NChar(256)" CanBeNull="true" />
+      <Column Name="SimplePy" Type="System.String" DbType="NChar(32)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.SellInfo" Member="SellInfo">
@@ -270,7 +293,11 @@
   <Table Name="dbo.TSInfo" Member="TSInfo">
     <Type Name="TSInfo">
       <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TSName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TSName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TsCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="ChargeUnit" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="OrderNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TSType" Member="TSType">

@@ -88,11 +88,12 @@ namespace LB.SQLServerDAL
         /// <summary>
         /// 获取今日报价信息对象。
         /// </summary>
+        /// <param name="regionCode">行政区域代码</param>
         /// <returns></returns>
-        public IQueryable<Quotation> GetQuotation(string city, DateTime today)
+        public IQueryable<Quotation> GetQuotation(string regionCode, DateTime today)
         {
             var query = from m in dbContext.Quotation
-                        where m.City == city && m.OfferDate.Date == today.Date
+                        where m.RegionCode == regionCode && m.OfferDate.Date == today.Date
                         orderby m.TSName
                         select m;
             return query.AsQueryable<Quotation>();
@@ -108,6 +109,23 @@ namespace LB.SQLServerDAL
         {
             var query = from m in dbContext.Quotation
                         where m.UserId == userId && m.TSId == tsId
+                        orderby m.OfferDate descending
+                        select m;
+
+            return query.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 获取最新的回收报价信息。
+        /// </summary>
+        /// <param name="userId">回收公司Id</param>
+        /// <param name="tsCode">电瓶代码</param>
+        /// <param name="regionCode">行政区域代码</param>
+        /// <returns></returns>
+        public Quotation GetLastQuotedPrice(int userId, string tsCode, string regionCode)
+        {
+            var query = from m in dbContext.Quotation
+                        where m.UserId == userId && m.TSCode == tsCode && m.RegionCode == regionCode
                         orderby m.OfferDate descending
                         select m;
 

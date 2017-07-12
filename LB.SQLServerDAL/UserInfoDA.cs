@@ -47,6 +47,28 @@ namespace LB.SQLServerDAL
             return dbContext.UserInfo.Where(o => o.IsQYUser == true).Count();
         }
 
+        /// <summary>
+        /// 获取指定地级市的回收公司个数
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <returns></returns>
+        public int GetCount_HS_InCity(string city)
+        {
+            return dbContext.UserInfo.Where(c => c.UserTypeId == 1 && c.City == city).Count();
+        }
+
+        /// <summary>
+        /// 获取指定街道的产废单位个数
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <param name="town">县级市（区）</param>
+        /// <param name="street">街道</param>
+        /// <returns></returns>
+        public int GetCount_CF_InStreet(string city, string town, string street)
+        {
+            return dbContext.UserInfo.Where(c => c.UserTypeId == 1 && c.City == city && c.Town == town && c.Street == street).Count();
+        }
+
         #endregion
 
         public LB.SQLServerDAL.UserInfo NewUserInfo(LB.SQLServerDAL.UserInfo userinfo)
@@ -108,6 +130,47 @@ namespace LB.SQLServerDAL
             return query.FirstOrDefault<LB.SQLServerDAL.UserInfo>();
         }
 
+        /// <summary>
+        /// 查询指定地级市下的回收公司
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string city)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == 2 && c.City == city
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
+        }
+
+        /// <summary>
+        /// 查询指定地级市下的街道回收员
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_JD_InCity(string city)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == 5 && c.City == city
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
+        }
+
+        /// <summary>
+        /// 查询指定街道下的产废单位
+        /// </summary>
+        /// <param name="city">地级市</param>
+        /// <param name="town">县级市（区）</param>
+        /// <param name="street">街道</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string city, string town, string street)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == 1 && c.City == city && c.Town == town && c.Street == street
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
+        }
+
 
         public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfoByUserTypeId(int UserTypeId)
         {
@@ -165,6 +228,8 @@ namespace LB.SQLServerDAL
                         select m;
             return query.AsEnumerable().Last().Password;
         }
+
+
 
         public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
         {
