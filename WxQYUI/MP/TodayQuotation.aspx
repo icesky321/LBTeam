@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TodayQuotation.aspx.cs" Inherits="JD_TodayQuotation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TodayQuotation.aspx.cs" Inherits="MP_TodayQuotation" %>
 
 <!DOCTYPE html>
 
@@ -14,13 +14,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            当前查价区域：<asp:Literal ID="ltlRegionWholeName" runat="server"></asp:Literal>
-            <asp:HiddenField ID="hfCountyId" runat="server" />
-        </div>
+
         <div class="page">
+            <div class="page__hd">
+                <div style="border: 1px dotted #999999; padding: 20px; margin: 10px 5px 0 5px;" class="ui-corner-all">
+                    报价区域：<asp:Literal ID="ltlRegionWholeName" runat="server"></asp:Literal>
+                    <asp:HiddenField ID="hfCountyId" runat="server" />
+                </div>
+            </div>
             <div class="page__bd">
-                <div class="weui-cells__title">今日更新</div>
+                <div class="weui-cells__title">
+                    今日更新
+                </div>
                 <div class="weui-cells">
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
@@ -88,8 +93,9 @@
                 </div>
 
                 <label for="weuiAgree" class="weui-agree">
-                    <span class="weui-agree__text">须知：废旧电瓶回收报价信息由本地回收公司发布，本报价信息供本市域范围内回收业务员参考。
-                        本报价信息不向产废单位提供。
+                    <span class="weui-agree__text">须知：废旧电瓶回收报价信息由本地回收公司面向所有产废单位报价。<br />
+                        汽车80AA：代表型号80AH以上的汽车电池。<br />
+                        汽车80AB：代表型号80AH以下的汽车电池。<br />
                     </span>
                 </label>
             </div>

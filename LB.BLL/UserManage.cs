@@ -132,6 +132,16 @@ namespace LB.BLL
             return da.ExistTelNum(telnum);
         }
 
+        /// <summary>
+        /// 获取没有地域代号，但有地域信息的人员
+        /// <para>仅供后台数据维护使用</para>
+        /// </summary>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUser_NotRegionCode()
+        {
+            return da.GetUser_NotRegionCode();
+        }
+
         public string GetPWD(string UserName)
         {
             return da.GetPWD(UserName);

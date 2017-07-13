@@ -47,7 +47,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 宁波绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 宁波绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 宁波绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>

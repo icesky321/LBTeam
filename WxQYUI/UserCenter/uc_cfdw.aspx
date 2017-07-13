@@ -62,7 +62,7 @@
                     </p>
                     </a></li>
                     <li><a href="#pageMima" data-transition="slide" rel="external">密码管理</a></li>
-                    <li><a href="EditAddress.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
+                    <li><a href="ShowAddress.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
                         <asp:Literal ID="ltlAddress" runat="server"></asp:Literal>
                     </p>
                     </a></li>
