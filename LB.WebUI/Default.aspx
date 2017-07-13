@@ -19,7 +19,7 @@
     <div class="homepage-slider companywarpslider">
         <div id="sequence">
             <ul class="sequence-canvas">
-                <!-- Slide 4 -->
+<%--                <!-- Slide 4 -->
                 <li class="bg2">
                     <!-- Slide Title -->
                     <h2 class="title" style="font-family: 微软雅黑; font-weight: bold">街道回收员火热招募中!</h2>
@@ -28,7 +28,7 @@
                     <!-- Slide Image -->
                     <img class="slide-img" src="img/homepage-slider/slide4.png" alt="Slide 3" />
                 </li>
-                <!-- End Slide 4 -->
+                <!-- End Slide 4 -->--%>
                 <!-- Slide 1 -->
                 <li class="bg4">
                     <!-- Slide Title -->
@@ -62,7 +62,7 @@
             </ul>
             <div class="sequence-pagination-wrapper">
                 <ul class="sequence-pagination">
-                    <li>1</li>
+                  <%--  <li>1</li>--%>
                     <li>2</li>
                     <li>3</li>
                     <li>4</li>
@@ -198,7 +198,7 @@
                                                             CommandName="AllNews">更多...</asp:LinkButton>
                                                     </FooterTemplate>
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("ShowTime","{0:yyyy-M-d}") %>'></asp:Label>
+                                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("NoteTime","{0:yyyy-M-d}") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -268,7 +268,7 @@
                                                             CommandName="AllNews">更多...</asp:LinkButton>
                                                     </FooterTemplate>
                                                     <ItemTemplate>
-                                                        <asp:Label ID="lbLawShowTime" runat="server" Text='<%# Bind("ShowTime","{0:yyyy-M-d}") %>'></asp:Label>
+                                                        <asp:Label ID="lbLawShowTime" runat="server" Text='<%# Bind("NoteTime","{0:yyyy-M-d}") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -422,7 +422,7 @@
                     <div class="am-u-md-12">
                         <div class="product3-main">
                             <div class="am-g">
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx?Id=3';">
+                                <div class="am-u-md-4 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx?Id=3';">
                                     <div class="product3-icon">
                                         <i class="am-icon-star-o"></i>
                                     </div>
@@ -432,7 +432,7 @@
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx?Id=2';">
+                                <div class="am-u-md-4 am-u-sm-6 product3-main-box" onclick="location.href='Company.aspx?Id=2';">
                                     <div class="product3-icon">
                                         <i class="am-icon-heart-o"></i>
                                     </div>
@@ -442,17 +442,17 @@
                                         <hr class="split-line">
                                     </div>
                                 </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box"  onclick="location.href='MemberInfo.aspx?Id=5';">
+<%--                                <div class="am-u-md-3 am-u-sm-6 product3-main-box"  onclick="location.href='MemberInfo.aspx?Id=5';">
                                     <div class="product3-icon">
                                         <i class="am-icon-send-o"></i>
                                     </div>
                                     <div class="product3-content">
                                         <h3>街道回收员</h3>
-                                        <%-- <p>基于风靡社区的React.js封装组件沿袭高性能、可复用、易扩展等特性保证企业应用技术栈保持国际领先</p>--%>
+                                        
                                         <hr class="split-line">
                                     </div>
-                                </div>
-                                <div class="am-u-md-3 am-u-sm-6 product3-main-box" onclick="location.href='MemberInfo.aspx?Id=1';">
+                                </div>--%>
+                                <div class="am-u-md-4 am-u-sm-6 product3-main-box" onclick="location.href='MemberInfo.aspx?Id=1';">
                                     <div class="product3-icon">
                                         <i class="am-icon-diamond"></i>
                                     </div>

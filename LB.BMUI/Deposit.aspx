@@ -5,7 +5,7 @@
 <%@ Register Src="~/UserControls/UnAunth.ascx" TagName="UnAunth" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPl.aceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <uc2:Aunth ID="Aunth1" runat="server" Visible="false" />
     <uc3:UnAunth ID="UnAunth1" runat="server" Visible="false" />
     <div class="section">
@@ -28,7 +28,7 @@
                                 <asp:BoundField DataField="Ammount" HeaderText="押金金额(元)" SortExpression="Ammount" />
                                 <asp:TemplateField HeaderText="银行账号 " SortExpression="Account">
                                     <ItemTemplate>
-                                       
+
                                         <asp:Label ID="lbBankAcccount" runat="server" Text='<%# Bind("Account") %>' ToolTip='<%# Bind("AccountName") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -36,11 +36,11 @@
                                     <ItemTemplate>
                                         <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                                             <asp:View ID="View1" runat="server">
-                                                 <asp:Image ID="lbtnPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过"/>
-                                               
+                                                <asp:Image ID="lbtnPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
+
                                             </asp:View>
                                             <asp:View ID="View2" runat="server">
-                                                 <asp:Image ID="lbtnUPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过"/>
+                                                <asp:Image ID="lbtnUPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                                             </asp:View>
                                         </asp:MultiView>
                                     </ItemTemplate>
@@ -51,10 +51,10 @@
                                     <ItemTemplate>
                                         <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
                                             <asp:View ID="View3" runat="server">
-                                                <asp:Image ID="lbtnSPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过"/>
+                                                <asp:Image ID="lbtnSPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
                                             </asp:View>
                                             <asp:View ID="View4" runat="server">
-                                                <asp:Image ID="lbtnUSPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过"/>
+                                                <asp:Image ID="lbtnUSPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                                             </asp:View>
                                         </asp:MultiView>
                                     </ItemTemplate>
@@ -81,10 +81,10 @@
                                     <ItemTemplate>
                                         <asp:MultiView ID="MultiView3" runat="server" ActiveViewIndex="0">
                                             <asp:View ID="View5" runat="server">
-                                                 <asp:Image ID="lbtnDealPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过"/>
+                                                <asp:Image ID="lbtnDealPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
                                             </asp:View>
                                             <asp:View ID="View6" runat="server">
-                                                <asp:Image ID="lbtnDealUPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过"/>
+                                                <asp:Image ID="lbtnDealUPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                                             </asp:View>
                                         </asp:MultiView>
                                     </ItemTemplate>
@@ -95,10 +95,10 @@
                                     <ItemTemplate>
                                         <asp:MultiView ID="MultiView4" runat="server" ActiveViewIndex="0">
                                             <asp:View ID="View7" runat="server">
-                                                <asp:Image ID="lbtnDealSPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过"/>
+                                                <asp:Image ID="lbtnDealSPass" runat="server" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
                                             </asp:View>
                                             <asp:View ID="View8" runat="server">
-                                                <asp:Image ID="lbtnDealUSPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过"/>
+                                                <asp:Image ID="lbtnDealUSPass" runat="server" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
                                             </asp:View>
                                         </asp:MultiView>
                                     </ItemTemplate>
@@ -109,9 +109,10 @@
                     </ContentTemplate>
                 </asp:TabPanel>
             </asp:TabContainer>
+        </div>
+    </div>
 
-
-            <br />
-            <hr />
+    <br />
+    <hr />
 </asp:Content>
 

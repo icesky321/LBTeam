@@ -62,7 +62,7 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.NewsInfo
                         where c.NewsTypeId == TypeId
-                        orderby c.Id descending
+                        orderby c.NoteTime descending
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.NewsInfo>().Take(13);
         }

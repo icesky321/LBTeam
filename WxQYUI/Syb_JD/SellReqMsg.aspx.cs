@@ -81,9 +81,14 @@ public partial class Syb_JD_SellReqMsg : System.Web.UI.Page
 
     protected void btnCreateBill_Command(object sender, CommandEventArgs e)
     {
+        LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
         if (e.CommandName == "Create")
         {
-
+            string InfoId = (string)e.CommandArgument;//获取Item传过来的参数 
+            MSellInfo = bll_sellInfo.GetSellInfo_ById(Guid.Parse(InfoId));
+            string url = "~/Syb_hsgs/GoodsReceipt.aspx?InUserId=" + MSellInfo.CF_UserId + "&OutUserId=" + MSellInfo.JD_UserId + "&InfoId=" + MSellInfo.InfoId;
+            Response.Redirect(url);
+                
         }
     }
 }
