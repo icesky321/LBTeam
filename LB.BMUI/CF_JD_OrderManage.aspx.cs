@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class CF_JD_OrderManage : System.Web.UI.Page
 {
+    LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     LB.BLL.CF_JD_Order bll_cf_jd_order = new LB.BLL.CF_JD_Order();
     LB.SQLServerDAL.CF_JD_Order MCF_JD_Order = new LB.SQLServerDAL.CF_JD_Order();
@@ -43,6 +44,17 @@ public partial class CF_JD_OrderManage : System.Web.UI.Page
             MCF_JD_Order.Audit = true;
             bll_cf_jd_order.UpdateCF_JD_Order(MCF_JD_Order);
             Repeater1.DataBind();
+            //sendmsg.seSendTextToUsers("2", "哈哈哈");
         }
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = "有订单啦~~";
+        article.Description = "这笔单子够我赚一笔啦/n 哈哈哈哈/n 啦啦啦啦啦啦啦/n 呵呵呵呵呵呵";
+        article.Url = "http://www.163.com";
+        sendmsg.SendArticleToUsers("2", article, "5");
     }
 }

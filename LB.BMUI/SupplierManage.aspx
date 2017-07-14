@@ -94,6 +94,7 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:BoundField DataField="CreateTime" HeaderText="注册时间" SortExpression="CreateTime" />
         </Columns>
         <PagerTemplate>
             <table width="100%" style="font-size: 12px;">

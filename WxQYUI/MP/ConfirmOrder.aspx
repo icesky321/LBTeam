@@ -55,7 +55,7 @@
                                     <td>
                                         <label for="fullname">交易时间：</label>
                                     </td>
-                                    ,<td>
+                                    <td>
                                         <asp:Label ID="lbDate" runat="server" Text='<%# Eval("AuditDatetime") %>'></asp:Label>
                                     </td>
                                     <td>

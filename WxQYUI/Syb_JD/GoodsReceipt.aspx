@@ -61,7 +61,7 @@
                     </div>
                     <div class="weui-cell__bd">
                         <asp:TextBox ID="tbAmount" runat="server" class="weui-input" type="text" placeholder="请输入付款金额" ValidationGroup="1"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请输入金额！"  ValidationGroup="1" ControlToValidate="tbAmount"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请输入金额！" ValidationGroup="1" ControlToValidate="tbAmount"></asp:RequiredFieldValidator>
                     </div>
                     <div class="weui-cell__ft">
                         <label class="weui-label">
@@ -74,7 +74,7 @@
                     <asp:TextBox ID="tbRemark" runat="server" Text="" placeholder="如有补充说明请在这里输入"></asp:TextBox>
                 </div>
                 <br />
-                <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external"  ValidationGroup="1" />
+                <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external" ValidationGroup="1" />
 
 
             </div>

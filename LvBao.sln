@@ -87,6 +87,9 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.BMUI", "LB.BMUI\", "{FC7
 		SlnRelativePath = "LB.BMUI\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+		{B77F44D1-35FE-4111-8966-BD078782677E} = {B77F44D1-35FE-4111-8966-BD078782677E}
+	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LB.HSUI", "LB.HSUI\", "{25695107-D03F-43A7-9D78-524B7E9803D4}"
 	ProjectSection(WebsiteProperties) = preProject
