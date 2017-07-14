@@ -17,6 +17,6 @@ public partial class UserCenter_EditPassword : System.Web.UI.Page
 
     protected void ChangeUserPassword_ChangedPassword(object sender, EventArgs e)
     {
-        Response.Redirect("uc_cfdw.aspx");
+        Response.Redirect("uc_cfdw.aspx", true);
     }
 }

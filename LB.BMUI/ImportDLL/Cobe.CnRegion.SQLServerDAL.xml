@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cobe.CnRegion.SQLServerDAL</name>
+    </assembly>
+    <members>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.Dispose">
+            <summary>
+            释放由本类占用的所有资源
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.GetCount(System.String)">
+            <summary>
+            获取指定ParentId的下级子区划的数目。
+            </summary>
+            <param name="parentId">父区划Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.GetRegion(System.String)">
+            <summary>
+            根据Id获取行政区域
+            </summary>
+            <param name="id">行政区域代码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.GetRegions(System.String)">
+            <summary>
+            查询子区域
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.GetRegions(System.Int32)">
+            <summary>
+            查询某层级的所有区域
+            </summary>
+            <param name="level">层级</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.GetProvinces">
+            <summary>
+            查询所有省份
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.ExistRegionById(System.String)">
+            <summary>
+            根据id查询某区划是否存在
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.SQLServerDAL.RegionDA.ExistRegionByName(System.String)">
+            <summary>
+            根据id查询某区划是否存在
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
