@@ -56,6 +56,7 @@ public partial class Syb_HS_Quote : System.Web.UI.Page
         quotation.UserId = 1162;
         quotation.UserName = "阿尔泰公司";
         quotation.StandardUnit = "吨";
+        //quotation.City = "宁波";
 
         decimal price = 0m;
         decimal.TryParse(tbQuotedPrice.Text, out price);

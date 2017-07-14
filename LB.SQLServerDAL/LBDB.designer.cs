@@ -6758,6 +6758,8 @@ namespace LB.SQLServerDAL
 		
 		private string _MobilePhoneNum;
 		
+		private string _RegionCode;
+		
 		private string _Province;
 		
 		private string _City;
@@ -6812,6 +6814,8 @@ namespace LB.SQLServerDAL
     partial void OnUserNameChanged();
     partial void OnMobilePhoneNumChanging(string value);
     partial void OnMobilePhoneNumChanged();
+    partial void OnRegionCodeChanging(string value);
+    partial void OnRegionCodeChanged();
     partial void OnProvinceChanging(string value);
     partial void OnProvinceChanged();
     partial void OnCityChanging(string value);
@@ -6937,6 +6941,26 @@ namespace LB.SQLServerDAL
 					this._MobilePhoneNum = value;
 					this.SendPropertyChanged("MobilePhoneNum");
 					this.OnMobilePhoneNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16)")]
+		public string RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
 				}
 			}
 		}

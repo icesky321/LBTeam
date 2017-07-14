@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class JD_TodayQuotation : System.Web.UI.Page
+public partial class MP_TodayQuotation : System.Web.UI.Page
 {
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
@@ -45,7 +45,7 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
             Response.Redirect("UserInfoIncomplete.aspx");
         else
         {
-            ltlRegionWholeName.Text = region.CountyId;
+            ltlRegionWholeName.Text = bll_region.GetRegion(region.CountyId).WholeName;
             hfCountyId.Value = region.CountyId;
         }
 
@@ -53,9 +53,10 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
 
     protected void LoadTodayQuotation()
     {
-        var query = bll_quote.GetQuotation("宁波", DateTime.Now.Date);
-        Repeater1.DataSource = query;
-        Repeater1.DataBind();
+        // TODO： 发布前要修改
+        //var query = bll_quote.GetQuotation("宁波", DateTime.Now.Date);
+        //Repeater1.DataSource = query;
+        //Repeater1.DataBind();
     }
     #endregion
 
@@ -70,6 +71,7 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
             Literal ltlDate = e.Item.FindControl("ltlDate") as Literal;
             if (quotation != null)
             {
+
                 ltlHS_UserName.Text = quotation.UserName;
                 ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
                 ltlDate.Text = quotation.OfferDate.ToShortDateString();

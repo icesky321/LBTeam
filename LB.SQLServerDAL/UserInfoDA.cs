@@ -106,6 +106,20 @@ namespace LB.SQLServerDAL
             return query.FirstOrDefault<LB.SQLServerDAL.UserInfo>();
         }
 
+        /// <summary>
+        /// 获取没有地域代号，但有地域信息的人员
+        /// <para>仅供后台数据维护使用</para>
+        /// </summary>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUser_NotRegionCode()
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.RegionCode == "" && c.Province != "-1"
+                        orderby c.Province, c.City, c.Town, c.Street
+                        select c;
+            return query.FirstOrDefault<LB.SQLServerDAL.UserInfo>();
+        }
+
         public LB.SQLServerDAL.UserInfo GetUserInfoByAddress(int UserTypeId, string province, string city, string country, string street)
         {
             var query = from c in dbContext.UserInfo

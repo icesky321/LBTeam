@@ -17,23 +17,7 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div data-role="page" id="page1">
-            <div data-role="header">
-                <h2>绿宝--出售信息发布</h2>
-            </div>
             <div data-role="main" class="ui-content">
-                <div data-role="collapsible">
-                    <h2>登录 后发布出售信息（点击查看）</h2>
-                    <p>
-                        免费注册。 你还在为不知如何处理废旧电瓶而烦恼吗？立即注册为绿宝三益会员，您即可免费发布出售信息，会有合法回收人员上门为您服务，处理电瓶就那么轻松！！<br />
-
-                    </p>
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a" style="text-align: center;"><a href="../Login/Login.aspx" rel="external">我要登录</a></div>
-                        <div class="ui-block-b" style="text-align: center;"><a href="../Login/Register.aspx" rel="external">我要注册</a></div>
-                    </div>
-
-                </div>
-
                 <fieldset data-role="controlgroup">
                     <legend>您要出售的电瓶品种</legend>
                     <asp:CheckBoxList ID="cblDP" runat="server" DataSourceID="ObjectDataSource1" DataTextField="TSName" DataValueField="TSId" RepeatLayout="UnorderedList">
@@ -72,7 +56,7 @@
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
-              
+
             </div>
             <div data-role="footer">
                 <div class="page__bd page__bd_spacing">
@@ -82,7 +66,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 宁波绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>

@@ -133,6 +133,22 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取最新的回收报价信息。
+        /// </summary>
+        /// <param name="tsCode">电瓶代码</param>
+        /// <param name="regionCode">行政区域代码</param>
+        /// <returns></returns>
+        public Quotation GetLastQuotedPrice(string tsCode, string regionCode)
+        {
+            var query = from m in dbContext.Quotation
+                        where m.TSCode == tsCode && m.RegionCode == regionCode
+                        orderby m.OfferDate descending
+                        select m;
+
+            return query.FirstOrDefault();
+        }
+
+        /// <summary>
         /// 根据报价信息编号获取报价信息对象。
         /// </summary>
         /// <param name="quotId">报价信息编号。</param>

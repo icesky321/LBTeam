@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class UserCenter_EditAddress : System.Web.UI.Page
+public partial class UserCenter_ShowAddress : System.Web.UI.Page
 {
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
@@ -57,6 +57,6 @@ public partial class UserCenter_EditAddress : System.Web.UI.Page
 
         bll_user.UpdateUserInfo(user);
 
-        Response.Redirect("EditAddress.aspx");
+        Response.Redirect("ShowAddress.aspx");
     }
 }

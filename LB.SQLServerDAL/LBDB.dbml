@@ -320,6 +320,7 @@
       <Column Name="UserTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MobilePhoneNum" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
       <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

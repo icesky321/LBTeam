@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="EditAddress.aspx.cs" Inherits="UserCenter_EditAddress" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ShowAddress.aspx.cs" Inherits="UserCenter_ShowAddress" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -77,7 +77,7 @@
                                 <asp:Button ID="btnEdit" runat="server" Text="保存信息" OnClick="btnEdit_Click" ValidationGroup="edit" />
                             </div>
                             <div class="ui-block-b">
-                                <a href="EditAddress.aspx" data-role="button" rel="external">返回</a>
+                                <a href="ShowAddress.aspx" data-role="button" rel="external">返回</a>
                             </div>
                         </div>
                     </ContentTemplate>
