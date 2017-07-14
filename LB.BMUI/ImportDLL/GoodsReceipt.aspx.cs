@@ -8,13 +8,10 @@ using System.Web.UI.WebControls;
 public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
 {
     LB.BLL.UnitInfo bll_unitinfo = new LB.BLL.UnitInfo();
-    LB.SQLServerDAL.CF_JD_Order MCF_JD_Order = new LB.SQLServerDAL.CF_JD_Order();
     LB.BLL.CF_JD_Order bll_cf_jd_order = new LB.BLL.CF_JD_Order();
     LB.BLL.CF_JD_OrderDetail bll_cf_jd_orderdetail = new LB.BLL.CF_JD_OrderDetail();
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sellinfomanage = new LB.BLL.SellInfoManage();
-    LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
-    SendMsgService sendmsg = new SendMsgService();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -40,6 +37,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
 
     protected void btSure_Click(object sender, EventArgs e)
     {
+        LB.SQLServerDAL.CF_JD_Order MCF_JD_Order = new LB.SQLServerDAL.CF_JD_Order();
         MCF_JD_Order.InUserId = bll_usermanage.GetUserInfoByTelNum(tbcfdw.Text).UserId;
         MCF_JD_Order.OutUserId = bll_usermanage.GetUserInfoByTelNum(tbjdywy.Text).UserId;
         MCF_JD_Order.Amount = Convert.ToDecimal(tbAmount.Text);
@@ -67,7 +65,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             }
 
         }
-        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+        LB.SQLServerDAL.SellInfo MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
         MSellInfo.IsClosed = true;
         bll_sellinfomanage.UpdateSellInfo(MSellInfo);
         //sendmsg.SendTextToUsers("2", "哈哈哈");
