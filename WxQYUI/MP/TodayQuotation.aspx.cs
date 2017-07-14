@@ -71,6 +71,7 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             Literal ltlDate = e.Item.FindControl("ltlDate") as Literal;
             if (quotation != null)
             {
+
                 ltlHS_UserName.Text = quotation.UserName;
                 ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
                 ltlDate.Text = quotation.OfferDate.ToShortDateString();
