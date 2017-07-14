@@ -86,7 +86,7 @@ public partial class Admin_HelpManage : System.Web.UI.Page
         if (e.CommandName == "Detail")
         {
             string Id = e.CommandArgument.ToString();
-            string url = "../TradeleadsDetail.aspx?infoId=" + Id.ToString();
+            string url = "http://www.lvbao111.com/WebUI/TradeleadsDetail.aspx?infoId=" + Id.ToString();
             Response.Redirect(url);
         }
         if (e.CommandName == "Show")

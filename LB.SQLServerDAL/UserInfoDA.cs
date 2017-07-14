@@ -240,6 +240,7 @@ namespace LB.SQLServerDAL
                         from a in leftGroup2.DefaultIfEmpty()
                         join b in dbContext.Aspnet_Membership on a.UserId equals b.UserId into leftGroup3
                         from b in leftGroup3.DefaultIfEmpty()
+                        orderby c.UserId descending
                         select new LB.Model.UserInfoModel()
                         {
                             UserId = u.UserId,
@@ -290,6 +291,20 @@ namespace LB.SQLServerDAL
                 query = query.Where(p => p.MobilePhoneNum.Contains(TelNum));
             }
             return query.AsQueryable<LB.Model.UserInfoModel>();
+        }
+
+        /// <summary>
+        /// 根据人员类别查询企业号里的用户
+        /// </summary>
+        /// <param name="UserTypeId"></param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfosByQY(int UserTypeId)
+        {
+            var query = from u in dbContext.UserInfo
+                        where u.IsQYUser==true && u.UserTypeId == UserTypeId
+                        select u;
+            return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
+
         }
     }
 }

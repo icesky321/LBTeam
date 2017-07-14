@@ -128,7 +128,7 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.CopInfo
                         join u in dbContext.UserInfo on c.UserId equals u.UserId
-                        where u.UserTypeId == UserTypeId
+                        where u.UserTypeId == UserTypeId orderby c.CopId descending
                         select new
                         {
                             u.Account,

@@ -180,5 +180,15 @@ namespace LB.BLL
 
             return (lastQYUserId + 1).ToString();
         }
+
+        /// <summary>
+        /// 根据人员类别查询企业号里的用户
+        /// </summary>
+        /// <param name="UserTypeId"></param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfosByQY(int UserTypeId)
+        {
+            return da.GetUserInfosByQY(UserTypeId);
+        }
     }
 }

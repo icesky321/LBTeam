@@ -33,7 +33,6 @@ public partial class Syb_HS_Quote : System.Web.UI.Page
             quotation1.UserId = 1162;
             quotation1.UserName = "阿尔泰公司";
             quotation1.StandardUnit = "吨";
-            quotation1.City = "宁波";
             quotation1.TSId = Convert.ToInt32(hfTSId.Value);
             quotation1.TSName = ltlTSName.Text;
             decimal price1 = 0m;
@@ -57,7 +56,6 @@ public partial class Syb_HS_Quote : System.Web.UI.Page
         quotation.UserId = 1162;
         quotation.UserName = "阿尔泰公司";
         quotation.StandardUnit = "吨";
-        quotation.City = "宁波";
 
         decimal price = 0m;
         decimal.TryParse(tbQuotedPrice.Text, out price);

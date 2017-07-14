@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class Syb_Dyywy_TodayQuotation : System.Web.UI.Page
 {
-    LB.BLL.TSInfo bll_ts = new LB.BLL.TSInfo();
+    //LB.BLL.TSInfo bll_ts = new LB.BLL.TSInfo();
     LB.BLL.QuotationManage bll_quote = new LB.BLL.QuotationManage();
     protected void Page_Load(object sender, EventArgs e)
     {

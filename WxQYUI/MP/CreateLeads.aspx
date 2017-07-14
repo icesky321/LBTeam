@@ -38,7 +38,7 @@
                     <legend>您要出售的电瓶品种</legend>
                     <asp:CheckBoxList ID="cblDP" runat="server" DataSourceID="ObjectDataSource1" DataTextField="TSName" DataValueField="TSId" RepeatLayout="UnorderedList">
                     </asp:CheckBoxList>
-                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTSInfo" TypeName="LB.BLL.TSInfo"></asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTSInfo" TypeName="LB.BLL.TSManage"></asp:ObjectDataSource>
                 </fieldset>
                 <div class="ui-field-contain">
                     <table style="width: 100%;">

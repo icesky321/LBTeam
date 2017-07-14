@@ -22,6 +22,10 @@ public partial class MP_ConfirmOrder : System.Web.UI.Page
                 hfInUserId.Value = MUserInfo.UserId.ToString();
                 Repeater1.DataBind();
             }
+            else
+            {
+                Response.Redirect("~/Login/Login.aspx");
+            }
         }
     }
 
