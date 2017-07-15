@@ -51,10 +51,26 @@ public partial class Syb_HS_QueryCF : System.Web.UI.Page
     {
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
         {
-            Cobe.CnRegion.SQLServerDAL.Region region = e.Item.DataItem as Cobe.CnRegion.SQLServerDAL.Region;
+            Cobe.CnRegion.SQLServerDAL.Region countyRegion = e.Item.DataItem as Cobe.CnRegion.SQLServerDAL.Region;
 
             Literal ltlUserNum = e.Item.FindControl("ltlUserNum") as Literal;
-            ltlUserNum.Text = bll_userManage.GetCount_CF_InCounty(region.Id).ToString();
+            ltlUserNum.Text = bll_userManage.GetCount_CF_InCounty(countyRegion.Id).ToString();
+
+            var streets = bll_region.GetRegions(countyRegion.Id);
+            Repeater rptStreet = e.Item.FindControl("rptStreet") as Repeater;
+            rptStreet.DataSource = streets;
+            rptStreet.DataBind();
+        }
+    }
+
+    protected void rptStreet_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            Cobe.CnRegion.SQLServerDAL.Region streetRegion = e.Item.DataItem as Cobe.CnRegion.SQLServerDAL.Region;
+
+            Literal ltlUserNum = e.Item.FindControl("ltlUserNum") as Literal;
+            ltlUserNum.Text = bll_userManage.GetCount_CF_InStreet(streetRegion.Id).ToString();
         }
     }
 }

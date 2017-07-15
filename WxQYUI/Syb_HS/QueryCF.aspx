@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
@@ -26,20 +25,32 @@
                     <asp:Literal ID="ltlCityWholeName" runat="server"></asp:Literal>
                 </p>
                 <asp:Repeater ID="rptCounty" runat="server" OnItemDataBound="rptCounty_ItemDataBound">
-                    <HeaderTemplate>
-                        <ul data-role="listview">
-                    </HeaderTemplate>
                     <ItemTemplate>
-                        <li>
-                            <a href="#">
-                                <asp:Literal ID="ltlCountyName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal></a>
-                            <span class="ui-li-count">
-                                <asp:Literal ID="ltlUserNum" runat="server"></asp:Literal></span>
-                        </li>
+                        <div data-role="collapsible">
+                            <h3>
+                                <asp:Literal ID="ltlCountyName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal><span class="ui-li-count">
+                                    <asp:Literal ID="ltlUserNum" runat="server"></asp:Literal></span></h3>
+
+                            <asp:Repeater ID="rptStreet" runat="server" OnItemDataBound="rptStreet_ItemDataBound">
+                                <HeaderTemplate>
+                                    <ul data-role="listview" style="background-color: white ;">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <li>
+                                        <a href="#">
+                                            <asp:Literal ID="ltlStreetName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal>
+                                            <span class="ui-li-count">
+                                                <asp:Literal ID="ltlUserNum" runat="server"></asp:Literal>
+                                            </span>
+                                        </a></li>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </ul>
+                                </FooterTemplate>
+                            </asp:Repeater>
+
+                        </div>
                     </ItemTemplate>
-                    <FooterTemplate>
-                        </ul>
-                    </FooterTemplate>
                 </asp:Repeater>
 
             </div>

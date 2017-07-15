@@ -104,6 +104,34 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
         }
 
+        /// <summary>
+        /// 获取我的未关闭出售信息。
+        /// </summary>
+        /// <param name="userMobile">用户手机号</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetMySellInfo_NotClosed(string userMobile)
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.CF_UserMobile == userMobile && c.IsClosed == false
+                        orderby c.CreateDate descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
+        }
+
+        /// <summary>
+        /// 获取我的已关闭出售信息。
+        /// </summary>
+        /// <param name="userMobile">用户手机号</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetMySellInfo_IsClosed(string userMobile)
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.CF_UserMobile == userMobile && c.IsClosed == true
+                        orderby c.CreateDate descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.SellInfo>().Take(20);
+        }
+
 
         /// <summary>
         /// 根据客服处理标记搜索出售信息。

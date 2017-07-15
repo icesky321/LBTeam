@@ -78,6 +78,26 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 获取我的未关闭出售信息。
+        /// </summary>
+        /// <param name="userMobile">用户手机号</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetMySellInfo_NotClosed(string userMobile)
+        {
+            return da.GetMySellInfo_NotClosed(userMobile);
+        }
+
+        /// <summary>
+        /// 获取我的已关闭出售信息。
+        /// </summary>
+        /// <param name="userMobile">用户手机号</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetMySellInfo_IsClosed(string userMobile)
+        {
+            return da.GetMySellInfo_IsClosed(userMobile);
+        }
+
+        /// <summary>
         /// 根据客服处理标记搜索出售信息。
         /// </summary>
         /// <param name="kefuToHandleTag">客服处理标记。</param>
