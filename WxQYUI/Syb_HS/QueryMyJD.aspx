@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QueryMyCF.aspx.cs" Inherits="Syb_JD_QueryMyCF" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="QueryMyJD.aspx.cs" Inherits="Syb_JD_QueryMyCF" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
     <link href="./WeUICSS/example.css" rel="stylesheet" />
     <link href="./WeUICSS/weui.css" rel="stylesheet" />
     <link href="./WeUICSS/weui.mini.css" rel="stylesheet" />
-    <title>查询产废单位</title>
+    <title>查询回收业务员</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -20,20 +20,16 @@
         <script type="text/html" id="tpl_home">
             <div class="page">
                 <div style="padding: 20px;">
-                    <h3>街道产废单位 （<asp:Literal ID="ltlCount" runat="server" Text="0"></asp:Literal>）
+                    <h3>回收业务员 （<asp:Literal ID="ltlCount" runat="server" Text="0"></asp:Literal>）
                     </h3>
                     <p class="page__desc">
-                        <asp:HiddenField ID="hfStreetRegionCode" runat="server" />
-
-                        <asp:Literal ID="ltlStreetWholeName" runat="server"></asp:Literal>
+                        <asp:HiddenField ID="hfCityRegionCode" runat="server" />
+                        <asp:Literal ID="ltlCityWholeName" runat="server"></asp:Literal>
                     </p>
                 </div>
                 <div class="page__bd page__bd_spacing">
                     <asp:HiddenField ID="hfUserMobile" runat="server" />
-                    <asp:HiddenField ID="hfJD_UserId" runat="server" />
-                    <asp:HiddenField ID="hfCity" runat="server" />
-                    <asp:HiddenField ID="hfTown" runat="server" />
-                    <asp:HiddenField ID="hfStreet" runat="server" />
+                    <asp:HiddenField ID="hfHS_UserId" runat="server" />
                     <ul>
                         <asp:ListView ID="lvUserInfo" runat="server">
                             <ItemTemplate>
@@ -43,7 +39,7 @@
                                             <asp:HiddenField ID="hfUserId" runat="server" Value='<%# Eval("UserId") %>'></asp:HiddenField>
                                             <b>
                                                 <asp:Literal ID="ltlCF_UserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Literal></b>
-                                            (<asp:Literal ID="ltlCF_RealName" runat="server" Text='<%# Eval("RealName")=="" ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
+                                            (<asp:Literal ID="ltlCF_RealName" runat="server" Text='<%# Eval("RealName").ToString()=="" ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
                                             <span style="color: #DCDCDC;"></span>
                                         </p>
 

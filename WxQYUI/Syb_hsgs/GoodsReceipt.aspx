@@ -54,7 +54,7 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="TSId" Select="new (TSId, TSName)" TableName="TSInfo"></asp:LinqDataSource>
+                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="OrderNum" Select="new (TSId, TSName)" TableName="TSInfo"></asp:LinqDataSource>
 
                 <div class="weui-cell weui-cell_vcode">
                     <div class="weui-cell__hd">

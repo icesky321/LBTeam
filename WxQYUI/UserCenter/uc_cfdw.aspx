@@ -97,7 +97,7 @@
             <div data-role="main" class="ui-content">
                 <ul data-role="listview">
                     <li data-role="list-divider"></li>
-                    <li><a href="EditPassword.aspx" data-transition="slide" rel="external">修改登录密码</a></li>
+                    <li><a href="EditPassword.aspx" rel="external">修改登录密码</a></li>
                     <li data-role="list-divider"></li>
                     <li><a href="#" data-transition="slide" rel="external">修改交易密码</a></li>
                 </ul>

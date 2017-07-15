@@ -15,7 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div id="page1" data-role="page">
-            <div data-role="header">
+            <div data-role="header" data-add-back-btn="true" data-back-btn-text="上一页">
                 <h2>修改密码</h2>
             </div>
             <div data-role="main" class="ui-content">
@@ -53,10 +53,17 @@
                             </p>
 
                             <p style="text-align: center;">
+                                <div class="ui-grid-a">
+                                    <div class="ui-block-a">
+                                        <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword" Text="更改密码" data-icon="check" CssClass="ui-btn-active"
+                                            ValidationGroup="CUP" />
+                                    </div>
+                                    <div class="ui-block-b">
+                                        <a data-role="button" href="uc_cfdw.aspx" data-rel="back" data-icon="back">取消</a>
+                                    </div>
+                                </div>
 
-                                <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword" Text="更改密码" data-icon="ui-icon-lock"
-                                    ValidationGroup="CUP" data-inline="true" />
-                                <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="  取消  " data-inline="true" />
+
                             </p>
                         </div>
                     </ChangePasswordTemplate>
