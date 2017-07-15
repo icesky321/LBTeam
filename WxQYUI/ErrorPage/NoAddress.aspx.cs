@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class MP_MyTradeLeads : System.Web.UI.Page
+public partial class ErrorPage_NoAddress : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

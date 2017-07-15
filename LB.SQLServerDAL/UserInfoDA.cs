@@ -54,19 +54,29 @@ namespace LB.SQLServerDAL
         /// <returns></returns>
         public int GetCount_HS_InCity(string city)
         {
-            return dbContext.UserInfo.Where(c => c.UserTypeId == 1 && c.City == city).Count();
+            return dbContext.UserInfo.Where(c => c.UserTypeId == 2 && c.City == city).Count();
         }
 
         /// <summary>
         /// 获取指定街道的产废单位个数
         /// </summary>
-        /// <param name="city">地级市</param>
-        /// <param name="town">县级市（区）</param>
-        /// <param name="street">街道</param>
+        /// <param name="streetRegionCode">街道区划代号</param>
         /// <returns></returns>
-        public int GetCount_CF_InStreet(string city, string town, string street)
+        public int GetCount_CF_InStreet(string streetRegionCode)
         {
-            return dbContext.UserInfo.Where(c => c.UserTypeId == 1 && c.City == city && c.Town == town && c.Street == street).Count();
+            string shortRegionCode = streetRegionCode.Substring(0, 9);
+            return dbContext.UserInfo.Where(c => c.UserTypeId == 1 && c.RegionCode.Substring(0, 9) == shortRegionCode).Count();
+        }
+
+        /// <summary>
+        /// 获取指定区县下的回收业务员个数
+        /// </summary>
+        /// <param name="countyRegionCode">区县代号</param>
+        /// <returns></returns>
+        public int GetCount_CF_InCounty(string countyRegionCode)
+        {
+            string shortRegionCode = countyRegionCode.Substring(0, 6);
+            return dbContext.UserInfo.Where(c => c.UserTypeId == 1 && c.RegionCode.Substring(0, 6) == shortRegionCode).Count();
         }
 
         #endregion
@@ -160,12 +170,13 @@ namespace LB.SQLServerDAL
         /// <summary>
         /// 查询指定地级市下的街道回收员
         /// </summary>
-        /// <param name="city">地级市</param>
+        /// <param name="cityRegionCode">地级市12位数代码</param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_JD_InCity(string city)
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_JD_InCity(string cityRegionCode)
         {
+            string cityShortCode = cityRegionCode.Substring(0, 4);
             var query = from c in dbContext.UserInfo
-                        where c.UserTypeId == 5 && c.City == city
+                        where c.UserTypeId == 5 && c.RegionCode.Substring(0, 4) == cityShortCode
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
@@ -173,14 +184,13 @@ namespace LB.SQLServerDAL
         /// <summary>
         /// 查询指定街道下的产废单位
         /// </summary>
-        /// <param name="city">地级市</param>
-        /// <param name="town">县级市（区）</param>
-        /// <param name="street">街道</param>
+        /// <param name="streetRegionCode">街道行政区划代号</param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string city, string town, string street)
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string streetRegionCode)
         {
+            string shortRegionCode = streetRegionCode.Substring(0, 9);
             var query = from c in dbContext.UserInfo
-                        where c.UserTypeId == 1 && c.City == city && c.Town == town && c.Street == street
+                        where c.UserTypeId == 1 && c.RegionCode.Substring(0, 9) == shortRegionCode
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
@@ -315,7 +325,7 @@ namespace LB.SQLServerDAL
         public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfosByQY(int UserTypeId)
         {
             var query = from u in dbContext.UserInfo
-                        where u.IsQYUser==true && u.UserTypeId == UserTypeId
+                        where u.IsQYUser == true && u.UserTypeId == UserTypeId
                         select u;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
 

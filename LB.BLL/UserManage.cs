@@ -51,13 +51,21 @@ namespace LB.BLL
         /// <summary>
         /// 获取指定街道的产废单位个数
         /// </summary>
-        /// <param name="city">地级市</param>
-        /// <param name="town">县级市（区）</param>
-        /// <param name="street">街道</param>
+        /// <param name="streetRegionCode">街道区划代号</param>
         /// <returns></returns>
-        public int GetCount_CF_InStreet(string city, string town, string street)
+        public int GetCount_CF_InStreet(string streetRegionCode)
         {
-            return da.GetCount_CF_InStreet(city, town, street);
+            return da.GetCount_CF_InStreet(streetRegionCode);
+        }
+
+        /// <summary>
+        /// 获取指定区县下的回收业务员个数
+        /// </summary>
+        /// <param name="countyRegionCode">区县代号</param>
+        /// <returns></returns>
+        public int GetCount_CF_InCounty(string countyRegionCode)
+        {
+            return da.GetCount_CF_InCounty(countyRegionCode);
         }
 
         #endregion
@@ -163,15 +171,23 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 查询指定地级市下的街道回收员
+        /// </summary>
+        /// <param name="cityRegionCode">地级市12位数代码</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_JD_InCity(string cityRegionCode)
+        {
+            return da.GetUserInfo_JD_InCity(cityRegionCode);
+        }
+
+        /// <summary>
         /// 查询指定街道下的产废单位
         /// </summary>
-        /// <param name="city">地级市</param>
-        /// <param name="town">县级市（区）</param>
-        /// <param name="street">街道</param>
+        /// <param name="streetRegionCode">街道行政区划代号</param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string city, string town, string street)
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string streetRegionCode)
         {
-            return da.GetUserInfo_InStreet(city, town, street);
+            return da.GetUserInfo_InStreet(streetRegionCode);
         }
 
         public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)

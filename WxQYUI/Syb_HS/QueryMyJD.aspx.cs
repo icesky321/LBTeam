@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Syb_HS_QueryLocalJD : System.Web.UI.Page
+public partial class Syb_JD_QueryMyCF : System.Web.UI.Page
 {
     LB.BLL.UserManage bll_userManage1 = new LB.BLL.UserManage();
     LB.BLL.UserManage bll_userManage = new LB.BLL.UserManage();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -28,14 +29,15 @@ public partial class Syb_HS_QueryLocalJD : System.Web.UI.Page
             if (user == null)
                 return;
 
+            if (String.IsNullOrEmpty(user.RegionCode))
+                Response.Redirect("~/ErrorPage/NoAddress.aspx", true);
 
-            hfJD_UserId.Value = user.UserId.ToString();
-            hfCity.Value = user.City;
+            hfCityRegionCode.Value = user.RegionCode.Substring(0, 4) + "00000000";
+            ltlCityWholeName.Text = bll_region.GetRegion(hfCityRegionCode.Value).WholeName;
+            hfHS_UserId.Value = user.UserId.ToString();
 
-            ltlProvince.Text = user.Province;
-            ltlCity.Text = user.City;
 
-            LoadHSInCity(hfCity.Value);       // 加载本街道内所有产废单位
+            LoadJDInCity(hfCityRegionCode.Value);       // 加载本市所有回收业务员
         }
 
 
@@ -44,16 +46,18 @@ public partial class Syb_HS_QueryLocalJD : System.Web.UI.Page
     /// <summary>
     /// 加载本街道内所有产废单位
     /// </summary>
-    public void LoadHSInCity(string city)
+    public void LoadJDInCity(string cityRegionCode)
     {
-        var query = bll_userManage1.GetUserInfo_HS_InCity(city);
+        var query = bll_userManage1.GetUserInfo_JD_InCity(cityRegionCode);
 
         lvUserInfo.DataSource = query.AsQueryable();
         lvUserInfo.DataBind();
 
-        ltlCount.Text = bll_userManage1.GetCount_HS_InCity(city).ToString();
+        ltlCount.Text = query.Count().ToString();
     }
 
 
     #endregion
+
+
 }
