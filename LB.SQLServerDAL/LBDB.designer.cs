@@ -3453,6 +3453,10 @@ namespace LB.SQLServerDAL
 		
 		private string _AuditOperator;
 		
+		private System.Nullable<System.Guid> _InfoId;
+		
+		private System.Nullable<int> _CopId;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3483,6 +3487,10 @@ namespace LB.SQLServerDAL
     partial void OnAuditDatetimeChanged();
     partial void OnAuditOperatorChanging(string value);
     partial void OnAuditOperatorChanged();
+    partial void OnInfoIdChanging(System.Nullable<System.Guid> value);
+    partial void OnInfoIdChanged();
+    partial void OnCopIdChanging(System.Nullable<int> value);
+    partial void OnCopIdChanged();
     #endregion
 		
 		public CF_JD_Order()
@@ -3746,6 +3754,46 @@ namespace LB.SQLServerDAL
 					this._AuditOperator = value;
 					this.SendPropertyChanged("AuditOperator");
 					this.OnAuditOperatorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InfoId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> InfoId
+		{
+			get
+			{
+				return this._InfoId;
+			}
+			set
+			{
+				if ((this._InfoId != value))
+				{
+					this.OnInfoIdChanging(value);
+					this.SendPropertyChanging();
+					this._InfoId = value;
+					this.SendPropertyChanged("InfoId");
+					this.OnInfoIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CopId", DbType="Int")]
+		public System.Nullable<int> CopId
+		{
+			get
+			{
+				return this._CopId;
+			}
+			set
+			{
+				if ((this._CopId != value))
+				{
+					this.OnCopIdChanging(value);
+					this.SendPropertyChanging();
+					this._CopId = value;
+					this.SendPropertyChanged("CopId");
+					this.OnCopIdChanged();
 				}
 			}
 		}
@@ -6758,8 +6806,6 @@ namespace LB.SQLServerDAL
 		
 		private string _MobilePhoneNum;
 		
-		private string _RegionCode;
-		
 		private string _Province;
 		
 		private string _City;
@@ -6802,6 +6848,8 @@ namespace LB.SQLServerDAL
 		
 		private string _IDCardNo;
 		
+		private string _RegionCode;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -6814,8 +6862,6 @@ namespace LB.SQLServerDAL
     partial void OnUserNameChanged();
     partial void OnMobilePhoneNumChanging(string value);
     partial void OnMobilePhoneNumChanged();
-    partial void OnRegionCodeChanging(string value);
-    partial void OnRegionCodeChanged();
     partial void OnProvinceChanging(string value);
     partial void OnProvinceChanged();
     partial void OnCityChanging(string value);
@@ -6858,6 +6904,8 @@ namespace LB.SQLServerDAL
     partial void OnAddressChanged();
     partial void OnIDCardNoChanging(string value);
     partial void OnIDCardNoChanged();
+    partial void OnRegionCodeChanging(string value);
+    partial void OnRegionCodeChanged();
     #endregion
 		
 		public UserInfo()
@@ -6941,26 +6989,6 @@ namespace LB.SQLServerDAL
 					this._MobilePhoneNum = value;
 					this.SendPropertyChanged("MobilePhoneNum");
 					this.OnMobilePhoneNumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16)")]
-		public string RegionCode
-		{
-			get
-			{
-				return this._RegionCode;
-			}
-			set
-			{
-				if ((this._RegionCode != value))
-				{
-					this.OnRegionCodeChanging(value);
-					this.SendPropertyChanging();
-					this._RegionCode = value;
-					this.SendPropertyChanged("RegionCode");
-					this.OnRegionCodeChanged();
 				}
 			}
 		}
@@ -7381,6 +7409,26 @@ namespace LB.SQLServerDAL
 					this._IDCardNo = value;
 					this.SendPropertyChanged("IDCardNo");
 					this.OnIDCardNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16)")]
+		public string RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
 				}
 			}
 		}

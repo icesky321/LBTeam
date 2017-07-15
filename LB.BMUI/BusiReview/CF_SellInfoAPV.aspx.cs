@@ -81,8 +81,8 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
             sellInfo.Kefu_HandleDate = DateTime.Now;
             sellInfo.Kefu_HandleResult = "审核通过";
             sellInfo.Kefu_TohandleTag = false;
-            sellInfo.JD_TohandleTag = true;
-            sellInfo.JD_UserId = 141;      // TODO: 分配街道业务员的逻辑仍需修改。  // 本地1164 服务器上 1186
+            //sellInfo.JD_TohandleTag = true;
+            //sellInfo.JD_UserId = 141;      // TODO: 分配街道业务员的逻辑仍需修改。  // 本地1164 服务器上 1186
 
             //string result = SendWx_ToCF(sellInfo.JD_UserId);
 
@@ -124,9 +124,8 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
         MSellUser = bll_userManage.GetUserInfoByUserId(MSellInfo.CF_UserId);
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = MSellInfo.Title;
-        article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + MSellUser.Address + "\n" + MSellInfo.Description;
+        article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + MSellUser.Address + "\n" + "内容：" + MSellInfo.Description;
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx?InfoId=" + infoId.ToString();
-        //article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx";
         sendmsg.SendArticleToUsers("2", article, "5");
     }
 }

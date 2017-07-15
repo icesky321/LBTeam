@@ -49,5 +49,18 @@ namespace LB.SQLServerDAL
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.CF_JD_Order>();
         }
+
+        public bool ExistInfoId(Guid InfoId)
+        {
+            bool exists = false;
+            var query = from u in dbContext.CF_JD_Order
+                        where u.InfoId == InfoId
+                        select u;
+            if (query.Count() > 0)
+            {
+                exists = true;
+            }
+            return exists;
+        }
     }
 }

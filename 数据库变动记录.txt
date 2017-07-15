@@ -1,5 +1,8 @@
 
 数据更新从上面插入
+2017--07-15
+CF_JD_Order 表新增InfoId，CopId
+
 
 2017-07-13   CopInfo  表增加Shortname字段
 
