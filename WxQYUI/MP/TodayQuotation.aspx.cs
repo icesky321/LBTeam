@@ -11,6 +11,7 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
     LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
     LB.BLL.QuotationManage bll_quote = new LB.BLL.QuotationManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
