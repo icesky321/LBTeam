@@ -123,6 +123,15 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 根据手机号码删除用户对象
+        /// </summary>
+        /// <param name="mobileNum">用户手机号码</param>
+        public void DeleteUserInfo(string mobileNum)
+        {
+            da.DeleteUserInfo(mobileNum);
+        }
+
+        /// <summary>
         /// 修改用户信息
         /// </summary>
         /// <param name="userinfo"></param>

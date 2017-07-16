@@ -226,6 +226,19 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
+        /// <summary>
+        /// 根据手机号码删除用户对象
+        /// </summary>
+        /// <param name="mobileNum">用户手机号码</param>
+        public void DeleteUserInfo(string mobileNum)
+        {
+            var query = (from c in dbContext.UserInfo
+                         where c.MobilePhoneNum == mobileNum
+                         select c).FirstOrDefault();
+            dbContext.UserInfo.DeleteOnSubmit(query);
+            dbContext.SubmitChanges();
+        }
+
         public void UpdateUserInfo(LB.SQLServerDAL.UserInfo userinfo)
         {
             dbContext.SubmitChanges();

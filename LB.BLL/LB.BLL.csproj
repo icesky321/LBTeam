@@ -50,6 +50,7 @@
     <Compile Include="QuotationManage.cs" />
     <Compile Include="SellInfoManage.cs" />
     <Compile Include="SMS.cs" />
+    <Compile Include="StaffManage.cs" />
     <Compile Include="Tradeleads.cs" />
     <Compile Include="TSManage.cs" />
     <Compile Include="TSType.cs" />
