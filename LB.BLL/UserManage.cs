@@ -181,6 +181,16 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 查询指定街道的街道回收员
+        /// </summary>
+        /// <param name="streetRegionCode">街道12位数代码</param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUserInfo_JD_InStreet(string streetRegionCode)
+        {
+            return da.GetUserInfo_JD_InStreet(streetRegionCode);
+        }
+
+        /// <summary>
         /// 查询指定街道下的产废单位
         /// </summary>
         /// <param name="streetRegionCode">街道行政区划代号</param>

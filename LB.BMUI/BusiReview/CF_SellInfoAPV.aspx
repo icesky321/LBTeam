@@ -42,10 +42,8 @@
 
                     </tr>
                     <tr>
-                        <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">客服留言：<br />
-                            <asp:TextBox ID="tbRemark" runat="server" Rows="2" TextMode="MultiLine" Width="100%" Style="margin-bottom: 10px;"></asp:TextBox>
-                            <asp:Button ID="btnAccept" runat="server" Text="审核通过" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' />&nbsp;&nbsp;
-                            <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' />
+                        <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">
+                            <asp:Button ID="btnHandle" runat="server" Text="接单处理" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="ToHandle" CommandArgument='<%# Eval("InfoId") %>' />
                         </td>
 
                     </tr>

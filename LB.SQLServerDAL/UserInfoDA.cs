@@ -182,6 +182,19 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        /// 查询指定街道的街道回收员
+        /// </summary>
+        /// <param name="streetRegionCode">街道12位数代码</param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUserInfo_JD_InStreet(string streetRegionCode)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == 5 && c.RegionCode == streetRegionCode
+                        select c;
+            return query.FirstOrDefault();
+        }
+
+        /// <summary>
         /// 查询指定街道下的产废单位
         /// </summary>
         /// <param name="streetRegionCode">街道行政区划代号</param>
