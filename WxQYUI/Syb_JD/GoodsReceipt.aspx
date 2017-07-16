@@ -17,6 +17,9 @@
         <div id="page1" data-role="page">
             <div class="weui-cells__title">
                 发布收货订单
+<%--                <asp:HiddenField ID="hfInUserId" runat="server" />
+                <asp:HiddenField ID="hfOutUserId" runat="server" />--%>
+                <asp:HiddenField ID="hfInfoId" runat="server" />
             </div>
             <div class="ui-field-contain">
                 <label for="fullname">卖方：</label>

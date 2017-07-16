@@ -12,12 +12,25 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
     LB.BLL.CF_JD_Order bll_cf_jd_order = new LB.BLL.CF_JD_Order();
     LB.BLL.CF_JD_OrderDetail bll_cf_jd_orderdetail = new LB.BLL.CF_JD_OrderDetail();
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
+    LB.BLL.SellInfoManage bll_sellinfomanage = new LB.BLL.SellInfoManage();
+    LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
     SendMsgService sendmsg = new SendMsgService();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-
+            if (Request.QueryString["InfoId"] != null)
+            {
+                string InfoId = Request.QueryString["InfoId"];
+                hfInfoId.Value = InfoId;
+                MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+                LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
+                LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
+                InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
+                OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                tbcfdw.Text = InUserInfo.MobilePhoneNum;
+                tbjdywy.Text = OutUserInfo.MobilePhoneNum;
+            }
         }
     }
 
@@ -34,6 +47,8 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         MCF_JD_Order.OperateDate = Convert.ToDateTime("1900-01-01");
         MCF_JD_Order.Audit = false;
         MCF_JD_Order.AuditDatetime = Convert.ToDateTime("1900-01-01");
+        MCF_JD_Order.InfoId = Guid.Parse(hfInfoId.Value);
+        MCF_JD_Order.CopId = 1007;//数据库中是杭州赐翔
         bll_cf_jd_order.NewCF_JD_Order(MCF_JD_Order);
         foreach (RepeaterItem item in Repeater1.Items)
         {
@@ -51,8 +66,12 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             }
 
         }
+        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+        MSellInfo.IsClosed = true;
+        bll_sellinfomanage.UpdateSellInfo(MSellInfo);
         //sendmsg.SendTextToUsers("2", "哈哈哈");
         Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
+
         //Response.Redirect("Success.aspx?CFId=0c31f580-8be2-4d40-b506-f10f53c0073b");
     }
 }

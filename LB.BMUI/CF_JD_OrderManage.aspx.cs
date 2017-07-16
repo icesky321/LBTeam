@@ -47,14 +47,4 @@ public partial class CF_JD_OrderManage : System.Web.UI.Page
             //sendmsg.seSendTextToUsers("2", "哈哈哈");
         }
     }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-
-        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-        article.Title = "有订单啦~~";
-        article.Description = "这笔单子够我赚一笔啦/n 哈哈哈哈/n 啦啦啦啦啦啦啦/n 呵呵呵呵呵呵";
-        article.Url = "http://www.163.com";
-        sendmsg.SendArticleToUsers("2", article, "5");
-    }
 }

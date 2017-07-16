@@ -64,7 +64,6 @@
                     <asp:Parameter DefaultValue="false" Name="Audit" Type="Boolean" />
                 </WhereParameters>
             </asp:LinqDataSource>
-            <asp:Button ID="Button1" runat="server" Text="测试勿点" OnClick="Button1_Click" />
         </div>
     </div>
 

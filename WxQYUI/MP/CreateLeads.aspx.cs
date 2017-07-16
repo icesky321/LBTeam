@@ -107,7 +107,17 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         sellInfo.CF_UserId = user.UserId;
         sellInfo.CF_UserMobile = userName;
         bll_sellInfo.CreateSellInfo(sellInfo);
-
+        SendWxArticle_ToCF("2", "有废旧蓄铅电池出售信息发布需要审核", "请到管理后台-产废单位发布信息审核");
         Response.Redirect("CreateLeads.aspx#pageRegCompleted", true);
+    }
+
+    private void SendWxArticle_ToCF(string QYId,string title,string description)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = title;
+        article.Description = description;
+        sendmsg.SendArticleToUsers(QYId, article, "5");
     }
 }

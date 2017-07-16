@@ -33,5 +33,10 @@ namespace LB.BLL
         {
             return da.GetCF_JD_Order_ByAudit(Audit);
         }
+
+        public bool ExistInfoId(Guid InfoId)
+        {
+            return da.ExistInfoId(InfoId);
+        }
     }
 }
