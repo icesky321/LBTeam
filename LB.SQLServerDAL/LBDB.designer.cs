@@ -81,6 +81,9 @@ namespace LB.SQLServerDAL
     partial void InsertOAuthAccessToken(OAuthAccessToken instance);
     partial void UpdateOAuthAccessToken(OAuthAccessToken instance);
     partial void DeleteOAuthAccessToken(OAuthAccessToken instance);
+    partial void InsertPaymentDetail(PaymentDetail instance);
+    partial void UpdatePaymentDetail(PaymentDetail instance);
+    partial void DeletePaymentDetail(PaymentDetail instance);
     partial void InsertQuotation(Quotation instance);
     partial void UpdateQuotation(Quotation instance);
     partial void DeleteQuotation(Quotation instance);
@@ -276,6 +279,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<OAuthAccessToken>();
+			}
+		}
+		
+		public System.Data.Linq.Table<PaymentDetail> PaymentDetail
+		{
+			get
+			{
+				return this.GetTable<PaymentDetail>();
 			}
 		}
 		
@@ -4777,6 +4788,236 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PaymentDetail")]
+	public partial class PaymentDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _PDId;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private System.Nullable<int> _UserId;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _PayStatus;
+		
+		private System.Nullable<System.Guid> _CFId;
+		
+		private string _Audit;
+		
+		private System.Nullable<System.DateTime> _AuditDate;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPDIdChanging(System.Guid value);
+    partial void OnPDIdChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnUserIdChanging(System.Nullable<int> value);
+    partial void OnUserIdChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnPayStatusChanging(string value);
+    partial void OnPayStatusChanged();
+    partial void OnCFIdChanging(System.Nullable<System.Guid> value);
+    partial void OnCFIdChanged();
+    partial void OnAuditChanging(string value);
+    partial void OnAuditChanged();
+    partial void OnAuditDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAuditDateChanged();
+    #endregion
+		
+		public PaymentDetail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PDId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid PDId
+		{
+			get
+			{
+				return this._PDId;
+			}
+			set
+			{
+				if ((this._PDId != value))
+				{
+					this.OnPDIdChanging(value);
+					this.SendPropertyChanging();
+					this._PDId = value;
+					this.SendPropertyChanged("PDId");
+					this.OnPDIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayStatus", DbType="NVarChar(16)")]
+		public string PayStatus
+		{
+			get
+			{
+				return this._PayStatus;
+			}
+			set
+			{
+				if ((this._PayStatus != value))
+				{
+					this.OnPayStatusChanging(value);
+					this.SendPropertyChanging();
+					this._PayStatus = value;
+					this.SendPropertyChanged("PayStatus");
+					this.OnPayStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CFId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> CFId
+		{
+			get
+			{
+				return this._CFId;
+			}
+			set
+			{
+				if ((this._CFId != value))
+				{
+					this.OnCFIdChanging(value);
+					this.SendPropertyChanging();
+					this._CFId = value;
+					this.SendPropertyChanged("CFId");
+					this.OnCFIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Audit", DbType="NVarChar(16)")]
+		public string Audit
+		{
+			get
+			{
+				return this._Audit;
+			}
+			set
+			{
+				if ((this._Audit != value))
+				{
+					this.OnAuditChanging(value);
+					this.SendPropertyChanging();
+					this._Audit = value;
+					this.SendPropertyChanged("Audit");
+					this.OnAuditChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AuditDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> AuditDate
+		{
+			get
+			{
+				return this._AuditDate;
+			}
+			set
+			{
+				if ((this._AuditDate != value))
+				{
+					this.OnAuditDateChanging(value);
+					this.SendPropertyChanging();
+					this._AuditDate = value;
+					this.SendPropertyChanged("AuditDate");
+					this.OnAuditDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Quotation")]
 	public partial class Quotation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5097,6 +5338,10 @@ namespace LB.SQLServerDAL
 		
 		private bool _IsClosed;
 		
+		private System.Nullable<bool> _JD_AcceptedTag;
+		
+		private string _StatusMsg;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -5137,6 +5382,10 @@ namespace LB.SQLServerDAL
     partial void OnJD_HandleDateChanged();
     partial void OnIsClosedChanging(bool value);
     partial void OnIsClosedChanged();
+    partial void OnJD_AcceptedTagChanging(System.Nullable<bool> value);
+    partial void OnJD_AcceptedTagChanged();
+    partial void OnStatusMsgChanging(string value);
+    partial void OnStatusMsgChanged();
     #endregion
 		
 		public SellInfo()
@@ -5500,6 +5749,46 @@ namespace LB.SQLServerDAL
 					this._IsClosed = value;
 					this.SendPropertyChanged("IsClosed");
 					this.OnIsClosedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_AcceptedTag", DbType="Bit")]
+		public System.Nullable<bool> JD_AcceptedTag
+		{
+			get
+			{
+				return this._JD_AcceptedTag;
+			}
+			set
+			{
+				if ((this._JD_AcceptedTag != value))
+				{
+					this.OnJD_AcceptedTagChanging(value);
+					this.SendPropertyChanging();
+					this._JD_AcceptedTag = value;
+					this.SendPropertyChanged("JD_AcceptedTag");
+					this.OnJD_AcceptedTagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusMsg", DbType="NVarChar(32)")]
+		public string StatusMsg
+		{
+			get
+			{
+				return this._StatusMsg;
+			}
+			set
+			{
+				if ((this._StatusMsg != value))
+				{
+					this.OnStatusMsgChanging(value);
+					this.SendPropertyChanging();
+					this._StatusMsg = value;
+					this.SendPropertyChanged("StatusMsg");
+					this.OnStatusMsgChanged();
 				}
 			}
 		}

@@ -14,12 +14,26 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
     LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
     LB.SQLServerDAL.UserInfo MSellUser = new LB.SQLServerDAL.UserInfo();
     LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+    LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
+    LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             Init_Load();
+            FillCopInfo();
         }
+    }
+
+    void FillCopInfo()
+    {
+        IQueryable<LB.SQLServerDAL.CopInfo> copinfos = bll_copinfo.GetCopInfosByUserType(2);
+        foreach (LB.SQLServerDAL.CopInfo copinfo in copinfos)
+        {
+
+            ddlCop.Items.Add(new ListItem(copinfo.CopName, copinfo.UserId.ToString()));
+        }
+        ddlCop.Items.Insert(0, "请先选择回收公司");
     }
 
     private void Init_Load()
@@ -87,7 +101,9 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
             //string result = SendWx_ToCF(sellInfo.JD_UserId);
 
             //if (result == "ok")
-            SendWxArticle_ToCF(infoId);
+            MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(ddlCop.SelectedItem.Value));
+            MSellUser = bll_userManage.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
+            SendWxArticle_ToCF(infoId, MSellUser.QYUserId);
             bll_sellInfo.UpdateSellInfo(sellInfo);
 
 
@@ -117,7 +133,7 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
         return result.errmsg;
     }
 
-    private void SendWxArticle_ToCF(Guid infoId)
+    private void SendWxArticle_ToCF(Guid infoId,string QYId)
     {
         //TODO: 发布前修改微信发布逻辑
         MSellInfo = bll_sellInfo.GetSellInfo_ById(infoId);
@@ -126,6 +142,6 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
         article.Title = MSellInfo.Title;
         article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + MSellUser.Address + "\n" + "内容：" + MSellInfo.Description;
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx?InfoId=" + infoId.ToString();
-        sendmsg.SendArticleToUsers("2", article, "5");
+        sendmsg.SendArticleToUsers(QYId, article, "5");
     }
 }

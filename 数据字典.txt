@@ -144,6 +144,8 @@ OperateDate   datetime   确认时间
 Audit   bool   审核
 AuditDatetime  datetime   审核时间
 AuditOperator   string   审核人
+CopId  int   公司id
+InfoId   guid    卖货信息id 
 
 
 十四、CF_JD_OrderDetail(订单明细)
@@ -152,6 +154,15 @@ CFId  guid   id
 GoodsDetail   string    货品名称
 Quantity    decimal     货品数量
 GoodsUnit		string   货品单位
+
+
+十五、PaymentDetail(资金明细)
+PDId   guid   id
+Amount   decimal   金额
+UserId   int    账户名
+CreateDate    datetime   发生时间
+PayStatus		string   付款状态
+CFId    guid   订单ID
 
 简写代号
 CF	产废单位

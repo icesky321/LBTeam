@@ -169,5 +169,12 @@ namespace LB.SQLServerDAL
             }
             return exists;
         }
+
+        public IQueryable<LB.SQLServerDAL.CopInfo> GetCopInfosByUserType(int UserType)
+        {
+            var query = from c in dbContext.CopInfo
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.CopInfo>();
+        }
     }
 }

@@ -60,8 +60,7 @@
             </div>
             <div data-role="footer">
                 <div class="page__bd page__bd_spacing">
-                    <br>
-                    <br>
+
                     <div class="weui-footer">
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>

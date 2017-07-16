@@ -211,6 +211,18 @@
       <Column Name="OAuthAccessTokenStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PaymentDetail" Member="PaymentDetail">
+    <Type Name="PaymentDetail">
+      <Column Name="PDId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PayStatus" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="CFId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Audit" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Quotation" Member="Quotation">
     <Type Name="Quotation">
       <Column Name="QuotId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -245,6 +257,8 @@
       <Column Name="JD_Remark" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
       <Column Name="JD_HandleDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="IsClosed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="JD_AcceptedTag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StatusMsg" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tradeleads" Member="Tradeleads">

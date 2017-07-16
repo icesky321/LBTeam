@@ -24,7 +24,8 @@
       <siteMapNode url="~/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
     </siteMapNode>
     <siteMapNode url="" title="平台资金管理" description="平台资金管理" securitytrimmingenabled="true" roles="Admin,UserManage">
-      <siteMapNode url="~/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />
+      <siteMapNode url="~/FundManage/LoanAudit.aspx" title="货款管理" description="货款管理" />
+      <!--<siteMapNode url="~/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />-->
       <siteMapNode url="~/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
     </siteMapNode>
     <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >

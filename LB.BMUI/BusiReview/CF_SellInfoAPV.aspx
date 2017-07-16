@@ -10,6 +10,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="margin-bottom: 30px;">产废单位出售信息审核</div>
     <div>
+       请选择要发送信息的回收公司: <asp:DropDownList ID="ddlCop" runat="server"></asp:DropDownList>
+        <br />
         待审核记录数：<asp:Label ID="lbCount" runat="server" Text=""></asp:Label>
         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="ObjectDataSource1" OnItemCommand="Repeater1_ItemCommand" OnItemDataBound="Repeater1_ItemDataBound">
             <ItemTemplate>

@@ -31,6 +31,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                 tbcfdw.Text = InUserInfo.MobilePhoneNum;
                 tbjdywy.Text = OutUserInfo.MobilePhoneNum;
             }
+
         }
     }
 
@@ -71,7 +72,16 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         bll_sellinfomanage.UpdateSellInfo(MSellInfo);
         //sendmsg.SendTextToUsers("2", "哈哈哈");
         Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
+        SendWxArticle_ToCF("2", "回收公司已付款", "请到管理后台-回收公司订单审核");
+    }
 
-        //Response.Redirect("Success.aspx?CFId=0c31f580-8be2-4d40-b506-f10f53c0073b");
+    private void SendWxArticle_ToCF(string QYId, string title, string description)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = title;
+        article.Description = description;
+        sendmsg.SendArticleToUsers(QYId, article, "5");
     }
 }
