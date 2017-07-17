@@ -83,7 +83,7 @@
                     </div>
                     <div class="weui-msg__opr-area">
                         <p class="weui-btn-area">
-                            <a href="MyTradeLeads.aspx" class="weui-btn weui-btn_primary" rel="external">查看已发布信息</a>
+                            <a href="MySellInfos.aspx" class="weui-btn weui-btn_primary" rel="external">查看已发布信息</a>
                         </p>
                     </div>
                     <div class="weui-msg__extra-area">

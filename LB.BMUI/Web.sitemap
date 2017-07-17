@@ -14,6 +14,7 @@
       <siteMapNode url="~/UserManage.aspx" title="街道回收员信息管理" description="街道回收员信息管理" />
       <siteMapNode url="~/MetalFactoryManage.aspx" title="冶炼厂信息管理" description="冶炼厂信息管理" />
       <siteMapNode url="~/SupplierManage.aspx" title="产废单位或个人信息管理" description="产废单位或个人信息管理" />
+      <siteMapNode url="~/SystemAdmin/StaffManage.aspx" title="平台员工管理" description="平台员工管理"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="企业号准入" description="企业号准入管理" roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>

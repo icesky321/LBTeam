@@ -66,6 +66,7 @@
     <Compile Include="UnitInfoDA.cs" />
     <Compile Include="UserAuditMsgDA.cs" />
     <Compile Include="UserDepositInfoDA.cs" />
+    <Compile Include="StaffDA.cs" />
     <Compile Include="UserInfoDA.cs" />
     <Compile Include="UserNoticeInfoDA.cs" />
     <Compile Include="UserTypeInfoDA.cs" />

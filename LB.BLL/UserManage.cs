@@ -123,6 +123,15 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 根据手机号码删除用户对象
+        /// </summary>
+        /// <param name="mobileNum">用户手机号码</param>
+        public void DeleteUserInfo(string mobileNum)
+        {
+            da.DeleteUserInfo(mobileNum);
+        }
+
+        /// <summary>
         /// 修改用户信息
         /// </summary>
         /// <param name="userinfo"></param>
@@ -178,6 +187,16 @@ namespace LB.BLL
         public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_JD_InCity(string cityRegionCode)
         {
             return da.GetUserInfo_JD_InCity(cityRegionCode);
+        }
+
+        /// <summary>
+        /// 查询指定街道的街道回收员
+        /// </summary>
+        /// <param name="streetRegionCode">街道12位数代码</param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUserInfo_JD_InStreet(string streetRegionCode)
+        {
+            return da.GetUserInfo_JD_InStreet(streetRegionCode);
         }
 
         /// <summary>
