@@ -102,6 +102,11 @@ public partial class BasicConfig_SysUserManage : System.Web.UI.Page
             RemoveFromRoleBase(jobNumber, roleName);
             LoadStaff();
         }
+
+        if (e.CommandName == "Config")
+        {
+            Response.Redirect("EditStaff.aspx?staffId=" + e.CommandArgument.ToString());
+        }
     }
 
 
