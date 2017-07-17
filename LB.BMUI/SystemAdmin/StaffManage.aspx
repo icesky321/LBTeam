@@ -41,6 +41,7 @@
                         <asp:BoundField DataField="JobNumber" HeaderText="工号" SortExpression="JobNumber" />
                         <asp:BoundField DataField="UserName" HeaderText="昵称" SortExpression="UserName" />
                         <asp:BoundField DataField="RealName" HeaderText="姓名" SortExpression="RealName" />
+                        <asp:BoundField DataField="MobileNum" HeaderText="手机号码（账户）" />
                         <asp:BoundField DataField="Sex" HeaderText="性别" SortExpression="Sex" />
                         <%--                        <asp:TemplateField HeaderText="微信标记">
                             <ItemTemplate>
@@ -54,8 +55,11 @@
                             <ItemTemplate>
                                 <asp:LinkButton ID="lbtnDelete" runat="server" CausesValidation="False" CommandName="Delete"
                                     CommandArgument='<%# Eval("StaffId") %>' Text="删除" OnClientClick='return confirm("你确定要删除吗？");'></asp:LinkButton>
+                                &nbsp;&nbsp;
+                                <asp:LinkButton ID="lbtnEdit" runat="server" CausesValidation="False" CommandName="Config"
+                                    CommandArgument='<%# Eval("StaffId") %>' Text="配置员工信息"></asp:LinkButton>
                             </ItemTemplate>
-                            <ItemStyle Width="30px" />
+                            <ItemStyle Width="150px" />
                         </asp:TemplateField>
                     </Columns>
                     <EditRowStyle Width="50px" />

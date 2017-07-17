@@ -34,18 +34,26 @@ public partial class SystemAdmin_CreateStaff : System.Web.UI.Page
 
         // 创建用户信息
         LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
-        user.UserName = tbUserName.Text;
-        user.RealName = tbRealName.Text;
-        user.MobilePhoneNum = tbMobileNum.Text;
-        bll_userInfo.NewUserInfo(user);
+        if (!bll_userInfo.ExistTelNum(tbMobileNum.Text.Trim()))
+        {
+            user.UserTypeId = 0;
+            user.UserName = tbUserName.Text;
+            user.RealName = tbRealName.Text;
+            user.MobilePhoneNum = tbMobileNum.Text;
+            bll_userInfo.NewUserInfo(user);
+        }
 
         // 创建平台员工信息
         LB.SQLServerDAL.Staff staff = new LB.SQLServerDAL.Staff();
-        staff.MobileNum = tbMobileNum.Text;
-        staff.UserName = tbUserName.Text;
-        staff.JobNumber = tbJobNumber.Text;
-        staff.RealName = tbRealName.Text;
-        bll_staff.CreateStaff(staff);
+        if (!bll_staff.ExistMobile(tbMobileNum.Text.Trim()))
+        {
+            staff.MobileNum = tbMobileNum.Text;
+            staff.UserName = tbUserName.Text;
+            staff.JobNumber = tbJobNumber.Text;
+            staff.RealName = tbRealName.Text;
+            bll_staff.CreateStaff(staff);
+        }
+
         Response.Redirect("StaffManage.aspx");
     }
 }
