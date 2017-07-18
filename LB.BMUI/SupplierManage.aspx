@@ -95,6 +95,11 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="CreateTime" HeaderText="注册时间" SortExpression="CreateTime" />
+            <asp:TemplateField HeaderText="地址 " SortExpression="Region">
+                <ItemTemplate>
+                    <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
         <PagerTemplate>
             <table width="100%" style="font-size: 12px;">

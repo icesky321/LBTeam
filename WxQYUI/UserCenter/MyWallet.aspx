@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyWallet.aspx.cs" Inherits="UserCenter_MyWallet" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,9 +12,10 @@
     <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
     <title>绿宝三益--我的钱包</title>
 </head>
+
+
 <body>
-    <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <form id="form1" runat="server" data-ajax="false">
         <div id="page1" data-role="page" runat="server">
             <div class="weui-cells__title">
                 <h2>我的钱包</h2>
@@ -24,17 +23,14 @@
             <hr />
             <br />
             <h2>余额：
-            <asp:Label ID="lbTotalMoney" runat="server" Text=""></asp:Label>元
+                    <asp:Label ID="lbTotalMoney" runat="server" Text=""></asp:Label>元
             </h2>
             <h2>在途资产：
-            <asp:Label ID="lbWaitMoney" runat="server" Text=""></asp:Label>元
+                    <asp:Label ID="lbWaitMoney" runat="server" Text=""></asp:Label>元
             </h2>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:Button ID="btSure" runat="server" Text="提现" OnClick="btSure_Click" />
-                    <asp:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" TargetControlID="btSure" ConfirmText="确定提现吗？" />
-                </ContentTemplate>
-            </asp:UpdatePanel>
+
+            <asp:Button ID="btSure" runat="server" Text="提现" OnClick="btSure_Click" />
+
         </div>
         <div id="pageRegCompleted" data-role="page" runat="server">
 
@@ -45,11 +41,9 @@
                         <h2 class="weui-msg__title">操作成功</h2>
                         <p class="weui-msg__desc">因为银行系统到账时间因素，您的资金将在您发起申请后的48小时内到账，请及时关注您的银行账户！如有不便之处敬请谅解！</p>
                     </div>
-                    <%--                    <div class="weui-msg__opr-area">
-                        <p class="weui-btn-area">
-                            <a href="MyTradeLeads.aspx" class="weui-btn weui-btn_primary" rel="external">查看已发布信息</a>
-                        </p>
-                    </div>--%>
+                    <div id="show2">
+                        <input type="button" value="关闭本窗口" onclick="WeixinJSBridge.call('closeWindow');" />
+                    </div>
                     <div class="weui-msg__extra-area">
                         <div class="weui-footer">
                             <p class="weui-footer__links">
@@ -71,11 +65,9 @@
                         <h2 class="weui-msg__title">提现失败</h2>
                         <p class="weui-msg__desc">对不起，您的账户没有可用余额</p>
                     </div>
-                    <%--                    <div class="weui-msg__opr-area">
-                        <p class="weui-btn-area">
-                            <a href="MyTradeLeads.aspx" class="weui-btn weui-btn_primary" rel="external">查看已发布信息</a>
-                        </p>
-                    </div>--%>
+                    <div id="show">
+                        <input type="button" value="关闭本窗口" onclick="WeixinJSBridge.call('closeWindow');" />
+                    </div>
                     <div class="weui-msg__extra-area">
                         <div class="weui-footer">
                             <p class="weui-footer__links">

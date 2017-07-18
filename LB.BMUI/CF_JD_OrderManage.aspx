@@ -15,10 +15,14 @@
             <br />
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                 <ItemTemplate>
-                    <asp:Label ID="lbCFId" runat="server" Text='<%# Eval("CFId") %>' Visible="false"></asp:Label>
                     <asp:Label ID="lbInUserId" runat="server" Text='<%# Eval("InUserId") %>' Visible="false"></asp:Label>
                     <asp:Label ID="lbOutUserId" runat="server" Text='<%# Eval("OutUserId") %>' Visible="false"></asp:Label>
                     <table style="border: 1px solid #C0C0C0; width: 100%">
+                        <tr style="height: 30px; background-color: #99FF33; ">
+                            <td colspan="5">
+                                付款编号：<asp:Label ID="lbcfId" runat="server" Text='<%# Eval("CFId") %>'></asp:Label>
+                            </td>
+                        </tr>
                         <tr style="height: 30px; background-color: #99FF33;">
                             <td>卖方(产废单位):
                         <asp:Label ID="lbInNum" runat="server" Text=""></asp:Label></td>

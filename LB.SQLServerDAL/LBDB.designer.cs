@@ -90,6 +90,9 @@ namespace LB.SQLServerDAL
     partial void InsertSellInfo(SellInfo instance);
     partial void UpdateSellInfo(SellInfo instance);
     partial void DeleteSellInfo(SellInfo instance);
+    partial void InsertStaff(Staff instance);
+    partial void UpdateStaff(Staff instance);
+    partial void DeleteStaff(Staff instance);
     partial void InsertTradeleads(Tradeleads instance);
     partial void UpdateTradeleads(Tradeleads instance);
     partial void DeleteTradeleads(Tradeleads instance);
@@ -303,6 +306,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<SellInfo>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Staff> Staff
+		{
+			get
+			{
+				return this.GetTable<Staff>();
 			}
 		}
 		
@@ -3466,7 +3477,11 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<System.Guid> _InfoId;
 		
-		private System.Nullable<int> _CopId;
+		private System.Nullable<int> _CopUserId;
+		
+		private System.Nullable<bool> _CopUserAudit;
+		
+		private System.Nullable<System.DateTime> _CopAudtiDate;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -3500,8 +3515,12 @@ namespace LB.SQLServerDAL
     partial void OnAuditOperatorChanged();
     partial void OnInfoIdChanging(System.Nullable<System.Guid> value);
     partial void OnInfoIdChanged();
-    partial void OnCopIdChanging(System.Nullable<int> value);
-    partial void OnCopIdChanged();
+    partial void OnCopUserIdChanging(System.Nullable<int> value);
+    partial void OnCopUserIdChanged();
+    partial void OnCopUserAuditChanging(System.Nullable<bool> value);
+    partial void OnCopUserAuditChanged();
+    partial void OnCopAudtiDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCopAudtiDateChanged();
     #endregion
 		
 		public CF_JD_Order()
@@ -3789,22 +3808,62 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CopId", DbType="Int")]
-		public System.Nullable<int> CopId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CopUserId", DbType="Int")]
+		public System.Nullable<int> CopUserId
 		{
 			get
 			{
-				return this._CopId;
+				return this._CopUserId;
 			}
 			set
 			{
-				if ((this._CopId != value))
+				if ((this._CopUserId != value))
 				{
-					this.OnCopIdChanging(value);
+					this.OnCopUserIdChanging(value);
 					this.SendPropertyChanging();
-					this._CopId = value;
-					this.SendPropertyChanged("CopId");
-					this.OnCopIdChanged();
+					this._CopUserId = value;
+					this.SendPropertyChanged("CopUserId");
+					this.OnCopUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CopUserAudit", DbType="Bit")]
+		public System.Nullable<bool> CopUserAudit
+		{
+			get
+			{
+				return this._CopUserAudit;
+			}
+			set
+			{
+				if ((this._CopUserAudit != value))
+				{
+					this.OnCopUserAuditChanging(value);
+					this.SendPropertyChanging();
+					this._CopUserAudit = value;
+					this.SendPropertyChanged("CopUserAudit");
+					this.OnCopUserAuditChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CopAudtiDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CopAudtiDate
+		{
+			get
+			{
+				return this._CopAudtiDate;
+			}
+			set
+			{
+				if ((this._CopAudtiDate != value))
+				{
+					this.OnCopAudtiDateChanging(value);
+					this.SendPropertyChanging();
+					this._CopAudtiDate = value;
+					this.SendPropertyChanged("CopAudtiDate");
+					this.OnCopAudtiDateChanged();
 				}
 			}
 		}
@@ -5789,6 +5848,212 @@ namespace LB.SQLServerDAL
 					this._StatusMsg = value;
 					this.SendPropertyChanged("StatusMsg");
 					this.OnStatusMsgChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Staff")]
+	public partial class Staff : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _StaffId;
+		
+		private string _JobNumber;
+		
+		private string _MobileNum;
+		
+		private string _UserName;
+		
+		private string _RealName;
+		
+		private bool _Sex;
+		
+		private System.Nullable<System.DateTime> _CreateTime;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStaffIdChanging(System.Guid value);
+    partial void OnStaffIdChanged();
+    partial void OnJobNumberChanging(string value);
+    partial void OnJobNumberChanged();
+    partial void OnMobileNumChanging(string value);
+    partial void OnMobileNumChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    partial void OnRealNameChanging(string value);
+    partial void OnRealNameChanged();
+    partial void OnSexChanging(bool value);
+    partial void OnSexChanged();
+    partial void OnCreateTimeChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateTimeChanged();
+    #endregion
+		
+		public Staff()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid StaffId
+		{
+			get
+			{
+				return this._StaffId;
+			}
+			set
+			{
+				if ((this._StaffId != value))
+				{
+					this.OnStaffIdChanging(value);
+					this.SendPropertyChanging();
+					this._StaffId = value;
+					this.SendPropertyChanged("StaffId");
+					this.OnStaffIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobNumber", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string JobNumber
+		{
+			get
+			{
+				return this._JobNumber;
+			}
+			set
+			{
+				if ((this._JobNumber != value))
+				{
+					this.OnJobNumberChanging(value);
+					this.SendPropertyChanging();
+					this._JobNumber = value;
+					this.SendPropertyChanged("JobNumber");
+					this.OnJobNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileNum", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string MobileNum
+		{
+			get
+			{
+				return this._MobileNum;
+			}
+			set
+			{
+				if ((this._MobileNum != value))
+				{
+					this.OnMobileNumChanging(value);
+					this.SendPropertyChanging();
+					this._MobileNum = value;
+					this.SendPropertyChanged("MobileNum");
+					this.OnMobileNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealName", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string RealName
+		{
+			get
+			{
+				return this._RealName;
+			}
+			set
+			{
+				if ((this._RealName != value))
+				{
+					this.OnRealNameChanging(value);
+					this.SendPropertyChanging();
+					this._RealName = value;
+					this.SendPropertyChanged("RealName");
+					this.OnRealNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sex", DbType="Bit NOT NULL")]
+		public bool Sex
+		{
+			get
+			{
+				return this._Sex;
+			}
+			set
+			{
+				if ((this._Sex != value))
+				{
+					this.OnSexChanging(value);
+					this.SendPropertyChanging();
+					this._Sex = value;
+					this.SendPropertyChanged("Sex");
+					this.OnSexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateTime", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateTime
+		{
+			get
+			{
+				return this._CreateTime;
+			}
+			set
+			{
+				if ((this._CreateTime != value))
+				{
+					this.OnCreateTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CreateTime = value;
+					this.SendPropertyChanged("CreateTime");
+					this.OnCreateTimeChanged();
 				}
 			}
 		}

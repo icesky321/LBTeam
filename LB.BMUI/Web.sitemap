@@ -21,10 +21,10 @@
     </siteMapNode>
     <siteMapNode url="" title="业务信息审核" description="业务信息审核"  roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/BusiReview/CF_SellInfoAPV.aspx" title="产废单位发布信息" description="产废单位发布信息审核" />
-      <siteMapNode url="~/CF_JD_OrderManage.aspx" title="回收公司订单审核" description="回收公司订单审核" />
       <siteMapNode url="~/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
     </siteMapNode>
     <siteMapNode url="" title="平台资金管理" description="平台资金管理" securitytrimmingenabled="true" roles="Admin,UserManage">
+      <siteMapNode url="~/CF_JD_OrderManage.aspx" title="回收公司订单审核" description="回收公司订单审核" />
       <siteMapNode url="~/FundManage/LoanAudit.aspx" title="货款管理" description="货款管理" />
       <!--<siteMapNode url="~/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />-->
       <siteMapNode url="~/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />

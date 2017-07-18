@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC; text-align:center;">
-                        <asp:Button ID="btnAccept" runat="server" Text="审核通过" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Accept" CommandArgument='<%# Eval("PDId") %>' />&nbsp;&nbsp;
+                        <asp:Button ID="btnAccept" runat="server" Text="打款后请点击" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Accept" CommandArgument='<%# Eval("PDId") %>' />&nbsp;&nbsp;
                             <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Reject" CommandArgument='<%# Eval("PDId") %>' />
                     </td>
 
@@ -50,7 +50,7 @@
     </asp:Repeater>
     <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="CreateDate" TableName="PaymentDetail" Where="PayStatus == @PayStatus">
         <WhereParameters>
-            <asp:Parameter DefaultValue="待审核" Name="PayStatus" Type="String" />
+            <asp:Parameter DefaultValue="提款中" Name="PayStatus" Type="String" />
         </WhereParameters>
     </asp:LinqDataSource>
 </asp:Content>

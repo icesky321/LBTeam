@@ -16,7 +16,6 @@
 </head>
 <body>
     <form id="form1" runat="server" data-ajax="false">
-
         <uc2:Aunth ID="Aunth1" runat="server" Visible="false" />
         <uc3:UnAunth ID="UnAunth1" runat="server" Visible="false" />
         <div id="pageMain" data-role="page">

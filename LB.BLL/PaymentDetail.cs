@@ -28,6 +28,11 @@ namespace LB.BLL
             return da.ExistUserId(UserId);
         }
 
+        public bool ExistCFId(Guid CFId)
+        {
+            return da.ExistCFId(CFId);
+        }
+
         public decimal GetWaitAmountSumByUserId(int UserId)
         {
             return da.GetWaitAmountSumByUserId(UserId);
@@ -36,6 +41,11 @@ namespace LB.BLL
         public LB.SQLServerDAL.PaymentDetail GetPaymentDetailByPDId(Guid PDId)
         {
             return da.GetPaymentDetailByPDId(PDId);
+        }
+
+        public LB.SQLServerDAL.PaymentDetail GetPaymentDetailByCFId(Guid CFId)
+        {
+            return da.GetPaymentDetailByCFId(CFId);
         }
 
     }

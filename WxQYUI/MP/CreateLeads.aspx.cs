@@ -106,8 +106,11 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         sellInfo.TradePlace = user.Address;
         sellInfo.CF_UserId = user.UserId;
         sellInfo.CF_UserMobile = userName;
+        sellInfo.JD_AcceptedTag = false;
+        sellInfo.StatusMsg = "";
+        sellInfo.IsClosed = false;
         bll_sellInfo.CreateSellInfo(sellInfo);
-        SendWxArticle_ToCF("2", "有废旧蓄铅电池出售信息发布需要审核", "请到管理后台-产废单位发布信息审核");
+        SendWxArticle_ToCF("101", "有废旧蓄铅电池出售信息发布需要审核", "请到管理后台-产废单位发布信息审核");
         Response.Redirect("CreateLeads.aspx#pageRegCompleted", true);
     }
 

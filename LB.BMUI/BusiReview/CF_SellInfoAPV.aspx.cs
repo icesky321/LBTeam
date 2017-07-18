@@ -91,7 +91,7 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
 
         if (e.CommandName == "Accept")
         {
-            sellInfo.Kefu_LeaveMsg = tbRemark.Text;
+            sellInfo.Kefu_LeaveMsg = "";
             sellInfo.Kefu_HandleDate = DateTime.Now;
             sellInfo.Kefu_HandleResult = "审核通过";
             sellInfo.Kefu_TohandleTag = false;
@@ -140,7 +140,7 @@ public partial class BusiReview_CF_SellInfoAPV : System.Web.UI.Page
         MSellUser = bll_userManage.GetUserInfoByUserId(MSellInfo.CF_UserId);
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = MSellInfo.Title;
-        article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + MSellUser.Address + "\n" + "内容：" + MSellInfo.Description;
+        article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + MSellUser.Address + "\n" + "内容：" + MSellInfo.Description + MSellInfo.Quantity;
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx?InfoId=" + infoId.ToString();
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }

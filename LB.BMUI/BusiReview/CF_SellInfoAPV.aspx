@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">
-                            <asp:Button ID="btnHandle" runat="server" Text="接单处理" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="ToHandle" CommandArgument='<%# Eval("InfoId") %>' />
+                            <asp:Button ID="btnHandle" runat="server" Text="接单处理" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' />
                         </td>
 
                     </tr>

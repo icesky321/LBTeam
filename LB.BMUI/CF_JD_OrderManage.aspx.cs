@@ -48,16 +48,15 @@ public partial class CF_JD_OrderManage : System.Web.UI.Page
             MCF_JD_Order.AuditDatetime = System.DateTime.Now;
             MCF_JD_Order.Audit = true;
             bll_cf_jd_order.UpdateCF_JD_Order(MCF_JD_Order);
-            MPaymentDetail.Amount = MCF_JD_Order.Amount;
-            MPaymentDetail.UserId = MCF_JD_Order.InUserId;
-            MPaymentDetail.CreateDate = System.DateTime.Now;
-            MPaymentDetail.PayStatus = "打款";
-            MPaymentDetail.CFId = MCF_JD_Order.CFId;
-            bll_paymentdetail.newPaymentDetail(MPaymentDetail);
+            MPaymentDetail = bll_paymentdetail.GetPaymentDetailByCFId(Guid.Parse(CFId));
+            MPaymentDetail.PayStatus = "已到款";
+            MPaymentDetail.Audit = User.Identity.Name;
+            MPaymentDetail.AuditDate = System.DateTime.Now;
+            bll_paymentdetail.UpdatePaymentDetail(MPaymentDetail);
             Repeater1.DataBind();
             string jd_qyid = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.OutUserId)).QYUserId;
-            MCopInfo = bll_copinfo.GetCopInfoeById(Convert.ToInt32(MCF_JD_Order.CopId));
-            string cop_qyid= bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId)).QYUserId;
+
+            string cop_qyid= bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.CopUserId)).QYUserId;
             SendWxArticle_ToCF(Guid.Parse(CFId), jd_qyid);
             SendWxArticle_ToCF(Guid.Parse(CFId), cop_qyid);
         }

@@ -34,7 +34,7 @@ namespace LB.SQLServerDAL
 
         public decimal GetWaitAmountSumByUserId(int UserId)
         {
-            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId && a.PayStatus== "待审核").ToList().Sum(a => a.Amount));
+            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId && a.PayStatus== "提款中").ToList().Sum(a => a.Amount));
             return total;
         }
 
@@ -51,10 +51,31 @@ namespace LB.SQLServerDAL
             return exists;
         }
 
+        public bool ExistCFId(Guid CFId)
+        {
+            bool exists = false;
+            var query = from u in dbContext.PaymentDetail
+                        where u.CFId == CFId
+                        select u;
+            if (query.Count() > 0)
+            {
+                exists = true;
+            }
+            return exists;
+        }
+
         public LB.SQLServerDAL.PaymentDetail GetPaymentDetailByPDId(Guid PDId)
         {
             var query = from c in dbContext.PaymentDetail
                         where c.PDId == PDId
+                        select c;
+            return query.FirstOrDefault<LB.SQLServerDAL.PaymentDetail>();
+        }
+
+        public LB.SQLServerDAL.PaymentDetail GetPaymentDetailByCFId(Guid CFId)
+        {
+            var query = from c in dbContext.PaymentDetail
+                        where c.CFId == CFId
                         select c;
             return query.FirstOrDefault<LB.SQLServerDAL.PaymentDetail>();
         }

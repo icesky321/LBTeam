@@ -12,12 +12,15 @@ using System.Web.UI.HtmlControls;
 public partial class Admin_ListUsers : System.Web.UI.Page
 {
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
+    LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
+    LB.BLL.UserTypeInfo bll_usertype = new LB.BLL.UserTypeInfo();
+    LB.SQLServerDAL.UserTypeInfo MUserType = new LB.SQLServerDAL.UserTypeInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             //绑定用户和角色信息
-            gvUserDataBind();
+            //gvUserDataBind();
             gvRoles.DataSource = Roles.GetAllRoles();
             gvRoles.DataBind();
         }
@@ -27,6 +30,19 @@ public partial class Admin_ListUsers : System.Web.UI.Page
     {
         gvUsers.DataSource = bll_userinfo.GetUserInfosBySEO("", "", "", "", "", tbTelNum.Text);
         gvUsers.DataBind();
+
+        foreach (GridViewRow gvRow in gvUsers.Rows)
+        {
+            string UserId = gvRow.Cells[0].Text;
+            if (!string.IsNullOrEmpty(UserId))
+            {
+                MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId));
+                ((Label)(gvRow.Cells[2].FindControl("lbUserType"))).Text = bll_usertype.GetUserTypeById(Convert.ToInt32(MUserInfo.UserTypeId)).UserTypeName;
+            }
+           
+        }
+
+
     }
 
     protected void LinkButtonClick(object sender, CommandEventArgs e)
