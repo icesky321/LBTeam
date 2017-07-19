@@ -62,5 +62,17 @@ namespace LB.Weixin.Contact
             int[] deps = listDeps.ToArray();
             return MailListApi.CreateMember(accessToken, qyUserId, name, deps, mobile: mobile);
         }
+
+        /// <summary>
+        /// 删除企业号账户
+        /// </summary>
+        /// <param name="qyUserId">企业号用户Id</param>
+        /// <param name="accessToken">访问口令</param>
+        /// <returns></returns>
+        public QyJsonResult DeleteMember(string qyUserId, string accessToken = null)
+        {
+            accessToken = accessToken ?? AccessToken;
+            return MailListApi.DeleteMember(accessToken, qyUserId);
+        }
     }
 }
