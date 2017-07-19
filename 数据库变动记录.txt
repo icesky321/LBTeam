@@ -1,5 +1,9 @@
 
 数据更新从上面插入
+
+2017-07-19  UserInfo表新增PayeeName,zfbName,zfbAccount,wxName,wxAccount字段   服务器上已添加。
+
+---------------------------------------------------------------------------------------------------------
 2017-07-16   CF_JD_Order表 删除CopId,新增CopUserId，CopUserAudit，CopAudtiDate
 2017-07-13   CopInfo  表增加Shortname字段
 

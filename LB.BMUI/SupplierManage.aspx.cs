@@ -76,6 +76,14 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
                 ((LinkButton)(gvRow.Cells[6].FindControl("lbtnBizlicense"))).Visible = false;
                 ((MultiView)(gvRow.Cells[6].FindControl("MultiView1"))).ActiveViewIndex = 2;
             }
+            if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId))).Audit == false)
+            {
+                ((MultiView)(gvRow.Cells[8].FindControl("MultiView5"))).ActiveViewIndex = 0;
+            }
+            else
+            {
+                ((MultiView)(gvRow.Cells[8].FindControl("MultiView5"))).ActiveViewIndex = 1;
+            }
         }
     }
 
@@ -143,6 +151,8 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
         }
         if (e.CommandName == "Pass")
         {
+            string UserId = e.CommandArgument.ToString();
+            MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId)));
             MUserInfo.Audit = true;
             MUserInfo.AuditDate = System.DateTime.Now;
         }

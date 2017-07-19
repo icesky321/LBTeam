@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NextReg.aspx.cs" Inherits="Login_NextReg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CFNextReg.aspx.cs" Inherits="Login_CFNextReg" %>
 
 <!DOCTYPE html>
 
@@ -25,29 +25,36 @@
 
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
 
-                昵称：<asp:TextBox ID="tbNiChen" runat="server"></asp:TextBox>
+                公司(店面)名称：<asp:TextBox ID="tbCopName" runat="server"></asp:TextBox>
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
-
-                开户行信息：<asp:TextBox ID="tbBankInfo" runat="server"></asp:TextBox>
+                收款人：<asp:TextBox ID="tbBankRen" runat="server"></asp:TextBox>
                 <br />
-                银行账号：<asp:TextBox ID="tbAccount" runat="server"></asp:TextBox><br />
+                收款账户开户行信息：<asp:TextBox ID="tbBankInfo" runat="server"></asp:TextBox>
+                <br />
+                收款账户银行账号：<asp:TextBox ID="tbAccount" runat="server"></asp:TextBox><br />
 
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
 
-                        <table>
-                            <tr>
-                                <td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
-                                <td>
-                                    <asp:FileUpload ID="FileUpload1" runat="server" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
+                <table>
+                    <tr>
+                        <td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
+                        <td>
+                            <asp:FileUpload ID="FileUpload1" runat="server" /></td>
+                    </tr>
+                    <tr>
+                        <td>营业执照信息：<asp:Image ID="Image2" runat="server" Width="200px" Height="100px" /></td>
+                        <td>
+                            <asp:FileUpload ID="FileUpload2" runat="server" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
 
-                                    <asp:Button ID="btUserNext" runat="server" Text="确定" OnClick="btUserNext_Click" />
-                                    <asp:Label ID="Label1" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
+                            <asp:Button ID="btUserNext" runat="server" Text="确定" OnClick="btUserNext_Click" />
+                            <asp:Label ID="Label1" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
                 <div style="height: 60px;"></div>
 
             </div>

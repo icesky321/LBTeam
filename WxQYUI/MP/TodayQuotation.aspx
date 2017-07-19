@@ -13,7 +13,7 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" data-ajax="false">
 
         <div class="page">
             <div class="page__hd">
@@ -98,7 +98,9 @@
                         汽车80AB：代表型号80AH以下的汽车电池。<br />
                     </span>
                 </label>
+                <asp:Button ID="btSell" runat="server" Text="我要卖货" OnClick="btSell_Click" rel="external" />
             </div>
+
             <div class="page__bd page__bd_spacing">
                 <br>
                 <br>

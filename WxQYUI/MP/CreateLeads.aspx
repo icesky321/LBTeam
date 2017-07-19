@@ -18,6 +18,7 @@
         <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
         <div data-role="page" id="page1">
             <div data-role="main" class="ui-content">
+                <asp:Button ID="btSearch" runat="server" Text="查询今日回收价格" OnClick="btSearch_Click" rel="external" />
                 <fieldset data-role="controlgroup">
                     <legend>您要出售的电瓶品种</legend>
                     <asp:CheckBoxList ID="cblDP" runat="server" DataSourceID="ObjectDataSource1" DataTextField="TSName" DataValueField="TSId" RepeatLayout="UnorderedList">
