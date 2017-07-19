@@ -35,6 +35,7 @@
                 </div>
                 <asp:DropDownList ID="ddlShenfen" runat="server" data-native-menu="false" DataTextField="UserTypeName" DataValueField="DataTypeId">
                 </asp:DropDownList>
+
                 <asp:TextBox ID="tbMobile" runat="server" placeholder="请输入手机号码" ValidationGroup="Reg1"></asp:TextBox>
 
                 <asp:LinkButton ID="lbtnGetVeriCode" runat="server" OnClick="lbtnGetVeriCode_Click" ValidationGroup="Reg1">获取验证码</asp:LinkButton>&nbsp;&nbsp;<asp:Literal ID="ltlVeriMessage" runat="server" Text="正在获取中，请稍后" Visible="false"></asp:Literal>
@@ -44,7 +45,24 @@
                 <asp:RequiredFieldValidator ID="rfv2" runat="server" ErrorMessage="密码不可为空" ControlToValidate="tbPassword" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <asp:TextBox ID="tbPassword" runat="server" placeholder="设置登录密码" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
+                <div data-role="main" class="ui-content">
+                    <asp:HiddenField ID="hfRegionCode" runat="server" />
+                    选择省份：
+                <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
+                    选择地级市：
+                <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+                    选择县市：
+            <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
+                    镇或街道：
+                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList><br />
 
+
+                    详细地址：
+                <asp:TextBox ID="tbAddress" runat="server" ValidationGroup="edit"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="edit"></asp:RequiredFieldValidator>
+
+                </div>
                 <asp:Button ID="btnReg" runat="server" Text="注册" OnClick="btnReg_Click" ValidationGroup="Reg2" />
             </div>
             <div data-role="footer">
@@ -61,32 +79,7 @@
             </div>
         </div>
 
-        <div id="pageRegCompleted" data-role="page">
 
-            <div data-role="main" class="ui-content">
-                <div class="weui-msg">
-                    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
-                    <div class="weui-msg__text-area">
-                        <h2 class="weui-msg__title">用户注册成功</h2>
-                        <p class="weui-msg__desc">请返回登录界面，用刚才注册的手机号登录</p>
-                    </div>
-                    <div class="weui-msg__opr-area">
-                        <p class="weui-btn-area">
-                            <a href="Login.aspx" class="weui-btn weui-btn_primary" rel="external">返回登录</a>
-                        </p>
-                    </div>
-                    <div class="weui-msg__extra-area">
-                        <div class="weui-footer">
-                            <p class="weui-footer__links">
-                                <a href="javascript:void(0);" class="weui-footer__link"></a>
-                            </p>
-                            <p class="weui-footer__text">Copyright &copy; 2016-2017 lvbao111.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </form>
 </body>
 </html>

@@ -48,5 +48,10 @@ namespace LB.BLL
         {
             return da.ExistUseId(UseId);
         }
+
+        public IQueryable<LB.SQLServerDAL.CopInfo> GetCopInfosByUserType(int UserType)
+        {
+            return da.GetCopInfosByUserType(UserType);
+        }
     }
 }

@@ -22,7 +22,7 @@ public partial class Syb_hsgs_Choosejdywy : System.Web.UI.Page
                 string InfoId = Request.QueryString["InfoId"];
 
                 hfInfoId.Value = InfoId;
-                if (!bll_cf_jd_order.ExistInfoId(Guid.Parse(InfoId)))
+                if (bll_cf_jd_order.ExistInfoId(Guid.Parse(InfoId)))
                 {
                     page1.Visible = false;
                     pageRegCompleted.Visible = true;
@@ -31,7 +31,7 @@ public partial class Syb_hsgs_Choosejdywy : System.Web.UI.Page
             else
             {
                 hfInfoId.Value = "b3cc01d1-dd37-495d-a69f-687b2fc4c4b6";
-                if (!bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
+                if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
                 {
                     page1.Visible = false;
                     pageRegCompleted.Visible = true;
@@ -49,7 +49,7 @@ public partial class Syb_hsgs_Choosejdywy : System.Web.UI.Page
             MSellInfo = bll_sellInfo.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
             MSellInfo.JD_TohandleTag = true;
             MSellInfo.JD_UserId = Convert.ToInt32(UserId);
-            //bll_sellInfo.UpdateSellInfo(MSellInfo);
+            bll_sellInfo.UpdateSellInfo(MSellInfo);
             SendWxArticle_ToCF(Guid.Parse(hfInfoId.Value), MSellUser.QYUserId);
             Response.Redirect("Choosejdywy.aspx#pageRegCompleted", true);
         }
@@ -63,7 +63,7 @@ public partial class Syb_hsgs_Choosejdywy : System.Web.UI.Page
         MSellUser = bll_userManage.GetUserInfoByUserId(MSellInfo.CF_UserId);
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = "街道回收员调度单（产废单位出售信息）";
-        article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + "\n" + "内容：" + MSellInfo.Description;
+        article.Description = "卖主姓名：" + MSellUser.RealName + "\n" + "手机号：" + MSellUser.MobilePhoneNum + "\n" + "详细地址：" + MSellUser.Province + MSellUser.City + MSellUser.Town + MSellUser.Street + "\n" + "内容：" + MSellInfo.Description + MSellInfo.Quantity;
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_JD/GoodsReceipt.aspx?InfoId=" + infoId;
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }

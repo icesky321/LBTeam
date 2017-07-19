@@ -57,6 +57,10 @@
                         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                     </p>
                     </a></li>--%>
+                    <li><a href="MyWallet.aspx" data-transition="slide" rel="external">我的钱包<p class="ui-li-aside">
+                        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                    </p>
+                    </a></li>
                     <li><a href="CopAuth.aspx" data-transition="slide" rel="external">公司资质审核<p class="ui-li-aside">
                         <asp:Literal ID="Literal2" runat="server"></asp:Literal>
                     </p>

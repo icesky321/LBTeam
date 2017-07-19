@@ -11,11 +11,14 @@ public partial class Login_Register : System.Web.UI.Page
     LB.BLL.SMS bll_sms = new LB.BLL.SMS();
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.BLL.UserTypeInfo bll_userType = new LB.BLL.UserTypeInfo();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
             Init_Load();
+            Load_Address();
+            Load_Province();
         }
     }
 
@@ -23,6 +26,104 @@ public partial class Login_Register : System.Web.UI.Page
     {
         Load_UserType();
     }
+
+    private void Load_Address()
+    {
+        if (!User.Identity.IsAuthenticated)
+            return;
+
+        string userName = User.Identity.Name;
+
+        LB.SQLServerDAL.UserInfo user = bll_userinfo.GetUserInfoByTelNum(userName);
+
+        if (user == null)
+            return;
+
+        tbAddress.Text = string.IsNullOrEmpty(user.Address) ? "" : user.Address;
+    }
+
+    #region  加载省市县
+    private void Load_Province()
+    {
+        var provinces = bll_region.GetRegions("0");
+        ddlProvince.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
+        {
+            ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlProvince.Items.Insert(0, "--选择省份--");
+    }
+
+    private void Load_City()
+    {
+        var cities = bll_region.GetRegions(ddlProvince.SelectedValue);
+        ddlCity.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in cities)
+        {
+            ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlCity.Items.Insert(0, "--选择城市--");
+    }
+
+    private void Load_County()
+    {
+        var counties = bll_region.GetRegions(ddlCity.SelectedValue);
+        ddlCounty.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in counties)
+        {
+            ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlCounty.Items.Insert(0, "--选择区县--");
+    }
+
+    private void Load_Street()
+    {
+        var streets = bll_region.GetRegions(ddlCounty.SelectedValue);
+        ddlStreet.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in streets)
+        {
+            ddlStreet.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlStreet.Items.Insert(0, "--选择区县--");
+    }
+    #endregion
+
+    #region 地址下拉列表
+    protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlProvince.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlProvince.SelectedValue;
+            Load_City();
+        }
+    }
+
+    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCity.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlCity.SelectedValue;
+            Load_County();
+        }
+    }
+
+    protected void ddlCounty_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCounty.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlCounty.SelectedValue;
+            Load_Street();
+        }
+    }
+
+    protected void ddlStreet_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlStreet.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlStreet.SelectedValue;
+        }
+    }
+    #endregion
 
     private void Load_UserType()
     {
@@ -80,17 +181,17 @@ public partial class Login_Register : System.Web.UI.Page
         LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
         user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
         user.Audit = false;
-        //user.AuditDate = Convert.ToDateTime("1900-1-1");
-        //user.UserName = tbContacts.Text;
+        user.RegionCode = hfRegionCode.Value;
         user.MobilePhoneNum = tbMobile.Text;
         user.CreateTime = System.DateTime.Now;
         user.IDAuthentication = false;
         user.ChopAuthentication = false;
         user.InCharge = false;
+        user.Address = tbAddress.Text;
         bll_userinfo.NewUserInfo(user);
         Roles.AddUserToRole(user.MobilePhoneNum, "general");
+        Response.Redirect("NextReg.aspx?telNum=" + user.MobilePhoneNum);
 
-        Response.Redirect("Register.aspx#pageRegCompleted");
     }
 
     protected void lbtnGetVeriCode_Click(object sender, EventArgs e)
@@ -127,5 +228,4 @@ public partial class Login_Register : System.Web.UI.Page
 
 
     }
-
 }

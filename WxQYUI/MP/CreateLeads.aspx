@@ -14,8 +14,8 @@
 </head>
 <!-- 本页面街道业务员调用，创建电瓶出卖信息。 -->
 <body>
-    <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <form id="form1" runat="server" data-ajax="false">
+        <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
         <div data-role="page" id="page1">
             <div data-role="main" class="ui-content">
                 <fieldset data-role="controlgroup">
@@ -49,19 +49,18 @@
                         <a href="../UserCenter/uc_cfdw.aspx" rel="external">编辑个人信息</a>
                     </p>
                 </div>
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
+<%--                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>--%>
                         <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
                         <asp:Button ID="btnSubmit" runat="server" Text="发布" data-role="button" OnClick="btnSubmit_Click" />
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+<%--                    </ContentTemplate>
+                </asp:UpdatePanel>--%>
 
 
             </div>
             <div data-role="footer">
                 <div class="page__bd page__bd_spacing">
-                    <br>
-                    <br>
+
                     <div class="weui-footer">
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>

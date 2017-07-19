@@ -50,9 +50,16 @@
                             <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" Font-Size="Small"
                                 OnPageIndexChanging="gvUsers_PageIndexChanging" OnDataBound="gvUsers_DataBound">
                                 <Columns>
+                                    <asp:BoundField DataField="UserId" HeaderText="UserId" SortExpression="UserId" Visible="True" />
                                     <asp:TemplateField HeaderText="用户名">
                                         <ItemTemplate>
                                             <asp:Label ID="lbUserName" runat="server" ForeColor='black' Text='<%#DataBinder.Eval(Container.DataItem, "UserName")%>'></asp:Label>
+                                        </ItemTemplate>
+                                        <HeaderStyle Height="25px" />
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="平台角色">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lbUserType" runat="server" ForeColor='black' Text=""></asp:Label>
                                         </ItemTemplate>
                                         <HeaderStyle Height="25px" />
                                     </asp:TemplateField>

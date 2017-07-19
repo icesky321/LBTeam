@@ -59,11 +59,9 @@
                         <h2 class="weui-msg__title">操作成功</h2>
                         <p class="weui-msg__desc">您已成功指派回收业务员处理该信息</p>
                     </div>
-                    <%--                    <div class="weui-msg__opr-area">
-                        <p class="weui-btn-area">
-                            <a href="MyTradeLeads.aspx" class="weui-btn weui-btn_primary" rel="external">查看已发布信息</a>
-                        </p>
-                    </div>--%>
+                    <div id="show">
+                        <input type="button" value="关闭本窗口" onclick="WeixinJSBridge.call('closeWindow');" />
+                    </div>
                     <div class="weui-msg__extra-area">
                         <div class="weui-footer">
                             <p class="weui-footer__links">

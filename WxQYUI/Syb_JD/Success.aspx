@@ -26,7 +26,7 @@
                 <label class="weui-form-preview__label">付款金额</label>
                 <em class="weui-form-preview__value">
                     <label class="weui-label">
-                        ￥5600元
+                        ￥<asp:Label ID="lbAmount" runat="server" Text=""></asp:Label>
                     </label>
                 </em>
             </div>
@@ -35,7 +35,7 @@
                     <label class="weui-form-preview__label">卖方(产废单位)</label>
                     <span class="weui-form-preview__value">
                         <label class="weui-label">
-                            ￥5600元
+                            <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
                         </label>
                     </span>
                 </div>
@@ -43,7 +43,7 @@
                     <label class="weui-form-preview__label">买方(街道回收员)</label>
                     <span class="weui-form-preview__value">
                         <label class="weui-label">
-                            ￥5600元
+                            <asp:Label ID="lbJDYWY" runat="server" Text=""></asp:Label>
                         </label>
                     </span>
                 </div>
@@ -58,7 +58,8 @@
                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("Quantity") %>'></asp:Label>
                                 </div>
                                 <div class="weui-cell__ft">
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("GoodsUnit") %>'></asp:Label></div>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("GoodsUnit") %>'></asp:Label>
+                                </div>
 
                             </div>
                         </ItemTemplate>
