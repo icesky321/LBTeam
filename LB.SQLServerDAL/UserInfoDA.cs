@@ -213,6 +213,7 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.UserInfo
                         where c.UserTypeId == UserTypeId
+                        orderby c.CreateTime descending
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
@@ -290,7 +291,7 @@ namespace LB.SQLServerDAL
                         from a in leftGroup2.DefaultIfEmpty()
                         join b in dbContext.Aspnet_Membership on a.UserId equals b.UserId into leftGroup3
                         from b in leftGroup3.DefaultIfEmpty()
-                        orderby c.UserId descending
+                        orderby u.CreateTime descending
                         select new LB.Model.UserInfoModel()
                         {
                             UserId = u.UserId,

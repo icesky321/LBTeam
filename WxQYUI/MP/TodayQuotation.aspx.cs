@@ -11,13 +11,29 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
     LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
     LB.BLL.QuotationManage bll_quote = new LB.BLL.QuotationManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
-    
+    LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
+    LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            Load_UserInfo();
-            LoadTodayQuotation();
+            if (!User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("~/Login/Login.aspx");
+            }
+            else
+            {
+                if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
+                {
+                    Load_UserInfo();
+                    LoadTodayQuotation();
+                }
+                else
+                {
+                    Response.Redirect("~/Login/ImproveData.aspx");
+                }
+            }
+
         }
     }
 
@@ -72,8 +88,8 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             Literal ltlDate = e.Item.FindControl("ltlDate") as Literal;
             if (quotation != null)
             {
-
-                ltlHS_UserName.Text = quotation.UserName;
+                MCopInfo = bll_copinfo.GetCopInfoeByUserId(quotation.UserId);
+                ltlHS_UserName.Text = MCopInfo.ShortName;
                 ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
                 ltlDate.Text = quotation.OfferDate.ToShortDateString();
             }
@@ -83,5 +99,10 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
                 ltlDate.Text = "";
             }
         }
+    }
+
+    protected void btSell_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/MP/CreateLeads.aspx");
     }
 }

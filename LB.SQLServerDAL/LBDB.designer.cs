@@ -5389,17 +5389,17 @@ namespace LB.SQLServerDAL
 		
 		private bool _JD_TohandleTag;
 		
+		private bool _JD_AcceptedTag;
+		
 		private string _JD_HandleResult;
 		
 		private string _JD_Remark;
 		
 		private System.Nullable<System.DateTime> _JD_HandleDate;
 		
-		private bool _IsClosed;
-		
-		private System.Nullable<bool> _JD_AcceptedTag;
-		
 		private string _StatusMsg;
+		
+		private bool _IsClosed;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -5433,18 +5433,18 @@ namespace LB.SQLServerDAL
     partial void OnJD_UserIdChanged();
     partial void OnJD_TohandleTagChanging(bool value);
     partial void OnJD_TohandleTagChanged();
+    partial void OnJD_AcceptedTagChanging(bool value);
+    partial void OnJD_AcceptedTagChanged();
     partial void OnJD_HandleResultChanging(string value);
     partial void OnJD_HandleResultChanged();
     partial void OnJD_RemarkChanging(string value);
     partial void OnJD_RemarkChanged();
     partial void OnJD_HandleDateChanging(System.Nullable<System.DateTime> value);
     partial void OnJD_HandleDateChanged();
-    partial void OnIsClosedChanging(bool value);
-    partial void OnIsClosedChanged();
-    partial void OnJD_AcceptedTagChanging(System.Nullable<bool> value);
-    partial void OnJD_AcceptedTagChanged();
     partial void OnStatusMsgChanging(string value);
     partial void OnStatusMsgChanged();
+    partial void OnIsClosedChanging(bool value);
+    partial void OnIsClosedChanged();
     #endregion
 		
 		public SellInfo()
@@ -5732,6 +5732,26 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_AcceptedTag", DbType="Bit NOT NULL")]
+		public bool JD_AcceptedTag
+		{
+			get
+			{
+				return this._JD_AcceptedTag;
+			}
+			set
+			{
+				if ((this._JD_AcceptedTag != value))
+				{
+					this.OnJD_AcceptedTagChanging(value);
+					this.SendPropertyChanging();
+					this._JD_AcceptedTag = value;
+					this.SendPropertyChanged("JD_AcceptedTag");
+					this.OnJD_AcceptedTagChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_HandleResult", DbType="NVarChar(256)")]
 		public string JD_HandleResult
 		{
@@ -5792,6 +5812,26 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusMsg", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string StatusMsg
+		{
+			get
+			{
+				return this._StatusMsg;
+			}
+			set
+			{
+				if ((this._StatusMsg != value))
+				{
+					this.OnStatusMsgChanging(value);
+					this.SendPropertyChanging();
+					this._StatusMsg = value;
+					this.SendPropertyChanged("StatusMsg");
+					this.OnStatusMsgChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsClosed", DbType="Bit NOT NULL")]
 		public bool IsClosed
 		{
@@ -5808,46 +5848,6 @@ namespace LB.SQLServerDAL
 					this._IsClosed = value;
 					this.SendPropertyChanged("IsClosed");
 					this.OnIsClosedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JD_AcceptedTag", DbType="Bit")]
-		public System.Nullable<bool> JD_AcceptedTag
-		{
-			get
-			{
-				return this._JD_AcceptedTag;
-			}
-			set
-			{
-				if ((this._JD_AcceptedTag != value))
-				{
-					this.OnJD_AcceptedTagChanging(value);
-					this.SendPropertyChanging();
-					this._JD_AcceptedTag = value;
-					this.SendPropertyChanged("JD_AcceptedTag");
-					this.OnJD_AcceptedTagChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusMsg", DbType="NVarChar(32)")]
-		public string StatusMsg
-		{
-			get
-			{
-				return this._StatusMsg;
-			}
-			set
-			{
-				if ((this._StatusMsg != value))
-				{
-					this.OnStatusMsgChanging(value);
-					this.SendPropertyChanging();
-					this._StatusMsg = value;
-					this.SendPropertyChanged("StatusMsg");
-					this.OnStatusMsgChanged();
 				}
 			}
 		}
@@ -7378,9 +7378,19 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<System.DateTime> _AuditDate;
 		
+		private string _PayeeName;
+		
 		private string _BankName;
 		
 		private string _Account;
+		
+		private string _ZfbName;
+		
+		private string _ZfbAccount;
+		
+		private string _WxName;
+		
+		private string _WxAccount;
 		
 		private System.Nullable<bool> _ChopAuthentication;
 		
@@ -7434,10 +7444,20 @@ namespace LB.SQLServerDAL
     partial void OnAuditChanged();
     partial void OnAuditDateChanging(System.Nullable<System.DateTime> value);
     partial void OnAuditDateChanged();
+    partial void OnPayeeNameChanging(string value);
+    partial void OnPayeeNameChanged();
     partial void OnBankNameChanging(string value);
     partial void OnBankNameChanged();
     partial void OnAccountChanging(string value);
     partial void OnAccountChanged();
+    partial void OnZfbNameChanging(string value);
+    partial void OnZfbNameChanged();
+    partial void OnZfbAccountChanging(string value);
+    partial void OnZfbAccountChanged();
+    partial void OnWxNameChanging(string value);
+    partial void OnWxNameChanged();
+    partial void OnWxAccountChanging(string value);
+    partial void OnWxAccountChanged();
     partial void OnChopAuthenticationChanging(System.Nullable<bool> value);
     partial void OnChopAuthenticationChanged();
     partial void OnChopChanging(string value);
@@ -7727,6 +7747,26 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PayeeName", DbType="NVarChar(10)")]
+		public string PayeeName
+		{
+			get
+			{
+				return this._PayeeName;
+			}
+			set
+			{
+				if ((this._PayeeName != value))
+				{
+					this.OnPayeeNameChanging(value);
+					this.SendPropertyChanging();
+					this._PayeeName = value;
+					this.SendPropertyChanged("PayeeName");
+					this.OnPayeeNameChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankName", DbType="NVarChar(50)")]
 		public string BankName
 		{
@@ -7763,6 +7803,86 @@ namespace LB.SQLServerDAL
 					this._Account = value;
 					this.SendPropertyChanged("Account");
 					this.OnAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="zfbName", Storage="_ZfbName", DbType="NVarChar(10)")]
+		public string ZfbName
+		{
+			get
+			{
+				return this._ZfbName;
+			}
+			set
+			{
+				if ((this._ZfbName != value))
+				{
+					this.OnZfbNameChanging(value);
+					this.SendPropertyChanging();
+					this._ZfbName = value;
+					this.SendPropertyChanged("ZfbName");
+					this.OnZfbNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="zfbAccount", Storage="_ZfbAccount", DbType="NVarChar(50)")]
+		public string ZfbAccount
+		{
+			get
+			{
+				return this._ZfbAccount;
+			}
+			set
+			{
+				if ((this._ZfbAccount != value))
+				{
+					this.OnZfbAccountChanging(value);
+					this.SendPropertyChanging();
+					this._ZfbAccount = value;
+					this.SendPropertyChanged("ZfbAccount");
+					this.OnZfbAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="wxName", Storage="_WxName", DbType="NVarChar(10)")]
+		public string WxName
+		{
+			get
+			{
+				return this._WxName;
+			}
+			set
+			{
+				if ((this._WxName != value))
+				{
+					this.OnWxNameChanging(value);
+					this.SendPropertyChanging();
+					this._WxName = value;
+					this.SendPropertyChanged("WxName");
+					this.OnWxNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="wxAccount", Storage="_WxAccount", DbType="NVarChar(50)")]
+		public string WxAccount
+		{
+			get
+			{
+				return this._WxAccount;
+			}
+			set
+			{
+				if ((this._WxAccount != value))
+				{
+					this.OnWxAccountChanging(value);
+					this.SendPropertyChanging();
+					this._WxAccount = value;
+					this.SendPropertyChanged("WxAccount");
+					this.OnWxAccountChanged();
 				}
 			}
 		}

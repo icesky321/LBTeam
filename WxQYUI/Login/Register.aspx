@@ -55,12 +55,11 @@
                     选择县市：
             <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
                     镇或街道：
-                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList><br />
-
+                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged" ValidationGroup="Reg2"></asp:DropDownList><br />
 
                     详细地址：
                 <asp:TextBox ID="tbAddress" runat="server" ValidationGroup="edit"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="edit"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="Reg2"></asp:RequiredFieldValidator>
 
                 </div>
                 <asp:Button ID="btnReg" runat="server" Text="注册" OnClick="btnReg_Click" ValidationGroup="Reg2" />

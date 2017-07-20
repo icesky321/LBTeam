@@ -15,7 +15,24 @@ public partial class MP_CreateLeads : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Init_Load();
+            if (!User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("~/Login/Login.aspx");
+            }
+            else
+            {
+                if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
+                {
+                    Init_Load();
+                }
+                else
+                {
+                    Response.Redirect("~/Login/ImproveData.aspx");
+                }
+            }
+
+
+            
         }
     }
 
@@ -122,5 +139,10 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         article.Title = title;
         article.Description = description;
         sendmsg.SendArticleToUsers(QYId, article, "5");
+    }
+
+    protected void btSearch_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/MP/TodayQuotation.aspx");
     }
 }
