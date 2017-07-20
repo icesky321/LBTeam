@@ -13,6 +13,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
     LB.BLL.UserManage bll_userManage = new LB.BLL.UserManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+    LB.BLL.StaffManage bll_staff = new LB.BLL.StaffManage();
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +26,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
 
     private void Init_Load()
     {
-
+        Load_PingtaiYWY();      // 加载平台业务员
         if (Request.QueryString["infoId"] != null)
         {
             hfInfoId.Value = Request.QueryString["infoId"];
@@ -65,29 +66,21 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             hfCF_QYUserId.Value = user.QYUserId;
 
             // 指派回收业务员
-            if (region.Level != 4)
-            {
-                ltlJD_UserName.Text = "[产废单位区划未完善，无法获取街道业务员]";
-                return;
-            }
-            else
-            {
-                LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
-                if (jd_user == null)
-                {
-                    ltlJD_UserName.Text = "[该地区尚未发展业务员，请平台另行分配]";
-
-                    return;
-                }
-                else
-                {
-                    ltlJD_UserName.Text = jd_user.UserName;
-                    hfJD_UserId.Value = jd_user.UserId.ToString();
-                }
-            }
+            AutoAllocationHSYWY(region);
 
 
         }
+    }
+
+    private void Load_PingtaiYWY()
+    {
+        var staffs = bll_staff.GetStaff();
+        ddlPingtaiYWY.Items.Clear();
+        foreach (LB.SQLServerDAL.Staff staff in staffs)
+        {
+            ddlPingtaiYWY.Items.Add(new ListItem(staff.RealName, staff.MobileNum));
+        }
+        ddlPingtaiYWY.Items.Insert(0, "请选择平台回收业务员");
     }
 
     protected void CommandButton_Click(object sender, CommandEventArgs e)
@@ -110,15 +103,15 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             sellInfo.Kefu_HandleResult = "审核通过";
             sellInfo.Kefu_TohandleTag = false;
             sellInfo.JD_TohandleTag = true;
-            sellInfo.JD_UserId = 141;      // TODO: 分配街道业务员的逻辑仍需修改。  // 本地1164 服务器上 1186
-            sellInfo.StatusMsg = "信息已审核，正在推送到回收业务员。";
+            int userId = 0;
+            int.TryParse(hfJD_UserId.Value, out userId);
+            sellInfo.JD_UserId = userId;
+            sellInfo.StatusMsg = "信息已审核，等待回收业务员接单。";
 
-            //string result = SendWx_ToCF(sellInfo.JD_UserId);
-
-            //if (result == "ok")
-            SendWxArticle_ToCF(sellInfo);
             bll_sellInfo.UpdateSellInfo(sellInfo);
 
+            string result = SendWxArticle_ToJD(sellInfo);
+            ltlResult.Text = "审核完毕。" + result;
 
         }
 
@@ -136,28 +129,62 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
 
     }
 
-    private string SendWx_ToCF(int jd_UserId)
+    private string SendWxArticle_ToJD(LB.SQLServerDAL.SellInfo sellInfo)
     {
         //TODO: 发布前修改微信发布逻辑
+        LB.SQLServerDAL.UserInfo jd_User = bll_userManage.GetUserInfoByUserId(sellInfo.JD_UserId);
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = "新业务提醒";
+        article.Description = sellInfo.Title + "\n卖家姓名：" + jd_User.RealName + "\n手机号：" + jd_User.MobilePhoneNum + "\n详细地址：" +
+             jd_User.Address + "\n出售信息：" + sellInfo.Description;
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx?InfoId=" + sellInfo.InfoId.ToString();
 
-        LB.SQLServerDAL.UserInfo user = bll_userManage.GetUserInfoByUserId(jd_UserId);
-        if (user == null)
-            return "";
-        MsgSender msgSender = new MsgSender();
-        MassResult result = msgSender.SendTextToUsers(user.QYUserId, "产废单位有一条信息已被审核通过。jd_UserId：" + jd_UserId.ToString(), "5");
-        return result.errmsg;
+        string errmsg = string.Empty;
+
+        if (string.IsNullOrEmpty(jd_User.QYUserId))
+            errmsg = "您选定的回收业务员未绑定企业号账户，无法接收到微信提醒信息。";
+        else
+        {
+            MassResult result = sendmsg.SendArticleToUsers(jd_User.QYUserId, article, "5");
+            errmsg = result.errmsg;
+        }
+        return errmsg;
     }
 
-    private void SendWxArticle_ToCF(LB.SQLServerDAL.SellInfo sellInfo)
+    protected void lbtnManuAllocation_Click(object sender, EventArgs e)
     {
-        //TODO: 发布前修改微信发布逻辑
-        LB.SQLServerDAL.UserInfo cf_User = bll_userManage.GetUserInfoByUserId(sellInfo.CF_UserId);
-        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-        article.Title = sellInfo.Title;
-        article.Description = "卖主姓名：" + cf_User.RealName + "\n" + "手机号：" + cf_User.MobilePhoneNum + "\n" + "详细地址：" +
-             cf_User.Address + "\n" + sellInfo.Description;
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx?InfoId=" + sellInfo.InfoId.ToString();
-        //article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx";
-        sendmsg.SendArticleToUsers("2", article, "5");  // TODO: 发布前修改接收对象
+        if (ddlPingtaiYWY.SelectedIndex > 0)
+        {
+            string mobile = ddlPingtaiYWY.SelectedValue;
+            LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfoByTelNum(mobile);
+            if (jd_user == null)
+                return;
+            ltlJD_UserName.Text = jd_user.UserName;
+            hfJD_UserId.Value = jd_user.UserId.ToString();
+        }
+    }
+
+    protected void AutoAllocationHSYWY(Cobe.CnRegion.SQLServerDAL.Region region)
+    {
+        if (region.Level != 4)
+        {
+            ltlJD_UserName.Text = "[产废单位区划未完善，无法获取街道业务员]";
+            return;
+        }
+        else
+        {
+            LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
+            if (jd_user == null)
+            {
+                ltlJD_UserName.Text = "[该地区尚未发展业务员，请平台另行分配]";
+
+                return;
+            }
+            else
+            {
+                ltlJD_UserName.Text = jd_user.UserName;
+                hfJD_UserId.Value = jd_user.UserId.ToString();
+            }
+        }
     }
 }
