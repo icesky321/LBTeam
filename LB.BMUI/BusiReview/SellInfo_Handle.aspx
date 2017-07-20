@@ -43,8 +43,12 @@
 
             </tr>
             <tr>
-                <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">指派回收业务员：<asp:Literal ID="ltlJD_UserName" runat="server"></asp:Literal>
-                    <asp:HiddenField ID="hfJD_UserId" runat="server" />
+                <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">指派回收业务员：
+                    <asp:Literal ID="ltlJD_UserName" runat="server" Text="[未指派]"></asp:Literal>
+                    <asp:HiddenField ID="hfJD_UserId" runat="server" Value="0" />
+                    &nbsp;&nbsp;
+                    <asp:DropDownList ID="ddlPingtaiYWY" runat="server"></asp:DropDownList>
+                    <asp:LinkButton ID="lbtnManuAllocation" runat="server" OnClick="lbtnManuAllocation_Click">人工指派回收业务员</asp:LinkButton>
                 </td>
             </tr>
             <tr>
@@ -54,6 +58,10 @@
                             <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' OnCommand="CommandButton_Click" />&nbsp;&nbsp;
                 </td>
 
+            </tr>
+            <tr>
+                <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">处理结果：<asp:Literal ID="ltlResult" runat="server"></asp:Literal>
+                </td>
             </tr>
         </table>
     </div>
