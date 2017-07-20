@@ -36,14 +36,14 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             }
             else
             {
-                hfInfoId.Value = "d807e2a1-0dcd-44da-81ea-1cce321dcb1a";
-                MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
-                LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
-                LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
-                InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-                OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-                tbcfdw.Text = InUserInfo.MobilePhoneNum;
-                tbjdywy.Text = OutUserInfo.MobilePhoneNum;
+                //hfInfoId.Value = "d807e2a1-0dcd-44da-81ea-1cce321dcb1a";
+                //MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+                //LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
+                //LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
+                //InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
+                //OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                //tbcfdw.Text = InUserInfo.MobilePhoneNum;
+                //tbjdywy.Text = OutUserInfo.MobilePhoneNum;
             }
             FillCopInfo();
         }

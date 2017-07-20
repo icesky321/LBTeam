@@ -9,7 +9,7 @@
         <Columns>
             <asp:BoundField DataField="CopId" HeaderText="CopId" SortExpression="CopId" Visible="True" />
             <asp:BoundField DataField="CopName" HeaderText="企业名称" SortExpression="CopName" />
-            <asp:BoundField DataField="UserName" HeaderText="联系人" SortExpression="UserName" />
+            <asp:BoundField DataField="RealName" HeaderText="联系人" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId">
                 <ItemTemplate>

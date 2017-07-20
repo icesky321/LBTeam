@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CFNextReg.aspx.cs" Inherits="Login_CFNextReg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CopNextReg.aspx.cs" Inherits="Login_CopNextReg" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,9 +48,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>营业执照信息：<%--<asp:Image ID="Image2" runat="server" Width="200px" Height="100px" />--%><asp:FileUpload ID="FileUpload2" runat="server" /></td>
+                        <td>营业执照片上传：<%--<asp:Image ID="Image2" runat="server" Width="200px" Height="100px" />--%><asp:FileUpload ID="FileUpload2" runat="server" /></td>
                         <td>
                             <asp:Label ID="Label2" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>危废许可证照片上传：<%--<asp:Image ID="Image2" runat="server" Width="200px" Height="100px" />--%><asp:FileUpload ID="FileUpload3" runat="server" /></td>
+                        <td>
+                            <asp:Label ID="Label3" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
                         </td>
                     </tr>
                     <tr>

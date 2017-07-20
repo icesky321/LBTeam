@@ -47,14 +47,13 @@
                                 <asp:TextBox ID="tbNum" runat="server" class="weui-input" type="text" placeholder="请输入准确重量/数量"></asp:TextBox>
                             </div>
                             <div class="weui-cell__ft">
-                                <%--<asp:Button ID="btnAlone" runat="server" class="weui-vcode-btn" Text="单独报价" CommandName="OneQuote" CommandArgument='<%# Eval("TSName") %>' OnCommand="btnQuote1_Command"></asp:Button>--%>
-                                <asp:DropDownList ID="ddlUnitInfo" runat="server" data-native-menu="false" DataSourceID="LinqDataSource2" DataTextField="UnitName" DataValueField="UnitId"></asp:DropDownList>
-                                <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="UnitId" TableName="UnitInfo" Select="new (UnitId, UnitName)"></asp:LinqDataSource>
+                                  <label class="weui-label">
+                                    <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("ChargeUnit") %>'></asp:Literal></label>
                             </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="TSId" Select="new (TSId, TSName)" TableName="TSInfo"></asp:LinqDataSource>
+                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="TSId" TableName="TSInfo"></asp:LinqDataSource>
 
                 <div class="weui-cell weui-cell_vcode">
                     <div class="weui-cell__hd">

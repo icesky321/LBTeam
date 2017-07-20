@@ -23,6 +23,7 @@ namespace LB.Model
             Bizlicense = string.Empty;
             HWPermit = string.Empty;
             CopDetail = string.Empty;
+            RealName = string.Empty;
         }
 
         public Int32 UserId
@@ -154,6 +155,12 @@ namespace LB.Model
         }
 
         public bool IsApproved
+        {
+            get;
+            set;
+        }
+
+        public string RealName
         {
             get;
             set;

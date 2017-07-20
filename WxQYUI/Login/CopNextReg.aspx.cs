@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Login_CFNextReg : System.Web.UI.Page
+public partial class Login_CopNextReg : System.Web.UI.Page
 {
     LB.BLL.SMS bll_sms = new LB.BLL.SMS();
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
@@ -39,7 +39,8 @@ public partial class Login_CFNextReg : System.Web.UI.Page
         user.Account = tbAccount.Text;
         bool Ifiles = false;
         bool Bfiles = false;
-        if (this.FileUpload1.HasFile && this.FileUpload2.HasFile)
+        bool Hfiles = false;
+        if (this.FileUpload1.HasFile && this.FileUpload2.HasFile && this.FileUpload3.HasFile)
         {
             //获取上传文件的后缀
             String fileExtensionFUI = System.IO.Path.GetExtension(this.FileUpload1.FileName).ToLower();
@@ -63,8 +64,20 @@ public partial class Login_CFNextReg : System.Web.UI.Page
                     Bfiles = true;
                 }
             }
+
+            //获取上传文件的后缀
+            String fileExtensionFUH = System.IO.Path.GetExtension(this.FileUpload2.FileName).ToLower();
+            String[] restrictExtension2 = { ".gif", ".jpg", ".bmp", ".png" };
+            //判断文件类型是否符合
+            for (int i = 0; i < restrictExtension2.Length; i++)
+            {
+                if (fileExtensionFUH == restrictExtension2[1])
+                {
+                    Hfiles = true;
+                }
+            }
             //调用SaveAs方法实现上传
-            if (Ifiles == true && Bfiles == true)
+            if (Ifiles == true && Bfiles == true && Hfiles == true)
             {
                 try
                 {
@@ -72,15 +85,20 @@ public partial class Login_CFNextReg : System.Web.UI.Page
                     string fileextI = System.IO.Path.GetExtension(filenameI);
                     string newfilenameI = user.MobilePhoneNum + fileextI;
                     this.FileUpload1.SaveAs("E://LvBao//WebUI//IDCard//" + newfilenameI);
-                    Label1.Text = filenameI;
                     bll_userinfo.UpdateUserInfo(user);
                     string filenameB = FileUpload2.PostedFile.FileName;
                     string fileextB = System.IO.Path.GetExtension(filenameB);
                     string newfilenameB = MCopInfo.CopName + fileextB;
                     this.FileUpload2.SaveAs("E://LvBao//WebUI//Bizlicense//" + newfilenameB);
+
+                    string filenameH = FileUpload3.PostedFile.FileName;
+                    string fileextH = System.IO.Path.GetExtension(filenameH);
+                    string newfilenameH = MCopInfo.CopName + fileextH;
+                    this.FileUpload2.SaveAs("E://LvBao//WebUI//HWPermit//" + newfilenameH);
                     MCopInfo.Bizlicense = newfilenameB;
+                    MCopInfo.HWPermit = newfilenameH;
                     bll_copinfo.NewCopInfo(MCopInfo);
-                    Response.Redirect("NextReg.aspx#pageRegCompleted");
+                    Response.Redirect("CopNextReg.aspx#pageRegCompleted");
                 }
                 catch
                 {

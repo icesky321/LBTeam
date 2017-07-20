@@ -303,6 +303,7 @@ namespace LB.SQLServerDAL
                             UserName = u.UserName,
                             CopDetail = c.CopDetail,
                             CopName = c.CopName,
+                            RealName=u.RealName,
                             CreateTime = Convert.ToDateTime(u.CreateTime),
                             HWAuthentication = c.HWAuthentication == null ? false : c.HWAuthentication.Value,
                             HWPermit = c.HWPermit,

@@ -10,7 +10,7 @@
     <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand" OnDataBound="gvUserInfo_DataBound" OnPageIndexChanging="gvUserInfo_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />
-            <asp:BoundField DataField="UserName" HeaderText="用户" SortExpression="UserName" />
+            <asp:BoundField DataField="RealName" HeaderText="用户" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="地址 " SortExpression="CopId">
                 <ItemTemplate>
