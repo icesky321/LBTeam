@@ -9,19 +9,27 @@ using AjaxControlToolkit;
 public partial class Login_Test : System.Web.UI.Page
 {
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
-    AddressService addrsvc = new AddressService();
+    CNRegionService cnregion = new CNRegionService();
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (!IsPostBack)
-        //{
-        //    //List<CascadingDropDownNameValue> values = new List<CascadingDropDownNameValue>();
-        //    var provinces = bll_region.GetRegions("0");
-        //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
-        //    {
-        //        string id = region.Id.ToString();
-        //        string name = region.AreaName;
-        //        ddlProvince.Items.Add(new ListItem(name, id));
-        //    }
-        //}
+
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        List<CascadingDropDownNameValue> values = new List<CascadingDropDownNameValue>();
+        string id = ddlStreet.SelectedItem.Value;
+        string name = ddlStreet.SelectedItem.Text;
+        //values.Add(new CascadingDropDownNameValue(name, id));
+        if (id=="")
+        {
+            lbMsg.Visible = true;
+            lbMsg.Text = "请完善地址信息";
+        }
+        else
+        {
+            lbMsg.Visible = true;
+            lbMsg.Text = "OK";
+        }
     }
 }

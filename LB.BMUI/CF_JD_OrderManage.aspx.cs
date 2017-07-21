@@ -56,9 +56,9 @@ public partial class CF_JD_OrderManage : System.Web.UI.Page
             Repeater1.DataBind();
             string jd_qyid = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.OutUserId)).QYUserId;
 
-            string cop_qyid= bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.CopUserId)).QYUserId;
+            //string cop_qyid= bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.CopUserId)).QYUserId;
             SendWxArticle_ToCF(Guid.Parse(CFId), jd_qyid);
-            SendWxArticle_ToCF(Guid.Parse(CFId), cop_qyid);
+            //SendWxArticle_ToCF(Guid.Parse(CFId), cop_qyid);
         }
     }
 

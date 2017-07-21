@@ -1,30 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Activation;
-using System.ServiceModel.Web;
-using System.Text;
+using System.Web;
+using System.Web.Services;
 using AjaxControlToolkit;
 using System.Threading;
 using System.Collections.Specialized;
 
-[ServiceContract(Namespace = "")]
-[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-//[System.Web.Script.Services.ScriptService]
-public class AddressService
+/// <summary>
+/// CNRegionService 的摘要说明
+/// </summary>
+[WebService(Namespace = "http://tempuri.org/")]
+[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
+// 若要允许使用 ASP.NET AJAX 从脚本中调用此 Web 服务，请取消注释以下行。 
+[System.Web.Script.Services.ScriptService]
+public class CNRegionService : System.Web.Services.WebService
 {
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
-    // 要使用 HTTP GET，请添加 [WebGet] 特性。(默认 ResponseFormat 为 WebMessageFormat.Json)
-    // 要创建返回 XML 的操作，
-    //     请添加 [WebGet(ResponseFormat=WebMessageFormat.Xml)]，
-    //     并在操作正文中包括以下行:
-    //         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml";
-    [OperationContract]
+    public CNRegionService()
+    {
+
+        //如果使用设计的组件，请取消注释以下行 
+        //InitializeComponent(); 
+    }
+
+    [System.Web.Script.Services.ScriptMethod]
+    [WebMethod]
+    public string HelloWorld()
+    {
+        return "Hello World";
+    }
+
+    [System.Web.Script.Services.ScriptMethod]
+    [WebMethod]
     public CascadingDropDownNameValue[] GetProvince(string knownCategoryValues, string category)
     {
-        Thread.Sleep(1000); // 等待1秒，模拟网络延迟
+        //Thread.Sleep(1000); // 等待1秒，模拟网络延迟
 
         List<CascadingDropDownNameValue> values = new List<CascadingDropDownNameValue>();
         var provinces = bll_region.GetRegions("0");
@@ -37,10 +48,11 @@ public class AddressService
         return values.ToArray();
     }
 
-    [OperationContract]
+    [System.Web.Script.Services.ScriptMethod]
+    [WebMethod]
     public CascadingDropDownNameValue[] GetCity(string knownCategoryValues, string category)
     {
-        Thread.Sleep(1000);
+        //Thread.Sleep(1000);
 
         StringDictionary keyValue =
             CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
@@ -60,10 +72,11 @@ public class AddressService
         return values.ToArray();
     }
 
-    [OperationContract]
+    [System.Web.Script.Services.ScriptMethod]
+    [WebMethod]
     public CascadingDropDownNameValue[] GetCounty(string knownCategoryValues, string category)
     {
-        Thread.Sleep(1000);
+        //Thread.Sleep(1000);
 
         StringDictionary keyValue =
             CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
@@ -83,10 +96,11 @@ public class AddressService
         return values.ToArray();
     }
 
-    [OperationContract]
+    [System.Web.Script.Services.ScriptMethod]
+    [WebMethod]
     public CascadingDropDownNameValue[] GetStreet(string knownCategoryValues, string category)
     {
-        Thread.Sleep(1000);
+        //Thread.Sleep(1000);
 
         StringDictionary keyValue =
             CascadingDropDown.ParseKnownCategoryValuesString(knownCategoryValues);
@@ -105,6 +119,4 @@ public class AddressService
 
         return values.ToArray();
     }
-
-    // 在此处添加更多操作并使用 [OperationContract] 标记它们
 }

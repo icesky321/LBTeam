@@ -20,24 +20,26 @@
         <div data-role="main" class="ui-content">
             <asp:ScriptManager ID="ScriptManager1" runat="server">
                 <Services>
-                    <asp:ServiceReference Path="~/AddressService.svc" />
+                    <asp:ServiceReference Path="~/WS/CNRegionService.asmx" />
                 </Services>
             </asp:ScriptManager>
             <asp:HiddenField ID="hfRegionCode" runat="server" />
             选择省份：
                 <asp:DropDownList ID="ddlProvince" runat="server"></asp:DropDownList>
-            <asp:CascadingDropDown ID="CascadingDropDown1" runat="server" TargetControlID="ddlProvince"  Category="Province"  PromptText="请选择省份...." LoadingText="加载中，请稍后 ..." ServicePath="~/AddressService.svc" ServiceMethod="GetProvince"/>
+            <asp:CascadingDropDown ID="CascadingDropDown1" runat="server" TargetControlID="ddlProvince" Category="Province" PromptText="请选择省份...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetProvince" />
             选择地级市：
                 <asp:DropDownList ID="ddlCity" runat="server"></asp:DropDownList>
-            <asp:CascadingDropDown ID="CascadingDropDown2" runat="server" TargetControlID="ddlCity" ParentControlID="ddlProvince" Category="City"  PromptText="请选择城市...."  LoadingText="加载中，请稍后 ..."  ServicePath="~/AddressService.svc"  ServiceMethod="GetCity"/>
+            <asp:CascadingDropDown ID="CascadingDropDown2" runat="server" TargetControlID="ddlCity" ParentControlID="ddlProvince" Category="City" PromptText="请选择城市...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetCity" />
             <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
             选择县市：
             <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
-            <asp:CascadingDropDown ID="CascadingDropDown3" runat="server" TargetControlID="ddlCounty" ParentControlID="ddlCity" Category="County"  PromptText="请选择县市...."  LoadingText="加载中，请稍后 ..."  ServicePath="~/AddressService.svc"  ServiceMethod="GetCounty"/>
+            <asp:CascadingDropDown ID="CascadingDropDown3" runat="server" TargetControlID="ddlCounty" ParentControlID="ddlCity" Category="County" PromptText="请选择县市...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetCounty" />
             镇或街道：
                  <asp:DropDownList ID="ddlStreet" runat="server"></asp:DropDownList>
-            <asp:CascadingDropDown ID="CascadingDropDown4" runat="server" TargetControlID="ddlStreet" ParentControlID="ddlCounty" Category="Street"  PromptText="请选择街道...."  LoadingText="加载中，请稍后 ..."  ServicePath="~/AddressService.svc"  ServiceMethod="GetStreet"/>
+            <asp:CascadingDropDown ID="CascadingDropDown4" runat="server" TargetControlID="ddlStreet" ParentControlID="ddlCounty" Category="Street" PromptText="请选择街道...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetStreet" />
             <br />
+
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </div>
     </form>
 </body>

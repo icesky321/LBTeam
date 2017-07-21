@@ -45,6 +45,7 @@
             <tr>
                 <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC;">指派回收业务员：
                     <asp:Literal ID="ltlJD_UserName" runat="server" Text="[未指派]"></asp:Literal>
+                    <asp:Literal ID="ltlJD_RealName" runat="server" Text="[未指派]"></asp:Literal>
                     <asp:HiddenField ID="hfJD_UserId" runat="server" Value="0" />
                     &nbsp;&nbsp;
                     <asp:DropDownList ID="ddlPingtaiYWY" runat="server"></asp:DropDownList>

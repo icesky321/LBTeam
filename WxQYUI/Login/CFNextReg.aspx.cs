@@ -22,10 +22,10 @@ public partial class Login_CFNextReg : System.Web.UI.Page
                 string TelNum = Request.QueryString["TelNum"];
                 hfTelNum.Value = TelNum;
             }
-            else
-            {
-                hfTelNum.Value = "13738487153";
-            }
+            //else
+            //{
+            //    hfTelNum.Value = "13738487153";
+            //}
         }
     }
 

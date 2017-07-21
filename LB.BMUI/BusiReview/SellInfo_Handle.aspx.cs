@@ -132,12 +132,13 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
     private string SendWxArticle_ToJD(LB.SQLServerDAL.SellInfo sellInfo)
     {
         //TODO: 发布前修改微信发布逻辑
+        LB.SQLServerDAL.UserInfo cf_User = bll_userManage.GetUserInfoByUserId(sellInfo.CF_UserId);
         LB.SQLServerDAL.UserInfo jd_User = bll_userManage.GetUserInfoByUserId(sellInfo.JD_UserId);
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = "新业务提醒";
-        article.Description = sellInfo.Title + "\n卖家姓名：" + jd_User.RealName + "\n手机号：" + jd_User.MobilePhoneNum + "\n详细地址：" +
-             jd_User.Address + "\n出售信息：" + sellInfo.Description;
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/Choosejdywy.aspx?InfoId=" + sellInfo.InfoId.ToString();
+        article.Description = sellInfo.Title + "\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
+             cf_User.Address + "\n出售信息：" + sellInfo.Description;
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_JD/GoodsReceipt.aspx?InfoId=" + sellInfo.InfoId.ToString();
 
         string errmsg = string.Empty;
 
@@ -160,6 +161,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             if (jd_user == null)
                 return;
             ltlJD_UserName.Text = jd_user.UserName;
+            ltlJD_RealName.Text = jd_user.RealName;
             hfJD_UserId.Value = jd_user.UserId.ToString();
         }
     }
