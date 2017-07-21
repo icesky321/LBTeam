@@ -85,6 +85,8 @@ public partial class Login_CopNextReg : System.Web.UI.Page
                     string fileextI = System.IO.Path.GetExtension(filenameI);
                     string newfilenameI = user.MobilePhoneNum + fileextI;
                     this.FileUpload1.SaveAs("E://LvBao//WebUI//IDCard//" + newfilenameI);
+                    user.IDCard = newfilenameI;
+                    user.IDAuthentication = false;
                     bll_userinfo.UpdateUserInfo(user);
                     string filenameB = FileUpload2.PostedFile.FileName;
                     string fileextB = System.IO.Path.GetExtension(filenameB);
@@ -96,7 +98,9 @@ public partial class Login_CopNextReg : System.Web.UI.Page
                     string newfilenameH = MCopInfo.CopName + fileextH;
                     this.FileUpload2.SaveAs("E://LvBao//WebUI//HWPermit//" + newfilenameH);
                     MCopInfo.Bizlicense = newfilenameB;
+                    MCopInfo.BAuthentication = false;
                     MCopInfo.HWPermit = newfilenameH;
+                    MCopInfo.HWAuthentication = false;
                     bll_copinfo.NewCopInfo(MCopInfo);
                     Response.Redirect("CopNextReg.aspx#pageRegCompleted");
                 }

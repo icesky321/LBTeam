@@ -138,63 +138,63 @@ public partial class Login_Register : System.Web.UI.Page
 
     protected void btnReg_Click(object sender, EventArgs e)
     {
-        #region  输入表单检验
-        if (ddlShenfen.SelectedIndex == 0)
-        {
-            ltlErrorMsg.Visible = true;
-            ltlErrorMsg.Text = "请选择您要注册的行业身份";
-            return;
-        }
-        else
-        {
-            ltlErrorMsg.Text = "";
-            ltlErrorMsg.Visible = false;
-        }
+        //#region  输入表单检验
+        //if (ddlShenfen.SelectedIndex == 0)
+        //{
+        //    ltlErrorMsg.Visible = true;
+        //    ltlErrorMsg.Text = "请选择您要注册的行业身份";
+        //    return;
+        //}
+        //else
+        //{
+        //    ltlErrorMsg.Text = "";
+        //    ltlErrorMsg.Visible = false;
+        //}
 
-        if (string.IsNullOrEmpty(tbMobile.Text))
-        {
-            ltlErrorMsg.Visible = true;
-            ltlErrorMsg.Text = "手机号不可为空";
-            return;
-        }
-        else
-        {
-            ltlErrorMsg.Text = "";
-            ltlErrorMsg.Visible = false;
-        }
+        //if (string.IsNullOrEmpty(tbMobile.Text))
+        //{
+        //    ltlErrorMsg.Visible = true;
+        //    ltlErrorMsg.Text = "手机号不可为空";
+        //    return;
+        //}
+        //else
+        //{
+        //    ltlErrorMsg.Text = "";
+        //    ltlErrorMsg.Visible = false;
+        //}
 
-        if (Session["mobile_code"] == null || Session["mobile_code"].ToString() != tbVeriCode.Text)
-        {
-            ltlVeriMessage.Text = "验证码输入有误，请重新输入";
-            ltlVeriMessage.Visible = true;
-        }
-        else
-        {
-            ltlVeriMessage.Text = "";
-            ltlVeriMessage.Visible = false;
-        }
-        if (ddlStreet.SelectedIndex < 1)
-        {
-            ltlErrorMsg.Visible = true;
-            ltlErrorMsg.Text = "请完善地址信息";
-        }
-        #endregion
-        else
-        {
-            Membership.CreateUser(tbMobile.Text, tbPassword.Text);
+        //if (Session["mobile_code"] == null || Session["mobile_code"].ToString() != tbVeriCode.Text)
+        //{
+        //    ltlVeriMessage.Text = "验证码输入有误，请重新输入";
+        //    ltlVeriMessage.Visible = true;
+        //}
+        //else
+        //{
+        //    ltlVeriMessage.Text = "";
+        //    ltlVeriMessage.Visible = false;
+        //}
+        //if (ddlStreet.SelectedIndex < 1)
+        //{
+        //    ltlErrorMsg.Visible = true;
+        //    ltlErrorMsg.Text = "请完善地址信息";
+        //}
+        //#endregion
+        //else
+        //{
+        //    Membership.CreateUser(tbMobile.Text, tbPassword.Text);
 
             LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
             user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
-            user.Audit = false;
-            user.RegionCode = hfRegionCode.Value;
-            user.MobilePhoneNum = tbMobile.Text;
-            user.CreateTime = System.DateTime.Now;
-            user.IDAuthentication = false;
-            user.ChopAuthentication = false;
-            user.InCharge = false;
-            user.Address = tbAddress.Text;
-            bll_userinfo.NewUserInfo(user);
-            Roles.AddUserToRole(user.MobilePhoneNum, "general");
+            //user.Audit = false;
+            //user.RegionCode = hfRegionCode.Value;
+            //user.MobilePhoneNum = tbMobile.Text;
+            //user.CreateTime = System.DateTime.Now;
+            //user.IDAuthentication = false;
+            //user.ChopAuthentication = false;
+            //user.InCharge = false;
+            //user.Address = tbAddress.Text;
+            //bll_userinfo.NewUserInfo(user);
+            //Roles.AddUserToRole(user.MobilePhoneNum, "general");
             if (user.UserTypeId == 5)
             {
                 Response.Redirect("NextReg.aspx?telNum=" + user.MobilePhoneNum);
@@ -208,7 +208,7 @@ public partial class Login_Register : System.Web.UI.Page
             {
                 Response.Redirect("CopNextReg.aspx?telNum=" + user.MobilePhoneNum);
             }
-        }
+        //}
     }
 
     protected void lbtnGetVeriCode_Click(object sender, EventArgs e)
