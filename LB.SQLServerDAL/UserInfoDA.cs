@@ -315,8 +315,8 @@ namespace LB.SQLServerDAL
                             Town = u.Town,
                             Audit = u.Audit == null ? false : u.Audit.Value,
                             UserTypeId = Convert.ToInt32(u.UserTypeId),
-                            AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value,
-                            IsApproved = Convert.ToBoolean(b.IsApproved)
+                            AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value
+                            //IsApproved = Convert.ToBoolean(b.IsApproved)
                         };
             if (province != "---" && province != "-1")
             {

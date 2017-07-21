@@ -195,6 +195,10 @@ public partial class Login_Register : System.Web.UI.Page
             user.Address = tbAddress.Text;
             bll_userinfo.NewUserInfo(user);
             Roles.AddUserToRole(user.MobilePhoneNum, "general");
+            if (Membership.ValidateUser(tbMobile.Text, tbPassword.Text))
+            {
+                FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
+            }
             if (user.UserTypeId == 5)
             {
                 Response.Redirect("NextReg.aspx?telNum=" + user.MobilePhoneNum);
@@ -202,7 +206,6 @@ public partial class Login_Register : System.Web.UI.Page
             else if (user.UserTypeId == 1)
             {
                 Response.Redirect("CFNextReg.aspx?telNum=" + user.MobilePhoneNum);
-                //Response.Redirect("CFNextReg.aspx?telNum=13738487153");
             }
             else
             {

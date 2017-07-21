@@ -71,8 +71,7 @@
                 <div class="ui-field-contain">
                     <label for="fullname">备注：</label>
                     <asp:TextBox ID="tbRemark" runat="server" Text="" placeholder="如有补充说明请在这里输入"></asp:TextBox>
-                    选择回收公司:
-                    <asp:DropDownList ID="ddlCop" runat="server"></asp:DropDownList>
+
                 </div>
                 <br />
                 <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external" ValidationGroup="1" />

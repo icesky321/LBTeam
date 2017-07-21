@@ -20,11 +20,11 @@
                 <div class="weui-msg">
                     <div class="weui-msg__icon-area"></div>
                     <div class="weui-msg__text-area">
-                        <h2 class="weui-msg__title">请继续完善个人资料</h2>
-                        <p class="weui-msg__desc">因为您的个人资料未完善，请到个人中心去完善个人资料，如有疑问请拨打电话0574-86694505</p>
+                        <h2 class="weui-msg__title">请耐心等待客服审核</h2>
+                        <p class="weui-msg__desc">如有疑问请拨打电话0574-86694505</p>
                     </div>
                     <div id="show2">
-                        <asp:Button ID="btImprove" runat="server" Text="继续完善个人资料请点击" OnClick="btImprove_Click"  rel="external" />
+                        <asp:Button ID="btImprove" runat="server" Text="如未完善资料，继续完善个人资料请点击" OnClick="btImprove_Click"  rel="external" />
                     </div>
                     <div class="weui-msg__extra-area">
                         <div class="weui-footer">

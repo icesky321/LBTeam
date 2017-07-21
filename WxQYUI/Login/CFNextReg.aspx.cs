@@ -22,6 +22,10 @@ public partial class Login_CFNextReg : System.Web.UI.Page
                 string TelNum = Request.QueryString["TelNum"];
                 hfTelNum.Value = TelNum;
             }
+            //else
+            //{
+            //    hfTelNum.Value = "13738487153";
+            //}
         }
     }
 
@@ -73,12 +77,15 @@ public partial class Login_CFNextReg : System.Web.UI.Page
                     string newfilenameI = user.MobilePhoneNum + fileextI;
                     this.FileUpload1.SaveAs("E://LvBao//WebUI//IDCard//" + newfilenameI);
                     Label1.Text = filenameI;
+                    user.IDCard = newfilenameI;
+                    user.IDAuthentication = false;
                     bll_userinfo.UpdateUserInfo(user);
                     string filenameB = FileUpload2.PostedFile.FileName;
                     string fileextB = System.IO.Path.GetExtension(filenameB);
                     string newfilenameB = MCopInfo.CopName + fileextB;
                     this.FileUpload2.SaveAs("E://LvBao//WebUI//Bizlicense//" + newfilenameB);
                     MCopInfo.Bizlicense = newfilenameB;
+                    MCopInfo.BAuthentication = false;
                     bll_copinfo.NewCopInfo(MCopInfo);
                     Response.Redirect("NextReg.aspx#pageRegCompleted");
                 }
