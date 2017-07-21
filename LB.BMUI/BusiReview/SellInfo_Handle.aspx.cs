@@ -106,7 +106,8 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             int userId = 0;
             int.TryParse(hfJD_UserId.Value, out userId);
             sellInfo.JD_UserId = userId;
-            sellInfo.StatusMsg = "信息已审核，等待回收业务员接单。";
+            LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfoByUserId(userId);
+            sellInfo.StatusMsg = "信息已推送至回收业务员（" + jd_user.RealName + "：" + jd_user.MobilePhoneNum + "）。";
 
             bll_sellInfo.UpdateSellInfo(sellInfo);
 

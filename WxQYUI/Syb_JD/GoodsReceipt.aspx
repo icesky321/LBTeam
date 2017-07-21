@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <div id="page1" data-role="page">
             <div data-role="header">
-                发布收货订单
+                创建收货订单
                 <asp:HiddenField ID="hfInfoId" runat="server" />
             </div>
             <div data-role="main" class="ui-content">
@@ -44,13 +44,13 @@
                                 <asp:TextBox ID="tbNum" runat="server" class="weui-input" type="text" placeholder="请输入准确重量/数量"></asp:TextBox>
                             </div>
                             <div class="weui-cell__ft">
-                                  <label class="weui-label">
+                                <label class="weui-label">
                                     <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("ChargeUnit") %>'></asp:Literal></label>
                             </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="TSId" TableName="TSInfo"></asp:LinqDataSource>
+                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="OrderNum" TableName="TSInfo"></asp:LinqDataSource>
 
                 <div class="weui-cell weui-cell_vcode">
                     <div class="weui-cell__hd">

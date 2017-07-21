@@ -96,6 +96,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
 
         }
         MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+        MSellInfo.StatusMsg = "信息处理完毕";
         MSellInfo.IsClosed = true;
 
         SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
