@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ConfirmOrder.aspx.cs" Inherits="MP_ConfirmOrder" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ConfirmOrder.aspx.cs" Inherits="MP_ConfirmOrder" MaintainScrollPositionOnPostback="true" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 

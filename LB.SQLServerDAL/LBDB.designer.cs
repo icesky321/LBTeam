@@ -5866,6 +5866,16 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<System.DateTime> _Kefu_HandleDate;
 		
+		private int _HS_UserId;
+		
+		private bool _HS_TohandleTag;
+		
+		private string _HS_HandleResult;
+		
+		private string _HS_LeaveMsg;
+		
+		private System.Nullable<System.DateTime> _HS_HandleDate;
+		
 		private int _JD_UserId;
 		
 		private bool _JD_TohandleTag;
@@ -5910,6 +5920,16 @@ namespace LB.SQLServerDAL
     partial void OnKefu_LeaveMsgChanged();
     partial void OnKefu_HandleDateChanging(System.Nullable<System.DateTime> value);
     partial void OnKefu_HandleDateChanged();
+    partial void OnHS_UserIdChanging(int value);
+    partial void OnHS_UserIdChanged();
+    partial void OnHS_TohandleTagChanging(bool value);
+    partial void OnHS_TohandleTagChanged();
+    partial void OnHS_HandleResultChanging(string value);
+    partial void OnHS_HandleResultChanged();
+    partial void OnHS_LeaveMsgChanging(string value);
+    partial void OnHS_LeaveMsgChanged();
+    partial void OnHS_HandleDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnHS_HandleDateChanged();
     partial void OnJD_UserIdChanging(int value);
     partial void OnJD_UserIdChanged();
     partial void OnJD_TohandleTagChanging(bool value);
@@ -6169,6 +6189,106 @@ namespace LB.SQLServerDAL
 					this._Kefu_HandleDate = value;
 					this.SendPropertyChanged("Kefu_HandleDate");
 					this.OnKefu_HandleDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_UserId", DbType="Int NOT NULL")]
+		public int HS_UserId
+		{
+			get
+			{
+				return this._HS_UserId;
+			}
+			set
+			{
+				if ((this._HS_UserId != value))
+				{
+					this.OnHS_UserIdChanging(value);
+					this.SendPropertyChanging();
+					this._HS_UserId = value;
+					this.SendPropertyChanged("HS_UserId");
+					this.OnHS_UserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_TohandleTag", DbType="Bit NOT NULL")]
+		public bool HS_TohandleTag
+		{
+			get
+			{
+				return this._HS_TohandleTag;
+			}
+			set
+			{
+				if ((this._HS_TohandleTag != value))
+				{
+					this.OnHS_TohandleTagChanging(value);
+					this.SendPropertyChanging();
+					this._HS_TohandleTag = value;
+					this.SendPropertyChanged("HS_TohandleTag");
+					this.OnHS_TohandleTagChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_HandleResult", DbType="NChar(10)")]
+		public string HS_HandleResult
+		{
+			get
+			{
+				return this._HS_HandleResult;
+			}
+			set
+			{
+				if ((this._HS_HandleResult != value))
+				{
+					this.OnHS_HandleResultChanging(value);
+					this.SendPropertyChanging();
+					this._HS_HandleResult = value;
+					this.SendPropertyChanged("HS_HandleResult");
+					this.OnHS_HandleResultChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_LeaveMsg", DbType="NChar(10)")]
+		public string HS_LeaveMsg
+		{
+			get
+			{
+				return this._HS_LeaveMsg;
+			}
+			set
+			{
+				if ((this._HS_LeaveMsg != value))
+				{
+					this.OnHS_LeaveMsgChanging(value);
+					this.SendPropertyChanging();
+					this._HS_LeaveMsg = value;
+					this.SendPropertyChanged("HS_LeaveMsg");
+					this.OnHS_LeaveMsgChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_HandleDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> HS_HandleDate
+		{
+			get
+			{
+				return this._HS_HandleDate;
+			}
+			set
+			{
+				if ((this._HS_HandleDate != value))
+				{
+					this.OnHS_HandleDateChanging(value);
+					this.SendPropertyChanging();
+					this._HS_HandleDate = value;
+					this.SendPropertyChanged("HS_HandleDate");
+					this.OnHS_HandleDateChanged();
 				}
 			}
 		}
