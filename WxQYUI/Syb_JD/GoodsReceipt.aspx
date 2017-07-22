@@ -74,6 +74,7 @@
 
                 </div>
                 <br />
+                <asp:DropDownList ID="ddlCop" runat="server"></asp:DropDownList>
                 <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external" ValidationGroup="1" />
 
 

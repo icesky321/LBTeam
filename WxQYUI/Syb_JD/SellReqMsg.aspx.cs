@@ -86,7 +86,8 @@ public partial class Syb_JD_SellReqMsg : System.Web.UI.Page
         {
             string InfoId = (string)e.CommandArgument;//获取Item传过来的参数 
             MSellInfo = bll_sellInfo.GetSellInfo_ById(Guid.Parse(InfoId));
-            string url = "~/Syb_hsgs/GoodsReceipt.aspx?InUserId=" + MSellInfo.CF_UserId + "&OutUserId=" + MSellInfo.JD_UserId + "&InfoId=" + MSellInfo.InfoId;
+            //string url = "~/Syb_hsgs/GoodsReceipt.aspx?InUserId=" + MSellInfo.CF_UserId + "&OutUserId=" + MSellInfo.JD_UserId + "&InfoId=" + MSellInfo.InfoId;
+            string url = "GoodsReceipt.aspx?InfoId=" + InfoId;
             Response.Redirect(url);
                 
         }
