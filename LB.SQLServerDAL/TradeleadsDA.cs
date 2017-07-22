@@ -39,11 +39,22 @@ namespace LB.SQLServerDAL
 
         public void DeleteTradeleads(int infoId)
         {
-            var query = (from c in dbContext.Tradeleads
-                         where c.InfoId == infoId
-                         select c).FirstOrDefault();
-            dbContext.Tradeleads.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.Tradeleads
+                        where s.InfoId == infoId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.Tradeleads.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IQueryable<LB.SQLServerDAL.Tradeleads> GetTradeleads()

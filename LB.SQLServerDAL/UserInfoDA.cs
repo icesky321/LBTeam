@@ -221,11 +221,22 @@ namespace LB.SQLServerDAL
 
         public void DeleteUserInfo(int UserId)
         {
-            var query = (from c in dbContext.UserInfo
-                         where c.UserId == UserId
-                         select c).FirstOrDefault();
-            dbContext.UserInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.UserInfo
+                        where s.UserId == UserId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.UserInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         /// <summary>
@@ -234,11 +245,22 @@ namespace LB.SQLServerDAL
         /// <param name="mobileNum">用户手机号码</param>
         public void DeleteUserInfo(string mobileNum)
         {
-            var query = (from c in dbContext.UserInfo
-                         where c.MobilePhoneNum == mobileNum
-                         select c).FirstOrDefault();
-            dbContext.UserInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.UserInfo
+                        where s.MobilePhoneNum == mobileNum
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.UserInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void UpdateUserInfo(LB.SQLServerDAL.UserInfo userinfo)

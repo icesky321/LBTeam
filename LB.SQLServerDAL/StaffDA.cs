@@ -94,11 +94,22 @@ namespace LB.SQLServerDAL
 
         public void DeleteStaff(Guid staffId)
         {
-            var query = (from c in dbContext.Staff
-                         where c.StaffId == staffId
-                         select c).FirstOrDefault();
-            dbContext.Staff.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.Staff
+                        where s.StaffId == staffId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.Staff.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void UpdateStaff(LB.SQLServerDAL.Staff user)

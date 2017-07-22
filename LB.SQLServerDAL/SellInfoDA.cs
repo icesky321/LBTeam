@@ -177,11 +177,22 @@ namespace LB.SQLServerDAL
         /// <param name="infoId"></param>
         public void DeleteSellInfo(Guid infoId)
         {
-            var query = (from c in dbContext.SellInfo
-                         where c.InfoId == infoId
-                         select c).FirstOrDefault();
-            dbContext.SellInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.SellInfo
+                        where s.InfoId == infoId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.SellInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
     }
