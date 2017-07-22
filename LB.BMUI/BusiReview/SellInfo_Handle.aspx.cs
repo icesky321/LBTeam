@@ -183,7 +183,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
         LB.SQLServerDAL.UserInfo jd_User = bll_userManage.GetUserInfoByUserId(sellInfo.JD_UserId);
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = "新业务提醒";
-        article.Description = sellInfo.Title + "\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
+        article.Description = sellInfo.Title + "\n\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
              cf_User.Address + "\n出售信息：" + sellInfo.Description;
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_JD/GoodsReceipt.aspx?InfoId=" + sellInfo.InfoId.ToString();
 
@@ -206,7 +206,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
         LB.SQLServerDAL.UserInfo hs_User = bll_userManage.GetUserInfoByUserId(sellInfo.HS_UserId);
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = "新业务提醒";
-        article.Description = sellInfo.Title + "\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
+        article.Description = sellInfo.Title + "\n\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
              cf_User.Address + "\n出售信息：" + sellInfo.Description + "\n\n绿宝备注：" + tbRemark.Text;
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_HS/SellInfoAPV.aspx?infoId=" + sellInfo.InfoId.ToString();
 

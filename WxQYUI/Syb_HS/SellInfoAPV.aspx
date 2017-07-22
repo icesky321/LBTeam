@@ -16,12 +16,13 @@
         <div id="page1" data-role="page">
             <div data-role="header">
                 <h2>工单指派</h2>
-                <p>指派本区回收业务员处理产废单位的出售请求信息</p>
+
             </div>
             <div data-role="main" class="ui-content">
                 <asp:HiddenField ID="hfSellInfoId" runat="server" />
                 <asp:HiddenField ID="hfhs_userId" runat="server" />
                 <asp:HiddenField ID="hfhs_mobileNum" runat="server" />
+                <p>指派本区回收业务员处理产废单位的出售请求信息</p>
                 <div data-role="collapsible" data-collapsed="false">
                     <h2>
                         <asp:Literal ID="ltlTitle" runat="server"></asp:Literal></h2>
@@ -43,9 +44,7 @@
                 </div>
                 <asp:Button ID="btnAllocation" runat="server" Text="确定指派" OnClick="btnAllocation_Click" />
             </div>
-            <div data-role="footer">
-                <h2>footer</h2>
-            </div>
+
         </div>
     </form>
 </body>

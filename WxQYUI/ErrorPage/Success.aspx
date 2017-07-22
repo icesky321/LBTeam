@@ -13,7 +13,6 @@
 </head>
 <body ontouchstart>
     <form id="form1" runat="server">
-
         <div class="weui-msg">
             <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
             <div class="weui-msg__text-area">
