@@ -14,7 +14,6 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
     LB.BLL.StaffManage bll_staff = new LB.BLL.StaffManage();
-    LB.BLL.CopInfo bll_cop = new LB.BLL.CopInfo();
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -28,7 +27,6 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
     private void Init_Load()
     {
         Load_PingtaiYWY();      // 加载平台业务员
-
         if (Request.QueryString["infoId"] != null)
         {
             hfInfoId.Value = Request.QueryString["infoId"];
@@ -70,12 +68,9 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             // 指派回收业务员
             AutoAllocationHSYWY(region);
 
-            // 自动指派回收公司
-            AutoAllocaionHS(region);
+
         }
     }
-
-
 
     private void Load_PingtaiYWY()
     {
@@ -107,55 +102,16 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             sellInfo.Kefu_HandleDate = DateTime.Now;
             sellInfo.Kefu_HandleResult = "审核通过";
             sellInfo.Kefu_TohandleTag = false;
+            sellInfo.JD_TohandleTag = true;
+            int userId = 0;
+            int.TryParse(hfJD_UserId.Value, out userId);
+            sellInfo.JD_UserId = userId;
+            LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfoByUserId(userId);
+            sellInfo.StatusMsg = "信息已推送至回收业务员（" + jd_user.RealName + "：" + jd_user.MobilePhoneNum + "）。";
 
-            string result = string.Empty;
-            if (rbtnAuto.Checked)
-            {
-                sellInfo.JD_TohandleTag = true;
-                int userId = 0;
-                int.TryParse(hfJD_UserId.Value, out userId);
-                sellInfo.JD_UserId = userId;
-                sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员处理";
+            bll_sellInfo.UpdateSellInfo(sellInfo);
 
-                bll_sellInfo.UpdateSellInfo(sellInfo);
-
-                result = SendWxArticle_ToJD(sellInfo);
-            }
-
-            if (rbtnHS.Checked)
-            {
-                sellInfo.HS_TohandleTag = true;
-                int hs_userId = 0;
-                int.TryParse(ddlHS.SelectedValue, out hs_userId);
-                sellInfo.HS_UserId = hs_userId;
-                sellInfo.StatusMsg = "绿宝平台已审核，等待回收公司处理";
-
-                bll_sellInfo.UpdateSellInfo(sellInfo);
-
-                result = SendWxArticle_ToHS(sellInfo);
-            }
-
-            if (rbtnJD.Checked)
-            {
-                sellInfo.JD_TohandleTag = true;
-
-                if (ddlPingtaiYWY.SelectedIndex < 1)
-                    return;
-
-
-                string jd_Mobile = ddlPingtaiYWY.SelectedValue;
-                LB.SQLServerDAL.UserInfo user = bll_userManage.GetUserInfoByTelNum(jd_Mobile);
-
-                if (user == null)
-                    return;
-                sellInfo.JD_UserId = user.UserId;
-                sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员处理";
-
-                bll_sellInfo.UpdateSellInfo(sellInfo);
-
-                result = SendWxArticle_ToJD(sellInfo);
-            }
-
+            string result = SendWxArticle_ToJD(sellInfo);
             ltlResult.Text = "审核完毕。" + result;
 
         }
@@ -174,8 +130,6 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
 
     }
 
-
-    #region 发送微信信息
     private string SendWxArticle_ToJD(LB.SQLServerDAL.SellInfo sellInfo)
     {
         //TODO: 发布前修改微信发布逻辑
@@ -199,31 +153,19 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
         return errmsg;
     }
 
-    private string SendWxArticle_ToHS(LB.SQLServerDAL.SellInfo sellInfo)
+    protected void lbtnManuAllocation_Click(object sender, EventArgs e)
     {
-        //TODO: 发布前修改微信发布逻辑
-        LB.SQLServerDAL.UserInfo cf_User = bll_userManage.GetUserInfoByUserId(sellInfo.CF_UserId);
-        LB.SQLServerDAL.UserInfo hs_User = bll_userManage.GetUserInfoByUserId(sellInfo.HS_UserId);
-        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-        article.Title = "新业务提醒";
-        article.Description = sellInfo.Title + "\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
-             cf_User.Address + "\n出售信息：" + sellInfo.Description + "\n\n绿宝备注：" + tbRemark.Text;
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_HS/SellInfoAPV.aspx?infoId=" + sellInfo.InfoId.ToString();
-
-        string errmsg = string.Empty;
-
-        if (string.IsNullOrEmpty(hs_User.QYUserId))
-            errmsg = "您选定的回收公司后台管理人员未绑定企业号账户，无法接收到微信提醒信息。";
-        else
+        if (ddlPingtaiYWY.SelectedIndex > 0)
         {
-            MassResult result = sendmsg.SendArticleToUsers(hs_User.QYUserId, article, "5");
-            errmsg = result.errmsg;
+            string mobile = ddlPingtaiYWY.SelectedValue;
+            LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfoByTelNum(mobile);
+            if (jd_user == null)
+                return;
+            ltlJD_UserName.Text = jd_user.UserName;
+            ltlJD_RealName.Text = jd_user.RealName;
+            hfJD_UserId.Value = jd_user.UserId.ToString();
         }
-        return errmsg;
     }
-
-    #endregion
-
 
     protected void AutoAllocationHSYWY(Cobe.CnRegion.SQLServerDAL.Region region)
     {
@@ -243,32 +185,9 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             }
             else
             {
-                ltlJD_UserName.Text = jd_user.UserName + "(" + jd_user.RealName + ")";
+                ltlJD_UserName.Text = jd_user.UserName;
                 hfJD_UserId.Value = jd_user.UserId.ToString();
             }
-        }
-    }
-
-    private void AutoAllocaionHS(Cobe.CnRegion.SQLServerDAL.Region region)
-    {
-        if (region == null)
-            return;
-
-        if (region.Level >= 2)
-        {
-            string cityRegionCode = region.CityId;
-            var hs_users = bll_userManage.GetUserInfo_HS_InCity(region.CityId);
-            ddlHS.Items.Clear();
-            foreach (LB.SQLServerDAL.UserInfo user in hs_users)
-            {
-                LB.SQLServerDAL.CopInfo cop = bll_cop.GetCopInfoeByUserId(user.UserId);
-                if (cop != null)
-                {
-                    ListItem item = new ListItem(cop.ShortName, user.UserId.ToString());
-                    ddlHS.Items.Add(item);
-                }
-            }
-
         }
     }
 }

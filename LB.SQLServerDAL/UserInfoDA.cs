@@ -157,12 +157,13 @@ namespace LB.SQLServerDAL
         /// <summary>
         /// 查询指定地级市下的回收公司
         /// </summary>
-        /// <param name="city">地级市</param>
+        /// <param name="cityRegionCode">地级市12位数代码</param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string city)
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string cityRegionCode)
         {
+            string cityShortCode = cityRegionCode.Substring(0, 4);
             var query = from c in dbContext.UserInfo
-                        where c.UserTypeId == 2 && c.City == city
+                        where c.UserTypeId == 2 && c.RegionCode.Substring(0, 4) == cityShortCode
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
@@ -303,7 +304,7 @@ namespace LB.SQLServerDAL
                             UserName = u.UserName,
                             CopDetail = c.CopDetail,
                             CopName = c.CopName,
-                            RealName=u.RealName,
+                            RealName = u.RealName,
                             CreateTime = Convert.ToDateTime(u.CreateTime),
                             HWAuthentication = c.HWAuthentication == null ? false : c.HWAuthentication.Value,
                             HWPermit = c.HWPermit,

@@ -172,11 +172,11 @@ namespace LB.BLL
         /// <summary>
         /// 查询指定地级市下的回收公司
         /// </summary>
-        /// <param name="city">地级市</param>
+        /// <param name="cityRegionCode">地级市12位数代码</param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string city)
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string cityRegionCode)
         {
-            return da.GetUserInfo_HS_InCity(city);
+            return da.GetUserInfo_HS_InCity(cityRegionCode);
         }
 
         /// <summary>
