@@ -10,7 +10,7 @@
     <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand" OnDataBound="gvUserInfo_DataBound" OnPageIndexChanging="gvUserInfo_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="Id" SortExpression="UserId" Visible="True" />
-            <asp:BoundField DataField="UserName" HeaderText="用户" SortExpression="UserName" />
+            <asp:BoundField DataField="RealName" HeaderText="用户" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="地址 " SortExpression="CopId">
                 <ItemTemplate>
@@ -44,7 +44,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
 
-            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit" Visible="false">
+            <asp:TemplateField HeaderText="认证审核" SortExpression="Audit">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>

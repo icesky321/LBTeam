@@ -68,8 +68,8 @@
                 <div class="weui-msg">
                     <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
                     <div class="weui-msg__text-area">
-                        <h2 class="weui-msg__title">用户注册成功</h2>
-                        <p class="weui-msg__desc">请返回登录界面，用刚才注册的手机号登录</p>
+                        <h2 class="weui-msg__title">提交成功，等待平台审核</h2>
+                        <p class="weui-msg__desc">审核时间为一个工作日，如有疑问请致电0574-86694505</p>
                     </div>
                     <div class="weui-msg__opr-area">
                         <p class="weui-btn-area">

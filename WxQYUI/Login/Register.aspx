@@ -17,10 +17,12 @@
 </head>
 <body ontouchstart>
     <form id="form1" runat="server" data-ajax="false">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="pageMain" data-role="page">
             <div data-role="header">
                 <h1>绿宝新用户注册</h1>
             </div>
+
             <div data-role="main" class="ui-content">
                 <div>
                     注册说明：<br />
@@ -45,24 +47,28 @@
                 <asp:RequiredFieldValidator ID="rfv2" runat="server" ErrorMessage="密码不可为空" ControlToValidate="tbPassword" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <asp:TextBox ID="tbPassword" runat="server" placeholder="设置登录密码" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
+
                 <div data-role="main" class="ui-content">
-                    <asp:HiddenField ID="hfRegionCode" runat="server" />
-                    选择省份：
+<%--                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>--%>
+                            <asp:HiddenField ID="hfRegionCode" runat="server" />
+                            选择省份：
                 <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
-                    选择地级市：
+                            选择地级市：
                 <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
-                    <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
-                    选择县市：
+                            <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+                            选择县市：
             <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
-                    镇或街道：
-                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList><br />
+                            镇或街道：
+                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged" ValidationGroup="Reg2"></asp:DropDownList><br />
 
-
-                    详细地址：
+                            详细地址：
                 <asp:TextBox ID="tbAddress" runat="server" ValidationGroup="edit"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="edit"></asp:RequiredFieldValidator>
-
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
+<%--                        </ContentTemplate>
+                    </asp:UpdatePanel>--%>
                 </div>
+
                 <asp:Button ID="btnReg" runat="server" Text="注册" OnClick="btnReg_Click" ValidationGroup="Reg2" />
             </div>
             <div data-role="footer">

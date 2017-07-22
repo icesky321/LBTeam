@@ -41,18 +41,31 @@
                         <asp:Literal ID="ltlBusiIdentity1" runat="server"></asp:Literal>
                     </p>
                     </li>
-                    <li><a href="#" data-transition="slide" rel="external">用户名<p class="ui-li-aside">
+                    <li id="audit1" runat="server"><a href="#" data-transition="slide" rel="external">用户名<p class="ui-li-aside">
                         <asp:Literal ID="ltlUserName" runat="server"></asp:Literal>
                     </p>
                     </a></li>
-                    <li><a href="#page2" data-transition="slide">手机号码<p class="ui-li-aside">
+                    <li id="audit2" runat="server"><a href="#page2" data-transition="slide">手机号码<p class="ui-li-aside">
                         <asp:Literal ID="ltlMobile" runat="server"></asp:Literal>
                     </p>
                     </a></li>
-                    <li><a href="EditRealName.aspx" data-transition="slide" rel="external">实名认证<p class="ui-li-aside">
+
+                    <li id="audit3" runat="server"><a href="EditRealName.aspx" data-transition="slide" rel="external">实名认证<p class="ui-li-aside">
                         <asp:Literal ID="ltlRealNameVerify" runat="server"></asp:Literal>
                     </p>
                     </a></li>
+                    <li id="audit4" runat="server"><a href="CopAuth.aspx" data-transition="slide" rel="external">公司资质审核<p class="ui-li-aside">
+                        <asp:Literal ID="Literal2" runat="server"></asp:Literal>
+                    </p>
+                    </a></li>
+                    <li id="audit5" runat="server"><a href="ShowAddress.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
+                        <asp:Literal ID="ltlAddress" runat="server"></asp:Literal>
+                    </p>
+                    </a></li>
+
+
+                    <%--                    </div>--%>
+
                     <%--                    <li><a href="../MP/Deposit.aspx" data-transition="slide" rel="external">诚信保证金<p class="ui-li-aside">
                         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                     </p>
@@ -61,15 +74,9 @@
                         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                     </p>
                     </a></li>
-                    <li><a href="CopAuth.aspx" data-transition="slide" rel="external">公司资质审核<p class="ui-li-aside">
-                        <asp:Literal ID="Literal2" runat="server"></asp:Literal>
-                    </p>
-                    </a></li>
+
                     <li><a href="#pageMima" data-transition="slide" rel="external">密码管理</a></li>
-                    <li><a href="ShowAddress.aspx" data-transition="slide" rel="external">联系地址<p class="ui-li-aside">
-                        <asp:Literal ID="ltlAddress" runat="server"></asp:Literal>
-                    </p>
-                    </a></li>
+
 
                     <li data-role="list-divider"></li>
                     <li><a href="#">我的消息</a></li>

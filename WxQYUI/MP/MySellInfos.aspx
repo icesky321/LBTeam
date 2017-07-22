@@ -35,7 +35,7 @@
                             <p>
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
                                 <br />
-                                状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                                状态：<asp:Literal ID="ltlStatusMsg" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
                         </div>
                     </ItemTemplate>

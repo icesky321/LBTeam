@@ -15,26 +15,23 @@
 <body>
     <form id="form1" runat="server">
         <div id="page1" data-role="page">
-            <div class="weui-cells__title">
-                发布收货订单
-<%--                <asp:HiddenField ID="hfInUserId" runat="server" />
-                <asp:HiddenField ID="hfOutUserId" runat="server" />--%>
+            <div data-role="header">
+                创建收货订单
                 <asp:HiddenField ID="hfInfoId" runat="server" />
             </div>
-            <div class="ui-field-contain">
+            <div data-role="main" class="ui-content">
                 <label for="fullname">卖方：</label>
                 <asp:TextBox ID="tbcfdw" runat="server" Text="" Enabled="false"></asp:TextBox>
                 <label for="fullname">买方：</label>
                 <asp:TextBox ID="tbjdywy" runat="server" Text="" Enabled="false"></asp:TextBox>
-            </div>
-            <div data-role="collapsible" data-collapsed="false">
-                <h1>绿宝第三方支付账户</h1>
-                <p>公司名称：宁波绿宝信息科技有限公司</p>
-                <p>开户行：宁波银行庄市支行</p>
-                <p>账号：5204 0122 0002 10157</p>
-            </div>
 
-            <div class="weui-cells weui-cells_form">
+                <div data-role="collapsible" data-collapsed="false">
+                    <h1>绿宝第三方支付账户</h1>
+                    <p>公司名称：宁波绿宝信息科技有限公司</p>
+                    <p>开户行：宁波银行庄市支行</p>
+                    <p>账号：5204 0122 0002 10157</p>
+                </div>
+
                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1">
                     <ItemTemplate>
                         <div class="weui-cell weui-cell_vcode">
@@ -47,14 +44,13 @@
                                 <asp:TextBox ID="tbNum" runat="server" class="weui-input" type="text" placeholder="请输入准确重量/数量"></asp:TextBox>
                             </div>
                             <div class="weui-cell__ft">
-                                <%--<asp:Button ID="btnAlone" runat="server" class="weui-vcode-btn" Text="单独报价" CommandName="OneQuote" CommandArgument='<%# Eval("TSName") %>' OnCommand="btnQuote1_Command"></asp:Button>--%>
-                                <asp:DropDownList ID="ddlUnitInfo" runat="server" data-native-menu="false" DataSourceID="LinqDataSource2" DataTextField="UnitName" DataValueField="UnitId"></asp:DropDownList>
-                                <asp:LinqDataSource ID="LinqDataSource2" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="UnitId" TableName="UnitInfo" Select="new (UnitId, UnitName)"></asp:LinqDataSource>
+                                <label class="weui-label">
+                                    <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("ChargeUnit") %>'></asp:Literal></label>
                             </div>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="TSId" Select="new (TSId, TSName)" TableName="TSInfo"></asp:LinqDataSource>
+                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="OrderNum" TableName="TSInfo"></asp:LinqDataSource>
 
                 <div class="weui-cell weui-cell_vcode">
                     <div class="weui-cell__hd">
@@ -75,15 +71,14 @@
                 <div class="ui-field-contain">
                     <label for="fullname">备注：</label>
                     <asp:TextBox ID="tbRemark" runat="server" Text="" placeholder="如有补充说明请在这里输入"></asp:TextBox>
-                   选择回收公司: <asp:DropDownList ID="ddlCop" runat="server"></asp:DropDownList>
+
                 </div>
                 <br />
                 <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external" ValidationGroup="1" />
 
 
             </div>
-            <div class="weui-cells__title">
-            </div>
+
         </div>
 
     </form>

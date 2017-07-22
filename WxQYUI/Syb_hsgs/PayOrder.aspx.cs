@@ -52,7 +52,7 @@ public partial class Syb_hsgs_PayOrder : System.Web.UI.Page
             MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
             MCF_JD_Order.CopUserId = MUserInfo.UserId;
             MCF_JD_Order.CopUserAudit = true;
-            MCF_JD_Order.CopAudtiDate = System.DateTime.Now;
+            MCF_JD_Order.CopAuditDate = System.DateTime.Now;
             bll_cf_jd_order.UpdateCF_JD_Order(MCF_JD_Order);
             MPaymentDetail.Amount = MCF_JD_Order.Amount;
             MPaymentDetail.UserId = MCF_JD_Order.InUserId;

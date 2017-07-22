@@ -57,6 +57,7 @@ namespace LB.SQLServerDAL
                             u.ChopAuthentication,
                             u.City,
                             u.UserName,
+                            u.RealName,
                             c.CopDetail,
                             c.CopId,
                             c.CopName,
@@ -90,6 +91,7 @@ namespace LB.SQLServerDAL
                             u.ChopAuthentication,
                             u.City,
                             u.UserName,
+                            u.RealName,
                             c.CopDetail,
                             c.CopId,
                             c.CopName,
@@ -128,7 +130,7 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.CopInfo
                         join u in dbContext.UserInfo on c.UserId equals u.UserId
-                        where u.UserTypeId == UserTypeId orderby c.CopId descending
+                        where u.UserTypeId == UserTypeId orderby u.CreateTime descending
                         select new
                         {
                             u.Account,
@@ -138,6 +140,7 @@ namespace LB.SQLServerDAL
                             u.Chop,
                             u.ChopAuthentication,
                             u.City,
+                            u.RealName,
                             u.UserName,
                             c.CopDetail,
                             c.CopId,

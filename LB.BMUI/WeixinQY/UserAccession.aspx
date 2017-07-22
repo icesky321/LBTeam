@@ -3,22 +3,22 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div style="font-size: 1.2em; margin-bottom: 10px;">业务员准入管理</div>
-    <span style="color: burlywood;">已交押金，且实名认证完毕的街道业务员可允许准入企业号</span>
-    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" RowStyle-Height="30px" OnRowCommand="gvUsers_RowCommand">
+    <div style="font-size: 1.2em; margin-bottom: 10px;">用户账户企业号准入管理</div>
+    <span style="color: burlywood;">已交押金，且实名认证完毕的冶炼厂、回收公司、回收业务员可允许准入企业号</span>
+    <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" RowStyle-Height="30px" OnRowCommand="gvUsers_RowCommand" OnRowDataBound="gvUsers_RowDataBound">
         <Columns>
             <asp:BoundField DataField="UserName" HeaderText="姓名" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="账户（认证手机）" />
+            <asp:TemplateField HeaderText="行业角色">
+                <ItemTemplate>
+                    <asp:HiddenField ID="hfVocationTypeId" runat="server" Value='<%# Eval("UserTypeId") %>' />
+                    <asp:Literal ID="ltlVocationType" runat="server"></asp:Literal>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="地址">
                 <ItemTemplate>
-                    <%--                    <asp:Literal ID="ltlProvince" runat="server"></asp:Literal>&nbsp;&nbsp;
-                    <asp:Literal ID="ltlCity" runat="server"></asp:Literal>&nbsp;&nbsp;
-                    <asp:Literal ID="ltlTown" runat="server"></asp:Literal>&nbsp;&nbsp;
-                    <asp:Literal ID="ltlStreet" runat="server"></asp:Literal>&nbsp;&nbsp;--%>
-                    <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
-                    <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
-                    <asp:Label ID="lbTown" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
-                    <asp:Label ID="lbStreet" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                    <asp:HiddenField ID="hfRegionCode" runat="server" Value='<%# Eval("RegionCode") %>' />
+                    <asp:Label ID="lbRegionWholeName" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="CreateTime" HeaderText="创建时间" />

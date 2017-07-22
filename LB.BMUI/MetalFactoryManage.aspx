@@ -10,7 +10,7 @@
         <Columns>
             <asp:BoundField DataField="CopId" HeaderText="CopId" SortExpression="CopId" Visible="True" />
             <asp:BoundField DataField="CopName" HeaderText="企业名称" SortExpression="CopName" />
-            <asp:BoundField DataField="UserName" HeaderText="联系人" SortExpression="UserName" />
+            <asp:BoundField DataField="RealName" HeaderText="联系人" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId">
                 <ItemTemplate>
@@ -79,7 +79,7 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit" Visible="false">
+            <asp:TemplateField HeaderText="认证审核" SortExpression="Audit">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>

@@ -213,6 +213,7 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.UserInfo
                         where c.UserTypeId == UserTypeId
+                        orderby c.CreateTime descending
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
@@ -290,7 +291,7 @@ namespace LB.SQLServerDAL
                         from a in leftGroup2.DefaultIfEmpty()
                         join b in dbContext.Aspnet_Membership on a.UserId equals b.UserId into leftGroup3
                         from b in leftGroup3.DefaultIfEmpty()
-                        orderby c.UserId descending
+                        orderby u.CreateTime descending
                         select new LB.Model.UserInfoModel()
                         {
                             UserId = u.UserId,
@@ -302,6 +303,7 @@ namespace LB.SQLServerDAL
                             UserName = u.UserName,
                             CopDetail = c.CopDetail,
                             CopName = c.CopName,
+                            RealName=u.RealName,
                             CreateTime = Convert.ToDateTime(u.CreateTime),
                             HWAuthentication = c.HWAuthentication == null ? false : c.HWAuthentication.Value,
                             HWPermit = c.HWPermit,
@@ -313,8 +315,8 @@ namespace LB.SQLServerDAL
                             Town = u.Town,
                             Audit = u.Audit == null ? false : u.Audit.Value,
                             UserTypeId = Convert.ToInt32(u.UserTypeId),
-                            AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value,
-                            IsApproved = Convert.ToBoolean(b.IsApproved)
+                            AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value
+                            //IsApproved = Convert.ToBoolean(b.IsApproved)
                         };
             if (province != "---" && province != "-1")
             {

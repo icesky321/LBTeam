@@ -13,7 +13,23 @@ public partial class MP_MySellInfos : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Init_Load();
+            if (!User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("~/Login/Login.aspx");
+            }
+            else
+            {
+                if (bll_userManage.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
+                {
+                    Init_Load();
+                }
+                else
+                {
+                    Response.Redirect("~/Login/ImproveData.aspx");
+                }
+            }
+
+
         }
     }
 

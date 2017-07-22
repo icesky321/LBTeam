@@ -9,7 +9,7 @@
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="UserId" SortExpression="UserId" Visible="True" />
             <asp:BoundField DataField="CopName" HeaderText="企业名称" SortExpression="CopName" />
-            <asp:BoundField DataField="UserName" HeaderText="联系人" SortExpression="UserName" />
+            <asp:BoundField DataField="RealName" HeaderText="联系人" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId">
                 <ItemTemplate>
@@ -42,24 +42,7 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="危化许可证 " SortExpression="HWPermit" Visible="false">
-                <ItemTemplate>
-                    <asp:LinkButton ID="lbtnHWPermit" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("UserId") %>'
-                        CommandName="HWPermit" ToolTip="危化许可证"></asp:LinkButton>
-                    <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
-                        <asp:View ID="HView1" runat="server">
-                            <asp:ImageButton ID="lbtnHP" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="HPass" ImageUrl="~/images/cha.png" Width="30px" Height="30px" ToolTip="审核通过" />
-                            <%--<asp:LinkButton ID="lbtnHP" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="HPass">审核通过</asp:LinkButton>--%>
-                        </asp:View>
-                        <asp:View ID="HView2" runat="server">
-                            <asp:ImageButton ID="lbtnHU" runat="server" CommandArgument='<%#Eval("UserId") %>' CommandName="HUPass" ImageUrl="~/images/gou.png" Width="30px" Height="30px" ToolTip="取消通过" />
-                            <%--<asp:LinkButton ID="lbtnHU" runat="server" CommandArgument='<%#Eval("CopId") %>' CommandName="HUPass">取消通过</asp:LinkButton>--%>
-                        </asp:View>
-                        <asp:View ID="HView3" runat="server">
-                        </asp:View>
-                    </asp:MultiView>
-                </ItemTemplate>
-            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="负责人身份证 " SortExpression="IDCard">
                 <ItemTemplate>
                     <asp:LinkButton ID="lbtnIDCard" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("UserId") %>'
@@ -78,7 +61,7 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="保证金审核" SortExpression="Audit" Visible="false">
+            <asp:TemplateField HeaderText="认证审核" SortExpression="Audit">
                 <ItemTemplate>
                     <%--                    <asp:LinkButton ID="lbtnChop1" runat="server" Text="查看图片详情" CommandArgument='<%#Eval("CopId") %>'
                         CommandName="Chop" ToolTip="协议"></asp:LinkButton>--%>

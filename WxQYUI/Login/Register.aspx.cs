@@ -173,25 +173,45 @@ public partial class Login_Register : System.Web.UI.Page
             ltlVeriMessage.Text = "";
             ltlVeriMessage.Visible = false;
         }
+        if (ddlStreet.SelectedIndex < 1)
+        {
+            ltlErrorMsg.Visible = true;
+            ltlErrorMsg.Text = "请完善地址信息";
+        }
         #endregion
+        else
+        {
+            Membership.CreateUser(tbMobile.Text, tbPassword.Text);
 
-
-        Membership.CreateUser(tbMobile.Text, tbPassword.Text);
-
-        LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
-        user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
-        user.Audit = false;
-        user.RegionCode = hfRegionCode.Value;
-        user.MobilePhoneNum = tbMobile.Text;
-        user.CreateTime = System.DateTime.Now;
-        user.IDAuthentication = false;
-        user.ChopAuthentication = false;
-        user.InCharge = false;
-        user.Address = tbAddress.Text;
-        bll_userinfo.NewUserInfo(user);
-        Roles.AddUserToRole(user.MobilePhoneNum, "general");
-        Response.Redirect("NextReg.aspx?telNum=" + user.MobilePhoneNum);
-
+            LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
+            user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
+            user.Audit = false;
+            user.RegionCode = hfRegionCode.Value;
+            user.MobilePhoneNum = tbMobile.Text;
+            user.CreateTime = System.DateTime.Now;
+            user.IDAuthentication = false;
+            user.ChopAuthentication = false;
+            user.InCharge = false;
+            user.Address = tbAddress.Text;
+            bll_userinfo.NewUserInfo(user);
+            Roles.AddUserToRole(user.MobilePhoneNum, "general");
+            if (Membership.ValidateUser(tbMobile.Text, tbPassword.Text))
+            {
+                FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
+            }
+            if (user.UserTypeId == 5)
+            {
+                Response.Redirect("NextReg.aspx?telNum=" + user.MobilePhoneNum);
+            }
+            else if (user.UserTypeId == 1)
+            {
+                Response.Redirect("CFNextReg.aspx?telNum=" + user.MobilePhoneNum);
+            }
+            else
+            {
+                Response.Redirect("CopNextReg.aspx?telNum=" + user.MobilePhoneNum);
+            }
+        }
     }
 
     protected void lbtnGetVeriCode_Click(object sender, EventArgs e)
