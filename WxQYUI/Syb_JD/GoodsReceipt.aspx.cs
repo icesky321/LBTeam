@@ -15,8 +15,8 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
     LB.BLL.SellInfoManage bll_sellinfomanage = new LB.BLL.SellInfoManage();
     LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
     SendMsgService sendmsg = new SendMsgService();
-    LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
-    LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
+    //LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
+    //LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.BLL.PaymentDetail bll_paymentdetail = new LB.BLL.PaymentDetail();
     protected void Page_Load(object sender, EventArgs e)
@@ -34,7 +34,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                 OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                 tbcfdw.Text = InUserInfo.MobilePhoneNum;
                 tbjdywy.Text = OutUserInfo.MobilePhoneNum;
-                FillCopInfo();
+                //FillCopInfo();
             }
             else
             {
@@ -46,26 +46,28 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                 OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                 tbcfdw.Text = InUserInfo.MobilePhoneNum;
                 tbjdywy.Text = OutUserInfo.MobilePhoneNum;
-                FillCopInfo();
+                //FillCopInfo();
             }
         }
     }
 
-    void FillCopInfo()
-    {
-        IQueryable<LB.SQLServerDAL.CopInfo> copinfos = bll_copinfo.GetCopInfosByUserType(2);
-        foreach (LB.SQLServerDAL.CopInfo copinfo in copinfos)
-        {
+    //void FillCopInfo()
+    //{
+    //    IQueryable<LB.SQLServerDAL.CopInfo> copinfos = bll_copinfo.GetCopInfosByUserType(2);
+    //    foreach (LB.SQLServerDAL.CopInfo copinfo in copinfos)
+    //    {
 
-            ddlCop.Items.Add(new ListItem(copinfo.CopName, copinfo.UserId.ToString()));
-        }
-        ddlCop.Items.Insert(0, "请先选择回收公司");
-    }
+    //        ddlCop.Items.Add(new ListItem(copinfo.CopName, copinfo.UserId.ToString()));
+    //    }
+    //    ddlCop.Items.Insert(0, "请先选择回收公司");
+    //}
 
     protected void btSure_Click(object sender, EventArgs e)
     {
-        MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(ddlCop.SelectedItem.Value));
-        MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
+        //MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(ddlCop.SelectedItem.Value));
+
+        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+        MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MSellInfo.HS_UserId));
         MCF_JD_Order.InUserId = bll_usermanage.GetUserInfoByTelNum(tbcfdw.Text).UserId;
         MCF_JD_Order.OutUserId = bll_usermanage.GetUserInfoByTelNum(tbjdywy.Text).UserId;
         MCF_JD_Order.Amount = Convert.ToDecimal(tbAmount.Text);
@@ -77,7 +79,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         MCF_JD_Order.Audit = false;
         MCF_JD_Order.AuditDatetime = Convert.ToDateTime("1900-01-01");
         MCF_JD_Order.InfoId = Guid.Parse(hfInfoId.Value);
-        MCF_JD_Order.CopUserId = MUserInfo.UserId;
+        MCF_JD_Order.CopUserId = MSellInfo.HS_UserId;
         MCF_JD_Order.CopUserAudit = false;
         bll_cf_jd_order.NewCF_JD_Order(MCF_JD_Order);
         foreach (RepeaterItem item in Repeater1.Items)
@@ -96,7 +98,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             }
 
         }
-        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+
         MSellInfo.StatusMsg = "信息处理完毕";
         MSellInfo.IsClosed = true;
         //SendWxArticle_ToCF("100", "货款已付,付款编号：" + MCF_JD_Order.CFId + "\n" + "付款金额：" + MCF_JD_Order.Amount, "请到管理后台-回收公司订单审核");

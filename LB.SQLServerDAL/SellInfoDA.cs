@@ -163,8 +163,20 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
         }
 
-
-
+        /// <summary>
+        /// 根据产废单位卖货单的状态信息查询单据信息
+        /// </summary>
+        /// <param name="jd_UserId">街道回收员用户Id</param>
+        /// <param name="StatusMsg">状态信息</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetMySellInfo_ByStatusMsg(int jd_UserId, string StatusMsg)
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.JD_UserId == jd_UserId && c.StatusMsg == StatusMsg
+                        orderby c.CreateDate descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
+        }
 
         public void UpdateSellInfo(LB.SQLServerDAL.SellInfo sellInfoinfo)
         {
