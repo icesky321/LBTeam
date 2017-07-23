@@ -38,6 +38,12 @@ namespace LB.SQLServerDAL
             return total;
         }
 
+        public decimal GetOverAmountSumByUserId(int UserId)
+        {
+            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId && a.PayStatus == "已结清").ToList().Sum(a => a.Amount));
+            return total;
+        }
+
         public bool ExistUserId(int UserId)
         {
             bool exists = false;

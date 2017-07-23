@@ -36,12 +36,17 @@ public partial class FundManage_LoanAudit : System.Web.UI.Page
             Label lbTotalAmount = e.Item.FindControl("lbTotalAmount") as Label;
             HiddenField hfQYUserId = e.Item.FindControl("hfQYUserId") as HiddenField;
 
+            decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
+            decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
+            decimal Over = bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId);
+            decimal rest = Total + Wait - Over;
+
             ltlRealName.Text = MUserInfo.RealName;
             ltlPhone.Text = MUserInfo.MobilePhoneNum;
             ltlPayeeName.Text = MUserInfo.PayeeName;
             ltlBankName.Text = MUserInfo.BankName;
             ltlAccount.Text = MUserInfo.Account;
-            lbTotalAmount.Text = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId).ToString() + "元";
+            lbTotalAmount.Text = rest.ToString() + "元";
             hfQYUserId.Value = MUserInfo.QYUserId;
 
         }

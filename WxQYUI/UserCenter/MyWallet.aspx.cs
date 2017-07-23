@@ -21,8 +21,11 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
                 MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
                 if (bll_paymentdetail.ExistUserId(MUserInfo.UserId))
                 {
-                    lbTotalMoney.Text = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId).ToString();
-                    lbWaitMoney.Text = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId)).ToString();
+                    decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
+                    decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
+                    decimal Over = bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId);
+                    lbTotalMoney.Text = (Total - Wait - Over).ToString();
+                    lbWaitMoney.Text = Wait.ToString() + "元";
                 }
                 else
                 {
@@ -77,7 +80,11 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
     protected void btSure_Click(object sender, EventArgs e)
     {
         MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
-        if (bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId) != 0)
+        decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
+        decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
+        decimal Over = bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId);
+        decimal rest = Total - Wait - Over;
+        if (rest > 0)
         {
             MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
             MPaymentDetail.Amount = Convert.ToDecimal("-" + lbTotalMoney.Text);
