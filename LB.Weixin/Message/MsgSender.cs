@@ -88,6 +88,27 @@ namespace LB.Weixin.Message
         }
 
         /// <summary>
+        /// 发送文章类型消息
+        /// </summary>
+        /// <param name="toTags">接收用户标签，若有多个以|改开。</param>
+        /// <param name="article">文章对象数据</param>
+        /// <param name="agentId">微信企业号中接收消息的应用ID</param>
+        /// <returns></returns>
+        public MassResult SendArticleToTags(string toTags, Article article, string agentId = "5")
+        {
+            if (article == null)
+            {
+                MassResult result = new MassResult();
+                result.errmsg = "无发送内容";
+                return result;
+            }
+            List<Senparc.Weixin.QY.Entities.Article> articles = new List<Senparc.Weixin.QY.Entities.Article>();
+            articles.Add(article);
+
+            return Senparc.Weixin.QY.AdvancedAPIs.MassApi.SendNews(this.AccessToken, null, null, toTags, agentId, articles);
+        }
+
+        /// <summary>
         /// 发送文本类型消息
         /// </summary>
         /// <param name="toTags">接收标签组ID，若有多个以|改开。</param>

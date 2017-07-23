@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using LB.Weixin.Message;
 using Senparc.Weixin.QY.AdvancedAPIs.Mass;
 
-public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
+public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
 {
     LB.BLL.SellInfoManage bll_sellInfo = new LB.BLL.SellInfoManage();
     LB.BLL.UserManage bll_userManage = new LB.BLL.UserManage();
@@ -111,9 +111,14 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             string result = string.Empty;
             if (rbtnAuto.Checked)
             {
+                if (ddlJD.SelectedIndex < 0)
+                {
+                    ltlMsg.Text = "系统未找到可指派的回收业务员";
+                    return;
+                }
                 sellInfo.JD_TohandleTag = true;
                 int userId = 0;
-                int.TryParse(hfJD_UserId.Value, out userId);
+                int.TryParse(ddlJD.SelectedValue, out userId);
                 sellInfo.JD_UserId = userId;
                 sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员处理";
 
@@ -229,7 +234,8 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
     {
         if (region.Level != 4)
         {
-            ltlJD_UserName.Text = "[产废单位区划未完善，无法获取街道业务员]";
+            ltlMsg.Text = "[产废单位区划未完善，无法获取街道业务员]";
+            divMsg.Visible = true;
             return;
         }
         else
@@ -237,14 +243,14 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
             LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
             if (jd_user == null)
             {
-                ltlJD_UserName.Text = "[该地区尚未发展业务员，请平台另行分配]";
-
+                ltlMsg.Text = "[该地区尚未发展业务员，请平台另行分配]";
+                divMsg.Visible = true;
                 return;
             }
             else
             {
-                ltlJD_UserName.Text = jd_user.UserName + "(" + jd_user.RealName + ")";
-                hfJD_UserId.Value = jd_user.UserId.ToString();
+                ddlJD.Items.Clear();
+                ddlJD.Items.Add(new ListItem(jd_user.UserName + "(" + jd_user.RealName + ")", jd_user.UserId.ToString()));
             }
         }
     }

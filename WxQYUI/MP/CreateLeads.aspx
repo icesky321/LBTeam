@@ -50,14 +50,12 @@
                         <a href="../UserCenter/uc_cfdw.aspx" rel="external">编辑个人信息</a>
                     </p>
                 </div>
-<%--                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <%--                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>--%>
-                        <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
-                        <asp:Button ID="btnSubmit" runat="server" Text="发布" data-role="button" OnClick="btnSubmit_Click" />
-<%--                    </ContentTemplate>
+                <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+                <asp:Button ID="btnSubmit" runat="server" Text="发布" data-role="button" OnClick="btnSubmit_Click" />
+                <%--                    </ContentTemplate>
                 </asp:UpdatePanel>--%>
-
-
             </div>
             <div data-role="footer">
                 <div class="page__bd page__bd_spacing">

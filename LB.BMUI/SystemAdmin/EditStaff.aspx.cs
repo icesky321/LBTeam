@@ -199,6 +199,12 @@ public partial class SystemAdmin_EditStaff : System.Web.UI.Page
 
         hfUserId.Value = user.UserId.ToString();
         hfMobileNum.Value = user.MobilePhoneNum;
+
+        // 加载实名标记
+        lbShimingTag.Text = user.Audit.ToString();
+        cbSetShiming.Checked = user.Audit ?? false;
+
+        // 加载行政区域信息
         if (!string.IsNullOrEmpty(user.RegionCode))
         {
             Cobe.CnRegion.SQLServerDAL.Region region = bll_region.GetRegion(user.RegionCode);
@@ -326,9 +332,62 @@ public partial class SystemAdmin_EditStaff : System.Web.UI.Page
         }
     }
 
+    /// <summary>
+    /// 将用户账户与企业账户绑定
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void btnBindQYUser_Click(object sender, EventArgs e)
+    {
+        LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByTelNum(hfMobileNum.Value);
+        if (user == null)
+            return;
+
+        user.QYUserId = tbQYUserId2.Text;
+        user.IsQYUser = true;
+        bll_user.UpdateUserInfo(user);
+        LoadUserInfo(hfMobileNum.Value);
+    }
+
+    /// <summary>
+    /// 将用户账户与企业账户解绑
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    protected void lbtnUnbindQYUser_Click(object sender, EventArgs e)
+    {
+        LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByTelNum(hfMobileNum.Value);
+        if (user == null)
+            return;
+
+        user.QYUserId = "";
+        user.IsQYUser = false;
+        bll_user.UpdateUserInfo(user);
+        LoadUserInfo(hfMobileNum.Value);
+    }
+
     #endregion
 
 
+
+
+    protected void cbSetShiming_CheckedChanged(object sender, EventArgs e)
+    {
+        LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByTelNum(hfMobileNum.Value);
+        if (user == null)
+            return;
+
+        if (cbSetShiming.Checked)
+        {
+            user.Audit = true;
+        }
+        else
+        {
+            user.Audit = false;
+        }
+        bll_user.UpdateUserInfo(user);
+        LoadUserInfo(hfMobileNum.Value);
+    }
 
 
 }

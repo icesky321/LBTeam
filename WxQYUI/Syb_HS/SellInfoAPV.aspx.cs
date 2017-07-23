@@ -45,11 +45,19 @@ public partial class Syb_HS_SellInfoAPV : System.Web.UI.Page
         if (sellInfo == null)
             return;
 
+        // 检测业务单是否曾被处理。
+        if (sellInfo.HS_TohandleTag == false)
+        {
+            divMsg.Visible = true;
+            btnAllocation.Enabled = false;
+        }
+
         ltlTitle.Text = sellInfo.Title;
         ltlDescription.Text = sellInfo.Description;
         ltlQuantity.Text = sellInfo.Quantity;
         ltlLvbaoLeaveMsg.Text = sellInfo.Kefu_LeaveMsg;
         hfhs_userId.Value = sellInfo.HS_UserId.ToString();
+
 
         int cf_userId = sellInfo.CF_UserId;
         LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByUserId(cf_userId);
