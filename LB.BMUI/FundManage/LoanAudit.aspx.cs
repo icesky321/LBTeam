@@ -37,9 +37,9 @@ public partial class FundManage_LoanAudit : System.Web.UI.Page
             HiddenField hfQYUserId = e.Item.FindControl("hfQYUserId") as HiddenField;
 
             decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
-            decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
-            decimal Over = bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId);
-            decimal rest = Total + Wait - Over;
+            //decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
+            decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId));
+            decimal rest = Total - Over;
 
             ltlRealName.Text = MUserInfo.RealName;
             ltlPhone.Text = MUserInfo.MobilePhoneNum;

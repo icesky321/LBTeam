@@ -40,7 +40,7 @@ namespace LB.SQLServerDAL
 
         public decimal GetOverAmountSumByUserId(int UserId)
         {
-            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId && a.PayStatus == "已结清").ToList().Sum(a => a.Amount));
+            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId && a.PayStatus == "结清").ToList().Sum(a => a.Amount));
             return total;
         }
 

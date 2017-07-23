@@ -23,7 +23,7 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
                 {
                     decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
                     decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
-                    decimal Over = bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId);
+                    decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId));
                     lbTotalMoney.Text = (Total - Wait - Over).ToString();
                     lbWaitMoney.Text = Wait.ToString() + "元";
                 }
@@ -82,7 +82,7 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
         MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
         decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
         decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
-        decimal Over = bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId);
+        decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId));
         decimal rest = Total - Wait - Over;
         if (rest > 0)
         {
@@ -95,6 +95,7 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
             bll_paymentdetail.newPaymentDetail(MPaymentDetail);
 
             SendWxArticle_ToCF("100", "产废单位提交提现请求", "请到管理后台-货款管理审核");
+            SendWxArticle_ToCF("1", "产废单位提交提现请求", "提款人：" + MUserInfo.RealName + "/n" + "提款金额：" + MPaymentDetail.Amount.ToString()+"元");
             Response.Redirect("MyWallet.aspx#pageRegCompleted", true);
 
         }

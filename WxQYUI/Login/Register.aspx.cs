@@ -16,9 +16,20 @@ public partial class Login_Register : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Init_Load();
-            Load_Address();
-            Load_Province();
+            if (Request.QueryString["UserTypeId"] != null)
+            {
+                Init_Load();
+                Load_Address();
+                Load_Province();
+                ddlShenfen.SelectedValue = Request.QueryString["UserTypeId"];
+            }
+            else
+            {
+                Init_Load();
+                Load_Address();
+                Load_Province();
+            }
+
         }
     }
 
