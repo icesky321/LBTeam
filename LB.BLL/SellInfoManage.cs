@@ -88,6 +88,16 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 根据产废单位卖货单的状态信息查询单据信息
+        /// </summary>
+        /// <param name="jd_UserId">街道回收员用户Id</param>
+        /// <param name="StatusMsg">状态信息</param>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetMySellInfo_ByStatusMsg(int jd_UserId, string StatusMsg)
+        {
+            return da.GetMySellInfo_ByStatusMsg(jd_UserId, StatusMsg);
+        }
+
+        /// <summary>
         /// 获取我的已关闭出售信息。
         /// </summary>
         /// <param name="userMobile">用户手机号</param>

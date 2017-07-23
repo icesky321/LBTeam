@@ -11,6 +11,7 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
     LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
     LB.BLL.QuotationManage bll_quote = new LB.BLL.QuotationManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
+    LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -45,7 +46,7 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
             Response.Redirect("UserInfoIncomplete.aspx");
         else
         {
-            ltlRegionWholeName.Text = region.CountyId;
+            ltlRegionWholeName.Text = region.WholeName;
             hfCountyId.Value = region.CountyId;
         }
 
@@ -65,12 +66,14 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
         {
             LB.SQLServerDAL.TSInfo ts = e.Item.DataItem as LB.SQLServerDAL.TSInfo;
             LB.SQLServerDAL.Quotation quotation = bll_quote.GetLastQuotedPrice(ts.TsCode, hfCountyId.Value);
+            LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
+            MCopInfo = bll_copinfo.GetCopInfoeByUserId(quotation.UserId);
             Literal ltlHS_UserName = e.Item.FindControl("ltlHS_UserName") as Literal;
             Literal ltlPrice = e.Item.FindControl("ltlPrice") as Literal;
             Literal ltlDate = e.Item.FindControl("ltlDate") as Literal;
             if (quotation != null)
             {
-                ltlHS_UserName.Text = quotation.UserName;
+                ltlHS_UserName.Text = MCopInfo.ShortName;
                 ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
                 ltlDate.Text = quotation.OfferDate.ToShortDateString();
             }

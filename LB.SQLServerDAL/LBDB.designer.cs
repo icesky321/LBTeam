@@ -87,9 +87,6 @@ namespace LB.SQLServerDAL
     partial void InsertQuotation(Quotation instance);
     partial void UpdateQuotation(Quotation instance);
     partial void DeleteQuotation(Quotation instance);
-    partial void InsertRegion(Region instance);
-    partial void UpdateRegion(Region instance);
-    partial void DeleteRegion(Region instance);
     partial void InsertSellInfo(SellInfo instance);
     partial void UpdateSellInfo(SellInfo instance);
     partial void DeleteSellInfo(SellInfo instance);
@@ -301,14 +298,6 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<Quotation>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Region> Region
-		{
-			get
-			{
-				return this.GetTable<Region>();
 			}
 		}
 		
@@ -4070,7 +4059,7 @@ namespace LB.SQLServerDAL
 		
 		private string _ShortName;
 		
-		private int _UserId;
+		private System.Nullable<int> _UserId;
 		
 		private string _Bizlicense;
 		
@@ -4092,7 +4081,7 @@ namespace LB.SQLServerDAL
     partial void OnCopNameChanged();
     partial void OnShortNameChanging(string value);
     partial void OnShortNameChanged();
-    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanging(System.Nullable<int> value);
     partial void OnUserIdChanged();
     partial void OnBizlicenseChanging(string value);
     partial void OnBizlicenseChanged();
@@ -4171,8 +4160,8 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
 		{
 			get
 			{
@@ -5104,8 +5093,6 @@ namespace LB.SQLServerDAL
 		
 		private string _TSName;
 		
-		private string _TSCode;
-		
 		private System.DateTime _OfferDate;
 		
 		private decimal _QuotedPrice;
@@ -5113,6 +5100,8 @@ namespace LB.SQLServerDAL
 		private string _StandardUnit;
 		
 		private string _RegionCode;
+		
+		private string _TSCode;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -5128,8 +5117,6 @@ namespace LB.SQLServerDAL
     partial void OnTSIdChanged();
     partial void OnTSNameChanging(string value);
     partial void OnTSNameChanged();
-    partial void OnTSCodeChanging(string value);
-    partial void OnTSCodeChanged();
     partial void OnOfferDateChanging(System.DateTime value);
     partial void OnOfferDateChanged();
     partial void OnQuotedPriceChanging(decimal value);
@@ -5138,6 +5125,8 @@ namespace LB.SQLServerDAL
     partial void OnStandardUnitChanged();
     partial void OnRegionCodeChanging(string value);
     partial void OnRegionCodeChanged();
+    partial void OnTSCodeChanging(string value);
+    partial void OnTSCodeChanged();
     #endregion
 		
 		public Quotation()
@@ -5245,26 +5234,6 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSCode", DbType="NChar(10) NOT NULL", CanBeNull=false)]
-		public string TSCode
-		{
-			get
-			{
-				return this._TSCode;
-			}
-			set
-			{
-				if ((this._TSCode != value))
-				{
-					this.OnTSCodeChanging(value);
-					this.SendPropertyChanging();
-					this._TSCode = value;
-					this.SendPropertyChanged("TSCode");
-					this.OnTSCodeChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfferDate", DbType="DateTime NOT NULL")]
 		public System.DateTime OfferDate
 		{
@@ -5345,472 +5314,22 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Region")]
-	public partial class Region : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _RegionId;
-		
-		private string _Id;
-		
-		private string _ProvinceId;
-		
-		private string _CityId;
-		
-		private string _CountyId;
-		
-		private string _ParentId;
-		
-		private System.Nullable<int> _Level;
-		
-		private string _AreaName;
-		
-		private string _SimpleName;
-		
-		private string _WholeName;
-		
-		private string _AreaCode;
-		
-		private string _ZipCode;
-		
-		private string _Lon;
-		
-		private string _Lat;
-		
-		private string _PrePinYin;
-		
-		private string _PinYin;
-		
-		private string _SimplePy;
-		
-		private string _Remark;
-		
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnRegionIdChanging(System.Guid value);
-    partial void OnRegionIdChanged();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void OnProvinceIdChanging(string value);
-    partial void OnProvinceIdChanged();
-    partial void OnCityIdChanging(string value);
-    partial void OnCityIdChanged();
-    partial void OnCountyIdChanging(string value);
-    partial void OnCountyIdChanged();
-    partial void OnParentIdChanging(string value);
-    partial void OnParentIdChanged();
-    partial void OnLevelChanging(System.Nullable<int> value);
-    partial void OnLevelChanged();
-    partial void OnAreaNameChanging(string value);
-    partial void OnAreaNameChanged();
-    partial void OnSimpleNameChanging(string value);
-    partial void OnSimpleNameChanged();
-    partial void OnWholeNameChanging(string value);
-    partial void OnWholeNameChanged();
-    partial void OnAreaCodeChanging(string value);
-    partial void OnAreaCodeChanged();
-    partial void OnZipCodeChanging(string value);
-    partial void OnZipCodeChanged();
-    partial void OnLonChanging(string value);
-    partial void OnLonChanged();
-    partial void OnLatChanging(string value);
-    partial void OnLatChanged();
-    partial void OnPrePinYinChanging(string value);
-    partial void OnPrePinYinChanged();
-    partial void OnPinYinChanging(string value);
-    partial void OnPinYinChanged();
-    partial void OnSimplePyChanging(string value);
-    partial void OnSimplePyChanged();
-    partial void OnRemarkChanging(string value);
-    partial void OnRemarkChanged();
-    #endregion
-		
-		public Region()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid RegionId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSCode", DbType="NVarChar(10)")]
+		public string TSCode
 		{
 			get
 			{
-				return this._RegionId;
+				return this._TSCode;
 			}
 			set
 			{
-				if ((this._RegionId != value))
+				if ((this._TSCode != value))
 				{
-					this.OnRegionIdChanging(value);
+					this.OnTSCodeChanging(value);
 					this.SendPropertyChanging();
-					this._RegionId = value;
-					this.SendPropertyChanged("RegionId");
-					this.OnRegionIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProvinceId", DbType="NVarChar(16)")]
-		public string ProvinceId
-		{
-			get
-			{
-				return this._ProvinceId;
-			}
-			set
-			{
-				if ((this._ProvinceId != value))
-				{
-					this.OnProvinceIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProvinceId = value;
-					this.SendPropertyChanged("ProvinceId");
-					this.OnProvinceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityId", DbType="NVarChar(16)")]
-		public string CityId
-		{
-			get
-			{
-				return this._CityId;
-			}
-			set
-			{
-				if ((this._CityId != value))
-				{
-					this.OnCityIdChanging(value);
-					this.SendPropertyChanging();
-					this._CityId = value;
-					this.SendPropertyChanged("CityId");
-					this.OnCityIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CountyId", DbType="NVarChar(16)")]
-		public string CountyId
-		{
-			get
-			{
-				return this._CountyId;
-			}
-			set
-			{
-				if ((this._CountyId != value))
-				{
-					this.OnCountyIdChanging(value);
-					this.SendPropertyChanging();
-					this._CountyId = value;
-					this.SendPropertyChanged("CountyId");
-					this.OnCountyIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentId", DbType="NVarChar(16)")]
-		public string ParentId
-		{
-			get
-			{
-				return this._ParentId;
-			}
-			set
-			{
-				if ((this._ParentId != value))
-				{
-					this.OnParentIdChanging(value);
-					this.SendPropertyChanging();
-					this._ParentId = value;
-					this.SendPropertyChanged("ParentId");
-					this.OnParentIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Level", DbType="Int")]
-		public System.Nullable<int> Level
-		{
-			get
-			{
-				return this._Level;
-			}
-			set
-			{
-				if ((this._Level != value))
-				{
-					this.OnLevelChanging(value);
-					this.SendPropertyChanging();
-					this._Level = value;
-					this.SendPropertyChanged("Level");
-					this.OnLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AreaName", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
-		public string AreaName
-		{
-			get
-			{
-				return this._AreaName;
-			}
-			set
-			{
-				if ((this._AreaName != value))
-				{
-					this.OnAreaNameChanging(value);
-					this.SendPropertyChanging();
-					this._AreaName = value;
-					this.SendPropertyChanged("AreaName");
-					this.OnAreaNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SimpleName", DbType="NVarChar(32)")]
-		public string SimpleName
-		{
-			get
-			{
-				return this._SimpleName;
-			}
-			set
-			{
-				if ((this._SimpleName != value))
-				{
-					this.OnSimpleNameChanging(value);
-					this.SendPropertyChanging();
-					this._SimpleName = value;
-					this.SendPropertyChanged("SimpleName");
-					this.OnSimpleNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WholeName", DbType="NVarChar(128)")]
-		public string WholeName
-		{
-			get
-			{
-				return this._WholeName;
-			}
-			set
-			{
-				if ((this._WholeName != value))
-				{
-					this.OnWholeNameChanging(value);
-					this.SendPropertyChanging();
-					this._WholeName = value;
-					this.SendPropertyChanged("WholeName");
-					this.OnWholeNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AreaCode", DbType="NVarChar(8)")]
-		public string AreaCode
-		{
-			get
-			{
-				return this._AreaCode;
-			}
-			set
-			{
-				if ((this._AreaCode != value))
-				{
-					this.OnAreaCodeChanging(value);
-					this.SendPropertyChanging();
-					this._AreaCode = value;
-					this.SendPropertyChanged("AreaCode");
-					this.OnAreaCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ZipCode", DbType="NVarChar(8)")]
-		public string ZipCode
-		{
-			get
-			{
-				return this._ZipCode;
-			}
-			set
-			{
-				if ((this._ZipCode != value))
-				{
-					this.OnZipCodeChanging(value);
-					this.SendPropertyChanging();
-					this._ZipCode = value;
-					this.SendPropertyChanged("ZipCode");
-					this.OnZipCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lon", DbType="NVarChar(32)")]
-		public string Lon
-		{
-			get
-			{
-				return this._Lon;
-			}
-			set
-			{
-				if ((this._Lon != value))
-				{
-					this.OnLonChanging(value);
-					this.SendPropertyChanging();
-					this._Lon = value;
-					this.SendPropertyChanged("Lon");
-					this.OnLonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lat", DbType="NVarChar(32)")]
-		public string Lat
-		{
-			get
-			{
-				return this._Lat;
-			}
-			set
-			{
-				if ((this._Lat != value))
-				{
-					this.OnLatChanging(value);
-					this.SendPropertyChanging();
-					this._Lat = value;
-					this.SendPropertyChanged("Lat");
-					this.OnLatChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PrePinYin", DbType="NChar(2)")]
-		public string PrePinYin
-		{
-			get
-			{
-				return this._PrePinYin;
-			}
-			set
-			{
-				if ((this._PrePinYin != value))
-				{
-					this.OnPrePinYinChanging(value);
-					this.SendPropertyChanging();
-					this._PrePinYin = value;
-					this.SendPropertyChanged("PrePinYin");
-					this.OnPrePinYinChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PinYin", DbType="NChar(256)")]
-		public string PinYin
-		{
-			get
-			{
-				return this._PinYin;
-			}
-			set
-			{
-				if ((this._PinYin != value))
-				{
-					this.OnPinYinChanging(value);
-					this.SendPropertyChanging();
-					this._PinYin = value;
-					this.SendPropertyChanged("PinYin");
-					this.OnPinYinChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SimplePy", DbType="NChar(32)")]
-		public string SimplePy
-		{
-			get
-			{
-				return this._SimplePy;
-			}
-			set
-			{
-				if ((this._SimplePy != value))
-				{
-					this.OnSimplePyChanging(value);
-					this.SendPropertyChanging();
-					this._SimplePy = value;
-					this.SendPropertyChanged("SimplePy");
-					this.OnSimplePyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="NVarChar(64)")]
-		public string Remark
-		{
-			get
-			{
-				return this._Remark;
-			}
-			set
-			{
-				if ((this._Remark != value))
-				{
-					this.OnRemarkChanging(value);
-					this.SendPropertyChanging();
-					this._Remark = value;
-					this.SendPropertyChanged("Remark");
-					this.OnRemarkChanged();
+					this._TSCode = value;
+					this.SendPropertyChanged("TSCode");
+					this.OnTSCodeChanged();
 				}
 			}
 		}
@@ -6233,7 +5752,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_HandleResult", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_HandleResult", DbType="NVarChar(256)")]
 		public string HS_HandleResult
 		{
 			get
@@ -6253,7 +5772,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_LeaveMsg", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HS_LeaveMsg", DbType="NVarChar(256)")]
 		public string HS_LeaveMsg
 		{
 			get
@@ -6698,8 +6217,6 @@ namespace LB.SQLServerDAL
 		
 		private string _Street;
 		
-		private string _Address;
-		
 		private string _Volume;
 		
 		private string _Price;
@@ -6726,6 +6243,8 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<bool> _Recommend;
 		
+		private string _Address;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -6742,8 +6261,6 @@ namespace LB.SQLServerDAL
     partial void OnTownChanged();
     partial void OnStreetChanging(string value);
     partial void OnStreetChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
     partial void OnVolumeChanging(string value);
     partial void OnVolumeChanged();
     partial void OnPriceChanging(string value);
@@ -6770,6 +6287,8 @@ namespace LB.SQLServerDAL
     partial void OnAuditDatetimeChanged();
     partial void OnRecommendChanging(System.Nullable<bool> value);
     partial void OnRecommendChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
     #endregion
 		
 		public Tradeleads()
@@ -6893,26 +6412,6 @@ namespace LB.SQLServerDAL
 					this._Street = value;
 					this.SendPropertyChanged("Street");
 					this.OnStreetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(64)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
 				}
 			}
 		}
@@ -7177,6 +6676,26 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(64)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -7214,7 +6733,7 @@ namespace LB.SQLServerDAL
 		
 		private string _Description;
 		
-		private int _OrderNum;
+		private System.Nullable<int> _OrderNum;
 		
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -7230,7 +6749,7 @@ namespace LB.SQLServerDAL
     partial void OnChargeUnitChanged();
     partial void OnDescriptionChanging(string value);
     partial void OnDescriptionChanged();
-    partial void OnOrderNumChanging(int value);
+    partial void OnOrderNumChanging(System.Nullable<int> value);
     partial void OnOrderNumChanged();
     #endregion
 		
@@ -7259,7 +6778,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSName", DbType="NVarChar(50)")]
 		public string TSName
 		{
 			get
@@ -7279,7 +6798,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TsCode", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TsCode", DbType="NVarChar(16)")]
 		public string TsCode
 		{
 			get
@@ -7299,7 +6818,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChargeUnit", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChargeUnit", DbType="NVarChar(16)")]
 		public string ChargeUnit
 		{
 			get
@@ -7339,8 +6858,8 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderNum", DbType="Int NOT NULL")]
-		public int OrderNum
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderNum", DbType="Int")]
+		public System.Nullable<int> OrderNum
 		{
 			get
 			{
@@ -7959,11 +7478,7 @@ namespace LB.SQLServerDAL
 		
 		private string _UserName;
 		
-		private string _RealName;
-		
 		private string _MobilePhoneNum;
-		
-		private string _RegionCode;
 		
 		private string _Province;
 		
@@ -7973,11 +7488,7 @@ namespace LB.SQLServerDAL
 		
 		private string _Street;
 		
-		private string _Address;
-		
 		private System.Nullable<System.DateTime> _CreateTime;
-		
-		private string _IDCardNo;
 		
 		private string _IDCard;
 		
@@ -8015,6 +7526,14 @@ namespace LB.SQLServerDAL
 		
 		private bool _IsQYUser;
 		
+		private string _RealName;
+		
+		private string _Address;
+		
+		private string _IDCardNo;
+		
+		private string _RegionCode;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -8025,12 +7544,8 @@ namespace LB.SQLServerDAL
     partial void OnUserTypeIdChanged();
     partial void OnUserNameChanging(string value);
     partial void OnUserNameChanged();
-    partial void OnRealNameChanging(string value);
-    partial void OnRealNameChanged();
     partial void OnMobilePhoneNumChanging(string value);
     partial void OnMobilePhoneNumChanged();
-    partial void OnRegionCodeChanging(string value);
-    partial void OnRegionCodeChanged();
     partial void OnProvinceChanging(string value);
     partial void OnProvinceChanged();
     partial void OnCityChanging(string value);
@@ -8039,12 +7554,8 @@ namespace LB.SQLServerDAL
     partial void OnTownChanged();
     partial void OnStreetChanging(string value);
     partial void OnStreetChanged();
-    partial void OnAddressChanging(string value);
-    partial void OnAddressChanged();
     partial void OnCreateTimeChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateTimeChanged();
-    partial void OnIDCardNoChanging(string value);
-    partial void OnIDCardNoChanged();
     partial void OnIDCardChanging(string value);
     partial void OnIDCardChanged();
     partial void OnIDAuthenticationChanging(System.Nullable<bool> value);
@@ -8081,6 +7592,14 @@ namespace LB.SQLServerDAL
     partial void OnOpenIdChanged();
     partial void OnIsQYUserChanging(bool value);
     partial void OnIsQYUserChanged();
+    partial void OnRealNameChanging(string value);
+    partial void OnRealNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnIDCardNoChanging(string value);
+    partial void OnIDCardNoChanged();
+    partial void OnRegionCodeChanging(string value);
+    partial void OnRegionCodeChanged();
     #endregion
 		
 		public UserInfo()
@@ -8148,26 +7667,6 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealName", DbType="NVarChar(32)")]
-		public string RealName
-		{
-			get
-			{
-				return this._RealName;
-			}
-			set
-			{
-				if ((this._RealName != value))
-				{
-					this.OnRealNameChanging(value);
-					this.SendPropertyChanging();
-					this._RealName = value;
-					this.SendPropertyChanged("RealName");
-					this.OnRealNameChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhoneNum", DbType="NVarChar(11)")]
 		public string MobilePhoneNum
 		{
@@ -8184,26 +7683,6 @@ namespace LB.SQLServerDAL
 					this._MobilePhoneNum = value;
 					this.SendPropertyChanged("MobilePhoneNum");
 					this.OnMobilePhoneNumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16)")]
-		public string RegionCode
-		{
-			get
-			{
-				return this._RegionCode;
-			}
-			set
-			{
-				if ((this._RegionCode != value))
-				{
-					this.OnRegionCodeChanging(value);
-					this.SendPropertyChanging();
-					this._RegionCode = value;
-					this.SendPropertyChanged("RegionCode");
-					this.OnRegionCodeChanged();
 				}
 			}
 		}
@@ -8288,26 +7767,6 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(64)")]
-		public string Address
-		{
-			get
-			{
-				return this._Address;
-			}
-			set
-			{
-				if ((this._Address != value))
-				{
-					this.OnAddressChanging(value);
-					this.SendPropertyChanging();
-					this._Address = value;
-					this.SendPropertyChanged("Address");
-					this.OnAddressChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateTime", DbType="DateTime")]
 		public System.Nullable<System.DateTime> CreateTime
 		{
@@ -8324,26 +7783,6 @@ namespace LB.SQLServerDAL
 					this._CreateTime = value;
 					this.SendPropertyChanged("CreateTime");
 					this.OnCreateTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCardNo", DbType="NVarChar(32)")]
-		public string IDCardNo
-		{
-			get
-			{
-				return this._IDCardNo;
-			}
-			set
-			{
-				if ((this._IDCardNo != value))
-				{
-					this.OnIDCardNoChanging(value);
-					this.SendPropertyChanging();
-					this._IDCardNo = value;
-					this.SendPropertyChanged("IDCardNo");
-					this.OnIDCardNoChanged();
 				}
 			}
 		}
@@ -8528,7 +7967,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="wxName", Storage="_WxName", DbType="NVarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="wxName", Storage="_WxName", DbType="NVarChar(10)")]
 		public string WxName
 		{
 			get
@@ -8704,6 +8143,86 @@ namespace LB.SQLServerDAL
 					this._IsQYUser = value;
 					this.SendPropertyChanged("IsQYUser");
 					this.OnIsQYUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RealName", DbType="NVarChar(32)")]
+		public string RealName
+		{
+			get
+			{
+				return this._RealName;
+			}
+			set
+			{
+				if ((this._RealName != value))
+				{
+					this.OnRealNameChanging(value);
+					this.SendPropertyChanging();
+					this._RealName = value;
+					this.SendPropertyChanged("RealName");
+					this.OnRealNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Address", DbType="NVarChar(64)")]
+		public string Address
+		{
+			get
+			{
+				return this._Address;
+			}
+			set
+			{
+				if ((this._Address != value))
+				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDCardNo", DbType="NVarChar(32)")]
+		public string IDCardNo
+		{
+			get
+			{
+				return this._IDCardNo;
+			}
+			set
+			{
+				if ((this._IDCardNo != value))
+				{
+					this.OnIDCardNoChanging(value);
+					this.SendPropertyChanging();
+					this._IDCardNo = value;
+					this.SendPropertyChanged("IDCardNo");
+					this.OnIDCardNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16)")]
+		public string RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
 				}
 			}
 		}

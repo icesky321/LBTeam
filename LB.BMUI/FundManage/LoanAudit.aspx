@@ -23,20 +23,21 @@
 
                         联系电话：                               
                             <asp:Label ID="ltlPhone" runat="server" ForeColor="#6699ff"></asp:Label><br />
-
+                        汇款人姓名：                               
+                            <asp:Label ID="ltlPayeeName" runat="server" ForeColor="#6699ff"></asp:Label><br />
                         银行开户行：                               
                             <asp:Label ID="ltlBankName" runat="server" ForeColor="#6699ff"></asp:Label><br />
                         银行账号：                               
                             <asp:Label ID="ltlAccount" runat="server" ForeColor="#6699ff"></asp:Label><br />
-
+                        账户当前余额：
+                        <asp:Label ID="lbTotalAmount" runat="server" ForeColor="Red" Font-Size="Medium"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td class="dataCell">提现金额：<b><asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Amount") %>'></asp:Literal></b></td>
-
                 </tr>
                 <tr>
-                    <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC; text-align:center;">
+                    <td class="dataCell" colspan="2" style="border-top: solid 1px #CCCCCC; text-align: center;">
                         <asp:Button ID="btnAccept" runat="server" Text="打款后请点击" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Accept" CommandArgument='<%# Eval("PDId") %>' />&nbsp;&nbsp;
                             <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" BorderStyle="Solid" BorderColor="#CCCCCC" CommandName="Reject" CommandArgument='<%# Eval("PDId") %>' />
                     </td>

@@ -40,7 +40,7 @@ public partial class Syb_JD_SellReqMsg : System.Web.UI.Page
         if (jd_UserId == 0)
             return;
 
-        var query = bll_sellInfo.GetSellInfo_ByJDTohandleTag(jd_UserId, true);
+        var query = bll_sellInfo.GetMySellInfo_ByStatusMsg(jd_UserId, "回收公司工单指派完成，等待回收业务员处理");
 
         lvSellInfo.DataSource = query.AsQueryable();
         lvSellInfo.DataBind();

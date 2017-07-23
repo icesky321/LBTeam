@@ -28,7 +28,7 @@ namespace LB.SQLServerDAL
 
         public decimal GetAmountSumByUserId(int UserId)
         {
-            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId).ToList().Sum(a => a.Amount));
+            decimal total = Convert.ToDecimal(dbContext.PaymentDetail.Where(a => a.UserId == UserId && a.PayStatus=="已到款").ToList().Sum(a => a.Amount));
             return total;
         }
 
