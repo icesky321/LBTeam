@@ -41,13 +41,24 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
-        public void DeleteUserDepositInfo(int UserId)
+        public void DeleteUserDepositInfo(int userId)
         {
-            var query = (from c in dbContext.UserDepositInfo
-                         where c.UserId == UserId
-                         select c).FirstOrDefault();
-            dbContext.UserDepositInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.UserDepositInfo
+                        where s.UserId == userId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.UserDepositInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public bool ExistUserId(int UserId)

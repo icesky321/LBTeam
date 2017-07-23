@@ -33,13 +33,24 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.UserTypeInfo>();
         }
 
-        public void DeleteUserTypeInfo(int UserTypeId)
+        public void DeleteUserTypeInfo(int userTypeId)
         {
-            var query = (from c in dbContext.UserTypeInfo
-                         where c.UserTypeId == UserTypeId
-                         select c).FirstOrDefault();
-            dbContext.UserTypeInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.UserTypeInfo
+                        where s.UserTypeId == userTypeId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.UserTypeInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public LB.SQLServerDAL.UserTypeInfo GetUserTypeById(int UserTypeId)

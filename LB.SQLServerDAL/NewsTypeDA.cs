@@ -33,13 +33,24 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.NewsType>();
         }
 
-        public void DeleteNewsTypeinfo(int NewsTypeId)
+        public void DeleteNewsTypeinfo(int newsTypeId)
         {
-            var query = (from c in dbContext.NewsType
-                         where c.NewsTypeId == NewsTypeId
-                         select c).FirstOrDefault();
-            dbContext.NewsType.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.NewsType
+                        where s.NewsTypeId == newsTypeId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.NewsType.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public LB.SQLServerDAL.NewsType GetNewTypeById(int id)

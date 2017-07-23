@@ -38,11 +38,22 @@ namespace LB.SQLServerDAL
 
         public void DeleteNewsInfo(int id)
         {
-            var query = (from c in dbContext.NewsInfo
-                         where c.Id == id
-                         select c).FirstOrDefault();
-            dbContext.NewsInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.NewsInfo
+                        where s.Id == id
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.NewsInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public LB.SQLServerDAL.NewsInfo GetNewsInfoById(int id)

@@ -33,10 +33,10 @@ namespace LB.SQLServerDAL
             dbContext.SubmitChanges();
         }
 
-        public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByUserId(int UserId,bool Status)
+        public LB.SQLServerDAL.UserAuditMsg GetUserAuditMsgByUserId(int UserId, bool Status)
         {
             var query = from c in dbContext.UserAuditMsg
-                        where c.UserId == UserId && c.Status==Status
+                        where c.UserId == UserId && c.Status == Status
                         select c;
             return query.FirstOrDefault<LB.SQLServerDAL.UserAuditMsg>();
         }
@@ -49,13 +49,24 @@ namespace LB.SQLServerDAL
             return query.FirstOrDefault<LB.SQLServerDAL.UserAuditMsg>();
         }
 
-        public void DeleteUserAuditMsg(int MsgId)
+        public void DeleteUserAuditMsg(int msgId)
         {
-            var query = (from c in dbContext.UserAuditMsg
-                         where c.MsgId == MsgId
-                         select c).FirstOrDefault();
-            dbContext.UserAuditMsg.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.UserAuditMsg
+                        where s.MsgId == msgId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.UserAuditMsg.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public IQueryable GetUserAuditMsgByStatus(bool Status)

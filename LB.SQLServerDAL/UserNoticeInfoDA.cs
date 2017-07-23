@@ -20,13 +20,24 @@ namespace LB.SQLServerDAL
             return usernoticeinfo;
         }
 
-        public void DeleteUserNoticeInfo(int NoticeId)
+        public void DeleteUserNoticeInfo(int noticeId)
         {
-            var query = (from c in dbContext.UserNoticeInfo
-                         where c.NoticeId == NoticeId
-                         select c).FirstOrDefault();
-            dbContext.UserNoticeInfo.DeleteOnSubmit(query);
-            dbContext.SubmitChanges();
+            var query = from s in dbContext.UserNoticeInfo
+                        where s.NoticeId == noticeId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.UserNoticeInfo.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public void UpdateUserNoticeInfo(LB.SQLServerDAL.UserNoticeInfo UserNoticeInfo)
