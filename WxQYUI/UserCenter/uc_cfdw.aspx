@@ -33,19 +33,23 @@
             </div>
             <div data-role="main" class="ui-content">
                 <ul data-role="listview">
-                    <li>用户ID<p class="ui-li-aside">
-                        <asp:Literal ID="ltlUserId" runat="server"></asp:Literal>
-                    </p>
-                    </li>
-                    <li>行业身份<p class="ui-li-aside">
+<%--                    <li>行业身份<p class="ui-li-aside">
                         <asp:Literal ID="ltlBusiIdentity1" runat="server"></asp:Literal>
                     </p>
+                    </li>--%>
+                    <li><a href="../MP/TodayQuotation.aspx" data-transition="slide" rel="external">今日价格</a><p class="ui-li-aside">
+                        <asp:Literal ID="Literal4" runat="server"></asp:Literal>
+                    </p>
                     </li>
-                    <li id="audit1" runat="server"><a href="#" data-transition="slide" rel="external">用户名<p class="ui-li-aside">
+                    <li><a href="../MP/CreateLeads.aspx" data-transition="slide" rel="external">我要卖货</a><p class="ui-li-aside">
+                        <asp:Literal ID="Literal3" runat="server"></asp:Literal>
+                    </p>
+                    </li>
+                    <li id="audit1" runat="server" visible="false"><a href="#" data-transition="slide" rel="external">用户名<p class="ui-li-aside">
                         <asp:Literal ID="ltlUserName" runat="server"></asp:Literal>
                     </p>
                     </a></li>
-                    <li id="audit2" runat="server"><a href="#page2" data-transition="slide">手机号码<p class="ui-li-aside">
+                    <li id="audit2" runat="server" visible="false"><a href="#page2" data-transition="slide">手机号码<p class="ui-li-aside">
                         <asp:Literal ID="ltlMobile" runat="server"></asp:Literal>
                     </p>
                     </a></li>
@@ -79,8 +83,8 @@
 
 
                     <li data-role="list-divider"></li>
-                    <li><a href="#">我的消息</a></li>
-                    <li><a href="#page3" data-transition="slide">消息订阅</a></li>
+                    <li><a href="../MP/MySellInfos.aspx">我的订单</a></li>
+                    <li><a href="#" data-transition="slide">消息订阅</a></li>
                     <li data-role="list-divider"></li>
 
                     <li><a href="../ljlb/Default.aspx">了解绿宝</a></li>

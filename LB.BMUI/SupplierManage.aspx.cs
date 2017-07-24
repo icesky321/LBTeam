@@ -33,7 +33,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
             MCopInfo = bll_copinfo.GetCopInfoeByUserId(Convert.ToInt32(UserId));
             if (!string.IsNullOrEmpty(MUserInfo.RegionCode))
             {
-                ((Label)(gvRow.Cells[8].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                ((Label)(gvRow.Cells[10].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
             }
 
             if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(Convert.ToInt32(UserId))).IDCard) == false)//如果用户身份证已上传

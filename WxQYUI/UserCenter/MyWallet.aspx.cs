@@ -25,7 +25,7 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
                     decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
                     decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId));
                     lbTotalMoney.Text = (Total - Wait - Over).ToString();
-                    lbWaitMoney.Text = Wait.ToString() + "元";
+                    lbWaitMoney.Text = Wait.ToString();
                 }
                 else
                 {
@@ -90,6 +90,7 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
             MPaymentDetail.Amount = Convert.ToDecimal("-" + lbTotalMoney.Text);
             MPaymentDetail.UserId = MUserInfo.UserId;
             MPaymentDetail.CreateDate = System.DateTime.Now;
+            MPaymentDetail.TransferMethod = ddlTXType.SelectedItem.Text;
             MPaymentDetail.PayStatus = "提款中";
             MPaymentDetail.AuditDate = Convert.ToDateTime("1900-01-01");
             bll_paymentdetail.newPaymentDetail(MPaymentDetail);

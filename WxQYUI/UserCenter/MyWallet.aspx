@@ -28,7 +28,7 @@
             <h2>在途资产：
                     <asp:Label ID="lbWaitMoney" runat="server" Text=""></asp:Label>元
             </h2>
-            <asp:DropDownList ID="ddlTXType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTXType_SelectedIndexChanged" Visible="false">
+          请选择收款方式：  <asp:DropDownList ID="ddlTXType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTXType_SelectedIndexChanged">
                 <asp:ListItem Value="0">--请选择提现方式--</asp:ListItem>
                 <asp:ListItem Value="1">网银转账</asp:ListItem>
                 <asp:ListItem Value="2">支付宝</asp:ListItem>

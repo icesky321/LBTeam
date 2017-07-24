@@ -23,15 +23,15 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             }
             else
             {
-                if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
-                {
-                    Load_UserInfo();
-                    LoadTodayQuotation();
-                }
-                else
-                {
-                    Response.Redirect("~/Login/ImproveData.aspx");
-                }
+                //if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
+                //{
+                Load_UserInfo();
+                LoadTodayQuotation();
+                //}
+                //else
+                //{
+                //    Response.Redirect("~/Login/ImproveData.aspx");
+                //}
             }
 
         }
@@ -90,7 +90,8 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             {
                 MCopInfo = bll_copinfo.GetCopInfoeByUserId(quotation.UserId);
                 ltlHS_UserName.Text = MCopInfo.ShortName;
-                ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
+                ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/吨";
+                //+ quotation.StandardUnit;
                 ltlDate.Text = quotation.OfferDate.ToShortDateString();
             }
             else

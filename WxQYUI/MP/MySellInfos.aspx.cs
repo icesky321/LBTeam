@@ -19,14 +19,14 @@ public partial class MP_MySellInfos : System.Web.UI.Page
             }
             else
             {
-                if (bll_userManage.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
-                {
-                    Init_Load();
-                }
-                else
-                {
-                    Response.Redirect("~/Login/ImproveData.aspx");
-                }
+                //if (bll_userManage.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
+                //{
+                Init_Load();
+                //}
+                //else
+                //{
+                //    Response.Redirect("~/Login/ImproveData.aspx");
+                //}
             }
 
 

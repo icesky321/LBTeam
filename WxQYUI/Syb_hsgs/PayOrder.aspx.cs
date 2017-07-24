@@ -59,6 +59,7 @@ public partial class Syb_hsgs_PayOrder : System.Web.UI.Page
             MPaymentDetail.CreateDate = System.DateTime.Now;
             MPaymentDetail.PayStatus = "已打款";
             MPaymentDetail.CFId = MCF_JD_Order.CFId;
+            MPaymentDetail.TransferMethod = "";
             bll_paymentdetail.newPaymentDetail(MPaymentDetail);
             SendWxArticle_ToCF("100", "回收公司已付款,付款编号：" + MCF_JD_Order.CFId + "\n" + "付款金额：" + MCF_JD_Order.Amount, "请到管理后台-回收公司订单审核");
             Response.Redirect("Success.aspx");

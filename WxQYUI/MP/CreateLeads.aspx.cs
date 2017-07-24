@@ -15,21 +15,21 @@ public partial class MP_CreateLeads : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                Response.Redirect("~/Login/Login.aspx");
-            }
-            else
-            {
-                if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
-                {
-                    Init_Load();
-                }
-                else
-                {
-                    Response.Redirect("~/Login/ImproveData.aspx");
-                }
-            }
+            //if (!User.Identity.IsAuthenticated)
+            //{
+            //    Response.Redirect("~/Login/Login.aspx");
+            //}
+            //else
+            //{
+            //    if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
+            //    {
+            Init_Load();
+            //        }
+            //        else
+            //        {
+            //            Response.Redirect("~/Login/ImproveData.aspx");
+            //        }
+            //    }
 
 
 
