@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Success.aspx.cs" Inherits="ErrorPage_NoAddress" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Rehandle.aspx.cs" Inherits="ErrorPage_NoAddress" %>
 
 <!DOCTYPE html>
 
@@ -15,17 +15,15 @@
 <body ontouchstart>
     <form id="form1" runat="server">
         <div class="weui-msg">
-            <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+            <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
             <div class="weui-msg__text-area">
-                <h2 class="weui-msg__title">操作成功</h2>
-                <p class="weui-msg__desc">
-                    绿色回收，益国、益民、益环境<br />
-                    <asp:Label ID="lbRemark" runat="server" Text="" ForeColor="Red"></asp:Label>
-                </p>
+                <h2 class="weui-msg__title">操作失败</h2>
+                <p class="weui-msg__desc">此信息曾被处理，无需再次处理</p>
             </div>
             <div class="weui-msg__opr-area">
                 <p class="weui-btn-area">
-                    <a href="javascript:wx.closeWindow();" class="weui-btn weui-btn_primary">关闭窗口</a>
+
+                    <a href="javascript:wx.closeWindow();" class="weui-btn weui-btn_primary" rel="external">关闭窗口</a>
                 </p>
             </div>
             <div class="weui-msg__extra-area">
@@ -37,6 +35,7 @@
                 </div>
             </div>
         </div>
+
     </form>
 </body>
 </html>

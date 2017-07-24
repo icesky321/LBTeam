@@ -16,7 +16,7 @@ public partial class Admin_NewsManage : System.Web.UI.Page
         if (!IsPostBack)
         {
             FillNewsType();
-            tbNoteDate.Text = System.DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            tbNoteDate.Text = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
 

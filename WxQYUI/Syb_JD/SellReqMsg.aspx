@@ -41,7 +41,7 @@
                                         </p>
 
                                         <span style="font-size: 1em; font-family: Arial, Helvetica, sans-serif;">
-                                            <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("CreateDate","{0:MM-dd hh:mm}") %>'></asp:Literal></span>
+                                            <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("CreateDate","{0:MM-dd HH:mm}") %>'></asp:Literal></span>
                                     </div>
                                     <div class="page__category js_categoryInner">
                                         <div class="weui-cells page__category-content">

@@ -45,8 +45,13 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
             if (sellInfo == null)
                 return;
 
+            if (sellInfo.Kefu_TohandleTag == false)
+            {
+                Response.Redirect("~/ErrorPage/Rehandle.aspx", true);
+            }
+
             lbTitle.Text = sellInfo.Title;
-            lbCreateDate.Text = string.Format("{0:yyyy-MM-dd HH:mm}", sellInfo.CreateDate);
+            lbCreateDate.Text = string.Format("{0:MM-dd HH:mm}", sellInfo.CreateDate);
             ltlDescription.Text = sellInfo.Description;
             ltlQuantity.Text = sellInfo.Quantity;
 
