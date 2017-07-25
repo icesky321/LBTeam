@@ -47,7 +47,7 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr style="height: 40px; border-bottom: solid 1px #bebebe;" class="row">
-                    <td>
+                    <td style="width: 80px;">
                         <asp:Literal ID="ltlRegionName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal>
                         <asp:HiddenField ID="hfCountyCode" runat="server" Value='<%# Eval("Id") %>' />
                     </td>

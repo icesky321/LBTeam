@@ -13,6 +13,10 @@
     <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
     <link href="http://res.wx.qq.com/open/libs/weui/0.4.0/weui.min.css" rel="stylesheet" />
+    <script type="text/javascript">        //$(function () { window.location.hash = "#title"; }) </script>
+    <script type="text/javascript">
+        $(function () { window.location.href = "#pos"; })
+    </script>
     <title>用户注册</title>
 </head>
 <body ontouchstart>
@@ -28,7 +32,6 @@
                     注册说明：<br />
                     手机号码是平台登录的唯一凭证。<br />
                     请根据自己实际情况谨慎选择行业身份，一旦选定，不可变更。<a href="../ljlb/cjwt.aspx#page2" rel="external">了解行业身份</a>
-
                 </div>
                 <div style="padding: 20px 0;">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="错误信息" ShowMessageBox="True" />
@@ -49,23 +52,24 @@
                 <asp:TextBox ID="tbPassword" runat="server" placeholder="设置登录密码" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
 
                 <div data-role="main" class="ui-content">
-<%--                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <%--                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>--%>
-                            <asp:HiddenField ID="hfRegionCode" runat="server" />
-                            选择省份：
+                    <a href="#pos" id="title" name="title">省份</a>
+                    <asp:HiddenField ID="hfRegionCode" runat="server" />
+                    选择省份：
                 <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
-                            选择地级市：
+                    选择地级市：
                 <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
-                            <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
-                            选择县市：
+                    <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+                    选择县市：
             <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
-                            镇或街道：
+                    镇或街道：
                  <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged" ValidationGroup="Reg2"></asp:DropDownList><br />
 
-                            详细地址：
+                    详细地址：
                 <asp:TextBox ID="tbAddress" runat="server" ValidationGroup="edit"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
-<%--                        </ContentTemplate>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <%--                        </ContentTemplate>
                     </asp:UpdatePanel>--%>
                 </div>
 

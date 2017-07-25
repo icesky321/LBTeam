@@ -49,6 +49,11 @@
                 </ItemTemplate>
                 <ItemStyle CssClass="tbInput" />
             </asp:TemplateField>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Label ID="lbUnit" runat="server" Text='<%# DataBinder.GetPropertyValue(ltlChargeUnit,"Text") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
     <div style="padding: 10px 0 50px 0;">

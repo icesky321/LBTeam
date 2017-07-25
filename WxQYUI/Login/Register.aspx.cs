@@ -63,6 +63,7 @@ public partial class Login_Register : System.Web.UI.Page
             ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
         }
         ddlProvince.Items.Insert(0, "--选择省份--");
+        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.location.hash('#regionBegin');</Script>");
     }
 
     private void Load_City()
@@ -74,6 +75,7 @@ public partial class Login_Register : System.Web.UI.Page
             ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
         }
         ddlCity.Items.Insert(0, "--选择城市--");
+        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.scrollTo(0, 500);</Script>");
     }
 
     private void Load_County()
@@ -85,6 +87,7 @@ public partial class Login_Register : System.Web.UI.Page
             ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
         }
         ddlCounty.Items.Insert(0, "--选择区县--");
+        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
     }
 
     private void Load_Street()
@@ -96,6 +99,7 @@ public partial class Login_Register : System.Web.UI.Page
             ddlStreet.Items.Add(new ListItem(region.AreaName, region.Id));
         }
         ddlStreet.Items.Insert(0, "--选择区县--");
+        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
     }
     #endregion
 
