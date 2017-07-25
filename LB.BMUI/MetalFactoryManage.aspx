@@ -95,6 +95,12 @@
                     </asp:MultiView>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:BoundField DataField="CreateTime" HeaderText="注册时间" SortExpression="CreateTime" />
+            <asp:TemplateField HeaderText="地址 " SortExpression="Region">
+                <ItemTemplate>
+                    <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>

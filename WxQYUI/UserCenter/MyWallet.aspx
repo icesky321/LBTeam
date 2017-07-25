@@ -90,6 +90,7 @@
                 </asp:View>
             </asp:MultiView>
             <br />
+            <asp:Label ID="lbMsg" runat="server" ForeColor="Red" Font-Size="Medium" Visible="false"></asp:Label>
             <asp:Button ID="btSure" runat="server" Text="提现" OnClick="btSure_Click" />
 
         </div>
@@ -121,7 +122,7 @@
 
             <div data-role="main" class="ui-content">
                 <div class="weui-msg">
-                    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+                    <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
                     <div class="weui-msg__text-area">
                         <h2 class="weui-msg__title">提现失败</h2>
                         <p class="weui-msg__desc">对不起，您的账户没有可用余额</p>

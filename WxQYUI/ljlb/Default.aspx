@@ -86,7 +86,7 @@
             </div>
             <div data-role="main" class="ui-content">
                 <p>
-                    <strong>公司名称：</strong> 宁波市绿宝科技有限公司<br />
+                    <strong>公司名称：</strong> 绿宝科技有限公司<br />
                     <strong>公司地址：</strong>宁波市镇海区庄市街道中官西路279号文创园
                 </p>
                 <br />

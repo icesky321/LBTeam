@@ -98,7 +98,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             }
 
         }
-
+        MSellInfo.JD_TohandleTag = false;
         MSellInfo.StatusMsg = "信息处理完毕";
         MSellInfo.IsClosed = true;
         //SendWxArticle_ToCF("100", "货款已付,付款编号：" + MCF_JD_Order.CFId + "\n" + "付款金额：" + MCF_JD_Order.Amount, "请到管理后台-回收公司订单审核");
@@ -111,7 +111,8 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         //MPaymentDetail.PayStatus = "已打款";
         //MPaymentDetail.CFId = MCF_JD_Order.CFId;
         //bll_paymentdetail.newPaymentDetail(MPaymentDetail);
-    Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
+
+        Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
 
     }
 

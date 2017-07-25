@@ -4,17 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using LB.Weixin.Message;
-using Senparc.Weixin.QY.AdvancedAPIs.Mass;
 
-public partial class Syb_hsgs_Choose_JD_Manage : System.Web.UI.Page
+public partial class Syb_JD_OrderManage : System.Web.UI.Page
 {
+    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sell = new LB.BLL.SellInfoManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
-    LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string username = User.Identity.Name;
+                LB.SQLServerDAL.UserInfo MUserInfo = bll_usermanage.GetUserInfoByTelNum(username);
+                hfJD_UserId.Value= MUserInfo.UserId.ToString();
+            }
+        }
+    }
 
+    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName == "Confirm")//判断这个Item里哪个控件响应的这个事件  
+        {
+            string InfoId = (string)e.CommandArgument;//获取Item传过来的参数  
+            string url = "GoodsReceipt.aspx?infoId=" + InfoId.ToString();
+            Response.Redirect(url);
+        }
     }
 
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -35,17 +51,4 @@ public partial class Syb_hsgs_Choose_JD_Manage : System.Web.UI.Page
             lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
         }
     }
-
-    protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
-    {
-        if (e.CommandName == "Confirm")//判断这个Item里哪个控件响应的这个事件  
-        {
-            string InfoId = (string)e.CommandArgument;//获取Item传过来的参数  
-            string url= "~/Syb_HS/SellInfoAPV.aspx?infoId=" + InfoId.ToString();
-            Response.Redirect(url);
-        }
-    }
-
-    
-
 }

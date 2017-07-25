@@ -13,6 +13,7 @@ public partial class Syb_hsgs_PayOrder : System.Web.UI.Page
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.BLL.PaymentDetail bll_paymentdetail = new LB.BLL.PaymentDetail();
     LB.SQLServerDAL.PaymentDetail MPaymentDetail = new LB.SQLServerDAL.PaymentDetail();
+    LB.BLL.SellInfoManage bll_sellinfo = new LB.BLL.SellInfoManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -48,7 +49,9 @@ public partial class Syb_hsgs_PayOrder : System.Web.UI.Page
     {
         if (User.Identity.IsAuthenticated)
         {
+            LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
             MCF_JD_Order = bll_cf_jd_order.GetCF_JD_OrderById(Guid.Parse(hfCFId.Value));
+            MSellInfo = bll_sellinfo.GetSellInfo_ById(Guid.Parse(MCF_JD_Order.InfoId.ToString()));
             MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
             MCF_JD_Order.CopUserId = MUserInfo.UserId;
             MCF_JD_Order.CopUserAudit = true;
@@ -61,6 +64,8 @@ public partial class Syb_hsgs_PayOrder : System.Web.UI.Page
             MPaymentDetail.CFId = MCF_JD_Order.CFId;
             MPaymentDetail.TransferMethod = "";
             bll_paymentdetail.newPaymentDetail(MPaymentDetail);
+            MSellInfo.HS_TohandleTag = false;
+            bll_sellinfo.UpdateSellInfo(MSellInfo);
             SendWxArticle_ToCF("100", "回收公司已付款,付款编号：" + MCF_JD_Order.CFId + "\n" + "付款金额：" + MCF_JD_Order.Amount, "请到管理后台-回收公司订单审核");
             Response.Redirect("Success.aspx");
         }

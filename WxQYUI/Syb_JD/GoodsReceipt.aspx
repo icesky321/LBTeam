@@ -25,12 +25,12 @@
                 <label for="fullname">买方：</label>
                 <asp:TextBox ID="tbjdywy" runat="server" Text="" Enabled="false"></asp:TextBox>
 
-                <div data-role="collapsible" data-collapsed="false">
+<%--                <div data-role="collapsible" data-collapsed="false">
                     <h1>绿宝第三方支付账户</h1>
                     <p>公司名称：宁波绿宝信息科技有限公司</p>
                     <p>开户行：宁波银行庄市支行</p>
                     <p>账号：5204 0122 0002 10157</p>
-                </div>
+                </div>--%>
 
                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1">
                     <ItemTemplate>
