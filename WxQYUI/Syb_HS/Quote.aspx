@@ -31,7 +31,7 @@
                                     <asp:Literal ID="ltlTSName" runat="server" Text='<%# Eval("TSName") %>'></asp:Literal></label>
                             </div>
                             <div class="weui-cell__bd">
-                                <asp:TextBox ID="tbQuotedPrice" runat="server" class="weui-input" type="text" placeholder="请输入报价（元/吨）"></asp:TextBox>
+                                <asp:TextBox ID="tbQuotedPrice" runat="server" class="weui-input" type="text" placeholder="请输入报价"></asp:TextBox>
                             </div>
                             <div class="weui-cell__ft">
                                 <asp:Button ID="btnAlone" runat="server" class="weui-vcode-btn" Text="单独报价" CommandName="OneQuote" CommandArgument='<%# Eval("TSName") %>' OnCommand="btnQuote1_Command"></asp:Button>
