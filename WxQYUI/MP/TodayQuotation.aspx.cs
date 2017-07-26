@@ -23,15 +23,8 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             }
             else
             {
-                if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
-                {
-                    Load_UserInfo();
-                    LoadTodayQuotation();
-                }
-                else
-                {
-                    Response.Redirect("~/Login/ImproveData.aspx");
-                }
+                Load_UserInfo();
+                LoadTodayQuotation();
             }
 
         }

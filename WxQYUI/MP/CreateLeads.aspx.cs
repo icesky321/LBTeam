@@ -21,14 +21,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
             }
             else
             {
-                if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
-                {
-                    Init_Load();
-                }
-                else
-                {
-                    Response.Redirect("~/Login/ImproveData.aspx");
-                }
+                Init_Load();
             }
 
 
