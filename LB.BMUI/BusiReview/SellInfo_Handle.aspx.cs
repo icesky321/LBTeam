@@ -46,7 +46,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
                 return;
 
             lbTitle.Text = sellInfo.Title;
-            lbCreateDate.Text = string.Format("{0:yyyy-MM-dd hh:mm}", sellInfo.CreateDate);
+            lbCreateDate.Text = string.Format("{0:yyyy-MM-dd HH:mm}", sellInfo.CreateDate);
             ltlDescription.Text = sellInfo.Description;
             ltlQuantity.Text = sellInfo.Quantity;
 

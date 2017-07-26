@@ -33,6 +33,16 @@
         </div>
     </div>
 
+
+    <div class="infoBlock">
+        <div class="title">管理实名标记</div>
+        <div>
+            当前实名状态：<asp:Label ID="lbShimingTag" runat="server" Text="" CssClass="data"></asp:Label><br />
+            <asp:CheckBox ID="cbSetShiming" runat="server" Text="设为已实名" OnCheckedChanged="cbSetShiming_CheckedChanged" AutoPostBack="true" />
+        </div>
+    </div>
+
+
     <div class="infoBlock">
         <div class="title">
             修改行政区域
@@ -89,44 +99,58 @@
     <div class="infoBlock">
         <div class="title">设置企业号账户</div>
         <div>
-            <div style="padding: 20px 0 20px 0;">
+            <div style="padding: 20px 0 30px 0;">
                 用户状态：企业号用户Id：<asp:Label ID="lbQYUserId" runat="server" Text=""></asp:Label>
-                <asp:LinkButton ID="lbtnDeleteQYUser" runat="server" OnClick="lbtnDeleteQYUser_Click">解绑企业号账户，同时删除企业号账户</asp:LinkButton>
+
             </div>
             <table>
                 <tr>
-                    <td>企业号用户Id</td>
-                    <td>
-                        <asp:TextBox ID="tbQYUserId" runat="server"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td>姓名</td>
-                    <td>
-                        <asp:TextBox ID="tbRealName" runat="server"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td>手机号码</td>
-                    <td>
-                        <asp:TextBox ID="tbMobileNum" runat="server"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td>行业身份</td>
-                    <td>
-                        <asp:DropDownList ID="ddlShengfen" runat="server">
-                            <asp:ListItem Text="平台员工" Value="平台员工"></asp:ListItem>
-                            <asp:ListItem Text="冶炼厂" Value="冶炼厂"></asp:ListItem>
-                            <asp:ListItem Text="回收公司" Value="回收公司"></asp:ListItem>
-                            <asp:ListItem Text="回收业务员" Value="回收业务员"></asp:ListItem>
+                    <td style="padding: 10px;">
+                        <table>
+                            <tr>
+                                <td>企业号用户Id</td>
+                                <td>
+                                    <asp:TextBox ID="tbQYUserId" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>姓名</td>
+                                <td>
+                                    <asp:TextBox ID="tbRealName" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>手机号码</td>
+                                <td>
+                                    <asp:TextBox ID="tbMobileNum" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr>
+                                <td>行业身份</td>
+                                <td>
+                                    <asp:DropDownList ID="ddlShengfen" runat="server">
+                                        <asp:ListItem Text="平台员工" Value="平台员工"></asp:ListItem>
+                                        <asp:ListItem Text="冶炼厂" Value="冶炼厂"></asp:ListItem>
+                                        <asp:ListItem Text="回收公司" Value="回收公司"></asp:ListItem>
+                                        <asp:ListItem Text="回收业务员" Value="回收业务员"></asp:ListItem>
 
-                        </asp:DropDownList>
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style="padding: 10px 0 10px 0;">
+                                    <asp:Button ID="btnCreateQYUser" runat="server" Text="创建企业号账户" OnClick="btnCreateQYUser_Click" BorderColor="#669999" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="border-left: 1px solid #808080; padding: 10px; vertical-align: top;">
+                        <div>
+                            输入企业号用户Id：<asp:TextBox ID="tbQYUserId2" runat="server"></asp:TextBox><asp:Button ID="btnBindQYUser" runat="server" BorderColor="#669999" Text="绑定企业用户" OnClick="btnBindQYUser_Click" /><br />
+                            <asp:Button ID="lbtnUnbindQYUser" runat="server" OnClick="lbtnUnbindQYUser_Click" BorderColor="#669999" Text="解绑企业号账户"></asp:Button>
+                            <asp:LinkButton ID="lbtnDeleteQYUser" runat="server" OnClick="lbtnDeleteQYUser_Click">解绑企业号账户，同时删除企业号账户</asp:LinkButton>
+                        </div>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td style="padding: 10px 0 10px 0;">
-                        <asp:Button ID="btnCreateQYUser" runat="server" Text="创建企业号账户" OnClick="btnCreateQYUser_Click" BorderColor="#669999" /></td>
-                </tr>
             </table>
+
         </div>
     </div>
 </asp:Content>

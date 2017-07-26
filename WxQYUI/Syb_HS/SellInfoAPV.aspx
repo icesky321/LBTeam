@@ -42,6 +42,9 @@
                     附言：
                     <asp:TextBox ID="tbRemark" runat="server" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
+                <div id="divMsg" runat="server" visible="false">
+                    <p style="color: red;">该笔业务已经处理，无需再次处理。</p>
+                </div>
                 <asp:Button ID="btnAllocation" runat="server" Text="确定指派" OnClick="btnAllocation_Click" />
             </div>
 

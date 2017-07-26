@@ -31,7 +31,7 @@
                         <div data-role="collapsible" data-collapsed="false">
                             <h3>
                                 <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
-                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd hh:mm}") %>'></asp:Literal></span></h3>
+                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
                             <p>
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
                                 <br />
@@ -62,7 +62,7 @@
                         <div data-role="collapsible" data-collapsed="false">
                             <h3>
                                 <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
-                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd hh:mm}") %>'></asp:Literal></span></h3>
+                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
                             <p>
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
                                 <br />

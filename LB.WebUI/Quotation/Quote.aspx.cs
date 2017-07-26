@@ -24,6 +24,11 @@ public partial class Quotation_Quote : System.Web.UI.Page
     private void Init_Load()
     {
         Load_TS();
+        Load_Region();
+    }
+
+    private void Load_Region()
+    {
         var regions = bll_region.GetRegions(hfRegionCode.Value);
         GridView1.DataSource = regions;
         GridView1.DataBind();
@@ -35,7 +40,7 @@ public partial class Quotation_Quote : System.Web.UI.Page
         ddlDC.Items.Clear();
         foreach (LB.SQLServerDAL.TSInfo ts in tses)
         {
-            ListItem item = new ListItem(ts.TSName, ts.TsCode);
+            ListItem item = new ListItem(ts.TSName + "（" + ts.ChargeUnit + "）", ts.TsCode);
             ddlDC.Items.Add(item);
         }
         ddlDC.Items.Insert(0, new ListItem("选择电瓶品种"));
@@ -54,6 +59,7 @@ public partial class Quotation_Quote : System.Web.UI.Page
 
 
         hfTs.Value = js.Serialize(ts);
+        Load_Region();
     }
 
     protected void btnQuote_Click(object sender, EventArgs e)
