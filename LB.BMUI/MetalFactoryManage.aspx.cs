@@ -11,6 +11,7 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -27,6 +28,12 @@ public partial class Admin_MetalFactoryManage : System.Web.UI.Page
         {
             string CopId = gvRow.Cells[0].Text;
             MCopInfo = bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId));
+            MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
+            if (!string.IsNullOrEmpty(MUserInfo.RegionCode))
+            {
+                ((Label)(gvRow.Cells[11].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            }
+
             if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).Bizlicense) == false)
             {
                 if (bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).BAuthentication == false)

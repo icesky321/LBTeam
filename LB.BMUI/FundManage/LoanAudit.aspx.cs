@@ -34,8 +34,13 @@ public partial class FundManage_LoanAudit : System.Web.UI.Page
             Label ltlBankName = e.Item.FindControl("ltlBankName") as Label;
             Label ltlAccount = e.Item.FindControl("ltlAccount") as Label;
             Label lbTotalAmount = e.Item.FindControl("lbTotalAmount") as Label;
-            HiddenField hfQYUserId = e.Item.FindControl("hfQYUserId") as HiddenField;
 
+            Label lbZFBName = e.Item.FindControl("lbZFBName") as Label;
+            Label lbZFBAccount = e.Item.FindControl("lbZFBAccount") as Label;
+            Label lbWXAccount = e.Item.FindControl("lbWXAccount") as Label;
+            Label lbWXName = e.Item.FindControl("lbWXName") as Label;
+            HiddenField hfQYUserId = e.Item.FindControl("hfQYUserId") as HiddenField;
+            MultiView MultiView4 = e.Item.FindControl("MultiView4") as MultiView;
             decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
             //decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
             decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId));
@@ -46,9 +51,24 @@ public partial class FundManage_LoanAudit : System.Web.UI.Page
             ltlPayeeName.Text = MUserInfo.PayeeName;
             ltlBankName.Text = MUserInfo.BankName;
             ltlAccount.Text = MUserInfo.Account;
+            lbZFBName.Text = MUserInfo.ZfbName;
+            lbZFBAccount.Text = MUserInfo.ZfbAccount;
+            lbWXName.Text = MUserInfo.WxName;
+            lbWXAccount.Text = MUserInfo.WxAccount;
             lbTotalAmount.Text = rest.ToString() + "元";
             hfQYUserId.Value = MUserInfo.QYUserId;
-
+            if (MPaymentDetail.TransferMethod == "网银转账")
+            {
+                MultiView4.ActiveViewIndex = 0;
+            }
+            else if (MPaymentDetail.TransferMethod == "支付宝")
+            {
+                MultiView4.ActiveViewIndex = 1;
+            }
+            else if (MPaymentDetail.TransferMethod == "微信")
+            {
+                MultiView4.ActiveViewIndex = 2;
+            }
         }
     }
 

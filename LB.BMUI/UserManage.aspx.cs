@@ -11,6 +11,7 @@ public partial class Admin_UserManage : System.Web.UI.Page
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.BLL.UserTypeInfo bll_usertypeinfo = new LB.BLL.UserTypeInfo();
     LB.SQLServerDAL.UserTypeInfo MUserTypeInfo = new LB.SQLServerDAL.UserTypeInfo();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -26,6 +27,11 @@ public partial class Admin_UserManage : System.Web.UI.Page
         foreach (GridViewRow gvRow in gvUserInfo.Rows)
         {
             string UserId = gvRow.Cells[0].Text;
+            MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId));
+            if (!string.IsNullOrEmpty(MUserInfo.RegionCode))
+            {
+                ((Label)(gvRow.Cells[9].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            }
             if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).IDCard) == false)
             {
                 if (bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).IDAuthentication == true)

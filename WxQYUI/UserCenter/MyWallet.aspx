@@ -28,7 +28,7 @@
             <h2>在途资产：
                     <asp:Label ID="lbWaitMoney" runat="server" Text=""></asp:Label>元
             </h2>
-            <asp:DropDownList ID="ddlTXType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTXType_SelectedIndexChanged" Visible="false">
+          请选择收款方式：  <asp:DropDownList ID="ddlTXType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlTXType_SelectedIndexChanged">
                 <asp:ListItem Value="0">--请选择提现方式--</asp:ListItem>
                 <asp:ListItem Value="1">网银转账</asp:ListItem>
                 <asp:ListItem Value="2">支付宝</asp:ListItem>
@@ -90,6 +90,7 @@
                 </asp:View>
             </asp:MultiView>
             <br />
+            <asp:Label ID="lbMsg" runat="server" ForeColor="Red" Font-Size="Medium" Visible="false"></asp:Label>
             <asp:Button ID="btSure" runat="server" Text="提现" OnClick="btSure_Click" />
 
         </div>
@@ -121,7 +122,7 @@
 
             <div data-role="main" class="ui-content">
                 <div class="weui-msg">
-                    <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+                    <div class="weui-msg__icon-area"><i class="weui-icon-warn weui-icon_msg"></i></div>
                     <div class="weui-msg__text-area">
                         <h2 class="weui-msg__title">提现失败</h2>
                         <p class="weui-msg__desc">对不起，您的账户没有可用余额</p>

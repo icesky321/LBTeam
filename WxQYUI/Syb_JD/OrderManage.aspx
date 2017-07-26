@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Choose_JD_Manage.aspx.cs" Inherits="Syb_hsgs_Choose_JD_Manage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderManage.aspx.cs" Inherits="Syb_JD_OrderManage" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
     <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
-    <title>指派业务员管理</title>
+    <title>订单管理</title>
 </head>
 <body>
     <form id="form1" runat="server" data-ajax="false">
@@ -20,13 +20,6 @@
                 <div class="weui-cells">
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                         <ItemTemplate>
-                            <div class="weui-cells weui-cells_form">
-                                <label class="weui-form-preview__label"></label>
-                                <span class="weui-form-preview__value">
-                                    <label class="weui-label">
-                                    </label>
-                                </span>
-                            </div>
                             <div data-role="collapsible" data-collapsed="false">
                                 <h3>
                                     <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
@@ -46,19 +39,20 @@
                                 </p>
                             </div>
                             <div class="weui-form-preview__item">
-                                <asp:Button ID="btChoose" runat="server" Text="指派业务员" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>'  rel="external"/>
+                                <asp:Button ID="btChoose" runat="server" Text="接单" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" />
                             </div>
 
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" TableName="SellInfo" Where="HS_TohandleTag == @HS_TohandleTag &amp;&amp; HS_UserId == @HS_UserId">
+                    <asp:HiddenField ID="hfJD_UserId" runat="server" />
+
+                    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" TableName="SellInfo" Where="JD_UserId == @JD_UserId &amp;&amp; JD_TohandleTag == @JD_TohandleTag &amp;&amp; IsClosed == @IsClosed">
                         <WhereParameters>
-                            <asp:Parameter DefaultValue="True" Name="HS_TohandleTag" Type="Boolean" />
-                            <asp:ControlParameter ControlID="hfHS_UserId" Name="hfHS_UserId" PropertyName="Value" Type="Int32" />
-                            <asp:Parameter DefaultValue="False" Name="IsClosed" />
+                            <asp:ControlParameter ControlID="hfJD_UserId" Name="JD_UserId" PropertyName="Value" Type="Int32" />
+                            <asp:Parameter DefaultValue="True" Name="JD_TohandleTag" Type="Boolean" />
+                            <asp:Parameter DefaultValue="False" Name="IsClosed" Type="Boolean" />
                         </WhereParameters>
                     </asp:LinqDataSource>
-                    <asp:HiddenField ID="hfHS_UserId" runat="server" />
 
                 </div>
 
