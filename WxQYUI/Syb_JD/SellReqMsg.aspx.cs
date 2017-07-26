@@ -13,8 +13,8 @@ public partial class Syb_JD_SellReqMsg : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Init_Load();
-
+            Init_Load();                                      
+                                                                                                                       
         }
     }
 
@@ -53,7 +53,7 @@ public partial class Syb_JD_SellReqMsg : System.Web.UI.Page
 
     protected void lvSellInfo_ItemDataBound(object sender, ListViewItemEventArgs e)
     {
-        if (e.Item.ItemType == ListViewItemType.DataItem)
+        if (e.Item.ItemType == ListViewItemType.DataItem)                                                                                                                                                                                                                                                   
         {
             ListViewItem item = e.Item as ListViewItem;
             LB.SQLServerDAL.SellInfo sellInfo = item.DataItem as LB.SQLServerDAL.SellInfo;

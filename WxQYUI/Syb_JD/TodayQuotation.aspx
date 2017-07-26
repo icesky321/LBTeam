@@ -36,7 +36,7 @@
                                     </p>
                                 </div>
                                 <div class="weui-cell__ft">
-                                    元/吨
+                                    元/<asp:Literal ID="Literal3" runat="server" Text='<%# Eval("ChargeUnit").ToString() %>'></asp:Literal>
                                 </div>
                             </div>
                         </ItemTemplate>
