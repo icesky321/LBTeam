@@ -14,7 +14,15 @@ public partial class Syb_hsgs_Choose_JD_Manage : System.Web.UI.Page
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string username = User.Identity.Name;
+                LB.SQLServerDAL.UserInfo MUserInfo = bll_usermanage.GetUserInfoByTelNum(username);
+                hfHS_UserId.Value = MUserInfo.UserId.ToString();
+            }
+        }
     }
 
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
