@@ -6,10 +6,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
-    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet" />
     <title>回收公司报价</title>
 </head>
 <body>
@@ -23,7 +22,7 @@
             </div>
             <div data-role="main" class="ui-content">
                 <div style="padding: 20px 15px 0 15px;">
-                    电瓶品种为：<asp:Literal ID="ltlTSName" runat="server"></asp:Literal>&nbsp;&nbsp;(<asp:Literal ID="ltlTsCode" runat="server"></asp:Literal>)
+                    电瓶品种为：<b><asp:Literal ID="ltlTSName" runat="server"></asp:Literal></b>&nbsp;&nbsp;(<asp:Literal ID="ltlTsCode" runat="server"></asp:Literal>)
                     <asp:Literal ID="ltlChargeUnit" runat="server"></asp:Literal>
                     <asp:HiddenField ID="hfTsInfo" runat="server" />
                 </div>
@@ -34,33 +33,22 @@
                     </p>
                     <asp:Repeater ID="Repeater1" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
                         <ItemTemplate>
-                            <div class="weui-cell weui-cell_vcode" style="height: 2.5em;">
-                                <div class="weui-cell__hd">
-                                    <label class="weui-label" style="width: 7em;">
+                            <table style="width: 100%;">
+                                <tr style="height: 2.7em;">
+                                    <td style="width: 7em;">
                                         <asp:HiddenField ID="hfRegionCode" runat="server" Value='<%# Eval("id") %>' />
-                                        <asp:Literal ID="ltlRegionWholeName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal></label>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <table style="width: 100%;">
-                                        <tr>
-                                            <td>
-                                                <asp:TextBox ID="tbQuotedPrice" runat="server" class="weui-input" type="text" placeholder="0.00"></asp:TextBox></td>
-                                            <td style="width: 60px;">元/<asp:Literal ID="Literal1" runat="server" Text='<%# DataBinder.GetPropertyValue(ltlChargeUnit,"Text") %>'></asp:Literal></td>
-                                        </tr>
-                                    </table>
-
-                                </div>
-                                <%--<div class="weui-cell__ft">
-
-                                    <asp:Button ID="btnAlone" runat="server" class="weui-vcode-btn" Text="单独报价" CommandName="OneQuote" CommandArgument='<%# Eval("id") %>' OnCommand="btnQuote1_Command"></asp:Button>
-                                </div>--%>
-                            </div>
+                                        <asp:Literal ID="ltlRegionWholeName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal></td>
+                                    <td>
+                                        <asp:TextBox ID="tbQuotedPrice" runat="server" class="weui-input" type="text" placeholder="0.00"></asp:TextBox></td>
+                                    <td style="width: 3em;">元/<asp:Literal ID="Literal1" runat="server" Text='<%# DataBinder.GetPropertyValue(ltlChargeUnit,"Text") %>'></asp:Literal></td>
+                                </tr>
+                            </table>
                         </ItemTemplate>
                     </asp:Repeater>
 
                 </div>
                 <div style="padding: 10px 20px 10px 20px;">
-                    <asp:Button ID="btnOneClickQuote" runat="server" Text="保存报价数据" class="weui-btn weui-btn_primary" OnClick="btnOneClickQuote_Click" />
+                    <asp:Button ID="btnOneClickQuote" runat="server" Text="保存报价数据" class="weui-btn weui-btn_primary" OnClick="btnOneClickQuote_Click" rel="external" data-ajax="false" />
                 </div>
 
             </div>

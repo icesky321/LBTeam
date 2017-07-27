@@ -58,13 +58,17 @@ namespace LB.SQLServerDAL
         /// <returns></returns>
         public Quotation NewQuotation(Quotation quotation)
         {
-            if (quotation != null && !ExistQuotation(quotation.OfferDate, quotation.TSCode, quotation.UserId, quotation.QuotedPrice))
+            if (quotation != null)
             {
                 quotation.QuotId = Guid.NewGuid();
                 quotation.OfferDate = DateTime.Now;
-                dbContext.Quotation.InsertOnSubmit(quotation);
-                dbContext.SubmitChanges();
+                if (!ExistQuotation(quotation.OfferDate, quotation.TSCode, quotation.UserId, quotation.QuotedPrice))
+                {
+                    dbContext.Quotation.InsertOnSubmit(quotation);
+                    dbContext.SubmitChanges();
+                }
             }
+
             return quotation;
         }
 
@@ -77,11 +81,12 @@ namespace LB.SQLServerDAL
         /// <returns></returns>
         public Quotation NewQuotation_NotSubmit(Quotation quotation)
         {
-            if (quotation != null && !ExistQuotation(quotation.OfferDate, quotation.TSCode, quotation.UserId, quotation.QuotedPrice))
+            if (quotation != null)
             {
                 quotation.QuotId = Guid.NewGuid();
                 quotation.OfferDate = DateTime.Now;
-                dbContext.Quotation.InsertOnSubmit(quotation);
+                if (!ExistQuotation(quotation.OfferDate, quotation.TSCode, quotation.UserId, quotation.QuotedPrice))
+                    dbContext.Quotation.InsertOnSubmit(quotation);
             }
             return quotation;
         }
@@ -228,7 +233,7 @@ namespace LB.SQLServerDAL
         public bool ExistQuotation(DateTime today, string tsCode, int userId, decimal price)
         {
             var query = from s in dbContext.Quotation
-                        where s.TSCode == tsCode && s.OfferDate == today && s.UserId == userId && s.QuotedPrice == price
+                        where s.TSCode == tsCode && s.OfferDate.Date == today.Date && s.UserId == userId && s.QuotedPrice == price
                         select s;
             if (query.Count() > 0)
                 return true;
