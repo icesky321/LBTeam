@@ -51,14 +51,15 @@
 
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" TableName="SellInfo" Where="HS_TohandleTag == @HS_TohandleTag &amp;&amp; HS_UserId == @HS_UserId">
+                    <asp:HiddenField ID="hfHS_UserId" runat="server" />
+
+                    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" TableName="SellInfo" Where="HS_UserId == @HS_UserId &amp;&amp; HS_TohandleTag == @HS_TohandleTag &amp;&amp; IsClosed == @IsClosed">
                         <WhereParameters>
+                            <asp:ControlParameter ControlID="hfHS_UserId" Name="HS_UserId" PropertyName="Value" Type="Int32" />
                             <asp:Parameter DefaultValue="True" Name="HS_TohandleTag" Type="Boolean" />
-                            <asp:ControlParameter ControlID="hfHS_UserId" Name="hfHS_UserId" PropertyName="Value" Type="Int32" />
-                            <asp:Parameter DefaultValue="False" Name="IsClosed" />
+                            <asp:Parameter DefaultValue="False" Name="IsClosed" Type="Boolean" />
                         </WhereParameters>
                     </asp:LinqDataSource>
-                    <asp:HiddenField ID="hfHS_UserId" runat="server" />
 
                 </div>
 
