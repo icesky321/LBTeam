@@ -42,8 +42,10 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
                     InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
                     OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-                    tbcfdw.Text = InUserInfo.RealName + "(手机号：" + InUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
-                    tbjdywy.Text = OutUserInfo.RealName + "(手机号：" + OutUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                    lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                    tbcfdw.Text = InUserInfo.MobilePhoneNum;
+                    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                    tbjdywy.Text = OutUserInfo.MobilePhoneNum;
                     //FillCopInfo();}
                 }
             }
@@ -56,13 +58,15 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                 //}
                 //else
                 //{
-                    MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
-                    LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
-                    LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
-                    InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-                    OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-                    tbcfdw.Text = InUserInfo.RealName + "(手机号：" + InUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
-                    tbjdywy.Text = OutUserInfo.RealName + "(手机号：" + OutUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+                LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
+                LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
+                InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
+                OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                tbcfdw.Text = InUserInfo.MobilePhoneNum;
+                lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                tbjdywy.Text = OutUserInfo.MobilePhoneNum;
 
                 //}
             }
@@ -116,7 +120,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             MSellInfo.StatusMsg = "信息处理完毕";
             MSellInfo.IsClosed = true;
             bll_sellinfomanage.UpdateSellInfo(MSellInfo);
-            //SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
+            SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
             Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
         }
 
