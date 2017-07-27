@@ -46,7 +46,7 @@
                                 </p>
                             </div>
                             <div class="weui-form-preview__item">
-                                <asp:Button ID="btChoose" runat="server" Text="指派业务员" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>'  rel="external"/>
+                                <asp:Button ID="btChoose" runat="server" Text="查看详情" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>'  rel="external"/>
                             </div>
 
                         </ItemTemplate>

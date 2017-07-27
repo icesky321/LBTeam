@@ -82,4 +82,5 @@ public partial class Syb_hsgs_PayOrder : System.Web.UI.Page
         article.Description = description;
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }
+
 }

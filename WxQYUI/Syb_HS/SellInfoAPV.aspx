@@ -46,6 +46,7 @@
                     <p style="color: red;">该笔业务已经处理，无需再次处理。</p>
                 </div>
                 <asp:Button ID="btnAllocation" runat="server" Text="确定指派" OnClick="btnAllocation_Click" />
+                <asp:Button ID="btCancel" runat="server" Text="取消此单" OnClick="btCancel_Click" />
             </div>
 
         </div>

@@ -71,8 +71,7 @@
                     <p>账号：5204 0122 0002 10157</p>
                 </div>
 
-                        <asp:Button ID="btSure" runat="server" Text="付款后请点击确认" OnClick="btSure_Click" ValidationGroup="1" />
-
+                <asp:Button ID="btSure" runat="server" Text="付款后请点击确认" OnClick="btSure_Click" ValidationGroup="1" />
 
             </div>
         </div>

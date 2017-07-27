@@ -34,6 +34,14 @@ namespace LB.SQLServerDAL
             return query.FirstOrDefault<LB.SQLServerDAL.CF_JD_Order>();
         }
 
+        public LB.SQLServerDAL.CF_JD_Order GetCF_JD_OrderByinfoId(Guid InfoId)
+        {
+            var query = from c in dbContext.CF_JD_Order
+                        where c.InfoId == InfoId
+                        select c;
+            return query.FirstOrDefault<LB.SQLServerDAL.CF_JD_Order>();
+        }
+
         public IQueryable<LB.SQLServerDAL.CF_JD_Order> GetCF_JD_Order_ByInUserId(int InUserId)
         {
             var query = from c in dbContext.CF_JD_Order

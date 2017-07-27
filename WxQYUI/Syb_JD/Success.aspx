@@ -18,7 +18,7 @@
             <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
             <div class="weui-msg__text-area">
                 <h2 class="weui-msg__title">操作成功</h2>
-                <p class="weui-msg__desc">该订单已提交平台审核，审核通过后将以消息推送形式反馈到您企业号中，请耐心等待。如有疑问请咨询：0574-86694505</p>
+                <p class="weui-msg__desc">该订单已提交回收公司，回收公司付款，平台审核通过后将以消息推送形式反馈到您企业号中，请耐心等待。如有疑问请咨询：0574-86694505</p>
             </div>
         </div>
         <div class="weui-form-preview">
@@ -30,7 +30,7 @@
                     </label>
                 </em>
             </div>
-            <div class="weui-form-preview__bd">
+            <div class="weui-cells">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">卖方(产废单位)</label>
                     <span class="weui-form-preview__value">
@@ -39,7 +39,7 @@
                         </label>
                     </span>
                 </div>
-                <div class="weui-form-preview__item">
+                <div class="weui-cells">
                     <label class="weui-form-preview__label">买方(街道回收员)</label>
                     <span class="weui-form-preview__value">
                         <label class="weui-label">

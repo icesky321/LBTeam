@@ -24,6 +24,11 @@ namespace LB.BLL
             return da.GetCF_JD_OrderById(id);
         }
 
+        public LB.SQLServerDAL.CF_JD_Order GetCF_JD_OrderByinfoId(Guid InfoId)
+        {
+            return da.GetCF_JD_OrderByinfoId(InfoId);
+        }
+
         public IQueryable<LB.SQLServerDAL.CF_JD_Order> GetCF_JD_Order_ByInUserId(int InUserId)
         {
             return da.GetCF_JD_Order_ByInUserId(InUserId);

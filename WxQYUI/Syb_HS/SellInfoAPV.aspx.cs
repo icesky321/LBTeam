@@ -162,4 +162,31 @@ public partial class Syb_HS_SellInfoAPV : System.Web.UI.Page
 
 
     #endregion
+
+    protected void btCancel_Click(object sender, EventArgs e)
+    {
+        Guid infoId = Guid.Empty;
+        Guid.TryParse(hfSellInfoId.Value, out infoId);
+
+        if (infoId == Guid.Empty)
+            return;
+
+        LB.SQLServerDAL.SellInfo sellInfo = bll_SellInfo.GetSellInfo_ById(infoId);
+
+        if (sellInfo == null)
+            return;
+
+
+        sellInfo.HS_LeaveMsg = tbRemark.Text;
+        sellInfo.HS_HandleDate = DateTime.Now;
+        sellInfo.HS_HandleResult = "工单指派已取消";
+        sellInfo.HS_TohandleTag = false;
+        sellInfo.StatusMsg = "回收公司已取消该单，信息已被关闭";
+        sellInfo.IsClosed = true;
+        bll_SellInfo.UpdateSellInfo(sellInfo);
+        string result = string.Empty;
+        result = "您已取消该订单";
+
+        Response.Redirect("~/ErrorPage/Success.aspx?remark=" + result);
+    }
 }

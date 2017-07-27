@@ -20,10 +20,10 @@
                 <asp:HiddenField ID="hfInfoId" runat="server" />
             </div>
             <div data-role="main" class="ui-content">
-                <label for="fullname">卖方：</label>
-                <asp:TextBox ID="tbcfdw" runat="server" Text="" Enabled="false"></asp:TextBox>
-                <label for="fullname">买方：</label>
-                <asp:TextBox ID="tbjdywy" runat="server" Text="" Enabled="false"></asp:TextBox>
+                <label for="fullname">产废单位：</label>
+                <asp:label ID="tbcfdw" runat="server" Text=""></asp:label>
+                <label for="fullname">街道回收员：</label>
+                <asp:label ID="tbjdywy" runat="server" Text=""></asp:label>
 
 <%--                <div data-role="collapsible" data-collapsed="false">
                     <h1>绿宝第三方支付账户</h1>
