@@ -62,15 +62,20 @@ namespace LB.SQLServerDAL
             {
                 quotation.QuotId = Guid.NewGuid();
                 quotation.OfferDate = DateTime.Now;
-                dbContext.Quotation.InsertOnSubmit(quotation);
-                dbContext.SubmitChanges();
+                if (!ExistQuotation(quotation.OfferDate, quotation.TSCode, quotation.UserId, quotation.QuotedPrice))
+                {
+                    dbContext.Quotation.InsertOnSubmit(quotation);
+                    dbContext.SubmitChanges();
+                }
             }
+
             return quotation;
         }
 
 
         /// <summary>
         /// 在数据库中新增报价信息。
+        /// <para>调用SubmitChanges()方法，插入方可生效。</para>
         /// </summary>
         /// <param name="quotation">报价信息对象。</param>
         /// <returns></returns>
@@ -80,7 +85,8 @@ namespace LB.SQLServerDAL
             {
                 quotation.QuotId = Guid.NewGuid();
                 quotation.OfferDate = DateTime.Now;
-                dbContext.Quotation.InsertOnSubmit(quotation);
+                if (!ExistQuotation(quotation.OfferDate, quotation.TSCode, quotation.UserId, quotation.QuotedPrice))
+                    dbContext.Quotation.InsertOnSubmit(quotation);
             }
             return quotation;
         }
@@ -126,6 +132,23 @@ namespace LB.SQLServerDAL
         {
             var query = from m in dbContext.Quotation
                         where m.UserId == userId && m.TSCode == tsCode && m.RegionCode == regionCode
+                        orderby m.OfferDate descending
+                        select m;
+
+            return query.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// 获取当日最新的回收报价信息。
+        /// </summary>
+        /// <param name="userId">回收公司Id</param>
+        /// <param name="tsCode">电瓶代码</param>
+        /// <param name="regionCode">行政区域代码</param>
+        /// <returns></returns>
+        public Quotation GetTodayLastQuotedPrice(int userId, string tsCode, string regionCode)
+        {
+            var query = from m in dbContext.Quotation
+                        where m.UserId == userId && m.TSCode == tsCode && m.RegionCode == regionCode && m.OfferDate.Date == DateTime.Now.Date
                         orderby m.OfferDate descending
                         select m;
 
@@ -200,15 +223,17 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
-        /// 检测是否指定的电瓶品种当日已有报价。
+        /// 检测是否指定的电瓶品种当日已有重复的报价。
         /// </summary>
         /// <param name="today">日期</param>
-        /// <param name="tsId">电瓶品种Id</param>
+        /// <param name="tsCode">电瓶品种代号</param>
+        /// <param name="userId">用户Id</param>
+        /// <param name="price">价格</param>
         /// <returns></returns>
-        public bool ExistQuotation(DateTime today, int tsId)
+        public bool ExistQuotation(DateTime today, string tsCode, int userId, decimal price)
         {
             var query = from s in dbContext.Quotation
-                        where s.TSId == tsId && s.OfferDate == today
+                        where s.TSCode == tsCode && s.OfferDate.Date == today.Date && s.UserId == userId && s.QuotedPrice == price
                         select s;
             if (query.Count() > 0)
                 return true;

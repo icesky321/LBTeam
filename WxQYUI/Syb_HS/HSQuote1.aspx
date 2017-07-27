@@ -12,7 +12,7 @@
     <title>回收公司报价</title>
 </head>
 <body ontouchstart>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" data-ajax="false">
         <div id="page1" data-role="page">
             <div data-role="header">
                 <h2>电瓶回收报价</h2>
@@ -25,7 +25,7 @@
                     </HeaderTemplate>
                     <ItemTemplate>
                         <li>
-                            <a href='<%# "HSQuote2.aspx?id=" + Eval("TsCode").ToString() %>'>
+                            <a href='<%# "HSQuote2.aspx?id=" + Eval("TsCode").ToString() %>' rel="external">
                                 <asp:HiddenField ID="hfTSId" runat="server" Value='<%# Eval("TSId") %>' />
                                 <asp:Literal ID="ltlTSName" runat="server" Text='<%# Eval("TSName") %>'></asp:Literal>
                                 <span class="ui-li-aside">
@@ -38,9 +38,14 @@
                     </FooterTemplate>
                 </asp:Repeater>
                 <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="OrderNum" Select="new (TSId, TSName, ChargeUnit, TsCode)" TableName="TSInfo"></asp:LinqDataSource>
-
+                <div style="height: 150px; padding: 20px 0 0 0; color: #989898;">
+                    须知：废旧电瓶回收报价信息由本地回收公司发布，以吨为单位的报价信息供本市各区（县）范围内回收业务员参考，以个组等为单位的报价供产废单位参考。
+                        
+                   
+                </div>
             </div>
             <div data-role="footer">
+
                 <div style="text-align: center;">2016-2017 lvbao111.com</div>
             </div>
         </div>

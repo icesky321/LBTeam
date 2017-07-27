@@ -89,6 +89,18 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 获取当日最新的回收报价信息。
+        /// </summary>
+        /// <param name="userId">回收公司Id</param>
+        /// <param name="tsCode">电瓶代码</param>
+        /// <param name="regionCode">行政区域代码</param>
+        /// <returns></returns>
+        public Quotation GetTodayLastQuotedPrice(int userId, string tsCode, string regionCode)
+        {
+            return quotDA.GetTodayLastQuotedPrice(userId, tsCode, regionCode);
+        }
+
+        /// <summary>
         /// 获取最新的回收报价信息。
         /// </summary>
         /// <param name="tsCode">电瓶代码</param>
@@ -130,14 +142,16 @@ namespace LB.BLL
         }
 
         /// <summary>
-        /// 检测是否指定的电瓶品种当日已有报价。
+        /// 检测是否指定的电瓶品种当日已有重复的报价。
         /// </summary>
         /// <param name="today">日期</param>
-        /// <param name="tsId">电瓶品种Id</param>
+        /// <param name="tsCode">电瓶品种代号</param>
+        /// <param name="userId">用户Id</param>
+        /// <param name="price">价格</param>
         /// <returns></returns>
-        public bool ExistQuotation(DateTime today, int tsId)
+        public bool ExistQuotation(DateTime today, string tsCode, int userId, decimal price)
         {
-            return quotDA.ExistQuotation(today, tsId);
+            return quotDA.ExistQuotation(today, tsCode, userId, price);
         }
     }
 }

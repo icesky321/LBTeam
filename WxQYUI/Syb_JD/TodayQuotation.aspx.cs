@@ -52,11 +52,29 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
 
     }
 
+    /// <summary>
+    /// 加载电池品种
+    /// <para>该报价面向回收业务员，剔除所有非吨计价的品种。</para>
+    /// </summary>
+    //private void Load_TsInfo()
+    //{
+    //    var query = bll_ts.GetTSInfo();
+    //    List<LB.SQLServerDAL.TSInfo> tsInfoes = new List<LB.SQLServerDAL.TSInfo>();
+    //    foreach (LB.SQLServerDAL.TSInfo ts in query)
+    //    {
+    //        if (ts.ChargeUnit == "吨")
+    //            tsInfoes.Add(ts);
+    //    }
+    //    Repeater2.DataSource = tsInfoes;
+    //    Repeater2.DataBind();
+    //}
+
+
     protected void LoadTodayQuotation()
     {
-        var query = bll_quote.GetQuotation("宁波", DateTime.Now.Date);
-        Repeater1.DataSource = query;
-        Repeater1.DataBind();
+        //var query = bll_quote.GetQuotation("宁波", DateTime.Now.Date);
+        //Repeater1.DataSource = query;
+        //Repeater1.DataBind();
     }
     #endregion
 
@@ -66,22 +84,27 @@ public partial class JD_TodayQuotation : System.Web.UI.Page
         {
             LB.SQLServerDAL.TSInfo ts = e.Item.DataItem as LB.SQLServerDAL.TSInfo;
             LB.SQLServerDAL.Quotation quotation = bll_quote.GetLastQuotedPrice(ts.TsCode, hfCountyId.Value);
-            LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
-            MCopInfo = bll_copinfo.GetCopInfoeByUserId(quotation.UserId);
+
             Literal ltlHS_UserName = e.Item.FindControl("ltlHS_UserName") as Literal;
             Literal ltlPrice = e.Item.FindControl("ltlPrice") as Literal;
+            Literal ltlChargeUnit = e.Item.FindControl("ltlChargeUnit") as Literal;
             Literal ltlDate = e.Item.FindControl("ltlDate") as Literal;
-            if (quotation != null)
+
+            if (quotation == null)
             {
-                ltlHS_UserName.Text = MCopInfo.ShortName;
-                ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
-                ltlDate.Text = quotation.OfferDate.ToShortDateString();
+                ltlPrice.Text = quotation == null ? "-" : quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
+                ltlChargeUnit.Text = "";
+                ltlDate.Text = quotation == null ? "-" : quotation.OfferDate.ToShortDateString();
+                return;
             }
-            else
-            {
-                ltlPrice.Text = "---";
-                ltlDate.Text = "";
-            }
+
+            LB.SQLServerDAL.CopInfo cop = bll_copinfo.GetCopInfoeByUserId(quotation.UserId);
+
+            ltlHS_UserName.Text = cop == null ? "" : cop.ShortName;
+            ltlPrice.Text = quotation == null ? "-" : quotation.QuotedPrice.ToString();
+            ltlChargeUnit.Text = "元/" + quotation.StandardUnit;
+            ltlDate.Text = quotation == null ? "-" : quotation.OfferDate.ToShortDateString();
+
         }
     }
 }

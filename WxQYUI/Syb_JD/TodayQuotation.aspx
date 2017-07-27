@@ -15,7 +15,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            当前查价区域：<asp:Literal ID="ltlRegionWholeName" runat="server"></asp:Literal>
+            <div style="border: 1px dotted #999999; padding: 20px; margin: 10px 5px 0 5px;" class="ui-corner-all">
+                当前查价区域：<asp:Literal ID="ltlRegionWholeName" runat="server"></asp:Literal>
+            </div>
             <asp:HiddenField ID="hfCountyId" runat="server" />
         </div>
         <div class="page">
@@ -30,7 +32,7 @@
                                         <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("TSName").ToString() %>'></asp:Literal>
                                     </label>
                                 </div>
-                                <div class="weui-cell__bd">
+                                <div class="weui-cell__bd" style="text-align: right;">
                                     <p>
                                         <asp:Literal ID="Literal2" runat="server" Text='<%# "<b>"+ Eval("QuotedPrice").ToString() + "</b>" %>'></asp:Literal>
                                     </p>
@@ -66,15 +68,17 @@
                                 <div class="weui-cell__hd">
                                     <label class="weui-label">
                                         <asp:HiddenField ID="hfTSId" runat="server" Value='<%# Eval("TSId") %>' />
+                                        <asp:HiddenField ID="hfTsCode" runat="server" Value='<%# Eval("TsCode") %>' />
                                         <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("TSName").ToString() %>'></asp:Literal>
                                     </label>
                                 </div>
-                                <div class="weui-cell__bd">
+                                <div class="weui-cell__bd" style="text-align: right;">
                                     <b>
                                         <asp:Literal ID="ltlPrice" runat="server" Text=""></asp:Literal>
                                     </b>
+                                    <asp:Literal ID="ltlChargeUnit" runat="server"></asp:Literal>
                                 </div>
-                                <div class="weui-cell__ft">
+                                <div class="weui-cell__ft" style="width: 6em;">
                                     <div style="font-size: 0.7em;">
                                         <asp:Literal ID="ltlHS_UserName" runat="server" Text=""></asp:Literal><br />
 
