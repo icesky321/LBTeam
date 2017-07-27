@@ -65,7 +65,7 @@
                             更新日期
                         </div>
                     </div>
-                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="ObjectDataSource1" OnItemDataBound="Repeater2_ItemDataBound">
+                    <asp:Repeater ID="Repeater2" runat="server" OnItemDataBound="Repeater2_ItemDataBound">
                         <ItemTemplate>
                             <div class="weui-cell">
                                 <div class="weui-cell__hd">
@@ -74,12 +74,13 @@
                                         <asp:Literal ID="Literal1" runat="server" Text='<%# Eval("TSName").ToString() %>'></asp:Literal>
                                     </label>
                                 </div>
-                                <div class="weui-cell__bd">
+                                <div class="weui-cell__bd" style="text-align: right;">
                                     <b>
                                         <asp:Literal ID="ltlPrice" runat="server" Text=""></asp:Literal>
                                     </b>
+                                    <asp:Literal ID="ltlChargeUnit" runat="server"></asp:Literal>
                                 </div>
-                                <div class="weui-cell__ft">
+                                <div class="weui-cell__ft" style="width: 6em;">
                                     <div style="font-size: 0.7em;">
                                         <asp:Literal ID="ltlHS_UserName" runat="server" Text=""></asp:Literal><br />
 
@@ -89,7 +90,6 @@
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTSInfo" TypeName="LB.BLL.TSManage"></asp:ObjectDataSource>
                 </div>
 
                 <label for="weuiAgree" class="weui-agree">

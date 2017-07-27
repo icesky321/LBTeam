@@ -24,11 +24,13 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             else
             {
                 Load_UserInfo();
+                Load_TsInfo();
                 LoadTodayQuotation();
             }
 
         }
     }
+
 
 
 
@@ -61,6 +63,24 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
 
     }
 
+    /// <summary>
+    /// 加载电池品种
+    /// <para>该报价面向产废单位，剔除所有以吨计价的品种。</para>
+    /// </summary>
+    private void Load_TsInfo()
+    {
+        var query = bll_ts.GetTSInfo();
+        List<LB.SQLServerDAL.TSInfo> tsInfoes = new List<LB.SQLServerDAL.TSInfo>();
+        foreach (LB.SQLServerDAL.TSInfo ts in query)
+        {
+            if (ts.ChargeUnit != "吨")
+                tsInfoes.Add(ts);
+        }
+        Repeater2.DataSource = tsInfoes;
+        Repeater2.DataBind();
+    }
+
+
     protected void LoadTodayQuotation()
     {
         // TODO： 发布前要修改
@@ -78,17 +98,21 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
             LB.SQLServerDAL.Quotation quotation = bll_quote.GetLastQuotedPrice(ts.TsCode, hfCountyId.Value);
             Literal ltlHS_UserName = e.Item.FindControl("ltlHS_UserName") as Literal;
             Literal ltlPrice = e.Item.FindControl("ltlPrice") as Literal;
+            Literal ltlChargeUnit = e.Item.FindControl("ltlChargeUnit") as Literal;
             Literal ltlDate = e.Item.FindControl("ltlDate") as Literal;
             if (quotation != null)
             {
                 MCopInfo = bll_copinfo.GetCopInfoeByUserId(quotation.UserId);
                 ltlHS_UserName.Text = MCopInfo.ShortName;
-                ltlPrice.Text = quotation.QuotedPrice.ToString() + "&nbsp;元/" + quotation.StandardUnit;
+                ltlPrice.Text = quotation.QuotedPrice.ToString();
+                ltlChargeUnit.Text = "元/" + quotation.StandardUnit;
+
                 ltlDate.Text = quotation.OfferDate.ToShortDateString();
             }
             else
             {
-                ltlPrice.Text = "---";
+                ltlPrice.Text = "-";
+                ltlChargeUnit.Text = "";
                 ltlDate.Text = "";
             }
         }

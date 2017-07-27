@@ -41,12 +41,14 @@
                                         <asp:Literal ID="ltlRegionWholeName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Literal></label>
                                 </div>
                                 <div class="weui-cell__bd">
-                                    <div style="float: left;">
-                                        <asp:TextBox ID="tbQuotedPrice" runat="server" class="weui-input" type="text" placeholder="0.00"></asp:TextBox>
-                                    </div>
-                                    <div style="float: right;">
-                                        元/<asp:Literal ID="Literal1" runat="server" Text='<%# DataBinder.GetPropertyValue(ltlChargeUnit,"Text") %>'></asp:Literal>
-                                    </div>
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+                                                <asp:TextBox ID="tbQuotedPrice" runat="server" class="weui-input" type="text" placeholder="0.00"></asp:TextBox></td>
+                                            <td style="width: 60px;">元/<asp:Literal ID="Literal1" runat="server" Text='<%# DataBinder.GetPropertyValue(ltlChargeUnit,"Text") %>'></asp:Literal></td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                                 <%--<div class="weui-cell__ft">
 
