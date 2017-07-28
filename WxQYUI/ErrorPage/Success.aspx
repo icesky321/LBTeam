@@ -23,10 +23,8 @@
                     <asp:Label ID="lbRemark" runat="server" Text="" ForeColor="Red"></asp:Label>
                 </p>
             </div>
-            <div class="weui-msg__opr-area">
-                <p class="weui-btn-area">
-                    <a href="javascript:wx.closeWindow();" class="weui-btn weui-btn_primary">关闭窗口</a>
-                </p>
+            <div id="show2">
+                <input type="button" value="关闭本窗口" onclick="WeixinJSBridge.call('closeWindow');" />
             </div>
             <div class="weui-msg__extra-area">
                 <div class="weui-footer">

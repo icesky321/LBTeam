@@ -20,12 +20,14 @@
                 <asp:HiddenField ID="hfInfoId" runat="server" />
             </div>
             <div data-role="main" class="ui-content">
-                <label for="fullname">卖方：</label>
-                <asp:TextBox ID="tbcfdw" runat="server" Text="" Enabled="false"></asp:TextBox>
-                <label for="fullname">买方：</label>
-                <asp:TextBox ID="tbjdywy" runat="server" Text="" Enabled="false"></asp:TextBox>
+                <label for="fullname">产废单位：</label>
+                <asp:Label ID="lbCf" runat="server" Text=""></asp:Label>
+                <asp:Label ID="tbcfdw" runat="server" Text=""></asp:Label>
+                <label for="fullname">街道回收员：</label>
+                <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
+                <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
 
-<%--                <div data-role="collapsible" data-collapsed="false">
+                <%--                <div data-role="collapsible" data-collapsed="false">
                     <h1>绿宝第三方支付账户</h1>
                     <p>公司名称：宁波绿宝信息科技有限公司</p>
                     <p>开户行：宁波银行庄市支行</p>
@@ -60,7 +62,7 @@
                     </div>
                     <div class="weui-cell__bd">
                         <asp:TextBox ID="tbAmount" runat="server" class="weui-input" type="text" placeholder="请输入付款金额" ValidationGroup="1"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请输入金额！" ValidationGroup="1" ControlToValidate="tbAmount"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请输入金额！" ValidationGroup="1" ControlToValidate="tbAmount" ForeColor="Red"></asp:RequiredFieldValidator>
                     </div>
                     <div class="weui-cell__ft">
                         <label class="weui-label">
