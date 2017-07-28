@@ -52,9 +52,13 @@ namespace LB.SQLServerDAL
         /// </summary>
         /// <param name="city">地级市</param>
         /// <returns></returns>
-        public int GetCount_HS_InCity(string city)
+        public int GetCount_HS_InCity(string cityRegionCode)
         {
-            return dbContext.UserInfo.Where(c => c.UserTypeId == 2 && c.City == city).Count();
+            if (string.IsNullOrWhiteSpace(cityRegionCode) || cityRegionCode.Length < 4)
+                return 0;
+
+            string cityShortCode = cityRegionCode.Substring(0, 4);
+            return dbContext.UserInfo.Where(c => c.UserTypeId == 2 && c.Audit == true && c.RegionCode.Length >= 4 && c.RegionCode.Substring(0, 4) == cityShortCode).Count();
         }
 
         /// <summary>
@@ -161,9 +165,12 @@ namespace LB.SQLServerDAL
         /// <returns></returns>
         public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_HS_InCity(string cityRegionCode)
         {
+            if (string.IsNullOrWhiteSpace(cityRegionCode) || cityRegionCode.Length < 4)
+                return null;
+
             string cityShortCode = cityRegionCode.Substring(0, 4);
             var query = from c in dbContext.UserInfo
-                        where c.UserTypeId == 2 && c.RegionCode.Substring(0, 4) == cityShortCode
+                        where c.UserTypeId == 2 && c.RegionCode.Length >= 4 && c.RegionCode.Substring(0, 4) == cityShortCode && c.Audit == true
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
@@ -177,7 +184,7 @@ namespace LB.SQLServerDAL
         {
             string cityShortCode = cityRegionCode.Substring(0, 4);
             var query = from c in dbContext.UserInfo
-                        where c.UserTypeId == 5 && c.RegionCode.Substring(0, 4) == cityShortCode
+                        where c.UserTypeId == 5 && !string.IsNullOrWhiteSpace(c.RegionCode) && c.RegionCode.Substring(0, 4) == cityShortCode
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
