@@ -122,6 +122,8 @@ public partial class Admin_DepositManage : System.Web.UI.Page
         MUserDepositInfo.OperateDate = System.DateTime.Now;
         bll_userdepositinfo.NewUserDepositInfo(MUserDepositInfo);
         lbmsg.Text = "操作成功,保证金和任务处理别忘了打勾哦!";
+        gvUnDealDataBind();
+        gvDealDataBind();
     }
 
     protected void btOutSure_Click(object sender, EventArgs e)
@@ -130,7 +132,7 @@ public partial class Admin_DepositManage : System.Web.UI.Page
         MUserInfo = bll_userinfo.GetUserInfoByTelNum(hfTelNum.Value);
         MUserDepositInfo = bll_userdepositinfo.GetUserDepositInfoByUserId(MUserInfo.UserId);
         MUserDepositInfo.UserId = MUserInfo.UserId;
-        MUserDepositInfo.Amount = Convert.ToDecimal(MUserDepositInfo.Amount) - Convert.ToDecimal(tbOutDeposit.Text);
+        MUserDepositInfo.Amount = Convert.ToDecimal(MUserDepositInfo.Amount);
         MUserDepositInfo.OutDate = Convert.ToDateTime(tbOutDate.Text);
         MUserDepositInfo.Operator = HttpContext.Current.User.Identity.Name;
         MUserDepositInfo.OperateDate = System.DateTime.Now;
@@ -143,6 +145,8 @@ public partial class Admin_DepositManage : System.Web.UI.Page
             bll_userdepositinfo.DeleteUserDepositInfo(Convert.ToInt32(MUserDepositInfo.UserId));
             lbmsg.Text = "操作成功,保证金和任务处理别忘了打叉哦!";
         }
+        gvUnDealDataBind();
+        gvDealDataBind();
     }
 
     protected void gvUnDeal_RowCommand(object sender, GridViewCommandEventArgs e)
