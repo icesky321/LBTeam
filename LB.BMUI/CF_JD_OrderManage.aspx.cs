@@ -16,6 +16,7 @@ public partial class CF_JD_OrderManage : System.Web.UI.Page
     LB.SQLServerDAL.CopInfo MCopInfo = new LB.SQLServerDAL.CopInfo();
     LB.BLL.PaymentDetail bll_paymentdetail = new LB.BLL.PaymentDetail();
     LB.SQLServerDAL.PaymentDetail MPaymentDetail = new LB.SQLServerDAL.PaymentDetail();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -26,15 +27,19 @@ public partial class CF_JD_OrderManage : System.Web.UI.Page
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
         {
             Label lbInNum = e.Item.FindControl("lbInNum") as Label;
+            Label lbInInfo = e.Item.FindControl("lbInInfo") as Label;
             Label lbInUserId = e.Item.FindControl("lbInUserId") as Label;
             LB.SQLServerDAL.UserInfo InMUserInfo = new LB.SQLServerDAL.UserInfo();
             InMUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(lbInUserId.Text));
             lbInNum.Text = InMUserInfo.MobilePhoneNum;
+            lbInInfo.Text = InMUserInfo.RealName + "(" + bll_region.GetRegion(InMUserInfo.RegionCode).WholeName + InMUserInfo.Address;
             Label lbOutNum = e.Item.FindControl("lbOutNum") as Label;
+            Label lbOutInfo = e.Item.FindControl("lbOutInfo") as Label;
             Label lbOutUserId = e.Item.FindControl("lbOutUserId") as Label;
             LB.SQLServerDAL.UserInfo OutMUserInfo = new LB.SQLServerDAL.UserInfo();
             OutMUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(lbOutUserId.Text));
             lbOutNum.Text = OutMUserInfo.MobilePhoneNum;
+            lbOutInfo.Text= OutMUserInfo.RealName + "(" + bll_region.GetRegion(OutMUserInfo.RegionCode).WholeName + OutMUserInfo.Address;
         }
     }
 
