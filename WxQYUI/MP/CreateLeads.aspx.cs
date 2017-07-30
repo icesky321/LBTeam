@@ -9,6 +9,7 @@ using System.Web.Security;
 
 public partial class MP_CreateLeads : System.Web.UI.Page
 {
+    LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sellInfo = new LB.BLL.SellInfoManage();
     protected void Page_Load(object sender, EventArgs e)
@@ -24,14 +25,24 @@ public partial class MP_CreateLeads : System.Web.UI.Page
                 Init_Load();
             }
 
-
-
         }
     }
 
     private void Init_Load()
     {
+        Load_TS();
         LoadSellerInfo();
+    }
+
+    private void Load_TS()
+    {
+        var query = bll_ts.GetTSInfo();
+        List<LB.SQLServerDAL.TSInfo> tses = query.Where(o => o.ChargeUnit == "吨").ToList<LB.SQLServerDAL.TSInfo>();
+        cblDP.Items.Clear();
+        foreach (LB.SQLServerDAL.TSInfo ts in query)
+        {
+            cblDP.Items.Add(new ListItem(ts.TSName, ts.TsCode));
+        }
     }
 
     private void LoadSellerInfo()

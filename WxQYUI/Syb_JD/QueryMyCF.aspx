@@ -24,16 +24,12 @@
                     </h3>
                     <p class="page__desc">
                         <asp:HiddenField ID="hfStreetRegionCode" runat="server" />
-
                         <asp:Literal ID="ltlStreetWholeName" runat="server"></asp:Literal>
                     </p>
                 </div>
                 <div class="page__bd page__bd_spacing">
                     <asp:HiddenField ID="hfUserMobile" runat="server" />
                     <asp:HiddenField ID="hfJD_UserId" runat="server" />
-                    <asp:HiddenField ID="hfCity" runat="server" />
-                    <asp:HiddenField ID="hfTown" runat="server" />
-                    <asp:HiddenField ID="hfStreet" runat="server" />
                     <ul>
                         <asp:ListView ID="lvUserInfo" runat="server">
                             <ItemTemplate>
@@ -43,7 +39,7 @@
                                             <asp:HiddenField ID="hfUserId" runat="server" Value='<%# Eval("UserId") %>'></asp:HiddenField>
                                             <b>
                                                 <asp:Literal ID="ltlCF_UserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Literal></b>
-                                            (<asp:Literal ID="ltlCF_RealName" runat="server" Text='<%# Eval("RealName")=="" ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
+                                            (<asp:Literal ID="ltlCF_RealName" runat="server" Text='<%# Eval("RealName")==null ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
                                             <span style="color: #DCDCDC;"></span>
                                         </p>
 

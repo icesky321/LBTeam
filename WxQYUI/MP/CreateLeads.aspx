@@ -21,9 +21,8 @@
                 <asp:Button ID="btSearch" runat="server" Text="查询今日回收价格" OnClick="btSearch_Click" rel="external" />
                 <fieldset data-role="controlgroup">
                     <legend>您要出售的电瓶品种</legend>
-                    <asp:CheckBoxList ID="cblDP" runat="server" DataSourceID="ObjectDataSource1" DataTextField="TSName" DataValueField="TSId" RepeatLayout="UnorderedList">
+                    <asp:CheckBoxList ID="cblDP" runat="server" RepeatLayout="UnorderedList">
                     </asp:CheckBoxList>
-                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTSInfo" TypeName="LB.BLL.TSManage"></asp:ObjectDataSource>
                 </fieldset>
                 <div class="ui-field-contain">
                     <table style="width: 100%;">
