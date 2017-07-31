@@ -23,25 +23,25 @@
                     <h3>本市回收公司 （<asp:Literal ID="ltlCount" runat="server" Text="0"></asp:Literal>）
                     </h3>
                     <p class="page__desc">
-                        <asp:Literal ID="ltlProvince" runat="server"></asp:Literal>&nbsp;
-                        <asp:Literal ID="ltlCity" runat="server"></asp:Literal>
+                        <asp:HiddenField ID="hfCityRegionCode" runat="server" />
+                        <asp:Literal ID="ltlCityWholeName" runat="server"></asp:Literal>
 
                     </p>
                 </div>
                 <div class="page__bd page__bd_spacing">
                     <asp:HiddenField ID="hfUserMobile" runat="server" />
                     <asp:HiddenField ID="hfJD_UserId" runat="server" />
-                    <asp:HiddenField ID="hfCity" runat="server" />
                     <ul>
-                        <asp:ListView ID="lvUserInfo" runat="server">
+                        <asp:ListView ID="lvUserInfo" runat="server" OnItemDataBound="lvUserInfo_ItemDataBound">
                             <ItemTemplate>
                                 <li>
                                     <div class="weui-flex js_category">
                                         <p class="weui-flex__item">
                                             <asp:HiddenField ID="hfUserId" runat="server" Value='<%# Eval("UserId") %>'></asp:HiddenField>
                                             <b>
-                                                <asp:Literal ID="ltlCF_UserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Literal></b>
-                                            (<asp:Literal ID="ltlCF_RealName" runat="server" Text='<%# Eval("RealName")=="" ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
+                                                <asp:Literal ID="ltlHS_CopName" runat="server" Text='<%# GetCopName(Eval("UserId").ToString()) %>'></asp:Literal>
+                                            </b>
+                                            <br />
                                             <span style="color: #DCDCDC;"></span>
                                         </p>
 

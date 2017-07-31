@@ -199,6 +199,7 @@ public partial class Login_Register : System.Web.UI.Page
             Membership.CreateUser(tbMobile.Text, tbPassword.Text);
 
             LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
+            user.UserName = Guid.NewGuid().ToString();
             user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
             user.Audit = false;
             user.RegionCode = ddlStreet.SelectedValue;

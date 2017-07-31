@@ -9,53 +9,149 @@
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
     <title>订单管理</title>
 </head>
 <body>
     <form id="form1" runat="server" data-ajax="false">
-        <div class="weui-form-preview">
-            <div class="weui-form-preview__bd">
+        <asp:HiddenField ID="hfJD_UserMobile" runat="server" />
+        <asp:HiddenField ID="hfJD_UserId" runat="server" />
 
-                <div class="weui-cells">
-                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
-                        <ItemTemplate>
-                            <div data-role="collapsible" data-collapsed="false">
-                                <h3>
-                                    <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
-                                        <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd hh:mm}") %>'></asp:Literal></span></h3>
-                                <p>
-
-                                    <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
-                                    卖方(产废单位)
-                                    <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
-                                    手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
-                                    地址：
-                                        <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
-                                    <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
-                                    <br />
-                                    状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
-                                </p>
-                            </div>
-                            <div class="weui-form-preview__item">
-                                <asp:Button ID="btChoose" runat="server" Text="接单" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" />
-                            </div>
-
-                        </ItemTemplate>
-                    </asp:Repeater>
-                    <asp:HiddenField ID="hfJD_UserId" runat="server" />
-
-                    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" TableName="SellInfo" Where="JD_UserId == @JD_UserId &amp;&amp; JD_TohandleTag == @JD_TohandleTag &amp;&amp; IsClosed == @IsClosed">
-                        <WhereParameters>
-                            <asp:ControlParameter ControlID="hfJD_UserId" Name="JD_UserId" PropertyName="Value" Type="Int32" />
-                            <asp:Parameter DefaultValue="True" Name="JD_TohandleTag" Type="Boolean" />
-                            <asp:Parameter DefaultValue="False" Name="IsClosed" Type="Boolean" />
-                        </WhereParameters>
-                    </asp:LinqDataSource>
-
+        <asp:HiddenField ID="hfCountTodo" runat="server" Value="0" />
+        <asp:HiddenField ID="hfCountDoing" runat="server" Value="0" />
+        <div id="page1" data-role="page">
+            <div data-role="header">
+                <h2>接单管理</h2>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" class="ui-btn-active">未接回收单（<asp:Literal ID="ltlCountTodo1" runat="server" Text='<%# DataBinder.Eval(hfCountTodo,"Value").ToString() %>'></asp:Literal>）</a></li>
+                        <li><a href="#page2">已接处理中（<asp:Literal ID="ltlCountProcessing1" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value").ToString() %>'></asp:Literal>）</a></li>
+                        <li><a href="#page3">处理完毕</a></li>
+                    </ul>
                 </div>
+            </div>
+            <div data-role="main" class="ui-content">
+                <p style="font-size: 0.8em; color: darkgrey;">产废单位有废电瓶出售意愿，向平台发起出售信息，经平台及回收公司初步审核后，将会发送给相应的回收业务员。</p>
+                <div id="divDataEmptyPrompt1" runat="server" visible="false" style="border: 1px solid #808080; padding: 5em 3em 5em 3em; text-align: center; vertical-align: middle; border-radius: 10px; color: chocolate;">
+                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。
+                </div>
+                <asp:Repeater ID="rptSellInfoes_Todo" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
+                    <ItemTemplate>
+                        <div data-role="collapsible" data-collapsed="false">
+                            <h3>
+                                <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
+                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
+                            <p>
 
+                                <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
+                                卖方(产废单位)：
+                                    <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
+                                手机号：
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                地址：
+                                        <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
+                                <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
+                                <br />
+                                状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                            </p>
+                            <asp:Button ID="btnAccept" runat="server" Text="接单" CommandName="Accept" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+
+
+            </div>
+            <div data-role="footer" style="text-align: center;">
+                <span style="font-size: 0.75em;">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</span>
+            </div>
+        </div>
+
+
+        <div id="page2" data-role="page">
+            <div data-role="header">
+                <h2>接单管理</h2>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#page1">未接回收单（<asp:Literal ID="ltlCountTodo2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#" class="ui-btn-active">已接处理中（<asp:Literal ID="ltlCountProcessing2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#page3">处理完毕</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div id="divDataEmptyPrompt2" runat="server" visible="false" style="border: 1px solid #808080; padding: 5em 3em 5em 3em; text-align: center; vertical-align: middle; border-radius: 10px; color: chocolate;">
+                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。
+                </div>
+                <asp:Repeater ID="rptSellInfoes_Doing" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
+                    <ItemTemplate>
+                        <div data-role="collapsible" data-collapsed="false">
+                            <h3>
+                                <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
+                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
+                            <p>
+
+                                <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
+                                卖方(产废单位)
+                                    <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
+                                手机号：
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                地址：
+                                        <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
+                                <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
+                                <br />
+                                状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                            </p>
+                            <p style="font-size: 0.9em; color: burlywood;">
+                                接单后，请尽快与产废单位联系，并安排上门收货。清点货物完毕，请点击“登记收货信息”按钮，开始登记并创建收货单据。
+                            </p>
+                            <asp:Button ID="btChoose" runat="server" Text="登记收货信息" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
+                        </div>
+
+                    </ItemTemplate>
+
+                </asp:Repeater>
+            </div>
+            <div data-role="footer" style="text-align: center;">
+                <span style="font-size: 0.75em;">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</span>
+            </div>
+        </div>
+
+
+        <div id="page3" data-role="page">
+            <div data-role="header">
+                <h2>接单管理</h2>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#page1">未接回收单（<asp:Literal ID="ltlCountTodo3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#page2">已接处理中（<asp:Literal ID="ltlCountProcessing3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#" class="ui-btn-active">处理完毕</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="main" class="ui-content">
+                <asp:Repeater ID="rptSellInfoesClosed" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
+                    <ItemTemplate>
+                        <div data-role="collapsible" data-collapsed="true">
+                            <h3>
+                                <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
+                                    <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
+                            <p>
+
+                                <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
+                                卖方(产废单位)
+                                    <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
+                                手机号：
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                地址：
+                                        <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
+                                <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
+                                <br />
+                                状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                            </p>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+            <div data-role="footer" style="text-align: center;">
+                <span style="font-size: 0.75em;">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</span>
             </div>
         </div>
     </form>
