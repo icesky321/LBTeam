@@ -29,7 +29,7 @@ public partial class Login_Test : System.Web.UI.Page
         else
         {
             lbMsg.Visible = true;
-            lbMsg.Text = "OK";
+            lbMsg.Text = ddlStreet.SelectedValue;
         }
     }
 }

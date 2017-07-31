@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Login_Register" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <!DOCTYPE html>
 
@@ -21,7 +21,11 @@
 </head>
 <body ontouchstart>
     <form id="form1" runat="server" data-ajax="false">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Services>
+                <asp:ServiceReference Path="~/WS/CNRegionService.asmx" />
+            </Services>
+        </asp:ScriptManager>
         <div id="pageMain" data-role="page">
             <div data-role="header">
                 <h1>绿宝新用户注册</h1>
@@ -57,15 +61,18 @@
                     <a href="#pos" id="title" name="title">省份</a>
                     <asp:HiddenField ID="hfRegionCode" runat="server" />
                     选择省份：
-                <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlProvince" runat="server"></asp:DropDownList>
+                    <asp:CascadingDropDown ID="CascadingDropDown1" runat="server" TargetControlID="ddlProvince" Category="Province" PromptText="请选择省份...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetProvince" />
                     选择地级市：
-                <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlCity" runat="server"></asp:DropDownList>
+                    <asp:CascadingDropDown ID="CascadingDropDown2" runat="server" TargetControlID="ddlCity" ParentControlID="ddlProvince" Category="City" PromptText="请选择城市...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetCity" />
                     <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
                     选择县市：
-            <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
+            <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
+                    <asp:CascadingDropDown ID="CascadingDropDown3" runat="server" TargetControlID="ddlCounty" ParentControlID="ddlCity" Category="County" PromptText="请选择县市...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetCounty" />
                     镇或街道：
-                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged" ValidationGroup="Reg2"></asp:DropDownList><br />
-
+                 <asp:DropDownList ID="ddlStreet" runat="server"></asp:DropDownList>
+                    <asp:CascadingDropDown ID="CascadingDropDown4" runat="server" TargetControlID="ddlStreet" ParentControlID="ddlCounty" Category="Street" PromptText="请选择街道...." LoadingText="加载中，请稍后 ..." ServicePath="~/WS/CNRegionService.asmx" ServiceMethod="GetStreet" />
                     详细地址：
                 <asp:TextBox ID="tbAddress" runat="server" ValidationGroup="edit"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
