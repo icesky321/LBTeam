@@ -11,6 +11,7 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     LB.BLL.QuotationManage bll_quote = new LB.BLL.QuotationManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
+    LB.BLL.CopInfo bll_cop = new LB.BLL.CopInfo();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -23,28 +24,29 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
     private void Init_Load()
     {
         Load_HS();
-        if (!User.Identity.IsAuthenticated)
-            return;
-
-        string mobile = User.Identity.Name;
-        LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByTelNum(mobile);
-        hfUserId.Value = user.UserId.ToString();
-
-        var tses = bll_ts.GetTSInfo();
-        rptTS.DataSource = tses;
-        rptTS.DataBind();
+        
 
 
     }
 
     private void Load_HS()
     {
-        var HSes = bll_user.GetUserInfoByUserTypeId(2);
+        var HSes = bll_user.GetUserInfo_AllHS_CopCertified();
         ddlHS.Items.Clear();
         foreach (LB.SQLServerDAL.UserInfo user in HSes)
         {
-            ListItem item = new ListItem(user.RealName, user.UserId.ToString());
-            ddlHS.Items.Add(item);
+            LB.SQLServerDAL.CopInfo cop = bll_cop.GetCopInfoeByUserId(user.UserId);
+            ListItem item = new ListItem();
+            if (cop != null)
+            {
+                item = new ListItem(cop.ShortName, user.UserId.ToString());
+                ddlHS.Items.Add(item);
+            }
+            else
+            {
+                item = new ListItem(user.RealName, user.UserId.ToString());
+                ddlHS.Items.Add(item);
+            }
         }
 
     }
@@ -85,5 +87,14 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
             ltlPrice.Text = "";
         else
             ltlPrice.Text = quotation.QuotedPrice.ToString();
+    }
+
+    protected void btnQuery_Click(object sender, EventArgs e)
+    {
+        hfUserId.Value = ddlHS.SelectedItem.Value;
+
+        var tses = bll_ts.GetTSInfo();
+        rptTS.DataSource = tses;
+        rptTS.DataBind();
     }
 }

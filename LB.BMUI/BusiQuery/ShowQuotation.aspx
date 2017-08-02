@@ -28,14 +28,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server"></asp:ScriptManagerProxy>
     <div style="padding: 20px 0 20px 0; font-size: 1.5em; font-family: 'Microsoft JhengHei'; font-weight: bold;">
-        回收公司报价平台
+        全国回收公司报价查询
     </div>
-    <div>区域：浙江省 杭州市</div>
+    <div>
+        该页面可查询全国所有回收公司的报价信息，请先选择回收公司，再点击查询。<br />
+        因数据加载量大，本页查询速度偏慢，请耐性等待。
+    </div>
     <div style="padding: 20px 0 0px 0;">
-        <asp:LinkButton ID="lbtnQuote" runat="server" PostBackUrl="~/Quotation/Quote.aspx">我要报价</asp:LinkButton>
     </div>
     <div style="padding: 20px 0 50px 0;">
-        <asp:DropDownList ID="ddlHS" runat="server"></asp:DropDownList>
+        <asp:DropDownList ID="ddlHS" runat="server"></asp:DropDownList><asp:Button ID="btnQuery" runat="server" Text="查询报价" OnClick="btnQuery_Click" />
         <asp:HiddenField ID="hfUserId" runat="server" Value="" />
         <asp:HiddenField ID="hfCityCode" runat="server" Value="330100000000" />
         <asp:Repeater ID="rptTS" runat="server" OnItemDataBound="rptTS_ItemDataBound">
