@@ -19,15 +19,15 @@ public partial class Login_Register : System.Web.UI.Page
             if (Request.QueryString["UserTypeId"] != null)
             {
                 Init_Load();
-                Load_Address();
-                Load_Province();
+                //Load_Address();
+                //Load_Province();
                 ddlShenfen.SelectedValue = Request.QueryString["UserTypeId"];
             }
             else
             {
                 Init_Load();
-                Load_Address();
-                Load_Province();
+                //Load_Address();
+                //Load_Province();
             }
 
         }
@@ -38,107 +38,107 @@ public partial class Login_Register : System.Web.UI.Page
         Load_UserType();
     }
 
-    private void Load_Address()
-    {
-        if (!User.Identity.IsAuthenticated)
-            return;
+    //private void Load_Address()
+    //{
+    //    if (!User.Identity.IsAuthenticated)
+    //        return;
 
-        string userName = User.Identity.Name;
+    //    string userName = User.Identity.Name;
 
-        LB.SQLServerDAL.UserInfo user = bll_userinfo.GetUserInfoByTelNum(userName);
+    //    LB.SQLServerDAL.UserInfo user = bll_userinfo.GetUserInfoByTelNum(userName);
 
-        if (user == null)
-            return;
+    //    if (user == null)
+    //        return;
 
-        tbAddress.Text = string.IsNullOrEmpty(user.Address) ? "" : user.Address;
-    }
+    //    tbAddress.Text = string.IsNullOrEmpty(user.Address) ? "" : user.Address;
+    //}
 
-    #region  加载省市县
-    private void Load_Province()
-    {
-        var provinces = bll_region.GetRegions("0");
-        ddlProvince.Items.Clear();
-        foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
-        {
-            ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
-        }
-        ddlProvince.Items.Insert(0, "--选择省份--");
-        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.location.hash('#regionBegin');</Script>");
-    }
+    //#region  加载省市县
+    //private void Load_Province()
+    //{
+    //    var provinces = bll_region.GetRegions("0");
+    //    ddlProvince.Items.Clear();
+    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
+    //    {
+    //        ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
+    //    }
+    //    ddlProvince.Items.Insert(0, "--选择省份--");
+    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.location.hash('#regionBegin');</Script>");
+    //}
 
-    private void Load_City()
-    {
-        var cities = bll_region.GetRegions(ddlProvince.SelectedValue);
-        ddlCity.Items.Clear();
-        foreach (Cobe.CnRegion.SQLServerDAL.Region region in cities)
-        {
-            ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
-        }
-        ddlCity.Items.Insert(0, "--选择城市--");
-        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.scrollTo(0, 500);</Script>");
-    }
+    //private void Load_City()
+    //{
+    //    var cities = bll_region.GetRegions(ddlProvince.SelectedValue);
+    //    ddlCity.Items.Clear();
+    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in cities)
+    //    {
+    //        ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
+    //    }
+    //    ddlCity.Items.Insert(0, "--选择城市--");
+    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.scrollTo(0, 500);</Script>");
+    //}
 
-    private void Load_County()
-    {
-        var counties = bll_region.GetRegions(ddlCity.SelectedValue);
-        ddlCounty.Items.Clear();
-        foreach (Cobe.CnRegion.SQLServerDAL.Region region in counties)
-        {
-            ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
-        }
-        ddlCounty.Items.Insert(0, "--选择区县--");
-        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
-    }
+    //private void Load_County()
+    //{
+    //    var counties = bll_region.GetRegions(ddlCity.SelectedValue);
+    //    ddlCounty.Items.Clear();
+    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in counties)
+    //    {
+    //        ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
+    //    }
+    //    ddlCounty.Items.Insert(0, "--选择区县--");
+    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
+    //}
 
-    private void Load_Street()
-    {
-        var streets = bll_region.GetRegions(ddlCounty.SelectedValue);
-        ddlStreet.Items.Clear();
-        foreach (Cobe.CnRegion.SQLServerDAL.Region region in streets)
-        {
-            ddlStreet.Items.Add(new ListItem(region.AreaName, region.Id));
-        }
-        ddlStreet.Items.Insert(0, "--选择区县--");
-        Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
-    }
-    #endregion
+    //private void Load_Street()
+    //{
+    //    var streets = bll_region.GetRegions(ddlCounty.SelectedValue);
+    //    ddlStreet.Items.Clear();
+    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in streets)
+    //    {
+    //        ddlStreet.Items.Add(new ListItem(region.AreaName, region.Id));
+    //    }
+    //    ddlStreet.Items.Insert(0, "--选择区县--");
+    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
+    //}
+    //#endregion
 
-    #region 地址下拉列表
-    protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlProvince.SelectedIndex > 0)
-        {
-            hfRegionCode.Value = ddlProvince.SelectedValue;
-            Load_City();
-        }
-    }
+    //#region 地址下拉列表
+    //protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    if (ddlProvince.SelectedIndex > 0)
+    //    {
+    //        hfRegionCode.Value = ddlProvince.SelectedValue;
+    //        Load_City();
+    //    }
+    //}
 
-    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlCity.SelectedIndex > 0)
-        {
-            hfRegionCode.Value = ddlCity.SelectedValue;
-            Load_County();
-        }
-    }
+    //protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    if (ddlCity.SelectedIndex > 0)
+    //    {
+    //        hfRegionCode.Value = ddlCity.SelectedValue;
+    //        Load_County();
+    //    }
+    //}
 
-    protected void ddlCounty_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlCounty.SelectedIndex > 0)
-        {
-            hfRegionCode.Value = ddlCounty.SelectedValue;
-            Load_Street();
-        }
-    }
+    //protected void ddlCounty_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    if (ddlCounty.SelectedIndex > 0)
+    //    {
+    //        hfRegionCode.Value = ddlCounty.SelectedValue;
+    //        Load_Street();
+    //    }
+    //}
 
-    protected void ddlStreet_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlStreet.SelectedIndex > 0)
-        {
-            hfRegionCode.Value = ddlStreet.SelectedValue;
-        }
-    }
-    #endregion
+    //protected void ddlStreet_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    if (ddlStreet.SelectedIndex > 0)
+    //    {
+    //        hfRegionCode.Value = ddlStreet.SelectedValue;
+    //    }
+    //}
+    //#endregion
 
     private void Load_UserType()
     {
@@ -188,7 +188,7 @@ public partial class Login_Register : System.Web.UI.Page
             ltlVeriMessage.Text = "";
             ltlVeriMessage.Visible = false;
         }
-        if (ddlStreet.SelectedIndex < 1)
+        if (ddlStreet.SelectedItem.Value == "")
         {
             ltlErrorMsg.Visible = true;
             ltlErrorMsg.Text = "请完善地址信息";
@@ -202,7 +202,7 @@ public partial class Login_Register : System.Web.UI.Page
             user.UserName = Guid.NewGuid().ToString();
             user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
             user.Audit = false;
-            user.RegionCode = hfRegionCode.Value;
+            user.RegionCode = ddlStreet.SelectedValue;
             user.MobilePhoneNum = tbMobile.Text;
             user.CreateTime = System.DateTime.Now;
             user.IDAuthentication = false;
@@ -228,6 +228,7 @@ public partial class Login_Register : System.Web.UI.Page
             {
                 Response.Redirect("CopNextReg.aspx?telNum=" + user.MobilePhoneNum);
             }
+            lbMsg.Text = ddlStreet.SelectedValue;
         }
     }
 
