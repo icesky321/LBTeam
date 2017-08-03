@@ -49,6 +49,15 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 查询全国所有已经过企业认证的回收公司
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_AllHS_CopCertified()
+        {
+            return da.GetUserInfo_AllHS_CopCertified();
+        }
+
+        /// <summary>
         /// 获取指定街道的产废单位个数
         /// </summary>
         /// <param name="streetRegionCode">街道区划代号</param>
@@ -207,11 +216,6 @@ namespace LB.BLL
         public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_InStreet(string streetRegionCode)
         {
             return da.GetUserInfo_InStreet(streetRegionCode);
-        }
-
-        public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
-        {
-            return da.GetUserInfosBySEO(province, city, country, street, UserTypeId, TelNum);
         }
 
         /// <summary>

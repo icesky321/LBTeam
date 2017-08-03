@@ -39,7 +39,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         var query = bll_ts.GetTSInfo();
         List<LB.SQLServerDAL.TSInfo> tses = query.Where(o => o.ChargeUnit == "吨").ToList<LB.SQLServerDAL.TSInfo>();
         cblDP.Items.Clear();
-        foreach (LB.SQLServerDAL.TSInfo ts in query)
+        foreach (LB.SQLServerDAL.TSInfo ts in tses)
         {
             cblDP.Items.Add(new ListItem(ts.TSName, ts.TsCode));
         }
