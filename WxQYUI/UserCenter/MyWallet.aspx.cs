@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class UserCenter_MyWallet : System.Web.UI.Page
 {
     LB.BLL.PaymentDetail bll_paymentdetail = new LB.BLL.PaymentDetail();
-    LB.SQLServerDAL.PaymentDetail MPaymentDetail = new LB.SQLServerDAL.PaymentDetail();
+
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -80,39 +80,76 @@ public partial class UserCenter_MyWallet : System.Web.UI.Page
 
     protected void btSure_Click(object sender, EventArgs e)
     {
-
+        LB.SQLServerDAL.UserInfo MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
         if (ddlTXType.SelectedValue == "0")
         {
             lbMsg.Text = "请选择提现方式";
             lbMsg.Visible = true;
         }
-        else
+        else if (ddlTXType.SelectedValue == "1")
         {
-            LB.SQLServerDAL.UserInfo MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
-            decimal Total = bll_paymentdetail.GetAmountSumByUserId(MUserInfo.UserId);
-            decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(MUserInfo.UserId));
-            decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(MUserInfo.UserId));
-            decimal rest = Total - Wait - Over;
-            if (rest > 0)
+            if (string.IsNullOrEmpty(MUserInfo.Account) || string.IsNullOrEmpty(MUserInfo.BankName) || string.IsNullOrEmpty(MUserInfo.PayeeName))
             {
-                MUserInfo = bll_usermanage.GetUserInfoByTelNum(User.Identity.Name);
-                MPaymentDetail.Amount = Convert.ToDecimal("-" + lbTotalMoney.Text);
-                MPaymentDetail.UserId = MUserInfo.UserId;
-                MPaymentDetail.CreateDate = System.DateTime.Now;
-                MPaymentDetail.TransferMethod = ddlTXType.SelectedItem.Text;
-                MPaymentDetail.PayStatus = "提款中";
-                MPaymentDetail.AuditDate = Convert.ToDateTime("1900-01-01");
-                bll_paymentdetail.newPaymentDetail(MPaymentDetail);
-
-                SendWxArticle_ToCF("100", "产废单位提交提现请求", "请到管理后台-货款管理审核");
-                SendWxArticle_ToCF("1", "产废单位提交提现请求", "提款人：" + MUserInfo.RealName + "/n" + "提款金额：" + MPaymentDetail.Amount.ToString() + "元");
-                Response.Redirect("MyWallet.aspx#pageRegCompleted", true);
-
+                lbMsg.Text = "请补全银行账号信息";
+                lbMsg.Visible = true;
             }
             else
             {
-                Response.Redirect("MyWallet.aspx#errorPage", true);
+                Pay(MUserInfo.UserId);
             }
+        }
+        else if (ddlTXType.SelectedValue == "2")
+        {
+            if (string.IsNullOrEmpty(MUserInfo.ZfbName) || string.IsNullOrEmpty(MUserInfo.ZfbAccount))
+            {
+                lbMsg.Text = "请补全支付宝账号信息";
+                lbMsg.Visible = true;
+            }
+            else
+            {
+                Pay(MUserInfo.UserId);
+            }
+        }
+        else if (ddlTXType.SelectedValue == "3")
+        {
+            if (string.IsNullOrEmpty(MUserInfo.WxName) || string.IsNullOrEmpty(MUserInfo.WxAccount))
+            {
+                lbMsg.Text = "请补全微信账号信息";
+                lbMsg.Visible = true;
+            }
+            else
+            {
+                Pay(MUserInfo.UserId);
+            }
+        }
+    }
+
+    void Pay(int UserId)
+    {
+        decimal Total = bll_paymentdetail.GetAmountSumByUserId(UserId);
+        decimal Wait = System.Math.Abs(bll_paymentdetail.GetWaitAmountSumByUserId(UserId));
+        decimal Over = System.Math.Abs(bll_paymentdetail.GetOverAmountSumByUserId(UserId));
+        decimal rest = Total - Wait - Over;
+        if (rest > 0)
+        {
+            LB.SQLServerDAL.PaymentDetail MPaymentDetail = new LB.SQLServerDAL.PaymentDetail();
+            MPaymentDetail.Amount = Convert.ToDecimal("-" + lbTotalMoney.Text);
+            MPaymentDetail.UserId = UserId;
+            MPaymentDetail.CreateDate = System.DateTime.Now;
+            MPaymentDetail.TransferMethod = ddlTXType.SelectedItem.Text;
+            MPaymentDetail.PayStatus = "提款中";
+            MPaymentDetail.AuditDate = Convert.ToDateTime("1900-01-01");
+            bll_paymentdetail.newPaymentDetail(MPaymentDetail);
+            LB.SQLServerDAL.UserInfo MUser = new LB.SQLServerDAL.UserInfo();
+            MUser = bll_usermanage.GetUserInfoByUserId(UserId);
+            SendWxArticle_ToCF("100", "产废单位提交提现请求", "请到管理后台-货款管理审核");
+            SendWxArticle_ToCF("1", "产废单位提交提现请求", "提款人：" + MUser.RealName + "提款金额：" + MPaymentDetail.Amount.ToString() + "元");
+            Response.Redirect("MyWallet.aspx#pageRegCompleted", true);
+
+        }
+        else
+        {
+            Response.Redirect("MyWallet.aspx#errorPage", true);
         }
     }
 
