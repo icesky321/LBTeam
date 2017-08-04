@@ -13,7 +13,7 @@
     <title>发布收货订单</title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" data-ajax="false">
         <div id="page1" data-role="page">
             <div data-role="header">
                 创建收货订单
@@ -26,13 +26,9 @@
                 <label for="fullname">街道回收员：</label>
                 <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
                 <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
-
-                <%--                <div data-role="collapsible" data-collapsed="false">
-                    <h1>绿宝第三方支付账户</h1>
-                    <p>公司名称：宁波绿宝信息科技有限公司</p>
-                    <p>开户行：宁波银行庄市支行</p>
-                    <p>账号：5204 0122 0002 10157</p>
-                </div>--%>
+                <hr />
+                <br />
+                <asp:Label ID="lbMsg" runat="server" Text="" ForeColor="Red" Font-Size="Medium" Visible="false"></asp:Label>
 
                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1">
                     <ItemTemplate>
@@ -76,8 +72,8 @@
 
                 </div>
                 <br />
-                <%--<asp:DropDownList ID="ddlCop" runat="server"></asp:DropDownList>--%>
-                <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external" ValidationGroup="1" />
+
+                <asp:Button ID="btSure" runat="server" Text="提交" OnClick="btSure_Click" rel="external" ValidationGroup="1" data-ajax="false" />
 
 
             </div>
