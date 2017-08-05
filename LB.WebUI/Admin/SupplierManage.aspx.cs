@@ -12,6 +12,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.Model.UserInfoModel MUserInfoModel = new LB.Model.UserInfoModel();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -174,6 +175,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
 
     protected void gvCopInfo_DataBound(object sender, EventArgs e)
     {
+
         gvCopInfo.BottomPagerRow.Visible = true;//只有一页数据的时候也再下面显示pagerrow，需要top的再加Top
 
         // Retrieve the pager row.        
@@ -255,5 +257,35 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
     {
         gvCopInfo.PageIndex = e.NewPageIndex;
         gvCopInfoDataBind();
+    }
+
+
+
+    protected void gvCopInfo_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            Label lbRegionWholeName = e.Row.FindControl("lbRegionWholeName") as Label;
+
+            LB.Model.UserInfoModel user = e.Row.DataItem as LB.Model.UserInfoModel;
+
+
+            if (user == null) return;
+
+            int userId = user.UserId;
+
+            LB.SQLServerDAL.UserInfo userInfo = bll_userinfo.GetUserInfoByUserId(userId);
+
+            if (string.IsNullOrEmpty(userInfo.RegionCode))
+                return;
+
+            Cobe.CnRegion.SQLServerDAL.Region region = bll_region.GetRegion(userInfo.RegionCode);
+
+            if (region != null)
+            {
+                lbRegionWholeName.Text = region.WholeName;
+            }
+
+        }
     }
 }

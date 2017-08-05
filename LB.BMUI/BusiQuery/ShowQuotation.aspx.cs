@@ -74,7 +74,7 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
     {
         int userId = 0;
         int.TryParse(hfUserId.Value, out userId);
-
+        
         Cobe.CnRegion.SQLServerDAL.Region countyRegion = e.Item.DataItem as Cobe.CnRegion.SQLServerDAL.Region;
 
         Repeater rptRegion2 = sender as Repeater;

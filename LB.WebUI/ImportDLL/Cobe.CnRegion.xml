@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cobe.CnRegion</name>
+    </assembly>
+    <members>
+        <member name="T:Cobe.CnRegion.Config">
+            <summary>
+            全局设置
+            </summary>
+        </member>
+        <member name="F:Cobe.CnRegion.Config.TIME_OUT">
+            <summary>
+            请求超时设置（以毫秒为单位），默认为10秒。
+            说明：此处常量专为提供给方法的参数的默认值，不是方法内所有请求的默认超时时间。
+            </summary>
+        </member>
+        <member name="P:Cobe.CnRegion.Config.IsDebug">
+            <summary>
+            指定是否是Debug状态，如果是，系统会自动输出日志
+            </summary>
+        </member>
+        <member name="F:Cobe.CnRegion.Config.MaxJsonLength">
+            <summary>
+            JavaScriptSerializer 类接受的 JSON 字符串的最大长度
+            </summary>
+        </member>
+        <member name="F:Cobe.CnRegion.Config.DefaultCacheNamespace">
+            <summary>
+            默认缓存键的第一级命名空间，默认值：DefaultCache
+            </summary>
+        </member>
+        <member name="T:Cobe.CnRegion.Helpers.FileHelper">
+            <summary>
+            文件帮助类
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.Helpers.FileHelper.GetFileStream(System.String)">
+            <summary>
+            根据完整文件路径获取FileStream
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.Helpers.FileHelper.DownLoadFileFromUrl(System.String,System.String)">
+            <summary>
+            从Url下载文件
+            </summary>
+            <param name="url"></param>
+            <param name="fullFilePathAndName"></param>
+        </member>
+        <member name="T:Cobe.CnRegion.RegionManage">
+            <summary>
+            全国行政区划查询类
+            <para>数据库在本地</para>
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.Dispose">
+            <summary>
+            释放由本类占用的所有资源
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.GetCount(System.String)">
+            <summary>
+            获取指定ParentId的下级子区划的数目。
+            </summary>
+            <param name="parentId">父区划Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.GetRegion(System.String)">
+            <summary>
+            根据Id获取行政区域
+            </summary>
+            <param name="id">行政区域代码</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.GetRegions(System.String)">
+            <summary>
+            查询子区域
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.GetRegions(System.Int32)">
+            <summary>
+            查询某层级的所有区域
+            </summary>
+            <param name="level">层级</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.GetProvinces">
+            <summary>
+            查询所有省份
+            </summary>
+            <param name="parentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.ExistRegionById(System.String)">
+            <summary>
+            根据id查询某区划是否存在
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.RegionManage.ExistRegionByName(System.String)">
+            <summary>
+            根据id查询某区划是否存在
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cobe.CnRegion.HttpUtility.Get">
+            <summary>
+            Get 请求处理
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.Get.GetJson``1(System.String,System.Text.Encoding,System.Nullable{System.Int32})">
+            <summary>
+            GET方式请求URL，并返回T类型
+            </summary>
+            <typeparam name="T">接收JSON的数据类型</typeparam>
+            <param name="url"></param>
+            <param name="encoding"></param>
+            <param name="maxJsonLength">允许最大JSON长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.Get.Download(System.String,System.IO.Stream)">
+            <summary>
+            从Url下载
+            </summary>
+            <param name="url"></param>
+            <param name="stream"></param>
+        </member>
+        <member name="T:Cobe.CnRegion.HttpUtility.RequestUtility">
+            <summary>
+            HTTP 请求工具类
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.SetHttpProxy(System.String,System.String,System.String,System.String)">
+            <summary>
+            设置Web代理
+            </summary>
+            <param name="host"></param>
+            <param name="port"></param>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.RemoveHttpProxy">
+            <summary>
+            清除Web代理状态
+            </summary>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.HttpGet(System.String,System.Text.Encoding)">
+            <summary>
+            使用Get方法获取字符串结果（没有加入Cookie）
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.HttpGet(System.String,System.Net.CookieContainer,System.Text.Encoding,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Int32)">
+            <summary>
+            使用Get方法获取字符串结果（加入Cookie）
+            </summary>
+            <param name="url"></param>
+            <param name="cookieContainer"></param>
+            <param name="encoding"></param>
+            <param name="cer">证书，如果不需要则保留null</param>
+            <param name="timeOut"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.HttpPost(System.String,System.Net.CookieContainer,System.Collections.Generic.Dictionary{System.String,System.String},System.Text.Encoding,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Int32)">
+            <summary>
+            使用Post方法获取字符串结果，常规提交
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.HttpPost(System.String,System.Net.CookieContainer,System.IO.Stream,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.Text.Encoding,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Int32,System.Boolean)">
+            <summary>
+            使用Post方法获取字符串结果
+            </summary>
+            <param name="url"></param>
+            <param name="cookieContainer"></param>
+            <param name="postStream"></param>
+            <param name="fileDictionary">需要上传的文件，Key：对应要上传的Name，Value：本地文件名</param>
+            <param name="encoding"></param>
+            <param name="cer">证书，如果不需要则保留null</param>
+            <param name="timeOut"></param>
+            <param name="checkValidationResult">验证服务器证书回调自动验证</param>
+            <param name="refererUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.CheckValidationResult(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            验证服务器证书
+            </summary>
+            <param name="sender"></param>
+            <param name="certificate"></param>
+            <param name="chain"></param>
+            <param name="errors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.IsWeixinClientRequest(System.Web.HttpContext)">
+            <summary>
+            请求是否发起自微信客户端的浏览器
+            </summary>
+            <param name="httpContext"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.GetQueryString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            组装QueryString的方法
+            参数之间用&amp;连接，首位没有符号，如：a=1&amp;b=2&amp;c=3
+            </summary>
+            <param name="formData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.FillFormDataStream(System.Collections.Generic.Dictionary{System.String,System.String},System.IO.Stream)">
+            <summary>
+            填充表单信息的Stream
+            </summary>
+            <param name="formData"></param>
+            <param name="stream"></param>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.HtmlEncode(System.String)">
+            <summary>
+            封装System.Web.HttpUtility.HtmlEncode
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.HtmlDecode(System.String)">
+            <summary>
+            封装System.Web.HttpUtility.HtmlDecode
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.UrlEncode(System.String)">
+            <summary>
+            封装System.Web.HttpUtility.UrlEncode
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cobe.CnRegion.HttpUtility.RequestUtility.UrlDecode(System.String)">
+            <summary>
+            封装System.Web.HttpUtility.UrlDecode
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Cobe.CnRegion.HttpUtility.RequestUtility.AsUrlData(System.String)" -->
+    </members>
+</doc>
