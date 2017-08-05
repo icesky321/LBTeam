@@ -46,30 +46,29 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     tbcfdw.Text = InUserInfo.MobilePhoneNum;
                     lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     tbjdywy.Text = OutUserInfo.MobilePhoneNum;
-                    //FillCopInfo();}
                 }
             }
-            else
-            {
-                //hfInfoId.Value = "3ad05ed6-ad60-4754-8435-afa0eea41fbf";
-                //if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
-                //{
-                //    Response.Redirect("Success.aspx?CFId=55ada7b6-d422-45e6-ba3b-a39cf48c2e74");
-                //}
-                //else
-                //{
-                //MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
-                //LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
-                //LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
-                //InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-                //OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-                //lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
-                //tbcfdw.Text = InUserInfo.MobilePhoneNum;
-                //lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
-                //tbjdywy.Text = OutUserInfo.MobilePhoneNum;
+            //else
+            //{
+            //    hfInfoId.Value = "0ea3eec2-6911-44df-8003-c478ccaf6a36";
+            //    if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
+            //    {
+            //        Response.Redirect("Success.aspx?CFId=0ea3eec2-6911-44df-8003-c478ccaf6a36");
+            //    }
+            //    else
+            //    {
+            //        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+            //        LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
+            //        LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
+            //        InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
+            //        OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+            //        lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
+            //        tbcfdw.Text = InUserInfo.MobilePhoneNum;
+            //        lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+            //        tbjdywy.Text = OutUserInfo.MobilePhoneNum;
 
-                //}
-            }
+            //    }
+            //}
 
         }
     }
@@ -116,12 +115,22 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                 }
 
             }
-            MSellInfo.JD_TohandleTag = false;
-            MSellInfo.StatusMsg = "信息处理完毕";
-            MSellInfo.IsClosed = true;
-            bll_sellinfomanage.UpdateSellInfo(MSellInfo);
-            SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
-            Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
+            if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
+            {
+                MSellInfo.JD_TohandleTag = false;
+                MSellInfo.StatusMsg = "信息处理完毕";
+                MSellInfo.IsClosed = true;
+                bll_sellinfomanage.UpdateSellInfo(MSellInfo);
+                SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
+                Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
+            }
+            else
+            {
+                bll_cf_jd_order.DeleteCF_JD_OrderByCFId(MCF_JD_Order.CFId);
+                lbMsg.Text = "请输入货品清单数量";
+                lbMsg.Visible = true;
+            }
+
         }
 
     }

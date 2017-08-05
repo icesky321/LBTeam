@@ -34,5 +34,18 @@ namespace LB.SQLServerDAL
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.CF_JD_OrderDetail>();
         }
+
+        public bool ExistCFId(Guid CFId)
+        {
+            bool exists = false;
+            var query = from u in dbContext.CF_JD_OrderDetail
+                        where u.CFId == CFId
+                        select u;
+            if (query.Count() > 0)
+            {
+                exists = true;
+            }
+            return exists;
+        }
     }
 }

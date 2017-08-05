@@ -23,5 +23,10 @@ namespace LB.BLL
         {
             return da.GetCF_JD_OrderDetailByCFId(CFId);
         }
+
+        public bool ExistCFId(Guid CFId)
+        {
+            return da.ExistCFId(CFId);
+        }
     }
 }
