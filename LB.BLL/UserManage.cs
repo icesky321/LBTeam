@@ -112,6 +112,11 @@ namespace LB.BLL
             return da.GetUserInfoByTelNum(TelNum);
         }
 
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
+        {
+            return da.GetUserInfosBySEO(province, city, country, street, UserTypeId, TelNum);
+        }
+
         /// <summary>
         /// 根据用户类型获取用户信息
         /// </summary>

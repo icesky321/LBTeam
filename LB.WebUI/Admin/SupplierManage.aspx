@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    <asp:GridView ID="gvCopInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvCopInfo_RowCommand" OnDataBound="gvCopInfo_DataBound" OnPageIndexChanging="gvCopInfo_PageIndexChanging">
+    <asp:GridView ID="gvCopInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvCopInfo_RowCommand" OnRowDataBound="gvCopInfo_RowDataBound" OnDataBound="gvCopInfo_DataBound" OnPageIndexChanging="gvCopInfo_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="UserId" SortExpression="UserId" Visible="True" />
             <asp:BoundField DataField="CopName" HeaderText="企业名称" SortExpression="CopName" />
@@ -13,10 +13,7 @@
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId">
                 <ItemTemplate>
-                    <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
-                    <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
-                    <asp:Label ID="lbTown" runat="server" Text='<%# Bind("Town") %>'></asp:Label>
-                    <asp:Label ID="lbStreet" runat="server" Text='<%# Bind("Street") %>'></asp:Label>
+                    <asp:Label ID="lbRegionWholeName" runat="server"></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="公司银行账号 " SortExpression="Account">
