@@ -32,7 +32,8 @@
             <div data-role="main" class="ui-content">
                 <p style="font-size: 0.8em; color: darkgrey;">产废单位有废电瓶出售意愿，向平台发起出售信息，经平台及回收公司初步审核后，将会发送给相应的回收业务员。</p>
                 <div id="divDataEmptyPrompt1" runat="server" visible="false" style="border: 1px solid #808080; padding: 5em 3em 5em 3em; text-align: center; vertical-align: middle; border-radius: 10px; color: chocolate;">
-                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。
+                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。<br />
+                    <asp:Button ID="btnQuickReg" runat="server" Text="快速注册产废单位通道" rel="external" OnClick="btnQuickReg_Click" />
                 </div>
                 <asp:Repeater ID="rptSellInfoes_Todo" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>

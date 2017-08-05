@@ -196,7 +196,7 @@ namespace LB.SQLServerDAL
         {
             string cityShortCode = cityRegionCode.Substring(0, 4);
             var query = from c in dbContext.UserInfo
-                        where c.UserTypeId == 5 && !string.IsNullOrWhiteSpace(c.RegionCode) && c.RegionCode.Substring(0, 4) == cityShortCode
+                        where c.UserTypeId == 5 && c.RegionCode.Substring(0, 4) == cityShortCode
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }

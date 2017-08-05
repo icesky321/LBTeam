@@ -44,7 +44,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                     lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     tbcfdw.Text = InUserInfo.MobilePhoneNum;
-                    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + OutUserInfo.Address;
                     tbjdywy.Text = OutUserInfo.MobilePhoneNum;
                 }
             }
@@ -113,7 +113,6 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     MCF_JD_OrderDetail.GoodsUnit = Literal1.Text;
                     bll_cf_jd_orderdetail.NewCF_JD_OrderDetail(MCF_JD_OrderDetail);
                 }
-
             }
             if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
             {
@@ -148,14 +147,4 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/PayOrder.aspx?CFId=" + CFId;
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }
-
-    //private void SendWxArticle_ToCF(string QYId, string title, string description)
-    //{
-    //    //TODO: 发布前修改微信发布逻辑
-    //    LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
-    //    Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-    //    article.Title = title;
-    //    article.Description = description;
-    //    sendmsg.SendArticleToUsers(QYId, article, "5");
-    //}
 }

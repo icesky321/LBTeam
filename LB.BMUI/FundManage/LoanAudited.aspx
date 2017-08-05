@@ -69,7 +69,7 @@
                     <div style="height: 30px;"></div>
                 </SeparatorTemplate>
             </asp:Repeater>
-            <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="CreateDate" TableName="PaymentDetail" Where="PayStatus == @PayStatus">
+            <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="CreateDate desc" TableName="PaymentDetail" Where="PayStatus == @PayStatus">
                 <WhereParameters>
                     <asp:Parameter DefaultValue="结清" Name="PayStatus" Type="String" />
                 </WhereParameters>

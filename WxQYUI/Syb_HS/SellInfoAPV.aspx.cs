@@ -12,6 +12,7 @@ public partial class Syb_HS_SellInfoAPV : System.Web.UI.Page
     LB.BLL.SellInfoManage bll_SellInfo = new LB.BLL.SellInfoManage();
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+    LB.BLL.StaffManage bll_staff = new LB.BLL.StaffManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -83,7 +84,8 @@ public partial class Syb_HS_SellInfoAPV : System.Web.UI.Page
             return;
 
         string cityRegionCode = hs_user.RegionCode;
-        var jd_users = bll_user.GetUserInfo_JD_InCity(cityRegionCode);
+        IQueryable<LB.SQLServerDAL.UserInfo> jd_users = bll_user.GetUserInfo_JD_InCity(cityRegionCode);
+        //var jd_users = bll_staff.GetStaff();
         ddlJD.Items.Clear();
         foreach (LB.SQLServerDAL.UserInfo user in jd_users)
         {
@@ -122,6 +124,7 @@ public partial class Syb_HS_SellInfoAPV : System.Web.UI.Page
 
         int jd_userId = 0;
         int.TryParse(ddlJD.SelectedValue, out jd_userId);
+        
         sellInfo.JD_UserId = jd_userId;
         sellInfo.StatusMsg = "回收公司工单指派完成，等待回收业务员处理";
 
