@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OneKeyBuy.aspx.cs" Inherits="Syb_JD_OneKeyBuy" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,6 +15,7 @@
 </head>
 <body ontouchstart>
     <form id="form1" runat="server" data-ajax="false">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="page1" data-role="page">
             <div data-role="header">
                 <h2>街道业务员一键收货</h2>
@@ -112,7 +115,8 @@
                                     <asp:Literal ID="ltlTSName" runat="server" Text='<%# Eval("TSName") %>'></asp:Literal></label>
                             </div>
                             <div class="weui-cell__bd">
-                                <asp:TextBox ID="tbNum" runat="server" class="weui-input" type="text" placeholder="请输入准确重量/数量"></asp:TextBox>
+                                <asp:TextBox ID="tbNum" runat="server" class="weui-input" type="text"></asp:TextBox>
+                                <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="tbNum" ValidChars="1234567890./- " Enabled="True" />
                             </div>
                             <div class="weui-cell__ft">
                                 <label class="weui-label">
