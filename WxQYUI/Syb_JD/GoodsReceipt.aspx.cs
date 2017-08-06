@@ -48,27 +48,27 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     tbjdywy.Text = OutUserInfo.MobilePhoneNum;
                 }
             }
-            //else
-            //{
-            //    hfInfoId.Value = "0ea3eec2-6911-44df-8003-c478ccaf6a36";
-            //    if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
-            //    {
-            //        Response.Redirect("Success.aspx?CFId=0ea3eec2-6911-44df-8003-c478ccaf6a36");
-            //    }
-            //    else
-            //    {
-            //        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
-            //        LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
-            //        LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
-            //        InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-            //        OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-            //        lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
-            //        tbcfdw.Text = InUserInfo.MobilePhoneNum;
-            //        lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
-            //        tbjdywy.Text = OutUserInfo.MobilePhoneNum;
+            else
+            {
+                //hfInfoId.Value = "0ea3eec2-6911-44df-8003-c478ccaf6a36";
+                //if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
+                //{
+                //    Response.Redirect("Success.aspx?CFId=0ea3eec2-6911-44df-8003-c478ccaf6a36");
+                //}
+                //else
+                //{
+                //    MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+                //    LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
+                //    LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
+                //    InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
+                //    OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                //    lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                //    tbcfdw.Text = InUserInfo.MobilePhoneNum;
+                //    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                //    tbjdywy.Text = OutUserInfo.MobilePhoneNum;
 
-            //    }
-            //}
+                //}
+            }
 
         }
     }
