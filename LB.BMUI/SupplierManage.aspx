@@ -11,7 +11,7 @@
             <asp:BoundField DataField="UserName" HeaderText="店铺名称" SortExpression="UserName" />
             <asp:BoundField DataField="RealName" HeaderText="联系人" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
-            <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId">
+            <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId" Visible="false">
                 <ItemTemplate>
                     <asp:Label ID="lbProvince" runat="server" Text='<%# Bind("Province") %>'></asp:Label>
                     <asp:Label ID="lbCity" runat="server" Text='<%# Bind("City") %>'></asp:Label>
