@@ -275,4 +275,12 @@ public partial class Login_Register : System.Web.UI.Page
         article.Description = description;
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }
+
+    protected void ddlShenfen_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlShenfen.SelectedValue == "1")
+        {
+            Response.Redirect("CF_QuickReg.aspx");
+        }
+    }
 }

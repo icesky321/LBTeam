@@ -42,7 +42,7 @@
                     <asp:RequiredFieldValidator ID="rfv1" runat="server" ErrorMessage="请输入手机号码" ControlToValidate="tbMobile" Display="Dynamic" ValidationGroup="Reg1"></asp:RequiredFieldValidator>
                     <asp:Label ID="ltlErrorMsg" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
                 </div>
-                <asp:DropDownList ID="ddlShenfen" runat="server" data-native-menu="false" DataTextField="UserTypeName" DataValueField="DataTypeId">
+                <asp:DropDownList ID="ddlShenfen" runat="server" data-native-menu="false" DataTextField="UserTypeName" DataValueField="DataTypeId" AutoPostBack="true" OnSelectedIndexChanged="ddlShenfen_SelectedIndexChanged">
                 </asp:DropDownList>
 
                 <asp:TextBox ID="tbMobile" runat="server" placeholder="请输入手机号码" ValidationGroup="Reg1"></asp:TextBox>
