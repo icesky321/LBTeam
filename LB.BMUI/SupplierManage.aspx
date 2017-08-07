@@ -8,7 +8,7 @@
     <asp:GridView ID="gvCopInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvCopInfo_RowCommand" OnDataBound="gvCopInfo_DataBound" OnPageIndexChanging="gvCopInfo_PageIndexChanging">
         <Columns>
             <asp:BoundField DataField="UserId" HeaderText="UserId" SortExpression="UserId" Visible="True" />
-            <asp:BoundField DataField="CopName" HeaderText="企业名称" SortExpression="CopName" />
+            <asp:BoundField DataField="UserName" HeaderText="店铺名称" SortExpression="UserName" />
             <asp:BoundField DataField="RealName" HeaderText="联系人" SortExpression="RealName" />
             <asp:BoundField DataField="MobilePhoneNum" HeaderText="联系号码" SortExpression="MobilePhoneNum" />
             <asp:TemplateField HeaderText="公司地址 " SortExpression="CopId">
