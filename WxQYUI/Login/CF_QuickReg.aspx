@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CF_quickReg.aspx.cs" Inherits="Syb_JD_CF_quickReg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CF_QuickReg.aspx.cs" Inherits="Login_CF_QuickReg" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@
         </asp:ScriptManager>
         <div id="pageMain" data-role="page">
             <div data-role="header">
-                <h1>产废单位快速注册通道</h1>
+                <h1>产废单位快速注册</h1>
             </div>
 
             <div data-role="main" class="ui-content">
@@ -46,18 +46,13 @@
 
                 <asp:TextBox ID="tbMobile" runat="server" placeholder="请输入手机号码" ValidationGroup="Reg1"></asp:TextBox>
 
-<%--                <asp:LinkButton ID="lbtnGetVeriCode" runat="server" OnClick="lbtnGetVeriCode_Click" ValidationGroup="Reg1">获取验证码</asp:LinkButton>&nbsp;&nbsp;<asp:Literal ID="ltlVeriMessage" runat="server" Text="正在获取中，请稍后" Visible="false"></asp:Literal>
-                <asp:TextBox ID="tbVeriCode" runat="server" placeholder="输入验证码"></asp:TextBox>--%>
+                <asp:LinkButton ID="lbtnGetVeriCode" runat="server" OnClick="lbtnGetVeriCode_Click" ValidationGroup="Reg1">获取验证码</asp:LinkButton>&nbsp;&nbsp;<asp:Literal ID="ltlVeriMessage" runat="server" Text="正在获取中，请稍后" Visible="false"></asp:Literal>
+                <asp:TextBox ID="tbVeriCode" runat="server" placeholder="输入验证码"></asp:TextBox>
                 <div data-role="controlgroup">
                     密码：&nbsp;&nbsp;
                 <asp:RequiredFieldValidator ID="rfv2" runat="server" ErrorMessage="密码不可为空" ControlToValidate="tbPassword" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <asp:TextBox ID="tbPassword" runat="server" placeholder="设置登录密码" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
-                <div data-role="controlgroup">
-                    店家称呼：&nbsp;&nbsp;
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="店家称呼不可为空" ControlToValidate="tbRealName" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
-                </div>
-                <asp:TextBox ID="tbRealName" runat="server" placeholder="设置店家称呼" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
                 <div data-role="controlgroup">
                     门店名称：&nbsp;&nbsp;
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="门店名称不可为空" ControlToValidate="tbCopName" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -103,6 +98,8 @@
                 </div>
             </div>
         </div>
+
+
     </form>
 </body>
 </html>

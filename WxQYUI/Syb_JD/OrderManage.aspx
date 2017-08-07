@@ -55,6 +55,10 @@
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
                             <asp:Button ID="btnAccept" runat="server" Text="接单" CommandName="Accept" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
+<%--                            <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
+                                <asp:Button ID="btnAccept" runat="server" Text="接单" data-icon="check" CssClass="ui-btn-active" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
+                                <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' />
+                            </fieldset>--%>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
