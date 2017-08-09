@@ -101,7 +101,7 @@ public partial class Login_CF_QuickReg : System.Web.UI.Page
             if (Membership.ValidateUser(tbMobile.Text, tbPassword.Text))
             {
                 FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
-                SendWxArticle_ToCF("100", "有新用户提交注册申请，行业身份为：" + ddlShenfen.SelectedItem.Text + "\n" + "手机号：" + user.MobilePhoneNum, "请到管理后台-用户信息管理审核（如资料不全，对方有可能在补全资料，请耐心等待5分钟）");
+                SendWxArticle_ToCF("2", "有新用户提交注册申请，行业身份为：" + ddlShenfen.SelectedItem.Text + "\n" + "手机号：" + user.MobilePhoneNum, "请到管理后台-用户信息管理审核（如资料不全，对方有可能在补全资料，请耐心等待5分钟）");
             }
             if (user.UserTypeId == 1)
             {
@@ -145,13 +145,13 @@ public partial class Login_CF_QuickReg : System.Web.UI.Page
 
     }
 
-    private void SendWxArticle_ToCF(string QYId, string title, string description)
+    private void SendWxArticle_ToCF(string QYTag, string title, string description)
     {
         //TODO: 发布前修改微信发布逻辑
         LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = title;
         article.Description = description;
-        sendmsg.SendArticleToUsers(QYId, article, "5");
+        sendmsg.SendArticleToTags(QYTag, article, "5");
     }
 }
