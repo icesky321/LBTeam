@@ -244,10 +244,5 @@ namespace LB.BLL
         {
             return da.GetUserInfosByQY(UserTypeId);
         }
-
-        public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
-        {
-            return da.GetUserInfosBySEO(province, city, country, street, UserTypeId, TelNum);
-        }
     }
 }

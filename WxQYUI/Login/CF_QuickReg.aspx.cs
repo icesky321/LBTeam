@@ -6,30 +6,19 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 
-public partial class Login_Register : System.Web.UI.Page
+public partial class Login_CF_QuickReg : System.Web.UI.Page
 {
     LB.BLL.SMS bll_sms = new LB.BLL.SMS();
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.BLL.UserTypeInfo bll_userType = new LB.BLL.UserTypeInfo();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
+    LB.BLL.CopInfo bll_copinfo = new LB.BLL.CopInfo();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            if (Request.QueryString["UserTypeId"] != null)
-            {
-                Init_Load();
-                //Load_Address();
-                //Load_Province();
-                ddlShenfen.SelectedValue = Request.QueryString["UserTypeId"];
-            }
-            else
-            {
-                Init_Load();
-                //Load_Address();
-                //Load_Province();
-            }
-
+            Init_Load();
+            ddlShenfen.SelectedValue = "1";
         }
     }
 
@@ -37,108 +26,6 @@ public partial class Login_Register : System.Web.UI.Page
     {
         Load_UserType();
     }
-
-    //private void Load_Address()
-    //{
-    //    if (!User.Identity.IsAuthenticated)
-    //        return;
-
-    //    string userName = User.Identity.Name;
-
-    //    LB.SQLServerDAL.UserInfo user = bll_userinfo.GetUserInfoByTelNum(userName);
-
-    //    if (user == null)
-    //        return;
-
-    //    tbAddress.Text = string.IsNullOrEmpty(user.Address) ? "" : user.Address;
-    //}
-
-    //#region  加载省市县
-    //private void Load_Province()
-    //{
-    //    var provinces = bll_region.GetRegions("0");
-    //    ddlProvince.Items.Clear();
-    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
-    //    {
-    //        ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
-    //    }
-    //    ddlProvince.Items.Insert(0, "--选择省份--");
-    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.location.hash('#regionBegin');</Script>");
-    //}
-
-    //private void Load_City()
-    //{
-    //    var cities = bll_region.GetRegions(ddlProvince.SelectedValue);
-    //    ddlCity.Items.Clear();
-    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in cities)
-    //    {
-    //        ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
-    //    }
-    //    ddlCity.Items.Insert(0, "--选择城市--");
-    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script  type=\"text / javascript\">window.scrollTo(0, 500);</Script>");
-    //}
-
-    //private void Load_County()
-    //{
-    //    var counties = bll_region.GetRegions(ddlCity.SelectedValue);
-    //    ddlCounty.Items.Clear();
-    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in counties)
-    //    {
-    //        ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
-    //    }
-    //    ddlCounty.Items.Insert(0, "--选择区县--");
-    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
-    //}
-
-    //private void Load_Street()
-    //{
-    //    var streets = bll_region.GetRegions(ddlCounty.SelectedValue);
-    //    ddlStreet.Items.Clear();
-    //    foreach (Cobe.CnRegion.SQLServerDAL.Region region in streets)
-    //    {
-    //        ddlStreet.Items.Add(new ListItem(region.AreaName, region.Id));
-    //    }
-    //    ddlStreet.Items.Insert(0, "--选择区县--");
-    //    Page.ClientScript.RegisterClientScriptBlock(Page.GetType(), "", "<Script>window.location.hash = '#regionBegin';</Script>");
-    //}
-    //#endregion
-
-    //#region 地址下拉列表
-    //protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    if (ddlProvince.SelectedIndex > 0)
-    //    {
-    //        hfRegionCode.Value = ddlProvince.SelectedValue;
-    //        Load_City();
-    //    }
-    //}
-
-    //protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    if (ddlCity.SelectedIndex > 0)
-    //    {
-    //        hfRegionCode.Value = ddlCity.SelectedValue;
-    //        Load_County();
-    //    }
-    //}
-
-    //protected void ddlCounty_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    if (ddlCounty.SelectedIndex > 0)
-    //    {
-    //        hfRegionCode.Value = ddlCounty.SelectedValue;
-    //        Load_Street();
-    //    }
-    //}
-
-    //protected void ddlStreet_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    if (ddlStreet.SelectedIndex > 0)
-    //    {
-    //        hfRegionCode.Value = ddlStreet.SelectedValue;
-    //    }
-    //}
-    //#endregion
 
     private void Load_UserType()
     {
@@ -199,7 +86,7 @@ public partial class Login_Register : System.Web.UI.Page
             Membership.CreateUser(tbMobile.Text, tbPassword.Text);
 
             LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
-            user.UserName = Guid.NewGuid().ToString();
+            user.UserName = tbCopName.Text;
             user.UserTypeId = Convert.ToInt32(Convert.ToInt32(ddlShenfen.SelectedValue));
             user.Audit = false;
             user.RegionCode = ddlStreet.SelectedValue;
@@ -216,17 +103,9 @@ public partial class Login_Register : System.Web.UI.Page
                 FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
                 SendWxArticle_ToCF("2", "有新用户提交注册申请，行业身份为：" + ddlShenfen.SelectedItem.Text + "\n" + "手机号：" + user.MobilePhoneNum, "请到管理后台-用户信息管理审核（如资料不全，对方有可能在补全资料，请耐心等待5分钟）");
             }
-            if (user.UserTypeId == 5)
+            if (user.UserTypeId == 1)
             {
-                Response.Redirect("NextReg.aspx?telNum=" + user.MobilePhoneNum);
-            }
-            else if (user.UserTypeId == 1)
-            {
-                Response.Redirect("CFNextReg.aspx?telNum=" + user.MobilePhoneNum);
-            }
-            else
-            {
-                Response.Redirect("CopNextReg.aspx?telNum=" + user.MobilePhoneNum);
+                Response.Redirect("~/UserCenter/uc_cfdw.aspx");
             }
             lbMsg.Text = ddlStreet.SelectedValue;
         }
@@ -274,13 +153,5 @@ public partial class Login_Register : System.Web.UI.Page
         article.Title = title;
         article.Description = description;
         sendmsg.SendArticleToTags(QYTag, article, "5");
-    }
-
-    protected void ddlShenfen_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlShenfen.SelectedValue == "1")
-        {
-            Response.Redirect("CF_QuickReg.aspx");
-        }
     }
 }

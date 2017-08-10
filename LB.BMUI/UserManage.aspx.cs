@@ -30,7 +30,7 @@ public partial class Admin_UserManage : System.Web.UI.Page
             MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId));
             if (!string.IsNullOrEmpty(MUserInfo.RegionCode))
             {
-                ((Label)(gvRow.Cells[9].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                ((Label)(gvRow.Cells[9].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName + MUserInfo.Address;
             }
             if (string.IsNullOrEmpty(bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(UserId)).IDCard) == false)
             {

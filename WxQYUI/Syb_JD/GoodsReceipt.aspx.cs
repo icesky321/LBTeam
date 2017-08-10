@@ -44,31 +44,31 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                     lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     tbcfdw.Text = InUserInfo.MobilePhoneNum;
-                    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + OutUserInfo.Address;
                     tbjdywy.Text = OutUserInfo.MobilePhoneNum;
                 }
             }
-            //else
-            //{
-            //    hfInfoId.Value = "0ea3eec2-6911-44df-8003-c478ccaf6a36";
-            //    if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
-            //    {
-            //        Response.Redirect("Success.aspx?CFId=0ea3eec2-6911-44df-8003-c478ccaf6a36");
-            //    }
-            //    else
-            //    {
-            //        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
-            //        LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
-            //        LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
-            //        InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-            //        OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-            //        lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
-            //        tbcfdw.Text = InUserInfo.MobilePhoneNum;
-            //        lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
-            //        tbjdywy.Text = OutUserInfo.MobilePhoneNum;
+            else
+            {
+                //hfInfoId.Value = "0ea3eec2-6911-44df-8003-c478ccaf6a36";
+                //if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
+                //{
+                //    Response.Redirect("Success.aspx?CFId=0ea3eec2-6911-44df-8003-c478ccaf6a36");
+                //}
+                //else
+                //{
+                //    MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+                //    LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
+                //    LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
+                //    InUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
+                //    OutUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                //    lbCf.Text = InUserInfo.RealName + "\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                //    tbcfdw.Text = InUserInfo.MobilePhoneNum;
+                //    lbjd.Text = OutUserInfo.RealName + "\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
+                //    tbjdywy.Text = OutUserInfo.MobilePhoneNum;
 
-            //    }
-            //}
+                //}
+            }
 
         }
     }
@@ -113,7 +113,6 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
                     MCF_JD_OrderDetail.GoodsUnit = Literal1.Text;
                     bll_cf_jd_orderdetail.NewCF_JD_OrderDetail(MCF_JD_OrderDetail);
                 }
-
             }
             if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
             {
@@ -148,14 +147,4 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/PayOrder.aspx?CFId=" + CFId;
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }
-
-    //private void SendWxArticle_ToCF(string QYId, string title, string description)
-    //{
-    //    //TODO: 发布前修改微信发布逻辑
-    //    LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
-    //    Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-    //    article.Title = title;
-    //    article.Description = description;
-    //    sendmsg.SendArticleToUsers(QYId, article, "5");
-    //}
 }

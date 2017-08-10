@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Login_Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CF_QuickReg.aspx.cs" Inherits="Login_CF_QuickReg" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,7 +16,7 @@
     <script type="text/javascript">
         $(function () { window.location.href = "#pos"; })
     </script>
-    <title>用户注册</title>
+    <title>产废单位快速注册</title>
 </head>
 <body ontouchstart>
     <form id="form1" runat="server" data-ajax="false">
@@ -28,7 +27,7 @@
         </asp:ScriptManager>
         <div id="pageMain" data-role="page">
             <div data-role="header">
-                <h1>绿宝新用户注册</h1>
+                <h1>产废单位快速注册</h1>
             </div>
 
             <div data-role="main" class="ui-content">
@@ -42,7 +41,7 @@
                     <asp:RequiredFieldValidator ID="rfv1" runat="server" ErrorMessage="请输入手机号码" ControlToValidate="tbMobile" Display="Dynamic" ValidationGroup="Reg1"></asp:RequiredFieldValidator>
                     <asp:Label ID="ltlErrorMsg" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
                 </div>
-                <asp:DropDownList ID="ddlShenfen" runat="server" data-native-menu="false" DataTextField="UserTypeName" DataValueField="DataTypeId" AutoPostBack="true" OnSelectedIndexChanged="ddlShenfen_SelectedIndexChanged">
+                <asp:DropDownList ID="ddlShenfen" runat="server" data-native-menu="false" DataTextField="UserTypeName" DataValueField="DataTypeId" Enabled="false">
                 </asp:DropDownList>
 
                 <asp:TextBox ID="tbMobile" runat="server" placeholder="请输入手机号码" ValidationGroup="Reg1"></asp:TextBox>
@@ -54,7 +53,11 @@
                 <asp:RequiredFieldValidator ID="rfv2" runat="server" ErrorMessage="密码不可为空" ControlToValidate="tbPassword" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
                 </div>
                 <asp:TextBox ID="tbPassword" runat="server" placeholder="设置登录密码" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
-
+                <div data-role="controlgroup">
+                    门店名称：&nbsp;&nbsp;
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="门店名称不可为空" ControlToValidate="tbCopName" Display="Dynamic" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
+                </div>
+                <asp:TextBox ID="tbCopName" runat="server" placeholder="设置门店名称" ClientIDMode="Static" ValidationGroup="Reg2"></asp:TextBox>
                 <div data-role="main" class="ui-content">
                     <%--                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>--%>

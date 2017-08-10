@@ -32,7 +32,7 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
             MUserInfo = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(MCopInfo.UserId));
             if (!string.IsNullOrEmpty(MUserInfo.RegionCode))
             {
-                ((Label)(gvRow.Cells[11].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                ((Label)(gvRow.Cells[11].FindControl("lbAddress"))).Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName + MUserInfo.Address;
             }
             if (string.IsNullOrEmpty(bll_copinfo.GetCopInfoeById(Convert.ToInt32(CopId)).Bizlicense) == false)
             {

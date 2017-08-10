@@ -131,4 +131,9 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
         }
     }
+
+    protected void btnQuickReg_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CF_quickReg.aspx");
+    }
 }

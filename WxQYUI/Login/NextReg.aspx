@@ -22,10 +22,10 @@
             <div data-role="main" class="ui-content">
                 <asp:HiddenField ID="hfTelNum" runat="server" />
                 真实姓名：<asp:TextBox ID="tbRealName" runat="server"></asp:TextBox>
-
+                <asp:RequiredFieldValidator ID="rfv1" runat="server" ErrorMessage="请输入真实姓名" ControlToValidate="tbRealName" Display="Dynamic" ValidationGroup="Reg1" ForeColor="Red"></asp:RequiredFieldValidator>
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
 
-                昵称：<asp:TextBox ID="tbNiChen" runat="server"></asp:TextBox>
+                车牌号：<asp:TextBox ID="tbNiChen" runat="server"></asp:TextBox>
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
 
                 开户行信息：<asp:TextBox ID="tbBankInfo" runat="server"></asp:TextBox>
@@ -34,20 +34,20 @@
 
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
 
-                        <table>
-                            <tr>
-                                <td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
-                                <td>
-                                    <asp:FileUpload ID="FileUpload1" runat="server" /></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
+                <table>
+                    <tr>
+                        <td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
+                        <td>
+                            <asp:FileUpload ID="FileUpload1" runat="server" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:Label ID="Label1" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
+                            <asp:Button ID="btUserNext" runat="server" Text="确定" OnClick="btUserNext_Click" ValidationGroup="Reg1" />
 
-                                    <asp:Button ID="btUserNext" runat="server" Text="确定" OnClick="btUserNext_Click" />
-                                    <asp:Label ID="Label1" runat="server" Text="" Font-Bold="True" ForeColor="Red"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
+                        </td>
+                    </tr>
+                </table>
                 <div style="height: 60px;"></div>
 
             </div>

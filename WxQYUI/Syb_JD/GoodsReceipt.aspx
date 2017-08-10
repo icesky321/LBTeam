@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GoodsReceipt.aspx.cs" Inherits="Syb_Dyywy_GoodsReceipt" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,6 +15,7 @@
 </head>
 <body>
     <form id="form1" runat="server" data-ajax="false">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div id="page1" data-role="page">
             <div data-role="header">
                 创建收货订单
@@ -40,6 +42,7 @@
                             </div>
                             <div class="weui-cell__bd">
                                 <asp:TextBox ID="tbNum" runat="server" class="weui-input" type="text" placeholder="请输入准确重量/数量"></asp:TextBox>
+                                <asp:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" TargetControlID="tbNum" ValidChars="1234567890./- " Enabled="True" />
                             </div>
                             <div class="weui-cell__ft">
                                 <label class="weui-label">
