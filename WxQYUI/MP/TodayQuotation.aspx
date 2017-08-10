@@ -98,6 +98,9 @@
                         汽车80AB：代表型号80AH以下的汽车电池。<br />
                     </span>
                 </label>
+                <div style="font-size: 1em; color: red;">
+                    友情提示：因当前铅市波动加剧，为了保障客户利益，凡在绿宝平台下单的废旧电瓶回收申请，绿宝平台承诺实行下单保价政策，在用户下单后行情下跌的情况下，平台将继续执行下单之时的价格，给予用户最大利益。
+                </div>
                 <asp:Button ID="btSell" runat="server" Text="我要卖货" OnClick="btSell_Click" rel="external" />
             </div>
 
