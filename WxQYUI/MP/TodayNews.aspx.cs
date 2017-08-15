@@ -11,8 +11,8 @@ public partial class MP_TodayNews : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            hfBeginDate.Value = System.DateTime.Now.AddDays(-1).ToString();
-            hfEndDate.Value = System.DateTime.Now.AddDays(1).ToString();
+            hfBeginDate.Value = System.DateTime.Now.ToString("yyyy-MM-dd");
+            hfEndDate.Value = System.DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
         }
     }
 }

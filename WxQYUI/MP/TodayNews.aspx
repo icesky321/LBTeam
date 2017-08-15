@@ -51,11 +51,11 @@
                         </ul>
                     </ItemTemplate>
                 </asp:Repeater>
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="ShowTime desc" TableName="NewsInfo" Where="ShowTime &gt; @ShowTime &amp;&amp; ShowTime &lt; @ShowTime1 &amp;&amp; NewsTypeId == @NewsTypeId">
+                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LB.SQLServerDAL.LBDataContext" EntityTypeName="" OrderBy="ShowTime desc" TableName="NewsInfo" Where="ShowTime &lt; @ShowTime1 &amp;&amp; NewsTypeId == @NewsTypeId &amp;&amp; ShowTime &gt;= @ShowTime">
                     <WhereParameters>
-                        <asp:ControlParameter ControlID="hfBeginDate" Name="ShowTime" PropertyName="Value" Type="DateTime" />
                         <asp:ControlParameter ControlID="hfEndDate" Name="ShowTime1" PropertyName="Value" Type="DateTime" />
                         <asp:Parameter DefaultValue="2" Name="NewsTypeId" Type="Int32" />
+                        <asp:ControlParameter ControlID="hfBeginDate" Name="ShowTime" PropertyName="Value" Type="DateTime" />
                     </WhereParameters>
                 </asp:LinqDataSource>
                 <asp:HiddenField ID="hfBeginDate" runat="server" />
