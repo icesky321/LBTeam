@@ -23,8 +23,26 @@ public partial class Quotation_Quote : System.Web.UI.Page
 
     private void Init_Load()
     {
+        Load_UserInfo();
         Load_TS();
         Load_Region();
+    }
+
+    private void Load_UserInfo()
+    {
+        if (!User.Identity.IsAuthenticated)
+            return;
+
+        string mobile = User.Identity.Name;
+        LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByTelNum(mobile);
+        hfUserId.Value = user.UserId.ToString();
+
+        Cobe.CnRegion.SQLServerDAL.Region region = bll_region.GetRegion(user.RegionCode);
+        if (region == null)
+            return;
+        hfRegionCode.Value = region.CityId;
+        Cobe.CnRegion.SQLServerDAL.Region cityRegion = bll_region.GetRegion(hfRegionCode.Value);
+        ltlCityName.Text = cityRegion.WholeName;
     }
 
     private void Load_Region()
@@ -116,6 +134,42 @@ public partial class Quotation_Quote : System.Web.UI.Page
         {
             TextBox tbprice = row.FindControl("tbPrice") as TextBox;
             tbprice.Text = "";
+        }
+    }
+
+
+
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (ddlDC.SelectedIndex < 1)
+            return;
+
+        string tsCode = ddlDC.SelectedItem.Value;
+
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            Label lbLastPrice = e.Row.FindControl("lbLastPrice") as Label;
+
+            int userId = 0;
+            int.TryParse(hfUserId.Value, out userId);
+
+            if (userId == 0)
+                return;
+
+            LB.SQLServerDAL.Quotation quotation = bll_quotation.GetLastQuotedPrice(userId, tsCode, hfRegionCode.Value);
+            if (quotation == null)
+                return;
+
+            lbLastPrice.Text = quotation.QuotedPrice.ToString();
+        }
+    }
+
+    protected void btnFillup_Click(object sender, EventArgs e)
+    {
+        foreach (GridViewRow row in GridView1.Rows)
+        {
+            TextBox tbPrice = row.FindControl("tbPrice") as TextBox;
+            tbPrice.Text = tbPriceSample.Text;
         }
     }
 }
