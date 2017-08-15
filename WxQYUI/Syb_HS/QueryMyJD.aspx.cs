@@ -49,7 +49,6 @@ public partial class Syb_JD_QueryMyCF : System.Web.UI.Page
     public void LoadJDInCity(string cityRegionCode)
     {
         var query = bll_userManage1.GetUserInfo_JD_InCity(cityRegionCode);
-
         lvUserInfo.DataSource = query.AsQueryable();
         lvUserInfo.DataBind();
 
