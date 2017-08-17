@@ -47,7 +47,6 @@
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:HiddenField ID="hfRegionCode" runat="server" Value='<%# Eval("Id") %>' />
-
                     <asp:Label ID="lbAreaName" runat="server" Text='<%# Eval("AreaName") %>'></asp:Label>
                 </ItemTemplate>
                 <ItemStyle Width="150px" />
