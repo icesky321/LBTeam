@@ -39,7 +39,7 @@
                                             <asp:HiddenField ID="hfUserId" runat="server" Value='<%# Eval("UserId") %>'></asp:HiddenField>
                                             <b>
                                                 <asp:Literal ID="ltlCF_UserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Literal></b>
-                                            (<asp:Literal ID="ltlCF_RealName" runat="server" Text='<%# Eval("RealName").ToString()=="" ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
+                                            (<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("RealName")==null ?"未实名认证":Eval("RealName").ToString() %>'></asp:Literal>)<br />
                                             <span style="color: #DCDCDC;"></span>
                                         </p>
 
