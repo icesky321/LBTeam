@@ -139,7 +139,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         if ((int)DateTime.Now.DayOfWeek >= 1 && (int)DateTime.Now.DayOfWeek <= 5 && DateTime.Now.TimeOfDay >= tsBegin && DateTime.Now.TimeOfDay < tsEnd)
             SendWxArticle_ToKefu("5", newSellInfo);
         else
-            SendWxArticle_ToKefu("4", newSellInfo);
+            SendWxArticle_ToKefu("6", newSellInfo);
         Response.Redirect("CreateLeads.aspx#pageRegCompleted", true);
     }
 
