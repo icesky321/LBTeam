@@ -137,7 +137,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         TimeSpan tsBegin = new TimeSpan(8, 0, 0);
         TimeSpan tsEnd = new TimeSpan(17, 30, 0);
         if ((int)DateTime.Now.DayOfWeek >= 1 && (int)DateTime.Now.DayOfWeek <= 5 && DateTime.Now.TimeOfDay >= tsBegin && DateTime.Now.TimeOfDay < tsEnd)
-            SendWxArticle_ToKefu("3", newSellInfo);
+            SendWxArticle_ToKefu("5", newSellInfo);
         else
             SendWxArticle_ToKefu("4", newSellInfo);
         Response.Redirect("CreateLeads.aspx#pageRegCompleted", true);
