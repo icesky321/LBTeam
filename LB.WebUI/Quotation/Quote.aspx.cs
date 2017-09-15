@@ -149,6 +149,7 @@ public partial class Quotation_Quote : System.Web.UI.Page
         if (e.Row.RowType == DataControlRowType.DataRow)
         {
             Label lbLastPrice = e.Row.FindControl("lbLastPrice") as Label;
+            HiddenField hfCityRegionCode = e.Row.FindControl("hfRegionCode") as HiddenField;
 
             int userId = 0;
             int.TryParse(hfUserId.Value, out userId);
@@ -156,7 +157,7 @@ public partial class Quotation_Quote : System.Web.UI.Page
             if (userId == 0)
                 return;
 
-            LB.SQLServerDAL.Quotation quotation = bll_quotation.GetLastQuotedPrice(userId, tsCode, hfRegionCode.Value);
+            LB.SQLServerDAL.Quotation quotation = bll_quotation.GetLastQuotedPrice(userId, tsCode, hfCityRegionCode.Value);
             if (quotation == null)
                 return;
 

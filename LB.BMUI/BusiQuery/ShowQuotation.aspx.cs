@@ -24,7 +24,7 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
     private void Init_Load()
     {
         Load_HS();
-        
+
 
 
     }
@@ -74,7 +74,7 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
     {
         int userId = 0;
         int.TryParse(hfUserId.Value, out userId);
-        
+
         Cobe.CnRegion.SQLServerDAL.Region countyRegion = e.Item.DataItem as Cobe.CnRegion.SQLServerDAL.Region;
 
         Repeater rptRegion2 = sender as Repeater;
@@ -92,6 +92,15 @@ public partial class BusiQuery_ShowQuotation : System.Web.UI.Page
     protected void btnQuery_Click(object sender, EventArgs e)
     {
         hfUserId.Value = ddlHS.SelectedItem.Value;
+        int userId = 0;
+        int.TryParse(hfUserId.Value, out userId);
+        LB.SQLServerDAL.UserInfo user = bll_user.GetUserInfoByUserId(userId);
+        Cobe.CnRegion.SQLServerDAL.Region region = bll_region.GetRegion(user.RegionCode);
+
+        if (region == null)
+            return;
+
+        hfCityCode.Value = region.CityId;
 
         var tses = bll_ts.GetTSInfo();
         rptTS.DataSource = tses;
