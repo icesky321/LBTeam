@@ -12,6 +12,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
     LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sellInfo = new LB.BLL.SellInfoManage();
+    LB.BLL.SMS sms = new LB.BLL.SMS();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -131,7 +132,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         sellInfo.StatusMsg = "等待绿宝客服审核";
         sellInfo.IsClosed = false;
         LB.SQLServerDAL.SellInfo newSellInfo = bll_sellInfo.CreateSellInfo(sellInfo);
-
+        sms.SendSMS("15267863162", "验证码：你已成功发布出售信息，绿宝承诺在两日内对您的出售请求做出处理。【绿宝】");
         // 以下设计思路，如果在工作时间，审核信息发送给“信息客服”，如果在非工作时间，信息发送给“信息客服后备”。
         // 4信息客服后备，3信息客服
         TimeSpan tsBegin = new TimeSpan(8, 0, 0);

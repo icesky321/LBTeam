@@ -19,6 +19,9 @@
         <div data-role="page" id="page1">
             <div data-role="main" class="ui-content">
                 <asp:Button ID="btSearch" runat="server" Text="查询今日回收价格" OnClick="btSearch_Click" rel="external" />
+                <div style="font-size: 1em; color: red; padding: 1em;">
+                    温馨提示：产废单位下单后，如果平台业务员电话确认并已到店，此时产废单位出现主动废单情况，业务员将收取100元车油费。
+                </div>
                 <fieldset data-role="controlgroup">
                     <legend>您要出售的电瓶品种</legend>
                     <asp:CheckBoxList ID="cblDP" runat="server" RepeatLayout="UnorderedList">
@@ -77,7 +80,7 @@
                     <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
                     <div class="weui-msg__text-area">
                         <h2 class="weui-msg__title">操作成功</h2>
-                        <p class="weui-msg__desc">出售信息已发布成功，请返回信息查询页面。</p>
+                        <p class="weui-msg__desc">出售信息已发布成功，因为路程和人工因素，该单将在1-2个工作日内处理，请耐心等待，谢谢！</p>
                     </div>
                     <div class="weui-msg__opr-area">
                         <p class="weui-btn-area">
