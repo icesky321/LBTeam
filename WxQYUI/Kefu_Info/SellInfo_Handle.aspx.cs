@@ -15,7 +15,7 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
     LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
     LB.BLL.StaffManage bll_staff = new LB.BLL.StaffManage();
     LB.BLL.CopInfo bll_cop = new LB.BLL.CopInfo();
-
+    //LB.BLL.SMS sms = new LB.BLL.SMS();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -159,11 +159,14 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
                 if (user == null)
                     return;
                 sellInfo.JD_UserId = user.UserId;
-                sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员处理";
-
+                sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员接单";
+                sellInfo.HS_UserId = Convert.ToInt32(ddlCop.SelectedValue);
                 bll_sellInfo.UpdateSellInfo(sellInfo);
 
                 result = SendWxArticle_ToJD(sellInfo);
+                LB.SQLServerDAL.UserInfo MCFInfo = new LB.SQLServerDAL.UserInfo();
+                MCFInfo = bll_userManage.GetUserInfoByUserId(sellInfo.CF_UserId);
+                //sms.SendSMS(MCFInfo.MobilePhoneNum, "验证码：绿宝平台已审核，等待回收业务员处理。【绿宝】");
             }
 
             ltlResult.Text = "审核完毕。" + result;
@@ -195,8 +198,8 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
         article.Title = "新业务提醒";
         article.Description = sellInfo.Title + "\n\n卖家姓名：" + cf_User.RealName + "\n手机号：" + cf_User.MobilePhoneNum + "\n详细地址：" +
              cf_User.Address + "\n出售信息：" + sellInfo.Description;
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_JD/GoodsReceipt.aspx?InfoId=" + sellInfo.InfoId.ToString();
-
+        //article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_JD/GoodsReceipt.aspx?InfoId=" + sellInfo.InfoId.ToString();
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_JD/OrderManage.aspx";
         string errmsg = string.Empty;
 
         if (string.IsNullOrEmpty(jd_User.QYUserId))

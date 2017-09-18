@@ -58,7 +58,7 @@
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetSellInfo_ByKefuTohandleTag" TypeName="LB.BLL.SellInfoManage">
             <SelectParameters>
                 <asp:Parameter DefaultValue="true" Name="kefuToHandleTag" Type="Boolean" />
-                <asp:Parameter DefaultValue="5" Name="count" Type="Int32" />
+                <asp:Parameter DefaultValue="10" Name="count" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
     </div>

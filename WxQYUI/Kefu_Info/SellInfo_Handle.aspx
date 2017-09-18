@@ -59,28 +59,36 @@
                     <div id="divMsg" runat="server" visible="false" style="margin: 20px 0 20px 0; border: 1px solid #808080; padding: 15px; border-radius: 5px; background-color: #ce2c2c; color: white;">
                         <asp:Literal ID="ltlMsg" runat="server"></asp:Literal>
                     </div>
+                    选择回收公司：
+                                        <div class="ui-grid-a">
+                                            <asp:DropDownList ID="ddlCop" runat="server">
+                                                <asp:ListItem Value="0"></asp:ListItem>
+                                                <asp:ListItem Value="1155">杭州赐翔</asp:ListItem>
+                                                <asp:ListItem Value="2442">绍兴云豪</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
                     转发此信息至：
 
                     <div class="ui-grid-a">
                         <div class="ui-block-a">
-                            <asp:RadioButton ID="rbtnAuto" runat="server" Text="系统指派回收业务员 →" GroupName="Next" />
+                            <asp:RadioButton ID="rbtnAuto" runat="server" Text="系统指派回收业务员 →" GroupName="Next" Visible="false" />
                         </div>
                         <div class="ui-block-b">
-                            <asp:DropDownList ID="ddlJD" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlJD" runat="server" Visible="false"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="ui-grid-a">
                         <div class="ui-block-a">
-                            <asp:RadioButton ID="rbtnHS" runat="server" Text="人工指派回收公司 →" Checked="true" GroupName="Next" />
+                            <asp:RadioButton ID="rbtnHS" runat="server" Text="人工指派回收公司 →" GroupName="Next" Visible="false" />
                         </div>
                         <div class="ui-block-b">
-                            <asp:DropDownList ID="ddlHS" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlHS" runat="server" Visible="false"></asp:DropDownList>
                         </div>
                     </div>
 
                     <div class="ui-grid-a">
                         <div class="ui-block-a">
-                            <asp:RadioButton ID="rbtnJD" runat="server" Text="人工指派回收业务员 →" GroupName="Next" />
+                            <asp:RadioButton ID="rbtnJD" runat="server" Text="人工指派回收业务员 →" Checked="true" GroupName="Next" />
                         </div>
                         <div class="ui-block-b">
                             <asp:DropDownList ID="ddlPingtaiYWY" runat="server"></asp:DropDownList>
