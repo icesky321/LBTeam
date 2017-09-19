@@ -158,6 +158,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
 
             ltlResult.Text = "审核完毕。" + result;
 
+
         }
 
         if (e.CommandName == "Reject")

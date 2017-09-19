@@ -139,17 +139,30 @@ public partial class Kefu_Info_DispatchManage : System.Web.UI.Page
             Label lbInfoId = e.Item.FindControl("lbInfoId") as Label;
             Label lbjd = e.Item.FindControl("lbjd") as Label;
             Label tbjdywy = e.Item.FindControl("tbjdywy") as Label;
+            Label lbjd1 = e.Item.FindControl("lbjd1") as Label;
+            Label tbjdywy1 = e.Item.FindControl("tbjdywy1") as Label;
             LB.SQLServerDAL.UserInfo InUser = new LB.SQLServerDAL.UserInfo();
             MSellInfo = bll_sell.GetSellInfo_ById(Guid.Parse(lbInfoId.Text));
             LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
             MUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-            LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
-            if (MSellInfo.JD_UserId != 0)
-            {
-                MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-                lbjd.Text = MJDUserInfo.RealName;
-                tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
-            }
+            //LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
+            //MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+            //if (rptSellInfoes_Doing.Items.Count>0)
+            //{
+            //    if (MSellInfo.JD_UserId != 0)
+            //    {
+            //        lbjd.Text = MJDUserInfo.RealName;
+            //        tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
+            //    }
+            //}
+            //if (rptSellInfoesClosed.Items.Count > 0)
+            //{
+            //    if (MSellInfo.JD_UserId != 0)
+            //    {
+            //        lbjd1.Text = MJDUserInfo.RealName;
+            //        tbjdywy1.Text = MJDUserInfo.MobilePhoneNum;
+            //    }
+            //}
 
             lbCFRealname.Text = MUserInfo.RealName;
             lbCFDW.Text = MUserInfo.MobilePhoneNum;

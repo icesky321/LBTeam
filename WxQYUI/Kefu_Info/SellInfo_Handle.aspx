@@ -98,8 +98,8 @@
                     客服留言：<br />
                     <asp:TextBox ID="tbRemark" runat="server" Rows="2" TextMode="MultiLine" Width="100%" Style="margin-bottom: 10px;"></asp:TextBox>
                     <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
-                        <asp:Button ID="btnAccept" runat="server" Text="审核通过" data-icon="check" CssClass="ui-btn-active" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' OnCommand="CommandButton_Click" />
-                        <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' OnCommand="CommandButton_Click" />
+                        <asp:Button ID="btnAccept" runat="server" Text="审核通过" data-icon="check" CssClass="ui-btn-active" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' OnCommand="CommandButton_Click" rel="external"/>
+                        <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' OnCommand="CommandButton_Click" rel="external"/>
                     </fieldset>
                     <div style="padding: 20px 0 50px 0;">
                         处理结果：<asp:Literal ID="ltlResult" runat="server"></asp:Literal>

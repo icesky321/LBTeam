@@ -114,6 +114,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             sellInfo.StatusMsg = "回收业务员拒绝该单";
             bll_sell.UpdateSellInfo(sellInfo);
             Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
+            SendWxArticle_ToKefu("6", sellInfo);
         }
 
 
@@ -146,5 +147,16 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
     protected void btnQuickReg_Click(object sender, EventArgs e)
     {
         Response.Redirect("CF_quickReg.aspx");
+    }
+
+    private void SendWxArticle_ToKefu(string toTags, LB.SQLServerDAL.SellInfo sellInfo)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = "有出售信息需要审核";
+        article.Description = "产废单位发布了一条出售信息，请点击该条信息直接审核，或到客服管理平台→业务信息审核栏目进行审核。";
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/SellInfo_Handle.aspx?infoId=" + sellInfo.InfoId.ToString();
+        sendmsg.SendArticleToTags(toTags, article, "5");
     }
 }

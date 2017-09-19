@@ -184,7 +184,7 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
             bll_sellInfo.UpdateSellInfo(sellInfo);
         }
 
-
+        Response.Redirect("DispatchManage.aspx");
     }
 
 

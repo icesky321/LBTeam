@@ -11,4 +11,11 @@ public partial class Syb_Dyywy_Test : System.Web.UI.Page
     {
 
     }
+
+    protected void CommandButton_Click(object sender, CommandEventArgs e)
+    {
+        if (e.CommandName == "Accept")
+        { }
+        Response.Redirect("~/Kefu_Info/DispatchManage.aspx");
+    }
 }
