@@ -119,6 +119,33 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取派单街道业务员的要处理的出售信息
+        /// </summary>
+        /// <param name="JD_UserId"></param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetSellInfoBy_JD_NotClosed(int JD_UserId)
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.JD_UserId == JD_UserId && c.IsClosed == false
+                        orderby c.CreateDate descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
+        }
+
+        /// <summary>
+        /// 获取所有待街道业务员接单的收货信息
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetAllSellInfoBy_JD_NotClosed()
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.IsClosed == false
+                        orderby c.CreateDate descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.SellInfo>();
+        }
+
+        /// <summary>
         /// 获取我的已关闭出售信息。
         /// </summary>
         /// <param name="userMobile">用户手机号</param>

@@ -25,7 +25,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
 
                 hfJD_UserId.Value = user.UserId.ToString();
 
-                Load_SellInfoes(userMobile);
+                Load_SellInfoes(user.UserId);
                 Load_SellInfoesClosed(userMobile);
             }
         }
@@ -46,9 +46,9 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         ltlCountProcessing3.DataBind();
     }
 
-    private void Load_SellInfoes(string userMobile)
+    private void Load_SellInfoes(int JD_UserId)
     {
-        var query = bll_sell.GetMySellInfo_NotClosed(userMobile);
+        var query = bll_sell.GetSellInfoBy_JD_NotClosed(JD_UserId);
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Todo = new List<LB.SQLServerDAL.SellInfo>();
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Doing = new List<LB.SQLServerDAL.SellInfo>();
 
@@ -102,7 +102,18 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             sellInfo.JD_AcceptedTag = true;
             sellInfo.StatusMsg = "回收业务员已接单";
             bll_sell.UpdateSellInfo(sellInfo);
-            Load_SellInfoes(hfJD_UserMobile.Value);
+            Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
+        }
+
+        if (e.CommandName == "Reject")
+        {
+            LB.SQLServerDAL.SellInfo sellInfo = bll_sell.GetSellInfo_ById(infoId);
+            sellInfo.JD_AcceptedTag = false;
+            sellInfo.JD_TohandleTag = false;
+            sellInfo.Kefu_TohandleTag = true;
+            sellInfo.StatusMsg = "回收业务员拒绝该单";
+            bll_sell.UpdateSellInfo(sellInfo);
+            Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
         }
 
 

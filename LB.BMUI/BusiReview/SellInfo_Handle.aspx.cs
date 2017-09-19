@@ -149,7 +149,7 @@ public partial class BusiReview_SellInfo_Handle : System.Web.UI.Page
                 if (user == null)
                     return;
                 sellInfo.JD_UserId = user.UserId;
-                sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员处理";
+                sellInfo.StatusMsg = "绿宝平台已审核，等待回收业务员接单";
                 sellInfo.HS_UserId = Convert.ToInt32(ddlHS.SelectedValue);
                 bll_sellInfo.UpdateSellInfo(sellInfo);
 
