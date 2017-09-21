@@ -47,5 +47,26 @@ namespace LB.SQLServerDAL
             }
             return exists;
         }
+
+
+        public void DeleteCF_JD_OrderDetailByCFId(Guid CFId)
+        {
+            var query = from s in dbContext.CF_JD_OrderDetail
+                        where s.CFId == CFId
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.CF_JD_OrderDetail.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

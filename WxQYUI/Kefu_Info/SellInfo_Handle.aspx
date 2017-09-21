@@ -62,7 +62,7 @@
                     选择回收公司：
                                         <div class="ui-grid-a">
                                             <asp:DropDownList ID="ddlCop" runat="server">
-                                                <asp:ListItem Value="0"></asp:ListItem>
+                                                <asp:ListItem Value="0">...请选择回收公司...</asp:ListItem>
                                                 <asp:ListItem Value="1155">杭州赐翔</asp:ListItem>
                                                 <asp:ListItem Value="2442">绍兴云豪</asp:ListItem>
                                             </asp:DropDownList>

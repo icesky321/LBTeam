@@ -154,9 +154,9 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         //TODO: 发布前修改微信发布逻辑
         LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-        article.Title = "有出售信息需要审核";
-        article.Description = "产废单位发布了一条出售信息，请点击该条信息直接审核，或到客服管理平台→业务信息审核栏目进行审核。";
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/SellInfo_Handle.aspx?infoId=" + sellInfo.InfoId.ToString();
+        article.Title = "业务员拒绝该单";
+        article.Description = "您指派的回收业务员拒绝该单，请您另行指派";
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/DispatchManage.aspx";
         sendmsg.SendArticleToTags(toTags, article, "5");
     }
 }
