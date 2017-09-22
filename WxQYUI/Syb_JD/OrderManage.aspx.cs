@@ -106,7 +106,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
             LB.SQLServerDAL.UserInfo Muserinfo = new LB.SQLServerDAL.UserInfo();
             Muserinfo = bll_usermanage.GetUserInfoByUserId(sellInfo.CF_UserId);
-            sms.SendSMS(Muserinfo.MobilePhoneNum, "验证码：回收员已接单，会尽快与您联系，请耐心等待。【绿宝】");
+            sms.SendSMS(Muserinfo.MobilePhoneNum, "回收员已接单，会尽快与您联系，请耐心等待。【绿宝】");
         }
 
         if (e.CommandName == "Reject")
