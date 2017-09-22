@@ -10,6 +10,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sell = new LB.BLL.SellInfoManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
+    LB.BLL.SMS sms = new LB.BLL.SMS();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -103,6 +104,9 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             sellInfo.StatusMsg = "回收业务员已接单";
             bll_sell.UpdateSellInfo(sellInfo);
             Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
+            LB.SQLServerDAL.UserInfo Muserinfo = new LB.SQLServerDAL.UserInfo();
+            Muserinfo = bll_usermanage.GetUserInfoByUserId(sellInfo.CF_UserId);
+            sms.SendSMS(Muserinfo.MobilePhoneNum, "验证码：回收员已接单，会尽快与您联系，请耐心等待。【绿宝】");
         }
 
         if (e.CommandName == "Reject")

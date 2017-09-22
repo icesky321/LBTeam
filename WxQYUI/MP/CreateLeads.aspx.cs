@@ -132,7 +132,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         sellInfo.StatusMsg = "等待绿宝客服审核";
         sellInfo.IsClosed = false;
         LB.SQLServerDAL.SellInfo newSellInfo = bll_sellInfo.CreateSellInfo(sellInfo);
-        sms.SendSMS(userName, "验证码：你已成功发布出售信息，绿宝承诺在两日内对您的出售请求做出处理。【绿宝】");
+        sms.SendSMS(userName, "验证码：你已成功发布出售信息，绿宝承诺在两日内对您的出售请求做出处理。（目前仅限杭州绍兴地区）【绿宝】");
         // 以下设计思路，如果在工作时间，审核信息发送给“信息客服”，如果在非工作时间，信息发送给“信息客服后备”。
         // 4信息客服后备，3信息客服
         TimeSpan tsBegin = new TimeSpan(8, 0, 0);
@@ -152,7 +152,8 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
         article.Title = "有出售信息需要审核";
         article.Description = "产废单位发布了一条出售信息，请点击该条信息直接审核，或到客服管理平台→业务信息审核栏目进行审核。";
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/SellInfo_Handle.aspx?infoId=" + sellInfo.InfoId.ToString();
+        //article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/SellInfo_Handle.aspx?infoId=" + sellInfo.InfoId.ToString();
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/DispatchManage.aspx";
         sendmsg.SendArticleToTags(toTags, article, "5");
     }
 

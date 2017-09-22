@@ -26,7 +26,6 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         {
             if (Request.QueryString["InfoId"] != null)
             {
-
                 string InfoId = Request.QueryString["InfoId"];
                 hfInfoId.Value = InfoId;
                 if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
