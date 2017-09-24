@@ -16,6 +16,7 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
     LB.BLL.StaffManage bll_staff = new LB.BLL.StaffManage();
     LB.BLL.CopInfo bll_cop = new LB.BLL.CopInfo();
     //LB.BLL.SMS sms = new LB.BLL.SMS();
+    LB.BLL.ConfigManage bll_config = new LB.BLL.ConfigManage();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -88,9 +89,14 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
         ddlPingtaiYWY.Items.Clear();
         foreach (LB.SQLServerDAL.Staff staff in staffs)
         {
-            ddlPingtaiYWY.Items.Add(new ListItem(staff.RealName, staff.MobileNum));
+            LB.SQLServerDAL.JD_Config config = bll_config.GetJD_Config(staff.MobileNum);
+
+            string bookBillMode = string.Empty;     //接单状态信息
+            if (config != null && config.BookBillModeToggle == false)
+                bookBillMode = "(不接单)";
+            ddlPingtaiYWY.Items.Add(new ListItem(staff.RealName + bookBillMode, staff.MobileNum));
         }
-        ddlPingtaiYWY.Items.Insert(0, "请选择平台回收业务员");
+        ddlPingtaiYWY.Items.Insert(0, "选择业务员");
     }
 
     protected void CommandButton_Click(object sender, CommandEventArgs e)
