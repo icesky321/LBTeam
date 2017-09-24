@@ -69,6 +69,7 @@
     <Compile Include="StaffDA.cs" />
     <Compile Include="UserInfoDA.cs" />
     <Compile Include="UserNoticeInfoDA.cs" />
+    <Compile Include="JD_ConfigDA.cs" />
     <Compile Include="UserTypeInfoDA.cs" />
     <Compile Include="WeixinMessageDA.cs" />
   </ItemGroup>

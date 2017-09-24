@@ -43,6 +43,7 @@
     <Compile Include="CF_JD_Order.cs" />
     <Compile Include="CF_JD_OrderDetail.cs" />
     <Compile Include="CodeRule.cs" />
+    <Compile Include="ConfigManage.cs" />
     <Compile Include="CopInfo.cs" />
     <Compile Include="NewsInfo.cs" />
     <Compile Include="NewsType.cs" />

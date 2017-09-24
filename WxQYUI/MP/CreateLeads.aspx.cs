@@ -132,8 +132,8 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         sellInfo.IsClosed = false;
         LB.SQLServerDAL.SellInfo newSellInfo = bll_sellInfo.CreateSellInfo(sellInfo);
 
-        // 以下设计思路，如果在工作时间，审核信息发送给“信息客服”，如果在非工作时间，信息发送给“信息客服后备”。
-        // 4信息客服后备，3信息客服
+        // 以下设计思路，如果在工作时间，审核信息发送给“信息客服”，如果在非工作时间，信息发送给“信息客服（非工作时）”。
+        // 6信息客服（非工作时），5信息客服
         TimeSpan tsBegin = new TimeSpan(8, 0, 0);
         TimeSpan tsEnd = new TimeSpan(17, 30, 0);
         if ((int)DateTime.Now.DayOfWeek >= 1 && (int)DateTime.Now.DayOfWeek <= 5 && DateTime.Now.TimeOfDay >= tsBegin && DateTime.Now.TimeOfDay < tsEnd)
