@@ -14,20 +14,7 @@ public partial class UserCenter_uc_cfdw : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            //if (bll_user.GetUserInfoByTelNum(User.Identity.Name).Audit == true)
-            //{
-            //    audit1.Visible = false;
-            //    audit2.Visible = false;
-            //    audit3.Visible = false;
-            //    audit4.Visible = false;
-            //    audit5.Visible = false;
-            //    Init_Load();
-            //}
-            //else
-            //{
             Init_Load();
-            //}
-
         }
     }
 
@@ -60,16 +47,14 @@ public partial class UserCenter_uc_cfdw : System.Web.UI.Page
                     ltlAddress.Text = "需补全信息";
                 else
                     ltlAddress.Text = user.Address;
-                LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-                MUserInfo = bll_user.GetUserInfoByTelNum(User.Identity.Name);
-                if (!bll_copinfo.ExistUseId(MUserInfo.UserId))
+
+                if (!bll_copinfo.ExistUseId(user.UserId))
                 {
                     Literal2.Text = "需补全信息(如个人请忽略)";
-
                 }
                 else
                 {
-                    Literal2.Text = bll_copinfo.GetCopInfoeByUserId(MUserInfo.UserId).CopName;
+                    Literal2.Text = bll_copinfo.GetCopInfoeByUserId(user.UserId).CopName;
                     //Literal2.Text = "需补全信息(如个人请忽略)";
                 }
             }

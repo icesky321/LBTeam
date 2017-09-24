@@ -33,17 +33,13 @@
             </div>
             <div data-role="main" class="ui-content">
                 <ul data-role="listview">
-<%--                    <li>行业身份<p class="ui-li-aside">
+                    <%--                    <li>行业身份<p class="ui-li-aside">
                         <asp:Literal ID="ltlBusiIdentity1" runat="server"></asp:Literal>
                     </p>
                     </li>--%>
-                    <li><a href="../MP/TodayQuotation.aspx" data-transition="slide" rel="external">今日价格</a><p class="ui-li-aside">
-                        <asp:Literal ID="Literal4" runat="server"></asp:Literal>
-                    </p>
+                    <li><a href="../MP/TodayQuotation.aspx" data-transition="slide" rel="external">今日价格</a>
                     </li>
-                    <li><a href="../MP/CreateLeads.aspx" data-transition="slide" rel="external">我要卖货</a><p class="ui-li-aside">
-                        <asp:Literal ID="Literal3" runat="server"></asp:Literal>
-                    </p>
+                    <li><a href="../MP/CreateLeads.aspx" data-transition="slide" rel="external">我要卖货</a>
                     </li>
                     <li id="audit1" runat="server" visible="false"><a href="#" data-transition="slide" rel="external">用户名<p class="ui-li-aside">
                         <asp:Literal ID="ltlUserName" runat="server"></asp:Literal>
@@ -74,9 +70,7 @@
                         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                     </p>
                     </a></li>--%>
-                    <li><a href="MyWallet.aspx" data-transition="slide" rel="external">我的钱包<p class="ui-li-aside">
-                        <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-                    </p>
+                    <li><a href="MyWallet.aspx" data-transition="slide" rel="external">我的钱包
                     </a></li>
 
                     <li><a href="#pageMima" data-transition="slide" rel="external">密码管理</a></li>
