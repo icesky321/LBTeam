@@ -88,6 +88,25 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 获取派单街道业务员的要处理的出售信息
+        /// </summary>
+        /// <param name="JD_UserId"></param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetSellInfoBy_JD_NotClosed(int JD_UserId)
+        {
+            return da.GetSellInfoBy_JD_NotClosed(JD_UserId);
+        }
+
+        /// <summary>
+        /// 获取所有待街道业务员接单的收货信息
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetAllSellInfoBy_JD_NotClosed()
+        {
+            return da.GetAllSellInfoBy_JD_NotClosed();
+        }
+
+        /// <summary>
         /// 根据产废单位卖货单的状态信息查询单据信息
         /// </summary>
         /// <param name="jd_UserId">街道回收员用户Id</param>

@@ -10,6 +10,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
     LB.BLL.UserManage bll_usermanage = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sell = new LB.BLL.SellInfoManage();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
+    LB.BLL.SMS sms = new LB.BLL.SMS();
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -25,7 +26,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
 
                 hfJD_UserId.Value = user.UserId.ToString();
 
-                Load_SellInfoes(userMobile);
+                Load_SellInfoes(user.UserId);
                 Load_SellInfoesClosed(userMobile);
             }
         }
@@ -46,9 +47,9 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         ltlCountProcessing3.DataBind();
     }
 
-    private void Load_SellInfoes(string userMobile)
+    private void Load_SellInfoes(int JD_UserId)
     {
-        var query = bll_sell.GetMySellInfo_NotClosed(userMobile);
+        var query = bll_sell.GetSellInfoBy_JD_NotClosed(JD_UserId);
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Todo = new List<LB.SQLServerDAL.SellInfo>();
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Doing = new List<LB.SQLServerDAL.SellInfo>();
 
@@ -102,7 +103,22 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             sellInfo.JD_AcceptedTag = true;
             sellInfo.StatusMsg = "回收业务员已接单";
             bll_sell.UpdateSellInfo(sellInfo);
-            Load_SellInfoes(hfJD_UserMobile.Value);
+            Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
+            LB.SQLServerDAL.UserInfo Muserinfo = new LB.SQLServerDAL.UserInfo();
+            Muserinfo = bll_usermanage.GetUserInfoByUserId(sellInfo.CF_UserId);
+            sms.SendSMS(Muserinfo.MobilePhoneNum, "回收员已接单，会尽快与您联系，请耐心等待。【绿宝】");
+        }
+
+        if (e.CommandName == "Reject")
+        {
+            LB.SQLServerDAL.SellInfo sellInfo = bll_sell.GetSellInfo_ById(infoId);
+            sellInfo.JD_AcceptedTag = false;
+            sellInfo.JD_TohandleTag = false;
+            sellInfo.Kefu_TohandleTag = true;
+            sellInfo.StatusMsg = "回收业务员拒绝该单";
+            bll_sell.UpdateSellInfo(sellInfo);
+            Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
+            SendWxArticle_ToKefu("6", sellInfo);
         }
 
 
@@ -135,5 +151,16 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
     protected void btnQuickReg_Click(object sender, EventArgs e)
     {
         Response.Redirect("CF_quickReg.aspx");
+    }
+
+    private void SendWxArticle_ToKefu(string toTags, LB.SQLServerDAL.SellInfo sellInfo)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = "业务员拒绝该单";
+        article.Description = "您指派的回收业务员拒绝该单，请您另行指派";
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/DispatchManage.aspx";
+        sendmsg.SendArticleToTags(toTags, article, "5");
     }
 }

@@ -26,7 +26,6 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         {
             if (Request.QueryString["InfoId"] != null)
             {
-
                 string InfoId = Request.QueryString["InfoId"];
                 hfInfoId.Value = InfoId;
                 if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
@@ -117,8 +116,8 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
             {
                 MSellInfo.JD_TohandleTag = false;
-                MSellInfo.StatusMsg = "信息处理完毕";
-                MSellInfo.IsClosed = true;
+                MSellInfo.StatusMsg = "详单填写完毕,待产废单位确认";
+                //MSellInfo.IsClosed = true;
                 bll_sellinfomanage.UpdateSellInfo(MSellInfo);
                 SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
                 Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());

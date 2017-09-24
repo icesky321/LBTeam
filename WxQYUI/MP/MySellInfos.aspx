@@ -26,16 +26,21 @@
             <div data-role="content" class="ui-content">
                 <asp:HiddenField ID="hfUserMobile" runat="server" />
                 <asp:HiddenField ID="hfUserId" runat="server" />
-                <asp:Repeater ID="rptSellInfos" runat="server">
+                <asp:Repeater ID="rptSellInfos" runat="server" OnItemCommand="rptSellInfos2_ItemCommand" OnItemDataBound="rptSellInfos_ItemDataBound">
                     <ItemTemplate>
                         <div data-role="collapsible" data-collapsed="false">
                             <h3>
+                                <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
                                 <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
                                     <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
                             <p>
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
                                 <br />
                                 状态：<asp:Literal ID="ltlStatusMsg" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                                <p>
+                                    <%--<asp:LinkButton ID="lbtnDetail" runat="server" OnClick="lbtnDetail_Click">查看货单明细</asp:LinkButton>--%>
+                                    <asp:LinkButton ID="lbtnDetail" runat="server" Text="查看货单明细" CommandName="Detail" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
+                                </p>
                             </p>
                         </div>
                     </ItemTemplate>
@@ -57,10 +62,11 @@
             <div data-role="content" class="ui-content">
                 <asp:HiddenField ID="HiddenField1" runat="server" />
                 <asp:HiddenField ID="HiddenField2" runat="server" />
-                <asp:Repeater ID="rptSellInfos2" runat="server">
+                <asp:Repeater ID="rptSellInfos2" runat="server" OnItemCommand="rptSellInfos2_ItemCommand" OnItemDataBound="rptSellInfos_ItemDataBound">
                     <ItemTemplate>
                         <div data-role="collapsible" data-collapsed="false">
                             <h3>
+                                <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
                                 <asp:Literal ID="ltlTitle" runat="server" Text='<%# Eval("Title") %>'></asp:Literal><span style="float: right;">
                                     <asp:Literal ID="ltlCreateDate" runat="server" Text='<%# Eval("CreateDate", "{0:yyyy-MM-dd HH:mm}") %>'></asp:Literal></span></h3>
                             <p>
@@ -68,11 +74,13 @@
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
+                            <p>
+                                <asp:LinkButton ID="lbtnDetail" runat="server" Text="查看货单明细" CommandName="Detail" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
+                            </p>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>
-
         </div>
     </form>
 </body>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OrderManage.aspx.cs" Inherits="Syb_JD_OrderManage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DispatchManage.aspx.cs" Inherits="Kefu_Info_DispatchManage" %>
 
 <!DOCTYPE html>
 
@@ -9,32 +9,27 @@
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <title>订单管理</title>
+    <title>订单指派管理</title>
 </head>
 <body>
     <form id="form1" runat="server" data-ajax="false">
         <asp:HiddenField ID="hfJD_UserMobile" runat="server" />
         <asp:HiddenField ID="hfJD_UserId" runat="server" />
-
         <asp:HiddenField ID="hfCountTodo" runat="server" Value="0" />
         <asp:HiddenField ID="hfCountDoing" runat="server" Value="0" />
         <div id="page1" data-role="page">
             <div data-role="header">
-                <h2>接单管理</h2>
+                <h2>派单管理</h2>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#" class="ui-btn-active">未接回收单（<asp:Literal ID="ltlCountTodo1" runat="server" Text='<%# DataBinder.Eval(hfCountTodo,"Value").ToString() %>'></asp:Literal>）</a></li>
-                        <li><a href="#page2">已接处理中（<asp:Literal ID="ltlCountProcessing1" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value").ToString() %>'></asp:Literal>）</a></li>
-                        <li><a href="#page3">处理完毕</a></li>
+                        <li><a href="#" class="ui-btn-active">待指派订单（<asp:Literal ID="ltlCountTodo1" runat="server" Text='<%# DataBinder.Eval(hfCountTodo,"Value").ToString() %>'></asp:Literal>）</a></li>
+                        <li><a href="#page2">已指派未响应订单（<asp:Literal ID="ltlCountProcessing1" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value").ToString() %>'></asp:Literal>）</a></li>
+                        <li><a href="#page3">已接收订单</a></li>
                     </ul>
                 </div>
             </div>
             <div data-role="main" class="ui-content">
-                <p style="font-size: 0.8em; color: darkgrey;">产废单位有废电瓶出售意愿，向平台发起出售信息，经平台及回收公司初步审核后，将会发送给相应的回收业务员。</p>
-                <div id="divDataEmptyPrompt1" runat="server" visible="false" style="border: 1px solid #808080; padding: 5em 3em 5em 3em; text-align: center; vertical-align: middle; border-radius: 10px; color: chocolate;">
-                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。<br />
-                    <asp:Button ID="btnQuickReg" runat="server" Text="快速注册产废单位通道" rel="external" OnClick="btnQuickReg_Click" />
-                </div>
+                <p style="font-size: 0.8em; color: darkgrey;">产废单位有废电瓶出售意愿，向平台发起出售信息，请指派该出售信息给相应的回收业务员。</p>
                 <asp:Repeater ID="rptSellInfoes_Todo" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
                         <div data-role="collapsible" data-collapsed="false">
@@ -55,13 +50,8 @@
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
                             <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
-                                <asp:Button ID="btnAccept" runat="server" Text="接单" data-icon="check" CommandName="Accept" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
-                                <asp:Button ID="btnReject" runat="server" Text="拒单" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' />
+                                <asp:Button ID="btnAccept" runat="server" Text="指派业务员" data-icon="check" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" />
                             </fieldset>
-                            <%--                            <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
-                                <asp:Button ID="btnAccept" runat="server" Text="接单" data-icon="check" CssClass="ui-btn-active" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
-                                <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' />
-                            </fieldset>--%>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -72,23 +62,18 @@
                 <span style="font-size: 0.75em;">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</span>
             </div>
         </div>
-
-
         <div id="page2" data-role="page">
             <div data-role="header">
-                <h2>接单管理</h2>
+                <h2>派单管理</h2>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page1">未接回收单（<asp:Literal ID="ltlCountTodo2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#" class="ui-btn-active">已接处理中（<asp:Literal ID="ltlCountProcessing2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#page3">处理完毕</a></li>
+                        <li><a href="#page1">待指派订单（<asp:Literal ID="ltlCountTodo2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#" class="ui-btn-active">已指派未响应订单（<asp:Literal ID="ltlCountProcessing2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#page3">已接收订单</a></li>
                     </ul>
                 </div>
             </div>
             <div data-role="main" class="ui-content">
-                <div id="divDataEmptyPrompt2" runat="server" visible="false" style="border: 1px solid #808080; padding: 5em 3em 5em 3em; text-align: center; vertical-align: middle; border-radius: 10px; color: chocolate;">
-                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。
-                </div>
                 <asp:Repeater ID="rptSellInfoes_Doing" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
                         <div data-role="collapsible" data-collapsed="false">
@@ -109,9 +94,11 @@
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
                             <p style="font-size: 0.9em; color: burlywood;">
-                                接单后，请尽快与产废单位联系，并安排上门收货。清点货物完毕，请点击“登记收货信息”按钮，开始登记并创建收货单据。
+                                <label for="fullname">街道回收员：</label>
+                                <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
                             </p>
-                            <asp:Button ID="btChoose" runat="server" Text="登记收货信息" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
+                            <asp:Button ID="btChoose" runat="server" Text="发微信催一下" CommandName="SendWX" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
                         </div>
 
                     </ItemTemplate>
@@ -122,16 +109,14 @@
                 <span style="font-size: 0.75em;">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</span>
             </div>
         </div>
-
-
         <div id="page3" data-role="page">
             <div data-role="header">
-                <h2>接单管理</h2>
+                <h2>派单管理</h2>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page1">未接回收单（<asp:Literal ID="ltlCountTodo3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#page2">已接处理中（<asp:Literal ID="ltlCountProcessing3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#" class="ui-btn-active">处理完毕</a></li>
+                        <li><a href="#page1">待指派订单（<asp:Literal ID="ltlCountTodo3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#page2">已指派未响应订单（<asp:Literal ID="ltlCountProcessing3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#" class="ui-btn-active">已接收订单</a></li>
                     </ul>
                 </div>
             </div>
@@ -154,6 +139,11 @@
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                            </p>
+                            <p style="font-size: 0.9em; color: burlywood;">
+                                <label for="fullname">街道回收员：</label>
+                                <asp:Label ID="lbjd1" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="tbjdywy1" runat="server" Text=""></asp:Label>
                             </p>
                     </ItemTemplate>
                 </asp:Repeater>

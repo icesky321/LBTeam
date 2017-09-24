@@ -31,6 +31,9 @@
                         0574-86694505  (周一至周五 8:00-17:00)
 
                     </li>
+                    <li>市场合作<br />李先生：13255748666
+
+                    </li>
                     <li data-role="list-divider"></li>
                     <li><a href="#page3" data-transition="slide">联系我们</a></li>
                     <li><a href="#">加入我们</a></li>
@@ -96,23 +99,23 @@
                     <h2>客户服务</h2>
                     <p>
                         <strong>电话：</strong>0574-86694505 （周一至周五 8:00-17:00）<br />
-                        <strong>邮箱：</strong>kefu@lvbao111.com
+                        <%--<strong>邮箱：</strong>kefu@lvbao111.com--%>
                     </p>
                 </div>
                 <br />
                 <div data-role="collapsible" data-collapsed="false">
-                    <h2>市场合作薛先生</h2>
+                    <h2>市场合作李先生</h2>
                     <p>
-                        <strong>电话：</strong>138-5782-2428<br />
-                        <strong>邮箱：</strong>sale@lvbao111.com
+                        <strong>电话：</strong>132-5574-8666<br />
+                        <%--<strong>邮箱：</strong>sale@lvbao111.com--%>
                     </p>
                 </div>
                 <br />
                 <div data-role="collapsible" data-collapsed="false">
-                    <h2>人事招聘范经理</h2>
+                    <h2>人事招聘方经理</h2>
                     <p>
-                        <strong>电话：</strong>135-6785-3032<br />
-                        <strong>邮箱：</strong>hr@lvbao111.com
+                        <strong>电话：</strong>0574-86694505<br />
+                        <%--<strong>邮箱：</strong>hr@lvbao111.com--%>
                     </p>
                 </div>
             </div>

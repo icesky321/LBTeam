@@ -214,7 +214,7 @@ public partial class Login_Register : System.Web.UI.Page
             if (Membership.ValidateUser(tbMobile.Text, tbPassword.Text))
             {
                 FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
-                SendWxArticle_ToCF("2", "有新用户提交注册申请，行业身份为：" + ddlShenfen.SelectedItem.Text + "\n" + "手机号：" + user.MobilePhoneNum, "请到管理后台-用户信息管理审核（如资料不全，对方有可能在补全资料，请耐心等待5分钟）");
+                SendWxArticle_ToCF("2", "有新用户提交注册申请，行业身份为：" + ddlShenfen.SelectedItem.Text + "\n" + "手机号：" + user.MobilePhoneNum + "(" + bll_region.GetRegion(user.RegionCode).WholeName + user.Address + ")", "请到管理后台-用户信息管理审核（如资料不全，对方有可能在补全资料，请耐心等待5分钟）");
             }
             if (user.UserTypeId == 5)
             {

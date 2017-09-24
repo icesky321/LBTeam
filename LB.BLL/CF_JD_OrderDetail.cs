@@ -28,5 +28,10 @@ namespace LB.BLL
         {
             return da.ExistCFId(CFId);
         }
+
+        public void DeleteCF_JD_OrderDetailByCFId(Guid CFId)
+        {
+            da.DeleteCF_JD_OrderDetailByCFId(CFId);
+        }
     }
 }
