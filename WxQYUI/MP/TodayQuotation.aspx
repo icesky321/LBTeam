@@ -99,7 +99,7 @@
                     </span>
                 </label>
                 <div style="font-size: 1em; color: red; padding: 1em;">
-                    友情提示：因当前铅市波动加剧，为了保障客户利益，凡在绿宝平台下单的废旧电瓶回收申请，绿宝平台承诺实行下单保价政策，在用户下单后行情下跌的情况下，平台将继续执行下单之时的价格，给予用户最大利益。
+                    友情提示：当前铅市下行趋势强劲，本平台废旧电瓶回收价格将按铅市场价格做出相应调价，暂时取消保价政策，为保障产废单位利益请加紧出货。
                 </div>
                 <div style="padding: 0 1em;">
                     <asp:Button ID="btSell" runat="server" Text="我要卖货" OnClick="btSell_Click" rel="external" />

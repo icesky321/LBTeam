@@ -5017,6 +5017,8 @@ namespace LB.SQLServerDAL
 		
 		private System.Nullable<System.DateTime> _CreateDate;
 		
+		private string _TransferMethod;
+		
 		private string _PayStatus;
 		
 		private System.Nullable<System.Guid> _CFId;
@@ -5037,6 +5039,8 @@ namespace LB.SQLServerDAL
     partial void OnUserIdChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnTransferMethodChanging(string value);
+    partial void OnTransferMethodChanged();
     partial void OnPayStatusChanging(string value);
     partial void OnPayStatusChanged();
     partial void OnCFIdChanging(System.Nullable<System.Guid> value);
@@ -5128,6 +5132,26 @@ namespace LB.SQLServerDAL
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TransferMethod", DbType="NVarChar(32)")]
+		public string TransferMethod
+		{
+			get
+			{
+				return this._TransferMethod;
+			}
+			set
+			{
+				if ((this._TransferMethod != value))
+				{
+					this.OnTransferMethodChanging(value);
+					this.SendPropertyChanging();
+					this._TransferMethod = value;
+					this.SendPropertyChanged("TransferMethod");
+					this.OnTransferMethodChanged();
 				}
 			}
 		}
