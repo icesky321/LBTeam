@@ -175,7 +175,7 @@
       <Column Name="CopId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CopName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ShortName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Bizlicense" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="BAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="HWPermit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
@@ -189,6 +189,7 @@
       <Column Name="MobilePhoneNum" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
       <Column Name="BookBillModeToggle" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="BookBillStatusRemind" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.NewsInfo" Member="NewsInfo">
@@ -241,33 +242,11 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TSName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TSCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="OfferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="QuotedPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="StandardUnit" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
       <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Region" Member="Region">
-    <Type Name="Region">
-      <Column Name="RegionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Id" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="ProvinceId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="CityId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="CountyId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="ParentId" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
-      <Column Name="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AreaName" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
-      <Column Name="SimpleName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
-      <Column Name="WholeName" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="AreaCode" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
-      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
-      <Column Name="Lon" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
-      <Column Name="Lat" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
-      <Column Name="PrePinYin" Type="System.String" DbType="NChar(2)" CanBeNull="true" />
-      <Column Name="PinYin" Type="System.String" DbType="NChar(256)" CanBeNull="true" />
-      <Column Name="SimplePy" Type="System.String" DbType="NChar(32)" CanBeNull="true" />
-      <Column Name="Remark" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="TSCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.SellInfo" Member="SellInfo">
@@ -318,7 +297,6 @@
       <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="Volume" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Price" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="DetailInfo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
@@ -332,16 +310,17 @@
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="AuditDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Recommend" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TSInfo" Member="TSInfo">
     <Type Name="TSInfo">
       <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TSName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TsCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
-      <Column Name="ChargeUnit" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="TSName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TsCode" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="ChargeUnit" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
-      <Column Name="OrderNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNum" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TSType" Member="TSType">
@@ -384,16 +363,12 @@
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="RealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="MobilePhoneNum" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
-      <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
       <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="City" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Town" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Street" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IDCardNo" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="IDCard" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="IDAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Audit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
@@ -403,7 +378,7 @@
       <Column Name="Account" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="zfbName" Member="ZfbName" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="zfbAccount" Member="ZfbAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="wxName" Member="WxName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="wxName" Member="WxName" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="wxAccount" Member="WxAccount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ChopAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Chop" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -412,6 +387,10 @@
       <Column Name="QYUserId" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="OpenId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IsQYUser" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="IDCardNo" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
       <Column Name="CopCertified" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>

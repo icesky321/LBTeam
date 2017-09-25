@@ -254,18 +254,30 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
         }
         else
         {
-            LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
-            if (jd_user == null)
+            //LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
+            var jd_user = bll_config.GetJDByBillMode(true);
+            ddlHS.Items.Clear();
+            foreach (LB.SQLServerDAL.JD_Config user in jd_user)
             {
-                ltlMsg.Text = "[该地区尚未发展业务员，请平台另行分配]";
-                divMsg.Visible = true;
-                return;
+                LB.SQLServerDAL.UserInfo jduser = bll_userManage.GetUserInfoByUserId(user.UserId);
+                if (jduser != null)
+                {
+                    ListItem item = new ListItem(jduser.RealName, user.UserId.ToString());
+                    ddlHS.Items.Add(item);
+                }
             }
-            else
-            {
-                ddlJD.Items.Clear();
-                ddlJD.Items.Add(new ListItem(jd_user.UserName + "(" + jd_user.RealName + ")", jd_user.UserId.ToString()));
-            }
+
+            //if (jd_user == null)
+            //{
+            //    ltlMsg.Text = "[该地区尚未发展业务员，请平台另行分配]";
+            //    divMsg.Visible = true;
+            //    return;
+            //}
+            //else
+            //{
+            //    ddlJD.Items.Clear();
+            //    ddlJD.Items.Add(new ListItem(jd_user.UserName + "(" + jd_user.RealName + ")", jd_user.UserId.ToString()));
+            //}
         }
     }
 

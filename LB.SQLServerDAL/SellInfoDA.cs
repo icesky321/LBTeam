@@ -159,6 +159,19 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.SellInfo>().Take(20);
         }
 
+        /// <summary>
+        /// 获取我的已关闭出售信息。
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetSellInfo_IsClosed()
+        {
+            var query = from c in dbContext.SellInfo
+                        where c.IsClosed == true
+                        orderby c.CreateDate descending
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.SellInfo>().Take(20);
+        }
+
 
         /// <summary>
         /// 根据客服处理标记搜索出售信息。

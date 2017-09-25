@@ -31,7 +31,7 @@
                         0574-86694505  (周一至周五 8:00-17:00)
 
                     </li>
-                    <li>市场合作<br />李先生：13255748666
+                    <li>市场合作<br />李经理：13255748666
 
                     </li>
                     <li data-role="list-divider"></li>
@@ -104,7 +104,7 @@
                 </div>
                 <br />
                 <div data-role="collapsible" data-collapsed="false">
-                    <h2>市场合作李先生</h2>
+                    <h2>市场合作李经理</h2>
                     <p>
                         <strong>电话：</strong>132-5574-8666<br />
                         <%--<strong>邮箱：</strong>sale@lvbao111.com--%>
