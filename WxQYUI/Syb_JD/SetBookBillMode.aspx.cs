@@ -26,10 +26,10 @@ public partial class Syb_JD_SetBookBillMode : System.Web.UI.Page
             LB.SQLServerDAL.JD_Config config = bll_configManage.GetJD_Config(User.Identity.Name);
             if (config == null)
             {
-                hfMode.Value = "on";
-                lbMode.Text = "接单中";
-                btnSetMode.Text = "关闭接单模式";
-                Image1.ImageUrl = "~/Syb_JD/Images/mode_on.jpg";
+                hfMode.Value = "off";
+                lbMode.Text = "待激活";
+                btnSetMode.Text = "点击激活接单模式";
+                Image1.ImageUrl = "~/Syb_JD/Images/mode_off.gif";
                 return;
             }
 

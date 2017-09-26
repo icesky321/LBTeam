@@ -256,14 +256,14 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
         {
             //LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
             var jd_user = bll_config.GetJDByBillMode(true);
-            ddlHS.Items.Clear();
+            ddlJD.Items.Clear();
             foreach (LB.SQLServerDAL.JD_Config user in jd_user)
             {
                 LB.SQLServerDAL.UserInfo jduser = bll_userManage.GetUserInfoByUserId(user.UserId);
                 if (jduser != null)
                 {
                     ListItem item = new ListItem(jduser.RealName, user.UserId.ToString());
-                    ddlHS.Items.Add(item);
+                    ddlJD.Items.Add(item);
                 }
             }
 

@@ -48,7 +48,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Doing = new List<LB.SQLServerDAL.SellInfo>();
         foreach (LB.SQLServerDAL.SellInfo sellInfo in query1)
         {
-            if (sellInfo.Kefu_TohandleTag == true)
+            if (sellInfo.JD_TohandleTag == true && sellInfo.JD_AcceptedTag == true)
                 sellInfoes_Doing.Add(sellInfo);
 
 

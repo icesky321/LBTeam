@@ -71,10 +71,10 @@
 
                     <div class="ui-grid-a">
                         <div class="ui-block-a">
-                            <asp:RadioButton ID="rbtnAuto" runat="server" Text="系统指派回收业务员 →" GroupName="Next" Visible="false" />
+                            <asp:RadioButton ID="rbtnAuto" runat="server" Text="指派回收业务员 →" Checked="true" GroupName="Next"/>
                         </div>
                         <div class="ui-block-b">
-                            <asp:DropDownList ID="ddlJD" runat="server" Visible="false"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlJD" runat="server"></asp:DropDownList>
                         </div>
                     </div>
                     <div class="ui-grid-a">
@@ -88,10 +88,10 @@
 
                     <div class="ui-grid-a">
                         <div class="ui-block-a">
-                            <asp:RadioButton ID="rbtnJD" runat="server" Text="人工指派回收业务员 →" Checked="true" GroupName="Next" />
+                            <asp:RadioButton ID="rbtnJD" runat="server" Text="人工指派回收业务员 →" GroupName="Next" Visible="false"  />
                         </div>
                         <div class="ui-block-b">
-                            <asp:DropDownList ID="ddlPingtaiYWY" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlPingtaiYWY" runat="server"  Visible="false"></asp:DropDownList>
                         </div>
                     </div>
 

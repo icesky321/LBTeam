@@ -76,6 +76,7 @@
                     详细地址：
                 <asp:TextBox ID="tbAddress" runat="server" ValidationGroup="edit"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请填入详细地址" ControlToValidate="tbAddress" ValidationGroup="Reg2" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <p>注：为了回收业务员能准确及时地上门为您服务，请将地址填得尽可能详细精确</p>
                     <%--                        </ContentTemplate>
                     </asp:UpdatePanel>--%>
                 </div>
