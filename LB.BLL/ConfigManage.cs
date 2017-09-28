@@ -64,9 +64,9 @@ namespace LB.BLL
         /// </summary>
         /// <param name="BillMode"></param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByBillMode(bool BillMode)
+        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByBillMode(bool BillMode, bool IsLocked)
         {
-            return daHsConfig.GetJDByBillMode(BillMode);
+            return daHsConfig.GetJDByBillMode(BillMode, IsLocked);
         }
     }
 }

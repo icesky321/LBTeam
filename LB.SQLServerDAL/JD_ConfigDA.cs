@@ -117,10 +117,10 @@ namespace LB.SQLServerDAL
         /// </summary>
         /// <param name="BillMode"></param>
         /// <returns></returns>
-        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByBillMode(bool BillMode)
+        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByBillMode(bool BillMode,bool IsLocked)
         {
             var query = from c in dbContext.JD_Config
-                        where c.BookBillModeToggle==BillMode
+                        where c.BookBillModeToggle==BillMode && c.IsLocked==IsLocked
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.JD_Config>();
         }

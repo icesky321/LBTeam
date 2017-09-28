@@ -91,7 +91,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             MCF_JD_Order.Remark = tbRemark.Text;
             MCF_JD_Order.TransferDate = System.DateTime.Now;
             MCF_JD_Order.OperatorConfirm = false;
-            MCF_JD_Order.OperateDate = Convert.ToDateTime("1900-01-01");
+            MCF_JD_Order.OperateDate = System.DateTime.Now;
             MCF_JD_Order.Audit = false;
             MCF_JD_Order.AuditDatetime = Convert.ToDateTime("1900-01-01");
             MCF_JD_Order.InfoId = Guid.Parse(hfInfoId.Value);

@@ -42,6 +42,7 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
     {
         LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
         MSellInfo = bll_sellinfo.GetSellInfo_ById(Guid.Parse(hfinfoId.Value));
+        MSellInfo.StatusMsg = "产废单位已确认";
         MSellInfo.IsClosed = true;
         bll_sellinfo.UpdateSellInfo(MSellInfo);
         Response.Redirect("MySellInfos.aspx");
