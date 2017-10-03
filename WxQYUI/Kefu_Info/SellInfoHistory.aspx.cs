@@ -99,4 +99,20 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
             }
         }
     }
+
+    protected void rptSellInfoes_Done_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        Guid infoId = Guid.Empty;
+        Guid.TryParse(e.CommandArgument.ToString(), out infoId);
+
+        if (infoId == Guid.Empty)
+            return;
+
+
+        if (e.CommandName == "Detail")
+        {
+            string url = "~/MP/MyOrderDetail.aspx?infoId=" + e.CommandArgument.ToString();
+            Response.Redirect(url);
+        }
+    }
 }

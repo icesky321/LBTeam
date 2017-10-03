@@ -21,11 +21,12 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
             {
                 string infoId = Request.QueryString["infoId"];
                 LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
+                MSellInfo = bll_sellinfo.GetSellInfo_ById(Guid.Parse(infoId));
                 if (bll_cf_jd_order.ExistInfoId(Guid.Parse(infoId)))
                 {
                     hfinfoId.Value = infoId;
                     MCF_JD_Order = bll_cf_jd_order.GetCF_JD_OrderByinfoId(Guid.Parse(hfinfoId.Value));
-                    hfCFId.Value = MCF_JD_Order.InfoId.ToString();
+                    hfCFId.Value = MCF_JD_Order.CFId.ToString();
                     lbAmount.Text = MCF_JD_Order.Amount.ToString();
                     LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
                     LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
@@ -37,8 +38,9 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
                 }
                 if (MSellInfo.IsClosed == true)
                 {
+                    btn.Visible = false;
                 }
-                btn.Visible = false;
+
             }
         }
     }

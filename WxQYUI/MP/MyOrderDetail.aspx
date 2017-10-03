@@ -15,14 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="weui-form-preview">
-            <div class="weui-form-preview__hd">
-                <label class="weui-form-preview__label">付款金额</label>
-                <em class="weui-form-preview__value">
-                    <label class="weui-label">
-                        ￥<asp:Label ID="lbAmount" runat="server" Text=""></asp:Label>
-                    </label>
-                </em>
-            </div>
+
             <div class="weui-cells">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">卖方(产废单位)</label>
@@ -39,6 +32,14 @@
                             <asp:Label ID="lbJDYWY" runat="server" Text=""></asp:Label>
                         </label>
                     </span>
+                </div>
+                <div class="weui-form-preview__hd">
+                    <label class="weui-form-preview__label">付款金额</label>
+                    <em class="weui-form-preview__value">
+                        <label class="weui-label">
+                            ￥<asp:Label ID="lbAmount" runat="server" Text=""></asp:Label>
+                        </label>
+                    </em>
                 </div>
                 <div class="weui-cells">
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="LinqDataSource1">
@@ -62,12 +63,12 @@
                             <asp:ControlParameter ControlID="hfCFId" DbType="Guid" Name="CFId" PropertyName="Value" />
                         </WhereParameters>
                     </asp:LinqDataSource>
-                    <asp:HiddenField ID="hfCFId" runat="server"/>
+                    <asp:HiddenField ID="hfCFId" runat="server" />
                     <asp:HiddenField ID="hfinfoId" runat="server" />
                     <%--<asp:Label ID="Label1" runat="server" Text="0c31f580-8be2-4d40-b506-f10f53c0073b"></asp:Label>--%>
                 </div>
                 <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false" id="btn" runat="server" visible="false">
-                    <asp:Button ID="btnAccept" runat="server" Text="订单确认" data-icon="check"  rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("该收货单确定无误吗？");' OnClick="btnAccept_Click" />
+                    <asp:Button ID="btnAccept" runat="server" Text="订单确认" data-icon="check" rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("该收货单确定无误吗？");' OnClick="btnAccept_Click" />
                     <asp:Button ID="btnReject" runat="server" Text="订单有误，退还业务员" data-icon="delete" rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("明细有误，确定要业务员重新填写吗？");' OnClick="btnReject_Click" />
                 </fieldset>
             </div>

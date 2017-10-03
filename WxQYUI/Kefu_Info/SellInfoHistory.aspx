@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div data-role="main" class="ui-content">
-                <asp:Repeater ID="rptSellInfoes_Done" runat="server" OnItemDataBound="Repeater1_ItemDataBound">
+                <asp:Repeater ID="rptSellInfoes_Done" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="rptSellInfoes_Done_ItemCommand">
                     <ItemTemplate>
                         <div data-role="collapsible" data-collapsed="false">
                             <h3>
@@ -91,12 +91,15 @@
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
-                            <p style="font-size: 0.9em; color: burlywood;">
+<%--                            <p style="font-size: 0.9em; color: burlywood;">
                                 <label for="fullname">街道回收员：</label>
                                 <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
-                            </p>
+                            </p>--%>
 
+                            <p>
+                                <asp:LinkButton ID="lbtnDetail" runat="server" Text="查看货单明细" CommandName="Detail" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
+                            </p>
                             <%--<asp:Button ID="btChoose" runat="server" Text="发微信催一下" CommandName="SendWX" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />--%>
                         </div>
 
