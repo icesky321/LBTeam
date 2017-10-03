@@ -27,7 +27,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
                 hfJD_UserId.Value = user.UserId.ToString();
 
                 Load_SellInfoes(user.UserId);
-                Load_SellInfoesClosed(userMobile);
+                Load_SellInfoesClosed(user.UserId);
             }
         }
 
@@ -80,9 +80,9 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         BindData();
     }
 
-    private void Load_SellInfoesClosed(string userMobile)
+    private void Load_SellInfoesClosed(int JDUserId)
     {
-        var query = bll_sell.GetMySellInfo_IsClosed(userMobile);
+        var query = bll_sell.Get_JD_Handle_SellInfo_IsClosed(JDUserId);
 
         rptSellInfoesClosed.DataSource = query;
         rptSellInfoesClosed.DataBind();

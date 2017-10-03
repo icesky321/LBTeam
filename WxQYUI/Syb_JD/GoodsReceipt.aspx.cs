@@ -116,6 +116,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
         if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
         {
             MSellInfo.JD_TohandleTag = false;
+            MSellInfo.JD_AcceptedTag = false;
             MSellInfo.StatusMsg = "详单填写完毕,待产废单位确认";
             //MSellInfo.IsClosed = true;
             bll_sellinfomanage.UpdateSellInfo(MSellInfo);

@@ -145,6 +145,7 @@
                                 <asp:Label ID="lbjd1" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="tbjdywy1" runat="server" Text=""></asp:Label>
                             </p>
+                        </div>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>

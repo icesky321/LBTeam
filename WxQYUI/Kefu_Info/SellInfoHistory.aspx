@@ -96,6 +96,7 @@
                                 <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
                             </p>
+
                             <%--<asp:Button ID="btChoose" runat="server" Text="发微信催一下" CommandName="SendWX" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />--%>
                         </div>
 

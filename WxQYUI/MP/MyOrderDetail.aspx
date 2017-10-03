@@ -62,7 +62,7 @@
                             <asp:ControlParameter ControlID="hfCFId" DbType="Guid" Name="CFId" PropertyName="Value" />
                         </WhereParameters>
                     </asp:LinqDataSource>
-                    <asp:HiddenField ID="hfCFId" runat="server" Value="aed35248-7786-4557-809e-511d31475a8c" />
+                    <asp:HiddenField ID="hfCFId" runat="server"/>
                     <asp:HiddenField ID="hfinfoId" runat="server" />
                     <%--<asp:Label ID="Label1" runat="server" Text="0c31f580-8be2-4d40-b506-f10f53c0073b"></asp:Label>--%>
                 </div>

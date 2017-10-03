@@ -20,6 +20,7 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
             if (Request.QueryString["infoId"] != null)
             {
                 string infoId = Request.QueryString["infoId"];
+                LB.SQLServerDAL.SellInfo MSellInfo = new LB.SQLServerDAL.SellInfo();
                 if (bll_cf_jd_order.ExistInfoId(Guid.Parse(infoId)))
                 {
                     hfinfoId.Value = infoId;
@@ -34,6 +35,10 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
                     lbJDYWY.Text = OutUserInfo.RealName + "(手机号：" + OutUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     btn.Visible = true;
                 }
+                if (MSellInfo.IsClosed == true)
+                {
+                }
+                btn.Visible = false;
             }
         }
     }
