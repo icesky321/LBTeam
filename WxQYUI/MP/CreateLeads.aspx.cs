@@ -133,7 +133,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         sellInfo.StatusMsg = "等待绿宝客服审核";
         sellInfo.IsClosed = false;
         LB.SQLServerDAL.SellInfo newSellInfo = bll_sellInfo.CreateSellInfo(sellInfo);
-        sms.SendSMS(userName, "你已成功发布出售信息，绿宝承诺在两日内对您的出售请求做出处理。（目前仅限杭州绍兴地区）【绿宝】");
+        sms.SendSMS(userName, "你已成功发布出售信息，绿宝将在两日内对您的出售请求做出处理。（目前仅限杭州绍兴地区）【绿宝】");
         // 以下设计思路，如果在工作时间，审核信息发送给“信息客服”，如果在非工作时间，信息发送给“信息客服后备”。
         // 4信息客服后备，3信息客服
         TimeSpan tsBegin = new TimeSpan(8, 0, 0);

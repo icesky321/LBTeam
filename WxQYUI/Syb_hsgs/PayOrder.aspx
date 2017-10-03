@@ -64,14 +64,14 @@
                     <asp:Label ID="lbReamrk" runat="server" Text=""></asp:Label>
                 </div>
                 <br />
-                <div data-role="collapsible" data-collapsed="false">
+<%--                <div data-role="collapsible" data-collapsed="false">
                     <h1>绿宝第三方支付账户</h1>
                     <p>公司名称：宁波绿宝信息科技有限公司</p>
                     <p>开户行：宁波银行庄市支行</p>
                     <p>账号：5204 0122 0002 10157</p>
-                </div>
+                </div>--%>
 
-                <asp:Button ID="btSure" runat="server" Text="付款后请点击确认" OnClick="btSure_Click" ValidationGroup="1" />
+                <asp:Button ID="btSure" runat="server" Text="付款后请点击确认" OnClick="btSure_Click" ValidationGroup="1" Visible="false" />
 
             </div>
         </div>
