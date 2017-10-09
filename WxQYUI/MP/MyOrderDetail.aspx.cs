@@ -36,6 +36,11 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
                     lbJDYWY.Text = OutUserInfo.RealName + "(手机号：" + OutUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     btn.Visible = true;
                 }
+                else
+                {
+                    //hfCFId.Value = "00000000-0000-0000-0000-000000000000";
+                    Response.Redirect("~/ErrorPage/Rehandle.aspx");
+                }
                 if (MSellInfo.IsClosed == true)
                 {
                     btn.Visible = false;
