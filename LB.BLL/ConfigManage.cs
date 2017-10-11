@@ -58,5 +58,15 @@ namespace LB.BLL
         {
             return daHsConfig.ExistConfig(userId);
         }
+
+        /// <summary>
+        /// 根据业务员是否关闭接单来搜索业务员
+        /// </summary>
+        /// <param name="BillMode"></param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByBillMode(bool BillMode, bool IsLocked)
+        {
+            return daHsConfig.GetJDByBillMode(BillMode, IsLocked);
+        }
     }
 }

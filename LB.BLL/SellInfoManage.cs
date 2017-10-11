@@ -126,6 +126,15 @@ namespace LB.BLL
             return da.GetMySellInfo_IsClosed(userMobile);
         }
 
+        public IQueryable<LB.SQLServerDAL.SellInfo> Get_JD_Handle_SellInfo_IsClosed(int userId)
+        {
+            return da.Get_JD_Handle_SellInfo_IsClosed(userId);
+        }
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetSellInfo_IsClosed()
+        {
+            return da.GetSellInfo_IsClosed();
+        }
+
         /// <summary>
         /// 根据客服处理标记搜索出售信息。
         /// </summary>

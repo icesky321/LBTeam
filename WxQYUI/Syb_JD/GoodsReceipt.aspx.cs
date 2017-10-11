@@ -74,62 +74,63 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
 
     protected void btSure_Click(object sender, EventArgs e)
     {
-        if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
+        //if (bll_cf_jd_order.ExistInfoId(Guid.Parse(hfInfoId.Value)))
+        //{
+        //    LB.SQLServerDAL.CF_JD_Order Mcf = new LB.SQLServerDAL.CF_JD_Order();
+        //    Mcf = bll_cf_jd_order.GetCF_JD_OrderByinfoId(Guid.Parse(hfInfoId.Value));
+        //    Response.Redirect("Success.aspx?CFId=" + Mcf.CFId.ToString());
+        //}
+        //else
+        //{
+        MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
+        //MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MSellInfo.HS_UserId));
+        MCF_JD_Order.InUserId = bll_usermanage.GetUserInfoByTelNum(tbcfdw.Text).UserId;
+        MCF_JD_Order.OutUserId = bll_usermanage.GetUserInfoByTelNum(tbjdywy.Text).UserId;
+        MCF_JD_Order.Amount = Convert.ToDecimal(tbAmount.Text);
+        MCF_JD_Order.TransferMethod = "银行转账";
+        MCF_JD_Order.Remark = tbRemark.Text;
+        MCF_JD_Order.TransferDate = System.DateTime.Now;
+        MCF_JD_Order.OperatorConfirm = false;
+        MCF_JD_Order.OperateDate = System.DateTime.Now;
+        MCF_JD_Order.Audit = false;
+        MCF_JD_Order.AuditDatetime = Convert.ToDateTime("1900-01-01");
+        MCF_JD_Order.InfoId = Guid.Parse(hfInfoId.Value);
+        MCF_JD_Order.CopUserId = MSellInfo.HS_UserId;
+        MCF_JD_Order.CopUserAudit = false;
+        bll_cf_jd_order.NewCF_JD_Order(MCF_JD_Order);
+        foreach (RepeaterItem item in Repeater1.Items)
         {
-            LB.SQLServerDAL.CF_JD_Order Mcf = new LB.SQLServerDAL.CF_JD_Order();
-            Mcf = bll_cf_jd_order.GetCF_JD_OrderByinfoId(Guid.Parse(hfInfoId.Value));
-            Response.Redirect("Success.aspx?CFId=" + Mcf.CFId.ToString());
+            Literal ltlTSName = item.FindControl("ltlTSName") as Literal;
+            TextBox tbNum = item.FindControl("tbNum") as TextBox;
+            Literal Literal1 = item.FindControl("Literal1") as Literal;
+            if (tbNum.Text != "")
+            {
+                LB.SQLServerDAL.CF_JD_OrderDetail MCF_JD_OrderDetail = new LB.SQLServerDAL.CF_JD_OrderDetail();
+                MCF_JD_OrderDetail.CFId = MCF_JD_Order.CFId;
+                MCF_JD_OrderDetail.GoodsDetail = ltlTSName.Text;
+                MCF_JD_OrderDetail.Quantity = Convert.ToDecimal(tbNum.Text);
+                MCF_JD_OrderDetail.GoodsUnit = Literal1.Text;
+                bll_cf_jd_orderdetail.NewCF_JD_OrderDetail(MCF_JD_OrderDetail);
+            }
+        }
+        if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
+        {
+            MSellInfo.JD_TohandleTag = false;
+            MSellInfo.JD_AcceptedTag = false;
+            MSellInfo.StatusMsg = "详单填写完毕,待产废单位确认";
+            //MSellInfo.IsClosed = true;
+            bll_sellinfomanage.UpdateSellInfo(MSellInfo);
+            SendWxArticle_ToCF(MCF_JD_Order.CFId, "1");
+            Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
         }
         else
         {
-            MSellInfo = bll_sellinfomanage.GetSellInfo_ById(Guid.Parse(hfInfoId.Value));
-            MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MSellInfo.HS_UserId));
-            MCF_JD_Order.InUserId = bll_usermanage.GetUserInfoByTelNum(tbcfdw.Text).UserId;
-            MCF_JD_Order.OutUserId = bll_usermanage.GetUserInfoByTelNum(tbjdywy.Text).UserId;
-            MCF_JD_Order.Amount = Convert.ToDecimal(tbAmount.Text);
-            MCF_JD_Order.TransferMethod = "银行转账";
-            MCF_JD_Order.Remark = tbRemark.Text;
-            MCF_JD_Order.TransferDate = System.DateTime.Now;
-            MCF_JD_Order.OperatorConfirm = false;
-            MCF_JD_Order.OperateDate = Convert.ToDateTime("1900-01-01");
-            MCF_JD_Order.Audit = false;
-            MCF_JD_Order.AuditDatetime = Convert.ToDateTime("1900-01-01");
-            MCF_JD_Order.InfoId = Guid.Parse(hfInfoId.Value);
-            MCF_JD_Order.CopUserId = MSellInfo.HS_UserId;
-            MCF_JD_Order.CopUserAudit = false;
-            bll_cf_jd_order.NewCF_JD_Order(MCF_JD_Order);
-            foreach (RepeaterItem item in Repeater1.Items)
-            {
-                Literal ltlTSName = item.FindControl("ltlTSName") as Literal;
-                TextBox tbNum = item.FindControl("tbNum") as TextBox;
-                Literal Literal1 = item.FindControl("Literal1") as Literal;
-                if (tbNum.Text != "")
-                {
-                    LB.SQLServerDAL.CF_JD_OrderDetail MCF_JD_OrderDetail = new LB.SQLServerDAL.CF_JD_OrderDetail();
-                    MCF_JD_OrderDetail.CFId = MCF_JD_Order.CFId;
-                    MCF_JD_OrderDetail.GoodsDetail = ltlTSName.Text;
-                    MCF_JD_OrderDetail.Quantity = Convert.ToDecimal(tbNum.Text);
-                    MCF_JD_OrderDetail.GoodsUnit = Literal1.Text;
-                    bll_cf_jd_orderdetail.NewCF_JD_OrderDetail(MCF_JD_OrderDetail);
-                }
-            }
-            if (bll_cf_jd_orderdetail.ExistCFId(MCF_JD_Order.CFId))
-            {
-                MSellInfo.JD_TohandleTag = false;
-                MSellInfo.StatusMsg = "详单填写完毕,待产废单位确认";
-                //MSellInfo.IsClosed = true;
-                bll_sellinfomanage.UpdateSellInfo(MSellInfo);
-                SendWxArticle_ToCF(MCF_JD_Order.CFId, MUserInfo.QYUserId);
-                Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
-            }
-            else
-            {
-                bll_cf_jd_order.DeleteCF_JD_OrderByCFId(MCF_JD_Order.CFId);
-                lbMsg.Text = "请输入货品清单数量";
-                lbMsg.Visible = true;
-            }
-
+            bll_cf_jd_order.DeleteCF_JD_OrderByCFId(MCF_JD_Order.CFId);
+            lbMsg.Text = "请输入货品清单数量";
+            lbMsg.Visible = true;
         }
+
+        //}
 
     }
 

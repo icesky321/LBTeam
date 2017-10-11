@@ -23,17 +23,17 @@
                 <h2>接单管理</h2>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#" class="ui-btn-active">未接回收单（<asp:Literal ID="ltlCountTodo1" runat="server" Text='<%# DataBinder.Eval(hfCountTodo,"Value").ToString() %>'></asp:Literal>）</a></li>
-                        <li><a href="#page2">已接处理中（<asp:Literal ID="ltlCountProcessing1" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value").ToString() %>'></asp:Literal>）</a></li>
-                        <li><a href="#page3">处理完毕</a></li>
+                        <li><a href="#" class="ui-btn-active">未接单（<asp:Literal ID="ltlCountTodo1" runat="server" Text='<%# DataBinder.Eval(hfCountTodo,"Value").ToString() %>'></asp:Literal>）</a></li>
+                        <li><a href="#page2">已接单（<asp:Literal ID="ltlCountProcessing1" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value").ToString() %>'></asp:Literal>）</a></li>
+                        <li><a href="#page3">历史订单</a></li>
                     </ul>
                 </div>
             </div>
             <div data-role="main" class="ui-content">
-                <p style="font-size: 0.8em; color: darkgrey;">产废单位有废电瓶出售意愿，向平台发起出售信息，经平台及回收公司初步审核后，将会发送给相应的回收业务员。</p>
+                <p style="font-size: 0.8em; color: darkgrey;">产废单位有废电瓶出售意愿，向平台发起出售信息，经平台初步审核后，将会发送给相应的回收业务员。</p>
                 <div id="divDataEmptyPrompt1" runat="server" visible="false" style="border: 1px solid #808080; padding: 5em 3em 5em 3em; text-align: center; vertical-align: middle; border-radius: 10px; color: chocolate;">
-                    当前无废旧电瓶出售信息，请尽快发展您自己的产废单位吧。<br />
-                    <asp:Button ID="btnQuickReg" runat="server" Text="快速注册产废单位通道" rel="external" OnClick="btnQuickReg_Click" />
+                    任务已接，请在12小时内尽快处理业务单<br />
+                    <%--<asp:Button ID="btnQuickReg" runat="server" Text="快速注册产废单位通道" rel="external" OnClick="btnQuickReg_Click" />--%>
                 </div>
                 <asp:Repeater ID="rptSellInfoes_Todo" runat="server" OnItemDataBound="Repeater1_ItemDataBound" OnItemCommand="Repeater1_ItemCommand">
                     <ItemTemplate>
@@ -79,9 +79,9 @@
                 <h2>接单管理</h2>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page1">未接回收单（<asp:Literal ID="ltlCountTodo2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#" class="ui-btn-active">已接处理中（<asp:Literal ID="ltlCountProcessing2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#page3">处理完毕</a></li>
+                        <li><a href="#page1">未接单（<asp:Literal ID="ltlCountTodo2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#" class="ui-btn-active">已接单（<asp:Literal ID="ltlCountProcessing2" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#page3">历史订单</a></li>
                     </ul>
                 </div>
             </div>
@@ -129,9 +129,9 @@
                 <h2>接单管理</h2>
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="#page1">未接回收单（<asp:Literal ID="ltlCountTodo3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#page2">已接处理中（<asp:Literal ID="ltlCountProcessing3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
-                        <li><a href="#" class="ui-btn-active">处理完毕</a></li>
+                        <li><a href="#page1">未接单（<asp:Literal ID="ltlCountTodo3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountTodo,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#page2">已接单（<asp:Literal ID="ltlCountProcessing3" runat="server" Text='<%# DataBinder.GetPropertyValue(hfCountDoing,"Value") %>'></asp:Literal>）</a></li>
+                        <li><a href="#" class="ui-btn-active">历史订单</a></li>
                     </ul>
                 </div>
             </div>
@@ -155,6 +155,7 @@
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
+                        </div>
                     </ItemTemplate>
                 </asp:Repeater>
             </div>

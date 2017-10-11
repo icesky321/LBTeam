@@ -52,6 +52,9 @@ namespace LB.SQLServerDAL
                     if (cfg.BookBillStatusRemind != config.BookBillStatusRemind)
                         cfg.BookBillStatusRemind = config.BookBillStatusRemind;
 
+                    if (cfg.IsLocked != config.IsLocked)
+                        cfg.IsLocked = config.IsLocked;
+
                     returnConfig = cfg;
                 }
                 else
@@ -107,6 +110,19 @@ namespace LB.SQLServerDAL
                 exists = true;
             }
             return exists;
+        }
+
+        /// <summary>
+        /// 根据业务员是否关闭接单来搜索业务员
+        /// </summary>
+        /// <param name="BillMode"></param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByBillMode(bool BillMode,bool IsLocked)
+        {
+            var query = from c in dbContext.JD_Config
+                        where c.BookBillModeToggle==BillMode && c.IsLocked==IsLocked
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.JD_Config>();
         }
     }
 }
