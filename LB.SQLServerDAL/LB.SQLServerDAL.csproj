@@ -51,6 +51,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LBDB.dbml</DependentUpon>
     </Compile>
+    <Compile Include="BaseAccessTokenMPDA.cs" />
     <Compile Include="PaymentDetailDA.cs" />
     <Compile Include="QuotationDA.cs" />
     <Compile Include="LBDB_Extend.cs" />

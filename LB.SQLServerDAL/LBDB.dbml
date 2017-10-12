@@ -140,6 +140,15 @@
       <Column Name="Details" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
+  <Table Name="dbo.BaseAccessTokenMP" Member="BaseAccessTokenMP">
+    <Type Name="BaseAccessTokenMP">
+      <Column Name="BatId" Type="System.String" DbType="NVarChar(64) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="appId" Member="AppId" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="access_token" Member="Access_token" Type="System.String" DbType="NVarChar(1024) NOT NULL" CanBeNull="false" />
+      <Column Name="expires_in" Member="Expires_in" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AccessTokenStartTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.CF_JD_Order" Member="CF_JD_Order">
     <Type Name="CF_JD_Order">
       <Column Name="CFId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

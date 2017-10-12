@@ -63,6 +63,9 @@ namespace LB.SQLServerDAL
     partial void InsertAspnet_WebEvent_Events(Aspnet_WebEvent_Events instance);
     partial void UpdateAspnet_WebEvent_Events(Aspnet_WebEvent_Events instance);
     partial void DeleteAspnet_WebEvent_Events(Aspnet_WebEvent_Events instance);
+    partial void InsertBaseAccessTokenMP(BaseAccessTokenMP instance);
+    partial void UpdateBaseAccessTokenMP(BaseAccessTokenMP instance);
+    partial void DeleteBaseAccessTokenMP(BaseAccessTokenMP instance);
     partial void InsertCF_JD_Order(CF_JD_Order instance);
     partial void UpdateCF_JD_Order(CF_JD_Order instance);
     partial void DeleteCF_JD_Order(CF_JD_Order instance);
@@ -237,6 +240,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<Aspnet_WebEvent_Events>();
+			}
+		}
+		
+		public System.Data.Linq.Table<BaseAccessTokenMP> BaseAccessTokenMP
+		{
+			get
+			{
+				return this.GetTable<BaseAccessTokenMP>();
 			}
 		}
 		
@@ -3429,6 +3440,164 @@ namespace LB.SQLServerDAL
 					this._Details = value;
 					this.SendPropertyChanged("Details");
 					this.OnDetailsChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BaseAccessTokenMP")]
+	public partial class BaseAccessTokenMP : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _BatId;
+		
+		private string _AppId;
+		
+		private string _Access_token;
+		
+		private int _Expires_in;
+		
+		private System.DateTime _AccessTokenStartTime;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnBatIdChanging(string value);
+    partial void OnBatIdChanged();
+    partial void OnAppIdChanging(string value);
+    partial void OnAppIdChanged();
+    partial void OnAccess_tokenChanging(string value);
+    partial void OnAccess_tokenChanged();
+    partial void OnExpires_inChanging(int value);
+    partial void OnExpires_inChanged();
+    partial void OnAccessTokenStartTimeChanging(System.DateTime value);
+    partial void OnAccessTokenStartTimeChanged();
+    #endregion
+		
+		public BaseAccessTokenMP()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BatId", DbType="NVarChar(64) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string BatId
+		{
+			get
+			{
+				return this._BatId;
+			}
+			set
+			{
+				if ((this._BatId != value))
+				{
+					this.OnBatIdChanging(value);
+					this.SendPropertyChanging();
+					this._BatId = value;
+					this.SendPropertyChanged("BatId");
+					this.OnBatIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="appId", Storage="_AppId", DbType="NVarChar(64) NOT NULL", CanBeNull=false)]
+		public string AppId
+		{
+			get
+			{
+				return this._AppId;
+			}
+			set
+			{
+				if ((this._AppId != value))
+				{
+					this.OnAppIdChanging(value);
+					this.SendPropertyChanging();
+					this._AppId = value;
+					this.SendPropertyChanged("AppId");
+					this.OnAppIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="access_token", Storage="_Access_token", DbType="NVarChar(1024) NOT NULL", CanBeNull=false)]
+		public string Access_token
+		{
+			get
+			{
+				return this._Access_token;
+			}
+			set
+			{
+				if ((this._Access_token != value))
+				{
+					this.OnAccess_tokenChanging(value);
+					this.SendPropertyChanging();
+					this._Access_token = value;
+					this.SendPropertyChanged("Access_token");
+					this.OnAccess_tokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="expires_in", Storage="_Expires_in", DbType="Int NOT NULL")]
+		public int Expires_in
+		{
+			get
+			{
+				return this._Expires_in;
+			}
+			set
+			{
+				if ((this._Expires_in != value))
+				{
+					this.OnExpires_inChanging(value);
+					this.SendPropertyChanging();
+					this._Expires_in = value;
+					this.SendPropertyChanged("Expires_in");
+					this.OnExpires_inChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccessTokenStartTime", DbType="DateTime NOT NULL")]
+		public System.DateTime AccessTokenStartTime
+		{
+			get
+			{
+				return this._AccessTokenStartTime;
+			}
+			set
+			{
+				if ((this._AccessTokenStartTime != value))
+				{
+					this.OnAccessTokenStartTimeChanging(value);
+					this.SendPropertyChanging();
+					this._AccessTokenStartTime = value;
+					this.SendPropertyChanged("AccessTokenStartTime");
+					this.OnAccessTokenStartTimeChanged();
 				}
 			}
 		}
