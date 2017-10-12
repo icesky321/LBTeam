@@ -99,7 +99,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
                 MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                 lbjd.Text = MJDUserInfo.RealName;
                 tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
-                hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
+                hlTelNum.NavigateUrl = "tel://" + MJDUserInfo.MobilePhoneNum;
             }
         }
     }

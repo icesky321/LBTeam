@@ -155,7 +155,7 @@ public partial class Kefu_Info_DispatchManage : System.Web.UI.Page
                 lbjd.Text = MJDUserInfo.RealName;
                 tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
                 lbCFRealname.Text = MUserInfo.RealName;
-                hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
+                hlTelNum.NavigateUrl = "tel://" + MJDUserInfo.MobilePhoneNum;
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
                 lbQuantity.Text = MSellInfo.Quantity;
                 lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
