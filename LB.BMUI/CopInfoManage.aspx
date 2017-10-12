@@ -3,6 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    选择省份：
+                <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
+            选择地级市：
+                <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
+            <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+            选择县市：
+            <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
+            镇或街道：
+                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList>
+                <asp:HiddenField ID="hfRegionCode" runat="server" />
+            <asp:Button ID="btnSearchRegionCode" runat="server" Text="搜索" BorderColor="#669999" OnClick="btnSearchRegionCode_Click" />
     <br />
     <br />
     <asp:GridView ID="gvCopInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="CopId" OnRowCommand="gvCopInfo_RowCommand">

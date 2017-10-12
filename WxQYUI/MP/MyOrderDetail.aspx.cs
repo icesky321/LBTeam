@@ -57,6 +57,8 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
         MSellInfo.StatusMsg = "产废单位已确认";
         MSellInfo.IsClosed = true;
         bll_sellinfo.UpdateSellInfo(MSellInfo);
+        MCF_JD_Order = bll_cf_jd_order.GetCF_JD_OrderByinfoId(Guid.Parse(hfinfoId.Value));
+        SendWxArticle_ToCF(MCF_JD_Order.CFId, "1");
         Response.Redirect("MySellInfos.aspx");
 
     }
@@ -73,7 +75,6 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
         SendWxArticle_ToCF(MCF_JD_Order.CFId);
         bll_cf_jd_orderdetail.DeleteCF_JD_OrderDetailByCFId(MCF_JD_Order.CFId);
         bll_cf_jd_order.DeleteCF_JD_OrderByCFId(MCF_JD_Order.CFId);
-
         Response.Redirect("MySellInfos.aspx");
     }
 
@@ -89,5 +90,19 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
         article.Description = "收货金额：" + MCF_JD_Order.Amount + "元" + "\n" + "产废单位核实此单有误，请与客户核对后重新填写";
         article.Url = "~/Syb_JD/GoodsReceipt.aspx?infoId=" + MCF_JD_Order.InfoId.ToString();
         sendmsg.SendArticleToUsers(MUserInfo.QYUserId, article, "5");
+    }
+
+    private void SendWxArticle_ToCF(Guid CFId, string QYId)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        MCF_JD_Order = bll_cf_jd_order.GetCF_JD_OrderById(CFId);
+        LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
+        MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.OutUserId));
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = "街道回收员收货单明细";
+        article.Description = "街道业务员：" + MUserInfo.RealName + "(" + MUserInfo.MobilePhoneNum + ")" + "收货金额：" + MCF_JD_Order.Amount + "元" + "\n" + "查看明细请继续戳我";
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/PayOrder.aspx?CFId=" + CFId;
+        sendmsg.SendArticleToUsers(QYId, article, "5");
     }
 }
