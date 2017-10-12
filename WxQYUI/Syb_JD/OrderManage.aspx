@@ -47,7 +47,10 @@
                                 卖方(产废单位)：
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
                                 手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink>
+                                <%--<a href="tel://15267863162" runat="server">111</a>--%>
+                                <br />
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
@@ -101,7 +104,8 @@
                                 卖方(产废单位)
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
                                 手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink><br />
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
@@ -148,7 +152,8 @@
                                 卖方(产废单位)
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
                                 手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink><br />
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>

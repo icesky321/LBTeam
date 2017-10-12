@@ -70,8 +70,8 @@
                         <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                     </p>
                     </a></li>--%>
-                    <li><a href="MyWallet.aspx" data-transition="slide" rel="external">我的钱包
-                    </a></li>
+<%--                    <li><a href="MyWallet.aspx" data-transition="slide" rel="external">我的钱包
+                    </a></li>--%>
 
                     <li><a href="#pageMima" data-transition="slide" rel="external">密码管理</a></li>
 

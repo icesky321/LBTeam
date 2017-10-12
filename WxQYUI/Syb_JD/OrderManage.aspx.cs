@@ -138,12 +138,14 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             Label lbCFRealname = e.Item.FindControl("lbCFRealname") as Label;
             Label lbAddress = e.Item.FindControl("lbAddress") as Label;
             Label lbInfoId = e.Item.FindControl("lbInfoId") as Label;
+            HyperLink hlTelNum = e.Item.FindControl("HyperLink1") as HyperLink;
             LB.SQLServerDAL.UserInfo InUser = new LB.SQLServerDAL.UserInfo();
             MSellInfo = bll_sell.GetSellInfo_ById(Guid.Parse(lbInfoId.Text));
             LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
             MUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
             lbCFRealname.Text = MUserInfo.RealName;
             lbCFDW.Text = MUserInfo.MobilePhoneNum;
+            hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
             lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
         }
     }
