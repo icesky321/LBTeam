@@ -159,7 +159,7 @@ public partial class UserCenter_EditRealName : System.Web.UI.Page
                     //string savefilenameI = pathI + newfilenameI;
                     this.FileUpload1.SaveAs("E://LvBao//WebUI//IDCard//" + newfilenameI);
                     
-                    this.Image1.ImageUrl = "E://LvBao//WebUI//IDCard//" + newfilenameI;
+                    //this.Image1.ImageUrl = "E://LvBao//WebUI//IDCard//" + newfilenameI;
                     this.Label1.Text = "文件上传成功,等待后台审核";
                     MUserInfo.IDCard = newfilenameI;
                     bll_user.UpdateUserInfo(MUserInfo);

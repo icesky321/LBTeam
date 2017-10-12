@@ -40,7 +40,7 @@
 
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
 
-                <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0">
+                <asp:MultiView ID="MultiView2" runat="server" ActiveViewIndex="0" Visible="false">
                     <asp:View ID="viewShowNiChen" runat="server">
                         <div style="border: 1px dotted #999999; padding: 20px;" class="ui-corner-all">
                             昵称：<asp:Literal ID="ltlNiChen" runat="server"></asp:Literal>
@@ -54,7 +54,7 @@
                     </asp:View>
                 </asp:MultiView>
                 <div style="border-bottom: 1px solid #999999; height: 2px; margin: 20px 0 20px 0;"></div>
-                <asp:MultiView ID="MultiView4" runat="server" ActiveViewIndex="0">
+                <asp:MultiView ID="MultiView4" runat="server" ActiveViewIndex="0" Visible="false">
                     <asp:View ID="viewShwoBankInfo" runat="server">
                         <div style="border: 1px dotted #999999; padding: 20px;" class="ui-corner-all">
                             开户行信息：<asp:Label ID="lbBankName" runat="server" Text="" /><br />
@@ -82,12 +82,12 @@
                     <asp:View ID="viewEditAuthentication" runat="server">
                         <table>
                             <tr>
-                                <td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>
+                                <%--<td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>--%>
                                 <td>
                                     <asp:FileUpload ID="FileUpload1" runat="server" /></td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td>
                                     <asp:Button ID="btUserAlter" runat="server" Text="修改认证信息" OnClick="btUserAlter_Click" /></td>
                             </tr>
                         </table>
