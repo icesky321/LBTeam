@@ -179,5 +179,49 @@ namespace LB.SQLServerDAL
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.CopInfo>();
         }
+
+        public IQueryable GetCopInfoByUserType_RegionCode_TelNum(int UserTypeId,string RegionCode,string TelNum)
+        {
+            var query = from c in dbContext.CopInfo
+                        join u in dbContext.UserInfo on c.UserId equals u.UserId
+                        where u.UserTypeId == UserTypeId
+                        orderby u.CreateTime descending
+                        select new
+                        {
+                            u.Account,
+                            u.BankName,
+                            c.BAuthentication,
+                            c.Bizlicense,
+                            u.Chop,
+                            u.ChopAuthentication,
+                            u.City,
+                            u.RealName,
+                            u.UserName,
+                            c.CopDetail,
+                            c.CopId,
+                            c.CopName,
+                            u.CreateTime,
+                            c.HWAuthentication,
+                            c.HWPermit,
+                            u.IDAuthentication,
+                            u.IDCard,
+                            u.Province,
+                            u.Street,
+                            u.MobilePhoneNum,
+                            u.Town,
+                            u.Audit,
+                            u.AuditDate,
+                            u.RegionCode
+                        };
+            if (!string.IsNullOrEmpty(RegionCode))
+            {
+                query = query.Where(p => p.RegionCode.IndexOf(RegionCode) >= 0);
+            }
+            if (!string.IsNullOrEmpty(TelNum))
+            {
+                query = query.Where(p => p.MobilePhoneNum.IndexOf(TelNum) >= 0);
+            }
+            return query;
+        }
     }
 }

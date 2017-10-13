@@ -82,13 +82,13 @@
                     <asp:View ID="viewEditAuthentication" runat="server">
                         <table>
                             <tr>
-                                <%--<td>身份证信息：<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" /></td>--%>
+                                <td>身份证信息：<%--<asp:Image ID="Image1" runat="server" Width="200px" Height="100px" />--%></td>
                                 <td>
                                     <asp:FileUpload ID="FileUpload1" runat="server" /></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Button ID="btUserAlter" runat="server" Text="修改认证信息" OnClick="btUserAlter_Click" /></td>
+                                    <asp:Button ID="btUserAlter" runat="server" Text="确认上传" OnClick="btUserAlter_Click" /></td>
                             </tr>
                         </table>
 

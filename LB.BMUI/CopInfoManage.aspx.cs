@@ -104,7 +104,8 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
 
     void gvCopInfoDataBind()
     {
-        gvCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType(2);
+        //gvCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType(2);
+        gvCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType_RegionCode_TelNum(2, hfRegionCode.Value, tbTelNum.Text);
         gvCopInfo.DataBind();
 
         foreach (GridViewRow gvRow in gvCopInfo.Rows)
@@ -267,6 +268,25 @@ public partial class Admin_CopInfoManage : System.Web.UI.Page
 
     protected void btnSearchRegionCode_Click(object sender, EventArgs e)
     {
-
+        if (ddlStreet.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlStreet.SelectedValue;
+        }
+        else if (ddlCounty.SelectedIndex > 0)
+        {
+            string str1 = ddlCounty.SelectedValue;
+            hfRegionCode.Value = str1.Substring(0, 6);
+        }
+        else if (ddlCity.SelectedIndex > 0)
+        {
+            string str1 = ddlCity.SelectedValue;
+            hfRegionCode.Value = str1.Substring(0, 4);
+        }
+        else if (ddlProvince.SelectedIndex > 0)
+        {
+            string str1 = ddlProvince.SelectedValue;
+            hfRegionCode.Value = str1.Substring(0, 2);
+        }
+        gvCopInfoDataBind();
     }
 }

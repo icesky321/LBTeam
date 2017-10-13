@@ -53,5 +53,10 @@ namespace LB.BLL
         {
             return da.GetCopInfosByUserType(UserType);
         }
+
+        public IQueryable GetCopInfoByUserType_RegionCode_TelNum(int UserTypeId, string RegionCode, string TelNum)
+        {
+            return da.GetCopInfoByUserType_RegionCode_TelNum(UserTypeId, RegionCode, TelNum);
+        }
     }
 }

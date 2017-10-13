@@ -60,7 +60,7 @@
                             </p>
                             <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
                                 <asp:Button ID="btnAccept" runat="server" Text="接单" data-icon="check" CommandName="Accept" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
-                                <asp:Button ID="btnReject" runat="server" Text="拒单" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' />
+                                <asp:Button ID="btnReject" runat="server" Text="拒单" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' Visible="false" />
                             </fieldset>
                         </div>
                     </ItemTemplate>

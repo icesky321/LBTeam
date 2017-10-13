@@ -153,7 +153,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             lbCFRealname.Text = MUserInfo.RealName;
             lbCFDW.Text = MUserInfo.MobilePhoneNum;
             hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
-            lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName+MUserInfo.Address;
         }
     }
 
