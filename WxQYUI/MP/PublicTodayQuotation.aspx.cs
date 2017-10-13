@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class MP_TodayQuotation : System.Web.UI.Page
+public partial class MP_PublicTodayQuotation : System.Web.UI.Page
 {
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();
     LB.BLL.TSManage bll_ts = new LB.BLL.TSManage();
@@ -17,22 +17,32 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                //Response.Redirect("~/Login/Login.aspx");
-                Response.Redirect("PublicTodayQuotation.aspx");
-            }
-            else
-            {
-                Load_UserInfo();
-                Load_TsInfo();
-                LoadTodayQuotation();
-            }
+                //Load_UserInfo();
+                //Load_TsInfo();
+                //LoadTodayQuotation();
 
         }
     }
 
+    private void Load_County()
+    {
+        var counties = bll_region.GetRegions(ddlCity.SelectedValue);
+        ddlCounty.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in counties)
+        {
+            ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlCounty.Items.Insert(0, "--选择区县--");
+    }
 
+    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCity.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlCity.SelectedValue;
+            Load_County();
+        }
+    }
 
 
     #region 初始化加载
@@ -122,5 +132,11 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
     protected void btSell_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/MP/CreateLeads.aspx");
+    }
+
+    protected void btSearch_Click(object sender, EventArgs e)
+    {
+        hfCountyId.Value = ddlCounty.SelectedValue;
+        Load_TsInfo();
     }
 }
