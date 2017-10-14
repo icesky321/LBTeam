@@ -19,8 +19,8 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
         {
             if (!User.Identity.IsAuthenticated)
             {
-                //Response.Redirect("~/Login/Login.aspx");
-                Response.Redirect("PublicTodayQuotation.aspx");
+                Response.Redirect("~/Login/Login.aspx");
+                //Response.Redirect("PublicTodayQuotation.aspx");
             }
             else
             {
