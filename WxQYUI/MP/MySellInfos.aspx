@@ -45,7 +45,7 @@
                                         <div style="text-align: left">
                                             <asp:LinkButton ID="lbtnDetail" runat="server" Text="查看货单明细" CommandName="Detail" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" /></div>
                                         <div style="text-align: right">
-                                            <asp:Button ID="btnCancel" runat="server" Text="撤销" data-icon="delete" CommandName="Cancel" CommandArgument='<%#Eval("InfoId") %>' data-mini="true" data-inline="true" OnClientClick='return confirm("确定撤销此单吗？");' /></div>
+                                            <asp:Button ID="btnCancel" runat="server" Text="撤销" data-icon="delete" CommandName="Cancel" CommandArgument='<%#Eval("InfoId") %>' data-mini="true" data-inline="true" OnClientClick='return confirm("确定撤销此单吗？");' Visible="false"/></div>
                                     </div>
                                 </p>
                             </p>
