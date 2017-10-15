@@ -18,7 +18,7 @@
             <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
             <div class="weui-msg__text-area">
                 <h2 class="weui-msg__title">操作成功</h2>
-                <p class="weui-msg__desc">该订单已提交回收公司，回收公司付款，平台审核通过后将以消息推送形式反馈到您企业号中，请耐心等待。如有疑问请咨询：0574-86694505</p>
+                <p class="weui-msg__desc">请让产废单位在我的订单中确认明细后才能结束订单</p>
             </div>
         </div>
         <div class="weui-form-preview">
