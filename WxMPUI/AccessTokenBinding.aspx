@@ -1,11 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AccessTokenBinding.aspx.cs"
     Inherits="AccessTokenBinding" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
     <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=2.0,user-scalable=no;" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.css" rel="stylesheet" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="format-detection" content="telephone=no" />
@@ -15,7 +20,7 @@
             padding: 10px 0 10px 0;
         }
     </style>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript">
         function close_wechat() {
             WeixinJSBridge.call("closeWindow");
         }
@@ -24,7 +29,7 @@
 <body style="background-color: #07B2E6;">
     <form id="form1" runat="server">
         <div style="max-width: 960px; height: auto; margin: 0 auto;">
-            <asp:TextBox ID="hfcode" runat="server" Value="" />
+            <asp:HiddenField ID="hfcode" runat="server" Value="" />
             <asp:HiddenField ID="hfAppId" runat="server" />
             <asp:HiddenField ID="hfAppSecret" runat="server" />
             <asp:HiddenField ID="hfAccessToken" runat="server" />
@@ -36,23 +41,15 @@
             <div style="text-align: center; margin: 2em 0 0 0; color: White;">
                 <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                     <asp:View ID="viewTokenBind" runat="server">
-                        授权您的微信帐户允许访问公司网站。<br />
+                        授权您的微信帐户允许访问绿宝网站。<br />
                         <asp:Label ID="lbLoginError" runat="server" Visible="False" ForeColor="Red"></asp:Label>
                         <div style="margin: 0 auto; width: 290px;">
                             <table style="display: block; margin: 0 auto;" class="loginTable">
                                 <tr>
-                                    <td>工号：
+                                    <td>手机：
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="tbJobNumber" runat="server" CssClass="loginTextBox" Width="220px"></asp:TextBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>密码：
-                                    </td>
-                                    <td>
-                                        <asp:TextBox ID="tbPassword" runat="server" CssClass="loginTextBox" TextMode="Password"
-                                            Width="220px"></asp:TextBox>
+                                        <asp:TextBox ID="tbJobNumber" runat="server" CssClass="loginTextBox" Width="220px" placeholder="请输入手机号码"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr>

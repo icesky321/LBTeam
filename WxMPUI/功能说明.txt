@@ -1,2 +1,2 @@
 ﻿1、获取用户OpenId
-	组合页面：
+	组合页面：AuthEntrance.aspx，AccessTokenBinding.aspx 两个页面演示了如何获取 服务号 OpenId

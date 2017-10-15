@@ -65,6 +65,11 @@ public partial class CustomMenu : System.Web.UI.Page
             url = "http://weixin.lvbao111.com/weixinQY/MP/TodayNews.aspx",
             name = "今日资讯"
         });
+        subButton1.sub_button.Add(new SingleViewButton()
+        {
+            url = "http://weixin.lvbao111.com/weixinMP/TodayQuotation.aspx",
+            name = "授权绑定"
+        });
 
         bg.button.Add(subButton1);
 

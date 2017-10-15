@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.AdvancedAPIs;
+using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 
 public partial class AccessTokenBinding : System.Web.UI.Page
 {
@@ -36,7 +37,7 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     /// </summary>
     public string code
     {
-        get { return hfcode.Text; }
+        get { return hfcode.Value; }
     }
 
     public string AppId
@@ -52,11 +53,11 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     /// <summary>
     /// 访问令牌实体对象。
     /// </summary>
-    //public OAuthAccessTokenResult AccessTokenEntity
-    //{
-    //    get;
-    //    set;
-    //}
+    public OAuthAccessTokenResult AccessTokenEntity
+    {
+        get;
+        set;
+    }
 
     #endregion
 
@@ -65,13 +66,15 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     {
         if (!string.IsNullOrEmpty(Request.QueryString["code"]))
         {
-            hfcode.Text = Request.QueryString["code"];
+            hfcode.Value = Request.QueryString["code"];
         }
 
         hfAppId.Value = ConfigurationManager.AppSettings["AppId"] ?? "wx05eb2305685408a7";
 
         hfAppSecret.Value = ConfigurationManager.AppSettings["AppSecret"] ?? "b1100370fae06d358ab0ba6263bfa6ac";
 
+        AccessTokenEntity = OAuthApi.GetAccessToken(AppId, AppSecret, code);
+        hfOpenId.Value = AccessTokenEntity.openid;
     }
 
     ///// <summary>
@@ -219,6 +222,15 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     }
     protected void btnBinding_Click(object sender, EventArgs e)
     {
+        if (localUserManage.ExistTelNum(tbJobNumber.Text))
+        {
+            LB.SQLServerDAL.UserInfo localUser = localUserManage.GetUserInfoByTelNum(tbJobNumber.Text);
+            localUser.OpenId = hfOpenId.Value;
+            localUserManage.UpdateUserInfo(localUser);
+            lbLocalUser.Text = localUser.MobilePhoneNum;
+            MultiView1.SetActiveView(viewLocalUserInfo);
+        }
+
         //    OAuthUserInfo oauthUser = ObtainOAuthUserInfo();
 
         //    if (!string.IsNullOrEmpty(oauthUser.openid))
