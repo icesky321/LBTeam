@@ -117,7 +117,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WxMPUI", "WxMPUI\", "{FB50F04D-2B23-41D4-AAC0-4FA6CA76EE80}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{74359701-27bc-4f9f-bcbb-0733d929d69e}|LB.WeixinMP.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;{C576E507-1E6E-4AAB-9863-A46398D09FAD}|LB.Model.dll;"
+		ProjectReferences = "{74359701-27bc-4f9f-bcbb-0733d929d69e}|LB.WeixinMP.dll;{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}|LB.SQLServerDAL.dll;{C576E507-1E6E-4AAB-9863-A46398D09FAD}|LB.Model.dll;{756f5050-40b8-4b9f-90d8-858a392bfb3c}|LB.BLL.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_1976"
 		Debug.AspNetCompiler.PhysicalPath = "WxMPUI\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1976\"
