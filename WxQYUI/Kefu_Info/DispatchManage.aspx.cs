@@ -139,35 +139,71 @@ public partial class Kefu_Info_DispatchManage : System.Web.UI.Page
             Label lbInfoId = e.Item.FindControl("lbInfoId") as Label;
             Label lbjd = e.Item.FindControl("lbjd") as Label;
             Label tbjdywy = e.Item.FindControl("tbjdywy") as Label;
-            Label lbjd1 = e.Item.FindControl("lbjd1") as Label;
-            Label tbjdywy1 = e.Item.FindControl("tbjdywy1") as Label;
+            //Label lbjd1 = e.Item.FindControl("lbjd1") as Label;
+            //Label tbjdywy1 = e.Item.FindControl("tbjdywy1") as Label;
+            Label lbQuantity = e.Item.FindControl("lbQuantity") as Label;
+            HyperLink hlTelNum = e.Item.FindControl("HyperLink1") as HyperLink;
             LB.SQLServerDAL.UserInfo InUser = new LB.SQLServerDAL.UserInfo();
             MSellInfo = bll_sell.GetSellInfo_ById(Guid.Parse(lbInfoId.Text));
             LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
             MUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
-            //LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
-            //MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-            //if (rptSellInfoes_Doing.Items.Count>0)
-            //{
-            //    if (MSellInfo.JD_UserId != 0)
-            //    {
-            //        lbjd.Text = MJDUserInfo.RealName;
-            //        tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
-            //    }
-            //}
+
+            if (MSellInfo.JD_UserId != 0)
+            {
+                LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
+                MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                lbjd.Text = MJDUserInfo.RealName;
+                tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
+                lbCFRealname.Text = MUserInfo.RealName;
+                hlTelNum.NavigateUrl = "tel://" + MJDUserInfo.MobilePhoneNum;
+                lbCFDW.Text = MUserInfo.MobilePhoneNum;
+                lbQuantity.Text = MSellInfo.Quantity;
+                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            }
+            else
+            {
+                lbCFRealname.Text = MUserInfo.RealName;
+                lbCFDW.Text = MUserInfo.MobilePhoneNum;
+                lbQuantity.Text = MSellInfo.Quantity;
+                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            }
+
             //if (rptSellInfoesClosed.Items.Count > 0)
             //{
             //    if (MSellInfo.JD_UserId != 0)
             //    {
-            //        lbjd1.Text = MJDUserInfo.RealName;
-            //        tbjdywy1.Text = MJDUserInfo.MobilePhoneNum;
+            //        LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
+            //        MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+            //        lbjd.Text = MJDUserInfo.RealName;
+            //        tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
+            //        lbCFRealname.Text = MUserInfo.RealName;
+            //        lbCFDW.Text = MUserInfo.MobilePhoneNum;
+            //        lbQuantity.Text = MSellInfo.Quantity;
+            //        lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
             //    }
             //}
+            //if (rptSellInfoes_Doing.Items.Count > 0)
+            //{
+            //    if (MSellInfo.JD_UserId != 0)
+            //    {
+            //        LB.SQLServerDAL.UserInfo MJDUserInfo1 = new LB.SQLServerDAL.UserInfo();
+            //        MJDUserInfo1 = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+            //        lbjd.Text = MJDUserInfo1.RealName;
+            //        tbjdywy.Text = MJDUserInfo1.MobilePhoneNum;
+            //        lbCFRealname.Text = MUserInfo.RealName;
+            //        lbCFDW.Text = MUserInfo.MobilePhoneNum;
+            //        lbQuantity.Text = MSellInfo.Quantity;
+            //        lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            //    }
+            //}
+            //else
+            //{
+            //    lbCFRealname.Text = MUserInfo.RealName;
+            //    lbCFDW.Text = MUserInfo.MobilePhoneNum;
+            //    lbQuantity.Text = MSellInfo.Quantity;
+            //    lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            //}
 
-            lbCFRealname.Text = MUserInfo.RealName;
-            lbCFDW.Text = MUserInfo.MobilePhoneNum;
-
-            lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
         }
     }
 

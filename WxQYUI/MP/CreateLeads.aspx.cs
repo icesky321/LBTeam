@@ -119,7 +119,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
                 listTSName.Add(item.Text);
         }
         string tsNames = string.Join("、", listTSName.ToArray());
-        detailInfo = "待售电瓶品种：" + tsNames + " | " + tbAdditionText.Value;
+        detailInfo = "待售电瓶品种：" + tsNames + " | " + tbVolume.Value + " | " + tbAdditionText.Value;
         sellInfo.Description = detailInfo;
 
         sellInfo.Quantity = tbVolume.Value;

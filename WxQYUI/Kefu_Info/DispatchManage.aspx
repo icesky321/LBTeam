@@ -46,8 +46,12 @@
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
+                                <asp:Label ID="lbQuantity" runat="server" Text=""></asp:Label>
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
+                                <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server" Visible="false">点击拨打此号码</asp:HyperLink>
                             </p>
                             <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
                                 <asp:Button ID="btnAccept" runat="server" Text="指派业务员" data-icon="check" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" />
@@ -90,6 +94,7 @@
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
+                                <asp:Label ID="lbQuantity" runat="server" Text=""></asp:Label>
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
@@ -97,6 +102,7 @@
                                 <label for="fullname">街道回收员：</label>
                                 <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
                                 <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink>
                             </p>
                             <asp:Button ID="btChoose" runat="server" Text="发微信催一下" CommandName="SendWX" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
                         </div>
@@ -137,13 +143,15 @@
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
+                                <asp:Label ID="lbQuantity" runat="server" Text=""></asp:Label>
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
                             <p style="font-size: 0.9em; color: burlywood;">
                                 <label for="fullname">街道回收员：</label>
-                                <asp:Label ID="lbjd1" runat="server" Text=""></asp:Label>
-                                <asp:Label ID="tbjdywy1" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="lbjd" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="tbjdywy" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink>
                             </p>
                         </div>
                     </ItemTemplate>

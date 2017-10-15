@@ -10,6 +10,7 @@ public partial class MP_MySellInfos : System.Web.UI.Page
     LB.BLL.UserManage bll_userManage = new LB.BLL.UserManage();
     LB.BLL.SellInfoManage bll_sellInfo = new LB.BLL.SellInfoManage();
     LB.BLL.CF_JD_Order bll_cf_jd_order = new LB.BLL.CF_JD_Order();
+    Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -84,6 +85,26 @@ public partial class MP_MySellInfos : System.Web.UI.Page
             string url = "MyOrderDetail.aspx?infoId=" + e.CommandArgument.ToString();
             Response.Redirect(url);
         }
+        if (e.CommandName == "Cancel")
+        {
+            LB.SQLServerDAL.SellInfo sellInfo = new LB.SQLServerDAL.SellInfo();
+            sellInfo = bll_sellInfo.GetSellInfo_ById(infoId);
+            sellInfo.Kefu_LeaveMsg = "产废单位主动撤销";
+            sellInfo.Kefu_HandleDate = DateTime.Now;
+            sellInfo.Kefu_HandleResult = "拒绝转发";
+            sellInfo.Kefu_TohandleTag = false;
+            sellInfo.StatusMsg = "产废单位撤销，信息已被关闭";
+            sellInfo.JD_AcceptedTag = false;
+            sellInfo.JD_TohandleTag = false;
+            sellInfo.IsClosed = true;
+            bll_sellInfo.UpdateSellInfo(sellInfo);
+            LB.SQLServerDAL.UserInfo user = new LB.SQLServerDAL.UserInfo();
+            user = bll_userManage.GetUserInfoByUserId(sellInfo.CF_UserId);
+            SendWxArticle_ToCF("2", "产废单位撤销卖货申请", "撤销发起人：" + user.UserName + "\n" + "手机号：" + user.MobilePhoneNum + "(" + bll_region.GetRegion(user.RegionCode).WholeName + user.Address + ")");
+            //Init_Load();
+            Response.Redirect("~/ErrorPage/Success.aspx");
+
+        }
     }
 
     protected void rptSellInfos_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -102,5 +123,15 @@ public partial class MP_MySellInfos : System.Web.UI.Page
             }
             
         }
+    }
+
+    private void SendWxArticle_ToCF(string QYId, string title, string description)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = title;
+        article.Description = description;
+        sendmsg.SendArticleToUsers(QYId, article, "5");
     }
 }

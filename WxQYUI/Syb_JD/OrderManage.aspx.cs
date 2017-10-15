@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 public partial class Syb_JD_OrderManage : System.Web.UI.Page
 {
@@ -127,6 +128,12 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             string url = "GoodsReceipt.aspx?infoId=" + e.CommandArgument.ToString();
             Response.Redirect(url);
         }
+        if (e.CommandName == "Copy")
+        {
+            LB.SQLServerDAL.SellInfo sellInfo = bll_sell.GetSellInfo_ById(infoId);
+            LB.SQLServerDAL.UserInfo Muserinfo = new LB.SQLServerDAL.UserInfo();
+            Muserinfo = bll_usermanage.GetUserInfoByUserId(sellInfo.CF_UserId);
+        }
     }
 
     protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -138,13 +145,15 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             Label lbCFRealname = e.Item.FindControl("lbCFRealname") as Label;
             Label lbAddress = e.Item.FindControl("lbAddress") as Label;
             Label lbInfoId = e.Item.FindControl("lbInfoId") as Label;
+            HyperLink hlTelNum = e.Item.FindControl("HyperLink1") as HyperLink;
             LB.SQLServerDAL.UserInfo InUser = new LB.SQLServerDAL.UserInfo();
             MSellInfo = bll_sell.GetSellInfo_ById(Guid.Parse(lbInfoId.Text));
             LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
             MUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.CF_UserId);
             lbCFRealname.Text = MUserInfo.RealName;
             lbCFDW.Text = MUserInfo.MobilePhoneNum;
-            lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+            hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
+            lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName+MUserInfo.Address;
         }
     }
 
@@ -163,4 +172,5 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/DispatchManage.aspx";
         sendmsg.SendArticleToTags(toTags, article, "5");
     }
+
 }

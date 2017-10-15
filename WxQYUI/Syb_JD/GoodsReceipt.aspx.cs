@@ -120,7 +120,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             MSellInfo.StatusMsg = "详单填写完毕,待产废单位确认";
             //MSellInfo.IsClosed = true;
             bll_sellinfomanage.UpdateSellInfo(MSellInfo);
-            SendWxArticle_ToCF(MCF_JD_Order.CFId, "1");
+            //SendWxArticle_ToCF(MCF_JD_Order.CFId, "1");
             Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
         }
         else

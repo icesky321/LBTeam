@@ -47,21 +47,21 @@
                                 卖方(产废单位)：
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
                                 手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink>
+                                <%--<a href="tel://15267863162" runat="server">111</a>--%>
+                                <br />
                                 地址：
-                                        <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
+                                        <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><%--<asp:Button ID="btCopy" runat="server" Text="点击复制此地址" CommandName="Copy" CommandArgument='<%#Eval("InfoId") %>' />--%>
+                                <br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
                                 <br />
                                 状态：<asp:Literal ID="Literal1" runat="server" Text='<%# Eval("StatusMsg") %>'></asp:Literal>
                             </p>
                             <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
                                 <asp:Button ID="btnAccept" runat="server" Text="接单" data-icon="check" CommandName="Accept" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
-                                <asp:Button ID="btnReject" runat="server" Text="拒单" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' />
+                                <asp:Button ID="btnReject" runat="server" Text="拒单" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' Visible="false" />
                             </fieldset>
-                            <%--                            <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false">
-                                <asp:Button ID="btnAccept" runat="server" Text="接单" data-icon="check" CssClass="ui-btn-active" CommandName="Accept" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定要接单吗？");' />
-                                <asp:Button ID="btnReject" runat="server" Text="作废，关闭信息" data-icon="delete" CommandName="Reject" CommandArgument='<%# Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("确定此单作废吗？");' />
-                            </fieldset>--%>
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -101,7 +101,8 @@
                                 卖方(产废单位)
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
                                 手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink><br />
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
@@ -148,7 +149,8 @@
                                 卖方(产废单位)
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
                                 手机号：
-                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label><br />
+                                        <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink><br />
                                 地址：
                                         <asp:Label ID="lbAddress" runat="server" Text=""></asp:Label><br />
                                 <asp:Literal ID="ltlDescription" runat="server" Text='<%# Eval("Description") %>'></asp:Literal>
@@ -158,6 +160,7 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
+
             </div>
             <div data-role="footer" style="text-align: center;">
                 <span style="font-size: 0.75em;">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</span>
