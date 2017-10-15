@@ -46,10 +46,10 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
             if (sellInfo == null)
                 return;
 
-            if (sellInfo.Kefu_TohandleTag == false)
-            {
-                Response.Redirect("~/ErrorPage/Rehandle.aspx", true);
-            }
+            //if (sellInfo.Kefu_TohandleTag == false)
+            //{
+            //    Response.Redirect("~/ErrorPage/Rehandle.aspx", true);
+            //}
 
             lbTitle.Text = sellInfo.Title;
             lbCreateDate.Text = string.Format("{0:MM-dd HH:mm}", sellInfo.CreateDate);
@@ -126,6 +126,10 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
                 {
                     ltlMsg.Text = "系统未找到可指派的回收业务员";
                     return;
+                }
+                if (sellInfo.JD_UserId != 0)
+                {
+                    SendWxArticle_ToChangeJD(sellInfo);
                 }
                 sellInfo.JD_TohandleTag = true;
                 int userId = 0;
@@ -216,6 +220,20 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
             errmsg = result.errmsg;
         }
         return errmsg;
+    }
+
+    private void SendWxArticle_ToChangeJD(LB.SQLServerDAL.SellInfo sellInfo)
+    {
+        //TODO: 发布前修改微信发布逻辑
+        LB.SQLServerDAL.UserInfo cf_User = bll_userManage.GetUserInfoByUserId(sellInfo.CF_UserId);
+        LB.SQLServerDAL.UserInfo jd_User = bll_userManage.GetUserInfoByUserId(sellInfo.JD_UserId);
+        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
+        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
+        article.Title = "派单业务员更改提醒";
+        article.Description = "订单取消提醒" + "\n\n卖家姓名：" + cf_User.RealName + "\n详细地址：" +
+             cf_User.Address + "\n出售信息：" + sellInfo.Description + "\n该业务单已指派另外业务员，请勿重复收单";
+
+        sendmsg.SendArticleToUsers(jd_User.QYUserId, article, "5");
     }
 
     private string SendWxArticle_ToHS(LB.SQLServerDAL.SellInfo sellInfo)
