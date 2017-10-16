@@ -4,8 +4,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
-    <br />
-    <br />
+    选择省份：
+                <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
+    选择地级市：
+                <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
+    <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+    选择县市：
+            <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
+    镇或街道：
+                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList>
+    <asp:HiddenField ID="hfRegionCode" runat="server" />
+    手机号：<asp:TextBox ID="tbTelNum" runat="server"></asp:TextBox>
     <asp:Button ID="btSearch" runat="server" Text="确定" OnClick="btSearch_Click" />
     <asp:GridView ID="gvUserInfo" runat="server" AutoGenerateColumns="false" DataKeyNames="UserId" OnRowCommand="gvUserInfo_RowCommand" OnDataBound="gvUserInfo_DataBound" OnPageIndexChanging="gvUserInfo_PageIndexChanging">
         <Columns>

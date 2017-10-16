@@ -24,6 +24,7 @@ namespace LB.Model
             HWPermit = string.Empty;
             CopDetail = string.Empty;
             RealName = string.Empty;
+            RegionCode = string.Empty;
         }
 
         public Int32 UserId
@@ -165,5 +166,12 @@ namespace LB.Model
             get;
             set;
         }
+
+        public string RegionCode
+        {
+            get;
+            set;
+        }
+
     }
 }

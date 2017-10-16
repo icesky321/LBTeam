@@ -17,13 +17,95 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
+            Load_Province();
             gvCopInfoDataBind();
         }
     }
 
+    #region  加载省市县
+    private void Load_Province()
+    {
+        var provinces = bll_region.GetRegions("0");
+        ddlProvince.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
+        {
+            ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlProvince.Items.Insert(0, "--选择省份--");
+    }
+
+    private void Load_City()
+    {
+        var cities = bll_region.GetRegions(ddlProvince.SelectedValue);
+        ddlCity.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in cities)
+        {
+            ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlCity.Items.Insert(0, "--选择城市--");
+    }
+
+    private void Load_County()
+    {
+        var counties = bll_region.GetRegions(ddlCity.SelectedValue);
+        ddlCounty.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in counties)
+        {
+            ddlCounty.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlCounty.Items.Insert(0, "--选择区县--");
+    }
+
+    private void Load_Street()
+    {
+        var streets = bll_region.GetRegions(ddlCounty.SelectedValue);
+        ddlStreet.Items.Clear();
+        foreach (Cobe.CnRegion.SQLServerDAL.Region region in streets)
+        {
+            ddlStreet.Items.Add(new ListItem(region.AreaName, region.Id));
+        }
+        ddlStreet.Items.Insert(0, "--选择区县--");
+    }
+
+    protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlProvince.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlProvince.SelectedValue;
+            Load_City();
+        }
+    }
+
+    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCity.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlCity.SelectedValue;
+            Load_County();
+        }
+    }
+
+    protected void ddlCounty_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCounty.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlCounty.SelectedValue;
+            Load_Street();
+        }
+    }
+
+    protected void ddlStreet_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlStreet.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlStreet.SelectedValue;
+        }
+    }
+    #endregion
+
     void gvCopInfoDataBind()
     {
-        gvCopInfo.DataSource = bll_userinfo.GetUserInfosBySEO("", "", "", "", "1", "");
+        gvCopInfo.DataSource = bll_userinfo.GetUserInfosBySEO(hfRegionCode.Value, "1", tbTelNum.Text);
         //gvCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType(1);
         gvCopInfo.DataBind();
         foreach (GridViewRow gvRow in gvCopInfo.Rows)
@@ -270,6 +352,30 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
     protected void gvCopInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
         gvCopInfo.PageIndex = e.NewPageIndex;
+        gvCopInfoDataBind();
+    }
+
+    protected void btSearch_Click(object sender, EventArgs e)
+    {
+        if (ddlStreet.SelectedIndex > 0)
+        {
+            hfRegionCode.Value = ddlStreet.SelectedValue;
+        }
+        else if (ddlCounty.SelectedIndex > 0)
+        {
+            string str1 = ddlCounty.SelectedValue;
+            hfRegionCode.Value = str1.Substring(0, 6);
+        }
+        else if (ddlCity.SelectedIndex > 0)
+        {
+            string str1 = ddlCity.SelectedValue;
+            hfRegionCode.Value = str1.Substring(0, 4);
+        }
+        else if (ddlProvince.SelectedIndex > 0)
+        {
+            string str1 = ddlProvince.SelectedValue;
+            hfRegionCode.Value = str1.Substring(0, 2);
+        }
         gvCopInfoDataBind();
     }
 }

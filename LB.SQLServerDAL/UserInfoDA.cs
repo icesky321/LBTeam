@@ -104,7 +104,7 @@ namespace LB.SQLServerDAL
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
         }
 
-        public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
+        public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string RegionCode, string UserTypeId, string TelNum)
         {
             var query = from u in dbContext.UserInfo
                         join c in dbContext.CopInfo on u.UserId equals c.UserId into leftGroup1
@@ -137,33 +137,26 @@ namespace LB.SQLServerDAL
                             Town = u.Town,
                             Audit = u.Audit == null ? false : u.Audit.Value,
                             UserTypeId = Convert.ToInt32(u.UserTypeId),
-                            AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value
+                            AuditDate = u.AuditDate == null ? Convert.ToDateTime("1900-1-1") : u.AuditDate.Value,
                             //IsApproved = Convert.ToBoolean(b.IsApproved)
+                            RegionCode=u.RegionCode
                         };
-            if (province != "---" && province != "-1")
+            if (!string.IsNullOrEmpty(RegionCode))
             {
-                query = query.Where(p => p.Province.IndexOf(province) >= 0);
+                query = query.Where(p => p.RegionCode.IndexOf(RegionCode) >= 0);
             }
-            if (city != "--")
+            if (!string.IsNullOrEmpty(TelNum))
             {
-                query = query.Where(p => p.City.IndexOf(city) >= 0);
-            }
-            if (country != "--")
-            {
-                query = query.Where(p => p.Town.IndexOf(country) >= 0);
-            }
-            if (street != "--")
-            {
-                query = query.Where(p => p.Street.IndexOf(street) >= 0);
+                query = query.Where(p => p.MobilePhoneNum.IndexOf(TelNum) >= 0);
             }
             if (!string.IsNullOrEmpty(UserTypeId))
             {
                 query = query.Where(p => p.UserTypeId == Convert.ToInt32(UserTypeId));
             }
-            if (!string.IsNullOrEmpty(TelNum))
-            {
-                query = query.Where(p => p.MobilePhoneNum.Contains(TelNum));
-            }
+            //if (!string.IsNullOrEmpty(TelNum))
+            //{
+            //    query = query.Where(p => p.MobilePhoneNum.Contains(TelNum));
+            //}
             return query.AsQueryable<LB.Model.UserInfoModel>();
         }
 
@@ -399,6 +392,56 @@ namespace LB.SQLServerDAL
                         select u;
             return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
 
+        }
+
+        public IQueryable GetUserInfoByUserTypeId_RegionCode_TelNum(int UserTypeId,string RegionCode,string TelNum)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == UserTypeId
+                        orderby c.CreateTime descending
+                        select new 
+                        {
+                            c.Account,
+                            c.Address,
+                            c.Audit,
+                            c.AuditDate,
+                            c.BankName,
+                            c.Chop,
+                            c.ChopAuthentication,
+                            c.CreateTime,
+                            c.IDAuthentication,
+                            c.IDCard,
+                            c.IDCardNo,
+                            c.InCharge,
+                            c.InChargeDate,
+                            c.IsQYUser,
+                            c.MobilePhoneNum,
+                            c.OpenId,
+                            c.PayeeName,
+                            c.QYUserId,
+                            c.RealName,
+                            c.RegionCode,
+                            c.UserId,
+                            c.UserName,
+                            c.UserTypeId,
+                            c.WxAccount,
+                            c.WxName,
+                            c.ZfbAccount,
+                            c.ZfbName,
+                            c.Province,
+                            c.City,
+                            c.Town,
+                            c.Street
+                        };
+            if (!string.IsNullOrEmpty(RegionCode))
+            {
+                query = query.Where(p => p.RegionCode.IndexOf(RegionCode) >= 0);
+            }
+            if (!string.IsNullOrEmpty(TelNum))
+            {
+                query = query.Where(p => p.MobilePhoneNum.IndexOf(TelNum) >= 0);
+            }
+            return query;
         }
     }
 }
