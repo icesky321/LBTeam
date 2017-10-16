@@ -8,42 +8,6 @@ using Senparc.Weixin.Entities.TemplateMessage;
 namespace LB.WeixinMP
 {
     /// <summary>
-    /// 模版消息基础数据类
-    /// </summary>
-    [Serializable]
-    public abstract class TMBaseData
-    {
-        private string templateColor;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public TMBaseData()
-        {
-            templateColor = "#199900";
-        }
-
-        /// <summary>
-        /// 模版消息Id。
-        /// <para>例：TemplateId = "a5LOukCZtWivNMpeMw9Ghhhq4UPuUNPy83iW8Vm3yA0" </para>
-        /// </summary>
-        public abstract string TemplateId
-        {
-            get;
-        }
-
-        /// <summary>
-        /// 获取或设置 模版消息颜色。
-        /// <para>例：TemplateColor = "#99FF99"</para>
-        /// </summary>
-        public virtual string TemplateColor
-        {
-            get { return templateColor; }
-            set { templateColor = value; }
-        }
-    }
-
-    /// <summary>
     /// 模版消息数据项
     /// </summary>
     [Serializable]
@@ -55,7 +19,7 @@ namespace LB.WeixinMP
         public TMDataItem() :
             base(string.Empty)
         {
-            this.color = "#333366";
+            this.color = "#199900";
             this.value = string.Empty;
         }
 
@@ -66,7 +30,7 @@ namespace LB.WeixinMP
         public TMDataItem(string value)
             : base(value)
         {
-            this.color = "#333366";
+            this.color = "#199900";
         }
     }
 
@@ -80,18 +44,9 @@ namespace LB.WeixinMP
     public class TMData_报价提醒 : TemplateMessageBase
     {
         /// <summary>
-        /// 获取模版消息Id。
-        /// <para>例：TemplateId = "a5LOukCZtWivNMpeMw9Ghhhq4UPuUNPy83iW8Vm3yA0" </para>
-        /// </summary>
-        //public override string TemplateId
-        //{
-        //    get { return "1VogdIVVnRBPratJYu94i6vehyKcoMA2P3FS1jbQolM"; }
-        //}
-
-        /// <summary>
         /// 
         /// </summary>
-        public TMData_报价提醒(string url)
+        public TMData_报价提醒(string url = "")
             : base("1VogdIVVnRBPratJYu94i6vehyKcoMA2P3FS1jbQolM", url, "报价提醒")
         {
             first = new TMDataItem();
@@ -141,21 +96,13 @@ namespace LB.WeixinMP
     /// 收到报价通知 模板消息数据类
     /// </summary>
     [Serializable]
-    public class TMData_收到报价通知 : TMBaseData
+    public class TMData_收到报价通知 : TemplateMessageBase
     {
-        /// <summary>
-        /// 获取模版消息Id。
-        /// <para>例：TemplateId = "a5LOukCZtWivNMpeMw9Ghhhq4UPuUNPy83iW8Vm3yA0" </para>
-        /// </summary>
-        public override string TemplateId
-        {
-            get { return "39sdixWQDlmeiMlHIOoKk1cOGqjlX02cO7qOwc-Y51g"; }
-        }
-
         /// <summary>
         /// 
         /// </summary>
-        public TMData_收到报价通知()
+        public TMData_收到报价通知(string url = "")
+            : base("39sdixWQDlmeiMlHIOoKk1cOGqjlX02cO7qOwc-Y51g", url, "收到报价通知")
         {
             first = new TMDataItem();
             keyword1 = new TMDataItem();
@@ -220,22 +167,13 @@ namespace LB.WeixinMP
     /// 回收成功通知 模板消息数据类
     /// </summary>
     [Serializable]
-    public class TMData_回收成功通知 : TMBaseData
+    public class TMData_回收成功通知 : TemplateMessageBase
     {
-        /// <summary>
-        /// 获取模版消息Id。
-        /// <para>例：TemplateId = "tpsR1KNDq_5lrGdCvLCwU_1RhWq5DNU2bnOOOsrV68c" </para>
-        /// </summary>
-        public override string TemplateId
-        {
-            get { return "onWvSRApj1HDHb9a2FTfAWGDqz6c8ZXF52fhgIOKenQ"; }
-        }
-
         /// <summary>
         /// 
         /// </summary>
-        public TMData_回收成功通知()
-            : base()
+        public TMData_回收成功通知(string url = "")
+            : base("onWvSRApj1HDHb9a2FTfAWGDqz6c8ZXF52fhgIOKenQ", url, "回收成功通知")
         {
             first = new TMDataItem();
             keyword1 = new TMDataItem();
@@ -288,24 +226,15 @@ namespace LB.WeixinMP
     }
 
     /// <summary>
-    /// 
+    /// 预约成功通知 模板消息数据类
     /// </summary>
-    public class TMData_预约成功通知 : TMBaseData
+    public class TMData_预约成功通知 : TemplateMessageBase
     {
-        /// <summary>
-        /// 获取模版消息Id。
-        /// <para>例：TemplateId = "tpsR1KNDq_5lrGdCvLCwU_1RhWq5DNU2bnOOOsrV68c" </para>
-        /// </summary>
-        public override string TemplateId
-        {
-            get { return "QcOQxK6y99WJmVCqhZbDhyLM8lDzJZwpXUOqdduyPdY"; }
-        }
-
         /// <summary>
         /// 预约成功通知
         /// </summary>
-        public TMData_预约成功通知()
-            : base()
+        public TMData_预约成功通知(string url = "")
+            : base("QcOQxK6y99WJmVCqhZbDhyLM8lDzJZwpXUOqdduyPdY", url, "预约成功通知")
         {
             first = new TMDataItem();
             keyword1 = new TMDataItem();
@@ -352,22 +281,13 @@ namespace LB.WeixinMP
     /// <summary>
     /// 下单成功通知
     /// </summary>
-    public class TMData_下单成功通知 : TMBaseData
+    public class TMData_下单成功通知 : TemplateMessageBase
     {
         /// <summary>
-        /// 获取模版消息Id。
-        /// <para>例：TemplateId = "tpsR1KNDq_5lrGdCvLCwU_1RhWq5DNU2bnOOOsrV68c" </para>
+        /// 下单成功通知
         /// </summary>
-        public override string TemplateId
-        {
-            get { return "C5UAiQDyYrqpQZjqgEWjDzj4h5PoNfUV287wWtYP7uU"; }
-        }
-
-        /// <summary>
-        /// 预约成功通知
-        /// </summary>
-        public TMData_下单成功通知()
-            : base()
+        public TMData_下单成功通知(string url = "")
+            : base("C5UAiQDyYrqpQZjqgEWjDzj4h5PoNfUV287wWtYP7uU", url, "下单成功通知")
         {
             first = new TMDataItem();
             keyword1 = new TMDataItem();
@@ -403,22 +323,13 @@ namespace LB.WeixinMP
     /// <summary>
     /// 派单成功通知
     /// </summary>
-    public class TMData_派单成功通知 : TMBaseData
+    public class TMData_派单成功通知 : TemplateMessageBase
     {
-        /// <summary>
-        /// 获取模版消息Id。
-        /// <para>例：TemplateId = "tpsR1KNDq_5lrGdCvLCwU_1RhWq5DNU2bnOOOsrV68c" </para>
-        /// </summary>
-        public override string TemplateId
-        {
-            get { return "Kv9n9B_Rn3aKu33tOOOZhkUAck5JuauQckiyGAE68uE"; }
-        }
-
         /// <summary>
         /// 派单成功通知
         /// </summary>
-        public TMData_派单成功通知()
-            : base()
+        public TMData_派单成功通知(string url = "")
+             : base("Kv9n9B_Rn3aKu33tOOOZhkUAck5JuauQckiyGAE68uE", url, "派单成功通知")
         {
             first = new TMDataItem();
             keyword1 = new TMDataItem();

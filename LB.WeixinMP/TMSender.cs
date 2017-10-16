@@ -13,15 +13,17 @@ namespace LB.WeixinMP
 {
     /// <summary>
     /// 模板微信发送器
+    /// <para>Devor:Cobe</para>
+    /// <para>DevTime: 2017-10-14</para>
     /// </summary>
-    public class TemplateMessageSender
+    public class TMSender
     {
         BaseAccessTokenManage tokenManage = new BaseAccessTokenManage();
 
         /// <summary>
         /// 
         /// </summary>
-        public TemplateMessageSender()
+        public TMSender()
         {
         }
 
@@ -110,6 +112,33 @@ namespace LB.WeixinMP
             try
             {
                 result = Senparc.Weixin.MP.AdvancedAPIs.TemplateApi.SendTemplateMessage("ss", openId, tmData);
+            }
+            catch (Exception ee)
+            {
+                //tokenManage.RefreshAccessToken();
+                //commonAccessToken = tokenManage.AccessToken;
+                //result = Template.SendTemplateMessage(commonAccessToken, openId, commonData.TemplateId, commonData.TemplateColor, redirectUrl, tmwxData);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 给已知OpenId微信用户发送微信模版消息。
+        /// </summary>
+        /// <param name="accessToken">Base AccessToken</param>
+        /// <param name="openId">微信用户OpenId</param>
+        /// <param name="tmwxData">模板消息实例。</param>
+        /// <returns></returns>
+        public SendTemplateMessageResult SendWx_ToOpenId<T>(string accessToken, string openId, T tmwxData)
+        {
+            SendTemplateMessageResult result = new SendTemplateMessageResult();
+            string commonAccessToken = tokenManage.AccessToken;
+
+            TemplateMessageBase tmData = tmwxData as TemplateMessageBase;
+
+            try
+            {
+                result = Senparc.Weixin.MP.AdvancedAPIs.TemplateApi.SendTemplateMessage(accessToken, openId, tmData);
             }
             catch (Exception ee)
             {
