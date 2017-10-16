@@ -105,6 +105,7 @@
                                 <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink>
                             </p>
                             <asp:Button ID="btChoose" runat="server" Text="发微信催一下" CommandName="SendWX" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-inline="true" />
+                            <asp:Button ID="btnAccept" runat="server" Text="改派业务员" data-icon="check" CommandName="Confirm" CommandArgument='<%#Eval("InfoId") %>' rel="external" data-mini="true" data-inline="true" />
                         </div>
 
                     </ItemTemplate>

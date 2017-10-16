@@ -215,7 +215,7 @@ namespace LB.SQLServerDAL
                         };
             if (!string.IsNullOrEmpty(RegionCode))
             {
-                query = query.Where(p => p.RegionCode.IndexOf(RegionCode) >= 0);
+                query = query.Where(p => p.RegionCode.StartsWith(RegionCode));
             }
             if (!string.IsNullOrEmpty(TelNum))
             {
