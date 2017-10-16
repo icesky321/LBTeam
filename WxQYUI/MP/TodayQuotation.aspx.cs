@@ -5,6 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/// <summary>
+///                                            
+///                                             ★★    非常重要    ★★
+///                            本页面已失效，产废单位在服务号中查询报价信息，不再使用该页面，
+///                            服务号中查询报价信息，已链接至 WeixinMP/TodayQuotation.aspx
+///                            
+///                                                    新页面 2017年10月16日启用
+///                            
+/// </summary>
 public partial class MP_TodayQuotation : System.Web.UI.Page
 {
     LB.BLL.UserManage bll_user = new LB.BLL.UserManage();

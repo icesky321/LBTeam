@@ -1,2 +1,9 @@
 ﻿1、获取用户OpenId
-	组合页面：AuthEntrance.aspx，AccessTokenBinding.aspx 两个页面演示了如何获取 服务号 OpenId
+	组合页面：AuthEntrance.aspx，AccessTokenBinding.aspx 两个页面演示了如何获取 服务号 OpenId  
+	此两个页面无实际用途。
+
+
+2、AutoLogin.aspx AccountBinding.aspx
+	自动登录页面与账户绑定页面
+	在实际使用中，若用户访问需要授权的页面，但当前又没有登录，则系统自动引导到 AutoLogin.aspx 页面，完成自动登录动作。
+	若发现用户尚未绑定账户，则又将用户引导到 AccountBinding.aspx 页面，完成账户绑定操作。

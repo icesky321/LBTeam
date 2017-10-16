@@ -10,11 +10,7 @@ using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 
-
-/// <summary>
-/// 该页面在网站中已失去实际作用，仅与AuthEntrance.aspx 合作使用，共同展示如何获取 OpenId
-/// </summary>
-public partial class AccessTokenBinding : System.Web.UI.Page
+public partial class AccountBinding : System.Web.UI.Page
 {
     LB.BLL.SMS bll_sms = new LB.BLL.SMS();
     LB.BLL.UserManage localUserManage = new LB.BLL.UserManage();
@@ -25,40 +21,6 @@ public partial class AccessTokenBinding : System.Web.UI.Page
         if (!IsPostBack)
         {
             Load_Initial_Data();
-
-            if (string.IsNullOrEmpty(Request.QueryString["code"]))
-            {
-                /* 
-                 * 具体而言，网页授权流程分为四步： 
-                    1. 引导用户进入授权页面同意授权，获取code 
-                    2. 通过code换取网页授权access_token（与基础支持中的access_token不同） 
-                    3. 如果需要，开发者可以刷新网页授权access_token，避免过期 
-                    4. 通过网页授权access_token和openid获取用户基本信息 
-                 * 
-                */
-
-                hfAppId.Value = ConfigurationManager.AppSettings["AppId"] ?? "wx05eb2305685408a7";
-
-                string redirectUrl = string.Empty;
-                redirectUrl = OAuthApi.GetAuthorizeUrl(hfAppId.Value, "http://weixin.lvbao111.com/WeixinMP/AccessTokenBinding.aspx", "Agree", OAuthScope.snsapi_base);
-                Response.Redirect(redirectUrl);
-
-                // 执行以上代码之后，微信服务器会将你重定向到一个类似下面带两个查询字符串的链接地址：
-                // http://www.tiyigroup.com/weixin/AccessTokenBinding.aspx/?code=laiifwefk&state=Agree
-                // code 用于网页授权 access_token      state表示状态
-                // 用户同意授权后 
-                // 如果用户同意授权，页面将跳转至 redirect_uri/?code=CODE&state=STATE。
-                // 若用户禁止授权，则重定向后不会带上code参数，仅会带上state参数redirect_uri?state=STATE 
-
-                // code说明 ：
-                // code作为换取access_token的票据，每次用户授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期。
-            }
-            else
-            {
-                hfcode.Value = Request.QueryString["code"];
-                AccessTokenEntity = OAuthApi.GetAccessToken(AppId, AppSecret, code);
-                hfOpenId.Value = AccessTokenEntity.openid;
-            }
         }
 
 
@@ -107,6 +69,8 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     {
         hfAppId.Value = ConfigurationManager.AppSettings["AppId"] ?? "wx05eb2305685408a7";
         hfAppSecret.Value = ConfigurationManager.AppSettings["AppSecret"] ?? "b1100370fae06d358ab0ba6263bfa6ac";
+
+        hfOpenId.Value = Request.QueryString["openId"] ?? "";
     }
 
     ///// <summary>
@@ -303,6 +267,7 @@ public partial class AccessTokenBinding : System.Web.UI.Page
                 MultiView1.SetActiveView(viewLocalUserInfo);
             }
             FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
+            Response.Redirect(FormsAuthentication.GetRedirectUrl(tbMobile.Text, false));
         }
         //    OAuthUserInfo oauthUser = ObtainOAuthUserInfo();
 

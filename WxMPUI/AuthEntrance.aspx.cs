@@ -8,6 +8,10 @@ using System.Configuration;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.AdvancedAPIs;
 
+
+/// <summary>
+/// 该页面在网站中已失去实际作用，仅用于展示如何获取 code
+/// </summary>
 public partial class AuthEntrance : System.Web.UI.Page
 {
     string appId = string.Empty;

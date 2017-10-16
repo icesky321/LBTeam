@@ -25,46 +25,50 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            if (!User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
-                Response.Redirect("~/AuthEntrance.aspx");
-                //Response.Redirect("PublicTodayQuotation.aspx");
-            }
-            else
-            {
-                /*  流程：
+                /*  代码功能：
+                 *      当用户账户处理登录状态，但是用户账户却未与服务号OpenId关联时，以下代码生效，使用户账户与服务号OpenId关联上。
+                 *      
+                 *      当所有的在用用户，都已与 OpenId 关联上时，以下代码就完成了历史使命，可以删除。
                  *  
-                 * 
-                 * 
-                 * 
-                 * 
-                 * 
-                 * 
+                 *  流程：
+                 *  /// 1、当请求本页的查询字符串中不包含 code 参数时，调用 Senparc OAuthApi，获取OAuth2.0认证网址，然后微信服务器将重定向
+                 *         回本页面，此时，查询字符串中将会带上 code 参数。
+                 *      2、仍旧使用 OAuthApi，凭借获取到的 code 参数，获取 OAuthAccessToken，获得用户OpenId。
+                 *      3、将OpenId与账户关联。
                  * */
                 string mobile = User.Identity.Name;
                 LB.SQLServerDAL.UserInfo localUser = bll_user.GetUserInfoByTelNum(mobile);
 
-                // 获取用户 服务号OpenId，并绑定到用户账户。
-                if (!string.IsNullOrEmpty(Request.QueryString["code"]))
+                #region  关联OpenId 片断代码
+                if (string.IsNullOrEmpty(localUser.OpenId))
                 {
-                    string code = Request.QueryString["code"];
-                    string appSecret = ConfigurationManager.AppSettings["AppSecret"] ?? "b1100370fae06d358ab0ba6263bfa6ac";
-                    OAuthAccessTokenResult AccessTokenEntity = OAuthApi.GetAccessToken(appId, appSecret, code);
-                    string openId = AccessTokenEntity.openid;
 
-                    if (localUser != null && string.IsNullOrEmpty(localUser.OpenId))
+                    // 获取用户 服务号OpenId，并绑定到用户账户。
+                    if (string.IsNullOrEmpty(Request.QueryString["code"]))
                     {
-                        localUser.OpenId = openId;
-                        bll_user.UpdateUserInfo(localUser);
+                        string redirectUrl = string.Empty;
+                        redirectUrl = OAuthApi.GetAuthorizeUrl(appId, "http://weixin.lvbao111.com/WeixinMP/TodayQuotation.aspx", "Agree", OAuthScope.snsapi_base);
+                        Response.Redirect(redirectUrl);
                     }
+                    else
+                    {
+                        string code = Request.QueryString["code"];
+                        string appSecret = ConfigurationManager.AppSettings["AppSecret"] ?? "b1100370fae06d358ab0ba6263bfa6ac";
+                        OAuthAccessTokenResult AccessTokenEntity = OAuthApi.GetAccessToken(appId, appSecret, code);
+                        string openId = AccessTokenEntity.openid;
+
+                        if (localUser != null && string.IsNullOrEmpty(localUser.OpenId))
+                        {
+                            localUser.OpenId = openId;
+                            bll_user.UpdateUserInfo(localUser);
+                        }
+                    }
+
                 }
 
-                if (localUser != null && string.IsNullOrEmpty(localUser.OpenId))
-                {
-                    string redirectUrl = string.Empty;
-                    redirectUrl = OAuthApi.GetAuthorizeUrl(appId, "http://weixin.lvbao111.com/WeixinMP/TodayQuotation.aspx", "Agree", OAuthScope.snsapi_base);
-                    Response.Redirect(redirectUrl);
-                }
+                #endregion
 
                 Load_UserInfo();
                 Load_TsInfo();
