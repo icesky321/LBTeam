@@ -71,6 +71,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
     {
         if (ddlProvince.SelectedIndex > 0)
         {
+            hfRegionCode.Value = "";
             hfRegionCode.Value = ddlProvince.SelectedValue;
             Load_City();
         }

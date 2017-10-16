@@ -28,7 +28,7 @@ public partial class Admin_ListUsers : System.Web.UI.Page
 
     void gvUserDataBind()
     {
-        gvUsers.DataSource = bll_userinfo.GetUserInfosBySEO("", "", "", "", "", tbTelNum.Text);
+        gvUsers.DataSource = bll_userinfo.GetUserInfosBySEO("", "", tbTelNum.Text);
         gvUsers.DataBind();
 
         foreach (GridViewRow gvRow in gvUsers.Rows)
