@@ -27,11 +27,20 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
         {
             if (!User.Identity.IsAuthenticated)
             {
-                Response.Redirect("~/Login/Login.aspx");
+                Response.Redirect("~/AuthEntrance.aspx");
                 //Response.Redirect("PublicTodayQuotation.aspx");
             }
             else
             {
+                /*  流程：
+                 *  
+                 * 
+                 * 
+                 * 
+                 * 
+                 * 
+                 * 
+                 * */
                 string mobile = User.Identity.Name;
                 LB.SQLServerDAL.UserInfo localUser = bll_user.GetUserInfoByTelNum(mobile);
 

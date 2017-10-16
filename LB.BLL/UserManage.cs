@@ -112,6 +112,16 @@ namespace LB.BLL
             return da.GetUserInfoByTelNum(TelNum);
         }
 
+        /// <summary>
+        ///  根据服务号 OpenId 获取用户信息。
+        /// </summary>
+        /// <param name="openId">服务号 OpenId</param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUserInfo_ByOpenId(string openId)
+        {
+            return da.GetUserInfo_ByOpenId(openId);
+        }
+
         public IQueryable<LB.Model.UserInfoModel> GetUserInfosBySEO(string province, string city, string country, string street, string UserTypeId, string TelNum)
         {
             return da.GetUserInfosBySEO(province, city, country, street, UserTypeId, TelNum);

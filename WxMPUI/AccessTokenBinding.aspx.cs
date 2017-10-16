@@ -12,6 +12,7 @@ using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 
 public partial class AccessTokenBinding : System.Web.UI.Page
 {
+    LB.BLL.SMS bll_sms = new LB.BLL.SMS();
     LB.BLL.UserManage localUserManage = new LB.BLL.UserManage();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -222,15 +223,56 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     }
     protected void btnBinding_Click(object sender, EventArgs e)
     {
-        if (localUserManage.ExistTelNum(tbJobNumber.Text))
+        #region  输入表单检验
+
+        if (string.IsNullOrEmpty(tbMobile.Text))
         {
-            LB.SQLServerDAL.UserInfo localUser = localUserManage.GetUserInfoByTelNum(tbJobNumber.Text);
-            localUser.OpenId = hfOpenId.Value;
-            localUserManage.UpdateUserInfo(localUser);
-            lbLocalUser.Text = localUser.MobilePhoneNum;
-            MultiView1.SetActiveView(viewLocalUserInfo);
+            lbLoginError.Visible = true;
+            lbLoginError.Text = "手机号不可为空";
+            return;
+        }
+        else
+        {
+            lbLoginError.Text = "";
+            lbLoginError.Visible = false;
         }
 
+        if (Session["mobile_code"] == null || Session["mobile_code"].ToString() != tbVeriCode.Text)
+        {
+            ltlVeriMessage.Text = "验证码输入有误，请重新输入";
+            ltlVeriMessage.Visible = true;
+        }
+        else
+        {
+            ltlVeriMessage.Text = "";
+            ltlVeriMessage.Visible = false;
+        }
+        #endregion
+        if (tbMobile.Text.Length == 11 && Session["mobile_code"].ToString() == tbVeriCode.Text)
+        {
+            if (localUserManage.ExistTelNum(tbMobile.Text))
+            {
+                LB.SQLServerDAL.UserInfo localUser = localUserManage.GetUserInfoByTelNum(tbMobile.Text);
+                localUser.OpenId = hfOpenId.Value;
+                localUserManage.UpdateUserInfo(localUser);
+                lbLocalUser.Text = localUser.MobilePhoneNum;
+
+                MultiView1.SetActiveView(viewLocalUserInfo);
+            }
+            else
+            {
+                LB.SQLServerDAL.UserInfo newUser = new LB.SQLServerDAL.UserInfo();
+                newUser.UserName = tbMobile.Text;
+                newUser.MobilePhoneNum = tbMobile.Text;
+                newUser.UserTypeId = 1;
+                newUser.OpenId = hfOpenId.Value;
+                localUserManage.NewUserInfo(newUser);
+                Membership.CreateUser(tbMobile.Text, "123456");
+
+                MultiView1.SetActiveView(viewLocalUserInfo);
+            }
+            FormsAuthentication.SetAuthCookie(tbMobile.Text, true, FormsAuthentication.FormsCookiePath);
+        }
         //    OAuthUserInfo oauthUser = ObtainOAuthUserInfo();
 
         //    if (!string.IsNullOrEmpty(oauthUser.openid))
@@ -285,4 +327,38 @@ public partial class AccessTokenBinding : System.Web.UI.Page
     //    wx_queque.PushInWeixinMessage(weixinUser.JobNumber, data, "http://www.tiyigroup.com");
     //    wx_queque.StartSend();
     //}
+
+
+    protected void lbtnGetVeriCode_Click(object sender, EventArgs e)
+    {
+        Random rad = new Random();
+        int mobile_code = rad.Next(1000, 10000);
+        Session["mobile_code"] = mobile_code.ToString();
+
+        if (tbMobile.Text.Length != 11)
+        {
+            lbLoginError.Visible = true;
+            lbLoginError.Text = "手机号必须为11位";
+            return;
+        }
+        else
+        {
+            lbLoginError.Text = "";
+            lbLoginError.Visible = false;
+        }
+
+
+        bll_sms.SendSMS(tbMobile.Text, "您的验证码是：" + mobile_code.ToString() + "【绿宝】");
+        lbtnGetVeriCode.Enabled = false;
+        ltlVeriMessage.Text = "在下方输入收到的验证码";
+        ltlVeriMessage.Visible = true;
+
+
+
+    }
+
+    protected void btnQueryQuotation_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TodayQuotation.aspx");
+    }
 }

@@ -185,6 +185,19 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        ///  根据服务号 OpenId 获取用户信息。
+        /// </summary>
+        /// <param name="openId">服务号 OpenId</param>
+        /// <returns></returns>
+        public LB.SQLServerDAL.UserInfo GetUserInfo_ByOpenId(string openId)
+        {
+            var query = from c in dbContext.UserInfo
+                        where c.OpenId == openId
+                        select c;
+            return query.FirstOrDefault<LB.SQLServerDAL.UserInfo>();
+        }
+
+        /// <summary>
         /// 获取没有地域代号，但有地域信息的人员
         /// <para>仅供后台数据维护使用</para>
         /// </summary>
