@@ -1,13 +1,16 @@
 
 数据更新从上面插入
 
-2017-09-25 JD_Config 表 新增字段IsLocked 服务器上已添加
+
+2017-10-21 新增 表TmQueueRecord  服务器上未添加
+
+
 
 
 ---------------------------------------------------------------------------------------------------------
 2017-10-09 增加数据表 BaseAccessTokenMP  服务器上已添加
+2017-09-25 JD_Config 表 新增字段IsLocked 服务器上已添加
 2017-09-24 增加了 JD_Config 表 服务器上已添加
-
 2017-07-24 PaymentDetail表新增TranseferMethod字段  服务器已添加
 2017-07-22 SellInfo 表新增五个 HS 开头的字段，已同步到服务器上。
 2017-07-19  UserInfo表新增PayeeName,zfbName,zfbAccount,wxName,wxAccount字段   服务器上已添加。
@@ -26,6 +29,5 @@
 CF_JD_Order(产废单位与接到业务员订单信息)表，
 CF_JD_OrderDetail(订单明细信息)表
 服务器已添加，内容在数据字典里
-
 
 2017-07-01 数据库增加了 SellInfo 表，服务器上已添加。
