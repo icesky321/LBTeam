@@ -45,19 +45,19 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
                 {
                     btn.Visible = false;
                 }
-                if (User.Identity.IsAuthenticated)
-                {
-                    string userMobile = User.Identity.Name;
-                    LB.SQLServerDAL.UserInfo user = bll_usermanage.GetUserInfoByTelNum(userMobile);
-                    if (user.UserTypeId == 1)
-                    {
-                        btn.Visible = true;
-                    }
-                    else
-                    {
-                        btn.Visible = false;
-                    }
-                }
+                //if (User.Identity.IsAuthenticated)
+                //{
+                //    string userMobile = User.Identity.Name;
+                //    LB.SQLServerDAL.UserInfo user = bll_usermanage.GetUserInfoByTelNum(userMobile);
+                //    if (user.UserTypeId == 1)
+                //    {
+                //        btn.Visible = true;
+                //    }
+                //    else
+                //    {
+                //        btn.Visible = false;
+                //    }
+                //}
 
             }
         }

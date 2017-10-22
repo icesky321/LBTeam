@@ -168,6 +168,6 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
 
     protected void btSell_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/MP/CreateLeads.aspx");
+        Response.Redirect("../WeixinQY/MP/CreateLeads.aspx");
     }
 }
