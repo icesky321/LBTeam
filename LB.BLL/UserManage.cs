@@ -224,6 +224,16 @@ namespace LB.BLL
         }
 
         /// <summary>
+        /// 查询指定地级市下的产废单位
+        /// </summary>
+        /// <param name="cityRegionCode">地级市12位数代码</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_CF_InCity(string cityRegionCode)
+        {
+            return da.GetUserInfo_CF_InCity(cityRegionCode);
+        }
+
+        /// <summary>
         /// 查询指定街道下的产废单位
         /// </summary>
         /// <param name="streetRegionCode">街道行政区划代号</param>
