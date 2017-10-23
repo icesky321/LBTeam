@@ -15,16 +15,29 @@ namespace LB.WeixinMP
     /// 模板微信发送器
     /// <para>Devor:Cobe</para>
     /// <para>DevTime: 2017-10-14</para>
+    /// <para>Modify Date：2017-10-21</para>
     /// </summary>
     public class TMSender
     {
-        BaseAccessTokenManage tokenManage = new BaseAccessTokenManage();
+        BaseAccessTokenManage tokenManage;
+        private string accessToken;
 
         /// <summary>
         /// 
         /// </summary>
         public TMSender()
         {
+            tokenManage = new BaseAccessTokenManage();
+            accessToken = tokenManage.AccessToken;
+        }
+
+        /// <summary>
+        /// 初始化 AccessToken 
+        /// </summary>
+        /// <param name="baseAccessToken"></param>
+        public TMSender(string baseAccessToken)
+        {
+            accessToken = baseAccessToken;
         }
 
 
@@ -42,6 +55,7 @@ namespace LB.WeixinMP
         public void RefreshAccessToken()
         {
             tokenManage.RefreshAccessToken();
+            accessToken = tokenManage.AccessToken;
         }
 
         /// <summary>
@@ -105,13 +119,11 @@ namespace LB.WeixinMP
         public SendTemplateMessageResult SendWx_ToOpenId<T>(string openId, T tmwxData)
         {
             SendTemplateMessageResult result = new SendTemplateMessageResult();
-            string commonAccessToken = tokenManage.AccessToken;
 
             ITemplateMessageBase tmData = tmwxData as TemplateMessageBase;
-
             try
             {
-                result = Senparc.Weixin.MP.AdvancedAPIs.TemplateApi.SendTemplateMessage("ss", openId, tmData);
+                result = Senparc.Weixin.MP.AdvancedAPIs.TemplateApi.SendTemplateMessage(accessToken, openId, tmData);
             }
             catch (Exception ee)
             {

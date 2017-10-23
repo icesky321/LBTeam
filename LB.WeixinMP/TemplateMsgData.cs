@@ -46,6 +46,18 @@ namespace LB.WeixinMP
         /// <summary>
         /// 
         /// </summary>
+        public TMData_报价提醒()
+            :base("1VogdIVVnRBPratJYu94i6vehyKcoMA2P3FS1jbQolM", "", "报价提醒")
+        {
+            first = new TMDataItem();
+            keyword1 = new TMDataItem();
+            keyword2 = new TMDataItem();
+            remark = new TMDataItem();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public TMData_报价提醒(string url = "")
             : base("1VogdIVVnRBPratJYu94i6vehyKcoMA2P3FS1jbQolM", url, "报价提醒")
         {

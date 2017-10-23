@@ -46,12 +46,12 @@
     <Compile Include="CF_JD_OrderDetailDA.cs" />
     <Compile Include="CodeDA.cs" />
     <Compile Include="CopInfoDA.cs" />
+    <Compile Include="BaseAccessTokenMPDA.cs" />
     <Compile Include="LBDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LBDB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="BaseAccessTokenMPDA.cs" />
     <Compile Include="PaymentDetailDA.cs" />
     <Compile Include="QuotationDA.cs" />
     <Compile Include="LBDB_Extend.cs" />
@@ -72,6 +72,7 @@
     <Compile Include="UserNoticeInfoDA.cs" />
     <Compile Include="JD_ConfigDA.cs" />
     <Compile Include="UserTypeInfoDA.cs" />
+    <Compile Include="WxQueueMPDA.cs" />
     <Compile Include="WeixinMessageDA.cs" />
   </ItemGroup>
   <ItemGroup>
