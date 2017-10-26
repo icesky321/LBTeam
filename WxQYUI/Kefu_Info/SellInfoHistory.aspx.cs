@@ -145,10 +145,14 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
 
                 lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
                 LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
-                MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
-                lbjd.Text = MJDUserInfo.RealName;
-                tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
-                hlTelNum.NavigateUrl = "tel://" + MJDUserInfo.MobilePhoneNum;
+                if (MSellInfo.JD_UserId != 0)
+                {
+                    MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
+                    lbjd.Text = MJDUserInfo.RealName;
+                    tbjdywy.Text = MJDUserInfo.MobilePhoneNum;
+                    hlTelNum.NavigateUrl = "tel://" + MJDUserInfo.MobilePhoneNum;
+                }
+
             }
         }
     }
