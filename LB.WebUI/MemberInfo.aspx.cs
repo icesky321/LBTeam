@@ -23,12 +23,12 @@ public partial class MemberInfo : System.Web.UI.Page
                 {
                     if (HttpContext.Current.User.IsInRole("Admin") || HttpContext.Current.User.IsInRole("InfoManage") || HttpContext.Current.User.IsInRole("UserManage"))
                     {
-                        DLCopInfoDataBind("", "", "", "", Id);
+                        DLCopInfoDataBind("", Id);
                     }
 
                     else if (bll_usermanage.GetUserInfoByTelNum(HttpContext.Current.User.Identity.Name).Audit == true)
                     {
-                        DLCopInfoDataBind("", "", "", "", Id);
+                        DLCopInfoDataBind("", Id);
                     }
                     else
                     {
@@ -44,11 +44,11 @@ public partial class MemberInfo : System.Web.UI.Page
         }
     }
 
-    void DLCopInfoDataBind(string province, string city, string country, string street, int UserTypeId)
+    void DLCopInfoDataBind(string RegionCode, int UserTypeId)
     {
-        if (bll_usermanage.GetUserInfosBySEO(province, city, country, street, UserTypeId.ToString(), "") != null)
+        if (bll_usermanage.GetUserInfosBySEO(RegionCode, UserTypeId.ToString(), "") != null)
         {
-            DLCopInfo.DataSource = bll_usermanage.GetUserInfosBySEO(province, city, country, street, UserTypeId.ToString(), "");
+            DLCopInfo.DataSource = bll_usermanage.GetUserInfosBySEO(RegionCode, UserTypeId.ToString(), "");
             DLCopInfo.DataBind();
             //foreach (DataListItem item in this.DLCopInfo.Items)
             //{
@@ -77,6 +77,6 @@ public partial class MemberInfo : System.Web.UI.Page
 
     protected void btSearch_Click(object sender, EventArgs e)
     {
-        DLCopInfoDataBind(DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, Convert.ToInt32(hfId.Value));
+        //DLCopInfoDataBind(DDLAddress1.province, DDLAddress1.city, DDLAddress1.country, DDLAddress1.street, Convert.ToInt32(hfId.Value));
     }
 }

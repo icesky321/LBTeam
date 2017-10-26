@@ -23,7 +23,7 @@ public partial class Admin_SupplierManage : System.Web.UI.Page
 
     void gvCopInfoDataBind()
     {
-        gvCopInfo.DataSource = bll_userinfo.GetUserInfosBySEO("", "", "", "", "1", "");
+        gvCopInfo.DataSource = bll_userinfo.GetUserInfosBySEO("", "1", "");
         //gvCopInfo.DataSource = bll_copinfo.GetCopInfoByUserType(1);
         gvCopInfo.DataBind();
         foreach (GridViewRow gvRow in gvCopInfo.Rows)

@@ -96,6 +96,9 @@ namespace LB.SQLServerDAL
     partial void InsertRegion(Region instance);
     partial void UpdateRegion(Region instance);
     partial void DeleteRegion(Region instance);
+    partial void InsertRel_MyTS(Rel_MyTS instance);
+    partial void UpdateRel_MyTS(Rel_MyTS instance);
+    partial void DeleteRel_MyTS(Rel_MyTS instance);
     partial void InsertSellInfo(SellInfo instance);
     partial void UpdateSellInfo(SellInfo instance);
     partial void DeleteSellInfo(SellInfo instance);
@@ -337,6 +340,14 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
+		public System.Data.Linq.Table<Rel_MyTS> Rel_MyTS
+		{
+			get
+			{
+				return this.GetTable<Rel_MyTS>();
+			}
+		}
+		
 		public System.Data.Linq.Table<SellInfo> SellInfo
 		{
 			get
@@ -510,6 +521,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<Vw_aspnet_WebPartState_User>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Vw_MyTS> Vw_MyTS
+		{
+			get
+			{
+				return this.GetTable<Vw_MyTS>();
 			}
 		}
 		
@@ -4261,7 +4280,7 @@ namespace LB.SQLServerDAL
 		
 		private string _ShortName;
 		
-		private int _UserId;
+		private System.Nullable<int> _UserId;
 		
 		private string _Bizlicense;
 		
@@ -4283,7 +4302,7 @@ namespace LB.SQLServerDAL
     partial void OnCopNameChanged();
     partial void OnShortNameChanging(string value);
     partial void OnShortNameChanged();
-    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanging(System.Nullable<int> value);
     partial void OnUserIdChanged();
     partial void OnBizlicenseChanging(string value);
     partial void OnBizlicenseChanged();
@@ -4362,8 +4381,8 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int")]
+		public System.Nullable<int> UserId
 		{
 			get
 			{
@@ -5033,6 +5052,8 @@ namespace LB.SQLServerDAL
 		
 		private string _Openid;
 		
+		private string _AppId;
+		
 		private string _Access_token;
 		
 		private System.Nullable<int> _Expires_in;
@@ -5049,6 +5070,8 @@ namespace LB.SQLServerDAL
     partial void OnCreated();
     partial void OnOpenidChanging(string value);
     partial void OnOpenidChanged();
+    partial void OnAppIdChanging(string value);
+    partial void OnAppIdChanged();
     partial void OnAccess_tokenChanging(string value);
     partial void OnAccess_tokenChanged();
     partial void OnExpires_inChanging(System.Nullable<int> value);
@@ -5082,6 +5105,26 @@ namespace LB.SQLServerDAL
 					this._Openid = value;
 					this.SendPropertyChanged("Openid");
 					this.OnOpenidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="appId", Storage="_AppId", DbType="NVarChar(64) NOT NULL", CanBeNull=false)]
+		public string AppId
+		{
+			get
+			{
+				return this._AppId;
+			}
+			set
+			{
+				if ((this._AppId != value))
+				{
+					this.OnAppIdChanging(value);
+					this.SendPropertyChanging();
+					this._AppId = value;
+					this.SendPropertyChanged("AppId");
+					this.OnAppIdChanged();
 				}
 			}
 		}
@@ -5618,7 +5661,7 @@ namespace LB.SQLServerDAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSCode", DbType="NChar(10) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSCode", DbType="NChar(10)")]
 		public string TSCode
 		{
 			get
@@ -6184,6 +6227,116 @@ namespace LB.SQLServerDAL
 					this._Remark = value;
 					this.SendPropertyChanged("Remark");
 					this.OnRemarkChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rel_MyTS")]
+	public partial class Rel_MyTS : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private int _TSId;
+		
+		private System.Nullable<int> _CustomOrder;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnTSIdChanging(int value);
+    partial void OnTSIdChanged();
+    partial void OnCustomOrderChanging(System.Nullable<int> value);
+    partial void OnCustomOrderChanged();
+    #endregion
+		
+		public Rel_MyTS()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int TSId
+		{
+			get
+			{
+				return this._TSId;
+			}
+			set
+			{
+				if ((this._TSId != value))
+				{
+					this.OnTSIdChanging(value);
+					this.SendPropertyChanging();
+					this._TSId = value;
+					this.SendPropertyChanged("TSId");
+					this.OnTSIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomOrder", DbType="Int")]
+		public System.Nullable<int> CustomOrder
+		{
+			get
+			{
+				return this._CustomOrder;
+			}
+			set
+			{
+				if ((this._CustomOrder != value))
+				{
+					this.OnCustomOrderChanging(value);
+					this.SendPropertyChanging();
+					this._CustomOrder = value;
+					this.SendPropertyChanged("CustomOrder");
+					this.OnCustomOrderChanged();
 				}
 			}
 		}
@@ -11088,6 +11241,159 @@ namespace LB.SQLServerDAL
 				if ((this._LastUpdatedDate != value))
 				{
 					this._LastUpdatedDate = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vw_MyTS")]
+	public partial class Vw_MyTS
+	{
+		
+		private int _TSId;
+		
+		private string _TSName;
+		
+		private string _TsCode;
+		
+		private string _ChargeUnit;
+		
+		private string _Description;
+		
+		private int _OrderNum;
+		
+		private int _UserId;
+		
+		private System.Nullable<int> _CustomOrder;
+		
+		public Vw_MyTS()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSId", DbType="Int NOT NULL")]
+		public int TSId
+		{
+			get
+			{
+				return this._TSId;
+			}
+			set
+			{
+				if ((this._TSId != value))
+				{
+					this._TSId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TSName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TSName
+		{
+			get
+			{
+				return this._TSName;
+			}
+			set
+			{
+				if ((this._TSName != value))
+				{
+					this._TSName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TsCode", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string TsCode
+		{
+			get
+			{
+				return this._TsCode;
+			}
+			set
+			{
+				if ((this._TsCode != value))
+				{
+					this._TsCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChargeUnit", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string ChargeUnit
+		{
+			get
+			{
+				return this._ChargeUnit;
+			}
+			set
+			{
+				if ((this._ChargeUnit != value))
+				{
+					this._ChargeUnit = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(64)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this._Description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderNum", DbType="Int NOT NULL")]
+		public int OrderNum
+		{
+			get
+			{
+				return this._OrderNum;
+			}
+			set
+			{
+				if ((this._OrderNum != value))
+				{
+					this._OrderNum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this._UserId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomOrder", DbType="Int")]
+		public System.Nullable<int> CustomOrder
+		{
+			get
+			{
+				return this._CustomOrder;
+			}
+			set
+			{
+				if ((this._CustomOrder != value))
+				{
+					this._CustomOrder = value;
 				}
 			}
 		}

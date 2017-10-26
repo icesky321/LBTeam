@@ -184,7 +184,7 @@
       <Column Name="CopId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CopName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="ShortName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Bizlicense" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="BAuthentication" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="HWPermit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
@@ -224,6 +224,7 @@
   <Table Name="dbo.OAuthAccessToken" Member="OAuthAccessToken">
     <Type Name="OAuthAccessToken">
       <Column Name="openid" Member="Openid" Type="System.String" DbType="NVarChar(64) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="appId" Member="AppId" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="access_token" Member="Access_token" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
       <Column Name="expires_in" Member="Expires_in" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="refresh_token" Member="Refresh_token" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
@@ -251,7 +252,7 @@
       <Column Name="UserName" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TSName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TSCode" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TSCode" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
       <Column Name="OfferDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="QuotedPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="StandardUnit" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
@@ -278,6 +279,13 @@
       <Column Name="PinYin" Type="System.String" DbType="NChar(256)" CanBeNull="true" />
       <Column Name="SimplePy" Type="System.String" DbType="NChar(32)" CanBeNull="true" />
       <Column Name="Remark" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rel_MyTS" Member="Rel_MyTS">
+    <Type Name="Rel_MyTS">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.SellInfo" Member="SellInfo">
@@ -561,6 +569,18 @@
       <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="DataSize" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LastUpdatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_MyTS" Member="Vw_MyTS">
+    <Type Name="Vw_MyTS">
+      <Column Name="TSId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TSName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TsCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="ChargeUnit" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="OrderNum" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.WeixinMessage" Member="WeixinMessage">
