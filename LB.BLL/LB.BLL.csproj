@@ -72,6 +72,10 @@
       <Project>{5A66D98F-2F4B-45A5-A2A3-77C57408CBE5}</Project>
       <Name>LB.SQLServerDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LB.WeixinMP\LB.WeixinMP.csproj">
+      <Project>{74359701-27bc-4f9f-bcbb-0733d929d69e}</Project>
+      <Name>LB.WeixinMP</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

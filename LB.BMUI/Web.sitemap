@@ -8,6 +8,7 @@
       <siteMapNode url="~/AddNews.aspx"  title="新增新闻资讯" description="新增新闻资讯" />
       <siteMapNode url="~/NewsManage.aspx"  title="新闻资讯管理" description="新闻资讯管理" />
       <siteMapNode url="~/NewsType.aspx"  title="资讯类别管理" description="资讯类别管理" />
+      <siteMapNode url="~/Notice/MPWxNotice_ToCF.aspx" title="模版消息公告" description="模版消息公告"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="用户信息管理" description="用户信息管理"  roles="Admin,UserManage,CustomService">
       <siteMapNode url="~/CopInfoManage.aspx" title="回收企业信息管理" description="回收企业信息管理" />

@@ -285,6 +285,20 @@ namespace LB.SQLServerDAL
         }
 
         /// <summary>
+        /// 查询指定地级市下的产废单位
+        /// </summary>
+        /// <param name="cityRegionCode">地级市12位数代码</param>
+        /// <returns></returns>
+        public IQueryable<LB.SQLServerDAL.UserInfo> GetUserInfo_CF_InCity(string cityRegionCode)
+        {
+            string cityShortCode = cityRegionCode.Substring(0, 4);
+            var query = from c in dbContext.UserInfo
+                        where c.UserTypeId == 1 && c.RegionCode.Substring(0, 4) == cityShortCode
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.UserInfo>();
+        }
+
+        /// <summary>
         /// 查询指定街道下的产废单位
         /// </summary>
         /// <param name="streetRegionCode">街道行政区划代号</param>
