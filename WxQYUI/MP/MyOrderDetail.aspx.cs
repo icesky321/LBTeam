@@ -28,6 +28,7 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
                     MCF_JD_Order = bll_cf_jd_order.GetCF_JD_OrderByinfoId(Guid.Parse(hfinfoId.Value));
                     hfCFId.Value = MCF_JD_Order.CFId.ToString();
                     lbAmount.Text = MCF_JD_Order.Amount.ToString();
+                    lbRemark.Text = MCF_JD_Order.Remark;
                     LB.SQLServerDAL.UserInfo InUserInfo = new LB.SQLServerDAL.UserInfo();
                     LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
                     InUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.InUserId));

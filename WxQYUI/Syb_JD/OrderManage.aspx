@@ -46,9 +46,9 @@
                                 <asp:Label ID="lbInfoId" runat="server" Text='<%# Eval("InfoId") %>' Visible="false"></asp:Label>
                                 卖方(产废单位)：
                                     <asp:Label ID="lbCFRealname" runat="server" Text=""></asp:Label><br />
-                                手机号：
-                                <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
-                                <asp:HyperLink ID="HyperLink1" runat="server">点击拨打此号码</asp:HyperLink>
+                                手机号：(点击接单按钮后才能显示)
+                                <asp:Label ID="lbCFDW" runat="server" Text="" Visible="false"></asp:Label>
+                                <asp:HyperLink ID="HyperLink1" runat="server" Visible="false">点击拨打此号码</asp:HyperLink>
                                 <%--<a href="tel://15267863162" runat="server">111</a>--%>
                                 <br />
                                 地址：

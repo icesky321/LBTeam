@@ -14,31 +14,29 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="weui-form-preview">
+        <div id="page1" data-role="page">
 
             <div class="weui-cells">
-                <div class="weui-form-preview__item">
-                    <label class="weui-form-preview__label">卖方(产废单位)</label>
-                    <span class="weui-form-preview__value">
-                        <label class="weui-label">
-                            <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
-                        </label>
-                    </span>
-                </div>
+                <%--<div class="weui-form-preview__item">--%>
+                <label class="weui-form-preview__label">卖方(产废单位)</label>
+                <span class="weui-form-preview__value">
+                    <%--                        <label class="weui-label">--%>
+                    <asp:Label ID="lbCFDW" runat="server" Text=""></asp:Label>
+                    <%--</label>--%>
+                </span>
+                <%--</div>--%>
                 <div class="weui-cells">
                     <label class="weui-form-preview__label">买方(街道回收员)</label>
                     <span class="weui-form-preview__value">
-                        <label class="weui-label">
-                            <asp:Label ID="lbJDYWY" runat="server" Text=""></asp:Label>
-                        </label>
+
+                        <asp:Label ID="lbJDYWY" runat="server" Text=""></asp:Label>
+
                     </span>
                 </div>
                 <div class="weui-form-preview__hd">
                     <label class="weui-form-preview__label">付款金额</label>
-                    <em class="weui-form-preview__value">
-                        <label class="weui-label">
-                            ￥<asp:Label ID="lbAmount" runat="server" Text=""></asp:Label>
-                        </label>
+                    <em class="weui-form-preview__value">￥<asp:Label ID="lbAmount" runat="server" Text="" ForeColor="Red"></asp:Label>
+
                     </em>
                 </div>
                 <div class="weui-cells">
@@ -66,6 +64,13 @@
                     <asp:HiddenField ID="hfCFId" runat="server" />
                     <asp:HiddenField ID="hfinfoId" runat="server" />
                     <%--<asp:Label ID="Label1" runat="server" Text="0c31f580-8be2-4d40-b506-f10f53c0073b"></asp:Label>--%>
+                </div>
+                <div class="weui-cells">
+                    <label class="weui-form-preview__label">备注：</label>
+                    <em class="weui-form-preview__value">
+                        <asp:Label ID="lbRemark" runat="server" Text="" ForeColor="Red"></asp:Label>
+
+                    </em>
                 </div>
                 <fieldset data-role="controlgroup" data-type="horizontal" data-inline="false" id="btn" runat="server" visible="false">
                     <asp:Button ID="btnAccept" runat="server" Text="订单确认" data-icon="check" rel="external" data-mini="true" data-inline="true" OnClientClick='return confirm("该收货单确定无误吗？");' OnClick="btnAccept_Click" />

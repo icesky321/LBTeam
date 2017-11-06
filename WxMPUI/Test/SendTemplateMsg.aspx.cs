@@ -39,7 +39,7 @@ public partial class SendTemplateMsg : System.Web.UI.Page
         data.keyword1.value = "废旧电瓶回收";
         data.keyword2.value = DateTime.Now.Date.ToShortDateString() + "\n";
         data.remark.value = "您的预约单在审核后将指派回收人员在24小时内上门回收，请耐心等待";
-
+        //data.Url
         TMSender tmSender = new TMSender();
         tmSender.SendWx_ToOpenId(commonAccessToken, openId, data);
 
