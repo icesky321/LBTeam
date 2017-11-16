@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Web.Security;
+using System.Configuration;
+using LB.WeixinMP;
 
 public partial class Syb_JD_OrderManage : System.Web.UI.Page
 {
@@ -107,7 +110,17 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             Load_SellInfoes(Convert.ToInt32(hfJD_UserId.Value));
             LB.SQLServerDAL.UserInfo Muserinfo = new LB.SQLServerDAL.UserInfo();
             Muserinfo = bll_usermanage.GetUserInfoByUserId(sellInfo.CF_UserId);
-            sms.SendSMS(Muserinfo.MobilePhoneNum, "回收员已接单，会尽快与您联系，请耐心等待。【绿宝】");
+            if (!string.IsNullOrEmpty(sellInfo.JD_UserId.ToString()))
+            {
+                LB.SQLServerDAL.UserInfo JDUser = new LB.SQLServerDAL.UserInfo();
+                JDUser = bll_usermanage.GetUserInfoByUserId(sellInfo.JD_UserId);
+                hfJDTelNum.Value = JDUser.MobilePhoneNum;
+            }
+            if (!string.IsNullOrEmpty(Muserinfo.OpenId))
+            {
+                SendShortMsg(Muserinfo.OpenId, sellInfo, hfJDTelNum.Value);
+            }
+            sms.SendSMS(Muserinfo.MobilePhoneNum, "回收员:" + hfJDTelNum.Value + "已接单，会尽快与您联系，请耐心等待。【绿宝】");
         }
 
         if (e.CommandName == "Reject")
@@ -173,4 +186,29 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         sendmsg.SendArticleToTags(toTags, article, "5");
     }
 
+    private void SendShortMsg(string openId,LB.SQLServerDAL.SellInfo MSellInfo,string JDTelNum)
+    {
+        string appId = string.Empty;
+        string appSecret = string.Empty;
+        if (ConfigurationManager.AppSettings["AppId"] != null)
+        {
+            appId = ConfigurationManager.AppSettings["AppId"];
+            appSecret = ConfigurationManager.AppSettings["AppSecret"];
+        }
+        BaseAccessTokenManage bat = new BaseAccessTokenManage();
+        var commonAccessToken = bat.AccessToken;
+
+        DateTime datetime = MSellInfo.CreateDate;
+        TMData_接单成功通知 data = new TMData_接单成功通知();
+        data.first.value = "感谢您选择绿宝三益电瓶回收平台，您的订单已分配业务员上门回收，请稍候。";
+        data.keyword1.value = datetime.Year.ToString() + datetime.Month.ToString() + datetime.Day.ToString() + datetime.Hour.ToString() + datetime.Minute.ToString() + datetime.Second.ToString() + datetime.Millisecond.ToString();
+        data.keyword2.value = "废旧电瓶回收";
+        data.keyword3.value = System.DateTime.Now.ToString();
+        data.keyword4.value = JDTelNum; 
+        data.remark.value = "";
+        //data.Url
+        TMSender tmSender = new TMSender();
+        tmSender.SendWx_ToOpenId(commonAccessToken, openId, data);
+
+    }
 }

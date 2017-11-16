@@ -49,7 +49,7 @@
                         联系人：<asp:Literal ID="ltlRealName" runat="server"></asp:Literal><br />
                         联系电话：<asp:Literal ID="ltlTelNum" runat="server"></asp:Literal><br />
                         联系地址：<asp:Literal ID="ltlAddress" runat="server"></asp:Literal><br />
-                        <a href="../UserCenter/uc_cfdw.aspx" rel="external">编辑个人信息</a>
+                        <a href="../UserCenter/ShowAddress.aspx" rel="external">去完善个人信息</a>
                     </p>
                 </div>
                 <%--                <asp:UpdatePanel ID="UpdatePanel1" runat="server">

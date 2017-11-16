@@ -179,6 +179,15 @@
       <Column Name="GoodsUnit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.CityManager_Config" Member="CityManager_Config">
+    <Type Name="CityManager_Config">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MobilePhoneNum" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="BillRemind" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.CopInfo" Member="CopInfo">
     <Type Name="CopInfo">
       <Column Name="CopId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -199,6 +208,7 @@
       <Column Name="BookBillModeToggle" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="BookBillStatusRemind" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RegionCode" Type="System.String" DbType="NVarChar(16) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.NewsInfo" Member="NewsInfo">
@@ -293,6 +303,7 @@
       <Column Name="InfoId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="CF_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CF_UserMobile" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="CF_RegionCode" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="Title" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="TradePlace" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Column Name="Quantity" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />

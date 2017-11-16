@@ -385,4 +385,58 @@ namespace LB.WeixinMP
         /// </summary>
         public TMDataItem remark { get; set; }
     }
+
+    /// <summary>
+    /// 接单成功通知
+    /// </summary>
+    public class TMData_接单成功通知 : TemplateMessageBase
+    {
+        /// <summary>
+        /// 下单成功通知
+        /// </summary>
+        public TMData_接单成功通知(string url = "")
+            : base("YAhc_lMCYlbKTnLHSHDs30lQYMXBQipqiwTWiYHD_VY", url, "接单成功通知")
+        {
+            first = new TMDataItem();
+            keyword1 = new TMDataItem();
+            keyword2 = new TMDataItem();
+            keyword3 = new TMDataItem();
+            keyword4 = new TMDataItem();
+            remark = new TMDataItem();
+        }
+
+        /// <summary>
+        /// 导语。
+        /// </summary>
+        public TMDataItem first
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 订单编号
+        /// </summary>
+        public TMDataItem keyword1 { get; set; }
+
+        /// <summary>
+        /// 服务内容
+        /// </summary>
+        public TMDataItem keyword2 { get; set; }
+
+        /// <summary>
+        /// 接单时间
+        /// </summary>
+        public TMDataItem keyword3 { get; set; }
+
+        /// <summary>
+        /// 联系号码
+        /// </summary>
+        public TMDataItem keyword4 { get; set; }
+
+        /// <summary>
+        /// 备注信息
+        /// </summary>
+        public TMDataItem remark { get; set; }
+    }
 }

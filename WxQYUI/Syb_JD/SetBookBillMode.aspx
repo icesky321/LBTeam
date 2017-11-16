@@ -23,6 +23,18 @@
                     <asp:HiddenField ID="hfMode" runat="server" Value="on" />
                     <asp:Label ID="lbMode" runat="server" Text="" Font-Size="1.5em" ForeColor="#6699ff"></asp:Label><br />
                     <br />
+                    <div id="divregioncode" runat="server" visible="false">
+                        选择您所在的省份：
+                <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
+                        选择您所在的地级市：
+                <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>
+                        选择您所在的县市：
+            <asp:DropDownList ID="ddlCounty" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCounty_SelectedIndexChanged"></asp:DropDownList>
+                        您所在的镇或街道：
+                 <asp:DropDownList ID="ddlStreet" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStreet_SelectedIndexChanged"></asp:DropDownList>
+                        <asp:HiddenField ID="hfRegionCode" runat="server" />
+                    </div>
                     <asp:Image ID="Image1" runat="server" Width="70%" />
                 </div>
 

@@ -19,6 +19,7 @@
             <div class="page__hd">
                 <div style="border: 1px dotted #999999; padding: 20px; margin: 10px 5px 0 5px;" class="ui-corner-all">
                     报价区域：<asp:Literal ID="ltlRegionWholeName" runat="server"></asp:Literal>
+                    <asp:Button ID="btRegionCode" runat="server" Text="请完善您的详细地址" Visible="false" OnClick="btRegionCode_Click"  rel="external"/>
                     <asp:HiddenField ID="hfCountyId" runat="server" />
                 </div>
             </div>

@@ -55,6 +55,9 @@ namespace LB.SQLServerDAL
                     if (cfg.IsLocked != config.IsLocked)
                         cfg.IsLocked = config.IsLocked;
 
+                    if (cfg.RegionCode != config.RegionCode)
+                        cfg.RegionCode = config.RegionCode;
+
                     returnConfig = cfg;
                 }
                 else
@@ -121,6 +124,14 @@ namespace LB.SQLServerDAL
         {
             var query = from c in dbContext.JD_Config
                         where c.BookBillModeToggle==BillMode && c.IsLocked==IsLocked
+                        select c;
+            return query.AsQueryable<LB.SQLServerDAL.JD_Config>();
+        }
+
+        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByRegionCode(string RegionCode)
+        {
+            var query = from c in dbContext.JD_Config
+                        where c.RegionCode.StartsWith(RegionCode)
                         select c;
             return query.AsQueryable<LB.SQLServerDAL.JD_Config>();
         }
