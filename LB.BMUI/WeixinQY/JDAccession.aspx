@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="CityManagerAccession.aspx.cs" Inherits="WeixinQY_CityManagerAccession" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Manage.master" AutoEventWireup="true" CodeFile="JDAccession.aspx.cs" Inherits="WeixinQY_JDAccession" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -58,26 +58,19 @@
         </Columns>
     </asp:GridView>
 
-    <h4>创建城市经理人</h4>
+    <h4>配置街道业务员</h4>
     <hr style="border-right: khaki 1px solid; border-top: khaki 1px solid; border-left: khaki 1px solid; border-bottom: khaki 1px solid" />
+
     <table>
         <tr>
-            <td>城市经理人手机号码:</td>
+            <td>街道业务员手机号码:</td>
 
             <td>
                 <asp:Label ID="lbMobileNum" runat="server" Font-Bold="True" Font-Size="Larger"></asp:Label>
             </td>
         </tr>
+
         <tr>
-            <td>请选择管辖城市</td>
-            <td>选择省份：   
-                <asp:HiddenField ID="hfRegionCode" runat="server" />
-                <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProvince_SelectedIndexChanged"></asp:DropDownList>
-                选择地级市：
-                <asp:DropDownList ID="ddlCity" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged"></asp:DropDownList>
-            </td>
-        </tr>
-                <tr>
             <td>企业号:</td>
 
             <td>

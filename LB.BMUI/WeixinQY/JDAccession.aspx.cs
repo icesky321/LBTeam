@@ -6,62 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
 
-public partial class WeixinQY_CityManagerAccession : System.Web.UI.Page
+public partial class WeixinQY_JDAccession : System.Web.UI.Page
 {
     LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
     LB.BLL.UserManage bll_userinfo = new LB.BLL.UserManage();
     LB.BLL.UserTypeInfo bll_usertypeinfo = new LB.BLL.UserTypeInfo();
     LB.SQLServerDAL.UserTypeInfo MUserTypeInfo = new LB.SQLServerDAL.UserTypeInfo();
     Cobe.CnRegion.RegionManage bll_region = new Cobe.CnRegion.RegionManage();
-    LB.BLL.CityManager_Config bll_citimanager_config = new LB.BLL.CityManager_Config();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-            Load_Province();
-        }
-    }
 
-    #region  加载省市县
-    private void Load_Province()
-    {
-        var provinces = bll_region.GetRegions("0");
-        ddlProvince.Items.Clear();
-        foreach (Cobe.CnRegion.SQLServerDAL.Region region in provinces)
-        {
-            ddlProvince.Items.Add(new ListItem(region.AreaName, region.Id));
-        }
-        ddlProvince.Items.Insert(0, "--选择省份--");
     }
-
-    private void Load_City()
-    {
-        var cities = bll_region.GetRegions(ddlProvince.SelectedValue);
-        ddlCity.Items.Clear();
-        foreach (Cobe.CnRegion.SQLServerDAL.Region region in cities)
-        {
-            ddlCity.Items.Add(new ListItem(region.AreaName, region.Id));
-        }
-        ddlCity.Items.Insert(0, "--选择城市--");
-    }
-
-    protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlProvince.SelectedIndex > 0)
-        {
-            hfRegionCode.Value = ddlProvince.SelectedValue;
-            Load_City();
-        }
-    }
-
-    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (ddlCity.SelectedIndex > 0)
-        {
-            hfRegionCode.Value = ddlCity.SelectedValue;
-        }
-    }
-    #endregion
 
     void gvUserInfoDataBind()
     {
@@ -116,12 +71,6 @@ public partial class WeixinQY_CityManagerAccession : System.Web.UI.Page
 
     protected void btSure_Click(object sender, EventArgs e)
     {
-        LB.SQLServerDAL.CityManager_Config MCitiManager_Config = new LB.SQLServerDAL.CityManager_Config();
-        MCitiManager_Config.IsLocked = false;
-        MCitiManager_Config.MobilePhoneNum = lbMobileNum.Text;
-        MCitiManager_Config.RegionCode = hfRegionCode.Value;
-        MCitiManager_Config.UserId = Convert.ToInt32(hfUserId.Value);
-        bll_citimanager_config.SetConfig(MCitiManager_Config);
         LB.SQLServerDAL.UserInfo MUser = new LB.SQLServerDAL.UserInfo();
         MUser = bll_userinfo.GetUserInfoByUserId(Convert.ToInt32(hfUserId.Value));
         MUser.IsQYUser = true;

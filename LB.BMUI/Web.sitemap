@@ -18,7 +18,9 @@
       <siteMapNode url="~/SystemAdmin/StaffManage.aspx" title="平台员工管理" description="平台员工管理"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="人员准入管理" description="人员准入管理" roles="Admin,InfoManage,CustomService">
-      <siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>
+      <!--<siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>-->
+      <siteMapNode url="~/WeixinQY/CityManagerAccession.aspx" title="城市经理人准入管理" description="城市经理人准入管理"></siteMapNode>
+      <siteMapNode url="~/WeixinQY/JDAccession.aspx" title="街道业务员准入管理" description="街道业务员准入管理"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="业务监管" description="业务监管"  roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/BusiQuery/ShowQuotation.aspx" title="回收公司报价查询"></siteMapNode>
