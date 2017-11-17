@@ -213,7 +213,7 @@ public partial class MP_CreateLeads : System.Web.UI.Page
         article.Title = "有出售信息需要审核";
         article.Description = "产废单位（" + region.GetRegion(MUserInfo.RegionCode).WholeName + MUserInfo.Address + "）发布了一条出售信息，请点击该条信息直接审核，或到客服管理平台→业务信息审核栏目进行审核。";
         //article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/SellInfo_Handle.aspx?infoId=" + sellInfo.InfoId.ToString();
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Kefu_Info/DispatchManage.aspx";
+        article.Url = "http://weixin.lvbao111.com/WeixinQY/CityManage/DispatchManage.aspx";
         sendmsg.SendArticleToUsers(QYId, article, "5");
     }
 
