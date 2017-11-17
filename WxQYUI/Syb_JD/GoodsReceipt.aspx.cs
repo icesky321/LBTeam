@@ -125,7 +125,7 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             bll_sellinfomanage.UpdateSellInfo(MSellInfo);
             LB.SQLServerDAL.UserInfo MuserInfo = new LB.SQLServerDAL.UserInfo();
             MuserInfo = bll_usermanage.GetUserInfoByTelNum(tbcfdw.Text);
-            string url = "http://weixin.lvbao111.com/WeixinMP/MyOrderDetail.aspx?infoId=" + MSellInfo.InfoId.ToString();
+            string url = "http://weixin.lvbao111.com/WeixinQY/MP/MyOrderDetail.aspx?infoId=" + hfInfoId.Value.ToString();
             SendShortMsg(MuserInfo.OpenId, url);
             Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
         }
