@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="tbFirst" runat="server" Width="400px" TextMode="MultiLine" Rows="3"></asp:TextBox></td>
+                        <asp:TextBox ID="tbFirst" runat="server" Width="400px" TextMode="MultiLine" Rows="3" Text="电瓶车36V/12A    130元/组             电瓶车36V/12A    130元/组"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>交易编号：
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <td>备注信息：<br />
-                        <asp:TextBox ID="tbRemark" runat="server" Width="400px" TextMode="MultiLine" Rows="3"></asp:TextBox></td>
+                        <asp:TextBox ID="tbRemark" runat="server" Width="400px" TextMode="MultiLine" Rows="3" Text="平台价格仅供参考，我们按照订单收货，不讨价还价，如有加价降价之行为，请谨慎交易，详情请点击回收业务--->查询回收价格"></asp:TextBox></td>
                 </tr>
             </table>
         </div>
