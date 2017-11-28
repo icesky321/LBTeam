@@ -166,7 +166,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             lbCFRealname.Text = MUserInfo.RealName;
             lbCFDW.Text = MUserInfo.MobilePhoneNum;
             hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
-            if (MSellInfo.CF_RegionCode != "000000000000"|| !string.IsNullOrEmpty(MUserInfo.RegionCode))
+            if (MSellInfo.CF_RegionCode != "000000000000"&& !string.IsNullOrEmpty(MUserInfo.RegionCode))
             {
                 lbAddress.Text = bll_region.GetRegion(MSellInfo.CF_RegionCode).WholeName + MUserInfo.Address;
             }
