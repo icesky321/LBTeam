@@ -48,7 +48,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Wait = new List<LB.SQLServerDAL.SellInfo>();
         foreach (LB.SQLServerDAL.SellInfo sellInfo in query1)
         {
-            if (sellInfo.JD_TohandleTag == false && sellInfo.JD_AcceptedTag == false && sellInfo.Kefu_TohandleTag==false)
+            if (sellInfo.JD_TohandleTag == false && sellInfo.JD_AcceptedTag == false && sellInfo.Kefu_TohandleTag == false)
                 sellInfoes_Wait.Add(sellInfo);
 
 
@@ -93,8 +93,11 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
 
                 lbCFRealname.Text = MUserInfo.RealName;
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
+                if (MSellInfo.CF_RegionCode != "000000000000")
+                {
+                    lbAddress.Text = bll_region.GetRegion(MSellInfo.CF_RegionCode).WholeName;
+                }
 
-                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
                 LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
                 MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                 lbjd.Text = MJDUserInfo.RealName;
@@ -142,8 +145,10 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
 
                 lbCFRealname.Text = MUserInfo.RealName;
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
-
-                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                if (MSellInfo.CF_RegionCode != "000000000000")
+                {
+                    lbAddress.Text = bll_region.GetRegion(MSellInfo.CF_RegionCode).WholeName;
+                }
                 LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
                 if (MSellInfo.JD_UserId != 0)
                 {

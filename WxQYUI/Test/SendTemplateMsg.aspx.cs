@@ -33,6 +33,8 @@ public partial class SendTemplateMsg : System.Web.UI.Page
         var commonAccessToken = bat.AccessToken;
         //string openId = "oOP4JwivBNerfDcFyetChe5cw2Vw"; // 李峰在绿宝服务号中的OpenId
         string openId = "oOP4JwmLfZaGeHomkHVvhEHMoeAY"; // 曹俊
+                                                        //string openId = "oOP4Jwgj4dXIeVFjVFPruohXM4Ow"; // 李宾
+
 
         TMData_下单成功通知 data = new TMData_下单成功通知();
         data.first.value = "下单成功，绿宝三益电瓶回收平台已收到您的预约单！\n";

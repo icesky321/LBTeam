@@ -161,14 +161,20 @@ public partial class Kefu_Info_DispatchManage : System.Web.UI.Page
                 hlTelNum.NavigateUrl = "tel://" + MJDUserInfo.MobilePhoneNum;
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
                 lbQuantity.Text = MSellInfo.Quantity;
-                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                if (MSellInfo.CF_RegionCode != "000000000000")
+                {
+                    lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                }
             }
             else
             {
                 lbCFRealname.Text = MUserInfo.RealName;
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
                 lbQuantity.Text = MSellInfo.Quantity;
-                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                if (MSellInfo.CF_RegionCode != "000000000000")
+                {
+                    lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
+                }
             }
 
             //if (rptSellInfoesClosed.Items.Count > 0)

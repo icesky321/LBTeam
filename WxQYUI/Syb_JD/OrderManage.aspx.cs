@@ -166,7 +166,10 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
             lbCFRealname.Text = MUserInfo.RealName;
             lbCFDW.Text = MUserInfo.MobilePhoneNum;
             hlTelNum.NavigateUrl = "tel://" + MUserInfo.MobilePhoneNum;
-            lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName+MUserInfo.Address;
+            if (MSellInfo.CF_RegionCode != "000000000000")
+            {
+                lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName + MUserInfo.Address;
+            }
         }
     }
 
@@ -186,7 +189,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         sendmsg.SendArticleToTags(toTags, article, "5");
     }
 
-    private void SendShortMsg(string openId,LB.SQLServerDAL.SellInfo MSellInfo,string JDTelNum)
+    private void SendShortMsg(string openId, LB.SQLServerDAL.SellInfo MSellInfo, string JDTelNum)
     {
         string appId = string.Empty;
         string appSecret = string.Empty;
@@ -204,7 +207,7 @@ public partial class Syb_JD_OrderManage : System.Web.UI.Page
         data.keyword1.value = datetime.Year.ToString() + datetime.Month.ToString() + datetime.Day.ToString() + datetime.Hour.ToString() + datetime.Minute.ToString() + datetime.Second.ToString() + datetime.Millisecond.ToString();
         data.keyword2.value = "废旧电瓶回收";
         data.keyword3.value = System.DateTime.Now.ToString();
-        data.keyword4.value = JDTelNum; 
+        data.keyword4.value = JDTelNum;
         data.remark.value = "";
         //data.Url
         TMSender tmSender = new TMSender();
