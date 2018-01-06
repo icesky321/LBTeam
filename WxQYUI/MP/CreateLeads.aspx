@@ -20,7 +20,7 @@
             <div data-role="main" class="ui-content">
                 <asp:Button ID="btSearch" runat="server" Text="查询今日回收价格" OnClick="btSearch_Click" rel="external" />
                 <div style="font-size: 1em; color: red; padding: 1em;">
-                    温馨提示：产废单位下单后，如果平台业务员电话确认并已到店，此时产废单位出现主动废单情况，业务员将收取100元车油费。
+                    温馨提示：绿宝三益电瓶回收平台在正常的回收业务中，不会向产废单位收取任何费用，收取费用的传言系子虚乌有。
                 </div>
                 <fieldset data-role="controlgroup">
                     <legend>您要出售的电瓶品种</legend>

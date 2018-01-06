@@ -31,7 +31,7 @@
                         0574-86694505  (周一至周五 8:00-17:00)
 
                     </li>
-                    <li>市场合作：李经理：<a href="tel://13255748666">13255748666拨打号码</a>
+                    <li>市场合作：李经理：<a href="tel://13777215858">137-7721-5858拨打号码</a>
 
                     </li>
                     <li data-role="list-divider"></li>
@@ -50,7 +50,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2018 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2018 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 <div data-role="collapsible" data-collapsed="false">
                     <h2>客户服务</h2>
                     <p>
-                        <strong>电话：</strong>0574-86694505 （周一至周五 8:00-17:00）<br />
+                        <strong>电话：</strong>137-7721-5858 （周一至周五 8:00-17:00）<br />
                         <%--<strong>邮箱：</strong>kefu@lvbao111.com--%>
                     </p>
                 </div>
@@ -106,7 +106,7 @@
                 <div data-role="collapsible" data-collapsed="false">
                     <h2>市场合作李经理</h2>
                     <p>
-                        <strong>电话：</strong>132-5574-8666<br />
+                        <strong>电话：</strong>137-7721-5858<br />
                         <%--<strong>邮箱：</strong>sale@lvbao111.com--%>
                     </p>
                 </div>
@@ -114,7 +114,7 @@
                 <div data-role="collapsible" data-collapsed="false">
                     <h2>人事招聘方经理</h2>
                     <p>
-                        <strong>电话：</strong>0574-86694505<br />
+                        <strong>电话：</strong>137-7721-5858<br />
                         <%--<strong>邮箱：</strong>hr@lvbao111.com--%>
                     </p>
                 </div>
