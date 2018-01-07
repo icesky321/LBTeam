@@ -17,8 +17,10 @@
       <siteMapNode url="~/SupplierManage.aspx" title="产废单位或个人信息管理" description="产废单位或个人信息管理" />
       <siteMapNode url="~/SystemAdmin/StaffManage.aspx" title="平台员工管理" description="平台员工管理"></siteMapNode>
     </siteMapNode>
-    <siteMapNode url="" title="企业号准入" description="企业号准入管理" roles="Admin,InfoManage,CustomService">
-      <siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>
+    <siteMapNode url="" title="人员准入管理" description="人员准入管理" roles="Admin,InfoManage,CustomService">
+      <!--<siteMapNode url="~/WeixinQY/UserAccession.aspx" title="业务员准入管理" description="业务员准入管理"></siteMapNode>-->
+      <siteMapNode url="~/WeixinQY/CityManagerAccession.aspx" title="城市经理人准入管理" description="城市经理人准入管理"></siteMapNode>
+      <siteMapNode url="~/WeixinQY/JDAccession.aspx" title="街道业务员准入管理" description="街道业务员准入管理"></siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="业务监管" description="业务监管"  roles="Admin,InfoManage,CustomService">
       <siteMapNode url="~/BusiQuery/ShowQuotation.aspx" title="回收公司报价查询"></siteMapNode>
@@ -26,10 +28,10 @@
       <siteMapNode url="~/HelpManage.aspx" title="帮帮忙信息管理" description="帮帮忙信息管理" />
     </siteMapNode>
     <siteMapNode url="" title="平台资金管理" description="平台资金管理" securitytrimmingenabled="true" roles="Admin,UserManage">
-      <siteMapNode url="~/CF_JD_OrderManage.aspx" title="回收公司订单审核" description="回收公司订单审核" />
+      <!--<siteMapNode url="~/CF_JD_OrderManage.aspx" title="回收公司订单审核" description="回收公司订单审核" />
       <siteMapNode url="~/FundManage/LoanAudit.aspx" title="用户提现管理" description="用户提现管理" />
       <siteMapNode url="~/FundManage/LoanAudited.aspx" title="用户提现记录查询" description="用户提现记录查询" />
-      <siteMapNode url="~/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />
+      <siteMapNode url="~/DepositManage.aspx" title="信用保证金管理" description="信用保证金管理" />-->
       <siteMapNode url="~/SystemAdmin/ListUsers.aspx" title="设置帐户状态" description="设置帐户状态" />
     </siteMapNode>
     <siteMapNode url="" title="系统管理"  description="系统管理" securitytrimmingenabled="true" roles="Admin" >
@@ -38,10 +40,10 @@
       <siteMapNode url="~/SystemAdmin/CreateNewUser.aspx" title="创建帐户" description="创建帐户"/>
       <!--<siteMapNode url="~/Admin/SystemAdmin/AddUserToRole.aspx" title="设置帐户角色" description="设置帐户角色" />-->
     </siteMapNode>
-    <siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
+    <!--<siteMapNode url="" title="用户信息管理" description="用户信息管理" securitytrimmingenabled="true" roles="Admin,InfoManage,UserManage,CustomService" >
       <siteMapNode url="~/UserNoticeManage.aspx" title="用户互动信息" description="用户互动信息"/>
       <siteMapNode url="~/Deposit.aspx" title="押金进出请求信息" description="押金进出请求信息"/>
-    </siteMapNode>
+    </siteMapNode>-->
     <siteMapNode url="" title="其他设置" description="其他设置" securitytrimmingenabled="true" roles="Admin,InfoManage" >
       <siteMapNode url="~/Notice.aspx" title="公告设置" description="公告设置"/>
     </siteMapNode>

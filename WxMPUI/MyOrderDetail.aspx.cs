@@ -37,8 +37,6 @@ public partial class MP_MyOrderDetail : System.Web.UI.Page
                     LB.SQLServerDAL.UserInfo OutUserInfo = new LB.SQLServerDAL.UserInfo();
                     InUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.InUserId));
                     OutUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.OutUserId));
-                    //lbCFDW.Text = InUserInfo.RealName + "(手机号：" + InUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(MSellInfo.CF_RegionCode).WholeName + InUserInfo.Address;
-
                     lbCFDW.Text = InUserInfo.RealName + "(手机号：" + InUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(InUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     lbJDYWY.Text = OutUserInfo.RealName + "(手机号：" + OutUserInfo.MobilePhoneNum + ")\n地址：" + region.GetRegion(OutUserInfo.RegionCode).WholeName + InUserInfo.Address;
                     btn.Visible = true;

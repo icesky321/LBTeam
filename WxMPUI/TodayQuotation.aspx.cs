@@ -73,6 +73,14 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
                 Load_UserInfo();
                 Load_TsInfo();
                 LoadTodayQuotation();
+                if (string.IsNullOrEmpty(localUser.RegionCode))
+                {
+                    btRegionCode.Visible = true;
+                }
+                else
+                {
+                    btRegionCode.Visible = false;
+                }
             }
 
 
@@ -169,5 +177,10 @@ public partial class MP_TodayQuotation : System.Web.UI.Page
     protected void btSell_Click(object sender, EventArgs e)
     {
         Response.Redirect("../WeixinQY/MP/CreateLeads.aspx");
+    }
+
+    protected void btRegionCode_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../WeixinQY/UserCenter/ShowAddress.aspx");
     }
 }

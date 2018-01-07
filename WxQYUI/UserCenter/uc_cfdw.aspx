@@ -77,7 +77,7 @@
 
 
                     <li data-role="list-divider"></li>
-                    <li><a href="../MP/MySellInfos.aspx">我的订单</a></li>
+<%--                    <li><a href="../MP/MySellInfos.aspx">我的订单</a></li>--%>
                     <li><a href="#" data-transition="slide">消息订阅</a></li>
                     <li data-role="list-divider"></li>
 

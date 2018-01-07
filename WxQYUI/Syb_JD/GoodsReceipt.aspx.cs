@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
+using System.Configuration;
+using LB.WeixinMP;
 
 public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
 {
@@ -120,7 +123,10 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
             MSellInfo.StatusMsg = "详单填写完毕,待产废单位确认";
             //MSellInfo.IsClosed = true;
             bll_sellinfomanage.UpdateSellInfo(MSellInfo);
-            //SendWxArticle_ToCF(MCF_JD_Order.CFId, "1");
+            LB.SQLServerDAL.UserInfo MuserInfo = new LB.SQLServerDAL.UserInfo();
+            MuserInfo = bll_usermanage.GetUserInfoByTelNum(tbcfdw.Text);
+            string url = "http://weixin.lvbao111.com/WeixinQY/MP/MyOrderDetail.aspx?infoId=" + hfInfoId.Value.ToString();
+            SendShortMsg(MuserInfo.OpenId, url);
             Response.Redirect("Success.aspx?CFId=" + MCF_JD_Order.CFId.ToString());
         }
         else
@@ -134,17 +140,29 @@ public partial class Syb_Dyywy_GoodsReceipt : System.Web.UI.Page
 
     }
 
-    private void SendWxArticle_ToCF(Guid CFId, string QYId)
+    private void SendShortMsg(string openId,string url)
     {
-        //TODO: 发布前修改微信发布逻辑
-        LB.Weixin.Message.MsgSender sendmsg = new LB.Weixin.Message.MsgSender();
-        MCF_JD_Order = bll_cf_jd_order.GetCF_JD_OrderById(CFId);
-        LB.SQLServerDAL.UserInfo MUserInfo = new LB.SQLServerDAL.UserInfo();
-        MUserInfo = bll_usermanage.GetUserInfoByUserId(Convert.ToInt32(MCF_JD_Order.OutUserId));
-        Senparc.Weixin.QY.Entities.Article article = new Senparc.Weixin.QY.Entities.Article();
-        article.Title = "街道回收员收货单明细";
-        article.Description = "收货金额：" + MCF_JD_Order.Amount + "元" + "\n" + "查看明细请继续戳我";
-        article.Url = "http://weixin.lvbao111.com/WeixinQY/Syb_hsgs/PayOrder.aspx?CFId=" + CFId;
-        sendmsg.SendArticleToUsers(QYId, article, "5");
+        string appId = string.Empty;
+        string appSecret = string.Empty;
+        if (ConfigurationManager.AppSettings["AppId"] != null)
+        {
+            appId = ConfigurationManager.AppSettings["AppId"];
+            appSecret = ConfigurationManager.AppSettings["AppSecret"];
+        }
+        BaseAccessTokenManage bat = new BaseAccessTokenManage();
+        var commonAccessToken = bat.AccessToken;
+        //string openId = "oOP4JwivBNerfDcFyetChe5cw2Vw"; // 李峰在绿宝服务号中的OpenId
+        //string openId = "oOP4JwmLfZaGeHomkHVvhEHMoeAY"; // 曹俊
+
+
+        TMData_收到报价通知 data = new TMData_收到报价通知();
+        data.first.value = "您好，您收到一条报价信息";
+        data.keyword1.value = System.DateTime.Now.ToString("yyyy-MM-dd HH：mm：ss：ffff"); ;
+        data.keyword2.value = "回收业务员";
+        data.keyword4.value = "点击这里查看详情，如无差错请点击确认，谢谢";
+        data.Url = url;
+        TMSender tmSender = new TMSender();
+        tmSender.SendWx_ToOpenId(commonAccessToken, openId, data);
+
     }
 }

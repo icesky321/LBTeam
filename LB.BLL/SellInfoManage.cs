@@ -174,5 +174,15 @@ namespace LB.BLL
             da.DeleteSellInfo(infoId);
         }
 
+        public IQueryable<LB.SQLServerDAL.SellInfo> GetAllSellInfoBy_CityManage_JD_Wait(string RegionCode)
+        {
+            return da.GetAllSellInfoBy_CityManage_JD_Wait(RegionCode);
+        }
+
+        public int GetCount_CityManagerohandle(string RegionCode)
+        {
+            return da.GetCount_CityManagerohandle(RegionCode);
+        }
+
     }
 }

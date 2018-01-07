@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CF_JD_OrderDA.cs" />
     <Compile Include="CF_JD_OrderDetailDA.cs" />
+    <Compile Include="CityManager_ConfigDA.cs" />
     <Compile Include="CodeDA.cs" />
     <Compile Include="CopInfoDA.cs" />
     <Compile Include="BaseAccessTokenMPDA.cs" />

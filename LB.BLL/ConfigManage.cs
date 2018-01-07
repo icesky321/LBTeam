@@ -68,5 +68,10 @@ namespace LB.BLL
         {
             return daHsConfig.GetJDByBillMode(BillMode, IsLocked);
         }
+
+        public IQueryable<LB.SQLServerDAL.JD_Config> GetJDByRegionCode(string RegionCode)
+        {
+            return daHsConfig.GetJDByRegionCode(RegionCode);
+        }
     }
 }

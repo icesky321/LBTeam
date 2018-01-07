@@ -272,8 +272,8 @@ public partial class Kefu_Info_SellInfo_Handle : System.Web.UI.Page
         }
         else
         {
-            //LB.SQLServerDAL.UserInfo jd_user = bll_userManage.GetUserInfo_JD_InStreet(hfRegionCode.Value);
-            var jd_user = bll_config.GetJDByBillMode(true, false);
+            //var jd_user = bll_config.GetJDByBillMode(true, false);//获取所有的业务员
+            var jd_user = bll_config.GetJDByRegionCode(hfRegionCode.Value.Substring(0, 4));//获取地域业务员
             ddlJD.Items.Clear();
             foreach (LB.SQLServerDAL.JD_Config user in jd_user)
             {

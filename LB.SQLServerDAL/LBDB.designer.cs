@@ -72,6 +72,9 @@ namespace LB.SQLServerDAL
     partial void InsertCF_JD_OrderDetail(CF_JD_OrderDetail instance);
     partial void UpdateCF_JD_OrderDetail(CF_JD_OrderDetail instance);
     partial void DeleteCF_JD_OrderDetail(CF_JD_OrderDetail instance);
+    partial void InsertCityManager_Config(CityManager_Config instance);
+    partial void UpdateCityManager_Config(CityManager_Config instance);
+    partial void DeleteCityManager_Config(CityManager_Config instance);
     partial void InsertCopInfo(CopInfo instance);
     partial void UpdateCopInfo(CopInfo instance);
     partial void DeleteCopInfo(CopInfo instance);
@@ -273,6 +276,14 @@ namespace LB.SQLServerDAL
 			get
 			{
 				return this.GetTable<CF_JD_OrderDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CityManager_Config> CityManager_Config
+		{
+			get
+			{
+				return this.GetTable<CityManager_Config>();
 			}
 		}
 		
@@ -4268,6 +4279,164 @@ namespace LB.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CityManager_Config")]
+	public partial class CityManager_Config : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private string _MobilePhoneNum;
+		
+		private bool _BillRemind;
+		
+		private bool _IsLocked;
+		
+		private string _RegionCode;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnMobilePhoneNumChanging(string value);
+    partial void OnMobilePhoneNumChanged();
+    partial void OnBillRemindChanging(bool value);
+    partial void OnBillRemindChanged();
+    partial void OnIsLockedChanging(bool value);
+    partial void OnIsLockedChanged();
+    partial void OnRegionCodeChanging(string value);
+    partial void OnRegionCodeChanged();
+    #endregion
+		
+		public CityManager_Config()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhoneNum", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string MobilePhoneNum
+		{
+			get
+			{
+				return this._MobilePhoneNum;
+			}
+			set
+			{
+				if ((this._MobilePhoneNum != value))
+				{
+					this.OnMobilePhoneNumChanging(value);
+					this.SendPropertyChanging();
+					this._MobilePhoneNum = value;
+					this.SendPropertyChanged("MobilePhoneNum");
+					this.OnMobilePhoneNumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillRemind", DbType="Bit NOT NULL")]
+		public bool BillRemind
+		{
+			get
+			{
+				return this._BillRemind;
+			}
+			set
+			{
+				if ((this._BillRemind != value))
+				{
+					this.OnBillRemindChanging(value);
+					this.SendPropertyChanging();
+					this._BillRemind = value;
+					this.SendPropertyChanged("BillRemind");
+					this.OnBillRemindChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLocked", DbType="Bit NOT NULL")]
+		public bool IsLocked
+		{
+			get
+			{
+				return this._IsLocked;
+			}
+			set
+			{
+				if ((this._IsLocked != value))
+				{
+					this.OnIsLockedChanging(value);
+					this.SendPropertyChanging();
+					this._IsLocked = value;
+					this.SendPropertyChanged("IsLocked");
+					this.OnIsLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CopInfo")]
 	public partial class CopInfo : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4538,6 +4707,8 @@ namespace LB.SQLServerDAL
 		
 		private bool _IsLocked;
 		
+		private string _RegionCode;
+		
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -4552,6 +4723,8 @@ namespace LB.SQLServerDAL
     partial void OnBookBillStatusRemindChanged();
     partial void OnIsLockedChanging(bool value);
     partial void OnIsLockedChanged();
+    partial void OnRegionCodeChanging(string value);
+    partial void OnRegionCodeChanged();
     #endregion
 		
 		public JD_Config()
@@ -4655,6 +4828,26 @@ namespace LB.SQLServerDAL
 					this._IsLocked = value;
 					this.SendPropertyChanged("IsLocked");
 					this.OnIsLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RegionCode", DbType="NVarChar(16) NOT NULL", CanBeNull=false)]
+		public string RegionCode
+		{
+			get
+			{
+				return this._RegionCode;
+			}
+			set
+			{
+				if ((this._RegionCode != value))
+				{
+					this.OnRegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RegionCode = value;
+					this.SendPropertyChanged("RegionCode");
+					this.OnRegionCodeChanged();
 				}
 			}
 		}
@@ -6374,6 +6567,8 @@ namespace LB.SQLServerDAL
 		
 		private string _CF_UserMobile;
 		
+		private string _CF_RegionCode;
+		
 		private string _Title;
 		
 		private string _TradePlace;
@@ -6428,6 +6623,8 @@ namespace LB.SQLServerDAL
     partial void OnCF_UserIdChanged();
     partial void OnCF_UserMobileChanging(string value);
     partial void OnCF_UserMobileChanged();
+    partial void OnCF_RegionCodeChanging(string value);
+    partial void OnCF_RegionCodeChanged();
     partial void OnTitleChanging(string value);
     partial void OnTitleChanged();
     partial void OnTradePlaceChanging(string value);
@@ -6535,6 +6732,26 @@ namespace LB.SQLServerDAL
 					this._CF_UserMobile = value;
 					this.SendPropertyChanged("CF_UserMobile");
 					this.OnCF_UserMobileChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CF_RegionCode", DbType="NVarChar(32)")]
+		public string CF_RegionCode
+		{
+			get
+			{
+				return this._CF_RegionCode;
+			}
+			set
+			{
+				if ((this._CF_RegionCode != value))
+				{
+					this.OnCF_RegionCodeChanging(value);
+					this.SendPropertyChanging();
+					this._CF_RegionCode = value;
+					this.SendPropertyChanged("CF_RegionCode");
+					this.OnCF_RegionCodeChanged();
 				}
 			}
 		}

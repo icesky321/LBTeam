@@ -39,7 +39,7 @@
             <div style="text-align: center; margin: 2em 0 0 0;">
                 <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
                     <asp:View ID="viewTokenBind" runat="server">
-                        免注册，授权您的手机直接访问绿宝网站。<br />
+                        免注册，您的手机直接访问绿宝网站。<br />
                         <asp:Label ID="lbLoginError" runat="server" Visible="False" ForeColor="Red"></asp:Label>
                         <div style="margin: 0 auto; width: 290px;">
                             <table style="display: block; margin: 0 auto;" class="loginTable">
@@ -65,7 +65,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <asp:Button ID="btnBinding" runat="server" Text="授权绑定" CssClass="bigButton" Width="280px"
+                                        <asp:Button ID="btnBinding" runat="server" Text="登录" CssClass="bigButton" Width="280px"
                                             OnClick="btnBinding_Click" />
                                     </td>
                                 </tr>

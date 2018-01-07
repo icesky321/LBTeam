@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CF_JD_Order.cs" />
     <Compile Include="CF_JD_OrderDetail.cs" />
+    <Compile Include="CityManager_Config.cs" />
     <Compile Include="CodeRule.cs" />
     <Compile Include="ConfigManage.cs" />
     <Compile Include="CopInfo.cs" />

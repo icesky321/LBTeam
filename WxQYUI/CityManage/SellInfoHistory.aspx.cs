@@ -26,7 +26,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
                     return;
 
                 hfJD_UserId.Value = user.UserId.ToString();
-
+                hfCityManagerRegionCode.Value = user.RegionCode.ToString();
                 Load_SellInfoes();
                 //Load_SellInfoesClosed(userMobile);
             }
@@ -44,7 +44,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
 
     private void Load_SellInfoes()
     {
-        var query1 = bll_sell.GetAllSellInfoBy_JD_NotClosed();
+        var query1 = bll_sell.GetAllSellInfoBy_CityManage_JD_Wait(hfCityManagerRegionCode.Value.Substring(0, 4));
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Wait = new List<LB.SQLServerDAL.SellInfo>();
         foreach (LB.SQLServerDAL.SellInfo sellInfo in query1)
         {
@@ -54,7 +54,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
 
         }
 
-        var query = bll_sell.GetSellInfo_IsClosed();
+        var query = bll_sell.GetAllSellInfoBy_CityManage_JD_Wait(hfCityManagerRegionCode.Value.Substring(0, 4));
         List<LB.SQLServerDAL.SellInfo> sellInfoes_Done = new List<LB.SQLServerDAL.SellInfo>();
         foreach (LB.SQLServerDAL.SellInfo sellInfo in query)
         {
@@ -95,9 +95,8 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
                 if (MSellInfo.CF_RegionCode != "000000000000")
                 {
-                    lbAddress.Text = bll_region.GetRegion(MSellInfo.CF_RegionCode).WholeName;
+                    lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
                 }
-
                 LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
                 MJDUserInfo = bll_usermanage.GetUserInfoByUserId(MSellInfo.JD_UserId);
                 lbjd.Text = MJDUserInfo.RealName;
@@ -147,7 +146,7 @@ public partial class Kefu_Info_SellInfoHistory : System.Web.UI.Page
                 lbCFDW.Text = MUserInfo.MobilePhoneNum;
                 if (MSellInfo.CF_RegionCode != "000000000000")
                 {
-                    lbAddress.Text = bll_region.GetRegion(MSellInfo.CF_RegionCode).WholeName;
+                    lbAddress.Text = bll_region.GetRegion(MUserInfo.RegionCode).WholeName;
                 }
                 LB.SQLServerDAL.UserInfo MJDUserInfo = new LB.SQLServerDAL.UserInfo();
                 if (MSellInfo.JD_UserId != 0)
