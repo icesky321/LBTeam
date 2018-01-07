@@ -112,9 +112,9 @@
                 </div>
                 <br />
                 <div data-role="collapsible" data-collapsed="false">
-                    <h2>人事招聘方经理</h2>
+                    <h2>招聘回收业务员</h2>
                     <p>
-                        <strong>电话：</strong>137-7721-5858<br />
+                        <strong>卢经理：</strong>137-7771-3333<br />
                         <%--<strong>邮箱：</strong>hr@lvbao111.com--%>
                     </p>
                 </div>
