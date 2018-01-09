@@ -35,7 +35,8 @@
                 <div>
                     注册说明：<br />
                     手机号码是平台登录的唯一凭证。<br />
-                    请根据自己实际情况谨慎选择行业身份，一旦选定，不可变更。<a href="../ljlb/cjwt.aspx#page2" rel="external">了解行业身份</a>
+                    请根据自己实际情况谨慎选择行业身份，一旦选定，不可变更。<a href="../ljlb/cjwt.aspx#page2" rel="external">了解行业身份</a><br />
+                    回收公司加盟热线：137 7771 3333
                 </div>
                 <div style="padding: 20px 0;">
                     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="错误信息" ShowMessageBox="True" />

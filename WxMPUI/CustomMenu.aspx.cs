@@ -55,7 +55,7 @@ public partial class CustomMenu : System.Web.UI.Page
             url = "http://weixin.lvbao111.com/weixinQY/MP/CreateLeads.aspx",
             name = "我要出货"
         });
-        
+
         //subButton1.sub_button.Add(new SingleViewButton()
         //{
         //    url = "http://weixin.lvbao111.com/weixinMP/TodayQuotation.aspx",
@@ -111,11 +111,11 @@ public partial class CustomMenu : System.Web.UI.Page
             url = "http://weixin.lvbao111.com/WeixinQY/Login/Register.aspx?UserTypeId=2",
             name = "我是回收公司"
         });
-        subButton2.sub_button.Add(new SingleViewButton()
-        {
-            name = "我是冶炼厂",
-            url = "http://weixin.lvbao111.com/WeixinQY/Login/Register.aspx?UserTypeId=3"
-        });
+        //subButton2.sub_button.Add(new SingleViewButton()
+        //{
+        //    name = "我是冶炼厂",
+        //    url = "http://weixin.lvbao111.com/WeixinQY/Login/Register.aspx?UserTypeId=3"
+        //});
 
         subButton2.sub_button.Add(new SingleViewButton()
         {
@@ -136,7 +136,7 @@ public partial class CustomMenu : System.Web.UI.Page
             name = "个人中心",
             url = "http://weixin.lvbao111.com/WeixinQY/UserCenter/uc_cfdw.aspx"
         });
-        
+
         subButton3.sub_button.Add(new SingleViewButton()
         {
             name = "资讯消息",
@@ -150,8 +150,8 @@ public partial class CustomMenu : System.Web.UI.Page
 
         subButton3.sub_button.Add(new SingleViewButton()
         {
-            name = "联系我们",
-            url = "http://weixin.lvbao111.com/WeixinQY/ljlb/Default.aspx#page3"
+            name = "我要贷款",
+            url = "http://weixin.lvbao111.com/WeixinMP/Daikuan.aspx"
         });
         subButton3.sub_button.Add(new SingleViewButton()
         {

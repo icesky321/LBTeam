@@ -112,7 +112,7 @@
                 </div>
                 <br />
                 <div data-role="collapsible" data-collapsed="false">
-                    <h2>招聘回收业务员</h2>
+                    <h2>招全国各县市代理加盟</h2>
                     <p>
                         <strong>卢经理：</strong>137-7771-3333<br />
                         <%--<strong>邮箱：</strong>hr@lvbao111.com--%>
@@ -127,7 +127,7 @@
                         <p class="weui-footer__links">
                             <a href="javascript:void(0);" class="weui-footer__link"></a>
                         </p>
-                        <p class="weui-footer__text">Copyright &copy; 2016-2017 绿宝三益 lvbao111.com</p>
+                        <p class="weui-footer__text">Copyright &copy; 2016-2018 绿宝三益 lvbao111.com</p>
                     </div>
                 </div>
             </div>
